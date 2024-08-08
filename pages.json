@@ -1,0 +1,95 @@
+{
+	"pages": [
+		{
+		  "path": "pages/tabbar/home/index",
+		  "style": {}
+	    },
+		{
+			"path": "pages/tabbar/classify/index",
+			"style": {}
+		},
+		{
+			"path": "pages/tabbar/phone/index",
+			"style": {}
+		},
+		{
+			"path": "pages/tabbar/shopping/index",
+			"style": {}
+		},
+		{
+			"path": "pages/tabbar/my/index",
+			"style": {}
+		},
+		{
+		  "path": "pages/tabbar/home/components/search/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/tabbar/classify/components/top/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/tabbar/classify/components/tagClass/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/tabbar/classify/components/shopBom/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/tabbar/home/components/shopDetails/index",
+		  "style": {}
+		}
+		
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		// "navigationBarTitleText": "",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"navigationStyle": "custom",
+		"app-plus": {
+			// "background": "#efeff4"
+			"titleView": false
+		}
+	},
+	"tabBar": {
+		// "borderStyle": "black",
+		"backgroundColor": "#fff",
+		"iconWidth":"20px",
+		"height":"60px",
+		"color": "#8F8F94",
+		"selectedColor": "#4867CF",
+		"list": [{
+				"pagePath": "pages/tabbar/home/index",
+				"iconPath": "static/tabbar/home.png",
+				"selectedIconPath": "static/tabbar/home_checked.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/tabbar/classify/index",
+				"iconPath": "static/tabbar/classify.png",
+				"selectedIconPath": "static/tabbar/classify_checked.png",
+				"text": "分类"
+			},
+			{
+				"pagePath": "pages/tabbar/phone/index",
+				"iconPath": "static/tabbar/phone.png",
+				"selectedIconPath": "static/tabbar/phone_checked.png",
+				"text": "联系我们"
+			},
+			{
+				"pagePath": "pages/tabbar/shopping/index",
+				"iconPath": "static/tabbar/shopping.png",
+				"selectedIconPath": "static/tabbar/shopping_checked.png",
+				"text": "购物车"
+			},
+			{
+				"pagePath": "pages/tabbar/my/index",
+				"iconPath": "static/tabbar/my.png",
+				"selectedIconPath": "static/tabbar/my_checked.png",
+				"text": "我的"
+			}
+		]
+	}
+}
