@@ -39,6 +39,22 @@
 		{
 		  "path": "pages/tabbar/home/components/shopDetails/index",
 		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/login/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/volume/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/spikes/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/new/index",
+		  "style": {}
 		}
 		
 	],

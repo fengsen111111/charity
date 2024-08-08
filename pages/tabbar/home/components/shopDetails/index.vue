@@ -11,7 +11,7 @@
 				<view class="">
 					<view class="mt-3 flex">
 						<view class="colED1 fontBold space-x-1">￥<text class="text24">1888</text>.8</view>
-						<view class="space-x-2 col999 mt-1">
+						<view class="space-x-2 col999 mt-1 textDel">
 							￥8888
 						</view>
 					</view>
@@ -43,59 +43,8 @@
 					<uni-icons type="down" size="12" color="#4867CF"></uni-icons>
 				</view>
 			</view>
-			<!-- card -->
-			<view class="bg-whilt rending1 p-3">
-				<view class="flex items-center">
-					<view class="">
-						选择口味
-					</view>
-					<view class="bgF9 col666 text12 flex px-2 py-1 rending1 space-x-2">
-						<view class="">
-							原味
-						</view>
-						<view class="space-x-6">
-							库存:666666
-							<uni-icons type="down" size="12" color="#4867CF"></uni-icons>
-						</view>
-					</view>
-				</view>
-				<!--  -->
-				<view class="flex mt-4">
-					<view class="bgF2F rending1 p-2 flex w7 border486">
-						<image src="@/static/home/shopOne.png" mode="" class="specs"></image>
-						<view class="col486 space-x-2">
-							<view class="text14">550ml*6</view>
-							<view class="text12 ling1 mt-1">6.88元/瓶</view>
-						</view>
-					</view>
-					<view class="bg-whilt rending1 p-2 flex w7 border999 space-x-4">
-						<image src="@/static/home/shopOne.png" mode="" class="specs"></image>
-						<view class="text-black space-x-2">
-							<view class="text14">550ml*6</view>
-							<view class="text12 ling1 mt-1">6.88元/瓶</view>
-						</view>
-					</view>
-				</view>
-				<!--  -->
-				<view class="grid grid-cols-3 text-center mt-4 bgF9 rending1 py-2">
-					<view class="">
-						<view class="col666 text11">品牌</view>
-						<view class="text12 fontBold">五粮春</view>
-					</view>
-					<view class="borderLeftRight">
-						<view class="col666 text11">产地</view>
-						<view class="text12 fontBold">中国</view>
-					</view>
-					<view class="flex items-center ">
-						<view class="space-x-6">
-							<view class="col666 text11">酒精度</view>
-							<view class="text12 fontBold">52%voI</view>
-						</view>
-						<uni-icons type="right" class="space-x-4" color="#666666" size="20"></uni-icons>
-					</view>
-				</view>
-				<!--  -->
-			</view>
+			<!-- card 规格-->
+			<ruleItem />
 			<!--  -->
 			<image src="@/static/home/strip.png" mode="" class="w-full h-6 mt-4"></image>
 			<!--  -->
@@ -186,9 +135,10 @@
 
 <script>
 	import hearch from '@/components/hearch/index.vue'
+	import ruleItem from "@/components/ruleItem/index"
 	export default {
 		components: {
-			hearch
+			hearch,ruleItem
 		},
 		data() {
 			return {};

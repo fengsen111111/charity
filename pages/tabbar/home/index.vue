@@ -13,7 +13,15 @@
 		<!-- 更多惊喜，更多福利 -->
 		<active />
 		<!-- tabs -->
-		<bomShop />
+		<view class="mt-3 text-black text12">
+			<view class="flex">
+				<view @click="handleItem(1)" class="mr-2" :class="checkItem == 1?'col486 text14 checkboxItem':''">推荐</view>
+				<view @click="handleItem(2)" class="mr-2" :class="checkItem == 2?'col486 text14 checkboxItem':''">白酒类</view>
+				<view @click="handleItem(3)" class="mr-2" :class="checkItem == 3?'col486 text14 checkboxItem':''">朗姆酒</view>
+				<view @click="handleItem(4)" class="mr-2" :class="checkItem == 4?'col486 text14 checkboxItem':''">威士忌</view>
+			</view>
+			<bomShop />
+		</view>
 		<!-- 留高 -->
 		<view class="h100">
 		</view>
@@ -33,14 +41,27 @@
 		data() {
 			return {
 				searchValue: '',
+				checkItem:1
 			};
 		},
 		onLoad() {},
-		methods: {}
+		methods: {
+			handleItem(index){
+				this.checkItem = index
+			},
+		}
 	};
 </script>
 
 <style>
+	
+	.checkboxItem {
+		border-bottom: 3px solid #4867CF;
+		padding: 0px 0.5rem;
+	}
+	.tagShopItem {
+		border: 1px solid #ED1805;
+	}
 	.countdown {
 		border: 2px solid #FA311D;
 		padding: 0px 0.25rem;

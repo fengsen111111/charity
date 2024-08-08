@@ -1,58 +1,144 @@
 <template>
 	<view class="">
-		<view class="mt-3 text-black text12">
+		<!-- 	<view class="mt-3 text-black text12">
 			<view class="flex">
-				<view class="mr-2 col486 text14 checkboxItem">推荐</view>
-				<view class="mr-2">白酒类</view>
-				<view class="mr-2">朗姆酒</view>
-				<view class="mr-2">威士忌</view>
-			</view>
-			<view class="grid grid-cols-2 gridRow">
-				<view class="bg-whilt rending1 p-2 mt-3" v-for="item in [1,2,3,4]" :key="item">
-					<image @click="handDetailds" src="@/static/home/shopOne.png" mode="" class="w-full h10"></image>
-					<view class="fontBold text12 ling125 ">
-						泸州老窖 六年窖头曲 特惠浓香白酒 52度精品装 500ml...
+				<view @click="handleItem(1)" class="mr-2" :class="checkItem == 1?'col486 text14 checkboxItem':''">推荐</view>
+				<view @click="handleItem(2)" class="mr-2" :class="checkItem == 2?'col486 text14 checkboxItem':''">白酒类</view>
+				<view @click="handleItem(3)" class="mr-2" :class="checkItem == 3?'col486 text14 checkboxItem':''">朗姆酒</view>
+				<view @click="handleItem(4)" class="mr-2" :class="checkItem == 4?'col486 text14 checkboxItem':''">威士忌</view>
+			</view> -->
+		<view class="grid grid-cols-2 gridRow">
+			<view class="bg-whilt rending1 p-2 mt-3" v-for="item in [1,2,3,4]" :key="item">
+				<image @click="handDetailds" src="@/static/home/shopOne.png" mode="" class="w-full h10"></image>
+				<view class="fontBold text12 ling125 ">
+					泸州老窖 六年窖头曲 特惠浓香白酒 52度精品装 500ml...
+				</view>
+				<text class="colFA3 px-1 text10 rending1 tagShopItem">200ml/瓶</text>
+				<view class="flex justify-between">
+					<view class="">
+						<view class="flex px-1 ">
+							<view class="colED1 text14 fontBold space-x-1">
+								1888.8
+							</view>
+							<view class="col999 text10 space-x-2 textDel">
+								￥8888
+							</view>
+						</view>
+						<view class="colED1 ling1 text10 ">
+							约 66.88元/瓶 148.88元/箱
+						</view>
 					</view>
-					<text class="colFA3 px-1 text10 rending1 tagShopItem">200ml/瓶</text>
-					<view class="flex justify-between">
-						<view class="">
-							<view class="flex px-1 ">
-								<view class="colED1 text14 fontBold space-x-1">
-									1888.8
-								</view>
-								<view class="col999 text10 space-x-2">
-									￥8888
-								</view>
-							</view>
-							<view class="colED1 ling1 text10 ">
-								约 66.88元/瓶  148.88元/箱 
-							</view>
-						</view>
-						<view class="text12 bg486 h-6 rending1 text-whlie p-1">
-							选规格
-						</view>
+					<view class="text12 bg486 h-6 rending1 text-whlie p-1" @click="toggle('bottom')">
+						选规格
+						
 					</view>
 				</view>
 			</view>
 		</view>
+		<!-- </view> -->
+		<!-- 普通弹窗 -->
+		<uni-popup ref="popup" background-color="#fff" borderRadius="0.5rem 0.5rem 0px 0px">
+			<view class="bgF9 p-4" style="height:90vh">
+				<view class="flex justify-between items-center">
+					<view></view>
+					<view class="text16">
+						选择规格
+					</view>
+					<view class="" @click="close">
+						<uni-icons type="closeempty" size="20"></uni-icons>
+					</view>
+				</view>
+				<view class="w95 mt-3">
+					<view class="rending1 p-2 w-full flex mb-2">
+						<image src="@/static/classify/item.png" mode="" class="itemImg rending1"></image>
+						<view class="space-x-2">
+							<view class="fontBold text12 ling4">
+								泸州老窖 六年窖头曲 浓香白酒 52度精品装 500ml...
+							</view>
+							<view class="flex mt-2 ling4">
+								<text class="tagCol text-whlie px-2 text10">
+									领取优惠券
+								</text>
+								<text class="tagBor colED1 px-2 text10">
+									6.2折
+								</text>
+							</view>
+							<!--  -->
+							<view class="flex mt-2 ling4 items-center">
+								<view class="colED1 fontBold">￥<text class="text18">888</text>.8</view>
+								<view class="col999 text11 space-x-2 textDel">
+									￥1888
+								</view>
+								<slot></slot>
+							</view>
+						</view>
+					</view>
+				</view>
+				<!--  -->
+				<view class="w95 space-x-2">
+					<ruleItem />
+				</view>
+				<!-- 选数量 -->
+				<view class="w95 space-x-2 bg-whilt mt-3">
+				   	<view class="flex text-16 justify-between items-center p-3 ">
+				   		<view>选择数量</view>
+						<view class="flex space-x-3 text24 text-center">
+							<view class="leftView bgFF8 text-whlie">
+								-
+							</view>
+							<view class="bg-whilt text-black cenVire text14">
+								10
+							</view>
+							<view class="rightView bgFF8 text-whlie">
+								+
+							</view>
+						</view>
+				   	</view>
+				</view>
+				<!-- 冰冻选择 -->
+				<view class="w95 space-x-2 bg-whilt mt-3 ">
+					<view class="p-3">
+						<view class="text16">
+							冰冻选择
+						</view>
+						<view class="flex justify-between mt-3">
+							<view class="border486 col486 bgF2F h-8 w5 text-center rending2 " v-for="item in [1,2,3]" :key="item">
+								<text class="" style="line-height:2rem">常温</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</uni-popup>
 	</view>
 </template>
 
 <script>
+	import ruleItem from "@/components/ruleItem/index"
 	export default {
-		components: {
-		},
+		components:{ruleItem},
 		data() {
 			return {
 				searchValue: '',
+				type: 'center',
 			};
 		},
 		onLoad() {},
 		methods: {
-			handDetailds(){
+			// 关闭
+			close(){
+				this.$refs.popup.close()
+			},
+			// 弹框
+			toggle(type) {
+				this.type = type
+				// open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
+				this.$refs.popup.open(type)
+			},
+			handDetailds() {
 				console.log('跳转详情');
 				uni.navigateTo({
-				  url: '/pages/tabbar/home/components/shopDetails/index'
+					url: '/pages/tabbar/home/components/shopDetails/index'
 				})
 			}
 		}
@@ -60,13 +146,48 @@
 </script>
 
 <style>
+	.leftView {
+		width: 2.5rem;
+		height: 1.75rem;
+		border-radius: 1rem 0px 0px 1rem;
+	}
+	
+	.cenVire {
+		background-color: #F9F9F9;
+		width: 2rem;
+		height: 1.75rem;
+		text-align: center;
+		line-height: 1.75rem;
+	}
+	
+	.rightView {
+		width: 2.5rem;
+		height: 1.75rem;
+		border-radius: 0px 1rem 1rem 0px;
+	}
+	.specs {
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+	.tagCol{
+		background: linear-gradient( 270deg, #FA311D 0%, #FF8E34 100%);
+	}
+	.tagBor{
+		border: 1px solid #FA311D;
+	}
+	.itemImg{
+		width: 6.5rem;
+		height: 5rem;
+	}
 	.checkboxItem {
 		border-bottom: 3px solid #4867CF;
 		padding: 0px 0.5rem;
 	}
+
 	.tagShopItem {
 		border: 1px solid #ED1805;
 	}
+
 	.gridRow {
 		grid-column-gap: 0.5rem;
 	}

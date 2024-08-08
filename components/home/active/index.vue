@@ -19,7 +19,7 @@
 								<view class="flex justify-between items-center">
 									<view class="">
 										<view class="text12 ">￥0.01</view>
-										<view class="text10 ling0 col666">￥8888</view>
+										<view class="text10 ling0 col666 textDel">￥8888</view>
 									</view>
 									<text class="bg486 text-whlie text12 px-1 mt-2 rending1">
 										秒杀
@@ -51,7 +51,7 @@
 									<view class="text-whlie px-1 bg486">
 										￥8888
 									</view>
-									<view class="col666">
+									<view class="col666 textDel">
 										￥8888
 									</view>
 								</view>

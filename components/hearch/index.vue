@@ -1,7 +1,7 @@
 <template>
 	<view class="">
-		<uni-nav-bar dark :fixed="true" shadow background-color="#4867CF" status-bar left-icon="left"
-			:left-text="leftText" :title="title" @clickLeft="back" />
+		<uni-nav-bar dark :fixed="true" shadow background-color="#4867CF" status-bar :left-icon="isLeft?'left':''"
+			:left-text="leftText" :title="title" @clickLeft="back"></uni-nav-bar>
 	</view>
 </template>
 
@@ -10,6 +10,7 @@
 		props: {
 			title: '',
 			leftText: '',
+			isLeft: true
 		},
 		data() {
 			return {}

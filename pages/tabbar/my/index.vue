@@ -72,7 +72,7 @@
 				<view class="centerBgTwo mt-3"></view>
 				<!-- cardItem -->
 				<view class="mt-3">
-					<view class="flex bg-whilt rending1 text-black mt-1 justify-between p-3" v-for="item in cards" :key="item">
+					<view class="flex bg-whilt rending1 text-black mt-1 justify-between p-3" v-for="item in cards" :key="item.id">
 						<view class="">{{item.text}}</view>
 						<view class="flex items-center">
 							<view class="text12 col666" v-show="item.id==1">

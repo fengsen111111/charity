@@ -18,7 +18,7 @@
 						高度浓香型白酒...
 					</view>
 					<view class="flex text12">
-						<view class="text999">￥888</view>
+						<view class="text999 textDel">￥888</view>
 						<view class="flex price rending2 space-x-1 px-1">
 							<view>￥888</view>
 							<view class="borLft1 space-x-1"><text class="space-x-1">抢</text></view>
@@ -32,7 +32,7 @@
 					新人优惠卷
 				</text>
 			</view>
-			<view class="bgTag h60 flex rending1 ">
+			<view class="bgTag h60 flex rending1 overflowAuto">
 				<view class="cardVolume text-center flex justify-between colED1" v-for="(item,index) in [1,2]"
 					:key="item">
 					<view class="">
@@ -99,7 +99,7 @@
 		background-image: url('@/static/home/card.png');
 		background-size: 100% 100%;
 		height: 2.75rem;
-		width: 40%;
+		width: 10rem;
 		margin: 0.5rem;
 	}
 </style>

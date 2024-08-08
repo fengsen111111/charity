@@ -1,6 +1,30 @@
 <template>
-	<view class="">
-		三方页面
+	<view class="mt-3">
+		<view class="" @click="handleItem('/pages/sonView/login/index')">
+			授权页面
+		</view>
+		<view class="" @click="handleItem('/pages/sonView/volume/index')">
+			领卷中心
+		</view>
+		<view class="" @click="handleItem('/pages/sonView/spikes/index')">
+			限时秒杀
+		</view>
+		<view class="" @click="handleItem('/pages/sonView/new/index')">
+			新人专享
+		</view>
+		<view class="">
+			授权页面
+		</view>
+		<view class="">
+			授权页面
+		</view>
+		<view class="">
+			授权页面
+		</view>
+		
+		<view class="">
+			授权页面
+		</view>
 	</view>
 </template> 
 
@@ -21,11 +45,11 @@ export default {
 		this.active = false;
 	},
 	methods: {
-		goToPage(url) {
-			if (!url) return;
+		handleItem(url){
+			console.log(url);
 			uni.navigateTo({
-				url
-			});
+				url:url+''
+			})
 		}
 	}
 };
