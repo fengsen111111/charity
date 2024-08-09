@@ -30,7 +30,6 @@
 					</view>
 					<view class="text12 bg486 h-6 rending1 text-whlie p-1" @click="toggle('bottom')">
 						选规格
-						
 					</view>
 				</view>
 			</view>
@@ -38,8 +37,8 @@
 		<!-- </view> -->
 		<!-- 普通弹窗 -->
 		<uni-popup ref="popup" background-color="#fff" borderRadius="0.5rem 0.5rem 0px 0px">
-			<view class="bgF9 p-4" style="height:90vh">
-				<view class="flex justify-between items-center">
+			<view class="bgF9 p-4 overflowAuto" style="height:90vh">
+				<view class="fiexdTop">
 					<view></view>
 					<view class="text16">
 						选择规格
@@ -48,7 +47,8 @@
 						<uni-icons type="closeempty" size="20"></uni-icons>
 					</view>
 				</view>
-				<view class="w95 mt-3">
+				<view class="h-6"></view>
+				<view class="w95 mt-4">
 					<view class="rending1 p-2 w-full flex mb-2">
 						<image src="@/static/classify/item.png" mode="" class="itemImg rending1"></image>
 						<view class="space-x-2">
@@ -108,6 +108,37 @@
 						</view>
 					</view>
 				</view>
+				<!-- 滑块 -->
+				<view class="w95 space-x-2 bg-whilt mt-3 ">
+					<view class="p-3">
+						<view class="text16">
+							冰冻数量
+						</view>
+						<view class="flex justify-between mt-3">
+							<view class="w95 space-x-2 bg-whilt mt-3 items-center flex">
+								<view class="">{{min}}</view>
+								<view class="w85 mxAuto">
+									<view class="mx-2">
+										<hao-slider  ref="haoSlider" sliderBgColor="#4867CF" sliderLeftColor="#4867CF" :max="max" :min="min"></hao-slider>
+									</view>
+								</view>
+								<view class="">{{max}}</view>
+							</view>
+						</view>
+					</view>
+				</view>
+				<!-- 加入购物车 结算 -->
+				<view class="flex justify-between w95 space-x-2 mt-3 text-center">
+					<view class="bgFF8 py-2 text14 text-whlie rending1 btnPoupr">
+						加入购物车
+					</view>
+					<view class="bg486 py-2 text14  text-whlie rending1 btnPoupr">
+						去结算
+					</view>
+				</view>
+				<!-- 留白 -->
+				<view class="h-8"></view>
+				<view class="h-8"></view>
 			</view>
 		</uni-popup>
 	</view>
@@ -121,6 +152,9 @@
 			return {
 				searchValue: '',
 				type: 'center',
+				value:1,
+				max:10,
+				min:0
 			};
 		},
 		onLoad() {},
@@ -146,6 +180,10 @@
 </script>
 
 <style>
+	
+	.btnPoupr{
+		width: 9rem;
+	}
 	.leftView {
 		width: 2.5rem;
 		height: 1.75rem;

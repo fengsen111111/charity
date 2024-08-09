@@ -2,7 +2,7 @@
 	<view class="bgImg px-3 text-whlie">
 		<homeTop />
 		<view class="imhs">
-			<image src="@/static/home/imgs.png" mode="" class="w-full mt-4 h100 rending1"></image>
+			<image src="@/static/home/imgs.png" @click="handleUrl('/pages/sonView/swiperActive/index')" mode="" class="w-full mt-4 h100 rending1"></image>
 		</view>
 		<!-- 新人专享 -->
 		<homeCard />
@@ -49,6 +49,12 @@
 			handleItem(index){
 				this.checkItem = index
 			},
+			handleUrl(url){
+				console.log(url);
+				uni.navigateTo({
+					url:url+''
+				})
+			}
 		}
 	};
 </script>

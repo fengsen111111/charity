@@ -1,6 +1,6 @@
 <template>
 	<view class="">
-		<view :class="isFFF?'bg-whilt':''" class="flex justify-between borderFFC w90 mt-4 space-x-4" v-for="item in [1,2,3]" :key="item">
+		<view :class="isFFF?'bg-whilt':''" class="flex justify-between borderFFC w90 mt-4 space-x-4" >
 			<!-- left -->
 			<view class=" p-2">
 				<view class="mt-1">
@@ -29,7 +29,7 @@
 <script>
 	export default {
 		props:{
-			isFFF: false
+			isFFF: false,
 		},
 		data() {
 			return {

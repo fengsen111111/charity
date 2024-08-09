@@ -55,6 +55,62 @@
 		{
 		  "path": "pages/sonView/new/index",
 		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/oneSpikes/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/commentsAll/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/swiperActive/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/popularize/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/payouts/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/addCard/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/earnings/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/team/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/myInfo/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/discountAll/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/address/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/addressForm/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/okOrder/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/myOrder/index",
+		  "style": {}
 		}
 		
 	],

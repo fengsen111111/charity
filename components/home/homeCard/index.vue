@@ -6,7 +6,7 @@
 					<view class="text24 fontBold">新人专享</view>
 					<view class="text12 space-x-1">专属福利仅限一份</view>
 				</view>
-				<view class="text12">
+				<view class="text12" @click="handleUrl('/pages/sonView/new/index')" >
 					更多优惠
 				</view>
 			</view>
@@ -68,6 +68,12 @@
 				console.log('跳转详情');
 				uni.navigateTo({
 				  url: '/pages/tabbar/home/components/shopDetails/index'
+				})
+			},
+			handleUrl(url){
+				console.log(url);
+				uni.navigateTo({
+					url:url+''
 				})
 			}
 		}

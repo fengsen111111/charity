@@ -12,8 +12,8 @@
 		<view class="" @click="handleItem('/pages/sonView/new/index')">
 			新人专享
 		</view>
-		<view class="">
-			授权页面
+		<view class="" @click="handleItem('/pages/sonView/oneSpikes/index')">
+			一分秒杀
 		</view>
 		<view class="">
 			授权页面

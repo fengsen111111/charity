@@ -20,7 +20,7 @@
 				<view class="viewLeft bgFF8">
 					加入购物车
 				</view>
-				<view class="viewRight bg486">
+				<view class="viewRight bg486" @click="handleUrl('/pages/sonView/okOrder/index')">
 					立即购买
 				</view>
 			</view>
@@ -33,8 +33,10 @@
 	import tagClass from '@/pages/tabbar/classify/components/tagClass/index.vue'
 	import shopBom from '@/pages/tabbar/classify/components/shopBom/index.vue'
 	export default {
-		components:{
-			top,tagClass,shopBom
+		components: {
+			top,
+			tagClass,
+			shopBom
 		},
 		data() {
 			return {
@@ -45,13 +47,18 @@
 
 		},
 		methods: {
-
+			handleUrl(url) {
+				console.log(url);
+				uni.navigateTo({
+					url: url + ''
+				})
+			}
 		}
 	}
 </script>
 
 <style>
-	.viewLeft{
+	.viewLeft {
 		width: 4.5rem;
 		padding: 0.5rem;
 		border-radius: 1.5rem 0px 0px 1.5rem;
@@ -59,24 +66,27 @@
 		margin-top: 0.325rem;
 		line-height: 2rem;
 	}
-	.viewRight{
+
+	.viewRight {
 		width: 4.5rem;
 		padding: 0.5rem;
-		border-radius:  0px 1.5rem 1.5rem 0px;
+		border-radius: 0px 1.5rem 1.5rem 0px;
 		height: 2rem;
 		margin-top: 0.325rem;
 		line-height: 2rem;
 		margin-right: 1rem;
 	}
-	.iconTwo{
+
+	.iconTwo {
 		width: 1.25rem;
 		height: 1.25rem;
 	}
-	.gw{
+
+	.gw {
 		height: 4rem;
 		background-color: #fff;
 		position: fixed;
-		top:82vh;
+		top: 82vh;
 		/* border: 1px solid red; */
 		width: 100%;
 	}

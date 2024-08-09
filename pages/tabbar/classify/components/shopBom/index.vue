@@ -2,71 +2,239 @@
 	<view class="mt-3 h-full flex text12 ">
 		<view class="bg-whilt px-3 rending1 ">
 			<view class="py-2" :class="item.id>1?'col999':'col666'" v-for="item in dataTab" :key="item.id">
-			{{item.text}}
+				{{item.text}}
 			</view>
 		</view>
 		<!-- shop -->
 		<view class="rightWidth">
 			<shopCardTwo>
-			  <!-- 选规格 -->
-			  <view class="">
-			  	<view class="bg486 text-whlie px-2 rending1 py-1 space-x-2">
-			  		选规格
-			  	</view>
-			  </view>	
+				<!-- 选规格 -->
+				<view class="">
+					<view class="bg486 text-whlie px-2 rending1 py-1 space-x-2" @click="toggle('bottom')">
+						选规格
+					</view>
+				</view>
 			</shopCardTwo>
 		</view>
+		<!--  -->
+		<!-- 普通弹窗 -->
+		<uni-popup ref="popup" background-color="#fff" borderRadius="0.5rem 0.5rem 0px 0px">
+			<view class="bgF9 p-4 overflowAuto" style="height:90vh">
+				<view class="fiexdTop">
+					<view></view>
+					<view class="text16">
+						选择规格
+					</view>
+					<view class="" @click="close">
+						<uni-icons type="closeempty" size="20"></uni-icons>
+					</view>
+				</view>
+				<view class="h-6"></view>
+				<view class="w95 mt-4">
+					<view class="rending1 p-2 w-full flex mb-2">
+						<image src="@/static/classify/item.png" mode="" class="itemImg rending1"></image>
+						<view class="space-x-2">
+							<view class="fontBold text12 ling4">
+								泸州老窖 六年窖头曲 浓香白酒 52度精品装 500ml...
+							</view>
+							<view class="flex mt-2 ling4">
+								<text class="tagCol text-whlie px-2 text10">
+									领取优惠券
+								</text>
+								<text class="tagBor colED1 px-2 text10">
+									6.2折
+								</text>
+							</view>
+							<!--  -->
+							<view class="flex mt-2 ling4 items-center">
+								<view class="colED1 fontBold">￥<text class="text18">888</text>.8</view>
+								<view class="col999 text11 space-x-2 textDel">
+									￥1888
+								</view>
+								<slot></slot>
+							</view>
+						</view>
+					</view>
+				</view>
+				<!--  -->
+				<view class="w95 space-x-2">
+					<ruleItem />
+				</view>
+				<!-- 选数量 -->
+				<view class="w95 space-x-2 bg-whilt mt-3">
+					<view class="flex text-16 justify-between items-center p-3 ">
+						<view>选择数量</view>
+						<view class="flex space-x-3 text24 text-center">
+							<view class="leftView bgFF8 text-whlie">
+								-
+							</view>
+							<view class="bg-whilt text-black cenVire text14">
+								10
+							</view>
+							<view class="rightView bgFF8 text-whlie">
+								+
+							</view>
+						</view>
+					</view>
+				</view>
+				<!-- 冰冻选择 -->
+				<view class="w95 space-x-2 bg-whilt mt-3 ">
+					<view class="p-3">
+						<view class="text16">
+							冰冻选择
+						</view>
+						<view class="flex justify-between mt-3">
+							<view class="border486 col486 bgF2F h-8 w5 text-center rending2 " v-for="item in [1,2,3]"
+								:key="item">
+								<text class="" style="line-height:2rem">常温</text>
+							</view>
+						</view>
+					</view>
+				</view>
+				<!-- 滑块 -->
+				<view class="w95 space-x-2 bg-whilt mt-3 ">
+					<view class="p-3">
+						<view class="text16">
+							冰冻数量
+						</view>
+						<view class="flex justify-between mt-3">
+							<view class="w95 space-x-2 bg-whilt mt-3 items-center flex">
+								<view class="">{{min}}</view>
+								<view class="w85 mxAuto">
+									<view class="mx-2">
+										<hao-slider ref="haoSlider" sliderBgColor="#4867CF" sliderLeftColor="#4867CF"
+											:max="max" :min="min"></hao-slider>
+									</view>
+								</view>
+								<view class="">{{max}}</view>
+							</view>
+						</view>
+					</view>
+				</view>
+				<!-- 加入购物车 结算 -->
+				<view class="flex justify-between w95 space-x-2 mt-3 text-center">
+					<view class="bgFF8 py-2 text14 text-whlie rending1 btnPoupr">
+						加入购物车
+					</view>
+					<view class="bg486 py-2 text14  text-whlie rending1 btnPoupr">
+						去结算
+					</view>
+				</view>
+				<!-- 留白 -->
+				<view class="h-8"></view>
+				<view class="h-8"></view>
+			</view>
+		</uni-popup>
 	</view>
 </template>
 
 <script>
 	import shopCardTwo from '@/components/shopCardTwo/index.vue'
+	import ruleItem from "@/components/ruleItem/index"
 	export default {
-		components:{
-			shopCardTwo
+		components: {
+			shopCardTwo,ruleItem
 		},
 		data() {
 			return {
 				title: 'Hello',
-				dataTab:[
-					{
-						id:1,
-						text:'国产风味'
+				min:0,
+				max:10,
+				dataTab: [{
+						id: 1,
+						text: '国产风味'
 					},
 					{
-						id:2,
-						text:'进口风味'
+						id: 2,
+						text: '进口风味'
 					},
 					{
-						id:3,
-						text:'百威'
+						id: 3,
+						text: '百威'
 					},
 					{
-						id:4,
-						text:'雪花'
+						id: 4,
+						text: '雪花'
 					},
 					{
-						id:5,
-						text:'燕京'
+						id: 5,
+						text: '燕京'
 					},
 					{
-						id:6,
-						text:'乐堡'
+						id: 6,
+						text: '乐堡'
 					},
 				]
 			}
 		},
 		onLoad() {
-	
+
 		},
 		methods: {
-	
+			// 关闭
+			close() {
+				this.$refs.popup.close()
+			},
+			// 弹框
+			toggle(type) {
+				this.type = type
+				// open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
+				this.$refs.popup.open(type)
+			},
 		}
 	}
 </script>
 
 <style>
-	.rightWidth{
+	.rightWidth {
 		width: 17.5rem;
+	}
+	.btnPoupr{
+		width: 9rem;
+	}
+	.leftView {
+		width: 2.5rem;
+		height: 1.75rem;
+		border-radius: 1rem 0px 0px 1rem;
+	}
+	
+	.cenVire {
+		background-color: #F9F9F9;
+		width: 2rem;
+		height: 1.75rem;
+		text-align: center;
+		line-height: 1.75rem;
+	}
+	
+	.rightView {
+		width: 2.5rem;
+		height: 1.75rem;
+		border-radius: 0px 1rem 1rem 0px;
+	}
+	.specs {
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+	.tagCol{
+		background: linear-gradient( 270deg, #FA311D 0%, #FF8E34 100%);
+	}
+	.tagBor{
+		border: 1px solid #FA311D;
+	}
+	.itemImg{
+		width: 6.5rem;
+		height: 5rem;
+	}
+	.checkboxItem {
+		border-bottom: 3px solid #4867CF;
+		padding: 0px 0.5rem;
+	}
+	
+	.tagShopItem {
+		border: 1px solid #ED1805;
+	}
+	
+	.gridRow {
+		grid-column-gap: 0.5rem;
 	}
 </style>

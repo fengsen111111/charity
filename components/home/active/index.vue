@@ -7,7 +7,7 @@
 				<view class="card p-2 h8">
 					<view class="flex justify-between  items-center">
 						<view class="price text12 rending1 px-1">一分秒杀</view>
-						<view class="colortext text12">更多</view>
+						<view class="colortext text12" @click="handleUrl('/pages/sonView/oneSpikes/index')">更多</view>
 					</view>
 					<view class="flex justify-between">
 						<view v-for="item in [1,2]" :key="item">
@@ -38,7 +38,7 @@
 								19:10:09
 							</view>
 						</view>
-						<view class="colortext text12">更多</view>
+						<view class="colortext text12" @click="handleUrl('/pages/sonView/spikes/index')">更多</view>
 					</view>
 					<view class="flex justify-between">
 						<view v-for="item in [1,2]" :key="item">
@@ -75,6 +75,12 @@
 		},
 		onLoad() {},
 		methods: {
+			handleUrl(url){
+				console.log(url);
+				uni.navigateTo({
+					url:url+''
+				})
+			},
 			handDetailds(){
 				console.log('跳转详情');
 				uni.navigateTo({

@@ -33,6 +33,7 @@
 				</view>
 			</view>
 			<!--  -->
+			<slot></slot>
 		</view>
 	</view>
 </template>

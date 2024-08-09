@@ -534,6 +534,7 @@
 		text-align: left;
 		color: #333;
 		font-size: 14px;
+		
 	}
 
 	.uni-easyinput__content {

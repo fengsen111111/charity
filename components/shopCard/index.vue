@@ -1,5 +1,5 @@
 <template>
-	<view class="w90 space-x-2 bg-whilt rending2  p-4">
+	<view class="w90 space-x-2  rending2  p-4" :class="isBgWhilt?'bgF9':'bg-whilt'">
 		<view class=" flex justify-between">
 			<image src="@/static/home/shopOne.jpg" mode="" class="imgShop rending1"></image>
 			<view class="w-full w70 px-2">
@@ -23,7 +23,7 @@
 					</view>
 					<view class="flex text12 ">
 						<view class="colED1 fontBold">￥<text class="text20 ">888</text>.8</view>
-						<view class="col999 space-x-1 text12 mt-1">￥1888</view>
+						<view class="col999 space-x-1 text12 mt-1 textDel">￥1888</view>
 					</view>
 				</view>
 			</view>
@@ -35,6 +35,11 @@
 </template>
 
 <script>
+	export default {
+		props:{
+			isBgWhilt:true
+		}
+	}
 </script>
 
 <style>

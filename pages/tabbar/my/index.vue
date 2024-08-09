@@ -10,16 +10,16 @@
 						<view class="space-x-2">
 							135******1234
 						</view>
-						<uni-icons type="compose" size="20" color="#fff" class="iconLeft"></uni-icons>
+						<uni-icons type="compose" size="20" color="#fff" class="iconLeft" @click="handleUrl('/pages/sonView/myInfo/index')"></uni-icons>
 					</view>
 				</view>
 			</view>
 			<!-- card -->
 			<view class="px-3">
 				<view class="bg-whilt rending1 flex justify-between p-4">
-					<view class="text-center">
+					<view class="text-center" @click="handleUrl('/pages/sonView/myOrder/index')">
 						<image src="@/static/my/icon1.png" mode="" class="iconWH"></image>
-						<view class="text-black text12 ">
+						<view class="text-black text12" >
 							待付款
 						</view>
 					</view>
@@ -57,7 +57,7 @@
 							<view class="">
 								我的优惠卷
 							</view>
-							<view>></view>
+							<uni-icons type="right" size="20" color="#fff" @click="handleUrl('/pages/sonView/discountAll/index')"></uni-icons>
 						</view>
 						<view class="flex justify-between text-whlie px-4 py-2">
 							<view class="text12">
@@ -65,14 +65,16 @@
 							</view>
 							<view class="text16">66</view>
 						</view>
-					</view>
-					<view class="centerBg2"></view>
+					</view>  
+					<view class="centerBg2" @click="handleUrl('/pages/sonView/volume/index')"></view>
 				</view>
 				<!-- img -->
 				<view class="centerBgTwo mt-3"></view>
 				<!-- cardItem -->
 				<view class="mt-3">
-					<view class="flex bg-whilt rending1 text-black mt-1 justify-between p-3" v-for="item in cards" :key="item.id">
+					<view @click="handleUrl(item.url)"
+						class="flex bg-whilt rending1 text-black mt-1 justify-between p-3" v-for="item in cards"
+						:key="item.id">
 						<view class="">{{item.text}}</view>
 						<view class="flex items-center">
 							<view class="text12 col666" v-show="item.id==1">
@@ -89,7 +91,7 @@
 					</view>
 				</view>
 				<view class="h5">
-					
+
 				</view>
 			</view>
 			<!-- 111 -->
@@ -102,30 +104,35 @@
 		data() {
 			return {
 				title: 'Hello',
-				cards:[
-					{
-						id:1,
-						text:'推广员收益'
+				cards: [{
+						id: 1,
+						text: '推广员收益',
+						url: '/pages/sonView/popularize/index'
 					},
 					{
-						id:2,
-						text:'收货地址'
+						id: 2,
+						text: '收货地址',
+						url: '/pages/sonView/address/index'
 					},
 					{
-						id:3,
-						text:'用户协议'
+						id: 3,
+						text: '用户协议',
+						url: ''
 					},
 					{
-						id:4,
-						text:'关于我们'
+						id: 4,
+						text: '关于我们',
+						url: ''
 					},
 					{
-						id:5,
-						text:'联系客服'
+						id: 5,
+						text: '联系客服',
+						url: ''
 					},
 					{
-						id:6,
-						text:'当前版本'
+						id: 6,
+						text: '当前版本',
+						url: ''
 					}
 				]
 			}
@@ -134,28 +141,36 @@
 
 		},
 		methods: {
-
+			handleUrl(url) {
+				console.log(url);
+				uni.navigateTo({
+					url: url + ''
+				})
+			}
 		}
 	}
 </script>
 
 <style>
-	.centerBgTwo{
+	.centerBgTwo {
 		background-image: url('@/static/my/centerTwo.png');
 		background-size: 100% 100%;
 		width: 100%;
 		height: 3rem;
 	}
-	.centerBg{
+
+	.centerBg {
 		background-image: url('@/static/my/center1.png');
 		background-size: 100% 100%;
 		width: 48%;
 	}
-	.centerBg2{
+
+	.centerBg2 {
 		background-image: url('@/static/my/center2.png');
 		background-size: 100% 100%;
 		width: 48%;
 	}
+
 	.iconWH {
 		width: 1.75rem;
 		height: 1.5rem;
