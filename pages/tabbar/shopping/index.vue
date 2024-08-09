@@ -50,16 +50,20 @@
 				去支付
 			</text>
 		</view>
+		<!--  -->
+		<tarBar :checkIndex="4"/>
 	</view>
 </template>
 
 <script>
 	import hearch from '@/components/hearch/index.vue'
 	import shopCard from '@/components/shopCard/index.vue'
+	import tarBar from '@/components/tarBar/index.vue'
 	export default {
 		components: {
 			hearch,
-			shopCard
+			shopCard,
+			tarBar
 		},
 		data() {
 			return {

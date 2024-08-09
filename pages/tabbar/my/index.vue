@@ -96,11 +96,15 @@
 			</view>
 			<!-- 111 -->
 		</view>
+		<!-- 底部导航 -->
+		<tarBar :checkIndex="5" />
 	</view>
 </template>
 
 <script>
+	import tarBar from '@/components/tarBar/index.vue'
 	export default {
+		components:{tarBar},
 		data() {
 			return {
 				title: 'Hello',

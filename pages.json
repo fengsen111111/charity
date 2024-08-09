@@ -124,44 +124,43 @@
 			// "background": "#efeff4"
 			"titleView": false
 		}
-	},
-	"tabBar": {
-		// "borderStyle": "black",
-		"backgroundColor": "#fff",
-		"iconWidth":"20px",
-		"height":"60px",
-		"color": "#8F8F94",
-		"selectedColor": "#4867CF",
-		"list": [{
-				"pagePath": "pages/tabbar/home/index",
-				"iconPath": "static/tabbar/home.png",
-				"selectedIconPath": "static/tabbar/home_checked.png",
-				"text": "首页"
-			},
-			{
-				"pagePath": "pages/tabbar/classify/index",
-				"iconPath": "static/tabbar/classify.png",
-				"selectedIconPath": "static/tabbar/classify_checked.png",
-				"text": "分类"
-			},
-			{
-				"pagePath": "pages/tabbar/phone/index",
-				"iconPath": "static/tabbar/phone.png",
-				"selectedIconPath": "static/tabbar/phone_checked.png",
-				"text": "联系我们"
-			},
-			{
-				"pagePath": "pages/tabbar/shopping/index",
-				"iconPath": "static/tabbar/shopping.png",
-				"selectedIconPath": "static/tabbar/shopping_checked.png",
-				"text": "购物车"
-			},
-			{
-				"pagePath": "pages/tabbar/my/index",
-				"iconPath": "static/tabbar/my.png",
-				"selectedIconPath": "static/tabbar/my_checked.png",
-				"text": "我的"
-			}
-		]
 	}
+	// "tabBar": {
+	// 	"backgroundColor": "#fff",
+	// 	"iconWidth":"20px",
+	// 	"height":"60px",
+	// 	"color": "#8F8F94",
+	// 	"selectedColor": "#4867CF",
+	// 	"list": [{
+	// 			"pagePath": "pages/tabbar/home/index",
+	// 			"iconPath": "static/tabbar/home.png",
+	// 			"selectedIconPath": "static/tabbar/home_checked.png",
+	// 			"text": "首页"
+	// 		},
+	// 		{
+	// 			"pagePath": "pages/tabbar/classify/index",
+	// 			"iconPath": "static/tabbar/classify.png",
+	// 			"selectedIconPath": "static/tabbar/classify_checked.png",
+	// 			"text": "分类"
+	// 		},
+	// 		{
+	// 			"pagePath": "pages/tabbar/phone/index",
+	// 			"iconPath": "static/tabbar/phone.png",
+	// 			"selectedIconPath": "static/tabbar/phone_checked.png",
+	// 			"text": "联系我们"
+	// 		},
+	// 		{
+	// 			"pagePath": "pages/tabbar/shopping/index",
+	// 			"iconPath": "static/tabbar/shopping.png",
+	// 			"selectedIconPath": "static/tabbar/shopping_checked.png",
+	// 			"text": "购物车"
+	// 		},
+	// 		{
+	// 			"pagePath": "pages/tabbar/my/index",
+	// 			"iconPath": "static/tabbar/my.png",
+	// 			"selectedIconPath": "static/tabbar/my_checked.png",
+	// 			"text": "我的"
+	// 		}
+	// 	]
+	// }
 }

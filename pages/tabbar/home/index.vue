@@ -1,30 +1,34 @@
 <template>
-	<view class="bgImg px-3 text-whlie">
-		<homeTop />
-		<view class="imhs">
-			<image src="@/static/home/imgs.png" @click="handleUrl('/pages/sonView/swiperActive/index')" mode="" class="w-full mt-4 h100 rending1"></image>
-		</view>
-		<!-- 新人专享 -->
-		<homeCard />
-		<!-- 酒水饮料 -->
-		<twoCard />
-		<!--  -->
-		<image src="@/static/home/strip.png" mode="" class="w-full h-6"></image>
-		<!-- 更多惊喜，更多福利 -->
-		<active />
-		<!-- tabs -->
-		<view class="mt-3 text-black text12">
-			<view class="flex">
-				<view @click="handleItem(1)" class="mr-2" :class="checkItem == 1?'col486 text14 checkboxItem':''">推荐</view>
-				<view @click="handleItem(2)" class="mr-2" :class="checkItem == 2?'col486 text14 checkboxItem':''">白酒类</view>
-				<view @click="handleItem(3)" class="mr-2" :class="checkItem == 3?'col486 text14 checkboxItem':''">朗姆酒</view>
-				<view @click="handleItem(4)" class="mr-2" :class="checkItem == 4?'col486 text14 checkboxItem':''">威士忌</view>
+	<view class="bgImg  text-whlie">
+		<view class="px-3">
+			<homeTop />
+			<view class="imhs">
+				<image src="@/static/home/imgs.png" @click="handleUrl('/pages/sonView/swiperActive/index')" mode="" class="w-full mt-4 h100 rending1"></image>
 			</view>
-			<bomShop />
+			<!-- 新人专享 -->
+			<homeCard />
+			<!-- 酒水饮料 -->
+			<twoCard />
+			<!--  -->
+			<image src="@/static/home/strip.png" mode="" class="w-full h-6"></image>
+			<!-- 更多惊喜，更多福利 -->
+			<active />
+			<!-- tabs -->
+			<view class="mt-3 text-black text12">
+				<view class="flex">
+					<view @click="handleItem(1)" class="mr-2" :class="checkItem == 1?'col486 text14 checkboxItem':''">推荐</view>
+					<view @click="handleItem(2)" class="mr-2" :class="checkItem == 2?'col486 text14 checkboxItem':''">白酒类</view>
+					<view @click="handleItem(3)" class="mr-2" :class="checkItem == 3?'col486 text14 checkboxItem':''">朗姆酒</view>
+					<view @click="handleItem(4)" class="mr-2" :class="checkItem == 4?'col486 text14 checkboxItem':''">威士忌</view>
+				</view>
+				<bomShop />
+			</view>
+			<!-- 留高 -->
+			<view class="h100">
+			</view>
 		</view>
-		<!-- 留高 -->
-		<view class="h100">
-		</view>
+		<!-- 底部导航 -->
+		<tarBar :checkIndex="1"/>
 	</view>
 </template>
 
@@ -34,14 +38,16 @@
 	import homeCard from '@/components/home/homeCard/index.vue'
 	import twoCard from '@/components/home/twoCard/index.vue'
 	import active from '@/components/home/active/index.vue'
+	import tarBar from '@/components/tarBar/index.vue'
 	export default {
 		components: {
-			bomShop,homeCard,twoCard,active,homeTop
+			bomShop,homeCard,twoCard,active,homeTop,
+			tarBar
 		},
 		data() {
 			return {
 				searchValue: '',
-				checkItem:1
+				checkItem:1,
 			};
 		},
 		onLoad() {},

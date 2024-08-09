@@ -3,6 +3,8 @@
 		<top />
 		<tagClass />
 		<shopBom />
+		<view class="h-8"></view>
+		<view class="h-4"></view>
 		<!-- 购物 -->
 		<view class="gw flex justify-between">
 			<view class="flex mt-3">
@@ -86,7 +88,7 @@
 		height: 4rem;
 		background-color: #fff;
 		position: fixed;
-		top: 82vh;
+		top: 91.5vh;
 		/* border: 1px solid red; */
 		width: 100%;
 	}
