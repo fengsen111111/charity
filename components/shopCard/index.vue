@@ -1,5 +1,6 @@
 <template>
-	<view class="w90 space-x-2  rending2  p-4" :class="isBgWhilt?'bgF9':'bg-whilt'">
+	<!-- <view class="w90 space-x-2  rending2  p-4" :class="isBgWhilt?'bgF9':'bg-whilt'"> -->
+	<view class="">
 		<view class=" flex justify-between">
 			<image src="@/static/home/shopOne.jpg" mode="" class="imgShop rending1"></image>
 			<view class="w-full w70 px-2">
@@ -32,6 +33,7 @@
 		<slot>
 		</slot>
 	</view>
+	<!-- </view> -->
 </template>
 
 <script>

@@ -4,38 +4,41 @@
 		<!-- item -->
 		<view class="px-3 mt-3 flex items-center" v-for="item in [1,2,3,4]" :key="item">
 			<view class="radios"></view>
-			<shopCard>
-				<!-- slot -->
-				<view class="mt-3">
-					<view class="flex text12 items-center">
-						<view class="">总计</view>
-						<view class="colED1 fontBold space-x-1">￥<text class="text20 ">888</text>.8</view>
-						<view class="space-x-3">
-							<uni-icons type="trash" size="22" color="#FC6265" class="space-x-3"></uni-icons>
+			<view class="w90 space-x-2  rending2  p-4 bg-whilt">
+				<shopCard>
+					<!-- slot -->
+					<view class="mt-3">
+						<view class="flex text12 items-center">
+							<view class="">总计</view>
+							<view class="colED1 fontBold space-x-1">￥<text class="text20 ">888</text>.8</view>
+							<view class="space-x-3">
+								<uni-icons type="trash" size="22" color="#FC6265" class="space-x-3"></uni-icons>
+							</view>
+							<view class="w-8"></view>
+							<view class="flex space-x-3 text24 text-center">
+								<view class="leftView bgFF8 text-whlie">
+									-
+								</view>
+								<view class="bg-whilt text-black cenVire text14">
+									10
+								</view>
+								<view class="rightView bgFF8 text-whlie">
+									+
+								</view>
+							</view>
 						</view>
-						<view class="w-8"></view>
-						<view class="flex space-x-3 text24 text-center">
-							<view class="leftView bgFF8 text-whlie">
-								-
-							</view>
-							<view class="bg-whilt text-black cenVire text14">
-								10
-							</view>
-							<view class="rightView bgFF8 text-whlie">
-								+
+						<!-- 折扣 -->
+						<view class="flex justify-between">
+							<view></view>
+							<view class="flex mt-1 items-center">
+								<view class="discount"></view>
+								<view class="col666 text12  ">使用折扣价</view>
 							</view>
 						</view>
 					</view>
-					<!-- 折扣 -->
-					<view class="flex justify-between">
-						<view></view>
-						<view class="flex mt-1 items-center">
-							<view class="discount"></view>
-							<view class="col666 text12  ">使用折扣价</view>
-						</view>
-					</view>
-				</view>
-			</shopCard>
+				</shopCard>
+			</view>
+			
 		</view>
 		<view class="h-8">
 

@@ -15,15 +15,14 @@
 		<view class="" @click="handleItem('/pages/sonView/oneSpikes/index')">
 			一分秒杀
 		</view>
-		<view class="">
-			授权页面
+		<view class="" @click="handleItem('/pages/sonView/riderLogin/index')">
+			骑手端登录
+		</view>
+		<view class="" @click="handleItem('/pages/sonView/riderOrder/index')">
+			骑手端接单
 		</view>
 		<view class="">
-			授权页面
-		</view>
-		
-		<view class="">
-			授权页面
+			定位
 		</view>
 	</view>
 </template> 

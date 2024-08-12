@@ -490,3 +490,22 @@
 .indent2{
 	text-indent:2rem
 }
+.my-2{
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+.indent1{
+	text-indent:1rem
+}
+.bg2F3{
+	background-color: #2F308D;
+}
+.col68B{
+	color: #68BF7B;
+}
+.bg68B{
+	background-color: #68BF7B;
+}
+.border68B{
+	border: 1px solid #68BF7B
+}

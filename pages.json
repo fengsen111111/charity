@@ -111,6 +111,18 @@
 		{
 		  "path": "pages/sonView/myOrder/index",
 		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/myOrderDetails/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/riderLogin/index",
+		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/riderOrder/index",
+		  "style": {}
 		}
 		
 	],

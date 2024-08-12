@@ -10,7 +10,7 @@
 				</view>
 			</view>
 			<!-- card -->
-			<view v-for="item in [1,2,3,4,5]" :key="item">
+			<view v-for="item in [1,2,3,4,5]" :key="item" @click="handleUrl('/pages/sonView/myOrderDetails/index')">
 				<orderStatus>
 					<view>
 						<!-- 待付款 -->
@@ -215,7 +215,14 @@
 				this.type = type
 				// open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
 				this.$refs.popup.open(type)
-			},		}
+			},		
+			handleUrl(url) {
+				console.log(url);
+				uni.navigateTo({
+					url: url + ''
+				})
+			}
+		}
 	};
 </script>
 

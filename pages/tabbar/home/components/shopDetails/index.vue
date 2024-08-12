@@ -1,6 +1,6 @@
 <template>
 	<view class="">
-		<hearch :title="'商品详情'" />
+		<hearch :title="'商品详情'" :isLeft="true"/>
 		<!-- img -->
 		<image src="@/static/home/swiperImg.png" @click="preview" mode="" class="w-full h20"></image>
 		<!--  -->
