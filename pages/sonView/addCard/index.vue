@@ -4,7 +4,7 @@
 		<view class="p-3 text12">
 			<view class="bg-whilt rending1 p-3">
 				<view class="" v-for="item in [1,2,3]" :key="item">
-					<view class="text-black ling1">开户行</view>
+					<view class="text-black mb-1">开户行</view>
 					<uni-easyinput class="uni-mt-5" trim="all" v-model="value" placeholder="输入开户行"></uni-easyinput>
 					<view class="h-4" v-if="item!==3"></view>
 				</view>

@@ -9,14 +9,14 @@
 			</view> -->
 		<view class="grid grid-cols-2 gridRow">
 			<view class="bg-whilt rending1 p-2 mt-3" v-for="item in [1,2,3,4]" :key="item">
-				<image @click="handDetailds" src="@/static/home/shopOne.png" mode="" class="w-full h10"></image>
+				<image @click="handDetailds" src="https://imgos.cn/2024/08/12/66b9d67b2c357.png" mode="" class="w-full h10"></image>
 				<view class="fontBold text12 ling125 ">
 					泸州老窖 六年窖头曲 特惠浓香白酒 52度精品装 500ml...
 				</view>
 				<text class="colFA3 px-1 text10 rending1 tagShopItem">200ml/瓶</text>
 				<view class="flex justify-between">
 					<view class="">
-						<view class="flex px-1 ">
+						<view class="flex px-1 items-center">
 							<view class="colED1 text14 fontBold space-x-1">
 								1888.8
 							</view>
@@ -28,7 +28,7 @@
 							约 66.88元/瓶 148.88元/箱
 						</view>
 					</view>
-					<view class="text12 bg486 h-6 rending1 text-whlie p-1" @click="toggle('bottom')">
+					<view class="text12 bg486 rending1 text-whlie p-1" @click="toggle('bottom')">
 						选规格
 					</view>
 				</view>
@@ -37,7 +37,7 @@
 		<!-- </view> -->
 		<!-- 普通弹窗 -->
 		<uni-popup ref="popup" background-color="#fff" borderRadius="0.5rem 0.5rem 0px 0px">
-			<view class="bgF9 p-4 overflowAuto" style="height:90vh">
+			<view class="bgF9 p-4 overflowAuto" style="height:70vh">
 				<view class="fiexdTop">
 					<view></view>
 					<view class="text16">

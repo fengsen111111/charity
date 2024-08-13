@@ -2,7 +2,7 @@
 	<view class="bgF9">
 		<view class="bgMyImg">
 			<view class="flex w-full">
-				<view class="flex items-center mt45 w-full">
+				<view class="flex items-center mt55 w-full">
 					<view class="space-x-4">
 						<image src="@/static/my/user.png" mode="" class="userImg"></image>
 					</view>
@@ -15,7 +15,7 @@
 				</view>
 			</view>
 			<!-- card -->
-			<view class="px-3">
+			<view class="px-3 mt-3">
 				<view class="bg-whilt rending1 flex justify-between p-4">
 					<view class="text-center" @click="handleUrl('/pages/sonView/myOrder/index')">
 						<image src="@/static/my/icon1.png" mode="" class="iconWH"></image>
@@ -52,7 +52,7 @@
 			<!--  -->
 			<view class="px-3">
 				<view class="flex justify-between mt-3">
-					<view class="centerBg rending1">
+					<view class="centerBg rending1" style="background-image: url('https://imgos.cn/2024/08/13/66bab13e41559.png');">
 						<view class="flex justify-between text-whlie px-4 py-2">
 							<view class="">
 								我的优惠卷
@@ -66,10 +66,10 @@
 							<view class="text16">66</view>
 						</view>
 					</view>  
-					<view class="centerBg2" @click="handleUrl('/pages/sonView/volume/index')"></view>
+					<view class="centerBg2" style="background-image: url('https://imgos.cn/2024/08/13/66bab13e44b70.png');" @click="handleUrl('/pages/sonView/volume/index')"></view>
 				</view>
 				<!-- img -->
-				<view class="centerBgTwo mt-3"></view>
+				<view class="centerBgTwo mt-3" style="background-image: url('https://imgos.cn/2024/08/13/66bab13e85b58.png');"></view>
 				<!-- cardItem -->
 				<view class="mt-3">
 					<view @click="handleUrl(item.url)"
@@ -157,20 +157,20 @@
 
 <style>
 	.centerBgTwo {
-		background-image: url('@/static/my/centerTwo.png');
+		
 		background-size: 100% 100%;
 		width: 100%;
 		height: 3rem;
 	}
 
 	.centerBg {
-		background-image: url('@/static/my/center1.png');
+		
 		background-size: 100% 100%;
 		width: 48%;
 	}
 
 	.centerBg2 {
-		background-image: url('@/static/my/center2.png');
+		
 		background-size: 100% 100%;
 		width: 48%;
 	}
@@ -182,7 +182,7 @@
 
 	.iconLeft {
 		position: relative;
-		left: 11rem;
+		left: 41vw;
 	}
 
 	.userImg {
@@ -194,7 +194,10 @@
 		color: #fff;
 		background-image: url('@/static/my/topBg.png');
 		background-size: 100% 100%;
-		height: 8rem;
+		height: 10rem;
 		width: 100%;
+	}
+	.mt55{
+		margin-top: 5.5rem;
 	}
 </style>

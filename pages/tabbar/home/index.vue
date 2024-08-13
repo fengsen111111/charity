@@ -1,9 +1,9 @@
 <template>
-	<view class="bgImg  text-whlie">
+	<view class="bgImg text-whlie">
 		<view class="px-3">
 			<homeTop />
-			<view class="imhs">
-				<image src="@/static/home/imgs.png" @click="handleUrl('/pages/sonView/swiperActive/index')" mode="" class="w-full mt-4 h100 rending1"></image>
+			<view class="">
+				<image src="https://imgos.cn/2024/08/12/66b9d747830a1.png" @click="handleUrl('/pages/sonView/swiperActive/index')" mode="" class="w-full mt-3 h100 rending1"></image>
 			</view>
 			<!-- 新人专享 -->
 			<homeCard />

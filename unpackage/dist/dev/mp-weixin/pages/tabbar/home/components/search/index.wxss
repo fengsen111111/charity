@@ -1,0 +1,41 @@
+
+.navBarBox {}
+.navBarBox .statusBar {}
+.navBarBox .navBar {
+	padding-bottom: 8rpx;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.navBarBox .navBar .logo {
+	width: 82rpx;
+	height: 82rpx;
+	margin-right: 10rpx;
+}
+.topPt {
+	padding-top: 6%;
+}
+.-tag1 {
+	margin-top: -1px;
+}
+.search {
+	border: 1px solid #D7D9EC;
+	border-radius: 1rem;
+	background-color: #D7D9EC;
+}
+.item {
+	/* opacity: 0.1; */
+	background-color: #81B1EE;
+	border-radius: 1rem;
+	padding: 0px 0.25rem;
+	color: #fff;
+}
+.iconImg{
+	width: 0.5rem;height: 0.6rem;
+	margin-right: 0.25rem;
+}
+.topSearch{
+	height: 6rem;
+	padding-top: 1.25rem;
+}
+

@@ -4,11 +4,10 @@
 		<view class="p-3 text12">
 			<view class="bg-whilt mt-3 rending1 p-3 items-center flex" v-for="item in [1,2,3]" :key="item">
 				<image src="@/static/my/user.png" mode="" class="imageItem"></image>
-				<view class="space-x-2">
+				<view class="space-x-2 w85">
 					<view class="text14">135******1234</view>
-					<view class="flex">
+					<view class="flex justify-between w-full">
 						<view class="text12">推荐时间</view>
-						<view class="w9"></view>
 						<view class="text12">2024-06-02</view>
 					</view>
 				</view>
@@ -40,6 +39,9 @@
 </script>
 
 <style>
+	.widView{
+		width: 200rpx;
+	}
 	.imageItem{
 		width: 3.25rem;
 		height: 3.25rem;

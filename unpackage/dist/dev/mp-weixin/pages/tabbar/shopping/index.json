@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons",
+    "hearch": "/components/hearch/index",
+    "shop-card": "/components/shopCard/index",
+    "tar-bar": "/components/tarBar/index"
+  }
+}

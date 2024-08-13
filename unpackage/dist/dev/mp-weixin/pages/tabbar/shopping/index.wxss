@@ -1,0 +1,41 @@
+
+.bottomView {
+	height: 2rem;
+	position: fixed;
+	background-color: #fff;
+	top: 82vh;
+	width: 100%;
+}
+.discount {
+	border: 1px solid #666666;
+	border-radius: 1.5rem;
+	width: 0.75rem;
+	height: 0.75rem;
+	margin-right: 0.25rem;
+}
+.leftView {
+	width: 2.5rem;
+	height: 1.75rem;
+	border-radius: 1rem 0px 0px 1rem;
+	line-height: 1.5rem;
+}
+.cenVire {
+	background-color: #F9F9F9;
+	width: 2rem;
+	height: 1.75rem;
+	text-align: center;
+	line-height: 1.75rem;
+}
+.rightView {
+	width: 2.5rem;
+	height: 1.75rem;
+	border-radius: 0px 1rem 1rem 0px;
+	line-height: 1.5rem;
+}
+.radios {
+	border: 1px solid #666666;
+	border-radius: 1.5rem;
+	width: 1rem;
+	height: 1rem;
+}
+

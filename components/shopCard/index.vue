@@ -2,7 +2,7 @@
 	<!-- <view class="w90 space-x-2  rending2  p-4" :class="isBgWhilt?'bgF9':'bg-whilt'"> -->
 	<view class="">
 		<view class=" flex justify-between">
-			<image src="@/static/home/shopOne.jpg" mode="" class="imgShop rending1"></image>
+			<image src="https://imgos.cn/2024/08/12/66b9d67b2c357.png" mode="" class="imgShop rending1"></image>
 			<view class="w-full w70 px-2">
 				<view class="flex justify-between  w-full">
 					<view class="text12 fontBold w70">

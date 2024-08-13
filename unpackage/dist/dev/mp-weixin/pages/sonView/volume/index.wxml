@@ -1,0 +1,1 @@
+<view><view-top vue-id="a597e810-1" title="领卷中心" bind:__l="__l"></view-top><view class="bg-whilt h-full viewContent p-3"><view class="flex justify-evenly"><block wx:for="{{[1,2,3]}}" wx:for-item="item" wx:for-index="__i0__" wx:key="*this"><view>全部</view></block></view><volume-tag vue-id="a597e810-2" bind:__l="__l"></volume-tag><view class="h20"></view></view></view>

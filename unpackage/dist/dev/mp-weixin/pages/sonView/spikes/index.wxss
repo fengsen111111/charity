@@ -1,0 +1,19 @@
+
+.bottomHr{
+	height: 0.125rem;
+}
+.nullImg{
+	width: 5rem;
+	height: 5rem;
+}
+.bgCheck{
+	background: linear-gradient( 180deg, #FF793E 0%, #FF2C26 100%);
+	border-radius: 0.5rem 0px 0px 0.5rem;
+}
+.imgText{
+	position: relative;
+	top: 1rem;
+	width: 11rem;
+	height: 4rem;
+}
+

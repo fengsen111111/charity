@@ -1,5 +1,5 @@
 <template>
-	<view class="mt-3 h-full flex text12 ">
+	<view class="mt-3 h-full flex text14 ">
 		<view class="bg-whilt px-3 rending1 ">
 			<view class="py-2" :class="item.id>1?'col999':'col666'" v-for="item in dataTab" :key="item.id">
 				{{item.text}}
@@ -19,7 +19,7 @@
 		<!--  -->
 		<!-- 普通弹窗 -->
 		<uni-popup ref="popup" background-color="#fff" borderRadius="0.5rem 0.5rem 0px 0px">
-			<view class="bgF9 p-4 overflowAuto" style="height:90vh">
+			<view class="bgF9 p-4 overflowAuto" style="height:70vh">
 				<view class="fiexdTop">
 					<view></view>
 					<view class="text16">

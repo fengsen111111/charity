@@ -6,7 +6,7 @@
 					<view class="">订单编号:123456789</view>
 					<view class="colED1 borderED1 px-2 rending1 ling5">待付款</view>
 				</view>
-				<view class="border999One w-full"></view>
+				<view class="bg999 w-full"></view>
 				<view class="p-3">
 					<view class="flex">
 						<view class="">张三</view>
@@ -14,7 +14,7 @@
 					</view>
 					<view class="">四川省成都市武侯区世纪城天府大道中段588号天天小区快鸟驿站</view>
 				</view>
-				<view class="border999One w-full"></view>
+				<view class="bg999 w-full"></view>
 				<view class="p-3">
 					<view class="flex justify-between">
 						<view class="">商品信息</view>

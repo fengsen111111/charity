@@ -2,7 +2,7 @@
 	<view class="">
 		<hearch :title="'推广员收益'" :isLeft="true"/>
 		<view class="p-3">
-			<view class="flex cardIncome rending1 p-3">
+			<view class="flex justify-between cardIncome rending1 p-3">
 				<view class="text12">
 					<view class="col666 flex">
 						<view class="">累计收益</view>
@@ -104,8 +104,8 @@
 		box-shadow: 0px 3px 6px 1px rgba(0,0,0,0.2);
 	}
 	.imageCen{
-		width: 5rem;
-		height: 5rem;
+		width: 120rpx;
+		height: 120rpx;
 		margin-left: 1rem;
 	}
 	.imageIcon{

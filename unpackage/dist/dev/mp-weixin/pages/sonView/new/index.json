@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "view-top": "/pages/sonView/volume/components/viewTop/index",
+    "volume-tag": "/components/volumeTag/index",
+    "bom-shop": "/components/home/bomShop/index"
+  }
+}

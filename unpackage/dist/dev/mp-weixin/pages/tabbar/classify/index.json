@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "top-view": "/pages/tabbar/classify/components/topView/index",
+    "tag-class": "/pages/tabbar/classify/components/tagClass/index",
+    "shop-bom": "/pages/tabbar/classify/components/shopBom/index"
+  }
+}

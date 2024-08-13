@@ -1,0 +1,15 @@
+
+.cardIncome{
+	background: #F2F3FF;
+	box-shadow: 0px 3px 6px 1px rgba(0,0,0,0.2);
+}
+.imageCen{
+	width: 120rpx;
+	height: 120rpx;
+	margin-left: 1rem;
+}
+.imageIcon{
+	width: 1.5rem;
+	height: 1.5rem;
+}
+

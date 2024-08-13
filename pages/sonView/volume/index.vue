@@ -1,7 +1,7 @@
 <template>
 	<view class="">
 		<!--  -->
-		<top :title="'领卷中心'"/>
+		<viewTop :title="'领卷中心'"/>
 		<!--  -->
 		<view class="bg-whilt  h-full viewContent p-3">
 			<view class="flex justify-evenly">
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-	import top from "@/pages/sonView/volume/components/top/index.vue"
+	import viewTop from "@/pages/sonView/volume/components/viewTop/index.vue"
 	import volumeTag from "@/components/volumeTag/index.vue"
 	export default {
 		data() {
@@ -25,7 +25,7 @@
 				active: false
 			};
 		},
-		components:{top,volumeTag},
+		components:{viewTop,volumeTag},
 		onLoad() {},
 		onShow() {
 			

@@ -1,6 +1,6 @@
 <template>
 	<view class="">
-		<top />
+		<topView />
 		<tagClass />
 		<shopBom />
 		<view class="h-8"></view>
@@ -31,12 +31,12 @@
 </template>
 
 <script>
-	import top from '@/pages/tabbar/classify/components/top/index.vue'
+	import topView from '@/pages/tabbar/classify/components/topView/index.vue'
 	import tagClass from '@/pages/tabbar/classify/components/tagClass/index.vue'
 	import shopBom from '@/pages/tabbar/classify/components/shopBom/index.vue'
 	export default {
 		components: {
-			top,
+			topView,
 			tagClass,
 			shopBom
 		},

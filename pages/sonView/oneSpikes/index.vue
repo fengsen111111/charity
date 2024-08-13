@@ -1,10 +1,10 @@
 <template>
 	<view class="">
-		<top :title="'快鹿送酒'">
+		<viewTop :title="'快鹿送酒'">
 			<view class="text-center">
 				<image src="@/static/home/oneSpikes.png" mode="" class="imgText"></image>
 			</view>
-		</top>
+		</viewTop>
 		<view class="">
 			<view class="bgF9 p-3" >
 				<view class="w90 mt-3">
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-	import top from "@/pages/sonView/volume/components/top/index.vue"
+	import viewTop from "@/pages/sonView/volume/components/viewTop/index.vue"
 	import shopCardTwo from '@/components/shopCardTwo/index.vue'
 	export default {
 		data() {
@@ -30,7 +30,7 @@
 				active: false
 			};
 		},
-		components:{top,shopCardTwo},
+		components:{viewTop,shopCardTwo},
 		onLoad() {},
 		onShow() {
 			

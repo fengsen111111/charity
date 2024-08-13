@@ -1,0 +1,1 @@
+<view class="bgMyImg"><view class="pt4 text-whlie text18 items-center grid grid-cols-3 px-3"><view class="text-left"><uni-icons vue-id="53e214d8-1" type="left" size="30" color="#D7D9EC" data-event-opts="{{[['^click',[['handleLeft']]]]}}" bind:click="__e" bind:__l="__l"></uni-icons></view><view class="text-center">{{title}}</view><view></view></view><slot></slot></view>

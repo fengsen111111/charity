@@ -1,10 +1,10 @@
 <template>
 	<view class="">
-		<top :title="'快鹿送酒'">
+		<viewTop :title="'快鹿送酒'">
 			<view class="text-center">
 				<image src="@/static/home/spikesTop.png" mode="" class="imgText"></image>
 			</view>
-		</top>
+		</viewTop>
 		
 		<view class="grid grid-cols-2 text16 bgFBD text-center">
 			<view class="py-3 colED1">
@@ -49,7 +49,7 @@
 </template>
 
 <script>
-	import top from "@/pages/sonView/volume/components/top/index.vue"
+	import viewTop from "@/pages/sonView/volume/components/viewTop/index.vue"
 	import shopCardTwo from '@/components/shopCardTwo/index.vue'
 	export default {
 		data() {
@@ -58,7 +58,7 @@
 			};
 		},
 		onLoad() {},
-		components:{top,shopCardTwo},
+		components:{viewTop,shopCardTwo},
 		onShow() {
 			
 		},

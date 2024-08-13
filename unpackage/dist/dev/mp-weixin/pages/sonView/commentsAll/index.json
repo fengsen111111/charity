@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "hearch": "/components/hearch/index",
+    "comments": "/components/comments/index"
+  }
+}

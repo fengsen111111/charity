@@ -1,0 +1,29 @@
+
+.general {
+	position: relative;
+	top: -0.25rem;
+}
+.active {
+	background: linear-gradient(270deg, #FA311D 0%, #FF8E34 100%);
+	border-radius: 0.5rem;
+	/* height: 292px; */
+}
+.price {
+	background: linear-gradient(270deg, #FA311D 0%, #FF8E34 100%);
+}
+.bgTag {
+	background-color: #FA311D;
+	border: 1px solid #FFCF9E;
+}
+.unit {
+	position: relative;
+	top: -0.4rem;
+}
+.cardVolume {
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHMAAAAmCAYAAAD3AKSiAAAAAXNSR0IArs4c6QAAAhRJREFUeF7tnM1KW1EUhdeOpgPNTNIG0UnpC4h0UoqkBGdFKD6EL9CCLR1IByrUF/AhOiiObRqwndRC58VRRW8MzpJ04M+2QRF/EhZIiHffrgsZ7cVhnfVxcnYI+5q3kjm4rcNQwv/+ONas8OgNi8HbyQrcFpluYHVHAvMF82Z9XyAvYnevWaFUZhC8mVRhRnVsnb7WHYl5q+59XTT2Yg7kntpo8WevbXjrYArwbQC5tG1VMG8T2YENv7CRsT83S94+nIAfVwE8SRvIjh/B7EbFvQHYKoZOPmFjaxcvK+M4OXoFw3uYFdMIUjDTSuWOvnQyeXDfATzjsvtXCCZnsPRP0vmk/hFMjkgweUZhFIIZBhU3Kpg8ozAKNUBhUGXIqBogCtOWAX9HZSkQCCaHoDuTZxRGIZhhUHGjgskziqLQnRmFVKZ8qgHKEE7BpDD1NUsjCiRQAxQIFrMqmCyhQHXBDASLWNWdmR2WgXaibpbD0l9gPKMwCt2ZYVBxo4LJMwqjEMwwqLhRweQZhVGoAQqDKkNG9dOkO8wGzD7g79FnbH7bw+zzCeSH5mHoDNhqcCjMAXD8huXKNlrcu+nZ24eT8OOvAB6ncT86mdepnCJv0/bg4a9esLzVmAZOf3TGIdMGVGPwV4m4f7FCqcIgebNeg2GG6QZaPx+D1wsqLkM3X7WR0lsGwZv1jzC8ZrqB1S9eUHEGUOkGSFZnascAAAAASUVORK5CYII=);
+	background-size: 100% 100%;
+	height: 2.75rem;
+	width: 10rem;
+	margin: 0.5rem;
+}
+

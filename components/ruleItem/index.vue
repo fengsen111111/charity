@@ -18,14 +18,14 @@
 			<!--  -->
 			<view class="flex mt-4">
 				<view class="bgF2F rending1 p-2 flex w7 border486">
-					<image src="@/static/home/shopOne.png" mode="" class="specs"></image>
+					<image src="https://imgos.cn/2024/08/12/66b9d67b2c357.png" mode="" class="specs"></image>
 					<view class="col486 space-x-2">
 						<view class="text14">550ml*6</view>
 						<view class="text12 ling1 mt-1">6.88元/瓶</view>
 					</view>
 				</view>
 				<view class="bg-whilt rending1 p-2 flex w7 border999 space-x-4">
-					<image src="@/static/home/shopOne.png" mode="" class="specs"></image>
+					<image src="https://imgos.cn/2024/08/12/66b9d67b2c357.png" mode="" class="specs"></image>
 					<view class="text-black space-x-2">
 						<view class="text14">550ml*6</view>
 						<view class="text12 ling1 mt-1">6.88元/瓶</view>

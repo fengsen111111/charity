@@ -11,7 +11,7 @@
 					<view class="w80">
 						四川省成都市武侯区世纪城天府大道中段588号天天小区快鸟驿站
 					</view>
-					<view class="text-center space-x-4">
+					<view class="text-center mr-2">
 						<uni-icons type="location" size="20" color="#4867CF"></uni-icons>
 						<view class="col999">
 							888km

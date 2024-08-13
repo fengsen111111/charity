@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "hearch": "/components/hearch/index",
+    "volume-tag": "/components/volumeTag/index"
+  }
+}

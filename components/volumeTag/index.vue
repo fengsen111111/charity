@@ -36,7 +36,7 @@
 				active: false
 			};
 		},
-		components:{top},
+		components:{},
 		onLoad() {},
 		onShow() {
 			

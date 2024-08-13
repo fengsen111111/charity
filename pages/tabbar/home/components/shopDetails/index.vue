@@ -2,7 +2,7 @@
 	<view class="">
 		<hearch :title="'商品详情'" :isLeft="true"/>
 		<!-- img -->
-		<image src="@/static/home/swiperImg.png" @click="preview" mode="" class="w-full h20"></image>
+		<image src="https://imgos.cn/2024/08/12/66b9d71baf094.png" @click="preview" mode="" class="w-full h20"></image>
 		<!--  -->
 		<view class="px-3">
 			<!--  -->
@@ -103,7 +103,7 @@
 				<comments />
 				<!--  -->
 			</view>
-			<image src="@/static/home/bottomImage.png" mode="" class="w-full mt-3"></image>
+			<image src="https://pic.imge.cc/2024/08/12/66b9d6e61d2b7.png" mode="" class="w-full mt-3"></image>
 			<!--  -->
 			<!-- <view class="h20"></view> -->
 		</view>

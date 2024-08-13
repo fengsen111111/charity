@@ -1,0 +1,49 @@
+
+.rightWidth {
+	width: 17.5rem;
+}
+.btnPoupr{
+	width: 9rem;
+}
+.leftView {
+	width: 2.5rem;
+	height: 1.75rem;
+	border-radius: 1rem 0px 0px 1rem;
+}
+.cenVire {
+	background-color: #F9F9F9;
+	width: 2rem;
+	height: 1.75rem;
+	text-align: center;
+	line-height: 1.75rem;
+}
+.rightView {
+	width: 2.5rem;
+	height: 1.75rem;
+	border-radius: 0px 1rem 1rem 0px;
+}
+.specs {
+	width: 2.5rem;
+	height: 2.5rem;
+}
+.tagCol{
+	background: linear-gradient( 270deg, #FA311D 0%, #FF8E34 100%);
+}
+.tagBor{
+	border: 1px solid #FA311D;
+}
+.itemImg{
+	width: 6.5rem;
+	height: 5rem;
+}
+.checkboxItem {
+	border-bottom: 3px solid #4867CF;
+	padding: 0px 0.5rem;
+}
+.tagShopItem {
+	border: 1px solid #ED1805;
+}
+.gridRow {
+	grid-column-gap: 0.5rem;
+}
+

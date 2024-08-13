@@ -1,8 +1,8 @@
 <template>
 	<view class="">
-		<top :title="'新人专享'">
+		<viewTop :title="'新人专享'">
 			<view class="bgNew "></view>
-		</top>
+		</viewTop>
 		<!--  -->
 		<view class="bgBottom">
 			<view class="bgFCE w95 mxAuto rending2 h20 overflowAuto" >
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-	import top from "@/pages/sonView/volume/components/top/index.vue"
+	import viewTop from "@/pages/sonView/volume/components/viewTop/index.vue"
 	import volumeTag from "@/components/volumeTag/index.vue"
 	import bomShop from '@/components/home/bomShop/index.vue'
 	export default {
@@ -45,7 +45,7 @@
 				checkItem:1,
 			};
 		},
-		components:{top,volumeTag,bomShop},
+		components:{viewTop,volumeTag,bomShop},
 		onLoad() {},
 		onShow() {
 			
@@ -74,7 +74,7 @@
 		margin-top: 5.5rem;
 	}
 	.bgNew{
-		background-image: url('@/static/home/new.png');
+		background-image: url('https://imgos.cn/2024/08/12/66b9d7aace430.png');
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
 		height: 10rem;
