@@ -7,14 +7,16 @@
 		</view>
 		<!-- shop -->
 		<view class="rightWidth">
-			<shopCardTwo>
-				<!-- 选规格 -->
-				<view class="">
-					<view class="bg486 text-whlie px-2 rending1 py-1 space-x-2" @click="toggle('bottom')">
-						选规格
+			<view class="" v-for="item in [1,2,3,4,5]" :key="item">
+				<shopCardTwo>
+					<!-- 选规格 -->
+					<view class="">
+						<view class="bg486 text-whlie px-2 rending1 py-1 space-x-2" @click="toggle('bottom')">
+							选规格
+						</view>
 					</view>
-				</view>
-			</shopCardTwo>
+				</shopCardTwo>
+			</view>
 		</view>
 		<!--  -->
 		<!-- 普通弹窗 -->
@@ -62,20 +64,20 @@
 				</view>
 				<!-- 选数量 -->
 				<view class="w95 space-x-2 bg-whilt mt-3">
-					<view class="flex text-16 justify-between items-center p-3 ">
-						<view>选择数量</view>
+				   	<view class="flex text-16 justify-between items-center p-3 ">
+				   		<view>选择数量</view>
 						<view class="flex space-x-3 text24 text-center">
-							<view class="leftView bgFF8 text-whlie">
+							<view class="leftView bgFF8 text-whlie" @click="handleDown">
 								-
 							</view>
 							<view class="bg-whilt text-black cenVire text14">
-								10
+								{{number}}
 							</view>
-							<view class="rightView bgFF8 text-whlie">
+							<view class="rightView bgFF8 text-whlie" @click="handleUp">
 								+
 							</view>
 						</view>
-					</view>
+				   	</view>
 				</view>
 				<!-- 冰冻选择 -->
 				<view class="w95 space-x-2 bg-whilt mt-3 ">
@@ -84,8 +86,7 @@
 							冰冻选择
 						</view>
 						<view class="flex justify-between mt-3">
-							<view class="border486 col486 bgF2F h-8 w5 text-center rending2 " v-for="item in [1,2,3]"
-								:key="item">
+							<view @click=handleTemper(item) :class="temperatureIndex==item?'bgF2F col486 border486':' bg-whilt border999'" class=" h-8 w5 text-center rending2 " v-for="item in [1,2,3]" :key="item">
 								<text class="" style="line-height:2rem">常温</text>
 							</view>
 						</view>
@@ -140,6 +141,9 @@
 				title: 'Hello',
 				min:0,
 				max:10,
+				number:2,
+				// 温度选着
+				temperatureIndex:1,
 				dataTab: [{
 						id: 1,
 						text: '国产风味'
@@ -171,6 +175,15 @@
 
 		},
 		methods: {
+			handleTemper(index){
+				this.temperatureIndex = index
+			},
+			handleDown(){
+				this.number--
+			},
+			handleUp(){
+				this.number++
+			},
 			// 关闭
 			close() {
 				this.$refs.popup.close()

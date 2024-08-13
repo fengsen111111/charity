@@ -254,7 +254,7 @@
 		flex: 1;
 		flex-direction: row;
 		align-items: center;
-		height: $uni-searchbar-height;
+		height: 64rpx;
 		padding: 5px 8px 5px 0px;
 	}
 

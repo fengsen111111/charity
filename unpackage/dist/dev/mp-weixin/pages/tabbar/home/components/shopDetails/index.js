@@ -205,6 +205,15 @@ var _default = {
   },
   onLoad: function onLoad() {},
   methods: {
+    handleTemper: function handleTemper(index) {
+      this.temperatureIndex = index;
+    },
+    handleDown: function handleDown() {
+      this.number--;
+    },
+    handleUp: function handleUp() {
+      this.number++;
+    },
     // 跳转
     handleItem: function handleItem(url) {
       console.log(url);
@@ -215,7 +224,7 @@ var _default = {
     // imgBig
     preview: function preview(url) {
       var _this = this;
-      this.imgs = ['https://web-assets.dcloud.net.cn/unidoc/zh/multiport-20210812.png', 'https://web-assets.dcloud.net.cn/unidoc/zh/uni-function-diagram.png']; //设置图片数组
+      this.imgs = ['https://imgos.cn/2024/08/12/66b9d71baf094.png', 'https://imgos.cn/2024/08/12/66b9d71baf094.png']; //设置图片数组
 
       this.$nextTick(function () {
         _this.$refs.previewImage.open(url); // 传入当前选中的图片地址(小程序必须添加$nextTick，解决组件首次加载无图)

@@ -8,13 +8,15 @@
 		<view class="">
 			<view class="bgF9 p-3" >
 				<view class="w90 mt-3">
-					<shopCardTwo>
-						<view class="space-x-4">
-							<view class="btnRig space-x-6 text-whlie rending2 px-3 py-2">
-								去抢购
+					<view class="" v-for="item in [1,2,3]" :key="item">
+						<shopCardTwo>
+							<view class="">
+								<view class="btnRig space-x-6 text-whlie rending2 px-3 py-2">
+									去抢购
+								</view>
 							</view>
-						</view>
-					</shopCardTwo>
+						</shopCardTwo>
+					</view>
 				</view>
 			</view>
 		</view>

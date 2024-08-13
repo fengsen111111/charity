@@ -6,7 +6,7 @@
 			</view>
 		</viewTop>
 		
-		<view class="grid grid-cols-2 text16 bgFBD text-center">
+		<view class="grid grid-cols-2 text16 bgFBD text-center -mtop10">
 			<view class="py-3 colED1">
 				正在疯抢
 			</view>
@@ -70,6 +70,9 @@
 </script>
 
 <style>
+	.-mtop10{
+		margin-top:-10rpx
+	}
 	.bottomHr{
 		height: 0.125rem;
 	}

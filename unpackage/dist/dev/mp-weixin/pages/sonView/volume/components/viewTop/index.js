@@ -157,12 +157,32 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   props: {
     title: ''
   },
   data: function data() {
-    return {};
+    return {
+      // 状态栏高度
+      statusBarHeight: 0,
+      // 导航栏高度
+      navBarHeight: 82 + 11
+    };
+  },
+  created: function created() {
+    //获取手机状态栏高度
+    this.statusBarHeight = uni.getSystemInfoSync()['statusBarHeight'];
   },
   onLoad: function onLoad() {},
   methods: {

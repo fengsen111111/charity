@@ -1,6 +1,6 @@
 <template>
 	<view class="">
-		<hearch :title="'评论详情'" />
+		<hearch :title="'评论详情'" :isLeft="true"/>
 		<view class="flex justify-evenly text12 bg-whilt py-3">
 			<view class="text-center ling3" v-for="item in [1,2,3,4,5]" :key="item">
 				<view class="text-black">

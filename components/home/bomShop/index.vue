@@ -83,13 +83,13 @@
 				   	<view class="flex text-16 justify-between items-center p-3 ">
 				   		<view>选择数量</view>
 						<view class="flex space-x-3 text24 text-center">
-							<view class="leftView bgFF8 text-whlie">
+							<view class="leftView bgFF8 text-whlie" @click="handleDown">
 								-
 							</view>
 							<view class="bg-whilt text-black cenVire text14">
-								10
+								{{number}}
 							</view>
-							<view class="rightView bgFF8 text-whlie">
+							<view class="rightView bgFF8 text-whlie" @click="handleUp">
 								+
 							</view>
 						</view>
@@ -102,7 +102,7 @@
 							冰冻选择
 						</view>
 						<view class="flex justify-between mt-3">
-							<view class="border486 col486 bgF2F h-8 w5 text-center rending2 " v-for="item in [1,2,3]" :key="item">
+							<view @click=handleTemper(item) :class="temperatureIndex==item?'bgF2F col486 border486':' bg-whilt border999'" class=" h-8 w5 text-center rending2 " v-for="item in [1,2,3]" :key="item">
 								<text class="" style="line-height:2rem">常温</text>
 							</view>
 						</view>
@@ -154,11 +154,23 @@
 				type: 'center',
 				value:1,
 				max:10,
-				min:0
+				min:0,
+				number:2,
+				// 温度选着
+				temperatureIndex:1
 			};
 		},
 		onLoad() {},
 		methods: {
+			handleTemper(index){
+				this.temperatureIndex = index
+			},
+			handleDown(){
+				this.number--
+			},
+			handleUp(){
+				this.number++
+			},
 			// 关闭
 			close(){
 				this.$refs.popup.close()

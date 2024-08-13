@@ -18,7 +18,7 @@
 			<view class=" rightVolume text-whlie text-center">
 				<view class="text11">满100</view>
 				<view class="">减20</view>
-				<view class="px-2">
+				<view class="px-2 pt-1">
 					<view class="bgFFC text12 rending3 colED1">领取</view>
 				</view>
 			</view>
@@ -52,5 +52,6 @@
 	.rightVolume{
 		background: linear-gradient( 134deg, #FA311D 0%, #FF8E34 100%);
 		width: 4.5rem;
+		padding-top: 18rpx;
 	}
 </style>

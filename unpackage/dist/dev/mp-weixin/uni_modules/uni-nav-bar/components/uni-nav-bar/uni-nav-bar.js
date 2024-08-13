@@ -164,7 +164,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var statusBar = function statusBar() {
   __webpack_require__.e(/*! require.ensure | uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar */ "uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar").then((function () {
-    return resolve(__webpack_require__(/*! ./uni-status-bar.vue */ 463));
+    return resolve(__webpack_require__(/*! ./uni-status-bar.vue */ 470));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var getVal = function getVal(val) {

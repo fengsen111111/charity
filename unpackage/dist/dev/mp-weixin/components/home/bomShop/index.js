@@ -114,6 +114,13 @@ var render = function () {
     _vm.e0 = function ($event) {
       return _vm.toggle("bottom")
     }
+    _vm.e1 = function ($event, item) {
+      var _temp = arguments[arguments.length - 1].currentTarget.dataset,
+        _temp2 = _temp.eventParams || _temp["event-params"],
+        item = _temp2.item
+      var _temp, _temp2
+      return _vm.handleTemper(item)
+    }
   }
 }
 var recyclableRender = false
@@ -169,11 +176,23 @@ var _default = {
       type: 'center',
       value: 1,
       max: 10,
-      min: 0
+      min: 0,
+      number: 2,
+      // 温度选着
+      temperatureIndex: 1
     };
   },
   onLoad: function onLoad() {},
   methods: {
+    handleTemper: function handleTemper(index) {
+      this.temperatureIndex = index;
+    },
+    handleDown: function handleDown() {
+      this.number--;
+    },
+    handleUp: function handleUp() {
+      this.number++;
+    },
     // 关闭
     close: function close() {
       this.$refs.popup.close();

@@ -9,6 +9,10 @@
 				<view class="pt-1">
 					<volumeTag :isFFF='true'/>
 					<volumeTag :isFFF='true'/>
+					<volumeTag :isFFF='true'/>
+					<volumeTag :isFFF='true'/>
+					<volumeTag :isFFF='true'/>
+					<volumeTag :isFFF='true'/>
 				</view>
 				<view class="h-4"></view>
 			</view>
@@ -71,7 +75,7 @@
 	.bgBottom{
 		background: linear-gradient( #E95A52 0%, #FA311D 100%);
 		/* height: 30rem; */
-		margin-top: 5.5rem;
+		margin-top: 125rpx;
 	}
 	.bgNew{
 		background-image: url('https://imgos.cn/2024/08/12/66b9d7aace430.png');

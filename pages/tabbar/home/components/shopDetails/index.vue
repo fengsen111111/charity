@@ -25,7 +25,7 @@
 					</view>
 				</view>
 				<!-- right -->
-				<view class="bgIcon text10 text-whlie pt-10 text-center " @click="toggle('bottom')">
+				<view class="bgIcon text10 text-whlie text-center " @click="toggle('bottom')">
 					<text>领取优惠券</text>
 				</view>
 			</view>
@@ -67,25 +67,24 @@
 			<!--  -->
 			<image src="@/static/home/strip.png" mode="" class="w-full h-6 mt-4"></image>
 			<!--  -->
-			<view class="bg-whilt rending1 fontBold flex justify-between py-1 px-2">
-				<view class="flex ">
-					<uni-icons type="location" color="#666666" size="12"></uni-icons>
+			<view class="bg-whilt rending1 fontBold items-center flex justify-between py-1 px-2">
+				<view class="flex items-center">
+					<uni-icons type="location" color="#666666" size="16"></uni-icons>
 					<text class="space-x-1 text12">提供配送服务</text>
 				</view>
-				<view class="flex ">
-					<uni-icons type="location" color="#666666" size="12"></uni-icons>
+				<view class="flex items-center">
+					<uni-icons type="location" color="#666666" size="16"></uni-icons>
 					<text class="space-x-1 text12">极速送达</text>
 				</view>
-				<view class="flex ">
-					<uni-icons type="location" color="#666666" size="12"></uni-icons>
+				<view class="flex items-center">
+					<uni-icons type="location" color="#666666" size="16"></uni-icons>
 					<text class="space-x-1 text12">超时赔付</text>
 				</view>
-				<view class="flex ">
-					<uni-icons type="location" color="#666666" size="12"></uni-icons>
+				<view class="flex items-center">
+					<uni-icons type="location" color="#666666" size="16"></uni-icons>
 					<text class="space-x-1 text12">正品保真</text>
 				</view>
-
-				<uni-icons type="more-filled" color="#666666" size="12" @click="toggleSer('bottom')"></uni-icons>
+				<uni-icons type="more-filled" color="#666666" size="16" @click="toggleSer('bottom')"></uni-icons>
 			</view>
 			<!--  -->
 			<view class="bg-whilt mt-3 rending1 p-3">
@@ -239,10 +238,20 @@
 			return {
 				type: 'center',
 				imgs: [],
+				
 			};
 		},
 		onLoad() {},
 		methods: {
+			handleTemper(index){
+				this.temperatureIndex = index
+			},
+			handleDown(){
+				this.number--
+			},
+			handleUp(){
+				this.number++
+			},
 			// 跳转
 			handleItem(url){
 				console.log(url);
@@ -252,8 +261,8 @@
 			},
 			// imgBig
 			preview(url) {
-				this.imgs = ['https://web-assets.dcloud.net.cn/unidoc/zh/multiport-20210812.png',
-					'https://web-assets.dcloud.net.cn/unidoc/zh/uni-function-diagram.png'
+				this.imgs = ['https://imgos.cn/2024/08/12/66b9d71baf094.png',
+					'https://imgos.cn/2024/08/12/66b9d71baf094.png'
 				] //设置图片数组
 				// #ifdef MP-WEIXIN
 				this.$nextTick(() => {
@@ -314,7 +323,7 @@
 		background-image: url('@/static/home/shopDetailIcon.png');
 		background-size: 100% 100%;
 		width: 3.5rem;
-
+		padding-top:100rpx
 	}
 
 	.borTag {

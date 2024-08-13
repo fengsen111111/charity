@@ -2,5 +2,6 @@
 .rightVolume{
 	background: linear-gradient( 134deg, #FA311D 0%, #FF8E34 100%);
 	width: 4.5rem;
+	padding-top: 18rpx;
 }
 

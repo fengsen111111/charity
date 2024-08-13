@@ -7,7 +7,7 @@
 			<view class="navBar">
 				<view class="bg486">
 					<view class="statusBar" :style="{ paddingTop: statusBarHeight + 'px' }"></view>
-					<view class="col999 flex items-center px-3">
+					<view class="col999 flex items-center px-3" style="margin-top: 9rpx;">
 						<uni-icons type="left" size="30" color="#fff" @click="handleLeft"></uni-icons>
 						<uni-search-bar v-model="searchVal" clearButton="none" class="space-x-3" radius="100" placeholder="输入搜索内容" 
 							cancelButton="none" @confirm="search" />

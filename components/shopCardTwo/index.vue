@@ -1,7 +1,7 @@
 <template>
 	<view class="">
 		<view class="space-x-3">
-			<view class="bg-whilt rending1 p-2 w-full flex mb-2" v-for="item in [1,2,3,4]" :key="item">
+			<view class="bg-whilt rending1 p-2 w-full flex mb-2">
 				<image src="@/static/classify/item.png" mode="" class="itemImg rending1"></image>
 				<view class="space-x-2">
 					<view class="fontBold text12 ling4">

@@ -110,6 +110,18 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function ($event) {
+      return _vm.toggle("bottom")
+    }
+    _vm.e1 = function ($event, item) {
+      var _temp = arguments[arguments.length - 1].currentTarget.dataset,
+        _temp2 = _temp.eventParams || _temp["event-params"],
+        item = _temp2.item
+      var _temp, _temp2
+      return _vm.handleTemper(item)
+    }
+  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -169,6 +181,9 @@ var _default = {
       title: 'Hello',
       min: 0,
       max: 10,
+      number: 2,
+      // 温度选着
+      temperatureIndex: 1,
       dataTab: [{
         id: 1,
         text: '国产风味'
@@ -192,6 +207,15 @@ var _default = {
   },
   onLoad: function onLoad() {},
   methods: {
+    handleTemper: function handleTemper(index) {
+      this.temperatureIndex = index;
+    },
+    handleDown: function handleDown() {
+      this.number--;
+    },
+    handleUp: function handleUp() {
+      this.number++;
+    },
     // 关闭
     close: function close() {
       this.$refs.popup.close();

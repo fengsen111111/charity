@@ -79,8 +79,8 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
-    uniIcons: function () {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 314))
+    uniDataSelect: function () {
+      return Promise.all(/*! import() | uni_modules/uni-data-select/components/uni-data-select/uni-data-select */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-data-select/components/uni-data-select/uni-data-select")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-data-select/components/uni-data-select/uni-data-select.vue */ 449))
     },
   }
 } catch (e) {
@@ -104,6 +104,15 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function ($event, item) {
+      var _temp = arguments[arguments.length - 1].currentTarget.dataset,
+        _temp2 = _temp.eventParams || _temp["event-params"],
+        item = _temp2.item
+      var _temp, _temp2
+      return _vm.handleCheck(item)
+    }
+  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -134,8 +143,15 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--13-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/components/ruleItem/index.vue?vue&type=script&lang=js& ***!
   \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 //
 //
 //
@@ -176,6 +192,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+var _default = {
+  components: {},
+  props: {},
+  data: function data() {
+    return {
+      checkItem: 1,
+      value: null,
+      range: [{
+        value: 0,
+        text: "原味  库存：666"
+      }, {
+        value: 1,
+        text: "桃味  库存：666"
+      }, {
+        value: 2,
+        text: "牛奶味  库存：666"
+      }]
+    };
+  },
+  onLoad: function onLoad() {},
+  methods: {
+    handleCheck: function handleCheck(index) {
+      this.checkItem = index;
+    }
+  }
+};
+exports.default = _default;
 
 /***/ }),
 
