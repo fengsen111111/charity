@@ -16,5 +16,8 @@
             "通用组件"
         ]
     },
-    "repository": "https://github.com/xzcwx/xz-easy-uni"
+    "repository": "https://github.com/xzcwx/xz-easy-uni",
+	"globals":{
+	   "plus": true
+	 }
 }

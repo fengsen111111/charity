@@ -13,7 +13,7 @@
         "splashscreen" : {
             "alwaysShowBeforeRender" : true,
             "waiting" : true,
-            "autoclose" : true,
+            "autoclose" : false,
             "delay" : 0
         },
         "modules" : {
@@ -46,6 +46,15 @@
             /* ios打包配置 */
             "sdkConfigs" : {
                 "geolocation" : {}
+            },
+            "splashscreen" : {
+                "androidStyle" : "common",
+                "android" : {
+                    "hdpi" : "",
+                    "xhdpi" : "",
+                    "xxhdpi" : ""
+                },
+                "iosStyle" : "common"
             }
         }
     },

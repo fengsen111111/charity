@@ -86,7 +86,7 @@
 
 <style>
 	.checkboxItem {
-		border-bottom: 3px solid #4867CF;
+		border-bottom: 1rpx solid #4867CF;
 		padding: 0px 0.5rem;
 	}
 

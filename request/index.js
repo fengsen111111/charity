@@ -1,5 +1,5 @@
 // 全局请求封装
-const base_url = 'http://localhost:996'
+const base_url = 'https://api.52vmy.cn'
 // 请求超出时间
 const timeout = 5000
  
@@ -26,7 +26,6 @@ export default (params) => {
 			method: method,
 			header: header,
 			data: data,
-            timeout ，
 			success(response) {
 				const res = response
 				// 根据返回的状态码做出对应的操作

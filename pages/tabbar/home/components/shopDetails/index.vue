@@ -256,35 +256,50 @@
 		},
 		onLoad() {},
 		methods: {
-			// 保存图片
+			// 判断是否授权相册
 			handleSure() {
+				let that = this
+				uni.authorize({
+					/* scope.writePhotosAlbum 类型是保存到相册 */
+					scope: 'scope.writePhotosAlbum',
+					success() {
+						/* 已授权进入 */
+						/* 保存图片到相册方法方法 */
+						that.imgApi('https://imgos.cn/2024/08/12/66b9d67b2c357.png');
+					},
+					fail(res) {
+						uni.showToast({
+							title: "保存失败，请确认相册权限是否打开！",
+							icon: "none"
+						});
+					}
+				});
+			},
+			// 保存图片
+			imgApi(image) {
 				uni.showLoading({
 					title: "正在保存中"
 				})
-				uni.downloadFile({
-					url: 'https://imgos.cn/2024/08/12/66b9d67b2c357.png',
-					success: (res) => {
-						if (res.statusCode === 200) {
-							uni.saveImageToPhotosAlbum({
-								filePath: res.tempFilePath,
-								success: function() {
-									// uni.hideLoading();
-									uni.showToast({
-										title: "保存成功",
-										icon: "none"
-									});
-								},
-								fail: function() {
-									// uni.hideLoading();
-									uni.showToast({
-										title: "保存失败，请确认相册权限是否打开！",
-										icon: "none"
-									});
-								}
-							});
-						}
+				/* 获取图片的信息 */
+				uni.getImageInfo({
+					src: image,
+					success: function(image) {
+						/* 保存图片到手机相册 */
+						uni.saveImageToPhotosAlbum({
+							filePath: image.path,
+							success: function() {
+								uni.showToast({
+									title: "保存成功",
+									icon: "none"
+								});
+							},
+							complete(res) {
+								uni.hideLoading()
+								console.log(res);
+							}
+						});
 					}
-				})
+				});
 			},
 			onLongpress(e) { //长按事件
 		    	const _this = this

@@ -9344,14 +9344,63 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 299:
-/*!********************************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/home.png ***!
-  \********************************************************************************/
+/***/ 266:
+/*!**************************************************************************************************************************!*\
+  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-load-more/components/uni-load-more/i18n/index.js ***!
+  \**************************************************************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAlVJREFUOE/dlL1rFEEYxp9nvZxRULZTMHamULDwL/C0kRAbxYX4EbzjbpYkCCr4kWifGAtBMJ7ObPy4kDSLhQgiWBzYKDYiiDYWwV5vGpGY3L5m5HKsy10CYuVUu/PO+5uZ93neIdYZQRBs8X3/FoAhkgJgodFoXI7j+Ee3NHYLDAwMbO7r63sO4KCIPPQ8DyJSWv2vW2sH4zj+2Sm3I7BQKOT6+/ufkDzabDaHZ2dnF1xypVI5Q7IG4Km19kQcx80stBPQU0q5pFMAxowx99JJSqkxkjMiMmeMOQvAlaI9skBWKpUZz/NGRWTcGDPd6VpKqQmSkwBmtNbnugLDMJwCMA7ghtZ6Yj3BlFLTJK8AmNRaX19b2z5hGIYONJUkSTWKorH1YK0YlVJ3SY4AuKq1vunmfwOVUiMkqyIyb4wZztalGzwIgk2+7z929SY5qrW+73YZcv4C8Mxae7yTcht4Ne/7fgxgUEROMwxDKyIfrLWHu3lro+u3GuAlyX3uhB8B7AHwHUDVGHNtI0DGRq8A7AewleRnlkql3T09PeWWulWt9cW1BKXUEZI704AkSd5GUfQpteYdyW2u/isrK1FbZaVUg+SjDLBOspAGisgFY8ztDHBRa32srXJL6Y7AVU/2Li8vn8zlcts9z3v/L4AwxhwqFot+Pp9v/EfAMAy/JUkyF0XR+VTB6+77b6/8muQuAA9SrVcUkcU0EMALAG9am/YCcDa7o7W+9IfK5XL5gOd58yT3ZmxSc+9eEASuxb6s9vyOtbiIuAe2vrS0NFSr1b66+V/THlAOUpg9hgAAAABJRU5ErkJggg=="
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 267));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 268));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 269));
+var _default = {
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 267:
+/*!*************************************************************************************************************************!*\
+  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-load-more/components/uni-load-more/i18n/en.json ***!
+  \*************************************************************************************************************************/
+/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"Pull up to show more\",\"uni-load-more.contentrefresh\":\"loading...\",\"uni-load-more.contentnomore\":\"No more data\"}");
+
+/***/ }),
+
+/***/ 268:
+/*!******************************************************************************************************************************!*\
+  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hans.json ***!
+  \******************************************************************************************************************************/
+/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉显示更多\",\"uni-load-more.contentrefresh\":\"正在加载...\",\"uni-load-more.contentnomore\":\"没有更多数据了\"}");
+
+/***/ }),
+
+/***/ 269:
+/*!******************************************************************************************************************************!*\
+  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hant.json ***!
+  \******************************************************************************************************************************/
+/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉顯示更多\",\"uni-load-more.contentrefresh\":\"正在加載...\",\"uni-load-more.contentnomore\":\"沒有更多數據了\"}");
 
 /***/ }),
 
@@ -9386,7 +9435,167 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 300:
+/***/ 30:
+/*!************************************************************************!*\
+  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/request/api.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.apiCeshi = void 0;
+var _index = _interopRequireDefault(__webpack_require__(/*! ./index.js */ 31));
+// 引入 request 文件
+
+var api = {
+  CESHI: '/api/wl/yan/yiyan' // 语录 · 随机一言
+};
+
+// 
+var apiCeshi = function apiCeshi(params) {
+  return (0, _index.default)({
+    url: api.CESHI,
+    method: 'get',
+    data: params,
+    header: {} // 语录 · 随机一言
+  });
+};
+exports.apiCeshi = apiCeshi;
+
+/***/ }),
+
+/***/ 31:
+/*!**************************************************************************!*\
+  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/request/index.js ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+// 全局请求封装
+var base_url = 'https://api.52vmy.cn';
+// 请求超出时间
+var timeout = 5000;
+
+// 需要修改token，和根据实际修改请求头
+var _default = function _default(params) {
+  var url = params.url;
+  var method = params.method || "get";
+  var data = params.data || {};
+  var header = _objectSpread({
+    'Blade-Auth': uni.getStorageSync('token') || '',
+    'Content-Type': 'application/json;charset=UTF-8',
+    'Authorization': 'Basic c2FiZXI6c2FiZXJfc2VjcmV0',
+    'Tenant-Id': uni.getStorageSync('tenantId') || 'xxx'
+  }, params.header);
+  if (method == "post") {
+    header = {
+      'Content-Type': 'application/json'
+    };
+  }
+  return new Promise(function (resolve, reject) {
+    uni.request({
+      url: base_url + url,
+      method: method,
+      header: header,
+      data: data,
+      success: function success(response) {
+        var res = response;
+        // 根据返回的状态码做出对应的操作
+        //获取成功
+        // console.log(res.statusCode);
+        if (res.statusCode == 200) {
+          resolve(res.data);
+        } else {
+          uni.clearStorageSync();
+          switch (res.statusCode) {
+            case 401:
+              uni.showModal({
+                title: "提示",
+                content: "请登录",
+                showCancel: false,
+                success: function success() {
+                  // setTimeout(() => {
+                  // 	uni.navigateTo({
+                  // 		url: "/pages/login/index",
+                  // 	})
+                  // }, 1000);
+                  console.log('登录');
+                }
+              });
+              break;
+            case 404:
+              uni.showToast({
+                title: '请求地址不存在...',
+                duration: 2000
+              });
+              break;
+            default:
+              uni.showToast({
+                title: '请重试...',
+                duration: 2000
+              });
+              break;
+          }
+        }
+      },
+      fail: function fail(err) {
+        console.log(err);
+        if (err.errMsg.indexOf('request:fail') !== -1) {
+          uni.showToast({
+            title: '网络异常',
+            icon: "error",
+            duration: 2000
+          });
+        } else {
+          uni.showToast({
+            title: '未知异常',
+            duration: 2000
+          });
+        }
+        reject(err);
+      },
+      complete: function complete() {
+        // 不管成功还是失败都会执行
+        uni.hideLoading();
+        uni.hideToast();
+      }
+    });
+  }).catch(function () {});
+};
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+
+/***/ 312:
+/*!********************************************************************************!*\
+  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/home.png ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAlVJREFUOE/dlL1rFEEYxp9nvZxRULZTMHamULDwL/C0kRAbxYX4EbzjbpYkCCr4kWifGAtBMJ7ObPy4kDSLhQgiWBzYKDYiiDYWwV5vGpGY3L5m5HKsy10CYuVUu/PO+5uZ93neIdYZQRBs8X3/FoAhkgJgodFoXI7j+Ee3NHYLDAwMbO7r63sO4KCIPPQ8DyJSWv2vW2sH4zj+2Sm3I7BQKOT6+/ufkDzabDaHZ2dnF1xypVI5Q7IG4Km19kQcx80stBPQU0q5pFMAxowx99JJSqkxkjMiMmeMOQvAlaI9skBWKpUZz/NGRWTcGDPd6VpKqQmSkwBmtNbnugLDMJwCMA7ghtZ6Yj3BlFLTJK8AmNRaX19b2z5hGIYONJUkSTWKorH1YK0YlVJ3SY4AuKq1vunmfwOVUiMkqyIyb4wZztalGzwIgk2+7z929SY5qrW+73YZcv4C8Mxae7yTcht4Ne/7fgxgUEROMwxDKyIfrLWHu3lro+u3GuAlyX3uhB8B7AHwHUDVGHNtI0DGRq8A7AewleRnlkql3T09PeWWulWt9cW1BKXUEZI704AkSd5GUfQpteYdyW2u/isrK1FbZaVUg+SjDLBOspAGisgFY8ztDHBRa32srXJL6Y7AVU/2Li8vn8zlcts9z3v/L4AwxhwqFot+Pp9v/EfAMAy/JUkyF0XR+VTB6+77b6/8muQuAA9SrVcUkcU0EMALAG9am/YCcDa7o7W+9IfK5XL5gOd58yT3ZmxSc+9eEASuxb6s9vyOtbiIuAe2vrS0NFSr1b66+V/THlAOUpg9hgAAAABJRU5ErkJggg=="
+
+/***/ }),
+
+/***/ 313:
 /*!****************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/home_checked.png ***!
   \****************************************************************************************/
@@ -9397,7 +9606,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACN
 
 /***/ }),
 
-/***/ 301:
+/***/ 314:
 /*!************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/classify.png ***!
   \************************************************************************************/
@@ -9408,7 +9617,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACN
 
 /***/ }),
 
-/***/ 302:
+/***/ 315:
 /*!********************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/classify_checked.png ***!
   \********************************************************************************************/
@@ -9419,7 +9628,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACN
 
 /***/ }),
 
-/***/ 303:
+/***/ 316:
 /*!*********************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/phone.png ***!
   \*********************************************************************************/
@@ -9430,7 +9639,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACN
 
 /***/ }),
 
-/***/ 304:
+/***/ 317:
 /*!*****************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/phone_checked.png ***!
   \*****************************************************************************************/
@@ -9441,7 +9650,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACN
 
 /***/ }),
 
-/***/ 305:
+/***/ 318:
 /*!************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/shopping.png ***!
   \************************************************************************************/
@@ -9452,7 +9661,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACN
 
 /***/ }),
 
-/***/ 306:
+/***/ 319:
 /*!********************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/shopping_checked.png ***!
   \********************************************************************************************/
@@ -9463,7 +9672,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACN
 
 /***/ }),
 
-/***/ 307:
+/***/ 320:
 /*!******************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/my.png ***!
   \******************************************************************************/
@@ -9474,7 +9683,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACN
 
 /***/ }),
 
-/***/ 308:
+/***/ 321:
 /*!**************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/my_checked.png ***!
   \**************************************************************************************/
@@ -9485,7 +9694,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACN
 
 /***/ }),
 
-/***/ 32:
+/***/ 34:
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
   \**********************************************************************************************************/
@@ -9617,7 +9826,7 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 335:
+/***/ 348:
 /*!*************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-icons/components/uni-icons/uniicons_file_vue.js ***!
   \*************************************************************************************************************************/
@@ -10121,7 +10330,7 @@ exports.fontData = fontData;
 
 /***/ }),
 
-/***/ 357:
+/***/ 370:
 /*!****************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
   \****************************************************************************************************************************/
@@ -10136,9 +10345,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 358));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 359));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 360));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 371));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 372));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 373));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -10148,7 +10357,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 358:
+/***/ 371:
 /*!***************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
   \***************************************************************************************************************************/
@@ -10159,7 +10368,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 359:
+/***/ 372:
 /*!********************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
   \********************************************************************************************************************************/
@@ -10170,7 +10379,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"取消\",\"uni-search-
 
 /***/ }),
 
-/***/ 360:
+/***/ 373:
 /*!********************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
   \********************************************************************************************************************************/
@@ -10197,7 +10406,7 @@ module.exports = _interopRequireDefault, module.exports.__esModule = true, modul
 
 /***/ }),
 
-/***/ 424:
+/***/ 437:
 /*!************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js ***!
   \************************************************************************************/
@@ -10212,20 +10421,20 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 425));
-var _assertThisInitialized2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ 427));
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 438));
+var _assertThisInitialized2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ 440));
 var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ 5));
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
 var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 428));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 441));
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ 429));
-var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ 430));
-var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ 431));
-var _wrapNativeSuper2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/wrapNativeSuper */ 432));
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ 442));
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ 443));
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ 444));
+var _wrapNativeSuper2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/wrapNativeSuper */ 445));
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
 var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
-var _pages = _interopRequireDefault(__webpack_require__(/*! @/pages.json */ 434));
+var _pages = _interopRequireDefault(__webpack_require__(/*! @/pages.json */ 447));
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e33) { throw _e33; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e34) { didErr = true; err = _e34; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
@@ -10678,7 +10887,7 @@ var S = "development" === "development",
   x = true;
 var O = "";
 try {
-  O = (__webpack_require__(/*! uni-stat-config */ 435).default || __webpack_require__(/*! uni-stat-config */ 435)).appid;
+  O = (__webpack_require__(/*! uni-stat-config */ 448).default || __webpack_require__(/*! uni-stat-config */ 448)).appid;
 } catch (e) {}
 var E = {};
 function L(e) {
@@ -18106,7 +18315,7 @@ exports.default = Js;
 
 /***/ }),
 
-/***/ 425:
+/***/ 438:
 /*!************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/@babel/runtime/regenerator/index.js ***!
   \************************************************************************************************/
@@ -18115,12 +18324,12 @@ exports.default = Js;
 
 // TODO(Babel 8): Remove this file.
 
-var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 426)();
+var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 439)();
 module.exports = runtime;
 
 /***/ }),
 
-/***/ 426:
+/***/ 439:
 /*!*******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/regeneratorRuntime.js ***!
   \*******************************************************************/
@@ -18442,7 +18651,7 @@ module.exports = _regeneratorRuntime, module.exports.__esModule = true, module.e
 
 /***/ }),
 
-/***/ 427:
+/***/ 440:
 /*!**********************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/assertThisInitialized.js ***!
   \**********************************************************************/
@@ -18459,7 +18668,7 @@ module.exports = _assertThisInitialized, module.exports.__esModule = true, modul
 
 /***/ }),
 
-/***/ 428:
+/***/ 441:
 /*!*****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/asyncToGenerator.js ***!
   \*****************************************************************/
@@ -18500,7 +18709,7 @@ module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exp
 
 /***/ }),
 
-/***/ 429:
+/***/ 442:
 /*!*********************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/inherits.js ***!
   \*********************************************************/
@@ -18528,7 +18737,7 @@ module.exports = _inherits, module.exports.__esModule = true, module.exports["de
 
 /***/ }),
 
-/***/ 430:
+/***/ 443:
 /*!**************************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js ***!
   \**************************************************************************/
@@ -18536,7 +18745,7 @@ module.exports = _inherits, module.exports.__esModule = true, module.exports["de
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = __webpack_require__(/*! ./typeof.js */ 13)["default"];
-var assertThisInitialized = __webpack_require__(/*! ./assertThisInitialized.js */ 427);
+var assertThisInitialized = __webpack_require__(/*! ./assertThisInitialized.js */ 440);
 function _possibleConstructorReturn(self, call) {
   if (call && (_typeof(call) === "object" || typeof call === "function")) {
     return call;
@@ -18549,7 +18758,7 @@ module.exports = _possibleConstructorReturn, module.exports.__esModule = true, m
 
 /***/ }),
 
-/***/ 431:
+/***/ 444:
 /*!***************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/getPrototypeOf.js ***!
   \***************************************************************/
@@ -18566,16 +18775,16 @@ module.exports = _getPrototypeOf, module.exports.__esModule = true, module.expor
 
 /***/ }),
 
-/***/ 432:
+/***/ 445:
 /*!****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/wrapNativeSuper.js ***!
   \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getPrototypeOf = __webpack_require__(/*! ./getPrototypeOf.js */ 431);
+var getPrototypeOf = __webpack_require__(/*! ./getPrototypeOf.js */ 444);
 var setPrototypeOf = __webpack_require__(/*! ./setPrototypeOf.js */ 16);
-var isNativeFunction = __webpack_require__(/*! ./isNativeFunction.js */ 433);
+var isNativeFunction = __webpack_require__(/*! ./isNativeFunction.js */ 446);
 var construct = __webpack_require__(/*! ./construct.js */ 15);
 function _wrapNativeSuper(Class) {
   var _cache = typeof Map === "function" ? new Map() : undefined;
@@ -18607,7 +18816,7 @@ module.exports = _wrapNativeSuper, module.exports.__esModule = true, module.expo
 
 /***/ }),
 
-/***/ 433:
+/***/ 446:
 /*!*****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/isNativeFunction.js ***!
   \*****************************************************************/
@@ -18625,7 +18834,7 @@ module.exports = _isNativeFunction, module.exports.__esModule = true, module.exp
 
 /***/ }),
 
-/***/ 434:
+/***/ 447:
 /*!*************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/pages.json?{"type":"origin-pages-json"} ***!
   \*************************************************************************************************/
@@ -18745,7 +18954,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 435:
+/***/ 448:
 /*!************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/pages.json?{"type":"stat"} ***!
   \************************************************************************************/
@@ -18766,7 +18975,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 436:
+/***/ 449:
 /*!******************************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-file-picker/components/uni-file-picker/choose-and-upload-file.js ***!
   \******************************************************************************************************************************************/
@@ -18986,11 +19195,11 @@ function chooseAndUploadFile() {
   }
   return uploadFiles(chooseAll(opts), opts);
 }
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 424)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 437)["default"]))
 
 /***/ }),
 
-/***/ 437:
+/***/ 450:
 /*!*************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-file-picker/components/uni-file-picker/utils.js ***!
   \*************************************************************************************************************************/
@@ -19005,8 +19214,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.get_files_and_is_max = exports.get_file_info = exports.get_file_ext = exports.get_file_data = exports.get_extname = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 425));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 428));
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 438));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 441));
 /**
  * 获取文件名和后缀
  * @param {String} name
@@ -19155,7 +19364,7 @@ exports.get_file_data = get_file_data;
 
 /***/ }),
 
-/***/ 457:
+/***/ 470:
 /*!**************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-countdown/components/uni-countdown/i18n/index.js ***!
   \**************************************************************************************************************************/
@@ -19170,9 +19379,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 458));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 459));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 460));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 471));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 472));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 473));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -19182,7 +19391,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 458:
+/***/ 471:
 /*!*************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-countdown/components/uni-countdown/i18n/en.json ***!
   \*************************************************************************************************************************/
@@ -19193,7 +19402,7 @@ module.exports = JSON.parse("{\"uni-countdown.day\":\"day\",\"uni-countdown.h\":
 
 /***/ }),
 
-/***/ 459:
+/***/ 472:
 /*!******************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-countdown/components/uni-countdown/i18n/zh-Hans.json ***!
   \******************************************************************************************************************************/
@@ -19204,7 +19413,7 @@ module.exports = JSON.parse("{\"uni-countdown.day\":\"天\",\"uni-countdown.h\":
 
 /***/ }),
 
-/***/ 460:
+/***/ 473:
 /*!******************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-countdown/components/uni-countdown/i18n/zh-Hant.json ***!
   \******************************************************************************************************************************/
@@ -19215,7 +19424,7 @@ module.exports = JSON.parse("{\"uni-countdown.day\":\"天\",\"uni-countdown.h\":
 
 /***/ }),
 
-/***/ 482:
+/***/ 488:
 /*!*********************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
   \*********************************************************************************************************************************/
@@ -19365,66 +19574,6 @@ function _slicedToArray(arr, i) {
   return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
 }
 module.exports = _slicedToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 561:
-/*!**************************************************************************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-load-more/components/uni-load-more/i18n/index.js ***!
-  \**************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 562));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 563));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 564));
-var _default = {
-  en: _en.default,
-  'zh-Hans': _zhHans.default,
-  'zh-Hant': _zhHant.default
-};
-exports.default = _default;
-
-/***/ }),
-
-/***/ 562:
-/*!*************************************************************************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-load-more/components/uni-load-more/i18n/en.json ***!
-  \*************************************************************************************************************************/
-/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"Pull up to show more\",\"uni-load-more.contentrefresh\":\"loading...\",\"uni-load-more.contentnomore\":\"No more data\"}");
-
-/***/ }),
-
-/***/ 563:
-/*!******************************************************************************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hans.json ***!
-  \******************************************************************************************************************************/
-/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉显示更多\",\"uni-load-more.contentrefresh\":\"正在加载...\",\"uni-load-more.contentnomore\":\"没有更多数据了\"}");
-
-/***/ }),
-
-/***/ 564:
-/*!******************************************************************************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hant.json ***!
-  \******************************************************************************************************************************/
-/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉顯示更多\",\"uni-load-more.contentrefresh\":\"正在加載...\",\"uni-load-more.contentnomore\":\"沒有更多數據了\"}");
 
 /***/ }),
 

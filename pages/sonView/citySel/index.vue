@@ -44,22 +44,6 @@
 					</view>
 				</view>
 			</view>
-			<!--  -->
-			<!-- <view class="bg-whilt p-3 mt-3" v-for="item in [1,2,3]" :key="item">
-				<uni-collapse ref="collapse" v-model="value" @change="change">
-					<uni-collapse-item :show-animation="false" :title="item.title" v-for="item in dataList"
-						:key="item.id">
-						<view class="content">
-							<view class="mt-1 grid grid-cols-4 ">
-								<view class="bgF9 mb-3 w80 mxAuto text14 p-1 text-center" v-for="iss in item.dataList"
-									:key="iss.id">
-									{{iss.title}}
-								</view>
-							</view>
-						</view>
-					</uni-collapse-item>
-				</uni-collapse>
-			</view> -->
 			<view class="bg-whilt" style="position: relative;top: 0.75rem; height: 100vh;">
 				<uni-indexed-list :options="list" :showSelect="false" @click="bindClick"></uni-indexed-list>
 			</view>

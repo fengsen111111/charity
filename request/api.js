@@ -2,15 +2,15 @@
 import request from './index.js'
 
 const api = {
-	STATUS_INFO: '/study/studyInfo/page', // 自定义
+	CESHI: '/api/wl/yan/yiyan', // 语录 · 随机一言
 }
  
 // 
-export const pageStudyInfo = (params) => {
+export const apiCeshi = (params) => {
 	return request({
-		url: api.STATUS_INFO,
+		url: api.CESHI,
 		method: 'get',
 		data: params,
-        header: {} // 自定义
+        header: {} // 语录 · 随机一言
 	})
 }
