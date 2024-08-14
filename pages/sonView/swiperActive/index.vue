@@ -1,6 +1,6 @@
 <template>
 	<view class="">
-		<hearch :title="'活动名称'" />
+		<hearch :title="'活动名称'" :isLeft="true" />
 		<view class="p-4 bg-whilt text14 ">
 			<image src="https://imgos.cn/2024/08/12/66b9d6ec84f13.png" mode="" class="w-full h20 rending1"></image>
 			<view class="fontBold">第八代五粮液</view>

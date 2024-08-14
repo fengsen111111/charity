@@ -90,9 +90,8 @@
 		},
 		onLoad() {},
 		methods: {
-			handSearch(){
+			search(){
 				console.log('出发收缩')
-				
 			},
 			handleItem(item){
 			  console.log(item)

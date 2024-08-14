@@ -9,7 +9,7 @@
 				<view class="navBar">
 					<view class="flex items-center">
 						<view class="text18 fontBold">快鹿送酒</view>
-						<view class="text12 space-x-1 items-center">
+						<view class="text12 space-x-1 items-center" @click="handleUrl('/pages/sonView/citySel/index')">
 							成都
 							<uni-icons class="space-x-1" type="down" color="#fff" size="16">
 							</uni-icons>
@@ -41,7 +41,6 @@
 
 <script>
 	export default {
-
 		data() {
 			return {
 				searchValue: '',
@@ -51,14 +50,19 @@
 				navBarHeight: 82 + 11,
 			};
 		},
-		onLoad() {},
 		methods: {
 			handleSearch() {
 				console.log('跳转');
 				uni.navigateTo({
 					url: '/pages/tabbar/home/components/search/index'
 				})
-			}
+			},
+			handleUrl(url) {
+				console.log(url);
+				uni.navigateTo({
+					url: url + ''
+				})
+			},
 		},
 		created() {
 			//获取手机状态栏高度

@@ -16,12 +16,12 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var viewTop = function viewTop() {
   __webpack_require__.e(/*! require.ensure | pages/sonView/volume/components/viewTop/index */ "pages/sonView/volume/components/viewTop/index").then((function () {
-    return resolve(__webpack_require__(/*! @/pages/sonView/volume/components/viewTop/index.vue */ 382));
+    return resolve(__webpack_require__(/*! @/pages/sonView/volume/components/viewTop/index.vue */ 390));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var volumeTag = function volumeTag() {
   __webpack_require__.e(/*! require.ensure | components/volumeTag/index */ "components/volumeTag/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/volumeTag/index.vue */ 368));
+    return resolve(__webpack_require__(/*! @/components/volumeTag/index.vue */ 376));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {

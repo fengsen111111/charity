@@ -55,7 +55,7 @@
 
 <style lang="scss" scoped>
 	.uni-indexed-list__list {
-		background-color: $uni-bg-color;
+		background-color: #FFFFFF;
 		/* #ifndef APP-NVUE */
 		display: flex;
 		/* #endif */
@@ -132,7 +132,7 @@
 		display: flex;
 		width: 100%;
 		/* #endif */
-		background-color: #f7f7f7;
+		background-color: #FFFFFF;
 	}
 
 	.uni-indexed-list__title {

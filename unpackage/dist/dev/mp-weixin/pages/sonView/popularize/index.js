@@ -101,10 +101,10 @@ var components
 try {
   components = {
     uniIcons: function () {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 314))
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 322))
     },
     uniPopup: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 347))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 355))
     },
   }
 } catch (e) {
@@ -169,7 +169,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var hearch = function hearch() {
   __webpack_require__.e(/*! require.ensure | components/hearch/index */ "components/hearch/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/hearch/index.vue */ 322));
+    return resolve(__webpack_require__(/*! @/components/hearch/index.vue */ 330));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -200,6 +200,30 @@ var _default = {
       this.type = type;
       // open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
       this.$refs.popup.open(type);
+    },
+    handleSure: function handleSure() {
+      uni.downloadFile({
+        url: 'https://imgos.cn/2024/08/12/66b9d67b2c357.png',
+        success: function success(res) {
+          if (res.statusCode === 200) {
+            uni.saveImageToPhotosAlbum({
+              filePath: res.tempFilePath,
+              success: function success() {
+                uni.showToast({
+                  title: "保存成功",
+                  icon: "none"
+                });
+              },
+              fail: function fail() {
+                uni.showToast({
+                  title: "保存失败，请稍后重试",
+                  icon: "none"
+                });
+              }
+            });
+          }
+        }
+      });
     }
   }
 };

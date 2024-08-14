@@ -101,13 +101,13 @@ var components
 try {
   components = {
     uniIcons: function () {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 314))
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 322))
     },
     uniPopup: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 347))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 355))
     },
     qPreviewImage: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/q-previewImage/components/q-previewImage/q-previewImage */ "uni_modules/q-previewImage/components/q-previewImage/q-previewImage").then(__webpack_require__.bind(null, /*! @/uni_modules/q-previewImage/components/q-previewImage/q-previewImage.vue */ 354))
+      return __webpack_require__.e(/*! import() | uni_modules/q-previewImage/components/q-previewImage/q-previewImage */ "uni_modules/q-previewImage/components/q-previewImage/q-previewImage").then(__webpack_require__.bind(null, /*! @/uni_modules/q-previewImage/components/q-previewImage/q-previewImage.vue */ 362))
     },
   }
 } catch (e) {
@@ -172,22 +172,22 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var hearch = function hearch() {
   __webpack_require__.e(/*! require.ensure | components/hearch/index */ "components/hearch/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/hearch/index.vue */ 322));
+    return resolve(__webpack_require__(/*! @/components/hearch/index.vue */ 330));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var ruleItem = function ruleItem() {
   __webpack_require__.e(/*! require.ensure | components/ruleItem/index */ "components/ruleItem/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/ruleItem/index */ 361));
+    return resolve(__webpack_require__(/*! @/components/ruleItem/index */ 369));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var volumeTag = function volumeTag() {
   __webpack_require__.e(/*! require.ensure | components/volumeTag/index */ "components/volumeTag/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/volumeTag/index.vue */ 368));
+    return resolve(__webpack_require__(/*! @/components/volumeTag/index.vue */ 376));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var comments = function comments() {
   __webpack_require__.e(/*! require.ensure | components/comments/index */ "components/comments/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/comments/index.vue */ 375));
+    return resolve(__webpack_require__(/*! @/components/comments/index.vue */ 383));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -200,11 +200,18 @@ var _default = {
   data: function data() {
     return {
       type: 'center',
-      imgs: []
+      imgs: ['https://imgos.cn/2024/08/12/66b9d71baf094.png'],
+      swiperDotIndex: 0
     };
   },
   onLoad: function onLoad() {},
   methods: {
+    change: function change(e) {
+      this.current = e.detail.current;
+    },
+    clickItem: function clickItem(e) {
+      this.swiperDotIndex = e;
+    },
     handleTemper: function handleTemper(index) {
       this.temperatureIndex = index;
     },
@@ -224,8 +231,6 @@ var _default = {
     // imgBig
     preview: function preview(url) {
       var _this = this;
-      this.imgs = ['https://imgos.cn/2024/08/12/66b9d71baf094.png', 'https://imgos.cn/2024/08/12/66b9d71baf094.png']; //设置图片数组
-
       this.$nextTick(function () {
         _this.$refs.previewImage.open(url); // 传入当前选中的图片地址(小程序必须添加$nextTick，解决组件首次加载无图)
       });

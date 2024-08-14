@@ -6,7 +6,7 @@
 				<view @click="handleItem(item.id)" class="text-center" :class="chenkIndex==item.id?'col486':''"
 					v-for="item in tabsList" :key="item.id">
 					{{item.text}}
-					<view v-if="chenkIndex==item.id" class="border486 w-4 mxAuto"></view>
+					<view v-if="chenkIndex==item.id" class="border486 bg486 w-4 mxAuto"></view>
 				</view>
 			</view>
 			<!-- card -->
@@ -15,38 +15,38 @@
 					<view>
 						<!-- 待付款 -->
 						<view class="flex justify-between items-center mt-3" v-if="item == 1">
-							<view class="flex">
+							<view class="flex items-center">
 								<view class="col666">实付金额</view>
 								<view class="text16 colED1 space-x-2">￥100</view>
 							</view>
-							<view class="bg486 text16 rending5 text-whlie py-2 w7 text-center">去支付</view>
+							<view class="bg486 text14 rending5 text-whlie py-2 w6 text-center">去支付</view>
 						</view>
 						<!-- 进行中 -->
 						<view class="flex justify-between items-center mt-3" v-else-if="item == 2">
 							<view class="flex w5"></view>
-							<view class="bgEBA text16 rending5 text-whlie py-2 w7 text-center">再来一单</view>
-							<view class="bg68B text16 rending5 text-whlie py-2 w7 text-center">联系骑手</view>
+							<view class="bgEBA text14 rending5 text-whlie py-2 w6 text-center">再来一单</view>
+							<view class="bg68B text14 rending5 text-whlie py-2 w6 text-center">联系骑手</view>
 						</view>
 						<!-- 待评价 -->
 						<view class="flex justify-between items-center mt-3" v-else-if="item == 3">
-							<view class="bgEBA text16 rending5 text-whlie py-2 w6 text-center">再来一单</view>
+							<view class="bgEBA text14 rending5 text-whlie py-2 w6 text-center">再来一单</view>
 							<view @click="toggle('bottom')"
-								class="bgFC6 text16 rending5 text-whlie py-2 w6 text-center">立即评价</view>
-							<view @click="toggleAfter('bottom')" class="bg486 text16 rending5 text-whlie py-2 w6 text-center">申请售后</view>
+								class="bgFC6 text14 rending5 text-whlie py-2 w6 text-center">立即评价</view>
+							<view @click="toggleAfter('bottom')" class="bg486 text14 rending5 text-whlie py-2 w6 text-center">申请售后</view>
 						</view>
 						<!-- 已完成 -->
 						<view class="flex justify-between items-center mt-3" v-else-if="item == 4">
 							<view class="flex w5"></view>
-							<view class="bgEBA text16 rending5 text-whlie py-2 w7 text-center">再来一单</view>
-							<view @click="toggleAfter('bottom')" class="bg486 text16 rending5 text-whlie py-2 w7 text-center">申请售后</view>
+							<view class="bgEBA text14 rending5 text-whlie py-2 w6 text-center">再来一单</view>
+							<view @click="toggleAfter('bottom')" class="bg486 text14 rending5 text-whlie py-2 w7 text-center">申请售后</view>
 						</view>
 						<!-- 售后 -->
 						<view class="flex justify-between items-center mt-3" v-else-if="item == 5">
 							<view class="flex w5"></view>
-							<view class="bgF2F text16 rending5 col999 py-2 w7 text-center">售后中</view>
-							<view class="bgF2F text16 rending5 col999 py-2 w7 text-center">已退货退款</view>
-							<view class="bgF2F text16 rending5 col999 py-2 w7 text-center">已退款</view>
-							<view class="bgF2F text16 rending5 col999 py-2 w7 text-center">已换货</view>
+							<view class="bgF2F text14 rending5 col999 py-2 w6 text-center">售后中</view>
+							<view class="bgF2F text14 rending5 col999 py-2 w6 text-center">已退货退款</view>
+							<view class="bgF2F text14 rending5 col999 py-2 w6 text-center">已退款</view>
+							<view class="bgF2F text14 rending5 col999 py-2 w6 text-center">已换货</view>
 							<view @click="toggleAfter('bottom')" class="bg486 text16 rending5 text-whlie py-2 w7 text-center">重新申请</view>
 							<view class="flex w5"></view>
 						</view>

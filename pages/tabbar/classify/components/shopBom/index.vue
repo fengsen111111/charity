@@ -209,6 +209,7 @@
 		width: 2.5rem;
 		height: 1.75rem;
 		border-radius: 1rem 0px 0px 1rem;
+		line-height: 51rpx;
 	}
 	
 	.cenVire {
@@ -223,6 +224,7 @@
 		width: 2.5rem;
 		height: 1.75rem;
 		border-radius: 0px 1rem 1rem 0px;
+		line-height: 51rpx;
 	}
 	.specs {
 		width: 2.5rem;

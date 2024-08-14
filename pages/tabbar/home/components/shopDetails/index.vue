@@ -1,8 +1,15 @@
 <template>
 	<view class="">
-		<hearch :title="'商品详情'" :isLeft="true"/>
+		<hearch :title="'商品详情'" :isLeft="true" />
 		<!-- img -->
-		<image src="https://imgos.cn/2024/08/12/66b9d71baf094.png" @click="preview" mode="" class="w-full h20"></image>
+		<swiper class="swiper-box" @change="change" :current="swiperDotIndex">
+			<swiper-item v-for="(item, index) in 3" :key="index">
+				<view class="swiper-item">
+					<image src="https://imgos.cn/2024/08/12/66b9d71baf094.png" @click="preview" mode=""
+						class="w-full h20"></image>
+				</view>
+			</swiper-item>
+		</swiper>
 		<!--  -->
 		<view class="px-3">
 			<!--  -->
@@ -45,24 +52,25 @@
 			</view>
 			<!-- card 规格-->
 			<ruleItem>
-			<!-- 参数 -->
-			<view class="grid grid-cols-3 text-center bgF9 p-2 mt-4" >
-				<view class="">
-					<view class="col666 text11">品牌</view>
-					<view class=" fontBold text14">五粮春</view>
-				</view>
-				<view class="borderLeftRight">
-					<view class="col666 text11">产地</view>
-					<view class=" fontBold text14">中国</view>
-				</view>
-				<view class="flex items-center">
-					<view class="space-x-6">
-						<view class="col666 text11">酒精度</view>
-						<view class=" fontBold text14">52%voI</view>
+				<!-- 参数 -->
+				<view class="grid grid-cols-3 text-center bgF9 p-2 mt-4">
+					<view class="">
+						<view class="col666 text11">品牌</view>
+						<view class=" fontBold text14">五粮春</view>
 					</view>
-					<uni-icons type="right" size="20" class="space-x-2" color="#666666" @click="togglePar('bottom')"></uni-icons>
+					<view class="borderLeftRight">
+						<view class="col666 text11">产地</view>
+						<view class=" fontBold text14">中国</view>
+					</view>
+					<view class="flex items-center">
+						<view class="space-x-6">
+							<view class="col666 text11">酒精度</view>
+							<view class=" fontBold text14">52%voI</view>
+						</view>
+						<uni-icons type="right" size="20" class="space-x-2" color="#666666"
+							@click="togglePar('bottom')"></uni-icons>
+					</view>
 				</view>
-			</view>
 			</ruleItem>
 			<!--  -->
 			<image src="@/static/home/strip.png" mode="" class="w-full h-6 mt-4"></image>
@@ -92,9 +100,10 @@
 					<view class="">
 						评价
 					</view>
-					<view class="flex text12" >
+					<view class="flex text12">
 						+9999w
-						<uni-icons type="right" color="#000000" size="12" @click="handleItem('/pages/sonView/commentsAll/index')"></uni-icons>
+						<uni-icons type="right" color="#000000" size="12"
+							@click="handleItem('/pages/sonView/commentsAll/index')"></uni-icons>
 					</view>
 				</view>
 				<!--  -->
@@ -204,7 +213,7 @@
 				<view class="h-2"></view>
 				<view class="bg-whilt text12 p-3 rending2">
 					<view class="grid grid-cols-5" v-for="item in [1,2,3,4,5,6]" :key="item">
-						<view class="" >
+						<view class="">
 							<view class="">品牌</view>
 						</view>
 						<view class="">
@@ -237,41 +246,43 @@
 		data() {
 			return {
 				type: 'center',
-				imgs: [],
-				
+				imgs: ['https://imgos.cn/2024/08/12/66b9d71baf094.png'],
+				swiperDotIndex: 0
 			};
 		},
 		onLoad() {},
 		methods: {
-			handleTemper(index){
+			change(e) {
+				this.current = e.detail.current
+			},
+			clickItem(e) {
+				this.swiperDotIndex = e
+			},
+			handleTemper(index) {
 				this.temperatureIndex = index
 			},
-			handleDown(){
+			handleDown() {
 				this.number--
 			},
-			handleUp(){
+			handleUp() {
 				this.number++
 			},
 			// 跳转
-			handleItem(url){
+			handleItem(url) {
 				console.log(url);
 				uni.navigateTo({
-					url:url+''
+					url: url + ''
 				})
 			},
 			// imgBig
 			preview(url) {
-				this.imgs = ['https://imgos.cn/2024/08/12/66b9d71baf094.png',
-					'https://imgos.cn/2024/08/12/66b9d71baf094.png'
-				] //设置图片数组
 				// #ifdef MP-WEIXIN
 				this.$nextTick(() => {
 					this.$refs.previewImage.open(url); // 传入当前选中的图片地址(小程序必须添加$nextTick，解决组件首次加载无图)
 				})
 				// #endif
-
 				// #ifndef MP-WEIXIN
-				this.$refs.previewImage.open(url); // 传入当前选中的图片地址
+				this.$refs.previewImage.open('https://imgos.cn/2024/08/12/66b9d71baf094.png'); // 传入当前选中的图片地址
 				// #endif
 			},
 			// 关闭
@@ -309,6 +320,18 @@
 </script>
 
 <style>
+	.swiper-box {
+		height: 20rem;
+	}
+	.swiper-item {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			/* #endif */
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			color: #fff;
+		}
 	.borderLeftRight {
 		border-left: 1px solid #999999;
 		border-right: 1px solid #999999;
@@ -323,7 +346,7 @@
 		background-image: url('@/static/home/shopDetailIcon.png');
 		background-size: 100% 100%;
 		width: 3.5rem;
-		padding-top:100rpx
+		padding-top: 100rpx
 	}
 
 	.borTag {

@@ -4,7 +4,7 @@
 		<view class="p-3 text12">
 			<view class="bg-whilt rending1 p-3">
 				<view class="" v-for="item in [1,2,3]" :key="item">
-					<view class="text-black ling1">昵称</view>
+					<view class="text-black">昵称</view>
 					<view v-if="item!==3">
 						<uni-easyinput class="uni-mt-5" trim="all" v-model="value" placeholder="输入昵称"></uni-easyinput>
 						<view class="h-4" ></view>

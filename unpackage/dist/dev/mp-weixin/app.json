@@ -27,7 +27,8 @@
     "pages/sonView/myOrder/index",
     "pages/sonView/myOrderDetails/index",
     "pages/sonView/riderLogin/index",
-    "pages/sonView/riderOrder/index"
+    "pages/sonView/riderOrder/index",
+    "pages/sonView/citySel/index"
   ],
   "subPackages": [],
   "window": {
@@ -37,5 +38,14 @@
     "navigationStyle": "custom"
   },
   "lazyCodeLoading": "requiredComponents",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于为您就近匹配门店"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation",
+    "chooseLocation"
+  ],
   "usingComponents": {}
 }

@@ -199,6 +199,7 @@
 	.leftView {
 		width: 2.5rem;
 		height: 1.75rem;
+		line-height: 51rpx;
 		border-radius: 1rem 0px 0px 1rem;
 	}
 	
@@ -213,6 +214,7 @@
 	.rightView {
 		width: 2.5rem;
 		height: 1.75rem;
+		line-height: 51rpx;
 		border-radius: 0px 1rem 1rem 0px;
 	}
 	.specs {

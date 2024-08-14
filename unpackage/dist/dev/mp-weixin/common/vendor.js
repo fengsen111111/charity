@@ -9344,7 +9344,7 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 283:
+/***/ 291:
 /*!********************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/home.png ***!
   \********************************************************************************/
@@ -9355,7 +9355,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACN
 
 /***/ }),
 
-/***/ 284:
+/***/ 292:
 /*!****************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/home_checked.png ***!
   \****************************************************************************************/
@@ -9366,7 +9366,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACN
 
 /***/ }),
 
-/***/ 285:
+/***/ 293:
 /*!************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/classify.png ***!
   \************************************************************************************/
@@ -9377,7 +9377,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACN
 
 /***/ }),
 
-/***/ 286:
+/***/ 294:
 /*!********************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/classify_checked.png ***!
   \********************************************************************************************/
@@ -9388,7 +9388,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACN
 
 /***/ }),
 
-/***/ 287:
+/***/ 295:
 /*!*********************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/phone.png ***!
   \*********************************************************************************/
@@ -9399,7 +9399,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACN
 
 /***/ }),
 
-/***/ 288:
+/***/ 296:
 /*!*****************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/phone_checked.png ***!
   \*****************************************************************************************/
@@ -9410,7 +9410,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACN
 
 /***/ }),
 
-/***/ 289:
+/***/ 297:
 /*!************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/shopping.png ***!
   \************************************************************************************/
@@ -9421,7 +9421,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACN
 
 /***/ }),
 
-/***/ 290:
+/***/ 298:
 /*!********************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/shopping_checked.png ***!
   \********************************************************************************************/
@@ -9432,7 +9432,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACN
 
 /***/ }),
 
-/***/ 291:
+/***/ 299:
 /*!******************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/my.png ***!
   \******************************************************************************/
@@ -9440,17 +9440,6 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACN
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAA11JREFUOE+NVFtonEUU/s6EjcEEzepDX4xgH0qxigp98EFfRGtTtSKyICwb1u4/E7IWQS3eiJc+RCulKNYbc/5/TTexAX8QsWoasBIEfVBf4gWKpIpEEEVNg4k/7mWOO+XfkGvjvM2Z73wz3znfGcImS2u9Q0QeIqI9ALansHNENNVsNl+Pomh2o1TaIKi01s8R0dMi0iCiMwC+TXHXA7gdgALwgrX2MABZybGOMAiCilLqQefciaWlpUMTExN/rEwIgmAbER0looKIMDObTQm11geIKHLOjYRhOLxZOXxca/0SET0OoGitPdHGLr/QGJMRkZ8B/MjMt66VsklpPgdwFRFtt9bWPWaZUGt9JxGdbjab+6MoOuUPjTGBc+7LMAy/8fuhoaFsvV4vLywsHI3juKa1vo+I3hORO5j5k7WEzxLR4SRJesbGxpZSWfMA3mbmR/0+CIJ7lVLvNxqNGyuVykw+n7+su7t7AcBT1tojqwiNMS+LSJGZs215WuvPAJxk5rd8rFQq3eQJkyS5eXx8/Nf00kUiYmvtI2sJnwfwzPz8fE8cx8nFGtI+y+VyPdls9m8Aw9bakVWEpVLpno6Ojg9EZC8zT/0fwiAI9imlPhKRfcw8uYqwv7//kr6+vl8AzFhrvXm3WqS1PkNEu+bm5q6enJz8dxVh2tWDAI4DOGStPXYxxiAInlRKveicK4dh+OY6H6YBf2tMRPcDeCVJkuF2x9sJ5XK5p1arjSilHhaRd5n5gZWeXTd6uVyus7e317/OfwznReSUiHx3QQ7RdQD2A7hcRI7Pzs4+Nj093dhw9AYGBq7s7OwsENFuEfGFPqeU8iXYQ0TbfJKI/AZgSkRebdlpBxHdJSJf12q1sWq1+udyDUul0l6l1DtEdIWI/ATgNQCfAriUmb/w9vDgOI4XjTG3iMgigNsAHCSia0TkL+dcPoqi0zQ4OHitiHwlImdbczzAzN+nhvUDnwfwhpedSvZyh1qzW7XWHkhxu1r/ZZWIdjrndvsmnATQLyI7wzD0ki6sQqHQ3dXVdYyIfGImDdedc6FSyrvgnzY2/dLOisjHnvD3Vt0+bN+41irFYrE3k8nc4OP1en1mdHT0/EZ2MsZUWvW8m4wxP4jIEWaubOXkLXxZUko98R/5AYlv5IG+dwAAAABJRU5ErkJggg=="
-
-/***/ }),
-
-/***/ 292:
-/*!**************************************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/my_checked.png ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAutJREFUOE+dk2lIVHEUxc95b8Zsg/YFIlqwLDGLhrQVzbK0iKI+tGCYgdYwVKYVSdQERUXIVMq0Syr1ob4U7ZtKkSW5QoOmLbRBSVmhiDbz3q2Xozk5Qna//Q/n/O7l8r9EFzXp4qvxFI9VURAjwjEgAMELEblHVc2qWDG21l/UsP1dnHKh1k5KOkCT334UD4T7y1YF7f3dpkN1AlryarKFWNfV5D66ztOla4OSugRacmoTIfrZf4J5TaIjoTRxfE5bpn3CqSdLzIra5w3I4d0BQvBe1xrGlCZb3EauHRhx6nmsLnLDZ3zytIhMAxDWapZ6kE4RbAcQ0OYVKvOfJo275wMMd1btJmAsub2aW5r79+jRM4EQhyEKeLnYGrws3FlVQW+TVh3pxdYJB3yA049VOwDZ0hGo69psKspqghu9wTLNbV5qMv8oBjquhkcebwpO8QHOcLjsAPd0a39/zLuKUibu9wHOzKheAl278l9AIu5RWshNH+Aoe0HgiMAh7wAM6h5U6j5+eDvyRWZciw/QeMze57IBktktoCLWh+mhxzv9Q6/AOXufXQJk+T9BBRcf2ENXdjy/Tqc3NanE3HdYgEOE1l/fyN+tG9/EuN9Mqp9TC+1RHr+nF72zaqCGH/EALSJyXVVNLwW6DSIxAIZ6Q58A3hYiUzQ9iOQiQEpUBOTdPzDhS/sOI7dVLlTI84AMEOA1yCzRlXxFkV75h0KLIq0FfQxzoTOqMXJHxSzopkYq+lyI2AiMJlCvCdYUHg67xehU10SK+6mA1bqY1hY4QlxGOHprZQ4gawRwkurV3911bYkQG4XIzc+YnGhoUSmuEIWeXEKCoasWzttcfgFgrKA5+P7RiE9t+5gUX9l78ADJIGAEzV7dDcqZr01aWukpS1ObN3rzk6FEYDUgNxhjK68T8NrdrNaOf1dkQnk/c181DPDA3fC9svBc1Dd/vvm2imwAi7lgQ3mNgAfvnJhsCP9dMcll60Hu+An5KBq96YGeiQAAAABJRU5ErkJggg=="
 
 /***/ }),
 
@@ -9485,7 +9474,150 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 319:
+/***/ 300:
+/*!**************************************************************************************!*\
+  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/my_checked.png ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAutJREFUOE+dk2lIVHEUxc95b8Zsg/YFIlqwLDGLhrQVzbK0iKI+tGCYgdYwVKYVSdQERUXIVMq0Syr1ob4U7ZtKkSW5QoOmLbRBSVmhiDbz3q2Xozk5Qna//Q/n/O7l8r9EFzXp4qvxFI9VURAjwjEgAMELEblHVc2qWDG21l/UsP1dnHKh1k5KOkCT334UD4T7y1YF7f3dpkN1AlryarKFWNfV5D66ztOla4OSugRacmoTIfrZf4J5TaIjoTRxfE5bpn3CqSdLzIra5w3I4d0BQvBe1xrGlCZb3EauHRhx6nmsLnLDZ3zytIhMAxDWapZ6kE4RbAcQ0OYVKvOfJo275wMMd1btJmAsub2aW5r79+jRM4EQhyEKeLnYGrws3FlVQW+TVh3pxdYJB3yA049VOwDZ0hGo69psKspqghu9wTLNbV5qMv8oBjquhkcebwpO8QHOcLjsAPd0a39/zLuKUibu9wHOzKheAl278l9AIu5RWshNH+Aoe0HgiMAh7wAM6h5U6j5+eDvyRWZciw/QeMze57IBktktoCLWh+mhxzv9Q6/AOXufXQJk+T9BBRcf2ENXdjy/Tqc3NanE3HdYgEOE1l/fyN+tG9/EuN9Mqp9TC+1RHr+nF72zaqCGH/EALSJyXVVNLwW6DSIxAIZ6Q58A3hYiUzQ9iOQiQEpUBOTdPzDhS/sOI7dVLlTI84AMEOA1yCzRlXxFkV75h0KLIq0FfQxzoTOqMXJHxSzopkYq+lyI2AiMJlCvCdYUHg67xehU10SK+6mA1bqY1hY4QlxGOHprZQ4gawRwkurV3911bYkQG4XIzc+YnGhoUSmuEIWeXEKCoasWzttcfgFgrKA5+P7RiE9t+5gUX9l78ADJIGAEzV7dDcqZr01aWukpS1ObN3rzk6FEYDUgNxhjK68T8NrdrNaOf1dkQnk/c181DPDA3fC9svBc1Dd/vvm2imwAi7lgQ3mNgAfvnJhsCP9dMcll60Hu+An5KBq96YGeiQAAAABJRU5ErkJggg=="
+
+/***/ }),
+
+/***/ 32:
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
+  \**********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode, /* vue-cli only */
+  components, // fixed by xxxxxx auto components
+  renderjs // fixed by xxxxxx renderjs
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // fixed by xxxxxx auto components
+  if (components) {
+    if (!options.components) {
+      options.components = {}
+    }
+    var hasOwn = Object.prototype.hasOwnProperty
+    for (var name in components) {
+      if (hasOwn.call(components, name) && !hasOwn.call(options.components, name)) {
+        options.components[name] = components[name]
+      }
+    }
+  }
+  // fixed by xxxxxx renderjs
+  if (renderjs) {
+    if(typeof renderjs.beforeCreate === 'function'){
+			renderjs.beforeCreate = [renderjs.beforeCreate]
+		}
+    (renderjs.beforeCreate || (renderjs.beforeCreate = [])).unshift(function() {
+      this[renderjs.__module] = this
+    });
+    (options.mixins || (options.mixins = [])).push(renderjs)
+  }
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+
+/***/ 327:
 /*!*************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-icons/components/uni-icons/uniicons_file_vue.js ***!
   \*************************************************************************************************************************/
@@ -9989,139 +10121,7 @@ exports.fontData = fontData;
 
 /***/ }),
 
-/***/ 32:
-/*!**********************************************************************************************************!*\
-  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
-  \**********************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-function normalizeComponent (
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode, /* vue-cli only */
-  components, // fixed by xxxxxx auto components
-  renderjs // fixed by xxxxxx renderjs
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // fixed by xxxxxx auto components
-  if (components) {
-    if (!options.components) {
-      options.components = {}
-    }
-    var hasOwn = Object.prototype.hasOwnProperty
-    for (var name in components) {
-      if (hasOwn.call(components, name) && !hasOwn.call(options.components, name)) {
-        options.components[name] = components[name]
-      }
-    }
-  }
-  // fixed by xxxxxx renderjs
-  if (renderjs) {
-    if(typeof renderjs.beforeCreate === 'function'){
-			renderjs.beforeCreate = [renderjs.beforeCreate]
-		}
-    (renderjs.beforeCreate || (renderjs.beforeCreate = [])).unshift(function() {
-      this[renderjs.__module] = this
-    });
-    (options.mixins || (options.mixins = [])).push(renderjs)
-  }
-
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
-      : injectStyles
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functioal component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return originalRender(h, context)
-      }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    }
-  }
-
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
-
-
-/***/ }),
-
-/***/ 341:
+/***/ 349:
 /*!****************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
   \****************************************************************************************************************************/
@@ -10136,9 +10136,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 342));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 343));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 344));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 350));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 351));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 352));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -10148,7 +10148,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 342:
+/***/ 350:
 /*!***************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
   \***************************************************************************************************************************/
@@ -10159,7 +10159,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 343:
+/***/ 351:
 /*!********************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
   \********************************************************************************************************************************/
@@ -10170,7 +10170,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"取消\",\"uni-search-
 
 /***/ }),
 
-/***/ 344:
+/***/ 352:
 /*!********************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
   \********************************************************************************************************************************/
@@ -10197,7 +10197,7 @@ module.exports = _interopRequireDefault, module.exports.__esModule = true, modul
 
 /***/ }),
 
-/***/ 408:
+/***/ 416:
 /*!************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js ***!
   \************************************************************************************/
@@ -10212,20 +10212,20 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 409));
-var _assertThisInitialized2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ 411));
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 417));
+var _assertThisInitialized2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ 419));
 var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ 5));
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
 var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 412));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 420));
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ 413));
-var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ 414));
-var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ 415));
-var _wrapNativeSuper2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/wrapNativeSuper */ 416));
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ 421));
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ 422));
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ 423));
+var _wrapNativeSuper2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/wrapNativeSuper */ 424));
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
 var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
-var _pages = _interopRequireDefault(__webpack_require__(/*! @/pages.json */ 418));
+var _pages = _interopRequireDefault(__webpack_require__(/*! @/pages.json */ 426));
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e33) { throw _e33; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e34) { didErr = true; err = _e34; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
@@ -10678,7 +10678,7 @@ var S = "development" === "development",
   x = true;
 var O = "";
 try {
-  O = (__webpack_require__(/*! uni-stat-config */ 419).default || __webpack_require__(/*! uni-stat-config */ 419)).appid;
+  O = (__webpack_require__(/*! uni-stat-config */ 427).default || __webpack_require__(/*! uni-stat-config */ 427)).appid;
 } catch (e) {}
 var E = {};
 function L(e) {
@@ -18106,7 +18106,7 @@ exports.default = Js;
 
 /***/ }),
 
-/***/ 409:
+/***/ 417:
 /*!************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/@babel/runtime/regenerator/index.js ***!
   \************************************************************************************************/
@@ -18115,12 +18115,12 @@ exports.default = Js;
 
 // TODO(Babel 8): Remove this file.
 
-var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 410)();
+var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 418)();
 module.exports = runtime;
 
 /***/ }),
 
-/***/ 410:
+/***/ 418:
 /*!*******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/regeneratorRuntime.js ***!
   \*******************************************************************/
@@ -18442,7 +18442,7 @@ module.exports = _regeneratorRuntime, module.exports.__esModule = true, module.e
 
 /***/ }),
 
-/***/ 411:
+/***/ 419:
 /*!**********************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/assertThisInitialized.js ***!
   \**********************************************************************/
@@ -18459,7 +18459,7 @@ module.exports = _assertThisInitialized, module.exports.__esModule = true, modul
 
 /***/ }),
 
-/***/ 412:
+/***/ 420:
 /*!*****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/asyncToGenerator.js ***!
   \*****************************************************************/
@@ -18500,7 +18500,7 @@ module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exp
 
 /***/ }),
 
-/***/ 413:
+/***/ 421:
 /*!*********************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/inherits.js ***!
   \*********************************************************/
@@ -18528,7 +18528,7 @@ module.exports = _inherits, module.exports.__esModule = true, module.exports["de
 
 /***/ }),
 
-/***/ 414:
+/***/ 422:
 /*!**************************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js ***!
   \**************************************************************************/
@@ -18536,7 +18536,7 @@ module.exports = _inherits, module.exports.__esModule = true, module.exports["de
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = __webpack_require__(/*! ./typeof.js */ 13)["default"];
-var assertThisInitialized = __webpack_require__(/*! ./assertThisInitialized.js */ 411);
+var assertThisInitialized = __webpack_require__(/*! ./assertThisInitialized.js */ 419);
 function _possibleConstructorReturn(self, call) {
   if (call && (_typeof(call) === "object" || typeof call === "function")) {
     return call;
@@ -18549,7 +18549,7 @@ module.exports = _possibleConstructorReturn, module.exports.__esModule = true, m
 
 /***/ }),
 
-/***/ 415:
+/***/ 423:
 /*!***************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/getPrototypeOf.js ***!
   \***************************************************************/
@@ -18566,16 +18566,16 @@ module.exports = _getPrototypeOf, module.exports.__esModule = true, module.expor
 
 /***/ }),
 
-/***/ 416:
+/***/ 424:
 /*!****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/wrapNativeSuper.js ***!
   \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getPrototypeOf = __webpack_require__(/*! ./getPrototypeOf.js */ 415);
+var getPrototypeOf = __webpack_require__(/*! ./getPrototypeOf.js */ 423);
 var setPrototypeOf = __webpack_require__(/*! ./setPrototypeOf.js */ 16);
-var isNativeFunction = __webpack_require__(/*! ./isNativeFunction.js */ 417);
+var isNativeFunction = __webpack_require__(/*! ./isNativeFunction.js */ 425);
 var construct = __webpack_require__(/*! ./construct.js */ 15);
 function _wrapNativeSuper(Class) {
   var _cache = typeof Map === "function" ? new Map() : undefined;
@@ -18607,7 +18607,7 @@ module.exports = _wrapNativeSuper, module.exports.__esModule = true, module.expo
 
 /***/ }),
 
-/***/ 417:
+/***/ 425:
 /*!*****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/isNativeFunction.js ***!
   \*****************************************************************/
@@ -18625,7 +18625,7 @@ module.exports = _isNativeFunction, module.exports.__esModule = true, module.exp
 
 /***/ }),
 
-/***/ 418:
+/***/ 426:
 /*!*************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/pages.json?{"type":"origin-pages-json"} ***!
   \*************************************************************************************************/
@@ -18724,6 +18724,9 @@ var _default = {
   }, {
     "path": "pages/sonView/riderOrder/index",
     "style": {}
+  }, {
+    "path": "pages/sonView/citySel/index",
+    "style": {}
   }],
   "globalStyle": {
     "navigationBarTextStyle": "black",
@@ -18739,7 +18742,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 419:
+/***/ 427:
 /*!************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/pages.json?{"type":"stat"} ***!
   \************************************************************************************/
@@ -18760,7 +18763,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 420:
+/***/ 428:
 /*!******************************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-file-picker/components/uni-file-picker/choose-and-upload-file.js ***!
   \******************************************************************************************************************************************/
@@ -18980,11 +18983,11 @@ function chooseAndUploadFile() {
   }
   return uploadFiles(chooseAll(opts), opts);
 }
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 408)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 416)["default"]))
 
 /***/ }),
 
-/***/ 421:
+/***/ 429:
 /*!*************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-file-picker/components/uni-file-picker/utils.js ***!
   \*************************************************************************************************************************/
@@ -18999,8 +19002,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.get_files_and_is_max = exports.get_file_info = exports.get_file_ext = exports.get_file_data = exports.get_extname = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 409));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 412));
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 417));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 420));
 /**
  * 获取文件名和后缀
  * @param {String} name
@@ -19149,7 +19152,7 @@ exports.get_file_data = get_file_data;
 
 /***/ }),
 
-/***/ 448:
+/***/ 463:
 /*!*********************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
   \*********************************************************************************************************************************/

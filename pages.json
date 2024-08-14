@@ -111,6 +111,10 @@
 		{
 		  "path": "pages/sonView/riderOrder/index",
 		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/citySel/index",
+		  "style": {}
 		}
 	
 	],

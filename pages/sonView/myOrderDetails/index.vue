@@ -64,11 +64,10 @@
 					</view>
 				</view>
 				<view v-else-if="status==5">
-					
 					<!-- 售后原因 -->
 					<view class="bg-whilt rending2 p-3 mt-3 text14">
 						<view class="text12">售后原因</view>
-						<view class="col999 indent1">  第八代五粮液在传承并且凸显出了历代五粮液的独特风格的前提下，对第七代产品的适度更新和优化，整体包装更精致、更大气，体验更佳，更适应新时代消费者对高品质白酒的消费需求。</view>
+						<view class="col999 my-2 indent1">  第八代五粮液在传承并且凸显出了历代五粮液的独特风格的前提下，对第七代产品的适度更新和优化，整体包装更精致、更大气，体验更佳，更适应新时代消费者对高品质白酒的消费需求。</view>
 					</view>
 					<!--  -->
 					<view class="bg-whilt rending2 p-3 mt-3 text14 flex justify-between">

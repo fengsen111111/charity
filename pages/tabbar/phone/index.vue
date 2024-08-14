@@ -24,6 +24,9 @@
 		<view class="">
 			定位
 		</view>
+		<view class="" @click="handleLocation">
+			123213123
+		</view>
 	</view>
 </template> 
 
@@ -49,7 +52,20 @@ export default {
 			uni.navigateTo({
 				url:url+''
 			})
-		}
+		},
+		// 打开
+		handleLocation(){
+			uni.getLocation({
+				success: res => {
+					console.log('location success', res)
+					uni.openLocation({
+						latitude: '30.64242',
+						longitude: '104.04311',
+						scale: 18
+					})
+				}
+			})
+		},
 	}
 };
 </script>
