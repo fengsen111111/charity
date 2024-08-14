@@ -3,7 +3,7 @@
 	height: 2rem;
 	position: fixed;
 	background-color: #fff;
-	top: 82vh;
+	bottom: 7.5vh;
 	width: 100%;
 }
 .discount {

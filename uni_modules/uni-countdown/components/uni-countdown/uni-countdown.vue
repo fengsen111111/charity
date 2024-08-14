@@ -130,11 +130,9 @@
 					fontSize
 				} = this
 				return {
-					color,
+					color:'#FA311D',
 					backgroundColor,
 					fontSize: `${fontSize}px`,
-					width: `${fontSize * 22 / 14}px`, // 按字体大小为 14px 时的比例缩放
- 					lineHeight: `${fontSize * 20 / 14}px`,
 					borderRadius: `${fontSize * 3 / 14}px`,
 				}
 			},
@@ -258,7 +256,7 @@
 	}
 </script>
 <style lang="scss" scoped>
-	$font-size: 10px;
+	$font-size: 10px !important;
 
 	.uni-countdown {
 		display: flex;

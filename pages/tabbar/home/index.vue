@@ -27,7 +27,10 @@
 					<view @click="handleItem(4)" class="mr-2" :class="checkItem == 4?'col486 text14 checkboxItem':''">
 						威士忌</view>
 				</view>
-				<bomShop />
+				<view class="">
+					<uni-load-more status="loading" class="mt-3" v-if="status" />
+					<bomShop v-else />
+				</view>
 			</view>
 			<!-- 留高 -->
 			<view class="h100">
@@ -54,17 +57,22 @@
 			homeTop,
 			tarBar
 		},
-		
+
 		data() {
 			return {
 				searchValue: '',
 				checkItem: 1,
+				status: false
 			};
 		},
 		onLoad() {},
 		methods: {
 			handleItem(index) {
-				this.checkItem = index
+				this.checkItem = index;
+				this.status = true
+				setTimeout(()=>{
+					this.status = false
+				},500)
 			},
 			handleUrl(url) {
 				console.log(url);

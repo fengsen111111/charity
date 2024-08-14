@@ -1,6 +1,6 @@
 <template>
 	<view class="">
-		<view class="" v-for="item in [1]" :key="item">
+		<view class="">
 			<view class="flex text-black mt-3">
 				<view class="flex justify-between w-full">
 					<view class="flex">
@@ -16,7 +16,7 @@
 				</view>
 			</view>
 			<!--  -->
-			<view class="bgF9 rending1 p-2 col666 text12 ling4">
+			<view class="bgF9 rending1 mt-1 p-2 col666 text12 ling4">
 				五粮春菁萃版52度550ml单瓶装五粮春菁萃版52度550ml单瓶装五粮春菁萃版52度550ml单瓶装五粮春菁萃版52度550ml单瓶装
 			</view>
 		</view>

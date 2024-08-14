@@ -15,6 +15,7 @@
 		},
 		data(){
 			return {
+				route:'',
 				tarbarList:[
 					{
 						id:1,
@@ -56,13 +57,21 @@
 		},
 		methods:{
 			handleCheck(item){
-				uni.navigateTo({
-					url: item.path + ''
-				})
+				if(item.path=='/'+this.route){
+					console.log("跳转当前页，拒绝")
+				}else{
+					uni.navigateTo({
+						url: item.path
+					})
+				}
+				
 			}
 		},
 		created(){
-			console.log('底部生命周期');
+			const pages = getCurrentPages();
+			const page = pages[pages.length - 1];
+			console.log('底部生命周期',page.route);
+			this.route = page.route
 		}
 		
 	}

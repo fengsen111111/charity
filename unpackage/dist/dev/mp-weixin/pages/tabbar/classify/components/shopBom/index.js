@@ -85,9 +85,6 @@ try {
     uniIcons: function () {
       return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 330))
     },
-    haoSlider: function () {
-      return __webpack_require__.e(/*! import() | components/hao-slider/hao-slider */ "components/hao-slider/hao-slider").then(__webpack_require__.bind(null, /*! @/components/hao-slider/hao-slider.vue */ 452))
-    },
   }
 } catch (e) {
   if (
@@ -184,6 +181,8 @@ var _default = {
       number: 2,
       // 温度选着
       temperatureIndex: 1,
+      // 冰冻
+      duration: 0,
       dataTab: [{
         id: 1,
         text: '国产风味'
@@ -202,6 +201,15 @@ var _default = {
       }, {
         id: 6,
         text: '乐堡'
+      }, {
+        id: 7,
+        text: '百2威'
+      }, {
+        id: 8,
+        text: '雪2花'
+      }, {
+        id: 9,
+        text: '燕2京'
       }]
     };
   },
@@ -225,6 +233,9 @@ var _default = {
       this.type = type;
       // open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
       this.$refs.popup.open(type);
+    },
+    durationChange: function durationChange(e) {
+      this.duration = e.target.value;
     }
   }
 };

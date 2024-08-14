@@ -9,7 +9,8 @@
 			</view> -->
 		<view class="grid grid-cols-2 gridRow">
 			<view class="bg-whilt rending1 p-2 mt-3" v-for="item in [1,2,3,4]" :key="item">
-				<image @click="handDetailds" src="https://imgos.cn/2024/08/12/66b9d67b2c357.png" mode="" class="w-full h10"></image>
+				<image @click="handDetailds" src="https://imgos.cn/2024/08/12/66b9d67b2c357.png" mode=""
+					class="w-full h10"></image>
 				<view class="fontBold text12 ling125 ">
 					泸州老窖 六年窖头曲 特惠浓香白酒 52度精品装 500ml...
 				</view>
@@ -80,8 +81,8 @@
 				</view>
 				<!-- 选数量 -->
 				<view class="w95 space-x-2 bg-whilt mt-3">
-				   	<view class="flex text-16 justify-between items-center p-3 ">
-				   		<view>选择数量</view>
+					<view class="flex text-16 justify-between items-center p-3 ">
+						<view>选择数量</view>
 						<view class="flex space-x-3 text24 text-center">
 							<view class="leftView bgFF8 text-whlie" @click="handleDown">
 								-
@@ -93,7 +94,7 @@
 								+
 							</view>
 						</view>
-				   	</view>
+					</view>
 				</view>
 				<!-- 冰冻选择 -->
 				<view class="w95 space-x-2 bg-whilt mt-3 ">
@@ -102,7 +103,9 @@
 							冰冻选择
 						</view>
 						<view class="flex justify-between mt-3">
-							<view @click=handleTemper(item) :class="temperatureIndex==item?'bgF2F col486 border486':' bg-whilt border999'" class=" h-8 w5 text-center rending2 " v-for="item in [1,2,3]" :key="item">
+							<view @click=handleTemper(item)
+								:class="temperatureIndex==item?'bgF2F col486 border486':' bg-whilt border999'"
+								class=" h-8 w5 text-center rending2 " v-for="item in [1,2,3]" :key="item">
 								<text class="" style="line-height:2rem">常温</text>
 							</view>
 						</view>
@@ -118,8 +121,9 @@
 							<view class="w95 space-x-2 bg-whilt mt-3 items-center flex">
 								<view class="">{{min}}</view>
 								<view class="w85 mxAuto">
-									<view class="mx-2">
-										<hao-slider  ref="haoSlider" sliderBgColor="#4867CF" sliderLeftColor="#4867CF" :max="max" :min="min"></hao-slider>
+									<view class="mx-2 text-center">
+										<view class="">{{duration}}</view>
+										<slider backgroundColor="#F9F9F9" activeColor="#4867CF" @change="durationChange" :value="duration" :max="max" :min="min" />
 									</view>
 								</view>
 								<view class="">{{max}}</view>
@@ -147,32 +151,37 @@
 <script>
 	import ruleItem from "@/components/ruleItem/index"
 	export default {
-		components:{ruleItem},
+		components: {
+			ruleItem
+		},
 		data() {
 			return {
 				searchValue: '',
 				type: 'center',
-				value:1,
-				max:10,
-				min:0,
-				number:2,
+				value: 1,
+				max: 10,
+				min: 0,
+				number: 2,
 				// 温度选着
-				temperatureIndex:1
+				temperatureIndex: 1,
+
+				// 
+				duration: '0'
 			};
 		},
 		onLoad() {},
 		methods: {
-			handleTemper(index){
+			handleTemper(index) {
 				this.temperatureIndex = index
 			},
-			handleDown(){
+			handleDown() {
 				this.number--
 			},
-			handleUp(){
+			handleUp() {
 				this.number++
 			},
 			// 关闭
-			close(){
+			close() {
 				this.$refs.popup.close()
 			},
 			// 弹框
@@ -186,23 +195,26 @@
 				uni.navigateTo({
 					url: '/pages/tabbar/home/components/shopDetails/index'
 				})
+			},
+			durationChange(e) {
+				this.duration = e.target.value
 			}
 		}
 	};
 </script>
 
 <style>
-	
-	.btnPoupr{
+	.btnPoupr {
 		width: 9rem;
 	}
+
 	.leftView {
 		width: 2.5rem;
 		height: 1.75rem;
 		line-height: 51rpx;
 		border-radius: 1rem 0px 0px 1rem;
 	}
-	
+
 	.cenVire {
 		background-color: #F9F9F9;
 		width: 2rem;
@@ -210,27 +222,32 @@
 		text-align: center;
 		line-height: 1.75rem;
 	}
-	
+
 	.rightView {
 		width: 2.5rem;
 		height: 1.75rem;
 		line-height: 51rpx;
 		border-radius: 0px 1rem 1rem 0px;
 	}
+
 	.specs {
 		width: 2.5rem;
 		height: 2.5rem;
 	}
-	.tagCol{
-		background: linear-gradient( 270deg, #FA311D 0%, #FF8E34 100%);
+
+	.tagCol {
+		background: linear-gradient(270deg, #FA311D 0%, #FF8E34 100%);
 	}
-	.tagBor{
+
+	.tagBor {
 		border: 1px solid #FA311D;
 	}
-	.itemImg{
+
+	.itemImg {
 		width: 6.5rem;
 		height: 5rem;
 	}
+
 	.checkboxItem {
 		border-bottom: 3px solid #4867CF;
 		padding: 0px 0.5rem;

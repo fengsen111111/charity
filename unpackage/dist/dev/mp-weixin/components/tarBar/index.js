@@ -136,6 +136,7 @@ var _default = {
   },
   data: function data() {
     return {
+      route: '',
       tarbarList: [{
         id: 1,
         text: '首页',
@@ -171,13 +172,20 @@ var _default = {
   },
   methods: {
     handleCheck: function handleCheck(item) {
-      uni.navigateTo({
-        url: item.path + ''
-      });
+      if (item.path == '/' + this.route) {
+        console.log("跳转当前页，拒绝");
+      } else {
+        uni.navigateTo({
+          url: item.path
+        });
+      }
     }
   },
   created: function created() {
-    console.log('底部生命周期');
+    var pages = getCurrentPages();
+    var page = pages[pages.length - 1];
+    console.log('底部生命周期', page.route);
+    this.route = page.route;
   }
 };
 exports.default = _default;

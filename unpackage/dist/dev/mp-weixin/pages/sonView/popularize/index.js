@@ -202,6 +202,9 @@ var _default = {
       this.$refs.popup.open(type);
     },
     handleSure: function handleSure() {
+      uni.showLoading({
+        title: "正在保存中"
+      });
       uni.downloadFile({
         url: 'https://imgos.cn/2024/08/12/66b9d67b2c357.png',
         success: function success(res) {
@@ -209,14 +212,16 @@ var _default = {
             uni.saveImageToPhotosAlbum({
               filePath: res.tempFilePath,
               success: function success() {
+                // uni.hideLoading();
                 uni.showToast({
                   title: "保存成功",
                   icon: "none"
                 });
               },
               fail: function fail() {
+                // uni.hideLoading();
                 uni.showToast({
-                  title: "保存失败，请稍后重试",
+                  title: "保存失败，请确认相册权限是否打开！",
                   icon: "none"
                 });
               }

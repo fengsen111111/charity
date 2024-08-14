@@ -102,9 +102,9 @@
 							<view class="w95 space-x-2 bg-whilt mt-3 items-center flex">
 								<view class="">{{min}}</view>
 								<view class="w85 mxAuto">
-									<view class="mx-2">
-										<hao-slider ref="haoSlider" sliderBgColor="#4867CF" sliderLeftColor="#4867CF"
-											:max="max" :min="min"></hao-slider>
+									<view class="mx-2 text-center">
+										<view class="">{{duration}}</view>
+										<slider backgroundColor="#F9F9F9" activeColor="#4867CF" @change="durationChange" :value="duration" :max="max" :min="min" />
 									</view>
 								</view>
 								<view class="">{{max}}</view>
@@ -144,6 +144,8 @@
 				number:2,
 				// 温度选着
 				temperatureIndex:1,
+				// 冰冻
+				duration: 0,
 				dataTab: [{
 						id: 1,
 						text: '国产风味'
@@ -168,6 +170,19 @@
 						id: 6,
 						text: '乐堡'
 					},
+					{
+						id: 7,
+						text: '百2威'
+					},
+					{
+						id: 8,
+						text: '雪2花'
+					},
+					{
+						id: 9,
+						text: '燕2京'
+					},
+					
 				]
 			}
 		},
@@ -194,13 +209,16 @@
 				// open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
 				this.$refs.popup.open(type)
 			},
+			durationChange(e) {
+				this.duration = e.target.value
+			}
 		}
 	}
 </script>
 
 <style>
 	.rightWidth {
-		width: 17.5rem;
+		width: 17.25rem;
 	}
 	.btnPoupr{
 		width: 9rem;
@@ -211,7 +229,6 @@
 		border-radius: 1rem 0px 0px 1rem;
 		line-height: 51rpx;
 	}
-	
 	.cenVire {
 		background-color: #F9F9F9;
 		width: 2rem;

@@ -35,7 +35,8 @@
 						<view class="flex text12">
 							<view class="price px-1">限时秒杀</view>
 							<view class=" colFA3 borderms">
-								19:10:09
+								<!-- 19:10:09 -->
+								<uni-countdown @timeup="timeup" :show-day="false" :hour="12" :minute="12" :second="40" />
 							</view>
 						</view>
 						<view class="colortext text12" @click="handleUrl('/pages/sonView/spikes/index')">更多</view>
@@ -75,6 +76,9 @@
 		},
 		onLoad() {},
 		methods: {
+			timeup(){
+				console.log('倒计时结束');
+			},
 			handleUrl(url){
 				console.log(url);
 				uni.navigateTo({
@@ -95,10 +99,12 @@
 <style>
 	.price {
 		background: linear-gradient(270deg, #FA311D 0%, #FF8E34 100%);
+		border-radius: 0.25rem 0px 0px 0.25rem;
 	}
 	.borderms{
-		border: 1px solid #FF8E34;
+		border: 1rpx solid #FF8E34;
 		padding: 0px 0.25rem;
+		border-radius: 0px 0.25rem 0.25rem 0px;
 	}
 	.colortext {
 		color: #4867CF;

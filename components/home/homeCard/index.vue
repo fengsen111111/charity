@@ -44,7 +44,7 @@
 								全场通用
 							</text>
 						</view>
-						<view class="pt-3 ">
+						<view class="pt-2">
 							<text class="text12 unit">￥</text>
 							<text class="fontBold text20 mr-2">10</text>
 						</view>

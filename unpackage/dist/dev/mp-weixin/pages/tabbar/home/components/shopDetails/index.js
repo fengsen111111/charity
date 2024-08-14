@@ -200,12 +200,57 @@ var _default = {
   data: function data() {
     return {
       type: 'center',
-      imgs: ['https://imgos.cn/2024/08/12/66b9d71baf094.png'],
+      imgs: ['https://imgos.cn/2024/08/12/66b9d71baf094.png', 'https://imgos.cn/2024/08/12/66b9d67b2c357.png', 'https://imgos.cn/2024/08/12/66b9d71baf094.png'],
       swiperDotIndex: 0
     };
   },
   onLoad: function onLoad() {},
   methods: {
+    // 保存图片
+    handleSure: function handleSure() {
+      uni.showLoading({
+        title: "正在保存中"
+      });
+      uni.downloadFile({
+        url: 'https://imgos.cn/2024/08/12/66b9d67b2c357.png',
+        success: function success(res) {
+          if (res.statusCode === 200) {
+            uni.saveImageToPhotosAlbum({
+              filePath: res.tempFilePath,
+              success: function success() {
+                // uni.hideLoading();
+                uni.showToast({
+                  title: "保存成功",
+                  icon: "none"
+                });
+              },
+              fail: function fail() {
+                // uni.hideLoading();
+                uni.showToast({
+                  title: "保存失败，请确认相册权限是否打开！",
+                  icon: "none"
+                });
+              }
+            });
+          }
+        }
+      });
+    },
+    onLongpress: function onLongpress(e) {
+      //长按事件
+      var _this = this;
+      // console.log('当前长按的图片是' + e);
+      uni.showActionSheet({
+        itemList: ['保存到手机'],
+        success: function success(res) {
+          // console.log('选中了第' + (res.tapIndex + 1) + '个按钮');
+          _this.handleSure();
+        },
+        fail: function fail(res) {
+          console.log(res.errMsg);
+        }
+      });
+    },
     change: function change(e) {
       this.current = e.detail.current;
     },
@@ -230,9 +275,10 @@ var _default = {
     },
     // imgBig
     preview: function preview(url) {
-      var _this = this;
+      var _this2 = this;
+      console.log(url);
       this.$nextTick(function () {
-        _this.$refs.previewImage.open(url); // 传入当前选中的图片地址(小程序必须添加$nextTick，解决组件首次加载无图)
+        _this2.$refs.previewImage.open('https://imgos.cn/2024/08/12/66b9d67b2c357.png'); // 传入当前选中的图片地址(小程序必须添加$nextTick，解决组件首次加载无图)
       });
     },
     // 关闭

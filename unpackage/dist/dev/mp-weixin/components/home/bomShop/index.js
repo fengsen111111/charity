@@ -85,9 +85,6 @@ try {
     uniIcons: function () {
       return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 330))
     },
-    haoSlider: function () {
-      return __webpack_require__.e(/*! import() | components/hao-slider/hao-slider */ "components/hao-slider/hao-slider").then(__webpack_require__.bind(null, /*! @/components/hao-slider/hao-slider.vue */ 452))
-    },
   }
 } catch (e) {
   if (
@@ -179,7 +176,9 @@ var _default = {
       min: 0,
       number: 2,
       // 温度选着
-      temperatureIndex: 1
+      temperatureIndex: 1,
+      // 
+      duration: '0'
     };
   },
   onLoad: function onLoad() {},
@@ -208,6 +207,9 @@ var _default = {
       uni.navigateTo({
         url: '/pages/tabbar/home/components/shopDetails/index'
       });
+    },
+    durationChange: function durationChange(e) {
+      this.duration = e.target.value;
     }
   }
 };

@@ -122,7 +122,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var indexedListItem = function indexedListItem() {
   __webpack_require__.e(/*! require.ensure | uni_modules/uni-indexed-list/components/uni-indexed-list/uni-indexed-list-item */ "uni_modules/uni-indexed-list/components/uni-indexed-list/uni-indexed-list-item").then((function () {
-    return resolve(__webpack_require__(/*! ./uni-indexed-list-item.vue */ 493));
+    return resolve(__webpack_require__(/*! ./uni-indexed-list-item.vue */ 504));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 /**

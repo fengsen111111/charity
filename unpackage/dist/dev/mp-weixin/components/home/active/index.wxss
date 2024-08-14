@@ -1,10 +1,12 @@
 
 .price {
 	background: linear-gradient(270deg, #FA311D 0%, #FF8E34 100%);
+	border-radius: 0.25rem 0px 0px 0.25rem;
 }
 .borderms{
-	border: 1px solid #FF8E34;
+	border: 1rpx solid #FF8E34;
 	padding: 0px 0.25rem;
+	border-radius: 0px 0.25rem 0.25rem 0px;
 }
 .colortext {
 	color: #4867CF;

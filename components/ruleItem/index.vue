@@ -12,7 +12,7 @@
 			</view>
 			<!--  -->
 			<view class="flex mt-4">
-				<view class="rending1 p-2 flex w7 mr-2" @click=handleCheck(item)
+				<view class="rending1 p-2 flex w7 mr-2" @click="handleCheck(item)"
 					:class="checkItem == item?'bgF2F col486 border486':' bg-whilt border999'" v-for="item in [1,2]"
 					:key="item">
 					<image src="https://imgos.cn/2024/08/12/66b9d67b2c357.png" mode="" class="specs"></image>

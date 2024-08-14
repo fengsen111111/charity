@@ -74,16 +74,6 @@
 			return {
 				title: 'Hello',
 				radio1: 1, //单选
-				sex: [{
-					text: '男',
-					value: 0
-				}, {
-					text: '女',
-					value: 1
-				}, {
-					text: '未知',
-					value: 2
-				}],
 			}
 		},
 		onLoad() {
@@ -100,7 +90,7 @@
 		height: 2rem;
 		position: fixed;
 		background-color: #fff;
-		top: 82vh;
+		bottom: 7.5vh;
 		width: 100%;
 	}
 

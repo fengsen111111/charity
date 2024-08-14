@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "uni-load-more": "/uni_modules/uni-load-more/components/uni-load-more/uni-load-more",
     "bom-shop": "/components/home/bomShop/index",
     "home-card": "/components/home/homeCard/index",
     "two-card": "/components/home/twoCard/index",

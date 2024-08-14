@@ -227,7 +227,7 @@
 			</view>
 		</uni-popup>
 		<!-- 图片放大 -->
-		<q-previewImage ref="previewImage" :urls="imgs"></q-previewImage>
+		<q-previewImage ref="previewImage" :urls="imgs" @onLongpress="onLongpress"></q-previewImage>
 	</view>
 </template>
 
@@ -246,12 +246,60 @@
 		data() {
 			return {
 				type: 'center',
-				imgs: ['https://imgos.cn/2024/08/12/66b9d71baf094.png'],
+				imgs: [
+					'https://imgos.cn/2024/08/12/66b9d71baf094.png',
+					'https://imgos.cn/2024/08/12/66b9d67b2c357.png',
+					'https://imgos.cn/2024/08/12/66b9d71baf094.png'
+					],
 				swiperDotIndex: 0
 			};
 		},
 		onLoad() {},
 		methods: {
+			// 保存图片
+			handleSure() {
+				uni.showLoading({
+					title: "正在保存中"
+				})
+				uni.downloadFile({
+					url: 'https://imgos.cn/2024/08/12/66b9d67b2c357.png',
+					success: (res) => {
+						if (res.statusCode === 200) {
+							uni.saveImageToPhotosAlbum({
+								filePath: res.tempFilePath,
+								success: function() {
+									// uni.hideLoading();
+									uni.showToast({
+										title: "保存成功",
+										icon: "none"
+									});
+								},
+								fail: function() {
+									// uni.hideLoading();
+									uni.showToast({
+										title: "保存失败，请确认相册权限是否打开！",
+										icon: "none"
+									});
+								}
+							});
+						}
+					}
+				})
+			},
+			onLongpress(e) { //长按事件
+		    	const _this = this
+				// console.log('当前长按的图片是' + e);
+				uni.showActionSheet({
+					itemList: ['保存到手机'],
+					success: function(res) {
+						// console.log('选中了第' + (res.tapIndex + 1) + '个按钮');
+						_this.handleSure()
+					},
+					fail: function(res) {
+						console.log(res.errMsg);
+					}
+				});
+			},
 			change(e) {
 				this.current = e.detail.current
 			},
@@ -276,13 +324,14 @@
 			},
 			// imgBig
 			preview(url) {
+				console.log(url);
 				// #ifdef MP-WEIXIN
 				this.$nextTick(() => {
-					this.$refs.previewImage.open(url); // 传入当前选中的图片地址(小程序必须添加$nextTick，解决组件首次加载无图)
+					this.$refs.previewImage.open('https://imgos.cn/2024/08/12/66b9d67b2c357.png'); // 传入当前选中的图片地址(小程序必须添加$nextTick，解决组件首次加载无图)
 				})
 				// #endif
 				// #ifndef MP-WEIXIN
-				this.$refs.previewImage.open('https://imgos.cn/2024/08/12/66b9d71baf094.png'); // 传入当前选中的图片地址
+				this.$refs.previewImage.open('https://imgos.cn/2024/08/12/66b9d67b2c357.png'); // 传入当前选中的图片地址
 				// #endif
 			},
 			// 关闭
@@ -323,15 +372,17 @@
 	.swiper-box {
 		height: 20rem;
 	}
+
 	.swiper-item {
-			/* #ifndef APP-NVUE */
-			display: flex;
-			/* #endif */
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			color: #fff;
-		}
+		/* #ifndef APP-NVUE */
+		display: flex;
+		/* #endif */
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		color: #fff;
+	}
+
 	.borderLeftRight {
 		border-left: 1px solid #999999;
 		border-right: 1px solid #999999;

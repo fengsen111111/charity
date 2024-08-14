@@ -1,6 +1,6 @@
 
 .rightWidth {
-	width: 17.5rem;
+	width: 17.25rem;
 }
 .btnPoupr{
 	width: 9rem;
