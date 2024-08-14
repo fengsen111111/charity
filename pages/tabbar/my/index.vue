@@ -157,20 +157,17 @@
 
 <style>
 	.centerBgTwo {
-		
 		background-size: 100% 100%;
 		width: 100%;
 		height: 3rem;
 	}
 
 	.centerBg {
-		
 		background-size: 100% 100%;
 		width: 48%;
 	}
 
 	.centerBg2 {
-		
 		background-size: 100% 100%;
 		width: 48%;
 	}
@@ -182,12 +179,12 @@
 
 	.iconLeft {
 		position: relative;
-		left: 41vw;
+		left: 40vw;
 	}
 
 	.userImg {
-		width: 2.5rem;
-		height: 2.5rem;
+		width: 3.5rem;
+		height: 3.5rem;
 	}
 
 	.bgMyImg {

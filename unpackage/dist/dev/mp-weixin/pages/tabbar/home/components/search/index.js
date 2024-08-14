@@ -101,10 +101,10 @@ var components
 try {
   components = {
     uniIcons: function () {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 322))
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 330))
     },
     uniSearchBar: function () {
-      return Promise.all(/*! import() | uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar.vue */ 344))
+      return Promise.all(/*! import() | uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar.vue */ 352))
     },
   }
 } catch (e) {
@@ -178,7 +178,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var bomShop = function bomShop() {
   __webpack_require__.e(/*! require.ensure | components/home/bomShop/index */ "components/home/bomShop/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/home/bomShop/index.vue */ 258));
+    return resolve(__webpack_require__(/*! @/components/home/bomShop/index.vue */ 266));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -219,8 +219,11 @@ var _default = {
   },
   onLoad: function onLoad() {},
   methods: {
-    search: function search() {
-      console.log('出发收缩');
+    search: function search(res) {
+      uni.showToast({
+        title: '搜索：' + res.value,
+        icon: 'none'
+      });
     },
     handleItem: function handleItem(item) {
       console.log(item);

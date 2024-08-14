@@ -114,8 +114,8 @@
 		},
 		data() {
 			return {
-				show: true,
-				showSync: true,
+				show: false,
+				showSync: false,
 				searchVal: ''
 			}
 		},
@@ -256,6 +256,7 @@
 		align-items: center;
 		height: 64rpx;
 		padding: 5px 8px 5px 0px;
+		width: 300rpx;
 	}
 
 	.uni-searchbar__box-icon-search {

@@ -965,8 +965,8 @@ function populateParameters(result) {
   // wx.getAccountInfoSync
 
   var parameters = {
-    appId: "",
-    appName: "快鹿送酒new",
+    appId: "__UNI__C989549",
+    appName: "快鹿送酒小程序",
     appVersion: "1.0.0",
     appVersionCode: "100",
     appLanguage: getAppLanguage(hostLanguage),
@@ -1064,8 +1064,8 @@ var getAppBaseInfo = {
     var _hostName = getHostName(result);
     var hostLanguage = language.replace('_', '-');
     result = sortObject(Object.assign(result, {
-      appId: "",
-      appName: "快鹿送酒new",
+      appId: "__UNI__C989549",
+      appName: "快鹿送酒小程序",
       appVersion: "1.0.0",
       appVersionCode: "100",
       appLanguage: getAppLanguage(hostLanguage),
@@ -1747,7 +1747,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"快鹿送酒new","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"快鹿送酒小程序","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -8790,7 +8790,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"快鹿送酒new","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"快鹿送酒小程序","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8811,14 +8811,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"快鹿送酒new","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"快鹿送酒小程序","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"快鹿送酒new","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"快鹿送酒小程序","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8914,7 +8914,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"快鹿送酒new","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"快鹿送酒小程序","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -9344,7 +9344,7 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 291:
+/***/ 299:
 /*!********************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/home.png ***!
   \********************************************************************************/
@@ -9352,94 +9352,6 @@ internalMixin(Vue);
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAlVJREFUOE/dlL1rFEEYxp9nvZxRULZTMHamULDwL/C0kRAbxYX4EbzjbpYkCCr4kWifGAtBMJ7ObPy4kDSLhQgiWBzYKDYiiDYWwV5vGpGY3L5m5HKsy10CYuVUu/PO+5uZ93neIdYZQRBs8X3/FoAhkgJgodFoXI7j+Ee3NHYLDAwMbO7r63sO4KCIPPQ8DyJSWv2vW2sH4zj+2Sm3I7BQKOT6+/ufkDzabDaHZ2dnF1xypVI5Q7IG4Km19kQcx80stBPQU0q5pFMAxowx99JJSqkxkjMiMmeMOQvAlaI9skBWKpUZz/NGRWTcGDPd6VpKqQmSkwBmtNbnugLDMJwCMA7ghtZ6Yj3BlFLTJK8AmNRaX19b2z5hGIYONJUkSTWKorH1YK0YlVJ3SY4AuKq1vunmfwOVUiMkqyIyb4wZztalGzwIgk2+7z929SY5qrW+73YZcv4C8Mxae7yTcht4Ne/7fgxgUEROMwxDKyIfrLWHu3lro+u3GuAlyX3uhB8B7AHwHUDVGHNtI0DGRq8A7AewleRnlkql3T09PeWWulWt9cW1BKXUEZI704AkSd5GUfQpteYdyW2u/isrK1FbZaVUg+SjDLBOspAGisgFY8ztDHBRa32srXJL6Y7AVU/2Li8vn8zlcts9z3v/L4AwxhwqFot+Pp9v/EfAMAy/JUkyF0XR+VTB6+77b6/8muQuAA9SrVcUkcU0EMALAG9am/YCcDa7o7W+9IfK5XL5gOd58yT3ZmxSc+9eEASuxb6s9vyOtbiIuAe2vrS0NFSr1b66+V/THlAOUpg9hgAAAABJRU5ErkJggg=="
-
-/***/ }),
-
-/***/ 292:
-/*!****************************************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/home_checked.png ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAfFJREFUOE/V0c9LFGEYB/Dv991atkFMshLKhGqjP0DBQwVKiIcQSYyKlsIV++VBxCUEC6MfhKAdliTysAtbUGxFSxBdgoKmkPAY5MEFyaA2FbQUxJ2ZJzZxddeZxYYuzmXe4XmezzPP+xAFnvhH2ZL2zoVBnAS4aIk8Mn4XdbfUcsGpjE6B3rh4K3b/egmgPidH8NrwFTdeqGLartYWjMfFM7lt9gmIZtuGgqeTR7eeuk5a+fG1oAj7X81ESTlX6DoEjIaOlbQClNV5a8Dbz6buAWgvhC3HBAxfbS7tcAR7Yj/vKIXu9WArOerWzcD2a8vf2T/sepC6ojzS92/YUrYlDA20lQ1kzn/B9vD3S1QYpIjj1gs2IsUy5eJgx64hBvsmzniUigGilvzMHbt4E6YlCDBw4+ssyWI3o9rUTPNEz8QoYB38PyA/syE0vhdAKyx0AqK5gYVIKsXHNDcPZZdQdzmZArDTFShIvLm//3h2y5nDkeBYirQFh5WZPg2vz2eZ5he7hiJIvI/4c8HDLfagCN7pUX9t5fkRTTNK5m1BIKFvQDA49oNAWf5I2ZEbRjRth+PIL/SIvylvKclhQKrdgXJXjxzoygEPBZNVFHlOomI1KsBDPeI/W1PzdpOxb8+3/CkE+LBo+Bo/xcqnM3V/AFTL1Tf3YNmPAAAAAElFTkSuQmCC"
-
-/***/ }),
-
-/***/ 293:
-/*!************************************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/classify.png ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAw5JREFUOE+1VV1oFFcU/s7dmWnSNWTXWJqlUOqjIkJbRbBQX2qh0TwUMj4EIhuYHfIoKQ1C06caEEPia9iZhyV5ywiFprVC+yIqKLQJ+O+TKOhGMG5Cqtmd2dzTnGVHdtcEAup9mrn33O+ec7/zfZcAwLZtK51ODzPzIIDPACwCuBBF0S+FQmFZYuKRzWZTpmn+DKAPQDcRPdzYUyiVSpNBEIQkYKlU6hKAvUQ0rrW+CWC3UkoOoEqlcnh6enpJAF3X3cXM14hIa63PA3iolNrPzD8y8+2VlZUecl33NDOfSiQSX05NTT2JM7Fte0cqlbq8UcAdz/NO1gFnmHnv8vLykSAI/otjh4aGPtFazwM4T7lc7gER5fP5/ERjafKdy+W+I6Jfi8XiTvnPZDIvmPl7z/P+bI11XfcH2SKAFWY+7vv+X61B2Wy227KsYhiGewzDIKXU3TAMM4VCQe64aTiOc5SIfpeSH2mtx3zfz28CmLIsq8TMn8saES2EYZhuJUrWHMdxlVI/SYYTRNSztrZ2YGZm5mUro9sBHBgYSLa3t//LzH9Qf39/OplMXgcglzzKzPNKqbIAa62ljFlmzlSrVTJN8ykzn1BK1a5Ha91GRF8Q0RgzJ6MoOkSyMDg4+JFhGJLpCQAfxFkyMwM453ne6TpJZwGMEFFtX30IB7NENJzP5583LqC3t/fDrq6uT03TbJNgZi76vv+s8Rocx/mYiDIyF0VReWlp6fHc3NyrOKYJ0Lbt9o6OjteA6+vri5sBJhKJ7hhwdXX1cRAEa02AogBpSlHhW5dc1+aNmJQoihYA1EgxDOObzUipVqt/1zNqM01TWuoMgB01UuK2KZVKBxvlJBvksO20jcg0nU7/U2ub99HYFQDHPM+Ly3hNaqP0ZNKyrHtbSc913W8B/CYZ3gfgvTNz2Mq+6nK6Ij7Xal/lcvnrRpk22ZcYbGdn50Ui2rchn3EATQZLRF+JAhoUdZWIWGs9KQYLYL9SakRrfatmsBIYPwFCLDPvJqJFZt70Cahrf5SI+pj5jSfgfwkR7OadHY94AAAAAElFTkSuQmCC"
-
-/***/ }),
-
-/***/ 294:
-/*!********************************************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/classify_checked.png ***!
-  \********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAw5JREFUOE+1VV1oFFcU/s7dmWnSNWTXWJqlUOqjIkJbRbBQX2qh0TwUMj4EIhuYHfIoKQ1C06caEEPia9iZhyV5ywiFprVC+yIqKLQJ+O+TKOhGMG5Cqtmd2dzTnGVHdtcEAup9mrn33O+ec7/zfZcAwLZtK51ODzPzIIDPACwCuBBF0S+FQmFZYuKRzWZTpmn+DKAPQDcRPdzYUyiVSpNBEIQkYKlU6hKAvUQ0rrW+CWC3UkoOoEqlcnh6enpJAF3X3cXM14hIa63PA3iolNrPzD8y8+2VlZUecl33NDOfSiQSX05NTT2JM7Fte0cqlbq8UcAdz/NO1gFnmHnv8vLykSAI/otjh4aGPtFazwM4T7lc7gER5fP5/ERjafKdy+W+I6Jfi8XiTvnPZDIvmPl7z/P+bI11XfcH2SKAFWY+7vv+X61B2Wy227KsYhiGewzDIKXU3TAMM4VCQe64aTiOc5SIfpeSH2mtx3zfz28CmLIsq8TMn8saES2EYZhuJUrWHMdxlVI/SYYTRNSztrZ2YGZm5mUro9sBHBgYSLa3t//LzH9Qf39/OplMXgcglzzKzPNKqbIAa62ljFlmzlSrVTJN8ykzn1BK1a5Ha91GRF8Q0RgzJ6MoOkSyMDg4+JFhGJLpCQAfxFkyMwM453ne6TpJZwGMEFFtX30IB7NENJzP5583LqC3t/fDrq6uT03TbJNgZi76vv+s8Rocx/mYiDIyF0VReWlp6fHc3NyrOKYJ0Lbt9o6OjteA6+vri5sBJhKJ7hhwdXX1cRAEa02AogBpSlHhW5dc1+aNmJQoihYA1EgxDOObzUipVqt/1zNqM01TWuoMgB01UuK2KZVKBxvlJBvksO20jcg0nU7/U2ub99HYFQDHPM+Ly3hNaqP0ZNKyrHtbSc913W8B/CYZ3gfgvTNz2Mq+6nK6Ij7Xal/lcvnrRpk22ZcYbGdn50Ui2rchn3EATQZLRF+JAhoUdZWIWGs9KQYLYL9SakRrfatmsBIYPwFCLDPvJqJFZt70Cahrf5SI+pj5jSfgfwkR7OadHY94AAAAAElFTkSuQmCC"
-
-/***/ }),
-
-/***/ 295:
-/*!*********************************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/phone.png ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAtdJREFUOE+VlU9oFFccx7/fmZ1gym7dFUV6KFTQg1io4kEUPQklSAk9dA9JLGa7815rS6JBDRY8SEGRCHqQbtk3M2kQMbZbQfFSimIoKVUJRfQgJKBiQS/CRtI/kjjza96yKyvFuPsO8xjm/T7v+3u/7+8NUR9KqW6SJRF5SPJjY8zTxrd2ZtrFxWKxy3GcywCGAXxI8h0A240x/7QDs2tZKBRWeZ53D8AxY8xprfVbAG4A+N0Y83nbQKXUSQA7giDYCkAsQCm1AcAUyV3GmOvtQKm1fiQiw0EQXGgOVEodJ9lljNnc2KgVsAXOk9xWLpenmgN8319N8gnJD4wxd1uB1c5QKXULwIUgCE41grTWe0XkMMl/q9Xqlkql8qxloNZ6UEQGZmZm1k9MTLzwfX8HyWskv5yfnz83Njb2vFVYTWE+n0/ncrmZxZejxpiyTdVxnAci0h0EwdV2YDWgffi+v5vkmTiON4yOjj7WWn8jIr2e520slUp/tQOtAetWuQIgMzs7uxOAm81mJ0n+aYz5pK0qN4A9PT0rM5nMH7ZAix0yXCgU3vU872aSJJfCMPyqGdrX1/d2Z2fne2EY2urXvNsYLxXWW3CT67qTSZIMhWFoisXi+67r/mK7JpVK7bHp9/f3L+vo6LgtImtJ3gFwoNn8rwDrqX9E8qc4jj+Loui8VZpKpS4CWAHgCwBrABxZWFjY4nneIIAhkmftbHv/f8C60l7XdUeTJBm0SvP5fEculzsC4KCIpEgOWEc02pTk+OImL2oXy+sqqJSySn8A8G21Wv26UqnE1lI21SiKfmuOsxeKiFQALH8tsOlML4vI/TiOe62llhCwj+ShJYE22FY/nU5/b+9Hkoenp6cj21HNhdVa7xeREwDybwQ2AuvmHwHwN4DvHMf5NY7jdSStsrVxHO+OoujnloEWbNs0m80WAHxKcqOIPCb549zc3Mj4+Hjtl/Efo7ki8D4vgkkAAAAASUVORK5CYII="
-
-/***/ }),
-
-/***/ 296:
-/*!*****************************************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/phone_checked.png ***!
-  \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAtdJREFUOE+VlU9oFFccx7/fmZ1gym7dFUV6KFTQg1io4kEUPQklSAk9dA9JLGa7815rS6JBDRY8SEGRCHqQbtk3M2kQMbZbQfFSimIoKVUJRfQgJKBiQS/CRtI/kjjza96yKyvFuPsO8xjm/T7v+3u/7+8NUR9KqW6SJRF5SPJjY8zTxrd2ZtrFxWKxy3GcywCGAXxI8h0A240x/7QDs2tZKBRWeZ53D8AxY8xprfVbAG4A+N0Y83nbQKXUSQA7giDYCkAsQCm1AcAUyV3GmOvtQKm1fiQiw0EQXGgOVEodJ9lljNnc2KgVsAXOk9xWLpenmgN8319N8gnJD4wxd1uB1c5QKXULwIUgCE41grTWe0XkMMl/q9Xqlkql8qxloNZ6UEQGZmZm1k9MTLzwfX8HyWskv5yfnz83Njb2vFVYTWE+n0/ncrmZxZejxpiyTdVxnAci0h0EwdV2YDWgffi+v5vkmTiON4yOjj7WWn8jIr2e520slUp/tQOtAetWuQIgMzs7uxOAm81mJ0n+aYz5pK0qN4A9PT0rM5nMH7ZAix0yXCgU3vU872aSJJfCMPyqGdrX1/d2Z2fne2EY2urXvNsYLxXWW3CT67qTSZIMhWFoisXi+67r/mK7JpVK7bHp9/f3L+vo6LgtImtJ3gFwoNn8rwDrqX9E8qc4jj+Loui8VZpKpS4CWAHgCwBrABxZWFjY4nneIIAhkmftbHv/f8C60l7XdUeTJBm0SvP5fEculzsC4KCIpEgOWEc02pTk+OImL2oXy+sqqJSySn8A8G21Wv26UqnE1lI21SiKfmuOsxeKiFQALH8tsOlML4vI/TiOe62llhCwj+ShJYE22FY/nU5/b+9Hkoenp6cj21HNhdVa7xeREwDybwQ2AuvmHwHwN4DvHMf5NY7jdSStsrVxHO+OoujnloEWbNs0m80WAHxKcqOIPCb549zc3Mj4+Hjtl/Efo7ki8D4vgkkAAAAASUVORK5CYII="
-
-/***/ }),
-
-/***/ 297:
-/*!************************************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/shopping.png ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAsBJREFUOE+d019oj1EYB/Dv8777Y1vDNBdqrcT8uVBYufAnIzej3WD5s4318z7vr1HKxSJRUpQUKfHbed61TTLzcyMuJhcSJalxQynMFErYEJp3ncdO7Sez2fp5r07vOefTeb7nPMTML4loNgCo6j0RWeXG//tRMpmsV9U5qroIwMY4jme0t7cP/DeY2cjMi4nokareAPAhS/ATEV0xxjygzMaqqqqciooKdzJLRB+zAVV1OoBiAFt+gw4Iw/COqn4TkfXZgNXV1fllZWXXiah8FMjMJ4holzGmNBvQrQ2CoNnzvOOjwCAINnuelwYw1xjzIhs0DMOzqrp+FNjQ0FBeUFDQZ63dHkVR52QgM98fXnNERG4y800ANAocyfEdgMvGmH0TgY2NjVPy8vJ+qGqTiKSY+TkRdY8BmfkagFIRWTEB6AVBcMDzvGOquqSnp+dJZWXld2tt8xgwCIKDnucd6u/vn55Op3/+jTJzFxHVACiw1p6Pomg3M88jomeqWjNeySsB3LXWbo2iqOtvMJlM1qiqa4KHLS0t3W6emQ+5LOM4LhsDumDDMLwFYPlw6e7m3kxyOQvdqwEgItI0Hoja2tppJSUlp1V1GxFNmQT8oqqpgYGBwy6iccEMkEgkiq21CwYHB3vz8/OH/oRzcnLK4zj+1tHR0evaNTP3TzAIgrVElCaiGar6emhoqLqtre2pey65ublXhzPc4CBVPS4ihycDXY6vrLXvfd8/Y609CqBPRNaEYbhXVU8RUTOACgBNqrpMRB46dNwT1tXVTS0qKvqsqntE5BwznwTQKCIzwzBsAbDOGDOnvr5+VmFh4Vtr7c4oii78ExzpmMcAXLmdRMQAbhtjNjFzHRFdVNV2AOXD/1e7nFtbW59PCCYSifm+77tNSx3m+/6OVCr13lXFzMcA7AbwlYj2G2MuZTL8BRCAL+hULSaWAAAAAElFTkSuQmCC"
-
-/***/ }),
-
-/***/ 298:
-/*!********************************************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/shopping_checked.png ***!
-  \********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAoRJREFUOE+d1EtI1FEUBvDvXMdHZiltjIpSwoIsGx0rSxMrU1oUEWVFEWT0wIK0QCGKtHdipYKkWdCmhaaB0CLU0DKhQPGRmiYkFSQ4qWWWMM3/fjGlxaBOOnd14ZzvxzlcuGIu7X4ngmAAIFHfnBQS47i7eySipHs/gMUkVgiwQ48Mz2k+GP7FbXAsaH7w1uxBNEHjMRQ+TwskB0ApbTyw5JX8DWbWmCKD5jkmmzktbLRZAIOQ3f9AAKvudT0DEOsO+CfDLidwdVHndQDp7oIC2p3ANYWdO0XzobsgiB4n0JLbttBLebyfFiiSSjBAiEwKqpxAB7T2ZkevCOZOFdXCKA+NRRQpIVAwDozOaa8AsW1KoKCmfrgvIdo3MBvCNEDSxoHrr7WfIXDZJUjkWwcHz3Zlx3yLufrGAhjPIeILrbaOB6+0RUPjxX8mbBWRRySDBdhDwFuExohtZME40AHFZrVVA9w0pbVHmwh1u+58aMqEoCWjwd/P0/uWCPYC8HEFExiCYqEVnec6spJsE4JjgOVIg+csf59QTeOrsutBJ9hL+YmSQL7sb6mt3WAfq00KWjI/+c7+bq0QQTwAOyEXarLDLjqCcemt+xRYDGCGAK9tNs/EutxlvY7apODGU60ZIvoSRaWJphlAsqEQZhr6+ZF+pl5RUqMhZULmCFhRfcOc7BLcnNpyH2RkVZ55eVxqU5CJ0kORXdowuj2UaiZly9P8lU/iTzaXA5hfnWeOcgkmnGg5RPCuaBZDsBQiUVqZQuxD1j4vv4APIPpAqYTicU3kVReE//5UXDxKpko8tj2b4FEBB0icriyKKHOEElKa1olGEYAQCsr7DeNw453IH47aLwXH+tHYkl6QAAAAAElFTkSuQmCC"
-
-/***/ }),
-
-/***/ 299:
-/*!******************************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/my.png ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAA11JREFUOE+NVFtonEUU/s6EjcEEzepDX4xgH0qxigp98EFfRGtTtSKyICwb1u4/E7IWQS3eiJc+RCulKNYbc/5/TTexAX8QsWoasBIEfVBf4gWKpIpEEEVNg4k/7mWOO+XfkGvjvM2Z73wz3znfGcImS2u9Q0QeIqI9ALansHNENNVsNl+Pomh2o1TaIKi01s8R0dMi0iCiMwC+TXHXA7gdgALwgrX2MABZybGOMAiCilLqQefciaWlpUMTExN/rEwIgmAbER0looKIMDObTQm11geIKHLOjYRhOLxZOXxca/0SET0OoGitPdHGLr/QGJMRkZ8B/MjMt66VsklpPgdwFRFtt9bWPWaZUGt9JxGdbjab+6MoOuUPjTGBc+7LMAy/8fuhoaFsvV4vLywsHI3juKa1vo+I3hORO5j5k7WEzxLR4SRJesbGxpZSWfMA3mbmR/0+CIJ7lVLvNxqNGyuVykw+n7+su7t7AcBT1tojqwiNMS+LSJGZs215WuvPAJxk5rd8rFQq3eQJkyS5eXx8/Nf00kUiYmvtI2sJnwfwzPz8fE8cx8nFGtI+y+VyPdls9m8Aw9bakVWEpVLpno6Ojg9EZC8zT/0fwiAI9imlPhKRfcw8uYqwv7//kr6+vl8AzFhrvXm3WqS1PkNEu+bm5q6enJz8dxVh2tWDAI4DOGStPXYxxiAInlRKveicK4dh+OY6H6YBf2tMRPcDeCVJkuF2x9sJ5XK5p1arjSilHhaRd5n5gZWeXTd6uVyus7e317/OfwznReSUiHx3QQ7RdQD2A7hcRI7Pzs4+Nj093dhw9AYGBq7s7OwsENFuEfGFPqeU8iXYQ0TbfJKI/AZgSkRebdlpBxHdJSJf12q1sWq1+udyDUul0l6l1DtEdIWI/ATgNQCfAriUmb/w9vDgOI4XjTG3iMgigNsAHCSia0TkL+dcPoqi0zQ4OHitiHwlImdbczzAzN+nhvUDnwfwhpedSvZyh1qzW7XWHkhxu1r/ZZWIdjrndvsmnATQLyI7wzD0ki6sQqHQ3dXVdYyIfGImDdedc6FSyrvgnzY2/dLOisjHnvD3Vt0+bN+41irFYrE3k8nc4OP1en1mdHT0/EZ2MsZUWvW8m4wxP4jIEWaubOXkLXxZUko98R/5AYlv5IG+dwAAAABJRU5ErkJggg=="
 
 /***/ }),
 
@@ -9475,6 +9387,94 @@ module.exports = g;
 /***/ }),
 
 /***/ 300:
+/*!****************************************************************************************!*\
+  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/home_checked.png ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAfFJREFUOE/V0c9LFGEYB/Dv991atkFMshLKhGqjP0DBQwVKiIcQSYyKlsIV++VBxCUEC6MfhKAdliTysAtbUGxFSxBdgoKmkPAY5MEFyaA2FbQUxJ2ZJzZxddeZxYYuzmXe4XmezzPP+xAFnvhH2ZL2zoVBnAS4aIk8Mn4XdbfUcsGpjE6B3rh4K3b/egmgPidH8NrwFTdeqGLartYWjMfFM7lt9gmIZtuGgqeTR7eeuk5a+fG1oAj7X81ESTlX6DoEjIaOlbQClNV5a8Dbz6buAWgvhC3HBAxfbS7tcAR7Yj/vKIXu9WArOerWzcD2a8vf2T/sepC6ojzS92/YUrYlDA20lQ1kzn/B9vD3S1QYpIjj1gs2IsUy5eJgx64hBvsmzniUigGilvzMHbt4E6YlCDBw4+ssyWI3o9rUTPNEz8QoYB38PyA/syE0vhdAKyx0AqK5gYVIKsXHNDcPZZdQdzmZArDTFShIvLm//3h2y5nDkeBYirQFh5WZPg2vz2eZ5he7hiJIvI/4c8HDLfagCN7pUX9t5fkRTTNK5m1BIKFvQDA49oNAWf5I2ZEbRjRth+PIL/SIvylvKclhQKrdgXJXjxzoygEPBZNVFHlOomI1KsBDPeI/W1PzdpOxb8+3/CkE+LBo+Bo/xcqnM3V/AFTL1Tf3YNmPAAAAAElFTkSuQmCC"
+
+/***/ }),
+
+/***/ 301:
+/*!************************************************************************************!*\
+  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/classify.png ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAw5JREFUOE+1VV1oFFcU/s7dmWnSNWTXWJqlUOqjIkJbRbBQX2qh0TwUMj4EIhuYHfIoKQ1C06caEEPia9iZhyV5ywiFprVC+yIqKLQJ+O+TKOhGMG5Cqtmd2dzTnGVHdtcEAup9mrn33O+ec7/zfZcAwLZtK51ODzPzIIDPACwCuBBF0S+FQmFZYuKRzWZTpmn+DKAPQDcRPdzYUyiVSpNBEIQkYKlU6hKAvUQ0rrW+CWC3UkoOoEqlcnh6enpJAF3X3cXM14hIa63PA3iolNrPzD8y8+2VlZUecl33NDOfSiQSX05NTT2JM7Fte0cqlbq8UcAdz/NO1gFnmHnv8vLykSAI/otjh4aGPtFazwM4T7lc7gER5fP5/ERjafKdy+W+I6Jfi8XiTvnPZDIvmPl7z/P+bI11XfcH2SKAFWY+7vv+X61B2Wy227KsYhiGewzDIKXU3TAMM4VCQe64aTiOc5SIfpeSH2mtx3zfz28CmLIsq8TMn8saES2EYZhuJUrWHMdxlVI/SYYTRNSztrZ2YGZm5mUro9sBHBgYSLa3t//LzH9Qf39/OplMXgcglzzKzPNKqbIAa62ljFlmzlSrVTJN8ykzn1BK1a5Ha91GRF8Q0RgzJ6MoOkSyMDg4+JFhGJLpCQAfxFkyMwM453ne6TpJZwGMEFFtX30IB7NENJzP5583LqC3t/fDrq6uT03TbJNgZi76vv+s8Rocx/mYiDIyF0VReWlp6fHc3NyrOKYJ0Lbt9o6OjteA6+vri5sBJhKJ7hhwdXX1cRAEa02AogBpSlHhW5dc1+aNmJQoihYA1EgxDOObzUipVqt/1zNqM01TWuoMgB01UuK2KZVKBxvlJBvksO20jcg0nU7/U2ub99HYFQDHPM+Ly3hNaqP0ZNKyrHtbSc913W8B/CYZ3gfgvTNz2Mq+6nK6Ij7Xal/lcvnrRpk22ZcYbGdn50Ui2rchn3EATQZLRF+JAhoUdZWIWGs9KQYLYL9SakRrfatmsBIYPwFCLDPvJqJFZt70Cahrf5SI+pj5jSfgfwkR7OadHY94AAAAAElFTkSuQmCC"
+
+/***/ }),
+
+/***/ 302:
+/*!********************************************************************************************!*\
+  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/classify_checked.png ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAw5JREFUOE+1VV1oFFcU/s7dmWnSNWTXWJqlUOqjIkJbRbBQX2qh0TwUMj4EIhuYHfIoKQ1C06caEEPia9iZhyV5ywiFprVC+yIqKLQJ+O+TKOhGMG5Cqtmd2dzTnGVHdtcEAup9mrn33O+ec7/zfZcAwLZtK51ODzPzIIDPACwCuBBF0S+FQmFZYuKRzWZTpmn+DKAPQDcRPdzYUyiVSpNBEIQkYKlU6hKAvUQ0rrW+CWC3UkoOoEqlcnh6enpJAF3X3cXM14hIa63PA3iolNrPzD8y8+2VlZUecl33NDOfSiQSX05NTT2JM7Fte0cqlbq8UcAdz/NO1gFnmHnv8vLykSAI/otjh4aGPtFazwM4T7lc7gER5fP5/ERjafKdy+W+I6Jfi8XiTvnPZDIvmPl7z/P+bI11XfcH2SKAFWY+7vv+X61B2Wy227KsYhiGewzDIKXU3TAMM4VCQe64aTiOc5SIfpeSH2mtx3zfz28CmLIsq8TMn8saES2EYZhuJUrWHMdxlVI/SYYTRNSztrZ2YGZm5mUro9sBHBgYSLa3t//LzH9Qf39/OplMXgcglzzKzPNKqbIAa62ljFlmzlSrVTJN8ykzn1BK1a5Ha91GRF8Q0RgzJ6MoOkSyMDg4+JFhGJLpCQAfxFkyMwM453ne6TpJZwGMEFFtX30IB7NENJzP5583LqC3t/fDrq6uT03TbJNgZi76vv+s8Rocx/mYiDIyF0VReWlp6fHc3NyrOKYJ0Lbt9o6OjteA6+vri5sBJhKJ7hhwdXX1cRAEa02AogBpSlHhW5dc1+aNmJQoihYA1EgxDOObzUipVqt/1zNqM01TWuoMgB01UuK2KZVKBxvlJBvksO20jcg0nU7/U2ub99HYFQDHPM+Ly3hNaqP0ZNKyrHtbSc913W8B/CYZ3gfgvTNz2Mq+6nK6Ij7Xal/lcvnrRpk22ZcYbGdn50Ui2rchn3EATQZLRF+JAhoUdZWIWGs9KQYLYL9SakRrfatmsBIYPwFCLDPvJqJFZt70Cahrf5SI+pj5jSfgfwkR7OadHY94AAAAAElFTkSuQmCC"
+
+/***/ }),
+
+/***/ 303:
+/*!*********************************************************************************!*\
+  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/phone.png ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAtdJREFUOE+VlU9oFFccx7/fmZ1gym7dFUV6KFTQg1io4kEUPQklSAk9dA9JLGa7815rS6JBDRY8SEGRCHqQbtk3M2kQMbZbQfFSimIoKVUJRfQgJKBiQS/CRtI/kjjza96yKyvFuPsO8xjm/T7v+3u/7+8NUR9KqW6SJRF5SPJjY8zTxrd2ZtrFxWKxy3GcywCGAXxI8h0A240x/7QDs2tZKBRWeZ53D8AxY8xprfVbAG4A+N0Y83nbQKXUSQA7giDYCkAsQCm1AcAUyV3GmOvtQKm1fiQiw0EQXGgOVEodJ9lljNnc2KgVsAXOk9xWLpenmgN8319N8gnJD4wxd1uB1c5QKXULwIUgCE41grTWe0XkMMl/q9Xqlkql8qxloNZ6UEQGZmZm1k9MTLzwfX8HyWskv5yfnz83Njb2vFVYTWE+n0/ncrmZxZejxpiyTdVxnAci0h0EwdV2YDWgffi+v5vkmTiON4yOjj7WWn8jIr2e520slUp/tQOtAetWuQIgMzs7uxOAm81mJ0n+aYz5pK0qN4A9PT0rM5nMH7ZAix0yXCgU3vU872aSJJfCMPyqGdrX1/d2Z2fne2EY2urXvNsYLxXWW3CT67qTSZIMhWFoisXi+67r/mK7JpVK7bHp9/f3L+vo6LgtImtJ3gFwoNn8rwDrqX9E8qc4jj+Loui8VZpKpS4CWAHgCwBrABxZWFjY4nneIIAhkmftbHv/f8C60l7XdUeTJBm0SvP5fEculzsC4KCIpEgOWEc02pTk+OImL2oXy+sqqJSySn8A8G21Wv26UqnE1lI21SiKfmuOsxeKiFQALH8tsOlML4vI/TiOe62llhCwj+ShJYE22FY/nU5/b+9Hkoenp6cj21HNhdVa7xeREwDybwQ2AuvmHwHwN4DvHMf5NY7jdSStsrVxHO+OoujnloEWbNs0m80WAHxKcqOIPCb549zc3Mj4+Hjtl/Efo7ki8D4vgkkAAAAASUVORK5CYII="
+
+/***/ }),
+
+/***/ 304:
+/*!*****************************************************************************************!*\
+  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/phone_checked.png ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAtdJREFUOE+VlU9oFFccx7/fmZ1gym7dFUV6KFTQg1io4kEUPQklSAk9dA9JLGa7815rS6JBDRY8SEGRCHqQbtk3M2kQMbZbQfFSimIoKVUJRfQgJKBiQS/CRtI/kjjza96yKyvFuPsO8xjm/T7v+3u/7+8NUR9KqW6SJRF5SPJjY8zTxrd2ZtrFxWKxy3GcywCGAXxI8h0A240x/7QDs2tZKBRWeZ53D8AxY8xprfVbAG4A+N0Y83nbQKXUSQA7giDYCkAsQCm1AcAUyV3GmOvtQKm1fiQiw0EQXGgOVEodJ9lljNnc2KgVsAXOk9xWLpenmgN8319N8gnJD4wxd1uB1c5QKXULwIUgCE41grTWe0XkMMl/q9Xqlkql8qxloNZ6UEQGZmZm1k9MTLzwfX8HyWskv5yfnz83Njb2vFVYTWE+n0/ncrmZxZejxpiyTdVxnAci0h0EwdV2YDWgffi+v5vkmTiON4yOjj7WWn8jIr2e520slUp/tQOtAetWuQIgMzs7uxOAm81mJ0n+aYz5pK0qN4A9PT0rM5nMH7ZAix0yXCgU3vU872aSJJfCMPyqGdrX1/d2Z2fne2EY2urXvNsYLxXWW3CT67qTSZIMhWFoisXi+67r/mK7JpVK7bHp9/f3L+vo6LgtImtJ3gFwoNn8rwDrqX9E8qc4jj+Loui8VZpKpS4CWAHgCwBrABxZWFjY4nneIIAhkmftbHv/f8C60l7XdUeTJBm0SvP5fEculzsC4KCIpEgOWEc02pTk+OImL2oXy+sqqJSySn8A8G21Wv26UqnE1lI21SiKfmuOsxeKiFQALH8tsOlML4vI/TiOe62llhCwj+ShJYE22FY/nU5/b+9Hkoenp6cj21HNhdVa7xeREwDybwQ2AuvmHwHwN4DvHMf5NY7jdSStsrVxHO+OoujnloEWbNs0m80WAHxKcqOIPCb549zc3Mj4+Hjtl/Efo7ki8D4vgkkAAAAASUVORK5CYII="
+
+/***/ }),
+
+/***/ 305:
+/*!************************************************************************************!*\
+  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/shopping.png ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAsBJREFUOE+d019oj1EYB/Dv8777Y1vDNBdqrcT8uVBYufAnIzej3WD5s4318z7vr1HKxSJRUpQUKfHbed61TTLzcyMuJhcSJalxQynMFErYEJp3ncdO7Sez2fp5r07vOefTeb7nPMTML4loNgCo6j0RWeXG//tRMpmsV9U5qroIwMY4jme0t7cP/DeY2cjMi4nokareAPAhS/ATEV0xxjygzMaqqqqciooKdzJLRB+zAVV1OoBiAFt+gw4Iw/COqn4TkfXZgNXV1fllZWXXiah8FMjMJ4holzGmNBvQrQ2CoNnzvOOjwCAINnuelwYw1xjzIhs0DMOzqrp+FNjQ0FBeUFDQZ63dHkVR52QgM98fXnNERG4y800ANAocyfEdgMvGmH0TgY2NjVPy8vJ+qGqTiKSY+TkRdY8BmfkagFIRWTEB6AVBcMDzvGOquqSnp+dJZWXld2tt8xgwCIKDnucd6u/vn55Op3/+jTJzFxHVACiw1p6Pomg3M88jomeqWjNeySsB3LXWbo2iqOtvMJlM1qiqa4KHLS0t3W6emQ+5LOM4LhsDumDDMLwFYPlw6e7m3kxyOQvdqwEgItI0Hoja2tppJSUlp1V1GxFNmQT8oqqpgYGBwy6iccEMkEgkiq21CwYHB3vz8/OH/oRzcnLK4zj+1tHR0evaNTP3TzAIgrVElCaiGar6emhoqLqtre2pey65ublXhzPc4CBVPS4ihycDXY6vrLXvfd8/Y609CqBPRNaEYbhXVU8RUTOACgBNqrpMRB46dNwT1tXVTS0qKvqsqntE5BwznwTQKCIzwzBsAbDOGDOnvr5+VmFh4Vtr7c4oii78ExzpmMcAXLmdRMQAbhtjNjFzHRFdVNV2AOXD/1e7nFtbW59PCCYSifm+77tNSx3m+/6OVCr13lXFzMcA7AbwlYj2G2MuZTL8BRCAL+hULSaWAAAAAElFTkSuQmCC"
+
+/***/ }),
+
+/***/ 306:
+/*!********************************************************************************************!*\
+  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/shopping_checked.png ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAoRJREFUOE+d1EtI1FEUBvDvXMdHZiltjIpSwoIsGx0rSxMrU1oUEWVFEWT0wIK0QCGKtHdipYKkWdCmhaaB0CLU0DKhQPGRmiYkFSQ4qWWWMM3/fjGlxaBOOnd14ZzvxzlcuGIu7X4ngmAAIFHfnBQS47i7eySipHs/gMUkVgiwQ48Mz2k+GP7FbXAsaH7w1uxBNEHjMRQ+TwskB0ApbTyw5JX8DWbWmCKD5jkmmzktbLRZAIOQ3f9AAKvudT0DEOsO+CfDLidwdVHndQDp7oIC2p3ANYWdO0XzobsgiB4n0JLbttBLebyfFiiSSjBAiEwKqpxAB7T2ZkevCOZOFdXCKA+NRRQpIVAwDozOaa8AsW1KoKCmfrgvIdo3MBvCNEDSxoHrr7WfIXDZJUjkWwcHz3Zlx3yLufrGAhjPIeILrbaOB6+0RUPjxX8mbBWRRySDBdhDwFuExohtZME40AHFZrVVA9w0pbVHmwh1u+58aMqEoCWjwd/P0/uWCPYC8HEFExiCYqEVnec6spJsE4JjgOVIg+csf59QTeOrsutBJ9hL+YmSQL7sb6mt3WAfq00KWjI/+c7+bq0QQTwAOyEXarLDLjqCcemt+xRYDGCGAK9tNs/EutxlvY7apODGU60ZIvoSRaWJphlAsqEQZhr6+ZF+pl5RUqMhZULmCFhRfcOc7BLcnNpyH2RkVZ55eVxqU5CJ0kORXdowuj2UaiZly9P8lU/iTzaXA5hfnWeOcgkmnGg5RPCuaBZDsBQiUVqZQuxD1j4vv4APIPpAqYTicU3kVReE//5UXDxKpko8tj2b4FEBB0icriyKKHOEElKa1olGEYAQCsr7DeNw453IH47aLwXH+tHYkl6QAAAAAElFTkSuQmCC"
+
+/***/ }),
+
+/***/ 307:
+/*!******************************************************************************!*\
+  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/my.png ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAA11JREFUOE+NVFtonEUU/s6EjcEEzepDX4xgH0qxigp98EFfRGtTtSKyICwb1u4/E7IWQS3eiJc+RCulKNYbc/5/TTexAX8QsWoasBIEfVBf4gWKpIpEEEVNg4k/7mWOO+XfkGvjvM2Z73wz3znfGcImS2u9Q0QeIqI9ALansHNENNVsNl+Pomh2o1TaIKi01s8R0dMi0iCiMwC+TXHXA7gdgALwgrX2MABZybGOMAiCilLqQefciaWlpUMTExN/rEwIgmAbER0looKIMDObTQm11geIKHLOjYRhOLxZOXxca/0SET0OoGitPdHGLr/QGJMRkZ8B/MjMt66VsklpPgdwFRFtt9bWPWaZUGt9JxGdbjab+6MoOuUPjTGBc+7LMAy/8fuhoaFsvV4vLywsHI3juKa1vo+I3hORO5j5k7WEzxLR4SRJesbGxpZSWfMA3mbmR/0+CIJ7lVLvNxqNGyuVykw+n7+su7t7AcBT1tojqwiNMS+LSJGZs215WuvPAJxk5rd8rFQq3eQJkyS5eXx8/Nf00kUiYmvtI2sJnwfwzPz8fE8cx8nFGtI+y+VyPdls9m8Aw9bakVWEpVLpno6Ojg9EZC8zT/0fwiAI9imlPhKRfcw8uYqwv7//kr6+vl8AzFhrvXm3WqS1PkNEu+bm5q6enJz8dxVh2tWDAI4DOGStPXYxxiAInlRKveicK4dh+OY6H6YBf2tMRPcDeCVJkuF2x9sJ5XK5p1arjSilHhaRd5n5gZWeXTd6uVyus7e317/OfwznReSUiHx3QQ7RdQD2A7hcRI7Pzs4+Nj093dhw9AYGBq7s7OwsENFuEfGFPqeU8iXYQ0TbfJKI/AZgSkRebdlpBxHdJSJf12q1sWq1+udyDUul0l6l1DtEdIWI/ATgNQCfAriUmb/w9vDgOI4XjTG3iMgigNsAHCSia0TkL+dcPoqi0zQ4OHitiHwlImdbczzAzN+nhvUDnwfwhpedSvZyh1qzW7XWHkhxu1r/ZZWIdjrndvsmnATQLyI7wzD0ki6sQqHQ3dXVdYyIfGImDdedc6FSyrvgnzY2/dLOisjHnvD3Vt0+bN+41irFYrE3k8nc4OP1en1mdHT0/EZ2MsZUWvW8m4wxP4jIEWaubOXkLXxZUko98R/5AYlv5IG+dwAAAABJRU5ErkJggg=="
+
+/***/ }),
+
+/***/ 308:
 /*!**************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/my_checked.png ***!
   \**************************************************************************************/
@@ -9617,7 +9617,7 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 327:
+/***/ 335:
 /*!*************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-icons/components/uni-icons/uniicons_file_vue.js ***!
   \*************************************************************************************************************************/
@@ -10121,7 +10121,7 @@ exports.fontData = fontData;
 
 /***/ }),
 
-/***/ 349:
+/***/ 357:
 /*!****************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
   \****************************************************************************************************************************/
@@ -10136,9 +10136,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 350));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 351));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 352));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 358));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 359));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 360));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -10148,7 +10148,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 350:
+/***/ 358:
 /*!***************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
   \***************************************************************************************************************************/
@@ -10159,7 +10159,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 351:
+/***/ 359:
 /*!********************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
   \********************************************************************************************************************************/
@@ -10170,7 +10170,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"取消\",\"uni-search-
 
 /***/ }),
 
-/***/ 352:
+/***/ 360:
 /*!********************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
   \********************************************************************************************************************************/
@@ -10197,7 +10197,7 @@ module.exports = _interopRequireDefault, module.exports.__esModule = true, modul
 
 /***/ }),
 
-/***/ 416:
+/***/ 424:
 /*!************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js ***!
   \************************************************************************************/
@@ -10212,20 +10212,20 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 417));
-var _assertThisInitialized2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ 419));
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 425));
+var _assertThisInitialized2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ 427));
 var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ 5));
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
 var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 420));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 428));
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ 421));
-var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ 422));
-var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ 423));
-var _wrapNativeSuper2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/wrapNativeSuper */ 424));
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ 429));
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ 430));
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ 431));
+var _wrapNativeSuper2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/wrapNativeSuper */ 432));
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
 var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
-var _pages = _interopRequireDefault(__webpack_require__(/*! @/pages.json */ 426));
+var _pages = _interopRequireDefault(__webpack_require__(/*! @/pages.json */ 434));
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e33) { throw _e33; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e34) { didErr = true; err = _e34; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
@@ -10678,7 +10678,7 @@ var S = "development" === "development",
   x = true;
 var O = "";
 try {
-  O = (__webpack_require__(/*! uni-stat-config */ 427).default || __webpack_require__(/*! uni-stat-config */ 427)).appid;
+  O = (__webpack_require__(/*! uni-stat-config */ 435).default || __webpack_require__(/*! uni-stat-config */ 435)).appid;
 } catch (e) {}
 var E = {};
 function L(e) {
@@ -18106,7 +18106,7 @@ exports.default = Js;
 
 /***/ }),
 
-/***/ 417:
+/***/ 425:
 /*!************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/@babel/runtime/regenerator/index.js ***!
   \************************************************************************************************/
@@ -18115,12 +18115,12 @@ exports.default = Js;
 
 // TODO(Babel 8): Remove this file.
 
-var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 418)();
+var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 426)();
 module.exports = runtime;
 
 /***/ }),
 
-/***/ 418:
+/***/ 426:
 /*!*******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/regeneratorRuntime.js ***!
   \*******************************************************************/
@@ -18442,7 +18442,7 @@ module.exports = _regeneratorRuntime, module.exports.__esModule = true, module.e
 
 /***/ }),
 
-/***/ 419:
+/***/ 427:
 /*!**********************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/assertThisInitialized.js ***!
   \**********************************************************************/
@@ -18459,7 +18459,7 @@ module.exports = _assertThisInitialized, module.exports.__esModule = true, modul
 
 /***/ }),
 
-/***/ 420:
+/***/ 428:
 /*!*****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/asyncToGenerator.js ***!
   \*****************************************************************/
@@ -18500,7 +18500,7 @@ module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exp
 
 /***/ }),
 
-/***/ 421:
+/***/ 429:
 /*!*********************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/inherits.js ***!
   \*********************************************************/
@@ -18528,7 +18528,7 @@ module.exports = _inherits, module.exports.__esModule = true, module.exports["de
 
 /***/ }),
 
-/***/ 422:
+/***/ 430:
 /*!**************************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js ***!
   \**************************************************************************/
@@ -18536,7 +18536,7 @@ module.exports = _inherits, module.exports.__esModule = true, module.exports["de
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = __webpack_require__(/*! ./typeof.js */ 13)["default"];
-var assertThisInitialized = __webpack_require__(/*! ./assertThisInitialized.js */ 419);
+var assertThisInitialized = __webpack_require__(/*! ./assertThisInitialized.js */ 427);
 function _possibleConstructorReturn(self, call) {
   if (call && (_typeof(call) === "object" || typeof call === "function")) {
     return call;
@@ -18549,7 +18549,7 @@ module.exports = _possibleConstructorReturn, module.exports.__esModule = true, m
 
 /***/ }),
 
-/***/ 423:
+/***/ 431:
 /*!***************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/getPrototypeOf.js ***!
   \***************************************************************/
@@ -18566,16 +18566,16 @@ module.exports = _getPrototypeOf, module.exports.__esModule = true, module.expor
 
 /***/ }),
 
-/***/ 424:
+/***/ 432:
 /*!****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/wrapNativeSuper.js ***!
   \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getPrototypeOf = __webpack_require__(/*! ./getPrototypeOf.js */ 423);
+var getPrototypeOf = __webpack_require__(/*! ./getPrototypeOf.js */ 431);
 var setPrototypeOf = __webpack_require__(/*! ./setPrototypeOf.js */ 16);
-var isNativeFunction = __webpack_require__(/*! ./isNativeFunction.js */ 425);
+var isNativeFunction = __webpack_require__(/*! ./isNativeFunction.js */ 433);
 var construct = __webpack_require__(/*! ./construct.js */ 15);
 function _wrapNativeSuper(Class) {
   var _cache = typeof Map === "function" ? new Map() : undefined;
@@ -18607,7 +18607,7 @@ module.exports = _wrapNativeSuper, module.exports.__esModule = true, module.expo
 
 /***/ }),
 
-/***/ 425:
+/***/ 433:
 /*!*****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/isNativeFunction.js ***!
   \*****************************************************************/
@@ -18625,7 +18625,7 @@ module.exports = _isNativeFunction, module.exports.__esModule = true, module.exp
 
 /***/ }),
 
-/***/ 426:
+/***/ 434:
 /*!*************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/pages.json?{"type":"origin-pages-json"} ***!
   \*************************************************************************************************/
@@ -18727,6 +18727,9 @@ var _default = {
   }, {
     "path": "pages/sonView/citySel/index",
     "style": {}
+  }, {
+    "path": "pages/sonView/cityTo/index",
+    "style": {}
   }],
   "globalStyle": {
     "navigationBarTextStyle": "black",
@@ -18742,7 +18745,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 427:
+/***/ 435:
 /*!************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/pages.json?{"type":"stat"} ***!
   \************************************************************************************/
@@ -18757,13 +18760,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _default = {
-  "appid": ""
+  "appid": "__UNI__C989549"
 };
 exports.default = _default;
 
 /***/ }),
 
-/***/ 428:
+/***/ 436:
 /*!******************************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-file-picker/components/uni-file-picker/choose-and-upload-file.js ***!
   \******************************************************************************************************************************************/
@@ -18983,11 +18986,11 @@ function chooseAndUploadFile() {
   }
   return uploadFiles(chooseAll(opts), opts);
 }
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 416)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 424)["default"]))
 
 /***/ }),
 
-/***/ 429:
+/***/ 437:
 /*!*************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-file-picker/components/uni-file-picker/utils.js ***!
   \*************************************************************************************************************************/
@@ -19002,8 +19005,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.get_files_and_is_max = exports.get_file_info = exports.get_file_ext = exports.get_file_data = exports.get_extname = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 417));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 420));
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 425));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 428));
 /**
  * 获取文件名和后缀
  * @param {String} name
@@ -19152,7 +19155,7 @@ exports.get_file_data = get_file_data;
 
 /***/ }),
 
-/***/ 463:
+/***/ 471:
 /*!*********************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
   \*********************************************************************************************************************************/

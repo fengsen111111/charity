@@ -7,10 +7,10 @@
 		</viewTop>
 		
 		<view class="grid grid-cols-2 text16 bgFBD text-center -mtop10">
-			<view class="py-3 colED1">
+			<view class="py-3" @click="handleCheck(1)" :class="indexCheck==1?'text-whlie bgCheck1':'colED1'">
 				正在疯抢
 			</view>
-			<view class="py-3 text-whlie bgCheck">
+			<view class="py-3" @click="handleCheck(2)" :class="indexCheck==2?'text-whlie bgCheck2':'colED1'">
 				即将开始
 			</view>
 		</view>
@@ -25,8 +25,7 @@
 				<view class=" space-x-6">白酒</view>
 				<view class=" space-x-6">葡萄酒</view>
 			</view>
-			<view class="bgF9 p-3" >
-				
+			<view class="bgF9 py-3" >
 				<view class="w90">
 					<shopCardTwo>
 						<view class="border999 space-x-3 col999  p-1 rending1  p-1">
@@ -54,7 +53,8 @@
 	export default {
 		data() {
 			return {
-				active: false
+				active: false,
+				indexCheck: 1
 			};
 		},
 		onLoad() {},
@@ -65,6 +65,9 @@
 		onHide() {
 		},
 		methods: {
+			handleCheck(index){
+				this.indexCheck = index
+			}
 		}
 	};
 </script>
@@ -80,7 +83,11 @@
 		width: 5rem;
 		height: 5rem;
 	}
-	.bgCheck{
+	.bgCheck1{
+		background: linear-gradient( 180deg, #FF793E 0%, #FF2C26 100%);
+		border-radius:  0px 0.5rem 0.5rem 0px;
+	}
+	.bgCheck2{
 		background: linear-gradient( 180deg, #FF793E 0%, #FF2C26 100%);
 		border-radius: 0.5rem 0px 0px 0.5rem;
 	}

@@ -5,15 +5,6 @@
 				<view class="">
 					选择口味
 				</view>
-			<!-- 	<view class="bgF9 col666 text12 flex px-2 py-1 rending1 space-x-2">
-					<view class="">
-						原味
-					</view>
-					<view class="space-x-6 flex">
-						库存:666666
-						<uni-icons type="down" size="12" color="#4867CF"></uni-icons>
-					</view>
-				</view> -->
 				<view class="selView">
 					<uni-data-select placeholder="请选择口味" v-model="value" :localdata="range" :clear="false" @change="change">
 					</uni-data-select>
@@ -49,7 +40,7 @@
 				range: [
 				          { value: 0, text: "原味  库存：666" },
 				          { value: 1, text: "桃味  库存：666" },
-				          { value: 2, text: "牛奶味  库存：666" },
+				          { value: 2, text: "茶味  库存：666" },
 				        ],
 			};
 		},

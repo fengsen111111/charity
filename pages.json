@@ -115,6 +115,10 @@
 		{
 		  "path": "pages/sonView/citySel/index",
 		  "style": {}
+		},
+		{
+		  "path": "pages/sonView/cityTo/index",
+		  "style": {}
 		}
 	
 	],

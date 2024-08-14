@@ -18,14 +18,14 @@
 						</view>
 					</view>
 				</view>
-				<view class="flex justify-between">
-					<view class="flex">
+				<view class="flex justify-between items-center">
+					<view class="flex items-center">
 						<uni-icons :type="item==1?'checkbox-filled':'circle'" size="20" color="#4867CF"></uni-icons>
 						<view class="space-x-1">默认收货地址</view>
 					</view>
 					<view class="flex">
 						<uni-icons type="compose" size="20" color="#4867CF"></uni-icons>
-						<uni-icons type="trash" size="20" class="space-x-4" color="#FC6265" @click="toggle('center')"></uni-icons>
+						<uni-icons type="trash" size="20" class="space-x-3" color="#FC6265" @click="toggle('center')"></uni-icons>
 					</view>
 				</view>
 			</view>

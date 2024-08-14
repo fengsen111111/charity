@@ -156,11 +156,12 @@
 					})
 					this.lists.push({
 						title: value.letter,
-						key: value.letter,
+						key: value.key,
 						items: items,
 						itemIndex: indexBefore
 					})
 				})
+				console.log('this.lists',this.lists);
 				// #ifndef APP-NVUE
 				uni.createSelectorQuery()
 					.in(this)

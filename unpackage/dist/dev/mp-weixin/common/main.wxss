@@ -417,7 +417,7 @@
 	background-color: #F2F3FF;
 }
 .border486{
-	border: 2px solid #4867CF;
+	border: 1rpx solid #4867CF;
 }
 .text-left{
 	text-align: left;
@@ -426,10 +426,10 @@
 	width: 7rem;
 }
 .border999{
-	border: 2px solid #999999;
+	border: 1rpx solid #999999;
 }
 .border999One{
-	border: 1px solid #999999;
+	border: 1rpx solid #999999;
 }
 .overflowAuto{
 	overflow: auto;
@@ -442,7 +442,7 @@
 	background-color: #FFCF9E;
 }
 .borderFFC{
-	border: 1px solid #FFCF9E;
+	border: 1rpx solid #FFCF9E;
 }
 .bgFBD{
 	background-color: #FBD9DA;
@@ -511,7 +511,7 @@
 	background-color: #68BF7B;
 }
 .border68B{
-	border: 1px solid #68BF7B
+	border: 1rpx solid #68BF7B
 }
 /*每个页面公共css */
 /* 水平间距 */

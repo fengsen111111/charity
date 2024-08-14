@@ -21,12 +21,9 @@
 		<view class="" @click="handleItem('/pages/sonView/riderOrder/index')">
 			骑手端接单
 		</view>
-		<view class="">
+	<!-- 	<view class="" @click="handleItem('/pages/sonView/cityTo/index')">
 			定位
-		</view>
-		<view class="" @click="handleLocation">
-			123213123
-		</view>
+		</view> -->
 	</view>
 </template> 
 
@@ -51,19 +48,6 @@ export default {
 			console.log(url);
 			uni.navigateTo({
 				url:url+''
-			})
-		},
-		// 打开
-		handleLocation(){
-			uni.getLocation({
-				success: res => {
-					console.log('location success', res)
-					uni.openLocation({
-						latitude: '30.64242',
-						longitude: '104.04311',
-						scale: 18
-					})
-				}
 			})
 		},
 	}

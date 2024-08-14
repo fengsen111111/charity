@@ -28,7 +28,8 @@
     "pages/sonView/myOrderDetails/index",
     "pages/sonView/riderLogin/index",
     "pages/sonView/riderOrder/index",
-    "pages/sonView/citySel/index"
+    "pages/sonView/citySel/index",
+    "pages/sonView/cityTo/index"
   ],
   "subPackages": [],
   "window": {

@@ -1,19 +1,15 @@
 <template>
 	<view>
-		<view v-if="loaded || list.itemIndex < 15" class="uni-indexed-list__title-wrapper">
-			<text v-if="list.items && list.items.length > 0" class="uni-indexed-list__title">{{ list.key }}</text>
-		</view>
-		<view v-if="(loaded || list.itemIndex < 15) && list.items && list.items.length > 0" class="uni-indexed-list__list">
-			<view v-for="(item, index) in list.items" :key="index" class="uni-indexed-list__item" hover-class="uni-indexed-list__item--hover">
-				<view class="uni-indexed-list__item-container" @click="onClick(idx, index)">
-					<view class="uni-indexed-list__item-border" :class="{'uni-indexed-list__item-border--last':index===list.items.length-1}">
-						<view v-if="showSelect" style="margin-right: 20rpx;">
-							<uni-icons :type="item.checked ? 'checkbox-filled' : 'circle'" :color="item.checked ? '#007aff' : '#C0C0C0'" size="24" />
+		<view class="bg-whilt p-3 mt-3">
+			<uni-collapse ref="collapse" v-model="value" @change="change">
+				<uni-collapse-item :show-animation="false" :title="list.title">
+					<view class="content">
+						<view class="mt-1 grid grid-cols-4 ">
+							<view @click="onClick(idx, index)" v-for="(iss,index) in list.items" :key="iss.itemIndex" class="bgF9 mb-3 w80 mxAuto text14 p-1 text-center">{{iss.name}}</view>
 						</view>
-						<text class="uni-indexed-list__item-content">{{ item.name }}</text>
 					</view>
-				</view>
-			</view>
+				</uni-collapse-item>
+			</uni-collapse>
 		</view>
 	</view>
 </template>
@@ -22,6 +18,11 @@
 	export default {
 		name: 'UniIndexedList',
 		emits:['itemClick'],
+		data(){
+			return {
+				value: ['0'],
+			}
+		},
 		props: {
 			loaded: {
 				type: Boolean,
@@ -48,7 +49,10 @@
 					idx,
 					index
 				})
-			}
+			},
+			change(e) {
+				console.log(e);
+			},
 		}
 	}
 </script>

@@ -11,13 +11,13 @@
 				</view>
 			</view>
 			<!-- shop -->
-			<view class="grid grid-cols-3 pt-3">
-				<view class="bg-whilt mr-2 rending1" @click="handDetailds" v-for="item in [1,2,3]" :key="item">
+			<view class="flex pt-3 overflowAuto" >
+				<view class="bg-whilt mr-2 rending1" style="width: 800rpx;" @click="handDetailds" v-for="item in [1,2,3,4,5]" :key="item">
 					<image src="https://imgos.cn/2024/08/12/66b9d67b2c357.png" mode="" class="w-full mt-3" style="height: 100px;"></image>
 					<view class="text12 text-black text-center">
 						高度浓香型白酒...
 					</view>
-					<view class="flex text12">
+					<view class="flex text12 px-2 mt-1">
 						<view class="text999 textDel">￥888</view>
 						<view class="flex price rending2 space-x-1 px-1">
 							<view>￥888</view>
@@ -33,20 +33,21 @@
 					新人优惠卷
 				</text>
 			</view>
-			<view class="bgTag h60 flex rending1 overflowAuto">
-				<view class="cardVolume text-center flex justify-between colED1" v-for="(item,index) in [1,2]"
-					:key="item">
-					<view class="mt-1">
-						<view class="text12 space-x-2">
-							满20元可用
+			<view class="bgTag  flex rending1 overflowAuto">
+				<view style="width:400rpx;" v-for="(item,index) in [1,2,3,4]" :key="item">
+					<view class="cardVolume text-center flex justify-between colED1" >
+						<view class="mt-1">
+							<view class="text12 space-x-2">
+								满20元可用
+							</view>
+							<text class="text10 general px-2 mxAuto py-1 bgFEB rending3">
+								全场通用
+							</text>
 						</view>
-						<text class="text10 general px-2 mxAuto py-1 bgFEB rending3">
-							全场通用
-						</text>
-					</view>
-					<view class="pt-3 ">
-						<text class="text12 unit">￥</text>
-						<text class="fontBold text20 mr-2">10</text>
+						<view class="pt-3 ">
+							<text class="text12 unit">￥</text>
+							<text class="fontBold text20 mr-2">10</text>
+						</view>
 					</view>
 				</view>
 			</view>
@@ -106,7 +107,7 @@
 		background-image: url('@/static/home/card.png');
 		background-size: 100% 100%;
 		height: 2.75rem;
-		width: 10rem;
+		width: 8rem;
 		margin: 0.5rem;
 	}
 </style>

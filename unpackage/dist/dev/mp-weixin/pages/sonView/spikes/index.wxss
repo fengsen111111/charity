@@ -9,7 +9,11 @@
 	width: 5rem;
 	height: 5rem;
 }
-.bgCheck{
+.bgCheck1{
+	background: linear-gradient( 180deg, #FF793E 0%, #FF2C26 100%);
+	border-radius:  0px 0.5rem 0.5rem 0px;
+}
+.bgCheck2{
 	background: linear-gradient( 180deg, #FF793E 0%, #FF2C26 100%);
 	border-radius: 0.5rem 0px 0px 0.5rem;
 }

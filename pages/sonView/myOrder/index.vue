@@ -6,7 +6,7 @@
 				<view @click="handleItem(item.id)" class="text-center" :class="chenkIndex==item.id?'col486':''"
 					v-for="item in tabsList" :key="item.id">
 					{{item.text}}
-					<view v-if="chenkIndex==item.id" class="border486 bg486 w-4 mxAuto"></view>
+					<view v-if="chenkIndex==item.id" class="border486 bg486 w-4 mxAuto rending1"></view>
 				</view>
 			</view>
 			<!-- card -->

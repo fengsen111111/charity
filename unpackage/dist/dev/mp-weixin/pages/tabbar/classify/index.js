@@ -143,17 +143,17 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var topView = function topView() {
   __webpack_require__.e(/*! require.ensure | pages/tabbar/classify/components/topView/index */ "pages/tabbar/classify/components/topView/index").then((function () {
-    return resolve(__webpack_require__(/*! @/pages/tabbar/classify/components/topView/index.vue */ 303));
+    return resolve(__webpack_require__(/*! @/pages/tabbar/classify/components/topView/index.vue */ 311));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var tagClass = function tagClass() {
   __webpack_require__.e(/*! require.ensure | pages/tabbar/classify/components/tagClass/index */ "pages/tabbar/classify/components/tagClass/index").then((function () {
-    return resolve(__webpack_require__(/*! @/pages/tabbar/classify/components/tagClass/index.vue */ 310));
+    return resolve(__webpack_require__(/*! @/pages/tabbar/classify/components/tagClass/index.vue */ 318));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var shopBom = function shopBom() {
   __webpack_require__.e(/*! require.ensure | pages/tabbar/classify/components/shopBom/index */ "pages/tabbar/classify/components/shopBom/index").then((function () {
-    return resolve(__webpack_require__(/*! @/pages/tabbar/classify/components/shopBom/index.vue */ 315));
+    return resolve(__webpack_require__(/*! @/pages/tabbar/classify/components/shopBom/index.vue */ 323));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {

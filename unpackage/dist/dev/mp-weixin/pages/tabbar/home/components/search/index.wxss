@@ -30,11 +30,12 @@
 	padding: 0px 0.25rem;
 	color: #fff;
 }
-.iconImg{
-	width: 0.5rem;height: 0.6rem;
+.iconImg {
+	width: 0.5rem;
+	height: 0.6rem;
 	margin-right: 0.25rem;
 }
-.topSearch{
+.topSearch {
 	height: 6rem;
 	padding-top: 1.25rem;
 }
