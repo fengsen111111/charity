@@ -18,14 +18,14 @@
 							</view>
 							<view class="w-8"></view>
 							<view class="flex space-x-3 text24 text-center">
-								<view class="leftView bgFF8 text-whlie">
-									-
+								<view class="leftView">
+									<!-- - -->
 								</view>
 								<view class="bg-whilt text-black cenVire text14">
 									10
 								</view>
-								<view class="rightView bgFF8 text-whlie">
-									+
+								<view class="rightView">
+									<!-- + -->
 								</view>
 							</view>
 						</view>
@@ -40,7 +40,7 @@
 					</view>
 				</shopCard>
 			</view>
-			
+
 		</view>
 		<view class="h-8">
 
@@ -51,12 +51,12 @@
 			<view class="space-x-3 colED1 fontBold">￥<text class="text20 ">1888</text>.8</view>
 			<view class="space-x-4 colED1">已优惠：￥888</view>
 			<view class="w-8"></view>
-			<text class="space-x-3 bg486 text-whlie text14 py-2 px-3 rending2">
+			<text class="space-x-3 bg486 text-whlie text14 py-2 px-3 rending2" @click="handlePay()">
 				去支付
 			</text>
 		</view>
 		<!--  -->
-		<tarBar :checkIndex="4"/>
+		<tarBar :checkIndex="4" />
 	</view>
 </template>
 
@@ -74,13 +74,36 @@
 			return {
 				title: 'Hello',
 				radio1: 1, //单选
+				weChatPayData:{
+					timestamp:'',
+					noncestr:'',
+					package:'',
+					signtype:'',
+					sign:'',
+				}
 			}
 		},
 		onLoad() {
 
 		},
 		methods: {
-
+			handlePay() {
+				uni.requestPayment({
+					provider: 'wxpay', // 服务提提供商
+					timeStamp: this.weChatPayData.timestamp, // 时间戳
+					nonceStr: this.weChatPayData.noncestr, // 随机字符串
+					package: this.weChatPayData.package,
+					signType: this.weChatPayData.signtype, // 签名算法
+					paySign: this.weChatPayData.sign, // 签名
+					success: function(res) {
+						console.log('支付成功', res);
+						// 业务逻辑。。。
+					},
+					fail: function(err) {
+						console.log('支付失败', err);
+					}
+				});
+			}
 		}
 	}
 </script>
@@ -103,10 +126,12 @@
 	}
 
 	.leftView {
+		background-image: url('@/static/home/subtract.png');
+		background-size: 100% 100%;
 		width: 2.5rem;
 		height: 1.75rem;
+		line-height: 51rpx;
 		border-radius: 1rem 0px 0px 1rem;
-		line-height: 1.5rem;
 	}
 
 	.cenVire {
@@ -118,10 +143,12 @@
 	}
 
 	.rightView {
+		background-image: url('@/static/home/add.png');
+		background-size: 100% 100%;
 		width: 2.5rem;
 		height: 1.75rem;
+		line-height: 51rpx;
 		border-radius: 0px 1rem 1rem 0px;
-		line-height: 1.5rem;
 	}
 
 	.radios {

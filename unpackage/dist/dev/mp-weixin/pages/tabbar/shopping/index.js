@@ -158,7 +158,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(uni) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -188,13 +188,46 @@ var _default = {
   data: function data() {
     return {
       title: 'Hello',
-      radio1: 1 //单选
+      radio1: 1,
+      //单选
+      weChatPayData: {
+        timestamp: '',
+        noncestr: '',
+        package: '',
+        signtype: '',
+        sign: ''
+      }
     };
   },
   onLoad: function onLoad() {},
-  methods: {}
+  methods: {
+    handlePay: function handlePay() {
+      uni.requestPayment({
+        provider: 'wxpay',
+        // 服务提提供商
+        timeStamp: this.weChatPayData.timestamp,
+        // 时间戳
+        nonceStr: this.weChatPayData.noncestr,
+        // 随机字符串
+        package: this.weChatPayData.package,
+        signType: this.weChatPayData.signtype,
+        // 签名算法
+        paySign: this.weChatPayData.sign,
+        // 签名
+        success: function success(res) {
+          console.log('支付成功', res);
+          // 业务逻辑。。。
+        },
+
+        fail: function fail(err) {
+          console.log('支付失败', err);
+        }
+      });
+    }
+  }
 };
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 

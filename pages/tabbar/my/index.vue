@@ -4,7 +4,7 @@
 			<view class="flex w-full">
 				<view class="flex items-center mt55 w-full">
 					<view class="space-x-4">
-						<image src="@/static/my/user.png" mode="" class="userImg"></image>
+						<image src="@/static/home/logUser.png" mode="" class="userImg"></image>
 					</view>
 					<view class="flex justify-between items-center">
 						<view class="space-x-2">
@@ -193,7 +193,7 @@
 
 	.bgMyImg {
 		color: #fff;
-		background-image: url('@/static/my/topBg.png');
+		background-image: url('@/static/my/topBgNew.png');
 		background-size: 100% 100%;
 		height: 10rem;
 		width: 100%;

@@ -107,7 +107,7 @@
 				return new Promise((resolve, reject) => {
 					uni.showModal({
 						title: "请求授权当前位置",
-						content: "我们需要获取地理位置信息，为您推荐附近的美食",
+						content: "我们需要获取地理位置信息",
 						success: (res) => {
 							if (res.confirm) {
 								uni.openSetting().then((res) => {

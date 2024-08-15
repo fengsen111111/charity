@@ -162,7 +162,7 @@
 				return new Promise((resolve, reject) => {
 					uni.showModal({
 						title: "请求授权当前位置",
-						content: "我们需要获取地理位置信息，为您推荐附近的美食",
+						content: "我们需要获取地理位置信息",
 						success: (res) => {
 							if (res.confirm) {
 								uni.openSetting().then((res) => {
@@ -222,6 +222,13 @@
 							name: '四川大学华西医院',
 							address: 'xx街xx号',
 						})
+					},
+					fail: res=>{
+						uni.showToast({
+							title: "请检查定位是否开启！",
+							icon: "none",
+							duration: 2000,
+						});
 					}
 
 				})
