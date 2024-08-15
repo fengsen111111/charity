@@ -1,11 +1,7 @@
 <script>
-	import {apiCeshi} from '@/request/api.js'
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
-			apiCeshi().then((res)=>{
-				console.log('请求',res);
-			})
 		},
 		onShow: function() {
 			console.log('App Show')

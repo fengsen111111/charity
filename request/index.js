@@ -21,12 +21,17 @@ export default (params) => {
 		};
 	}
 	return new Promise((resolve, reject) => {
+		
+		uni.showLoading({
+			title: "加载中"
+		})
 		uni.request({
 			url: base_url + url,
 			method: method,
 			header: header,
 			data: data,
 			success(response) {
+				uni.hideLoading()
 				const res = response
 				// 根据返回的状态码做出对应的操作
 				//获取成功
@@ -67,6 +72,7 @@ export default (params) => {
 				}
 			},
 			fail(err) {
+				uni.hideLoading()
 				console.log(err)
 				if (err.errMsg.indexOf('request:fail') !== -1) {
 					uni.showToast({

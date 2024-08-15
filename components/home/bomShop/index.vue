@@ -81,17 +81,17 @@
 				</view>
 				<!-- 选数量 -->
 				<view class="w95 space-x-2 bg-whilt mt-3">
-					<view class="flex text-16 justify-between items-center p-3 ">
+					<view class="flex text14 justify-between items-center p-3 ">
 						<view>选择数量</view>
 						<view class="flex space-x-3 text24 text-center">
-							<view class="leftView bgFF8 text-whlie" @click="handleDown">
-								-
+							<view class="leftView" @click="handleDown">
+								<!-- - -->
 							</view>
 							<view class="bg-whilt text-black cenVire text14">
 								{{number}}
 							</view>
-							<view class="rightView bgFF8 text-whlie" @click="handleUp">
-								+
+							<view class="rightView" @click="handleUp">
+								<!-- + -->
 							</view>
 						</view>
 					</view>
@@ -99,7 +99,7 @@
 				<!-- 冰冻选择 -->
 				<view class="w95 space-x-2 bg-whilt mt-3 ">
 					<view class="p-3">
-						<view class="text16">
+						<view class="text14">
 							冰冻选择
 						</view>
 						<view class="flex justify-between mt-3">
@@ -114,7 +114,7 @@
 				<!-- 滑块 -->
 				<view class="w95 space-x-2 bg-whilt mt-3 ">
 					<view class="p-3">
-						<view class="text16">
+						<view class="text14">
 							冰冻数量
 						</view>
 						<view class="flex justify-between mt-3">
@@ -175,7 +175,9 @@
 				this.temperatureIndex = index
 			},
 			handleDown() {
-				this.number--
+				if(this.number>0){
+					this.number--
+				}
 			},
 			handleUp() {
 				this.number++
@@ -209,6 +211,8 @@
 	}
 
 	.leftView {
+		background-image: url('@/static/home/subtract.png');
+		background-size: 100% 100%;
 		width: 2.5rem;
 		height: 1.75rem;
 		line-height: 51rpx;
@@ -224,6 +228,8 @@
 	}
 
 	.rightView {
+		background-image: url('@/static/home/add.png');
+		background-size: 100% 100%;
 		width: 2.5rem;
 		height: 1.75rem;
 		line-height: 51rpx;

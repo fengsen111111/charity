@@ -44,7 +44,7 @@
 					</view>
 				</view>
 			</view>
-			<view class="bg-whilt" style="position: relative;top: 0.75rem; height: 100vh;">
+			<view class="bg-whilt" style="position: relative;top: 0.75rem; height: 55vh;">
 				<uni-indexed-list :options="list" :showSelect="false" @click="bindClick"></uni-indexed-list>
 			</view>
 		</view>

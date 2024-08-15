@@ -31,11 +31,27 @@
 		</view>
 		<!-- 触发 -->
 		<view class="" v-else>
-			<view class=" grid grid-cols-2 text-center bg-whilt py-2">
-				<view class="">销量</view>
-				<view class="">价格</view>
+			<view class=" grid grid-cols-2 text-center bg-whilt text14 py-2">
+				<view class="flex items-center mxAuto">
+						<view class="" @click="handleUpDown(1)">销量</view>
+						<view class="uni-ml-1">
+							<view class='iconBig' v-if="valueCheck.searchOne==1"><image src="@/static/home/search/up_c.png" class='iconBig' mode=""></image></view>
+							<view class='iconBig' v-else><image src="@/static/home/search/up.png" class='iconBig' mode=""></image></view>
+							<view class='iconBig' v-if="valueCheck.searchOne==2"><image src="@/static/home/search/down_c.png"class='iconBig'  mode=""></image></view>
+							<view class='iconBig' v-else><image src="@/static/home/search/down.png"class='iconBig'  mode=""></image></view>
+						</view>		
+				</view>
+				<view class="flex items-center mxAuto">
+						<view class="" @click="handleUpDown(2)">价格</view>
+						<view class="uni-ml-1">
+							<view class='iconBig' v-if="valueCheck.searchTwo==1"><image src="@/static/home/search/up_c.png" class='iconBig' mode=""></image></view>
+							<view class='iconBig' v-else><image src="@/static/home/search/up.png" class='iconBig' mode=""></image></view>
+							<view class='iconBig' v-if="valueCheck.searchTwo==2"><image src="@/static/home/search/down_c.png"class='iconBig'  mode=""></image></view>
+							<view class='iconBig' v-else><image src="@/static/home/search/down.png"class='iconBig'  mode=""></image></view>
+						</view>		
+				</view>
 			</view>
-			<view class="px-3">
+			<view class="px-3" v-if="showShop">
 				<bomShop />
 				<bomShop />
 			</view>
@@ -51,11 +67,17 @@
 		},
 		data() {
 			return {
+				valueCheck: {
+					searchOne: 1,
+					searchTwo: 1,
+				},
 				searchVal: '',
 				// 状态栏高度
 				statusBarHeight: 0,
 				// 导航栏高度
 				navBarHeight: 82 + 11,
+				// 
+				showShop: true,
 				data: [{
 						id: 1,
 						text: '百威'
@@ -89,6 +111,31 @@
 		},
 		onLoad() {},
 		methods: {
+			// 
+			handleUpDown(index){
+				if(index==1){
+					if(this.valueCheck.searchOne==1){
+						this.valueCheck.searchOne=2
+					}else{
+						this.valueCheck.searchOne=1
+					}
+				}else{
+					if(this.valueCheck.searchTwo==1){
+						this.valueCheck.searchTwo=2
+					}else{
+						this.valueCheck.searchTwo=1
+					}
+				}
+				// 
+				uni.showLoading({
+					title: "加载中"
+				})
+				this.showShop = false
+				setTimeout(()=>{
+					uni.hideLoading()
+					this.showShop = true
+				},1000)
+			},
 			search(res) {
 				uni.showToast({
 					title: '搜索：' + res.value,
@@ -107,6 +154,11 @@
 </script>
 
 <style>
+	.iconBig{
+		width: 0.5rem;
+		height: 0.5rem;
+		line-height: 0.5rem;
+	}
 	.navBarBox {}
 
 	.navBarBox .statusBar {}

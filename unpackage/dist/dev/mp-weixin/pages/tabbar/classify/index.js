@@ -34,7 +34,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.vue?vue&type=script&lang=js& */ 47);
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 /* harmony import */ var _index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.vue?vue&type=style&index=0&lang=css& */ 49);
-/* harmony import */ var _D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js */ 34);
+/* harmony import */ var _D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js */ 32);
 
 var renderjs
 
@@ -143,17 +143,17 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var topView = function topView() {
   __webpack_require__.e(/*! require.ensure | pages/tabbar/classify/components/topView/index */ "pages/tabbar/classify/components/topView/index").then((function () {
-    return resolve(__webpack_require__(/*! @/pages/tabbar/classify/components/topView/index.vue */ 324));
+    return resolve(__webpack_require__(/*! @/pages/tabbar/classify/components/topView/index.vue */ 326));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var tagClass = function tagClass() {
   __webpack_require__.e(/*! require.ensure | pages/tabbar/classify/components/tagClass/index */ "pages/tabbar/classify/components/tagClass/index").then((function () {
-    return resolve(__webpack_require__(/*! @/pages/tabbar/classify/components/tagClass/index.vue */ 331));
+    return resolve(__webpack_require__(/*! @/pages/tabbar/classify/components/tagClass/index.vue */ 333));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var shopBom = function shopBom() {
   __webpack_require__.e(/*! require.ensure | pages/tabbar/classify/components/shopBom/index */ "pages/tabbar/classify/components/shopBom/index").then((function () {
-    return resolve(__webpack_require__(/*! @/pages/tabbar/classify/components/shopBom/index.vue */ 336));
+    return resolve(__webpack_require__(/*! @/pages/tabbar/classify/components/shopBom/index.vue */ 338));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {

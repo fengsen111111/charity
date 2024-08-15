@@ -17,12 +17,12 @@
 		</view>
 		<view class="w80 mxAuto">
 			<view class="mt-3">手机号</view>
-			<uni-easyinput class="mt-3" errorMessage v-model="value1" focus placeholder="请输入内容" @input="input"></uni-easyinput>
+			<uni-easyinput class="mt-3"  v-model="value1" trim="all" placeholder="请输入内容" @input="input"></uni-easyinput>
 			<view class="mt-3">验证码</view>
-			<uni-easyinput class="mt-3" errorMessage v-model="value2" focus placeholder="请输入内容" @input="input"></uni-easyinput>
+			<uni-easyinput class="mt-3"  v-model="value2" focus placeholder="请输入内容" @input="input"></uni-easyinput>
 		</view>
 		<view class="h-6"></view>
-		<view class="w80 mxAuto bg486 text-whlie rending1 py-3 text-center">
+		<view class="w80 mxAuto bg486 text-whlie rending1 py-3 text-center" @click="handleUrl('/pages/sonView/riderOrder/index')">
 			登录
 		</view>
 	</view>
@@ -33,8 +33,8 @@
 		data() {
 			return {
 				active: false,
-				value1:'',
-				value2:''
+				value1:'666666',
+				value2:'123456'
 			};
 		},
 		components:{  },
@@ -45,6 +45,12 @@
 		onHide() {
 		},
 		methods: {
+			handleUrl(url) {
+				console.log(url);
+				uni.navigateTo({
+					url: url + ''
+				})
+			}
 		}
 	};
 </script>

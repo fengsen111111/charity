@@ -6,11 +6,15 @@
 					<view class="space-x-4">
 						<image src="@/static/my/user.png" mode="" class="userImg"></image>
 					</view>
-					<view class="flex justify-between ">
+					<view class="flex justify-between items-center">
 						<view class="space-x-2">
 							135******1234
 						</view>
-						<uni-icons type="compose" size="20" color="#fff" class="iconLeft" @click="handleUrl('/pages/sonView/myInfo/index')"></uni-icons>
+						<uni-icons type="compose" size="20" class="space-x-2" color="#fff" @click="handleUrl('/pages/sonView/myInfo/index')"></uni-icons>
+						<view class="iconLeft flex bg486 text-center text-whlie py-2 px-4 rending5 items-center text14"  @click="handleUrl('/pages/sonView/riderLogin/index')">
+							<image src="@/static/my/handoff.png" mode="" class="w-4 h-4 uni-mr-2"></image>
+							<view class="">骑手端</view>
+							</view>
 					</view>
 				</view>
 			</view>
@@ -179,7 +183,7 @@
 
 	.iconLeft {
 		position: relative;
-		left: 40vw;
+		left: 12vw;
 	}
 
 	.userImg {

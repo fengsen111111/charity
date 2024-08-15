@@ -1,4 +1,9 @@
 
+.iconBig{
+	width: 0.5rem;
+	height: 0.5rem;
+	line-height: 0.5rem;
+}
 .navBarBox {}
 .navBarBox .statusBar {}
 .navBarBox .navBar {

@@ -38,6 +38,11 @@
 		</view>
 		<!-- 底部导航 -->
 		<tarBar :checkIndex="1" />
+		<!--  -->
+		<view class="viewFixed">
+			<view class="imgFixed"><image src="@/static/home/homePhone.png" mode="" class="imgFixed" @click="handlePhone"></image></view>
+			<view class="imgFixed"><image src="@/static/home/homeShopping.png" mode="" class="imgFixed" @click="handleUrl('/pages/tabbar/shopping/index')"></image></view>
+		</view>
 	</view>
 </template>
 
@@ -67,6 +72,17 @@
 		},
 		onLoad() {},
 		methods: {
+			handlePhone(){
+				uni.makePhoneCall({
+					phoneNumber: '1111111',
+					success: function() {
+						console.log('拨号');
+					},
+					fail: function() {
+						console.log('拨号失败！');
+					}
+				})
+			},
 			handleItem(index) {
 				this.checkItem = index;
 				this.status = true
@@ -85,6 +101,15 @@
 </script>
 
 <style>
+	.viewFixed{
+		position: fixed;
+		bottom: 10vh;
+		right: 10vw
+	}
+	.imgFixed{
+		width: 100rpx;
+		height: 100rpx;
+	}
 	.checkboxItem {
 		border-bottom: 1rpx solid #4867CF;
 		padding: 0px 0.5rem;

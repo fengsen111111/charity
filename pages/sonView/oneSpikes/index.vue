@@ -11,7 +11,7 @@
 					<view class="" v-for="item in [1,2,3]" :key="item">
 						<shopCardTwo>
 							<view class="">
-								<view class="btnRig space-x-6 text-whlie rending2 px-3 py-2">
+								<view class="btnRig text14 space-x-6 text-whlie rending2 px-3 py-2">
 									去抢购
 								</view>
 							</view>

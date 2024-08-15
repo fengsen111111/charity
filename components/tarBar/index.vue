@@ -9,83 +9,163 @@
 </template>
 
 <script>
+	import {
+		apiCeshi
+	} from '@/request/api.js'
 	export default {
-		props:{
-			checkIndex:0
+		props: {
+			checkIndex: 0
 		},
-		data(){
+		data() {
 			return {
-				route:'',
-				tarbarList:[
-					{
-						id:1,
-						text:'首页',
-						url:require('@/static/tabbar/home.png'),
-						checkUrl:require('@/static/tabbar/home_checked.png'),
-						path:'/pages/tabbar/home/index',
+				route: '',
+				tarbarList: [{
+						id: 1,
+						text: '首页',
+						url: require('@/static/tabbar/home.png'),
+						checkUrl: require('@/static/tabbar/home_checked.png'),
+						path: '/pages/tabbar/home/index',
 					},
 					{
-						id:2,
-						text:'分类',
-						url:require('@/static/tabbar/classify.png'),
-						checkUrl:require('@/static/tabbar/classify_checked.png'),
-						path:'/pages/tabbar/classify/index',
+						id: 2,
+						text: '分类',
+						url: require('@/static/tabbar/classify.png'),
+						checkUrl: require('@/static/tabbar/classify_checked.png'),
+						path: '/pages/tabbar/classify/index',
 					},
 					{
-						id:3,
-						text:'联系我们',
-						url:require('@/static/tabbar/phone.png'),
-						checkUrl:require('@/static/tabbar/phone_checked.png'),
-						path:'/pages/tabbar/phone/index',
+						id: 3,
+						text: '联系我们',
+						url: require('@/static/tabbar/phone.png'),
+						checkUrl: require('@/static/tabbar/phone_checked.png'),
+						path: '/pages/tabbar/phone/index',
 					},
 					{
-						id:4,
-						text:'购物车',
-						url:require('@/static/tabbar/shopping.png'),
-						checkUrl:require('@/static/tabbar/shopping_checked.png'),
-						path:'/pages/tabbar/shopping/index',
+						id: 4,
+						text: '购物车',
+						url: require('@/static/tabbar/shopping.png'),
+						checkUrl: require('@/static/tabbar/shopping_checked.png'),
+						path: '/pages/tabbar/shopping/index',
 					},
 					{
-						id:5,
-						text:'我的',
-						url:require('@/static/tabbar/my.png'),
-						checkUrl:require('@/static/tabbar/my_checked.png'),
-						path:'/pages/tabbar/my/index',
+						id: 5,
+						text: '我的',
+						url: require('@/static/tabbar/my.png'),
+						checkUrl: require('@/static/tabbar/my_checked.png'),
+						path: '/pages/tabbar/my/index',
 					},
 				]
 			}
 		},
-		methods:{
-			handleCheck(item){
-				if(item.path=='/'+this.route){
-					console.log("跳转当前页，拒绝")
-				}else{
-					uni.navigateTo({
-						url: item.path
-					})
+		methods: {
+			handleCheck(item) {
+				console.log('执行跳转', item)
+				switch (Number(item.id)) {
+					case 1:
+						uni.reLaunch({
+							url: item.path
+						})
+						break;
+					case 3:
+						uni.makePhoneCall({
+							phoneNumber: '1111111',
+							success: function() {
+								console.log('拨号');
+							},
+							fail: function() {
+								console.log('拨号失败！');
+							}
+						})
+						break;
+					case 4:
+						uni.reLaunch({
+							url: item.path
+						})
+						break;
+					case 5:
+						// 判断有无权限
+						if (this.$store.state.login) {
+							uni.reLaunch({
+								url: item.path
+							})
+						} else {
+							uni.navigateTo({
+								url: '/pages/sonView/login/index'
+							})
+						}
+						break;
+					default:
+						// 跳转
+						if (item.path == '/' + this.route) {
+							console.log("跳转当前页，拒绝")
+						} else {
+							uni.navigateTo({
+								url: item.path
+							})
+						}
 				}
-				
+				// if(item.id==3){
+				// 	// 拨号
+				// 	uni.makePhoneCall({
+				// 		phoneNumber:'1111111',
+				// 		success: function(){
+				// 			console.log('拨号');
+				// 		},
+				// 		fail: function(){
+				// 			console.log('拨号失败！');
+				// 		}
+				// 	})
+				// }else if (item.id==5){
+				// 	// 判断有无权限
+				// 	if(this.$store.state.login){
+				// 		uni.navigateTo({
+				// 			url: item.path
+				// 		})
+				// 	}else{
+				// 		uni.navigateTo({
+				// 			url: '/pages/sonView/login/index'
+				// 		})
+				// 	}
+
+				// }else{
+				// 	// 跳转
+				// 	if (item.path == '/' + this.route) {
+				// 		console.log("跳转当前页，拒绝")
+				// 	} else {
+				// 		uni.navigateTo({
+				// 			url: item.path
+				// 		})
+				// 	}
+				// }
+
 			}
 		},
-		created(){
+		created() {
+			console.log('11111', this.$store.state);
+
 			const pages = getCurrentPages();
 			const page = pages[pages.length - 1];
-			console.log('底部生命周期',page.route);
+			console.log('底部生命周期', page.route);
 			this.route = page.route
+			apiCeshi().then((res) => {
+				console.log('请求', res);
+			})
 		}
-		
+
 	}
 </script>
 
 <style>
-	image{
+	image {
 		will-change: transform
 	}
-	
-	.iconAll{
-		width: 1.325rem;height: 1.325rem;
+
+	.iconAll {
+		width: 1.325rem;
+		height: 1.325rem;
 	}
-	.tarBarClass{
+
+	.tarBarClass {
 		width: 100%;
 		position: fixed;
 		bottom: -0.1rem;

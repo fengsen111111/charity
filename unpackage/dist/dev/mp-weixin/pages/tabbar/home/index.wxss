@@ -1,4 +1,13 @@
 
+.viewFixed{
+	position: fixed;
+	bottom: 10vh;
+	right: 10vw
+}
+.imgFixed{
+	width: 100rpx;
+	height: 100rpx;
+}
 .checkboxItem {
 	border-bottom: 1rpx solid #4867CF;
 	padding: 0px 0.5rem;

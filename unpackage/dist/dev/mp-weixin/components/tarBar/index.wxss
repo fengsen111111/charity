@@ -1,11 +1,12 @@
 
-image{
+image {
 	will-change: transform
 }
-.iconAll{
-	width: 1.325rem;height: 1.325rem;
+.iconAll {
+	width: 1.325rem;
+	height: 1.325rem;
 }
-.tarBarClass{
+.tarBarClass {
 	width: 100%;
 	position: fixed;
 	bottom: -0.1rem;
