@@ -13,8 +13,8 @@
 	width: 48%;
 }
 .iconWH {
-	width: 1.75rem;
-	height: 1.5rem;
+	width: 56rpx;
+	height: 50rpx;
 }
 .iconLeft {
 	position: relative;

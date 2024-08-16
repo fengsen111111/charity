@@ -6,12 +6,12 @@
 				<!-- 一分秒杀 -->
 				<view class="card p-2 h7">
 					<view class="flex justify-between  items-center">
-						<view class="price text12 rending1 px-1">一分秒杀</view>
+						<view class="price2 text12 rending1 px-1">一分秒杀</view>
 						<view class="colortext text12" @click="handleUrl('/pages/sonView/oneSpikes/index')">更多</view>
 					</view>
 					<view class="flex justify-between">
 						<view v-for="item in [1,2]" :key="item">
-							<image @click="handDetailds" src="https://imgos.cn/2024/08/12/66b9d67b2c357.png" mode="" class="mt-1 h4 w4"></image>
+							<image @click="handDetailds" src="https://img.picui.cn/free/2024/08/16/66bf135fa40a3.png" mode="" class="mt-1 h4 w4"></image>
 							<view class="relativeTop">
 								<text class="tagBg px-1">
 									0.01
@@ -43,7 +43,7 @@
 					</view>
 					<view class="flex justify-between">
 						<view v-for="item in [1,2]" :key="item">
-							<image @click="handDetailds" src="https://imgos.cn/2024/08/12/66b9d67b2c357.png" mode="" class="mt-1 h4 w4"></image>
+							<image @click="handDetailds" src="https://img.picui.cn/free/2024/08/16/66bf147f6511c.png" mode="" class="mt-1 h4 w4"></image>
 							<view class="relativeTop">
 								<text class="tagBg px-1">
 									0.01
@@ -97,6 +97,10 @@
 </script>
 
 <style>
+	.price2 {
+		background: linear-gradient(270deg, #FA311D 0%, #FF8E34 100%);
+		border-radius: 0.25rem;
+	}
 	.price {
 		background: linear-gradient(270deg, #FA311D 0%, #FF8E34 100%);
 		border-radius: 0.25rem 0px 0px 0.25rem;
@@ -105,6 +109,7 @@
 		border: 1rpx solid #FF8E34;
 		padding: 0px 0.25rem;
 		border-radius: 0px 0.25rem 0.25rem 0px;
+		border-left-width: 0px;
 	}
 	.colortext {
 		color: #4867CF;

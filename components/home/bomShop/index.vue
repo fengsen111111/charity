@@ -9,8 +9,10 @@
 			</view> -->
 		<view class="grid grid-cols-2 gridRow">
 			<view class="bg-whilt rending1 p-2 mt-3" v-for="item in [1,2,3,4]" :key="item">
-				<image @click="handDetailds" src="https://imgos.cn/2024/08/12/66b9d67b2c357.png" mode=""
-					class="w-full h10"></image>
+				<image v-if="item==1" @click="handDetailds" src="https://img.picui.cn/free/2024/08/16/66bf135fa40a3.png" mode="" class="w-full h10"></image>
+				<image v-else-if="item ==2" @click="handDetailds" src="https://imgos.cn/2024/08/12/66b9d67b2c357.png" mode="" class="w-full h10"></image>
+				<image v-else-if="item ==3" @click="handDetailds" src="https://imgos.cn/2024/08/12/66b9d67b2c357.png" mode="" class="w-full h10"></image>
+				<image v-else-if="item ==4" @click="handDetailds" src="https://img.picui.cn/free/2024/08/16/66bf135f6997c.png" mode="" class="w-full h10"></image>
 				<view class="fontBold text12 ling125 ">
 					泸州老窖 六年窖头曲 特惠浓香白酒 52度精品装 500ml...
 				</view>
@@ -29,7 +31,7 @@
 							约 66.88元/瓶 148.88元/箱
 						</view>
 					</view>
-					<view class="text12 bg486 rending1 text-whlie p-1" @click="toggle('bottom')">
+					<view class="text12 bg486 rending2 text-whlie p-1" @click="toggle('bottom')">
 						选规格
 					</view>
 				</view>
@@ -56,11 +58,11 @@
 							<view class="fontBold text12 ling4">
 								泸州老窖 六年窖头曲 浓香白酒 52度精品装 500ml...
 							</view>
-							<view class="flex mt-2 ling4">
+							<view class="flex mt-2 ling4 rending1 hidden">
 								<text class="tagCol text-whlie px-2 text10">
 									领取优惠券
 								</text>
-								<text class="tagBor colED1 px-2 text10">
+								<text class="tagBor colED1 px-2 text10 rightRadius8">
 									6.2折
 								</text>
 							</view>

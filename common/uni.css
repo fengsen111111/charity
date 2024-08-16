@@ -189,10 +189,10 @@
 	height: 100px;
 }
 .rending1{
-	border-radius:0.25rem
+	border-radius: 8rpx
 }
 .rending2{
-	border-radius:0.5rem
+	border-radius: 10rpx
 }
 .rending3{
 	border-radius:0.75rem
@@ -270,6 +270,9 @@
 }
 .hidden{
 	overflow:hidden;
+}
+.rightRadius8{
+	border-radius: 0px 8rpx 8rpx 0px;
 }
 .h-full{
 	height: 100%;
@@ -508,4 +511,7 @@
 }
 .border68B{
 	border: 1rpx solid #68BF7B
+}
+.mr50{
+	margin-right: 50rpx;
 }

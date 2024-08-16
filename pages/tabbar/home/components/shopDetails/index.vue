@@ -3,10 +3,11 @@
 		<hearch :title="'商品详情'" :isLeft="true" />
 		<!-- img -->
 		<swiper class="swiper-box" @change="change" :current="swiperDotIndex">
-			<swiper-item v-for="(item, index) in 3" :key="index">
+			<swiper-item v-for="(item, index) in [1,2,3]" :key="index">
 				<view class="swiper-item">
-					<image src="https://imgos.cn/2024/08/12/66b9d71baf094.png" @click="preview" mode=""
-						class="w-full h20"></image>
+					<image src="https://imgos.cn/2024/08/12/66b9d71baf094.png" @click="preview('https://imgos.cn/2024/08/12/66b9d71baf094.png')" mode="" class="w-full h20"></image>
+					<image src="https://img.picui.cn/free/2024/08/16/66bf135f6997c.png" @click="preview('https://img.picui.cn/free/2024/08/16/66bf135f6997c.png')" mode="" class="w-full h20"></image>
+					<image src="https://img.picui.cn/free/2024/08/16/66bf147f6511c.png" @click="preview('https://img.picui.cn/free/2024/08/16/66bf147f6511c.png')" mode="" class="w-full h20"></image>
 				</view>
 			</swiper-item>
 		</swiper>
@@ -342,11 +343,11 @@
 				console.log(url);
 				// #ifdef MP-WEIXIN
 				this.$nextTick(() => {
-					this.$refs.previewImage.open('https://imgos.cn/2024/08/12/66b9d67b2c357.png'); // 传入当前选中的图片地址(小程序必须添加$nextTick，解决组件首次加载无图)
+					this.$refs.previewImage.open(url); // 传入当前选中的图片地址(小程序必须添加$nextTick，解决组件首次加载无图)
 				})
 				// #endif
 				// #ifndef MP-WEIXIN
-				this.$refs.previewImage.open('https://imgos.cn/2024/08/12/66b9d67b2c357.png'); // 传入当前选中的图片地址
+				this.$refs.previewImage.open(url); // 传入当前选中的图片地址
 				// #endif
 			},
 			// 关闭

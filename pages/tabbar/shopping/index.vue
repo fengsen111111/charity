@@ -32,7 +32,7 @@
 						<!-- 折扣 -->
 						<view class="flex justify-between">
 							<view></view>
-							<view class="flex mt-1 items-center">
+							<view class="flex mt-2 items-center">
 								<view class="discount"></view>
 								<view class="col666 text12  ">使用折扣价</view>
 							</view>

@@ -30,14 +30,14 @@
 						id: 2,
 						text: '分类',
 						url: require('@/static/tabbar/classify.png'),
-						checkUrl: require('@/static/tabbar/classify_checked.png'),
+						checkUrl: require('@/static/tabbar/classify.png'),
 						path: '/pages/tabbar/classify/index',
 					},
 					{
 						id: 3,
 						text: '联系我们',
 						url: require('@/static/tabbar/phone.png'),
-						checkUrl: require('@/static/tabbar/phone_checked.png'),
+						checkUrl: require('@/static/tabbar/phone.png'),
 						path: '/pages/tabbar/phone/index',
 					},
 					{
@@ -142,14 +142,13 @@
 		},
 		created() {
 			console.log('11111', this.$store.state);
-
 			const pages = getCurrentPages();
 			const page = pages[pages.length - 1];
 			console.log('底部生命周期', page.route);
 			this.route = page.route
-			apiCeshi().then((res) => {
-				console.log('请求', res);
-			})
+			// apiCeshi().then((res) => {
+			// 	console.log('请求', res);
+			// })
 		}
 
 	}
@@ -161,16 +160,16 @@
 	}
 
 	.iconAll {
-		width: 1.325rem;
-		height: 1.325rem;
-	}
+		width: 40rpx;
+		height: 40rpx;
+ 	}
 
 	.tarBarClass {
 		width: 100%;
 		position: fixed;
 		bottom: -0.1rem;
 		height: 4rem;
-		border-top: 1px solid #D7D9EC;
+		/* border-top: 1px solid #D7D9EC; */
 		background-color: #fff;
 	}
 </style>

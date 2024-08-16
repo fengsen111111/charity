@@ -1,4 +1,9 @@
 
+.imgStrip{
+	height: 60rpx;
+	margin-top: 10rpx;
+	margin-bottom: 10rpx;
+}
 .viewFixed{
 	position: fixed;
 	bottom: 10vh;
@@ -9,8 +14,18 @@
 	height: 100rpx;
 }
 .checkboxItem {
-	border-bottom: 1rpx solid #4867CF;
-	padding: 0px 0.5rem;
+	height: 6rpx;
+	border-radius: 30rpx;
+	background-color: #4867CF;
+	width: 80rpx;
+	margin-top: 5rpx;
+}
+.checkboxItemTwo {
+	margin-top: 5rpx;
+	height: 6rpx;
+	border-radius: 30rpx;
+	background-color: #4867CF;
+	width: 110rpx;
 }
 .tagShopItem {
 	border: 1px solid #ED1805;

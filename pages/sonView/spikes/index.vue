@@ -28,7 +28,7 @@
 			<view class="bgF9 py-3" >
 				<view class="w90">
 					<shopCardTwo>
-						<view class="border999 space-x-3 col999  p-1 rending1  p-1">
+						<view class="border999 space-x-3 col999 px-2 flex items-center rending1">
 							<text class="text10">开始倒计时</text>
 							<text class="text11 fontBold space-x-1">01:59:59</text>
 						</view>

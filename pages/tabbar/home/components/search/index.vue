@@ -37,8 +37,8 @@
 						<view class="uni-ml-1">
 							<view class='iconBig' v-if="valueCheck.searchOne==1"><image src="@/static/home/search/up_c.png" class='iconBig' mode=""></image></view>
 							<view class='iconBig' v-else><image src="@/static/home/search/up.png" class='iconBig' mode=""></image></view>
-							<view class='iconBig' v-if="valueCheck.searchOne==2"><image src="@/static/home/search/down_c.png"class='iconBig'  mode=""></image></view>
-							<view class='iconBig' v-else><image src="@/static/home/search/down.png"class='iconBig'  mode=""></image></view>
+							<view class='iconBigTwo' v-if="valueCheck.searchOne==2"><image src="@/static/home/search/down_c.png" class='iconBigTwo'  mode=""></image></view>
+							<view class='iconBigTwo' v-else><image src="@/static/home/search/down.png"class='iconBigTwo'  mode=""></image></view>
 						</view>		
 				</view>
 				<view class="flex items-center mxAuto">
@@ -46,8 +46,8 @@
 						<view class="uni-ml-1">
 							<view class='iconBig' v-if="valueCheck.searchTwo==1"><image src="@/static/home/search/up_c.png" class='iconBig' mode=""></image></view>
 							<view class='iconBig' v-else><image src="@/static/home/search/up.png" class='iconBig' mode=""></image></view>
-							<view class='iconBig' v-if="valueCheck.searchTwo==2"><image src="@/static/home/search/down_c.png"class='iconBig'  mode=""></image></view>
-							<view class='iconBig' v-else><image src="@/static/home/search/down.png"class='iconBig'  mode=""></image></view>
+							<view class='iconBigTwo' v-if="valueCheck.searchTwo==2"><image src="@/static/home/search/down_c.png" class='iconBigTwo'  mode=""></image></view>
+							<view class='iconBigTwo' v-else><image src="@/static/home/search/down.png"class='iconBigTwo'  mode=""></image></view>
 						</view>		
 				</view>
 			</view>
@@ -158,6 +158,11 @@
 		width: 0.5rem;
 		height: 0.5rem;
 		line-height: 0.5rem;
+	}
+	.iconBigTwo{
+		width: 0.5rem;
+		height: 0.5rem;
+		line-height: 0.35rem;
 	}
 	.navBarBox {}
 

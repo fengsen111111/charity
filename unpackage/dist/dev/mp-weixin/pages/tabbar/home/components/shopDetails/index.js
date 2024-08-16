@@ -101,13 +101,13 @@ var components
 try {
   components = {
     uniIcons: function () {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 345))
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 332))
     },
     uniPopup: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 378))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 365))
     },
     qPreviewImage: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/q-previewImage/components/q-previewImage/q-previewImage */ "uni_modules/q-previewImage/components/q-previewImage/q-previewImage").then(__webpack_require__.bind(null, /*! @/uni_modules/q-previewImage/components/q-previewImage/q-previewImage.vue */ 385))
+      return __webpack_require__.e(/*! import() | uni_modules/q-previewImage/components/q-previewImage/q-previewImage */ "uni_modules/q-previewImage/components/q-previewImage/q-previewImage").then(__webpack_require__.bind(null, /*! @/uni_modules/q-previewImage/components/q-previewImage/q-previewImage.vue */ 372))
     },
   }
 } catch (e) {
@@ -131,6 +131,21 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function ($event) {
+      return _vm.preview("https://imgos.cn/2024/08/12/66b9d71baf094.png")
+    }
+    _vm.e1 = function ($event) {
+      return _vm.preview(
+        "https://img.picui.cn/free/2024/08/16/66bf135f6997c.png"
+      )
+    }
+    _vm.e2 = function ($event) {
+      return _vm.preview(
+        "https://img.picui.cn/free/2024/08/16/66bf147f6511c.png"
+      )
+    }
+  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -172,22 +187,22 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var hearch = function hearch() {
   __webpack_require__.e(/*! require.ensure | components/hearch/index */ "components/hearch/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/hearch/index.vue */ 353));
+    return resolve(__webpack_require__(/*! @/components/hearch/index.vue */ 340));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var ruleItem = function ruleItem() {
   __webpack_require__.e(/*! require.ensure | components/ruleItem/index */ "components/ruleItem/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/ruleItem/index */ 392));
+    return resolve(__webpack_require__(/*! @/components/ruleItem/index */ 379));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var volumeTag = function volumeTag() {
   __webpack_require__.e(/*! require.ensure | components/volumeTag/index */ "components/volumeTag/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/volumeTag/index.vue */ 399));
+    return resolve(__webpack_require__(/*! @/components/volumeTag/index.vue */ 386));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var comments = function comments() {
   __webpack_require__.e(/*! require.ensure | components/comments/index */ "components/comments/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/comments/index.vue */ 406));
+    return resolve(__webpack_require__(/*! @/components/comments/index.vue */ 393));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -293,7 +308,7 @@ var _default = {
       var _this2 = this;
       console.log(url);
       this.$nextTick(function () {
-        _this2.$refs.previewImage.open('https://imgos.cn/2024/08/12/66b9d67b2c357.png'); // 传入当前选中的图片地址(小程序必须添加$nextTick，解决组件首次加载无图)
+        _this2.$refs.previewImage.open(url); // 传入当前选中的图片地址(小程序必须添加$nextTick，解决组件首次加载无图)
       });
     },
     // 关闭

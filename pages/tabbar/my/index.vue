@@ -22,31 +22,31 @@
 			<view class="px-3 mt-3">
 				<view class="bg-whilt rending1 flex justify-between p-4">
 					<view class="text-center" @click="handleUrl('/pages/sonView/myOrder/index')">
-						<image src="@/static/my/icon1.png" mode="" class="iconWH"></image>
+						<image src="@/static/my/icon1_new.png" mode="" class="iconWH"></image>
 						<view class="text-black text12" >
 							待付款
 						</view>
 					</view>
 					<view class="text-center">
-						<image src="@/static/my/icon2.png" mode="" class="iconWH"></image>
+						<image src="@/static/my/icon2_new.png" mode="" class="iconWH"></image>
 						<view class="text-black text12 ">
 							进行中
 						</view>
 					</view>
 					<view class="text-center">
-						<image src="@/static/my/icon3.png" mode="" class="iconWH"></image>
+						<image src="@/static/my/icon3_new.png" mode="" class="iconWH"></image>
 						<view class="text-black text12 ">
 							待评价
 						</view>
 					</view>
 					<view class="text-center">
-						<image src="@/static/my/icon4.png" mode="" class="iconWH"></image>
+						<image src="@/static/my/icon4_new.png" mode="" class="iconWH"></image>
 						<view class="text-black text12 ">
 							退货/售后
 						</view>
 					</view>
 					<view class="text-center">
-						<image src="@/static/my/icon5.png" mode="" class="iconWH"></image>
+						<image src="@/static/my/icon5_new.png" mode="" class="iconWH"></image>
 						<view class="text-black text12 ">
 							全部订单
 						</view>
@@ -177,8 +177,8 @@
 	}
 
 	.iconWH {
-		width: 1.75rem;
-		height: 1.5rem;
+		width: 56rpx;
+		height: 50rpx;
 	}
 
 	.iconLeft {

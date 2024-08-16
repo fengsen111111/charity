@@ -4,6 +4,11 @@
 	height: 0.5rem;
 	line-height: 0.5rem;
 }
+.iconBigTwo{
+	width: 0.5rem;
+	height: 0.5rem;
+	line-height: 0.35rem;
+}
 .navBarBox {}
 .navBarBox .statusBar {}
 .navBarBox .navBar {

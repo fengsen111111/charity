@@ -12,24 +12,40 @@
 			<!-- 酒水饮料 -->
 			<twoCard />
 			<!--  -->
-			<image src="@/static/home/strip.png" mode="" class="w-full h-6"></image>
+			<image src="@/static/home/strip_2.png" mode="" class="w-full imgStrip" style=""></image>
 			<!-- 更多惊喜，更多福利 -->
 			<active />
 			<!-- tabs -->
 			<view class="mt-3 text-black text12">
-				<view class="flex">
-					<view @click="handleItem(1)" class="mr-2" :class="checkItem == 1?'col486 text14 checkboxItem':''">推荐
+				<view class="flex text-center items-center">
+					<view @click="handleItem(1)" class="mr50" :class="checkItem == 1?'col486 text14 ':''">
+						推荐
+						<view class="checkboxItem" v-if="checkItem == 1"></view>
 					</view>
-					<view @click="handleItem(2)" class="mr-2" :class="checkItem == 2?'col486 text14 checkboxItem':''">
-						白酒类</view>
-					<view @click="handleItem(3)" class="mr-2" :class="checkItem == 3?'col486 text14 checkboxItem':''">
-						朗姆酒</view>
-					<view @click="handleItem(4)" class="mr-2" :class="checkItem == 4?'col486 text14 checkboxItem':''">
-						威士忌</view>
+					<view @click="handleItem(2)" class="mr50" :class="checkItem == 2?'col486 text14 ':''">
+						白酒类
+						<view class="checkboxItemTwo" v-if="checkItem == 2"></view>
+						</view>
+					<view @click="handleItem(3)" class="mr50" :class="checkItem == 3?'col486 text14 ':''">
+						朗姆酒
+						<view class="checkboxItemTwo" v-if="checkItem == 3"></view>
+						</view>
+					<view @click="handleItem(4)" class="mr50" :class="checkItem == 4?'col486 text14 ':''">
+						威士忌
+						<view class="checkboxItemTwo" v-if="checkItem == 4"></view>
+						</view>
 				</view>
-				<view class="">
-					<uni-load-more status="loading" class="mt-3" v-if="status" />
-					<bomShop v-else />
+				<view class="" v-if="checkItem == 1">
+					<bomShop />
+				</view>
+				<view class="" v-else-if="checkItem == 2">
+					<bomShop />
+				</view>
+				<view class="" v-else-if="checkItem == 3">
+					<bomShop />
+				</view>
+				<view class="" v-else>
+					<bomShop />
 				</view>
 			</view>
 			<!-- 留高 -->
@@ -67,7 +83,6 @@
 			return {
 				searchValue: '',
 				checkItem: 1,
-				status: false
 			};
 		},
 		onLoad() {},
@@ -84,10 +99,13 @@
 				})
 			},
 			handleItem(index) {
-				this.checkItem = index;
-				this.status = true
+				this.checkItem = '';
+				uni.showLoading({
+					title: "加载中"
+				})
 				setTimeout(()=>{
-					this.status = false
+					this.checkItem = index;
+					uni.hideLoading()
 				},500)
 			},
 			handleUrl(url) {
@@ -101,6 +119,11 @@
 </script>
 
 <style>
+	.imgStrip{
+		height: 60rpx;
+		margin-top: 10rpx;
+		margin-bottom: 10rpx;
+	}
 	.viewFixed{
 		position: fixed;
 		bottom: 10vh;
@@ -111,8 +134,18 @@
 		height: 100rpx;
 	}
 	.checkboxItem {
-		border-bottom: 1rpx solid #4867CF;
-		padding: 0px 0.5rem;
+		height: 6rpx;
+		border-radius: 30rpx;
+		background-color: #4867CF;
+		width: 80rpx;
+		margin-top: 5rpx;
+	}
+	.checkboxItemTwo {
+		margin-top: 5rpx;
+		height: 6rpx;
+		border-radius: 30rpx;
+		background-color: #4867CF;
+		width: 110rpx;
 	}
 
 	.tagShopItem {

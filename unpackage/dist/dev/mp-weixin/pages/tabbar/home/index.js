@@ -98,29 +98,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
-try {
-  components = {
-    uniLoadMore: function () {
-      return Promise.all(/*! import() | uni_modules/uni-load-more/components/uni-load-more/uni-load-more */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-load-more/components/uni-load-more/uni-load-more")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-load-more/components/uni-load-more/uni-load-more.vue */ 261))
-    },
-  }
-} catch (e) {
-  if (
-    e.message.indexOf("Cannot find module") !== -1 &&
-    e.message.indexOf(".vue") !== -1
-  ) {
-    console.error(e.message)
-    console.error("1. 排查组件名称拼写是否正确")
-    console.error(
-      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
-    )
-    console.error(
-      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
-    )
-  } else {
-    throw e
-  }
-}
 var render = function () {
   var _vm = this
   var _h = _vm.$createElement
@@ -166,32 +143,32 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var homeTop = function homeTop() {
   __webpack_require__.e(/*! require.ensure | components/home/homeTop/index */ "components/home/homeTop/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/home/homeTop/index.vue */ 272));
+    return resolve(__webpack_require__(/*! @/components/home/homeTop/index.vue */ 261));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var bomShop = function bomShop() {
   __webpack_require__.e(/*! require.ensure | components/home/bomShop/index */ "components/home/bomShop/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/home/bomShop/index.vue */ 279));
+    return resolve(__webpack_require__(/*! @/components/home/bomShop/index.vue */ 268));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var homeCard = function homeCard() {
   __webpack_require__.e(/*! require.ensure | components/home/homeCard/index */ "components/home/homeCard/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/home/homeCard/index.vue */ 286));
+    return resolve(__webpack_require__(/*! @/components/home/homeCard/index.vue */ 275));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var twoCard = function twoCard() {
   __webpack_require__.e(/*! require.ensure | components/home/twoCard/index */ "components/home/twoCard/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/home/twoCard/index.vue */ 293));
+    return resolve(__webpack_require__(/*! @/components/home/twoCard/index.vue */ 282));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var active = function active() {
   __webpack_require__.e(/*! require.ensure | components/home/active/index */ "components/home/active/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/home/active/index.vue */ 300));
+    return resolve(__webpack_require__(/*! @/components/home/active/index.vue */ 289));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var tarBar = function tarBar() {
   Promise.all(/*! require.ensure | components/tarBar/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tarBar/index")]).then((function () {
-    return resolve(__webpack_require__(/*! @/components/tarBar/index.vue */ 307));
+    return resolve(__webpack_require__(/*! @/components/tarBar/index.vue */ 296));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -206,8 +183,7 @@ var _default = {
   data: function data() {
     return {
       searchValue: '',
-      checkItem: 1,
-      status: false
+      checkItem: 1
     };
   },
   onLoad: function onLoad() {},
@@ -225,10 +201,13 @@ var _default = {
     },
     handleItem: function handleItem(index) {
       var _this = this;
-      this.checkItem = index;
-      this.status = true;
+      this.checkItem = '';
+      uni.showLoading({
+        title: "加载中"
+      });
       setTimeout(function () {
-        _this.status = false;
+        _this.checkItem = index;
+        uni.hideLoading();
       }, 500);
     },
     handleUrl: function handleUrl(url) {

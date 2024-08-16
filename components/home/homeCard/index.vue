@@ -1,6 +1,6 @@
 <template>
 	<view class="">
-		<view class="active mt-4 p-2">
+		<view class="active mt-2 p-2">
 			<view class="flex items-center justify-between">
 				<view class="flex items-center">
 					<view class="text18 fontBold">新人专享</view>
@@ -12,10 +12,12 @@
 			</view>
 			<!-- shop -->
 			<view class="flex pt-3 overflowAuto" >
-				<view class="bg-whilt mr-2 rending1" style="width: 800rpx;" @click="handDetailds" v-for="item in [1,2,3,4,5]" :key="item">
-					<image src="https://imgos.cn/2024/08/12/66b9d67b2c357.png" mode="" class="w-full mt-3" style="height: 100px;"></image>
+				<view class="bg-whilt mr-2 rending1" style="width: 800rpx;" @click="handDetailds" v-for="item in [1,2,3]" :key="item">
+					<image v-if="item==1" src="https://imgos.cn/2024/08/12/66b9d67b2c357.png" mode="" class="w-full mt-3" style="height: 100px;"></image>
+					<image v-else-if="item==2" src="https://img.picui.cn/free/2024/08/16/66bf135f6997c.png" mode="" class="w-full mt-3" style="height: 100px;"></image>
+					<image v-else-if="item==3" src="https://img.picui.cn/free/2024/08/16/66bf135fa40a3.png" mode="" class="w-full mt-3" style="height: 100px;"></image>
 					<view class="text12 text-black text-center">
-						高度浓香型白酒...
+						高度浓香型白酒......
 					</view>
 					<view class="flex text12 px-2 mt-1">
 						<view class="text999 textDel">￥888</view>

@@ -9,11 +9,11 @@
 		<view class="gw flex justify-between">
 			<view class="flex mt-3">
 				<view class="text-center space-x-6">
-					<image src="@/static/classify/serve.png" mode="" class="iconTwo"></image>
+					<image src="@/static/classify/server_new.png" mode="" class="iconTwo"></image>
 					<view class="text12 ling0 mt-1">客服</view>
 				</view>
 				<view class="text-center space-x-6">
-					<image src="@/static/classify/shopping.png" mode="" class="iconTwo"></image>
+					<image src="@/static/classify/shopping_new.png" mode="" class="iconTwo"></image>
 					<view class="text12 ling0 mt-1">购物车</view>
 				</view>
 			</view>
