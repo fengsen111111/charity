@@ -55,12 +55,13 @@
 
 		</view>
 		<!-- 底部固定 -->
-		<view class="bottomFixed flex w-full bg-whilt px-3 items-center">
-			<view class="col666 text12">实付金额</view>
-			<view class="colED1 fontBold space-x-3">￥<text class="text20 ">888</text>.8</view>
-			<view class="colED1 text12 space-x-3">已优惠：￥888</view>
-			<view class="w-4"></view>
-			<view class="btnPay space-x-3 rending1" @click="toggle('center')">去支付</view>
+		<view class="bottomFixed flex justify-between w-full bg-whilt px-3 items-center">
+			<view class="flex items-center">
+				<view class="col666 text12">实付金额</view>
+				<view class="colED1 fontBold space-x-3">￥<text class="text20 ">888</text>.8</view>
+				<view class="colED1 text12 space-x-3">已优惠：￥888</view>
+			</view>
+			<view class="btnPay space-x-2 rending1" @click="toggle('center')">去支付</view>
 		</view>
 		<!-- 支付弹窗 -->
 		<uni-popup ref="popup" background-color="#fff" borderRadius="0.5rem 0.5rem 0.5rem 0.5rem">
@@ -138,7 +139,9 @@
 	.btnPay {
 		background-color: #999999;
 		color: #fff;
-		padding: 0.5rem 2rem;
-		margin: 0.5rem;
+		padding: 15rpx 30rpx;
+		margin-top: 0.5rem ;
+		margin-bottom: 0.5rem ;
+		margin-right: 48rpx;
 	}
 </style>

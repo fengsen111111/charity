@@ -519,6 +519,9 @@
 .mr50{
 	margin-right: 50rpx;
 }
+.mt90{
+	margin-top: 90rpx;
+}
 /*每个页面公共css */
 /* 水平间距 */
 @font-face {

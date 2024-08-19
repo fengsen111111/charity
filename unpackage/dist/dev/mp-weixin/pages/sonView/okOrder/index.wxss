@@ -6,7 +6,9 @@
 .btnPay {
 	background-color: #999999;
 	color: #fff;
-	padding: 0.5rem 2rem;
-	margin: 0.5rem;
+	padding: 15rpx 30rpx;
+	margin-top: 0.5rem ;
+	margin-bottom: 0.5rem ;
+	margin-right: 48rpx;
 }
 

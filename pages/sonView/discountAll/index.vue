@@ -18,9 +18,7 @@
 		</view>
 		<!-- 领卷中心 -->
 		<view class="rightBottomImg text10 text-whlie text-center" @click="handleUrl('/pages/sonView/volume/index')">
-			<view class="h-8"></view>
-			<view class="h-2"></view>
-			<view class="">领卷中心</view>
+			<view class="mt90">领卷中心</view>
 		</view>
 	</view>
 </template>
