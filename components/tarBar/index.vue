@@ -167,7 +167,7 @@
 	.tarBarClass {
 		width: 100%;
 		position: fixed;
-		bottom: -0.1rem;
+		bottom: 0px;
 		height: 4rem;
 		/* border-top: 1px solid #D7D9EC; */
 		background-color: #fff;

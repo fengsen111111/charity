@@ -48,6 +48,9 @@
 		methods: {
 			handleCheck(index) {
 				this.checkItem = index
+			},
+			change(e){
+				console.log('选择',e);
 			}
 		}
 	};

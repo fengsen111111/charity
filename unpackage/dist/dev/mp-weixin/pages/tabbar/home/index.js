@@ -172,6 +172,15 @@ var tarBar = function tarBar() {
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
+  onPageScroll: function onPageScroll(e) {
+    // e.scrollTop 表示当前页面滚动的距离
+    // console.log('页面滚动距离：', e.scrollTop);
+    if (e.scrollTop > 600) {
+      this.show = true;
+    } else {
+      this.show = false;
+    }
+  },
   components: {
     bomShop: bomShop,
     homeCard: homeCard,
@@ -183,7 +192,8 @@ var _default = {
   data: function data() {
     return {
       searchValue: '',
-      checkItem: 1
+      checkItem: 1,
+      show: false //小图标隐藏显示
     };
   },
   onLoad: function onLoad() {},

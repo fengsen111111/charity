@@ -7,7 +7,9 @@
 		</view>
 		<!-- shop -->
 		<view class="rightWidth">
-			<view class="" v-for="item in [1,2,3,4,5]" :key="item">
+			<view class="flex items-center" v-for="item in [1,2,3,4,5]" :key="item">
+				<uni-icons type="checkbox-filled" v-if="item==1" color="#4867CF" size="20" class="uni-ml-2 uni-mr-2"></uni-icons>
+				<uni-icons type="circle" size="20" v-else class="uni-ml-2 uni-mr-2"></uni-icons>
 				<shopCardTwo>
 					<!-- 选规格 -->
 					<view class="">

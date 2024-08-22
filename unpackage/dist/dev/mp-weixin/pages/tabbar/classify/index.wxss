@@ -24,7 +24,7 @@
 	height: 4rem;
 	background-color: #fff;
 	position: fixed;
-	top: 91.5vh;
+	bottom:0px;
 	/* border: 1px solid red; */
 	width: 100%;
 }

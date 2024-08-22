@@ -206,6 +206,9 @@ var _default = {
   methods: {
     handleCheck: function handleCheck(index) {
       this.checkItem = index;
+    },
+    change: function change(e) {
+      console.log('选择', e);
     }
   }
 };

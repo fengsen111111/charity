@@ -4,7 +4,9 @@
 		<!-- item -->
 		<view class="px-3 mt-3 flex items-center" v-for="item in [1,2,3,4]" :key="item">
 			<view class="">
-				<uni-icons type="circle" size="20"></uni-icons>
+				<!-- <uni-icons type="circle" size="20"></uni-icons> -->
+				<uni-icons type="checkbox-filled" v-if="item==1" color="#4867CF" size="20"></uni-icons>
+				<uni-icons type="circle" size="20" v-else ></uni-icons>
 			</view>
 			<view class="w90 space-x-2  rending2  p-4 bg-whilt">
 				<shopCard>

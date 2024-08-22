@@ -164,7 +164,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(uni) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -202,6 +202,12 @@ var _default = {
   onShow: function onShow() {},
   onHide: function onHide() {},
   methods: {
+    // 新增地址
+    handleAddressAdd: function handleAddressAdd() {
+      uni.navigateTo({
+        url: '/pages/sonView/addressForm/index'
+      });
+    },
     // 关闭
     close: function close() {
       this.$refs.popup.close();
@@ -211,10 +217,31 @@ var _default = {
       this.type = type;
       // open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
       this.$refs.popup.open(type);
+    },
+    // 关闭
+    closeGift: function closeGift() {
+      this.$refs.popupGift.close();
+    },
+    // 弹框
+    toggleGift: function toggleGift(type) {
+      this.type = type;
+      // open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
+      this.$refs.popupGift.open(type);
+    },
+    // 关闭
+    closeAddress: function closeAddress() {
+      this.$refs.popupAddress.close();
+    },
+    // 弹框
+    toggleAddress: function toggleAddress(type) {
+      this.type = type;
+      // open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
+      this.$refs.popupAddress.open(type);
     }
   }
 };
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 

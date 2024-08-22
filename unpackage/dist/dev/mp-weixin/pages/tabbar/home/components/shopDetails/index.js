@@ -145,6 +145,13 @@ var render = function () {
         "https://img.picui.cn/free/2024/08/16/66bf147f6511c.png"
       )
     }
+    _vm.e3 = function ($event, item) {
+      var _temp = arguments[arguments.length - 1].currentTarget.dataset,
+        _temp2 = _temp.eventParams || _temp["event-params"],
+        item = _temp2.item
+      var _temp, _temp2
+      return _vm.handleTemper(item)
+    }
   }
 }
 var recyclableRender = false
@@ -216,11 +223,28 @@ var _default = {
     return {
       type: 'center',
       imgs: ['https://imgos.cn/2024/08/12/66b9d71baf094.png', 'https://imgos.cn/2024/08/12/66b9d67b2c357.png', 'https://imgos.cn/2024/08/12/66b9d71baf094.png'],
-      swiperDotIndex: 0
+      swiperDotIndex: 0,
+      max: 10,
+      min: 0,
+      number: 2,
+      duration: '0',
+      // 温度选着
+      temperatureIndex: 1,
+      // 
+      bottomStatus: 1 // 1加入购物车 2立即购买
     };
   },
   onLoad: function onLoad() {},
   methods: {
+    // 结算
+    handleOrder: function handleOrder() {
+      uni.navigateTo({
+        url: '/pages/sonView/okOrder/index'
+      });
+    },
+    durationChange: function durationChange(e) {
+      this.duration = e.target.value;
+    },
     // 判断是否授权相册
     handleSure: function handleSure() {
       var that = this;
@@ -340,6 +364,17 @@ var _default = {
       this.type = type;
       // open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
       this.$refs.popupPar.open(type);
+    },
+    // 关闭
+    closeBottom: function closeBottom() {
+      this.$refs.popupBottom.close();
+    },
+    // 弹框
+    toggleBottom: function toggleBottom(type, index) {
+      this.bottomStatus = index; //切换
+      this.type = type;
+      // open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
+      this.$refs.popupBottom.open(type);
     }
   }
 };

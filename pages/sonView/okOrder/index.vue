@@ -3,14 +3,17 @@
 		<hearch :title="'确认订单'" :isLeft="true" />
 		<view class="p-3 text12">
 			<view class="bg-whilt rending1 p-3">
-				<view class="">收货地址</view>
+				<view class="flex items-center justify-between">
+					<view class="">收货地址</view>
+					<view class="colED1">超出配送范围</view>
+				</view>
 				<view class="flex">
 					<text>张三</text>
 					<text>13512341234</text>
 				</view>
-				<view class="flex justify-between">
+				<view class="flex items-center justify-between">
 					<text class="w80 ling4 mt-1">四川省成都市武侯区世纪城天府大道中段588号天天小区快鸟驿站</text>
-					<text class="col486">更换</text>
+					<text class="col486" @click="toggleAddress('bottom')">更换</text>
 				</view>
 			</view>
 			<!--  -->
@@ -32,7 +35,7 @@
 			<view class="bg-whilt rending1 py-3 mt-3">
 				<view class="flex justify-between">
 					<view class="space-x-3">优惠卷</view>
-					<view class="flex">
+					<view class="flex" @click="toggleGift('bottom')">
 						<view class="col486">更换</view>
 						<view class="w-3"></view>
 					</view>
@@ -90,6 +93,73 @@
 				</view>
 			</view>
 		</uni-popup>
+		<!-- 优惠卷弹窗 -->
+		<uni-popup ref="popupGift" background-color="#fff" borderRadius="0.5rem 0.5rem 0px 0px">
+			<view class="bgF9 p-4 overflowAuto" style="height:60vh">
+				<view class="fiexdTop">
+					<view class="w-4"></view>
+					<view class="text16">
+						优惠卷
+					</view>
+					<view class="" @click="closeGift">
+						<uni-icons type="closeempty" size="20"></uni-icons>
+					</view>
+				</view>
+				<view class="h-6"></view>
+				<view class="grid text-center grid-cols-2 mt-4">
+					<view class="">
+						<view class="col486">
+							待使用
+						</view>
+						<view class="bg486 w-6 mxAuto" style="height: 2px;"></view>
+					</view>
+					<view class="col666">
+						未领取
+					</view>
+				</view>
+				<view class="mt-3">
+					<volumeTag />
+				</view>
+				<!-- 留白 -->
+				<view class="h-8"></view>
+				<view class="h-4"></view>
+			</view>
+		</uni-popup>
+		<!-- 地址 -->
+		<uni-popup ref="popupAddress" background-color="#fff" borderRadius="0.5rem 0.5rem 0px 0px">
+			<view class="bgF9 p-4 overflowAuto" style="height:40vh">
+				<view class="fiexdTop items-center">
+					<view class="w-6 text12 col486" @click="handleAddressAdd">新增</view>
+					<view class="text16">
+						选择地址
+					</view>
+					<view class="" @click="closeAddress">
+						<uni-icons type="closeempty" size="20"></uni-icons>
+					</view>
+				</view>
+				<view class="h-6"></view>
+				<view class="bg-whilt text14 mt-3 rending1 p-3" v-for="item in [1,2,3]" :key="item">
+					<view class="flex justify-between items-center">
+						<view class="flex w70" >
+							<text>张三</text>
+							<text class="space-x-2">13512341234</text>
+						</view>
+						<view class="colED1 text12">超出配送范围</view>
+					</view>
+					<view class="flex items-center justify-between">
+						<view class="w80">
+							四川省成都市武侯区世纪城天府大道中段588号天天小区快鸟驿站
+						</view>
+						<view class="text-center mr-2">
+							<uni-icons type="checkbox-filled" size="20" color="#4867CF"></uni-icons>
+						</view>
+					</view>
+				</view>
+				<!-- 留白 -->
+				<view class="h-8"></view>
+				<view class="h-4"></view>
+			</view>
+		</uni-popup>
 	</view>
 </template>
 
@@ -116,6 +186,12 @@
 		},
 		onHide() {},
 		methods: {
+			// 新增地址
+			handleAddressAdd(){
+				uni.navigateTo({
+					url:'/pages/sonView/addressForm/index'
+				})
+			},
 			// 关闭
 			close() {
 				this.$refs.popup.close()
@@ -125,6 +201,26 @@
 				this.type = type
 				// open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
 				this.$refs.popup.open(type)
+			},
+			// 关闭
+			closeGift() {
+				this.$refs.popupGift.close()
+			},
+			// 弹框
+			toggleGift(type) {
+				this.type = type
+				// open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
+				this.$refs.popupGift.open(type)
+			},
+			// 关闭
+			closeAddress() {
+				this.$refs.popupAddress.close()
+			},
+			// 弹框
+			toggleAddress(type) {
+				this.type = type
+				// open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
+				this.$refs.popupAddress.open(type)
 			},
 		}
 	};

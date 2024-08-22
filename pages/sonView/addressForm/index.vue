@@ -14,7 +14,7 @@
 					</view>
 				</view>
 				<view class="flex mt-3 items-center">
-					<uni-icons type="circle" size="20" color="#666666" class=""></uni-icons>
+					<uni-icons type="circle" size="18" color="#666666" class=""></uni-icons>
 					<view class=" space-x-1">默认收货地址</view>
 				</view>
 			</view>
@@ -25,7 +25,7 @@
 					<view class="h-4" v-if="item!==3"></view>
 				</view>
 				<view class="flex mt-3 items-cneter">
-					<uni-icons type="circle" size="20" color="#666666" class=""></uni-icons>
+					<uni-icons type="circle" size="18" color="#666666" class=""></uni-icons>
 					<view class=" space-x-1">默认收货地址</view>
 				</view>
 			</view>

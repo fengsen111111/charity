@@ -98,10 +98,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    uniPopup: function () {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 365))
+    },
+    uniIcons: function () {
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 332))
+    },
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function ($event, item) {
+      var _temp = arguments[arguments.length - 1].currentTarget.dataset,
+        _temp2 = _temp.eventParams || _temp["event-params"],
+        item = _temp2.item
+      var _temp, _temp2
+      return _vm.handleTemper(item)
+    }
+  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -137,10 +172,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {
 
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+var ruleItem = function ruleItem() {
+  __webpack_require__.e(/*! require.ensure | components/ruleItem/index */ "components/ruleItem/index").then((function () {
+    return resolve(__webpack_require__(/*! @/components/ruleItem/index */ 379));
+  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+};
 var topView = function topView() {
   __webpack_require__.e(/*! require.ensure | pages/tabbar/classify/components/topView/index */ "pages/tabbar/classify/components/topView/index").then((function () {
     return resolve(__webpack_require__(/*! @/pages/tabbar/classify/components/topView/index.vue */ 313));
@@ -160,22 +202,64 @@ var _default = {
   components: {
     topView: topView,
     tagClass: tagClass,
-    shopBom: shopBom
+    shopBom: shopBom,
+    ruleItem: ruleItem
   },
   data: function data() {
     return {
-      title: 'Hello'
+      title: 'Hello',
+      max: 10,
+      min: 0,
+      number: 2,
+      duration: '0',
+      // 温度选着
+      temperatureIndex: 1,
+      // 
+      bottomStatus: 1 // 1加入购物车 2立即购买
     };
   },
   onLoad: function onLoad() {},
-  methods: {
+  methods: (0, _defineProperty2.default)({
+    handleTemper: function handleTemper(index) {
+      this.temperatureIndex = index;
+    },
+    handleDown: function handleDown() {
+      this.number--;
+    },
+    handleUp: function handleUp() {
+      this.number++;
+    },
+    // 结算
+    handleOrder: function handleOrder() {
+      uni.navigateTo({
+        url: '/pages/sonView/okOrder/index'
+      });
+    },
+    durationChange: function durationChange(e) {
+      this.duration = e.target.value;
+    },
     handleUrl: function handleUrl(url) {
       console.log(url);
       uni.navigateTo({
         url: url + ''
       });
+    },
+    // 关闭
+    closeBottom: function closeBottom() {
+      this.$refs.popupBottom.close();
+    },
+    // 弹框
+    toggleBottom: function toggleBottom(type, index) {
+      this.bottomStatus = index; //切换
+      this.type = type;
+      // open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
+      this.$refs.popupBottom.open(type);
     }
-  }
+  }, "handleOrder", function handleOrder() {
+    uni.navigateTo({
+      url: '/pages/sonView/okOrder/index'
+    });
+  })
 };
 exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))

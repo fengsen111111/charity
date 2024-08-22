@@ -21,7 +21,6 @@ export default (params) => {
 		};
 	}
 	return new Promise((resolve, reject) => {
-		
 		uni.showLoading({
 			title: "加载中"
 		})
@@ -33,6 +32,7 @@ export default (params) => {
 			success(response) {
 				uni.hideLoading()
 				const res = response
+				console.log('打印接口数据',res);
 				// 根据返回的状态码做出对应的操作
 				//获取成功
 				// console.log(res.statusCode);

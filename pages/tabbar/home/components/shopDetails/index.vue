@@ -42,9 +42,9 @@
 				五粮液股份 五粮春二代菁萃浓香型52550ml单瓶优级酒
 			</view>
 			<view class="mt-3 col999 text11 ling4">
-				五粮春菁萃版52度550ml单瓶装五粮春菁萃版52度550ml单瓶装五粮春菁萃版52度550ml单瓶装五粮春菁萃版52度550ml单瓶装五五粮春菁萃版春菁...
+				五粮春菁萃版单瓶装五粮春菁萃版五粮春菁萃版单瓶装五粮春菁萃版五粮春菁萃版单瓶装五粮春菁萃版五粮春菁萃版单瓶装五粮春菁萃版五粮春菁萃版单瓶装五粮春菁萃版...
 			</view>
-			<view class="flex justify-between">
+			<view class="flex justify-between mb-2">
 				<view class=""></view>
 				<view class="text11 col486 flex">
 					展开
@@ -74,7 +74,7 @@
 				</view>
 			</ruleItem>
 			<!--  -->
-			<image src="@/static/home/strip.png" mode="" class="w-full h-6 mt-4"></image>
+			<image src="@/static/home/strip_2.png" mode="" class="w-full mt-4 imgStrip" style=""></image>
 			<!--  -->
 			<view class="bg-whilt rending1 fontBold items-center flex justify-between py-1 px-2">
 				<view class="flex items-center">
@@ -130,10 +130,10 @@
 			</view>
 			<!--  -->
 			<view class="flex text-whlie text14">
-				<view class="viewLeft bgFF8">
+				<view class="viewLeft bgFF8" @click="toggleBottom('bottom',1)">
 					加入购物车
 				</view>
-				<view class="viewRight bg486">
+				<view class="viewRight bg486" @click="toggleBottom('bottom',2)">
 					立即购买
 				</view>
 			</view>
@@ -185,8 +185,8 @@
 				</view>
 				<view class="h-6"></view>
 				<view class="bg-whilt p-2 mt-3 rending1" v-for="item in [1,2,3]" :key="item">
-					<view class="flex ">
-						<uni-icons type="location" color="#666666" size="12"></uni-icons>
+					<view class="flex items-center">
+						<uni-icons type="location" color="#666666" size="18"></uni-icons>
 						<text class="space-x-1 text12">提供配送服务</text>
 					</view>
 					<view class="text11">
@@ -229,6 +229,115 @@
 		</uni-popup>
 		<!-- 图片放大 -->
 		<q-previewImage ref="previewImage" :urls="imgs" @onLongpress="onLongpress"></q-previewImage>
+		<!-- 加入购物车 立即购买 -->
+		<uni-popup ref="popupBottom" background-color="#fff" borderRadius="0.5rem 0.5rem 0px 0px">
+			<view class="bgF9 p-4 overflowAuto" style="height:70vh">
+				<view class="fiexdTop">
+					<view class="w-4"></view>
+					<view class="text16">
+						选择规格
+					</view>
+					<view class="" @click="closeBottom">
+						<uni-icons type="closeempty" size="20"></uni-icons>
+					</view>
+				</view>
+				<view class="h-6"></view>
+				<view class="w95 mt-4">
+					<view class="rending1 p-2 w-full flex mb-2">
+						<image src="@/static/classify/item.png" mode="" class="itemImg rending1"></image>
+						<view class="space-x-2">
+							<view class="fontBold text12 ling4">
+								泸州老窖 六年窖头曲 浓香白酒 52度精品装 500ml...
+							</view>
+							<view class="flex mt-2 ling4 rending1 hidden">
+								<text class="tagCol text-whlie px-2 text10">
+									领取优惠券
+								</text>
+								<text class="tagBor colED1 px-2 text10 rightRadius8">
+									6.2折
+								</text>
+							</view>
+							<!--  -->
+							<view class="flex mt-2 ling4 items-center">
+								<view class="colED1 fontBold">￥<text class="text18">888</text>.8</view>
+								<view class="col999 text11 space-x-2 textDel">
+									￥1888
+								</view>
+								<slot></slot>
+							</view>
+						</view>
+					</view>
+				</view>
+				<!--  -->
+				<view class="w95 space-x-2">
+					<ruleItem />
+				</view>
+				<!-- 选数量 -->
+				<view class="w95 space-x-2 bg-whilt mt-3">
+					<view class="flex text14 justify-between items-center p-3 ">
+						<view>选择数量</view>
+						<view class="flex space-x-3 text24 text-center">
+							<view class="leftView" @click="handleDown">
+								<!-- - -->
+							</view>
+							<view class="bg-whilt text-black cenVire text14">
+								{{number}}
+							</view>
+							<view class="rightView" @click="handleUp">
+								<!-- + -->
+							</view>
+						</view>
+					</view>
+				</view>
+				<!-- 冰冻选择 -->
+				<view class="w95 space-x-2 bg-whilt mt-3 ">
+					<view class="p-3">
+						<view class="text14">
+							冰冻选择
+						</view>
+						<view class="flex justify-between mt-3">
+							<view @click=handleTemper(item)
+								:class="temperatureIndex==item?'bgF2F col486 border486':' bg-whilt border999'"
+								class=" h-8 w5 text-center rending2 " v-for="item in [1,2,3]" :key="item">
+								<text class="" style="line-height:2rem">常温</text>
+							</view>
+						</view>
+					</view>
+				</view>
+				<!-- 滑块 -->
+				<view class="w95 space-x-2 bg-whilt mt-3 ">
+					<view class="p-3">
+						<view class="text14">
+							冰冻数量
+						</view>
+						<view class="flex justify-between mt-3">
+							<view class="w95 space-x-2 bg-whilt mt-3 items-center flex">
+								<view class="">{{min}}</view>
+								<view class="w85 mxAuto">
+									<view class="mx-2 text-center">
+										<view class="">{{duration}}</view>
+										<slider backgroundColor="#F9F9F9" activeColor="#4867CF" @change="durationChange" :value="duration" :max="max" :min="min" />
+									</view>
+								</view>
+								<view class="">{{max}}</view>
+							</view>
+						</view>
+					</view>
+				</view>
+				<!-- 加入购物车 结算 -->
+				<view class="flex justify-between w95 space-x-2 mt-3 text-center">
+					<view class="bgFF8 py-2 text14 text-whlie rending1 w-full" v-if="bottomStatus==1">
+						加入购物车
+					</view>
+					<view class="bg486 py-2 text14 text-whlie rending1 w-full" v-else @click="handleOrder">
+						去结算
+					</view>
+				</view>
+				<!-- 留白 -->
+				<view class="h-8"></view>
+				<view class="h-8"></view>
+			</view>
+		</uni-popup>
 	</view>
 </template>
 
@@ -252,11 +361,28 @@
 					'https://imgos.cn/2024/08/12/66b9d67b2c357.png',
 					'https://imgos.cn/2024/08/12/66b9d71baf094.png'
 					],
-				swiperDotIndex: 0
+				swiperDotIndex: 0,
+				max: 10,
+				min: 0,
+				number: 2,
+				duration: '0',
+				// 温度选着
+				temperatureIndex: 1,
+				// 
+				bottomStatus: 1// 1加入购物车 2立即购买
 			};
 		},
 		onLoad() {},
 		methods: {
+			// 结算
+			handleOrder(){
+				uni.navigateTo({
+					url:'/pages/sonView/okOrder/index'
+				})
+			},
+			durationChange(e) {
+				this.duration = e.target.value
+			},
 			// 判断是否授权相册
 			handleSure() {
 				let that = this
@@ -380,11 +506,27 @@
 				// open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
 				this.$refs.popupPar.open(type)
 			},
+			// 关闭
+			closeBottom() {
+				this.$refs.popupBottom.close()
+			},
+			// 弹框
+			toggleBottom(type,index) {
+				this.bottomStatus = index//切换
+				this.type = type
+				// open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
+				this.$refs.popupBottom.open(type)
+			},
 		}
 	};
 </script>
 
 <style>
+	.imgStrip{
+		height: 60rpx;
+		margin-top: 10rpx;
+		margin-bottom: 10rpx;
+	}
 	.swiper-box {
 		height: 20rem;
 	}
@@ -413,7 +555,8 @@
 		background-image: url('@/static/home/shopDetailIcon.png');
 		background-size: 100% 100%;
 		width: 3.5rem;
-		padding-top: 100rpx
+		padding-top: 105rpx
+		
 	}
 
 	.borTag {
@@ -448,7 +591,8 @@
 		height: 3.75rem;
 		background-color: #fff;
 		position: fixed;
-		top: 91.5vh;
+		/* top: 91.5vh; */
+		bottom: 0px;
 		/* border: 1px solid red; */
 		width: 100%;
 	}

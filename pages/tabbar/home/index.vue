@@ -55,7 +55,7 @@
 		<!-- 底部导航 -->
 		<tarBar :checkIndex="1" />
 		<!--  -->
-		<view class="viewFixed">
+		<view class="viewFixed" v-show="show">
 			<view class="imgFixed"><image src="@/static/home/homePhone.png" mode="" class="imgFixed" @click="handlePhone"></image></view>
 			<view class="imgFixed"><image src="@/static/home/homeShopping.png" mode="" class="imgFixed" @click="handleUrl('/pages/tabbar/shopping/index')"></image></view>
 		</view>
@@ -70,6 +70,15 @@
 	import active from '@/components/home/active/index.vue'
 	import tarBar from '@/components/tarBar/index.vue'
 	export default {
+		onPageScroll(e) {
+		    // e.scrollTop 表示当前页面滚动的距离
+		    // console.log('页面滚动距离：', e.scrollTop);
+			if(e.scrollTop>600){
+				this.show = true
+			}else{
+				this.show = false
+			}
+		},
 		components: {
 			bomShop,
 			homeCard,
@@ -83,6 +92,7 @@
 			return {
 				searchValue: '',
 				checkItem: 1,
+				show: false,//小图标隐藏显示
 			};
 		},
 		onLoad() {},

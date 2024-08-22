@@ -1,6 +1,6 @@
 <template>
 	<view class="">
-		<view class="space-x-3">
+		<view class="">
 			<view class="bg-whilt rending1 p-2 w-full flex mb-2">
 				<image src="@/static/classify/item.png" mode="" class="itemImg rending1"></image>
 				<view class="space-x-2">
