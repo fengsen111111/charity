@@ -9385,26 +9385,21 @@ module.exports = g;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.apiCeshi = void 0;
-var _index = _interopRequireDefault(__webpack_require__(/*! ./index.js */ 302));
+var _index = __webpack_require__(/*! ./index.js */ 302);
 // 引入 request 文件
 
+var base_url = 'https://api.52vmy.cn';
 var api = {
-  CESHI: '/api/wl/yan/yiyan' // 语录 · 随机一言
+  CESHI: base_url + '/api/wl/yan/yiyan' // 语录 · 随机一言
 };
 
 // 
 var apiCeshi = function apiCeshi(params) {
-  return (0, _index.default)({
-    url: api.CESHI,
-    method: 'get',
-    data: params,
-    header: {} // 语录 · 随机一言
-  });
+  return (0, _index.get)(api.CESHI, params);
 };
 exports.apiCeshi = apiCeshi;
 
@@ -9424,108 +9419,87 @@ var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/inte
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.post = exports.get = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-// 全局请求封装
-var base_url = 'https://api.52vmy.cn';
-// 请求超出时间
-var timeout = 5000;
-
-// 需要修改token，和根据实际修改请求头
-var _default = function _default(params) {
-  var url = params.url;
-  var method = params.method || "get";
-  var data = params.data || {};
-  var header = _objectSpread({
-    'Blade-Auth': uni.getStorageSync('token') || '',
-    'Content-Type': 'application/json;charset=UTF-8',
-    'Authorization': 'Basic c2FiZXI6c2FiZXJfc2VjcmV0',
-    'Tenant-Id': uni.getStorageSync('tenantId') || 'xxx'
-  }, params.header);
-  if (method == "post") {
-    header = {
-      'Content-Type': 'application/json'
-    };
+// 创建请求函数
+var request = function request(options) {
+  // 请求拦截器
+  if (options.interceptRequest) {
+    options = options.interceptRequest(options);
   }
   return new Promise(function (resolve, reject) {
-    uni.showLoading({
-      title: "加载中"
-    });
-    uni.request({
-      url: base_url + url,
-      method: method,
-      header: header,
-      data: data,
+    uni.request(_objectSpread(_objectSpread({}, options), {}, {
       success: function success(response) {
-        uni.hideLoading();
-        var res = response;
-        console.log('打印接口数据', res);
-        // 根据返回的状态码做出对应的操作
-        //获取成功
-        // console.log(res.statusCode);
-        if (res.statusCode == 200) {
-          resolve(res.data);
-        } else {
-          uni.clearStorageSync();
-          switch (res.statusCode) {
-            case 401:
-              uni.showModal({
-                title: "提示",
-                content: "请登录",
-                showCancel: false,
-                success: function success() {
-                  // setTimeout(() => {
-                  // 	uni.navigateTo({
-                  // 		url: "/pages/login/index",
-                  // 	})
-                  // }, 1000);
-                  console.log('登录');
-                }
-              });
-              break;
-            case 404:
-              uni.showToast({
-                title: '请求地址不存在...',
-                duration: 2000
-              });
-              break;
-            default:
-              uni.showToast({
-                title: '请重试...',
-                duration: 2000
-              });
-              break;
+        // 响应拦截器
+        if (options.interceptResponse) {
+          var newResponse = options.interceptResponse(response);
+          if (newResponse) {
+            resolve(newResponse);
+            return;
           }
         }
+        resolve(response);
       },
-      fail: function fail(err) {
-        uni.hideLoading();
-        console.log(err);
-        if (err.errMsg.indexOf('request:fail') !== -1) {
-          uni.showToast({
-            title: '网络异常',
-            icon: "error",
-            duration: 2000
-          });
-        } else {
-          uni.showToast({
-            title: '未知异常',
-            duration: 2000
-          });
-        }
-        reject(err);
-      },
-      complete: function complete() {
-        // 不管成功还是失败都会执行
-        uni.hideLoading();
-        uni.hideToast();
+      fail: function fail(error) {
+        reject(error);
       }
-    });
-  }).catch(function () {});
+    }));
+  });
 };
-exports.default = _default;
+
+// 默认拦截器示例
+var interceptRequest = function interceptRequest(options) {
+  // 在这里添加请求头或其他处理逻辑
+  options.header = _objectSpread(_objectSpread({}, options.header), {}, {
+    Authorization: 'Bearer token' // 示例：添加 token
+  });
+
+  return options;
+};
+var interceptResponse = function interceptResponse(response) {
+  // 例如，处理特定状态码
+  if (response.statusCode === 401) {
+    // 重定向到登录页面
+    uni.redirectTo({
+      url: '/pages/login/login'
+    });
+    return null; // 阻止后续的 resolve
+  }
+
+  return response;
+};
+
+// 封装的 GET 请求
+var get = function get(url) {
+  var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  console.log('get');
+  return request(_objectSpread({
+    url: url,
+    data: data,
+    method: 'GET',
+    interceptRequest: interceptRequest,
+    interceptResponse: interceptResponse
+  }, options));
+};
+
+// 封装的 POST 请求
+exports.get = get;
+var post = function post(url) {
+  var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  console.log('post');
+  return request(_objectSpread({
+    url: url,
+    data: data,
+    method: 'POST',
+    interceptRequest: interceptRequest,
+    interceptResponse: interceptResponse
+  }, options));
+};
+exports.post = post;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
@@ -9750,45 +9724,7 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 33:
-/*!************************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/store/index.js ***!
-  \************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 25));
-var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 34));
-_vue.default.use(_vuex.default);
-var store = new _vuex.default.Store({
-  state: {
-    //公共的变量，这里的变量不能随便修改，只能通过触发mutations的方法才能改变
-    login: false
-  },
-  mutations: {
-    //相当于同步的操作
-    loginStatus: function loginStatus(state) {
-      state.login = true;
-    }
-  },
-  actions: {
-    //相当于异步的操作,不能直接改变state的值，只能通过触发mutations的方法才能改变
-  }
-});
-var _default = store;
-exports.default = _default;
-
-/***/ }),
-
-/***/ 337:
+/***/ 325:
 /*!*************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-icons/components/uni-icons/uniicons_file_vue.js ***!
   \*************************************************************************************************************************/
@@ -10289,6 +10225,44 @@ var fontData = [{
 
 // export const fontData = JSON.parse<IconsDataItem>(fontDataJson)
 exports.fontData = fontData;
+
+/***/ }),
+
+/***/ 33:
+/*!************************************************************************!*\
+  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/store/index.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 25));
+var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 34));
+_vue.default.use(_vuex.default);
+var store = new _vuex.default.Store({
+  state: {
+    //公共的变量，这里的变量不能随便修改，只能通过触发mutations的方法才能改变
+    login: false
+  },
+  mutations: {
+    //相当于同步的操作
+    loginStatus: function loginStatus(state) {
+      state.login = true;
+    }
+  },
+  actions: {
+    //相当于异步的操作,不能直接改变state的值，只能通过触发mutations的方法才能改变
+  }
+});
+var _default = store;
+exports.default = _default;
 
 /***/ }),
 
@@ -11549,7 +11523,7 @@ module.exports = index_cjs;
 
 /***/ }),
 
-/***/ 359:
+/***/ 373:
 /*!****************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
   \****************************************************************************************************************************/
@@ -11564,9 +11538,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 360));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 361));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 362));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 374));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 375));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 376));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -11576,7 +11550,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 360:
+/***/ 374:
 /*!***************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
   \***************************************************************************************************************************/
@@ -11587,7 +11561,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 361:
+/***/ 375:
 /*!********************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
   \********************************************************************************************************************************/
@@ -11598,7 +11572,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"取消\",\"uni-search-
 
 /***/ }),
 
-/***/ 362:
+/***/ 376:
 /*!********************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
   \********************************************************************************************************************************/
@@ -20643,7 +20617,7 @@ module.exports = JSON.parse("{\"uni-countdown.day\":\"天\",\"uni-countdown.h\":
 
 /***/ }),
 
-/***/ 477:
+/***/ 470:
 /*!*********************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
   \*********************************************************************************************************************************/

@@ -21,16 +21,18 @@
 			</view>
 			<view class="bgF9 mt-3 text-black text14 px-6 py-2 rending2 items-center ">
 				<view class="flex">
-					<view class="col486">待接单（88）</view>
+					<view @click="handleActive(1)" :class="activeIndex==1?'col486':''">待接单（88）</view>
 					<view class="w-8"></view>
-					<view class="">已接单</view>
+					<view @click="handleActive(2)" :class="activeIndex==2?'col486':''">已接单</view>
 					<view class="w-8"></view>
-					<view class="">已送达</view>
+					<view @click="handleActive(3)" :class="activeIndex==3?'col486':''">已送达</view>
 				</view>
 				<view class="bg-whilt mt-3 text12" v-for="item in [1,2,3]" :key="item">
 					<view class="flex justify-between p-3">
 						<view class="">订单编号:123456789</view>
-						<view class="col68B border68B ling5 px-2 rending1">待接单</view>
+						<view v-if="activeIndex==1" class="col68B border68B ling5 px-2 rending1">待接单</view>
+						<view v-if="activeIndex==2" class="colFC6 borderFC6 ling5 px-2 rending1">已接单</view>
+						<view v-if="activeIndex==3" class="col999 border999 ling5 px-2 rending1">已送达</view>
 					</view>
 					<view class="border999One"></view>
 					<view class="flex justify-between px-3 pt-3">
@@ -66,13 +68,18 @@
 					<view class="bg-whilt">
 						<view class="flex justify-between p-3">
 							<view class="">商品信息</view>
-							<view class="col486 flex">
-								展开
-								<uni-icons type="down" size="16" color="#4867CF"></uni-icons>
+							<view class="col486 items-center flex">
+								展开<uni-icons type="down" size="16" color="#4867CF"></uni-icons>
 							</view>
 						</view>
-						<view class="bg486  text14 rending2 text-whlie text-center py-2 w85 mxAuto">
+						<!-- 展开商品文件 -->
+						<view class=""></view>
+						
+						<view v-if="activeIndex==1" class="bg486 text14 rending2 text-whlie text-center py-2 w85 mxAuto">
 							接单
+						</view>
+						<view v-if="activeIndex==2" class="bg68B  text14 rending2 text-whlie text-center py-2 w85 mxAuto">
+							确认送达
 						</view>
 						<view class="h-4"></view>
 					</view>
@@ -100,6 +107,11 @@
 				markers: [],
 				markerHeight: 30,
 				doorAddress: [], //门店地址
+				
+				// 
+				activeIndex: 1,//待接单 带送达 已送达
+				
+				
 			};
 		},
 		mounted() {
@@ -113,6 +125,9 @@
 		},
 		onHide() {},
 		methods: {
+			handleActive(index){
+				this.activeIndex = index
+			},
 			// 确认授权后，获取用户位置
 			getLocationInfo() {
 				const that = this;
@@ -141,10 +156,7 @@
 									"." + longlatsplit1[1].slice(0, 6));
 							}
 						}
-						// cookie.set("longitude", long);
-						// cookie.set("latitude", lat);
 						console.log("纬度", lat);
-						// this.distance(that.latitude,that.longitude);
 						that.markers = [{
 							id: "",
 							latitude: res.latitude,

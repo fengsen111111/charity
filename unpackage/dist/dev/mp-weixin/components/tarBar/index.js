@@ -218,39 +218,6 @@ var _default = {
             });
           }
       }
-      // if(item.id==3){
-      // 	// 拨号
-      // 	uni.makePhoneCall({
-      // 		phoneNumber:'1111111',
-      // 		success: function(){
-      // 			console.log('拨号');
-      // 		},
-      // 		fail: function(){
-      // 			console.log('拨号失败！');
-      // 		}
-      // 	})
-      // }else if (item.id==5){
-      // 	// 判断有无权限
-      // 	if(this.$store.state.login){
-      // 		uni.navigateTo({
-      // 			url: item.path
-      // 		})
-      // 	}else{
-      // 		uni.navigateTo({
-      // 			url: '/pages/sonView/login/index'
-      // 		})
-      // 	}
-
-      // }else{
-      // 	// 跳转
-      // 	if (item.path == '/' + this.route) {
-      // 		console.log("跳转当前页，拒绝")
-      // 	} else {
-      // 		uni.navigateTo({
-      // 			url: item.path
-      // 		})
-      // 	}
-      // }
     }
   },
   created: function created() {
@@ -259,9 +226,9 @@ var _default = {
     var page = pages[pages.length - 1];
     console.log('底部生命周期', page.route);
     this.route = page.route;
-    // apiCeshi().then((res) => {
-    // 	console.log('请求', res);
-    // })
+    (0, _api.apiCeshi)().then(function (res) {
+      console.log('请求', res);
+    });
   }
 };
 exports.default = _default;

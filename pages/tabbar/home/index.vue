@@ -3,8 +3,7 @@
 		<view class="px-3">
 			<homeTop />
 			<view class="">
-				<image src="https://imgos.cn/2024/08/12/66b9d747830a1.png"
-					@click="handleUrl('/pages/sonView/swiperActive/index')" mode="" class="w-full mt-3 h100 rending1">
+				<image src="https://imgos.cn/2024/08/12/66b9d747830a1.png" @click="handleUrl('/pages/sonView/swiperActive/index')" mode="" class="w-full mt-3 h100 rending1">
 				</image>
 			</view>
 			<!-- 新人专享 -->
@@ -33,20 +32,9 @@
 					<view @click="handleItem(4)" class="mr50" :class="checkItem == 4?'col486 text14 ':''">
 						威士忌
 						<view class="checkboxItemTwo" v-if="checkItem == 4"></view>
-						</view>
+					</view>
 				</view>
-				<view class="" v-if="checkItem == 1">
-					<bomShop />
-				</view>
-				<view class="" v-else-if="checkItem == 2">
-					<bomShop />
-				</view>
-				<view class="" v-else-if="checkItem == 3">
-					<bomShop />
-				</view>
-				<view class="" v-else>
-					<bomShop />
-				</view>
+				<bomShop />
 			</view>
 			<!-- 留高 -->
 			<view class="h100">
@@ -109,14 +97,14 @@
 				})
 			},
 			handleItem(index) {
-				this.checkItem = '';
+				this.checkItem = index;
 				uni.showLoading({
 					title: "加载中"
 				})
 				setTimeout(()=>{
 					this.checkItem = index;
 					uni.hideLoading()
-				},500)
+				},300)
 			},
 			handleUrl(url) {
 				console.log(url);

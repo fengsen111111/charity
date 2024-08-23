@@ -35,8 +35,8 @@
 			hearch
 		},
 		onLoad() {},
-		onShow() {
-
+		created() {
+			
 		},
 		onHide() {},
 		methods: {
@@ -45,13 +45,14 @@
 					provider: 'weixin',
 					success: res => {
 						console.log(res)
+						this.$store.commit('loginStatus')
+						// console.log('权限',this.$store.state)
+						uni.navigateTo({
+							url: '/pages/tabbar/home/index'
+						})
 					}
 				});
-				this.$store.commit('loginStatus')
-				// console.log('权限',this.$store.state)
-				uni.navigateTo({
-					url: '/pages/tabbar/home/index'
-				})
+			
 			}
 		}
 	};

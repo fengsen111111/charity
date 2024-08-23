@@ -7,9 +7,9 @@
 		</view>
 		<!-- shop -->
 		<view class="rightWidth">
-			<view class="flex items-center" v-for="item in [1,2,3,4,5]" :key="item">
-				<uni-icons type="checkbox-filled" v-if="item==1" color="#4867CF" size="20" class="uni-ml-2 uni-mr-2"></uni-icons>
-				<uni-icons type="circle" size="20" v-else class="uni-ml-2 uni-mr-2"></uni-icons>
+			<view class="flex items-center" v-for="item in [1,2,3,4,5,6,7]" :key="item">
+				<uni-icons type="checkbox-filled" v-if="item==checkIndex" color="#4867CF" size="20" class="uni-ml-2 uni-mr-2"></uni-icons>
+				<uni-icons @click="handleIndex(item)" type="circle" size="20" v-else class="uni-ml-2 uni-mr-2"></uni-icons>
 				<shopCardTwo>
 					<!-- 选规格 -->
 					<view class="">
@@ -148,6 +148,8 @@
 				temperatureIndex:1,
 				// 冰冻
 				duration: 0,
+				// 单选
+				checkIndex:1,
 				dataTab: [{
 						id: 1,
 						text: '国产风味'
@@ -192,6 +194,9 @@
 
 		},
 		methods: {
+			handleIndex(index){
+				this.checkIndex = index
+			},
 			handleTemper(index){
 				this.temperatureIndex = index
 			},

@@ -1,12 +1,5 @@
 <template>
 	<view class="">
-		<!-- 	<view class="mt-3 text-black text12">
-			<view class="flex">
-				<view @click="handleItem(1)" class="mr-2" :class="checkItem == 1?'col486 text14 checkboxItem':''">推荐</view>
-				<view @click="handleItem(2)" class="mr-2" :class="checkItem == 2?'col486 text14 checkboxItem':''">白酒类</view>
-				<view @click="handleItem(3)" class="mr-2" :class="checkItem == 3?'col486 text14 checkboxItem':''">朗姆酒</view>
-				<view @click="handleItem(4)" class="mr-2" :class="checkItem == 4?'col486 text14 checkboxItem':''">威士忌</view>
-			</view> -->
 		<view class="grid grid-cols-2 gridRow">
 			<view class="bg-whilt rending1 p-2 mt-3" v-for="item in [1,2,3,4]" :key="item">
 				<image v-if="item==1" @click="handDetailds" src="https://img.picui.cn/free/2024/08/16/66bf135fa40a3.png" mode="" class="w-full h10"></image>

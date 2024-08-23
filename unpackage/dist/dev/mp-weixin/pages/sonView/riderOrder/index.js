@@ -101,7 +101,7 @@ var components
 try {
   components = {
     uniIcons: function () {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 332))
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 320))
     },
   }
 } catch (e) {
@@ -255,6 +255,13 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
@@ -272,7 +279,11 @@ var _default = {
       // 默认16
       markers: [],
       markerHeight: 30,
-      doorAddress: [] //门店地址
+      doorAddress: [],
+      //门店地址
+
+      // 
+      activeIndex: 1 //待接单 带送达 已送达
     };
   },
   mounted: function mounted() {
@@ -284,6 +295,9 @@ var _default = {
   onShow: function onShow() {},
   onHide: function onHide() {},
   methods: {
+    handleActive: function handleActive(index) {
+      this.activeIndex = index;
+    },
     // 确认授权后，获取用户位置
     getLocationInfo: function getLocationInfo() {
       var that = this;
@@ -310,10 +324,7 @@ var _default = {
               lat = parseFloat(longlatsplit1[0] === "" ? 0 : longlatsplit1[0]) + parseFloat("." + longlatsplit1[1].slice(0, 6));
             }
           }
-          // cookie.set("longitude", long);
-          // cookie.set("latitude", lat);
           console.log("纬度", lat);
-          // this.distance(that.latitude,that.longitude);
           that.markers = [{
             id: "",
             latitude: res.latitude,

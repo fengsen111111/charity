@@ -143,7 +143,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var hearch = function hearch() {
   __webpack_require__.e(/*! require.ensure | components/hearch/index */ "components/hearch/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/hearch/index.vue */ 340));
+    return resolve(__webpack_require__(/*! @/components/hearch/index.vue */ 354));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -156,21 +156,22 @@ var _default = {
     hearch: hearch
   },
   onLoad: function onLoad() {},
-  onShow: function onShow() {},
+  created: function created() {},
   onHide: function onHide() {},
   methods: {
     hqCode: function hqCode() {
+      var _this = this;
       // 获取登录凭证
       uni.login({
         provider: 'weixin',
         success: function success(res) {
           console.log(res);
+          _this.$store.commit('loginStatus');
+          // console.log('权限',this.$store.state)
+          uni.navigateTo({
+            url: '/pages/tabbar/home/index'
+          });
         }
-      });
-      this.$store.commit('loginStatus');
-      // console.log('权限',this.$store.state)
-      uni.navigateTo({
-        url: '/pages/tabbar/home/index'
       });
     }
   }

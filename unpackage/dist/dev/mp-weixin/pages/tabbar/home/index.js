@@ -211,14 +211,14 @@ var _default = {
     },
     handleItem: function handleItem(index) {
       var _this = this;
-      this.checkItem = '';
+      this.checkItem = index;
       uni.showLoading({
         title: "加载中"
       });
       setTimeout(function () {
         _this.checkItem = index;
         uni.hideLoading();
-      }, 500);
+      }, 300);
     },
     handleUrl: function handleUrl(url) {
       console.log(url);

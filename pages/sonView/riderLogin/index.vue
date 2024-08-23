@@ -16,10 +16,10 @@
 			骑手端登录
 		</view>
 		<view class="w80 mxAuto">
-			<view class="mt-3">手机号</view>
-			<uni-easyinput class="mt-3"  v-model="value1" trim="all" placeholder="请输入内容" @input="input"></uni-easyinput>
-			<view class="mt-3">验证码</view>
-			<uni-easyinput class="mt-3"  v-model="value2" focus placeholder="请输入内容" @input="input"></uni-easyinput>
+			<view class="mt-3 mb-3">手机号</view>
+			<uni-easyinput v-model="value1" trim="all" placeholder="请输入内容" @input="input"></uni-easyinput>
+			<view class="mt-3 mb-3">验证码</view>
+			<uni-easyinput v-model="value2" focus placeholder="请输入内容" @input="input"></uni-easyinput>
 		</view>
 		<view class="h-6"></view>
 		<view class="w80 mxAuto bg486 text-whlie rending1 py-3 text-center" @click="handleUrl('/pages/sonView/riderOrder/index')">

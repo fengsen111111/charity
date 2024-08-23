@@ -62,6 +62,12 @@
 .bgFC6 {
 	background-color: #FC6265;
 }
+.borderFC6 {
+	border: 1rpx solid #FC6265;
+}
+.colFC6{
+	color: #FC6265;
+}
 .bgF2F {
 	background-color: #F2F3FF;
 }

@@ -106,7 +106,7 @@
 		top: -0.4rem;
 	}
 	.cardVolume {
-		background-image: url('@/static/home/card.png');
+		background-image: url('@/static/home/card_new.png');
 		background-size: 100% 100%;
 		height: 2.75rem;
 		width: 8rem;
