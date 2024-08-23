@@ -57,6 +57,16 @@
 				]
 			}
 		},
+		created() {
+			
+			const pages = getCurrentPages();
+			const page = pages[pages.length - 1];
+			console.log('底部生命周期', page.route);
+			this.route = page.route
+			apiCeshi().then((res) => {
+				console.log('请求', res);
+			})
+		},
 		methods: {
 			handleCheck(item) {
 				console.log('执行跳转', item)
@@ -106,17 +116,6 @@
 				}
 			}
 		},
-		created() {
-			console.log('11111', this.$store.state);
-			const pages = getCurrentPages();
-			const page = pages[pages.length - 1];
-			console.log('底部生命周期', page.route);
-			this.route = page.route
-			apiCeshi().then((res) => {
-				console.log('请求', res);
-			})
-		}
-
 	}
 </script>
 
@@ -128,7 +127,7 @@
 	.iconAll {
 		width: 40rpx;
 		height: 40rpx;
- 	}
+	}
 
 	.tarBarClass {
 		width: 100%;
