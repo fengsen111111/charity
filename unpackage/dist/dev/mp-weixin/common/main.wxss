@@ -2,6 +2,63 @@
 /* 水平间距 */
 /* 水平间距 */
 /*公共封装csscss */
+button::after {
+	border: none;
+	border-radius: 10px;
+	box-sizing: border-box;
+	content: " ";
+	height: 200%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	-webkit-transform: scale(.5);
+	transform: scale(.5);
+	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
+	width: 200%;
+	border-top-width: 0rpx;
+	border-right-width: 0rpx;
+	border-bottom-width: 0rpx;
+	border-left-width: 0rpx;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: rgba(0, 0, 0, 0.2);
+	border-right-color: rgba(0, 0, 0, 0.2);
+	border-bottom-color: rgba(0, 0, 0, 0.2);
+	border-left-color: rgba(0, 0, 0, 0.2);
+	border-image-source: initial;
+	border-image-slice: initial;
+	border-image-width: initial;
+	border-image-outset: initial;
+	border-image-repeat: initial;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+uni-button:after {
+	content: " ";
+	width: 200%;
+	height: 200%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border: none;
+	-webkit-transform: scale(.5);
+	transform: scale(.5);
+	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
+	box-sizing: border-box;
+	border-radius: 10px;
+}
+.btnTo {
+		padding: 0px;
+		background-color: white;
+		border: 0px;
+		line-height: inherit;
+}
 .flex {
 	display: flex
 }
@@ -65,7 +122,7 @@
 .borderFC6 {
 	border: 1rpx solid #FC6265;
 }
-.colFC6{
+.colFC6 {
 	color: #FC6265;
 }
 .bgF2F {

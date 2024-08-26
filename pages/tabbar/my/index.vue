@@ -10,11 +10,13 @@
 						<view class="space-x-2">
 							135******1234
 						</view>
-						<uni-icons type="compose" size="20" class="space-x-2" color="#fff" @click="handleUrl('/pages/sonView/myInfo/index')"></uni-icons>
-						<view class="iconLeft flex bg486 text-center text-whlie py-2 px-4 rending5 items-center text14"  @click="handleUrl('/pages/sonView/riderLogin/index')">
+						<uni-icons type="compose" size="20" class="space-x-2" color="#fff"
+							@click="handleUrl('/pages/sonView/myInfo/index')"></uni-icons>
+						<view class="iconLeft flex bg486 text-center text-whlie py-2 px-4 rending5 items-center text14"
+							@click="handleUrl('/pages/sonView/riderLogin/index')">
 							<image src="@/static/my/handoff.png" mode="" class="w-4 h-4 uni-mr-2"></image>
 							<view class="">骑手端</view>
-							</view>
+						</view>
 					</view>
 				</view>
 			</view>
@@ -23,7 +25,7 @@
 				<view class="bg-whilt rending1 flex justify-between p-4">
 					<view class="text-center" @click="handleUrl('/pages/sonView/myOrder/index')">
 						<image src="@/static/my/icon1_new.png" mode="" class="iconWH"></image>
-						<view class="text-black text12" >
+						<view class="text-black text12">
 							待付款
 						</view>
 					</view>
@@ -56,12 +58,14 @@
 			<!--  -->
 			<view class="px-3">
 				<view class="flex justify-between mt-3">
-					<view class="centerBg rending1" style="background-image: url('https://imgos.cn/2024/08/13/66bab13e41559.png');">
+					<view class="centerBg rending1"
+						style="background-image: url('https://imgos.cn/2024/08/13/66bab13e41559.png');">
 						<view class="flex justify-between text-whlie px-4 py-2">
 							<view class="">
 								我的优惠卷
 							</view>
-							<uni-icons type="right" size="20" color="#fff" @click="handleUrl('/pages/sonView/discountAll/index')"></uni-icons>
+							<uni-icons type="right" size="20" color="#fff"
+								@click="handleUrl('/pages/sonView/discountAll/index')"></uni-icons>
 						</view>
 						<view class="flex justify-between text-whlie px-4 py-2">
 							<view class="text12">
@@ -69,14 +73,17 @@
 							</view>
 							<view class="text16">66</view>
 						</view>
-					</view>  
-					<view class="centerBg2" style="background-image: url('https://imgos.cn/2024/08/13/66bab13e44b70.png');" @click="handleUrl('/pages/sonView/volume/index')"></view>
+					</view>
+					<view class="centerBg2"
+						style="background-image: url('https://imgos.cn/2024/08/13/66bab13e44b70.png');"
+						@click="handleUrl('/pages/sonView/volume/index')"></view>
 				</view>
 				<!-- img -->
-				<view class="centerBgTwo mt-3" style="background-image: url('https://imgos.cn/2024/08/13/66bab13e85b58.png');"></view>
+				<view class="centerBgTwo mt-3"
+					style="background-image: url('https://imgos.cn/2024/08/13/66bab13e85b58.png');"></view>
 				<!-- cardItem -->
 				<view class="mt-3">
-					<view @click="handleUrl(item.url)"
+					<view
 						class="flex bg-whilt rending1 text-black mt-1 justify-between p-3" v-for="item in cards"
 						:key="item.id">
 						<view class="">{{item.text}}</view>
@@ -87,7 +94,12 @@
 							<view class="col486 space-x-1" v-show="item.id==1">
 								8888888
 							</view>
-							<uni-icons v-if="item.id!==6" type="right" color="#666666" size="18"></uni-icons>
+							<view class="text12 col666" v-if="item.id==5">
+								<button open-type="contact" class="btnTo">
+									<uni-icons type="right" color="#666666" size="18"></uni-icons>
+								</button>
+							</view>
+							<uni-icons @click="handleUrl(item.url)" v-else="item.id!==6" type="right" color="#666666" size="18"></uni-icons>
 							<view v-else>
 								1.2.222
 							</view>
@@ -108,7 +120,9 @@
 <script>
 	import tarBar from '@/components/tarBar/index.vue'
 	export default {
-		components:{tarBar},
+		components: {
+			tarBar
+		},
 		data() {
 			return {
 				title: 'Hello',
@@ -198,7 +212,8 @@
 		height: 10rem;
 		width: 100%;
 	}
-	.mt55{
+
+	.mt55 {
 		margin-top: 5.5rem;
 	}
 </style>

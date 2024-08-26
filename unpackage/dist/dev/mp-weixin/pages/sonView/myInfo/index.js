@@ -101,7 +101,7 @@ var components
 try {
   components = {
     uniEasyinput: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 418))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 414))
     },
   }
 } catch (e) {
@@ -163,7 +163,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(uni) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -171,7 +171,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var hearch = function hearch() {
   __webpack_require__.e(/*! require.ensure | components/hearch/index */ "components/hearch/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/hearch/index.vue */ 358));
+    return resolve(__webpack_require__(/*! @/components/hearch/index.vue */ 354));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -181,15 +181,56 @@ var _default = {
   data: function data() {
     return {
       active: false,
-      value: ''
+      value: '',
+      avatarUrl: '' // 默认头像或空字符串
     };
   },
   onLoad: function onLoad() {},
   onShow: function onShow() {},
   onHide: function onHide() {},
-  methods: {}
+  methods: {
+    handleUpload: function handleUpload() {
+      var _this = this;
+      uni.chooseImage({
+        count: 1,
+        // 只允许上传一张图片
+        sizeType: ['compressed'],
+        // 压缩后的图片
+        sourceType: ['album', 'camera'],
+        // 从相册或相机获取
+        success: function success(res) {
+          var tempFilePath = res.tempFilePaths[0];
+          _this.uploadAvatar(tempFilePath);
+        }
+      });
+    },
+    // 2
+    uploadAvatar: function uploadAvatar(tempFilePath) {
+      // uni.uploadFile({
+      // 	url: 'https://yourserver.com/upload', // 服务器接口地址
+      // 	filePath: tempFilePath,
+      // 	name: 'file', // 后端接收文件的字段名
+      // 	formData: {
+      // 		'user': 'test' // 其他附加数据，可以根据需要添加
+      // 	},
+      // 	success: (uploadFileRes) => {
+      // 		console.log('上传成功', uploadFileRes);
+      // 		const data = JSON.parse(uploadFileRes.data);
+      // 		if (data.code === 200) {
+      // 			this.avatarUrl = data.url; // 获取上传后的图片地址
+      // 		} else {
+      // 			console.log('上传失败');
+      // 		}
+      // 	},
+      // 	fail: (err) => {
+      // 		console.log('上传失败', err);
+      // 	}
+      // });
+    }
+  }
 };
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 

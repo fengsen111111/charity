@@ -9504,7 +9504,7 @@ exports.post = post;
 
 /***/ }),
 
-/***/ 307:
+/***/ 303:
 /*!********************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/home.png ***!
   \********************************************************************************/
@@ -9515,7 +9515,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACO
 
 /***/ }),
 
-/***/ 308:
+/***/ 304:
 /*!****************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/home_checked.png ***!
   \****************************************************************************************/
@@ -9526,7 +9526,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACO
 
 /***/ }),
 
-/***/ 309:
+/***/ 305:
 /*!************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/classify.png ***!
   \************************************************************************************/
@@ -9537,7 +9537,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACO
 
 /***/ }),
 
-/***/ 310:
+/***/ 306:
 /*!*********************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/phone.png ***!
   \*********************************************************************************/
@@ -9548,7 +9548,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACO
 
 /***/ }),
 
-/***/ 311:
+/***/ 307:
 /*!************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/shopping.png ***!
   \************************************************************************************/
@@ -9559,7 +9559,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACO
 
 /***/ }),
 
-/***/ 312:
+/***/ 308:
 /*!********************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/shopping_checked.png ***!
   \********************************************************************************************/
@@ -9570,7 +9570,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACO
 
 /***/ }),
 
-/***/ 313:
+/***/ 309:
 /*!******************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/my.png ***!
   \******************************************************************************/
@@ -9581,7 +9581,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACO
 
 /***/ }),
 
-/***/ 314:
+/***/ 310:
 /*!**************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/my_checked.png ***!
   \**************************************************************************************/
@@ -9724,7 +9724,7 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 329:
+/***/ 325:
 /*!*************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-icons/components/uni-icons/uniicons_file_vue.js ***!
   \*************************************************************************************************************************/
@@ -10249,8 +10249,9 @@ _vue.default.use(_vuex.default);
 var store = new _vuex.default.Store({
   state: {
     //公共的变量，这里的变量不能随便修改，只能通过触发mutations的方法才能改变
-    login: false
+    login: true //是否已经登录
   },
+
   mutations: {
     //相当于同步的操作
     loginStatus: function loginStatus(state) {
@@ -11523,7 +11524,7 @@ module.exports = index_cjs;
 
 /***/ }),
 
-/***/ 377:
+/***/ 373:
 /*!****************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
   \****************************************************************************************************************************/
@@ -11538,9 +11539,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 378));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 379));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 380));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 374));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 375));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 376));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -11550,7 +11551,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 378:
+/***/ 374:
 /*!***************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
   \***************************************************************************************************************************/
@@ -11561,7 +11562,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-
 
 /***/ }),
 
-/***/ 379:
+/***/ 375:
 /*!********************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
   \********************************************************************************************************************************/
@@ -11572,7 +11573,7 @@ module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"取消\",\"uni-search-
 
 /***/ }),
 
-/***/ 380:
+/***/ 376:
 /*!********************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
   \********************************************************************************************************************************/
@@ -11599,7 +11600,7 @@ module.exports = _interopRequireDefault, module.exports.__esModule = true, modul
 
 /***/ }),
 
-/***/ 430:
+/***/ 426:
 /*!************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js ***!
   \************************************************************************************/
@@ -11614,20 +11615,20 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 431));
-var _assertThisInitialized2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ 433));
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 427));
+var _assertThisInitialized2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ 429));
 var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ 5));
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
 var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 434));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 430));
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ 435));
-var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ 436));
-var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ 437));
-var _wrapNativeSuper2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/wrapNativeSuper */ 438));
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ 431));
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ 432));
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ 433));
+var _wrapNativeSuper2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/wrapNativeSuper */ 434));
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
 var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
-var _pages = _interopRequireDefault(__webpack_require__(/*! @/pages.json */ 440));
+var _pages = _interopRequireDefault(__webpack_require__(/*! @/pages.json */ 436));
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e33) { throw _e33; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e34) { didErr = true; err = _e34; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
@@ -12080,7 +12081,7 @@ var S = "development" === "development",
   x = true;
 var O = "";
 try {
-  O = (__webpack_require__(/*! uni-stat-config */ 441).default || __webpack_require__(/*! uni-stat-config */ 441)).appid;
+  O = (__webpack_require__(/*! uni-stat-config */ 437).default || __webpack_require__(/*! uni-stat-config */ 437)).appid;
 } catch (e) {}
 var E = {};
 function L(e) {
@@ -19508,7 +19509,7 @@ exports.default = Js;
 
 /***/ }),
 
-/***/ 431:
+/***/ 427:
 /*!************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/@babel/runtime/regenerator/index.js ***!
   \************************************************************************************************/
@@ -19517,12 +19518,12 @@ exports.default = Js;
 
 // TODO(Babel 8): Remove this file.
 
-var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 432)();
+var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 428)();
 module.exports = runtime;
 
 /***/ }),
 
-/***/ 432:
+/***/ 428:
 /*!*******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/regeneratorRuntime.js ***!
   \*******************************************************************/
@@ -19844,7 +19845,7 @@ module.exports = _regeneratorRuntime, module.exports.__esModule = true, module.e
 
 /***/ }),
 
-/***/ 433:
+/***/ 429:
 /*!**********************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/assertThisInitialized.js ***!
   \**********************************************************************/
@@ -19861,7 +19862,7 @@ module.exports = _assertThisInitialized, module.exports.__esModule = true, modul
 
 /***/ }),
 
-/***/ 434:
+/***/ 430:
 /*!*****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/asyncToGenerator.js ***!
   \*****************************************************************/
@@ -19902,7 +19903,7 @@ module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exp
 
 /***/ }),
 
-/***/ 435:
+/***/ 431:
 /*!*********************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/inherits.js ***!
   \*********************************************************/
@@ -19930,7 +19931,7 @@ module.exports = _inherits, module.exports.__esModule = true, module.exports["de
 
 /***/ }),
 
-/***/ 436:
+/***/ 432:
 /*!**************************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js ***!
   \**************************************************************************/
@@ -19938,7 +19939,7 @@ module.exports = _inherits, module.exports.__esModule = true, module.exports["de
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = __webpack_require__(/*! ./typeof.js */ 13)["default"];
-var assertThisInitialized = __webpack_require__(/*! ./assertThisInitialized.js */ 433);
+var assertThisInitialized = __webpack_require__(/*! ./assertThisInitialized.js */ 429);
 function _possibleConstructorReturn(self, call) {
   if (call && (_typeof(call) === "object" || typeof call === "function")) {
     return call;
@@ -19951,7 +19952,7 @@ module.exports = _possibleConstructorReturn, module.exports.__esModule = true, m
 
 /***/ }),
 
-/***/ 437:
+/***/ 433:
 /*!***************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/getPrototypeOf.js ***!
   \***************************************************************/
@@ -19968,16 +19969,16 @@ module.exports = _getPrototypeOf, module.exports.__esModule = true, module.expor
 
 /***/ }),
 
-/***/ 438:
+/***/ 434:
 /*!****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/wrapNativeSuper.js ***!
   \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getPrototypeOf = __webpack_require__(/*! ./getPrototypeOf.js */ 437);
+var getPrototypeOf = __webpack_require__(/*! ./getPrototypeOf.js */ 433);
 var setPrototypeOf = __webpack_require__(/*! ./setPrototypeOf.js */ 16);
-var isNativeFunction = __webpack_require__(/*! ./isNativeFunction.js */ 439);
+var isNativeFunction = __webpack_require__(/*! ./isNativeFunction.js */ 435);
 var construct = __webpack_require__(/*! ./construct.js */ 15);
 function _wrapNativeSuper(Class) {
   var _cache = typeof Map === "function" ? new Map() : undefined;
@@ -20009,7 +20010,7 @@ module.exports = _wrapNativeSuper, module.exports.__esModule = true, module.expo
 
 /***/ }),
 
-/***/ 439:
+/***/ 435:
 /*!*****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/isNativeFunction.js ***!
   \*****************************************************************/
@@ -20027,7 +20028,7 @@ module.exports = _isNativeFunction, module.exports.__esModule = true, module.exp
 
 /***/ }),
 
-/***/ 440:
+/***/ 436:
 /*!*************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/pages.json?{"type":"origin-pages-json"} ***!
   \*************************************************************************************************/
@@ -20147,7 +20148,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 441:
+/***/ 437:
 /*!************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/pages.json?{"type":"stat"} ***!
   \************************************************************************************/
@@ -20168,7 +20169,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 442:
+/***/ 438:
 /*!******************************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-file-picker/components/uni-file-picker/choose-and-upload-file.js ***!
   \******************************************************************************************************************************************/
@@ -20388,11 +20389,11 @@ function chooseAndUploadFile() {
   }
   return uploadFiles(chooseAll(opts), opts);
 }
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 430)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 426)["default"]))
 
 /***/ }),
 
-/***/ 443:
+/***/ 439:
 /*!*************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-file-picker/components/uni-file-picker/utils.js ***!
   \*************************************************************************************************************************/
@@ -20407,8 +20408,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.get_files_and_is_max = exports.get_file_info = exports.get_file_ext = exports.get_file_data = exports.get_extname = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 431));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 434));
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 427));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 430));
 /**
  * 获取文件名和后缀
  * @param {String} name
@@ -20557,7 +20558,7 @@ exports.get_file_data = get_file_data;
 
 /***/ }),
 
-/***/ 463:
+/***/ 459:
 /*!**************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-countdown/components/uni-countdown/i18n/index.js ***!
   \**************************************************************************************************************************/
@@ -20572,9 +20573,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 464));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 465));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 466));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 460));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 461));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 462));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -20584,7 +20585,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 464:
+/***/ 460:
 /*!*************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-countdown/components/uni-countdown/i18n/en.json ***!
   \*************************************************************************************************************************/
@@ -20595,7 +20596,7 @@ module.exports = JSON.parse("{\"uni-countdown.day\":\"day\",\"uni-countdown.h\":
 
 /***/ }),
 
-/***/ 465:
+/***/ 461:
 /*!******************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-countdown/components/uni-countdown/i18n/zh-Hans.json ***!
   \******************************************************************************************************************************/
@@ -20606,7 +20607,7 @@ module.exports = JSON.parse("{\"uni-countdown.day\":\"天\",\"uni-countdown.h\":
 
 /***/ }),
 
-/***/ 466:
+/***/ 462:
 /*!******************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-countdown/components/uni-countdown/i18n/zh-Hant.json ***!
   \******************************************************************************************************************************/
@@ -20617,7 +20618,7 @@ module.exports = JSON.parse("{\"uni-countdown.day\":\"天\",\"uni-countdown.h\":
 
 /***/ }),
 
-/***/ 474:
+/***/ 470:
 /*!*********************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
   \*********************************************************************************************************************************/

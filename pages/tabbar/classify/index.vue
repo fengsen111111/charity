@@ -9,12 +9,15 @@
 		<view class="gw flex justify-between">
 			<view class="flex mt-3">
 				<view class="text-center space-x-6">
-					<image src="@/static/classify/server_new.png" mode="" class="iconTwo"></image>
-					<view class="text12 ling0 mt-1">客服</view>
+					<button open-type="contact" class="btnTo">
+						<image src="@/static/classify/server_new.png" mode="" class="iconTwo"></image>
+					</button>
+					<view class="text12 mt-1">客服</view>
 				</view>
+
 				<view class="text-center space-x-6">
 					<image src="@/static/classify/shopping_new.png" mode="" class="iconTwo"></image>
-					<view class="text12 ling0 mt-1">购物车</view>
+					<view class="text12 mt-1">购物车</view>
 				</view>
 			</view>
 			<!--  -->
@@ -114,7 +117,8 @@
 								<view class="w85 mxAuto">
 									<view class="mx-2 text-center">
 										<view class="">{{duration}}</view>
-										<slider backgroundColor="#F9F9F9" activeColor="#4867CF" @change="durationChange" :value="duration" :max="max" :min="min" />
+										<slider backgroundColor="#F9F9F9" activeColor="#4867CF" @change="durationChange"
+											:value="duration" :max="max" :min="min" />
 									</view>
 								</view>
 								<view class="">{{max}}</view>
@@ -140,7 +144,7 @@
 </template>
 
 <script>
-		import ruleItem from "@/components/ruleItem/index"
+	import ruleItem from "@/components/ruleItem/index"
 	import topView from '@/pages/tabbar/classify/components/topView/index.vue'
 	import tagClass from '@/pages/tabbar/classify/components/tagClass/index.vue'
 	import shopBom from '@/pages/tabbar/classify/components/shopBom/index.vue'
@@ -161,7 +165,7 @@
 				// 温度选着
 				temperatureIndex: 1,
 				// 
-				bottomStatus: 1// 1加入购物车 2立即购买
+				bottomStatus: 1 // 1加入购物车 2立即购买
 			}
 		},
 		onLoad() {
@@ -178,9 +182,9 @@
 				this.number++
 			},
 			// 结算
-			handleOrder(){
+			handleOrder() {
 				uni.navigateTo({
-					url:'/pages/sonView/okOrder/index'
+					url: '/pages/sonView/okOrder/index'
 				})
 			},
 			durationChange(e) {
@@ -197,16 +201,16 @@
 				this.$refs.popupBottom.close()
 			},
 			// 弹框
-			toggleBottom(type,index) {
-				this.bottomStatus = index//切换
+			toggleBottom(type, index) {
+				this.bottomStatus = index //切换
 				this.type = type
 				// open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
 				this.$refs.popupBottom.open(type)
 			},
 			// 结算
-			handleOrder(){
+			handleOrder() {
 				uni.navigateTo({
-					url:'/pages/sonView/okOrder/index'
+					url: '/pages/sonView/okOrder/index'
 				})
 			},
 		}
@@ -242,7 +246,7 @@
 		height: 4rem;
 		background-color: #fff;
 		position: fixed;
-		bottom:0px;
+		bottom: 0px;
 		/* border: 1px solid red; */
 		width: 100%;
 	}

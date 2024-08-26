@@ -31,7 +31,7 @@
 	height: 10rem;
 	width: 100%;
 }
-.mt55{
+.mt55 {
 	margin-top: 5.5rem;
 }
 
