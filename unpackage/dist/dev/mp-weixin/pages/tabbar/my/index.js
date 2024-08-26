@@ -187,11 +187,11 @@ var _default = {
       }, {
         id: 3,
         text: '用户协议',
-        url: ''
+        url: '/pages/sonView/swiperActive/index?type=3'
       }, {
         id: 4,
         text: '关于我们',
-        url: ''
+        url: '/pages/sonView/swiperActive/index?type=4'
       }, {
         id: 5,
         text: '联系客服',

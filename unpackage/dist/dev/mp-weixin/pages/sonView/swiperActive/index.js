@@ -147,13 +147,17 @@ var hearch = function hearch() {
 var _default = {
   data: function data() {
     return {
-      active: false
+      active: false,
+      title: ''
     };
   },
   components: {
     hearch: hearch
   },
-  onLoad: function onLoad() {},
+  onLoad: function onLoad(options) {
+    console.log('options', options);
+    this.title = options.type == '3' ? '用户协议' : options.type == '4' ? '关于我们' : '活动名称';
+  },
   onShow: function onShow() {},
   onHide: function onHide() {},
   methods: {}

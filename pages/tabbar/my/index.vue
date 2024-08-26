@@ -83,8 +83,7 @@
 					style="background-image: url('https://imgos.cn/2024/08/13/66bab13e85b58.png');"></view>
 				<!-- cardItem -->
 				<view class="mt-3">
-					<view
-						class="flex bg-whilt rending1 text-black mt-1 justify-between p-3" v-for="item in cards"
+					<view class="flex bg-whilt rending1 text-black mt-1 justify-between p-3" v-for="item in cards"
 						:key="item.id">
 						<view class="">{{item.text}}</view>
 						<view class="flex items-center">
@@ -99,7 +98,8 @@
 									<uni-icons type="right" color="#666666" size="18"></uni-icons>
 								</button>
 							</view>
-							<uni-icons @click="handleUrl(item.url)" v-else="item.id!==6" type="right" color="#666666" size="18"></uni-icons>
+							<uni-icons style="margin-top: 3rpx;" @click="handleUrl(item.url)" v-else="item.id!==6"
+								type="right" color="#666666" size="18"></uni-icons>
 							<view v-else>
 								1.2.222
 							</view>
@@ -139,12 +139,12 @@
 					{
 						id: 3,
 						text: '用户协议',
-						url: ''
+						url: '/pages/sonView/swiperActive/index?type=3'
 					},
 					{
 						id: 4,
 						text: '关于我们',
-						url: ''
+						url: '/pages/sonView/swiperActive/index?type=4'
 					},
 					{
 						id: 5,
