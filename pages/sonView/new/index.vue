@@ -7,18 +7,14 @@
 		<view class="bgBottom">
 			<view class="bgFCE w95 mxAuto rending2 h20 overflowAuto" >
 				<view class="pt-1">
-					<volumeTag :isFFF='true'/>
-					<volumeTag :isFFF='true'/>
-					<volumeTag :isFFF='true'/>
-					<volumeTag :isFFF='true'/>
-					<volumeTag :isFFF='true'/>
-					<volumeTag :isFFF='true'/>
+					<volumeTag :datalist=datalist :isFFF='true'/>
+					<volumeTag :datalist=datalist :isFFF='true'/>
 				</view>
 				<view class="h-4"></view>
 			</view>
 			<!-- 一键领取 -->
 			<view class="w95 mxAuto">
-				<view class="buttonCen fontBold text16 py-3 mt-3 text-center text-whlie">
+				<view class="buttonCen fontBold text16 py-3 mt-3 text-center text-whlie" @click="_getReceiveNewUserCoupon">
 					一键领取
 				</view>
 				<view class="flex mt-3 items-center justify-evenly">
@@ -38,16 +34,56 @@
 	</view>
 </template>
 
-<script>
+<script>0
 	import viewTop from "@/pages/sonView/volume/components/viewTop/index.vue"
 	import volumeTag from "@/components/volumeTag/index.vue"
 	import bomShop from '@/components/home/bomShop/index.vue'
+	import {
+		getNewUserCouponList,//新人优惠卷列表
+		getReceiveNewUserCoupon,//一件领取
+		getReceiveCoupon, //单个领取
+		} from '@/request/api.js'
 	export default {
 		data() {
 			return {
 				active: false,
 				checkItem:1,
+				datalist:[
+					{
+						id:'1',
+						name:'优惠券名称',
+						type: 'a',
+						use_type:'a',
+						top_price:'100',
+						coupon_data:'30',
+						end_time:'2023-12-16',
+						areas:'成都'
+					},
+					{
+						id:'2',
+						name:'优惠券名称',
+						type: 'b',
+						use_type:'a',
+						top_price:'',
+						coupon_data:'6折',
+						end_time:'2023-12-16',
+						areas:'成都'
+					}
+				]
 			};
+		},
+		created(){
+			// 获取列表
+			getNewUserCouponList({
+				post_params:{
+					adcode:'',//行政区
+					currentPage: '',
+					perPage:'',
+					user_id:''
+				}
+			}).then((res)=>{
+				console.log(res)
+			})
 		},
 		components:{viewTop,volumeTag,bomShop},
 		onLoad() {},
@@ -57,7 +93,12 @@
 		onHide() {
 		},
 		methods: {
-			
+			_getReceiveNewUserCoupon(){
+				console.log('一键领取');
+				getReceiveNewUserCoupon().then((res)=>{
+					console.log('一键领取',res);
+				})
+			}
 		}
 	};
 </script>

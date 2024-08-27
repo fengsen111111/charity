@@ -53,7 +53,17 @@
 </template>
 
 <script>
+	import { 
+		getAreas,//行政区
+		getHotCity//热门城市
+	} from '@/request/api.js'
 	export default {
+		created() {
+			//获取手机状态栏高度
+			this.statusBarHeight = uni.getSystemInfoSync()['statusBarHeight'];
+			this._getAreas(),//行政区
+		    this._getHotCity()//热门城市
+		},
 		data() {
 			return {
 				cityName:'成都',
@@ -329,10 +339,6 @@
 				]
 			};
 		},
-		created() {
-			//获取手机状态栏高度
-			this.statusBarHeight = uni.getSystemInfoSync()['statusBarHeight'];
-		},
 		onLoad() {},
 		methods: {
 			bindClick(e) {
@@ -347,6 +353,22 @@
 			},
 			handleLeft() {
 				uni.navigateBack()
+			},
+			//行政区
+			_getAreas(){
+				getAreas({
+					post_params:{
+						pid:''
+					}
+				}).then((res)=>{
+					console.log('res所有城市',res);
+				})
+			},
+			// 热门城市
+			_getHotCity(){
+				getHotCity().then((res)=>{
+					console.log('热门城市',res);
+				})
 			}
 		}
 	};

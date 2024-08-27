@@ -61,6 +61,7 @@
 
 <script>
 	import bomShop from '@/components/home/bomShop/index.vue'
+	import {getHotKeyWords} from '@/request/api.js'
 	export default {
 		components: {
 			bomShop
@@ -108,9 +109,16 @@
 		created() {
 			//获取手机状态栏高度
 			this.statusBarHeight = uni.getSystemInfoSync()['statusBarHeight'];
+			// 热门收缩词
+			this._getHotKeyWords()
 		},
 		onLoad() {},
 		methods: {
+			_getHotKeyWords(){
+				getHotKeyWords().then((res)=>{
+					console.log('热门词',res);
+				})
+			},
 			// 
 			handleUpDown(index){
 				if(index==1){

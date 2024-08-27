@@ -17,21 +17,37 @@
 		<!-- 即将开始 -->
 		<view class="">
 			<view class="flex p-2 col666 text12 bg-whilt">
-				<view class="text-black space-x-6">
+				<view class="space-x-6" @click="handleItemCheck(1)" :class="itemCheck==1?'text-black':''">
 					全部
-					<view class="bgFA3 bottomHr w-3 rending1 mxAuto"></view>
+					<view class="bgFA3 bottomHr w-3 rending1 mxAuto" v-if="itemCheck==1"></view>
 				</view>
-				<view class=" space-x-6">啤酒</view>
-				<view class=" space-x-6">白酒</view>
-				<view class=" space-x-6">葡萄酒</view>
+				<view class=" space-x-6" @click="handleItemCheck(2)" :class="itemCheck==2?'text-black':''">
+					啤酒
+					<view class="bgFA3 bottomHr w-3 rending1 mxAuto" v-if="itemCheck==2"></view>
+				</view>
+				<view class=" space-x-6" @click="handleItemCheck(3)" :class="itemCheck==3?'text-black':''">
+					白酒
+					<view class="bgFA3 bottomHr w-3 rending1 mxAuto" v-if="itemCheck==3"></view>
+				</view>
+				<view class=" space-x-6" @click="handleItemCheck(4)" :class="itemCheck==4?'text-black':''">
+				    葡萄酒
+					<view class="bgFA3 bottomHr w-3 rending1 mxAuto" v-if="itemCheck==4"></view>
+				</view>
 			</view>
 			<view class="bgF9 py-3" >
 				<view class="w90">
 					<shopCardTwo>
-						<view class="border999 space-x-3 col999 px-2 flex items-center rending1">
-							<text class="text10">开始倒计时</text>
-							<text class="text11 fontBold space-x-1">01:59:59</text>
+						<!-- 疯抢 -->
+						<view v-if="indexCheck==1" class="borderFF8 space-x-3 colFF8  flex items-center rending1">
+							<text class="text11 fontBold space-x-3">01:59:59</text>
+							<text class="text10 btnGo space-x-2 text-whlie px-3 py4rpx">去抢购</text>
 						</view>
+						<!-- 即将开始 -->
+						<view v-else class="border999 space-x-3 col999 px-2 flex items-center rending1">
+							<text class="text10">开始倒计时</text>
+							<text class="text11 fontBold space-x-1 px-1 py4rpx">01:59:59</text>
+						</view>
+						
 					</shopCardTwo>
 				</view>
 			</view>
@@ -54,7 +70,8 @@
 		data() {
 			return {
 				active: false,
-				indexCheck: 1
+				indexCheck: 1,
+				itemCheck:1
 			};
 		},
 		onLoad() {},
@@ -65,6 +82,9 @@
 		onHide() {
 		},
 		methods: {
+			handleItemCheck(index){
+				this.itemCheck = index
+			},
 			handleCheck(index){
 				this.indexCheck = index
 			}
@@ -73,6 +93,11 @@
 </script>
 
 <style>
+	.btnGo{
+		background: linear-gradient( 270deg, #FA311D 0%, #FF8E34 100%);
+		/* border-radius: 10rpx 10rpx 10rpx 10rpx; */
+		border-radius: 8rpx 6rpx 6rpx 8rpx
+	}
 	.-mtop10{
 		margin-top:-10rpx
 	}

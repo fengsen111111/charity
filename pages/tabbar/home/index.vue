@@ -3,8 +3,17 @@
 		<view class="px-3">
 			<homeTop />
 			<view class="">
-				<image src="https://imgos.cn/2024/08/12/66b9d747830a1.png" @click="handleUrl('/pages/sonView/swiperActive/index')" mode="" class="w-full mt-3 h100 rending1">
-				</image>
+			<!-- 	<image src="https://imgos.cn/2024/08/12/66b9d747830a1.png" @click="handleUrl('/pages/sonView/swiperActive/index')" mode="" class="w-full mt-3 h100 rending1">
+				</image> -->
+				<swiper class="swiper-box mt-3" @change="change" :current="swiperDotIndex">
+					<swiper-item v-for="(item, index) in [1,2,3]" :key="index">
+						<view class="swiper-item">
+							<image src="https://imgos.cn/2024/08/12/66b9d747830a1.png" mode="" class="w-full h100 rending1"></image>
+							<image src="https://imgos.cn/2024/08/12/66b9d747830a1.png" mode="" class="w-full h100 rending1"></image>
+							<image src="https://imgos.cn/2024/08/12/66b9d747830a1.png"  mode="" class="w-full h100 rending1"></image>
+						</view>
+					</swiper-item>
+				</swiper>
 			</view>
 			<!-- 新人专享 -->
 			<homeCard />
@@ -57,7 +66,15 @@
 	import twoCard from '@/components/home/twoCard/index.vue'
 	import active from '@/components/home/active/index.vue'
 	import tarBar from '@/components/tarBar/index.vue'
+	
+	import {getBannerList} from '@/request/api.js'
 	export default {
+		created(){
+			// 获取基本config配置
+			this.$store.commit('configInfo')
+			// 获取轮播图
+			this._getBannerList()
+		},
 		onPageScroll(e) {
 		    // e.scrollTop 表示当前页面滚动的距离
 		    // console.log('页面滚动距离：', e.scrollTop);
@@ -81,10 +98,22 @@
 				searchValue: '',
 				checkItem: 1,
 				show: false,//小图标隐藏显示
+
+				swiperDotIndex: 0,
 			};
 		},
 		onLoad() {},
 		methods: {
+			_getBannerList(){
+				console.log('获取轮播图');
+				getBannerList({
+					post_params:{
+						type:'index'//index首页  user_center个人中心  
+					}
+				}).then((res)=>{
+					console.log('轮播图列表',res);
+				})
+			},
 			handlePhone(){
 				uni.makePhoneCall({
 					phoneNumber: '1111111',
@@ -111,6 +140,9 @@
 				uni.navigateTo({
 					url: url + ''
 				})
+			},
+			change(e) {
+				this.current = e.detail.current
 			},
 		}
 	};
@@ -202,5 +234,8 @@
 		background-image: url('@/static/home/topBg.png');
 		background-size: 100% 100%;
 		height: 33rem;
+	}
+	.swiper-box {
+		height: 100px;
 	}
 </style>

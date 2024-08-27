@@ -43,7 +43,7 @@
 					</view>
 					<view class="flex justify-between">
 						<view v-for="item in [1,2]" :key="item">
-							<image @click="handDetailds" src="https://img.picui.cn/free/2024/08/16/66bf147f6511c.png" mode="" class="mt-1 h4 w4"></image>
+							<image @click="handDetailds" src="https://img.picui.cn/free/2024/08/16/66bf135fa40a3.png" mode="" class="mt-1 h4 w4"></image>
 							<view class="relativeTop">
 								<text class="tagBg px-1">
 									0.01

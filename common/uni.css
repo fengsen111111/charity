@@ -60,6 +60,12 @@ uni-button:after {
 	display: flex
 }
 
+.borderFF8{
+	border:1rpx solid #FF8E34
+}
+.colFF8{
+	color: #FF8E34;
+}
 .grid {
 	display: grid;
 }
@@ -597,6 +603,11 @@ uni-button:after {
 	padding-bottom: 0.75rem;
 }
 
+.py4rpx{
+	padding-top: 4rpx;
+	padding-bottom: 4rpx;
+}
+
 .mxAuto {
 	margin: 0 auto;
 }
@@ -691,6 +702,12 @@ uni-button:after {
 
 .border486 {
 	border: 1rpx solid #4867CF;
+}
+.borderEF5{
+	border:1rpx solid #EF576C
+}
+.colEF5{
+	color:#EF576C
 }
 
 .text-left {

@@ -29,6 +29,7 @@
 
 <script>
 	import hearch from "@/components/hearch/index.vue"
+	import {getUserInfo,getUpdateUserInfo} from "@/request/api.js"
 	export default {
 		components: {
 			hearch
@@ -47,6 +48,22 @@
 		},
 		onHide() {},
 		methods: {
+			// 获取用户信息
+			_getUserInfo(){
+				getUserInfo().then((res)=>{
+					console.log('获取用户信息');
+				})
+			},
+			// 修改用户信息
+			_getUpdateUserInfo(){
+				getUpdateUserInfo({
+					post_params:{
+						mobile:'',//	手机号  
+						nickname:'',//昵称  
+						head_image:'',//头像图片的url  
+					}
+				})
+			},
 			handleUpload() {
 				uni.chooseImage({
 					count: 1, // 只允许上传一张图片

@@ -7,7 +7,7 @@
 				<image v-else-if="item ==3" @click="handDetailds" src="https://imgos.cn/2024/08/12/66b9d67b2c357.png" mode="" class="w-full h10"></image>
 				<image v-else-if="item ==4" @click="handDetailds" src="https://img.picui.cn/free/2024/08/16/66bf135f6997c.png" mode="" class="w-full h10"></image>
 				<view class="fontBold text12 ling125 ">
-					泸州老窖 六年窖头曲 特惠浓香白酒 52度精品装 500ml...
+					泸州老窖六年窖头曲特惠浓香白酒52度精品装...
 				</view>
 				<text class="colFA3 px-1 text10 rending1 tagShopItem">200ml/瓶</text>
 				<view class="flex justify-between">

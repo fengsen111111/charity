@@ -9375,135 +9375,6 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 301:
-/*!************************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/request/api.js ***!
-  \************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.apiCeshi = void 0;
-var _index = __webpack_require__(/*! ./index.js */ 302);
-// 引入 request 文件
-
-var base_url = 'https://api.52vmy.cn';
-var api = {
-  CESHI: base_url + '/api/wl/yan/yiyan' // 语录 · 随机一言
-};
-
-// 
-var apiCeshi = function apiCeshi(params) {
-  return (0, _index.get)(api.CESHI, params);
-};
-exports.apiCeshi = apiCeshi;
-
-/***/ }),
-
-/***/ 302:
-/*!**************************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/request/index.js ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.post = exports.get = void 0;
-var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-// 创建请求函数
-var request = function request(options) {
-  // 请求拦截器
-  if (options.interceptRequest) {
-    options = options.interceptRequest(options);
-  }
-  return new Promise(function (resolve, reject) {
-    uni.request(_objectSpread(_objectSpread({}, options), {}, {
-      success: function success(response) {
-        // 响应拦截器
-        if (options.interceptResponse) {
-          var newResponse = options.interceptResponse(response);
-          if (newResponse) {
-            resolve(newResponse);
-            return;
-          }
-        }
-        resolve(response);
-      },
-      fail: function fail(error) {
-        reject(error);
-      }
-    }));
-  });
-};
-
-// 默认拦截器示例
-var interceptRequest = function interceptRequest(options) {
-  // 在这里添加请求头或其他处理逻辑
-  options.header = _objectSpread(_objectSpread({}, options.header), {}, {
-    Authorization: 'Bearer token' // 示例：添加 token
-  });
-
-  return options;
-};
-var interceptResponse = function interceptResponse(response) {
-  // 例如，处理特定状态码
-  if (response.statusCode === 401) {
-    // 重定向到登录页面
-    uni.redirectTo({
-      url: '/pages/login/login'
-    });
-    return null; // 阻止后续的 resolve
-  }
-
-  return response;
-};
-
-// 封装的 GET 请求
-var get = function get(url) {
-  var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-  console.log('get');
-  return request(_objectSpread({
-    url: url,
-    data: data,
-    method: 'GET',
-    interceptRequest: interceptRequest,
-    interceptResponse: interceptResponse
-  }, options));
-};
-
-// 封装的 POST 请求
-exports.get = get;
-var post = function post(url) {
-  var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-  console.log('post');
-  return request(_objectSpread({
-    url: url,
-    data: data,
-    method: 'POST',
-    interceptRequest: interceptRequest,
-    interceptResponse: interceptResponse
-  }, options));
-};
-exports.post = post;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-
 /***/ 303:
 /*!********************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/static/tabbar/home.png ***!
@@ -10245,17 +10116,39 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 25));
 var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 34));
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
 _vue.default.use(_vuex.default);
 var store = new _vuex.default.Store({
   state: {
     //公共的变量，这里的变量不能随便修改，只能通过触发mutations的方法才能改变
-    login: true //是否已经登录
+    login: true,
+    //是否已经登录
+    userInfo: {},
+    //用户数据
+    config: {},
+    //config数据
+    token: '' //token
   },
 
   mutations: {
     //相当于同步的操作
     loginStatus: function loginStatus(state) {
       state.login = true;
+    },
+    // 用户数据存入
+    setState: function setState(state, data) {
+      console.log('state', state);
+      console.log('data', data);
+    },
+    configInfo: function configInfo(state) {
+      (0, _api.getConfig)().then(function (res) {
+        state.config = res.data;
+      });
+    },
+    setToken: function setToken(state, token) {
+      // console.log('state',state);
+      // console.log('data',token);
+      state.token = token;
     }
   },
   actions: {
@@ -11521,6 +11414,383 @@ var index_cjs = {
 module.exports = index_cjs;
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../webpack/buildin/global.js */ 3)))
+
+/***/ }),
+
+/***/ 35:
+/*!************************************************************************!*\
+  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/request/api.js ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.submitWithdrawal = exports.getWithdrawalList = exports.getUserRegister = exports.getUserInfo = exports.getUserCouponList = exports.getUserCity = exports.getUpdateUserInfo = exports.getTeamUserList = exports.getStoreCouponList = exports.getRichTextContent = exports.getReceiveNewUserCoupon = exports.getReceiveCoupon = exports.getPromoterMsg = exports.getPhoneNumber = exports.getNewUserCouponList = exports.getMoneyLogList = exports.getLoginAndRegister = exports.getIndexGoodsTypeList = exports.getHotKeyWords = exports.getHotCity = exports.getGoodsTypeList = exports.getGoodsList = exports.getFindStore = exports.getConfig = exports.getBannerList = exports.getBankList = exports.getAreasByLocation = exports.getAreas = exports.getAddressList = exports.editBank = exports.editAddresst = exports.deleteBank = exports.deleteAddress = void 0;
+var _index = __webpack_require__(/*! ./index.js */ 36);
+// 引入 request 文件
+
+var base_url = 'https://beverage.api.sczhiyun.net';
+var api = {
+  GETAREAS: base_url + '/factory_system/Base/getAreas',
+  // 获取行政区
+  GETAREAS_BYLOACTION: base_url + '/factory_system/Base/getAreasByLocation',
+  // 根据坐标获取行政区
+  PHONE_NUMBER: base_url + '/factory_system/Base/getWechatPhoneNumber',
+  // 获取用户微信手机号
+  USER_REGISTER: base_url + '/factory_system/Base/wechatUserRegister',
+  // 微信授权
+
+  // 优惠卷
+  COPON_NEWUSER_LIST: base_url + '/beverage/Coupon/getNewUserCouponList',
+  // 获取新人优惠券列表
+  STORE_COPIN_LIST: base_url + '/beverage/Coupon/getStoreCouponList',
+  // 获取门店/商品优惠券列表
+  COPON_RECEIVE: base_url + '/beverage/UserCoupon/receiveCoupon',
+  // 领取优惠券
+  COPON_RECEIVE_NEW: base_url + '/beverage/UserCoupon/receiveNewUserCoupon',
+  // 一键领取新人优惠券
+  COPON_USER_LIST: base_url + '/beverage/UserCoupon/getUserCouponList',
+  // 获取用户优惠券列表
+
+  // 其他
+  CONFIG: base_url + '/beverage/Setting/getConfig',
+  // 获取基本配置项
+  TEXT_CONTENT: base_url + '/beverage/Setting/getRichTextContent',
+  // 获取富文本内容
+  BANNER_LIST: base_url + '/beverage/Banner/getBannerList',
+  // 获取轮播图列表
+  GET_HOTCITY: base_url + '/beverage/Setting/getHotCity',
+  // 获取热门城市
+  GET_USER_CITY: base_url + '/beverage/Setting/getUserCity',
+  // 获取用户下单城市
+  HOTKEY_WORDS: base_url + '/beverage/Setting/getHotKeyWords',
+  // 获取热门搜索词
+  STORE_FIND_STORE: base_url + '/beverage/Store/findStore',
+  // 根据定位/选择的区县获取门店信息
+
+  // 商品
+  GOODS_TYPE_LIST: base_url + '/beverage/GoodsType/getIndexGoodsTypeList',
+  // 获取门店商品一级分类列表
+  GET_GOODS_TYPE_LIST: base_url + '/beverage/GoodsType/getGoodsTypeList',
+  // 获取门店所有商品分类列表
+  GOODS_LIST: base_url + '/beverage/Goods/getGoodsList',
+  // 获取门店商品列表：规格相关字段暂未提供
+
+  // 用户
+  LOGIN_AND_REGISTER: base_url + '/beverage/User/loginAndRegister',
+  // 登陆与注册
+  EDIT_USERINFO: base_url + '/beverage/User/updateUserInfo',
+  // 修改用户信息
+  USER_INFO: base_url + '/accompany/User/getUserInfo',
+  // 获取用户信息
+  EDIT_ADDRESS: base_url + '/beverage/Address/editAddresst',
+  // 添加/修改用户收货地址
+  ADDRESS_LIST: base_url + '/beverage/Address/getAddressList',
+  // 获取用户收货地址列表
+  DEL_ADDRESS: base_url + '/beverage/Address/deleteAddress',
+  // 删除用户收货地址
+  EDIT_BANK: base_url + '/beverage/Bank/editBank',
+  // 添加/修改用户银行卡
+  BANK_LIST: base_url + '/beverage/Bank/getBankList',
+  // 获取用户银行卡列表
+  DEL_BANK: base_url + '/beverage/Bank/deleteBank',
+  // 删除用户银行卡
+  PROMOTER_MSG: base_url + '/beverage/User/getPromoterMsg',
+  // 获取推广人信息
+  TEAM_USER_LIST: base_url + '/beverage/User/getTeamUserList',
+  // 获取团队信息
+  SUBMIT_WITHDRAWAL: base_url + '/beverage/Withdrawal/submitWithdrawal',
+  // 申请提现
+  WITHDRAWAL_LIST: base_url + '/beverage/Withdrawal/getWithdrawalList',
+  // 获取提现记录列表
+  MONEY_LOG_LIST: base_url + '/beverage/MoneyLog/getMoneyLogList' // 获取收益明细
+};
+
+// 用户 ----------------------------------------------------------------------
+// 获取提现记录列表
+var getWithdrawalList = function getWithdrawalList(params) {
+  return (0, _index.post)(api.WITHDRAWAL_LIST, params);
+};
+// 获取收益明细
+exports.getWithdrawalList = getWithdrawalList;
+var getMoneyLogList = function getMoneyLogList(params) {
+  return (0, _index.post)(api.MONEY_LOG_LIST, params);
+};
+// 申请提现
+exports.getMoneyLogList = getMoneyLogList;
+var submitWithdrawal = function submitWithdrawal(params) {
+  return (0, _index.post)(api.SUBMIT_WITHDRAWAL, params);
+};
+// 获取团队信息
+exports.submitWithdrawal = submitWithdrawal;
+var getTeamUserList = function getTeamUserList(params) {
+  return (0, _index.post)(api.TEAM_USER_LIST, params);
+};
+// 获取推广人信息
+exports.getTeamUserList = getTeamUserList;
+var getPromoterMsg = function getPromoterMsg(params) {
+  return (0, _index.post)(api.PROMOTER_MSG, params);
+};
+// 添加/修改用户银行卡
+exports.getPromoterMsg = getPromoterMsg;
+var editBank = function editBank(params) {
+  return (0, _index.post)(api.EDIT_BANK, params);
+};
+// 获取用户银行卡列表
+exports.editBank = editBank;
+var getBankList = function getBankList(params) {
+  return (0, _index.post)(api.BANK_LIST, params);
+};
+// 删除用户银行卡
+exports.getBankList = getBankList;
+var deleteBank = function deleteBank(params) {
+  return (0, _index.post)(api.DEL_BANK, params);
+};
+
+// 登陆与注册
+exports.deleteBank = deleteBank;
+var getLoginAndRegister = function getLoginAndRegister(params) {
+  return (0, _index.post)(api.LOGIN_AND_REGISTER, params);
+};
+// 修改用户信息
+exports.getLoginAndRegister = getLoginAndRegister;
+var getUpdateUserInfo = function getUpdateUserInfo(params) {
+  return (0, _index.post)(api.EDIT_USERINFO, params);
+};
+// 获取用户信息
+exports.getUpdateUserInfo = getUpdateUserInfo;
+var getUserInfo = function getUserInfo(params) {
+  return (0, _index.post)(api.USER_INFO, params);
+};
+// 添加/修改用户收货地址
+exports.getUserInfo = getUserInfo;
+var editAddresst = function editAddresst(params) {
+  return (0, _index.post)(api.EDIT_ADDRESS, params);
+};
+// 获取用户收货地址列表
+exports.editAddresst = editAddresst;
+var getAddressList = function getAddressList(params) {
+  return (0, _index.post)(api.ADDRESS_LIST, params);
+};
+// 删除用户收货地址
+exports.getAddressList = getAddressList;
+var deleteAddress = function deleteAddress(params) {
+  return (0, _index.post)(api.DEL_ADDRESS, params);
+};
+// 用户  end ----------------------------------------------------------------------
+
+// 商品  --------------------------------------------
+// 获取门店商品一级分类列表
+exports.deleteAddress = deleteAddress;
+var getIndexGoodsTypeList = function getIndexGoodsTypeList(params) {
+  return (0, _index.post)(api.GOODS_TYPE_LIST, params);
+};
+// 获取门店所有商品分类列表
+exports.getIndexGoodsTypeList = getIndexGoodsTypeList;
+var getGoodsTypeList = function getGoodsTypeList(params) {
+  return (0, _index.post)(api.GET_GOODS_TYPE_LIST, params);
+};
+// 获取门店商品列表
+exports.getGoodsTypeList = getGoodsTypeList;
+var getGoodsList = function getGoodsList(params) {
+  return (0, _index.post)(api.GOODS_LIST, params);
+};
+
+// 商品 end --------------------------------------------
+
+// 其他  --------------------------------------------
+// 获取基本配置项
+exports.getGoodsList = getGoodsList;
+var getConfig = function getConfig(params) {
+  return (0, _index.post)(api.CONFIG, params);
+};
+//获取富文本内容
+exports.getConfig = getConfig;
+var getRichTextContent = function getRichTextContent(params) {
+  return (0, _index.post)(api.TEXT_CONTENT, params);
+};
+//获取轮播图列表
+exports.getRichTextContent = getRichTextContent;
+var getBannerList = function getBannerList(params) {
+  return (0, _index.post)(api.BANNER_LIST, params);
+};
+//获取热门城市
+exports.getBannerList = getBannerList;
+var getHotCity = function getHotCity(params) {
+  return (0, _index.post)(api.GET_HOTCITY, params);
+};
+//获取用户下单城市
+exports.getHotCity = getHotCity;
+var getUserCity = function getUserCity(params) {
+  return (0, _index.post)(api.GET_USER_CITY, params);
+};
+//获取热门搜索词
+exports.getUserCity = getUserCity;
+var getHotKeyWords = function getHotKeyWords(params) {
+  return (0, _index.post)(api.HOTKEY_WORDS, params);
+};
+//根据定位/选择的区县获取门店信息
+exports.getHotKeyWords = getHotKeyWords;
+var getFindStore = function getFindStore(params) {
+  return (0, _index.post)(api.STORE_FIND_STORE, params);
+};
+
+// 其他 end  --------------------------------------------
+
+// 优惠卷  --------------------------------------------
+// 获取新人优惠券列表
+exports.getFindStore = getFindStore;
+var getNewUserCouponList = function getNewUserCouponList(params) {
+  return (0, _index.post)(api.COPON_NEWUSER_LIST, params);
+};
+// 获取门店/商品优惠券列表
+exports.getNewUserCouponList = getNewUserCouponList;
+var getStoreCouponList = function getStoreCouponList(params) {
+  return (0, _index.post)(api.STORE_COPIN_LIST, params);
+};
+// 领取优惠券
+exports.getStoreCouponList = getStoreCouponList;
+var getReceiveCoupon = function getReceiveCoupon(params) {
+  return (0, _index.post)(api.COPON_RECEIVE, params);
+};
+// 一键领取新人优惠券
+exports.getReceiveCoupon = getReceiveCoupon;
+var getReceiveNewUserCoupon = function getReceiveNewUserCoupon(params) {
+  return (0, _index.post)(api.COPON_RECEIVE_NEW, params);
+};
+// 获取用户优惠券列表
+exports.getReceiveNewUserCoupon = getReceiveNewUserCoupon;
+var getUserCouponList = function getUserCouponList(params) {
+  return (0, _index.post)(api.COPON_USER_LIST, params);
+};
+
+// 优惠卷 end --------------------------------------------
+
+// 获取行政区
+exports.getUserCouponList = getUserCouponList;
+var getAreas = function getAreas(params) {
+  return (0, _index.post)(api.GETAREAS, params);
+};
+// 根据坐标获取行政区
+exports.getAreas = getAreas;
+var getAreasByLocation = function getAreasByLocation(params) {
+  return (0, _index.post)(api.GETAREAS_BYLOACTION, params);
+};
+// 获取用户微信手机号
+exports.getAreasByLocation = getAreasByLocation;
+var getPhoneNumber = function getPhoneNumber(params) {
+  return (0, _index.post)(api.PHONE_NUMBER, params);
+};
+// 微信授权
+exports.getPhoneNumber = getPhoneNumber;
+var getUserRegister = function getUserRegister(params) {
+  return (0, _index.post)(api.USER_REGISTER, params);
+};
+exports.getUserRegister = getUserRegister;
+
+/***/ }),
+
+/***/ 36:
+/*!**************************************************************************!*\
+  !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/request/index.js ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.post = exports.get = void 0;
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+// 创建请求函数
+var request = function request(options) {
+  // 请求拦截器
+  if (options.interceptRequest) {
+    options = options.interceptRequest(options);
+  }
+  return new Promise(function (resolve, reject) {
+    uni.request(_objectSpread(_objectSpread({}, options), {}, {
+      success: function success(response) {
+        // 响应拦截器
+        if (options.interceptResponse) {
+          var newResponse = options.interceptResponse(response);
+          if (newResponse) {
+            resolve(newResponse);
+            return;
+          }
+        }
+        resolve(response);
+      },
+      fail: function fail(error) {
+        reject(error);
+      }
+    }));
+  });
+};
+
+// 默认拦截器示例
+var interceptRequest = function interceptRequest(options) {
+  // 在这里添加请求头或其他处理逻辑
+  options.header = _objectSpread(_objectSpread({}, options.header), {}, {
+    Authorization: 'Bearer token' // 示例：添加 token
+  });
+
+  return options;
+};
+var interceptResponse = function interceptResponse(response) {
+  // 例如，处理特定状态码
+  if (response.statusCode === 401) {
+    // 重定向到登录页面
+    uni.redirectTo({
+      url: '/pages/login/login'
+    });
+    return null; // 阻止后续的 resolve
+  }
+
+  return response;
+};
+
+// 封装的 GET 请求
+var get = function get(url) {
+  var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  console.log('get');
+  return request(_objectSpread({
+    url: url,
+    data: data,
+    method: 'GET',
+    interceptRequest: interceptRequest,
+    interceptResponse: interceptResponse
+  }, options));
+};
+
+// 封装的 POST 请求
+exports.get = get;
+var post = function post(url) {
+  var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  console.log('post');
+  return request(_objectSpread({
+    url: url,
+    data: data,
+    method: 'POST',
+    interceptRequest: interceptRequest,
+    interceptResponse: interceptResponse
+  }, options));
+};
+exports.post = post;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 

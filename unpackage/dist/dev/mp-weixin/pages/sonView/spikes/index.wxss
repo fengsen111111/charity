@@ -1,4 +1,9 @@
 
+.btnGo{
+	background: linear-gradient( 270deg, #FA311D 0%, #FF8E34 100%);
+	/* border-radius: 10rpx 10rpx 10rpx 10rpx; */
+	border-radius: 8rpx 6rpx 6rpx 8rpx
+}
 .-mtop10{
 	margin-top:-10rpx
 }

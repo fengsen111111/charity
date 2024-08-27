@@ -120,6 +120,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
 //
 //
 //
@@ -148,9 +149,56 @@ exports.default = void 0;
 //
 //
 //
-var _default = {
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default2 = {
   props: {
-    isFFF: false
+    isFFF: false,
+    isLapse: false,
+    isBtn: false,
+    datalist: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    }
+  },
+  created: function created() {
+    console.log('props', this.$props);
   },
   data: function data() {
     return {
@@ -161,9 +209,20 @@ var _default = {
   onLoad: function onLoad() {},
   onShow: function onShow() {},
   onHide: function onHide() {},
-  methods: {}
+  methods: {
+    handleReceive: function handleReceive(item) {
+      console.log('领取', item);
+      (0, _api.getReceiveNewUserCoupon)({
+        post_params: {
+          coupon_id: item.id
+        }
+      }).then(function (res) {
+        console.log('领取成功', res);
+      });
+    }
+  }
 };
-exports.default = _default;
+exports.default = _default2;
 
 /***/ }),
 

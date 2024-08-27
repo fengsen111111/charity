@@ -164,7 +164,7 @@
 					</view>
 				</view>
 				<view class="mt-3">
-					<volumeTag />
+					<volumeTag :datalist=datalist :isFFF='true' :isBtn='true' />
 				</view>
 				<!-- 留白 -->
 				<view class="h-8"></view>
@@ -346,12 +346,17 @@
 	import ruleItem from "@/components/ruleItem/index"
 	import volumeTag from "@/components/volumeTag/index.vue"
 	import comments from "@/components/comments/index.vue"
+	import {getStoreCouponList} from '@/request/api.js'
 	export default {
 		components: {
 			hearch,
 			ruleItem,
 			volumeTag,
 			comments
+		},
+		created(){
+			// 获取优惠卷
+			this._getStoreCouponList()
 		},
 		data() {
 			return {
@@ -369,11 +374,46 @@
 				// 温度选着
 				temperatureIndex: 1,
 				// 
-				bottomStatus: 1// 1加入购物车 2立即购买
+				bottomStatus: 1,// 1加入购物车 2立即购买
+				datalist:[
+					{
+						id:'1',
+						name:'优惠券名称',
+						type: 'a',
+						use_type:'a',
+						top_price:'100',
+						coupon_data:'30',
+						end_time:'2023-12-16',
+						areas:'成都'
+					},
+					{
+						id:'2',
+						name:'优惠券名称',
+						type: 'b',
+						use_type:'b',
+						top_price:'',
+						coupon_data:'6折',
+						end_time:'2023-12-16',
+						areas:'成都'
+					}
+				]
 			};
 		},
 		onLoad() {},
 		methods: {
+			_getStoreCouponList(){
+				getStoreCouponList({
+					post_params:{
+						store_id:'',//门店id
+						goods_id:'',//商品id
+						type:'',//优惠券类型 a满减  b折扣  
+						currentPage:'',//
+						perPage:'',
+					}
+				}).then((res)=>{
+					console.log('优惠卷列表',res.data.list);
+				})
+			},
 			// 结算
 			handleOrder(){
 				uni.navigateTo({

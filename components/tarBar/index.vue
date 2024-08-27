@@ -9,9 +9,6 @@
 </template>
 
 <script>
-	import {
-		apiCeshi
-	} from '@/request/api.js'
 	export default {
 		props: {
 			checkIndex: 0
@@ -63,9 +60,6 @@
 			const page = pages[pages.length - 1];
 			console.log('底部生命周期', page.route);
 			this.route = page.route
-			apiCeshi().then((res) => {
-				console.log('请求', res);
-			})
 		},
 		methods: {
 			handleCheck(item) {

@@ -12,6 +12,7 @@
 
 <script>
 	import hearch from '@/components/hearch/index.vue'
+	import {getRichTextContent} from '@/request/api.js'
 	export default {
 		data() {
 			return {
@@ -25,12 +26,23 @@
 		onLoad(options) {
 			console.log('options',options)
 			this.title = options.type == '3'?'用户协议':options.type == '4'?'关于我们':'活动名称'
+			this._getRichTextContent(options.type)
 		},
 		onShow() {
 
 		},
 		onHide() {},
-		methods: {}
+		methods: {
+			_getRichTextContent(item){
+				getRichTextContent({
+					post_params:{
+						type: item // privacy_rich隐私协议  new_user_rich新用户说明  about_us关于我们  
+					}
+				}).then((res)=>{
+					console.log('富文本内容',res);
+				})
+			}
+		}
 	};
 </script>
 
