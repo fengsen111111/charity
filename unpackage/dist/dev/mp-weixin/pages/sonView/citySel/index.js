@@ -244,6 +244,12 @@ var _default = {
     // this._getAreas(),//行政区
     // this._getHotCity()//热门城市
     console.log('provice', _index_new.provice);
+    uni.showLoading({
+      title: "加载中"
+    });
+    setTimeout(function () {
+      uni.hideLoading();
+    }, 1000);
   },
   data: function data() {
     return {
@@ -259,7 +265,9 @@ var _default = {
       dataList: []
     };
   },
-  onLoad: function onLoad() {},
+  onLoad: function onLoad() {
+    console.log('加载结束');
+  },
   methods: {
     handleIss: function handleIss(iss) {
       console.log('点击项', iss);

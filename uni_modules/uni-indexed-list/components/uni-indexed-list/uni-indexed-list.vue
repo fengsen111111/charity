@@ -21,10 +21,12 @@
 		<view class="uni-indexed-list__menu" @touchstart="touchStart" @touchmove.stop.prevent="touchMove"
 			@touchend="touchEnd" @mousedown.stop="mousedown" @mousemove.stop.prevent="mousemove"
 			@mouseleave.stop="mouseleave">
-			<view v-for="(list, key) in lists" :key="key" class="uni-indexed-list__menu-item"
-				:class="touchmoveIndex == key ? 'uni-indexed-list__menu--active' : ''">
-				<text class="uni-indexed-list__menu-text"
-					:class="touchmoveIndex == key ? 'uni-indexed-list__menu-text--active' : ''">{{ list.key }}</text>
+			<view v-for="(list, key) in lists" :key="key" >
+				<view v-if="list.key" class="uni-indexed-list__menu-item"
+					:class="touchmoveIndex == key ? 'uni-indexed-list__menu--active' : ''">
+					<text class="uni-indexed-list__menu-text"
+						:class="touchmoveIndex == key ? 'uni-indexed-list__menu-text--active' : ''">{{ list.key }}</text>
+				</view>
 			</view>
 		</view>
 		<view v-if="touchmove" class="uni-indexed-list__alert-wrapper">
@@ -314,6 +316,7 @@
 		display: flex;
 		/* #endif */
 		flex: 1;
+		margin: 16rpx 0rpx;
 		align-items: center;
 		justify-content: center;
 		/* #ifdef H5 */

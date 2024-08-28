@@ -11492,7 +11492,7 @@ var provice = [{
   "id": "520000",
   "value": "520000",
   "label": "贵州省",
-  "key": "G",
+  "key": "",
   "children": [{
     "id": "520100",
     "value": "520100",
@@ -11903,7 +11903,7 @@ var provice = [{
   "id": "620000",
   "value": "620000",
   "label": "甘肃省",
-  "key": "G",
+  "key": "",
   "children": [{
     "id": "620100",
     "value": "620100",
@@ -12347,7 +12347,7 @@ var provice = [{
   "id": "450000",
   "value": "450000",
   "label": "广西",
-  "key": "G",
+  "key": "",
   "children": [{
     "id": "450100",
     "value": "450100",
@@ -13716,7 +13716,7 @@ var provice = [{
   "id": "460000",
   "value": "460000",
   "label": "海南省",
-  "key": "H",
+  "key": "",
   "children": [{
     "id": "460100",
     "value": "460100",
@@ -14889,7 +14889,7 @@ var provice = [{
   "id": "430000",
   "value": "430000",
   "label": "湖南省",
-  "key": "H",
+  "key": "",
   "children": [{
     "id": "430100",
     "value": "430100",
@@ -15469,7 +15469,7 @@ var provice = [{
   "id": "420000",
   "value": "420000",
   "label": "湖北省",
-  "key": "H",
+  "key": "",
   "children": [{
     "id": "420100",
     "value": "420100",
@@ -16336,7 +16336,7 @@ var provice = [{
   "id": "410000",
   "value": "410000",
   "label": "河南省",
-  "key": "H",
+  "key": "",
   "children": [{
     "id": "410100",
     "value": "410100",
@@ -17180,7 +17180,7 @@ var provice = [{
   "id": "230000",
   "value": "230000",
   "label": "黑龙江省",
-  "key": "H",
+  "key": "",
   "children": [{
     "id": "230100",
     "value": "230100",
@@ -18110,7 +18110,7 @@ var provice = [{
   "id": "360000",
   "value": "360000",
   "label": "江西省",
-  "key": "J",
+  "key": "",
   "children": [{
     "id": "360100",
     "value": "360100",
@@ -18619,7 +18619,7 @@ var provice = [{
   "id": "320000",
   "value": "320000",
   "label": "江苏省",
-  "key": "J",
+  "key": "",
   "children": [{
     "id": "320100",
     "value": "320100",
@@ -19785,7 +19785,7 @@ var provice = [{
   "id": "150000",
   "value": "150000",
   "label": "内蒙古",
-  "key": "N",
+  "key": "",
   "children": [{
     "id": "150100",
     "value": "150100",
@@ -21042,7 +21042,7 @@ var provice = [{
   "id": "310000",
   "value": "310000",
   "label": "上海",
-  "key": "S",
+  "key": "",
   "children": [{
     "id": "310100",
     "value": "310100",
@@ -21129,7 +21129,7 @@ var provice = [{
   "id": "610000",
   "value": "610000",
   "label": "陕西省",
-  "key": "S",
+  "key": "",
   "children": [{
     "id": "610100",
     "value": "610100",
@@ -21633,7 +21633,7 @@ var provice = [{
   "id": "510000",
   "value": "510000",
   "label": "四川省",
-  "key": "S",
+  "key": "",
   "children": [{
     "id": "510100",
     "value": "510100",
@@ -22504,7 +22504,7 @@ var provice = [{
   "id": "370000",
   "value": "370000",
   "label": "山东省",
-  "key": "S",
+  "key": "",
   "children": [{
     "id": "370100",
     "value": "370100",
@@ -24787,7 +24787,7 @@ var provice = [{
   "id": "120000",
   "value": "120000",
   "label": "天津",
-  "key": "T",
+  "key": "",
   "children": [{
     "id": "120100",
     "value": "120100",
@@ -25215,7 +25215,7 @@ var provice = [{
   "id": "650000",
   "value": "650000",
   "label": "新疆",
-  "key": "X",
+  "key": "",
   "children": [{
     "id": "650100",
     "value": "650100",
@@ -25940,7 +25940,7 @@ var provice = [{
   "id": "810000",
   "value": "810000",
   "label": "香港",
-  "key": "X",
+  "key": "",
   "children": [{
     "id": "810100",
     "value": "810100",

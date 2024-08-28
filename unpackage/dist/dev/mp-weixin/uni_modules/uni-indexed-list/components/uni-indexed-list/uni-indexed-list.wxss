@@ -21,6 +21,7 @@
 .uni-indexed-list__menu-item.data-v-0f58ddf9 {
   display: flex;
   flex: 1;
+  margin: 16rpx 0rpx;
   align-items: center;
   justify-content: center;
 }
