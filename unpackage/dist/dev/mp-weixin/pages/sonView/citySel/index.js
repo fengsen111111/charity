@@ -33,7 +33,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_vue_vue_type_template_id_7e210151___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.vue?vue&type=template&id=7e210151& */ 249);
 /* harmony import */ var _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.vue?vue&type=script&lang=js& */ 251);
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.vue?vue&type=style&index=0&lang=css& */ 253);
+/* harmony import */ var _index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.vue?vue&type=style&index=0&lang=css& */ 254);
 /* harmony import */ var _D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js */ 32);
 
 var renderjs
@@ -101,13 +101,13 @@ var components
 try {
   components = {
     uniIcons: function () {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 320))
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 321))
     },
     uniSearchBar: function () {
-      return Promise.all(/*! import() | uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar.vue */ 368))
+      return Promise.all(/*! import() | uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar.vue */ 369))
     },
     uniIndexedList: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-indexed-list/components/uni-indexed-list/uni-indexed-list */ "uni_modules/uni-indexed-list/components/uni-indexed-list/uni-indexed-list").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-indexed-list/components/uni-indexed-list/uni-indexed-list.vue */ 447))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-indexed-list/components/uni-indexed-list/uni-indexed-list */ "uni_modules/uni-indexed-list/components/uni-indexed-list/uni-indexed-list").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-indexed-list/components/uni-indexed-list/uni-indexed-list.vue */ 448))
     },
   }
 } catch (e) {
@@ -171,6 +171,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _api = __webpack_require__(/*! @/request/api.js */ 35);
+var _index_new = __webpack_require__(/*! ./index_new.js */ 253);
 //
 //
 //
@@ -225,13 +226,24 @@ var _api = __webpack_require__(/*! @/request/api.js */ 35);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// import {provice} from './index.js'
 var _default = {
   created: function created() {
     //获取手机状态栏高度
     this.statusBarHeight = uni.getSystemInfoSync()['statusBarHeight'];
-    this._getAreas(),
-    //行政区
-    this._getHotCity(); //热门城市
+    // this._getAreas(),//行政区
+    // this._getHotCity()//热门城市
+    console.log('provice', _index_new.provice);
   },
   data: function data() {
     return {
@@ -243,115 +255,15 @@ var _default = {
       navBarHeight: 82 + 11,
       value: ['0'],
       // 
-      list: [{
-        'letter': 'A四川省',
-        'key': 'A',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市', '泸州市', '德阳市']
-      }, {
-        'letter': 'B云南省',
-        'key': 'B',
-        'data': ['昆明市', '曲靖市', '昭通市', '玉溪市', '楚雄州']
-      }, {
-        'letter': 'C西安省',
-        'key': 'C',
-        'data': ['西安市', '宝鸡市', '咸阳市', '铜川市']
-      }, {
-        'letter': 'D四川省',
-        'key': 'D',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'E四川省',
-        'key': 'E',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'F四川省',
-        'key': 'F',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'G四川省',
-        'key': 'G',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'H四川省',
-        'key': 'H',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'I四川省',
-        'key': 'I',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'J四川省',
-        'key': 'J',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'K四川省',
-        'key': 'K',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'L四川省',
-        'key': 'L',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'M四川省',
-        'key': 'M',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'N四川省',
-        'key': 'N',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'O四川省',
-        'key': 'O',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'P四川省',
-        'key': 'P',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'Q四川省',
-        'key': 'Q',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'R四川省',
-        'key': 'R',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'S四川省',
-        'key': 'S',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'T四川省',
-        'key': 'T',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'U四川省',
-        'key': 'U',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'V四川省',
-        'key': 'V',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'W四川省',
-        'key': 'W',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'X四川省',
-        'key': 'X',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'Y四川省',
-        'key': 'Y',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }, {
-        'letter': 'Z四川省',
-        'key': 'Z',
-        'data': ['成都市', '绵阳市', '自贡市', '攀枝花市']
-      }]
+      list: _index_new.provice,
+      dataList: []
     };
   },
   onLoad: function onLoad() {},
   methods: {
+    handleIss: function handleIss(iss) {
+      console.log('点击项', iss);
+    },
     bindClick: function bindClick(e) {
       console.log('点击item，返回数据', e);
       this.cityName = e.item.name;
@@ -367,12 +279,14 @@ var _default = {
     },
     //行政区
     _getAreas: function _getAreas() {
+      var _this = this;
       (0, _api.getAreas)({
         post_params: {
           pid: ''
         }
       }).then(function (res) {
-        console.log('res所有城市', res);
+        _this.dataList = res.data.data.areas;
+        console.log('res所有城市', _this.dataList);
       });
     },
     // 热门城市
@@ -388,7 +302,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 253:
+/***/ 254:
 /*!**************************************************************************************************************************!*\
   !*** C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/pages/sonView/citySel/index.vue?vue&type=style&index=0&lang=css& ***!
   \**************************************************************************************************************************/
@@ -397,14 +311,14 @@ exports.default = _default;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_stylePostLoader_js_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_2_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-2!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!./index.vue?vue&type=style&index=0&lang=css& */ 254);
+/* harmony import */ var _D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_stylePostLoader_js_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_2_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-2!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!./index.vue?vue&type=style&index=0&lang=css& */ 255);
 /* harmony import */ var _D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_stylePostLoader_js_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_2_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_stylePostLoader_js_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_2_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_stylePostLoader_js_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_2_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_stylePostLoader_js_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_2_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
  /* harmony default export */ __webpack_exports__["default"] = (_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_6_oneOf_1_0_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_loaders_stylePostLoader_js_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_6_oneOf_1_2_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_vue_loader_lib_index_js_vue_loader_options_D_HBUILD_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_style_js_index_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
-/***/ 254:
+/***/ 255:
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/css-loader/dist/cjs.js??ref--6-oneOf-1-1!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-2!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!C:/Users/admin/Documents/HBuilderProjects/快鹿送酒小程序/pages/sonView/citySel/index.vue?vue&type=style&index=0&lang=css& ***!
   \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/

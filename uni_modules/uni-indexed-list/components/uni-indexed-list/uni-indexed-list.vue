@@ -129,33 +129,34 @@
 			// #ifdef H5
 			this.isPC = this.IsPC()
 			// #endif
-			setTimeout(() => {
+			// setTimeout(() => {
 				this.setList()
-			}, 50)
+			// }, 50)
 			setTimeout(() => {
 				this.loaded = true
 			}, 300);
 		},
 		methods: {
+			// 处理数据
 			setList() {
 				let index = 0;
 				this.lists = []
 				this.options.forEach((value, index) => {
-					if (value.data.length === 0) {
+					if (value.children.length === 0) {
 						return
 					}
 					let indexBefore = index
-					let items = value.data.map(item => {
+					let items = value.children.map(item => {
 						let obj = {}
-						obj['key'] = value.letter
-						obj['name'] = item
+						obj['key'] = value.label
+						obj['name'] = item.label
 						obj['itemIndex'] = index
 						index++
 						obj.checked = item.checked ? item.checked : false
 						return obj
 					})
 					this.lists.push({
-						title: value.letter,
+						title: value.label,
 						key: value.key,
 						items: items,
 						itemIndex: indexBefore

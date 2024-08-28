@@ -38,23 +38,13 @@
 				<view class="flex items-center">
 					<view class="text12 space-x-1">历史记录</view>
 				</view>
-				<view class="mt-3 grid grid-cols-4">
-					<view class="bgF9 w80 mxAuto text14 p-1 text-center mb-3" v-for="(item,index) in [1,2,3,4]" :key="item">
+				<view class="mt-1 grid grid-cols-4">
+					<view class="bgF9 w80 mxAuto text14 p-1 text-center" v-for="(item,index) in [1,2,3,4]" :key="item">
 						成都
 					</view>
 				</view>
 			</view>
-			<!-- <view class="bg-whilt p-3 mt-3" v-for="item in dataList" :key="item.id">
-				<view class="flex items-center">
-					<view class="text12 space-x-1">{{item.label}}</view>
-				</view>
-				<view class="mt-3 grid grid-cols-4">
-					<view @click="handleIss(iss)" class="bgF9 w80 mxAuto text14 p-1 text-center mb-3" v-for="iss in item.children" :key="iss.id">
-						{{iss.label}}
-					</view>
-				</view>
-			</view> -->
-			<view class="" style="position: relative;top: 0.75rem; height: 65vh;">
+			<view class="bg-whilt" style="position: relative;top: 0.75rem; height: 65vh;">
 				<uni-indexed-list :options="list" :showSelect="false" @click="bindClick"></uni-indexed-list>
 			</view>
 		</view>
@@ -67,15 +57,13 @@
 		getAreas,//行政区
 		getHotCity//热门城市
 	} from '@/request/api.js'
-	// import {provice} from './index.js'
-	import {provice} from './index_new.js'
+	import {provice} from './index.js'
 	export default {
 		created() {
 			//获取手机状态栏高度
 			this.statusBarHeight = uni.getSystemInfoSync()['statusBarHeight'];
-			// this._getAreas(),//行政区
-		    // this._getHotCity()//热门城市
-			console.log('provice',provice);
+			this._getAreas(),//行政区
+		    this._getHotCity()//热门城市
 		},
 		data() {
 			return {
@@ -87,15 +75,11 @@
 				navBarHeight: 82 + 11,
 				value: ['0'],
 				// 
-				list: provice,
-				dataList:[]
+				list: provice
 			};
 		},
 		onLoad() {},
 		methods: {
-			handleIss(iss){
-				console.log('点击项',iss)
-			},
 			bindClick(e) {
 				console.log('点击item，返回数据',e)
 				this.cityName = e.item.name
@@ -116,9 +100,7 @@
 						pid:''
 					}
 				}).then((res)=>{
-					this.dataList = res.data.data.areas
-					console.log('res所有城市',this.dataList);
-				
+					console.log('res所有城市',res);
 				})
 			},
 			// 热门城市

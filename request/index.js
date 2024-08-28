@@ -5,11 +5,14 @@ const request = (options) => {
   if (options.interceptRequest) {
     options = options.interceptRequest(options);
   }
-
+  uni.showLoading({
+  	title: "加载中"
+  })
   return new Promise((resolve, reject) => {
     uni.request({
       ...options,
       success: (response) => {
+		uni.hideLoading()
         // 响应拦截器
         if (options.interceptResponse) {
           const newResponse = options.interceptResponse(response);
@@ -21,6 +24,7 @@ const request = (options) => {
         resolve(response);
       },
       fail: (error) => {
+		uni.hideLoading()
         reject(error);
       },
     });

@@ -42,7 +42,7 @@
 </template>
 
 <script>
-	import {editAddresst} from '@/request/api.js'
+	import {editAddresst,getAreasByLocation} from '@/request/api.js'
 	import hearch from "@/components/hearch/index.vue"
 	export default {
 		components:{hearch},
@@ -77,7 +77,20 @@
 			},
 			// 获取地址
 			handleAddress(){
-				
+				uni.getLocation({
+					type: 'wgs84',
+					success: function (res) {
+						console.log('当前位置的经度：' + res.longitude);
+						console.log('当前位置的纬度：' + res.latitude);
+						getAreasByLocation({
+							post_params:{
+								location: res.longitude+','+res.latitude
+							}
+						}).then((res)=>{
+							console.log('详细地址',res);
+						})
+					}
+				});
 			}
 		}
 	};

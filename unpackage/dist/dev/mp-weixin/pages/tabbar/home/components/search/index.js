@@ -101,10 +101,10 @@ var components
 try {
   components = {
     uniIcons: function () {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 320))
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 321))
     },
     uniSearchBar: function () {
-      return Promise.all(/*! import() | uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar.vue */ 368))
+      return Promise.all(/*! import() | uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar.vue */ 369))
     },
   }
 } catch (e) {
@@ -179,7 +179,7 @@ exports.default = void 0;
 var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var bomShop = function bomShop() {
   __webpack_require__.e(/*! require.ensure | components/home/bomShop/index */ "components/home/bomShop/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/home/bomShop/index.vue */ 270));
+    return resolve(__webpack_require__(/*! @/components/home/bomShop/index.vue */ 271));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -188,10 +188,7 @@ var _default = {
   },
   data: function data() {
     return {
-      valueCheck: {
-        searchOne: 1,
-        searchTwo: 1
-      },
+      searchIndex: 1,
       searchVal: '',
       // 状态栏高度
       statusBarHeight: 0,
@@ -236,19 +233,7 @@ var _default = {
     // 
     handleUpDown: function handleUpDown(index) {
       var _this = this;
-      if (index == 1) {
-        if (this.valueCheck.searchOne == 1) {
-          this.valueCheck.searchOne = 2;
-        } else {
-          this.valueCheck.searchOne = 1;
-        }
-      } else {
-        if (this.valueCheck.searchTwo == 1) {
-          this.valueCheck.searchTwo = 2;
-        } else {
-          this.valueCheck.searchTwo = 1;
-        }
-      }
+      this.searchIndex = index;
       // 
       uni.showLoading({
         title: "加载中"

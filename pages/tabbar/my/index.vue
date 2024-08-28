@@ -59,7 +59,7 @@
 			<view class="px-3">
 				<view class="flex justify-between mt-3">
 					<view class="centerBg rending1"
-						style="background-image: url('https://imgos.cn/2024/08/13/66bab13e41559.png');">
+						style="">
 						<view class="flex justify-between text-whlie px-4 py-2">
 							<view class="">
 								我的优惠卷
@@ -75,12 +75,12 @@
 						</view>
 					</view>
 					<view class="centerBg2"
-						style="background-image: url('https://imgos.cn/2024/08/13/66bab13e44b70.png');"
+						style=""
 						@click="handleUrl('/pages/sonView/volume/index')"></view>
 				</view>
 				<!-- img -->
 				<view class="centerBgTwo mt-3"
-					style="background-image: url('https://imgos.cn/2024/08/13/66bab13e85b58.png');"></view>
+					style=""></view>
 				<!-- cardItem -->
 				<view class="mt-3">
 					<view class="flex bg-whilt rending1 text-black mt-1 justify-between p-3" v-for="item in cards"
@@ -175,17 +175,20 @@
 
 <style>
 	.centerBgTwo {
+		background-image: url('@/static/my/centerTwo.png');
 		background-size: 100% 100%;
 		width: 100%;
 		height: 3rem;
 	}
 
 	.centerBg {
+		background-image: url('@/static/my/center1.png');
 		background-size: 100% 100%;
 		width: 48%;
 	}
 
 	.centerBg2 {
+		background-image: url('@/static/my/center2.png');
 		background-size: 100% 100%;
 		width: 48%;
 	}

@@ -3,8 +3,8 @@
 		<view class="grid grid-cols-2 gridRow">
 			<view class="bg-whilt rending1 p-2 mt-3" v-for="item in [1,2,3,4]" :key="item">
 				<image v-if="item==1" @click="handDetailds" src="https://img.picui.cn/free/2024/08/16/66bf135fa40a3.png" mode="" class="w-full h10"></image>
-				<image v-else-if="item ==2" @click="handDetailds" src="https://imgos.cn/2024/08/12/66b9d67b2c357.png" mode="" class="w-full h10"></image>
-				<image v-else-if="item ==3" @click="handDetailds" src="https://imgos.cn/2024/08/12/66b9d67b2c357.png" mode="" class="w-full h10"></image>
+				<image v-else-if="item ==2" @click="handDetailds" src="https://img.picui.cn/free/2024/08/28/66ce7753c9079.png" mode="" class="w-full h10"></image>
+				<image v-else-if="item ==3" @click="handDetailds" src="https://img.picui.cn/free/2024/08/28/66ce7753c9079.png" mode="" class="w-full h10"></image>
 				<image v-else-if="item ==4" @click="handDetailds" src="https://img.picui.cn/free/2024/08/16/66bf135f6997c.png" mode="" class="w-full h10"></image>
 				<view class="fontBold text12 ling125 ">
 					泸州老窖六年窖头曲特惠浓香白酒52度精品装...

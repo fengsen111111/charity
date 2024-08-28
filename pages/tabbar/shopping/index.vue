@@ -32,21 +32,19 @@
 							</view>
 						</view>
 						<!-- 折扣 -->
-						<view class="flex justify-between">
+						<!-- <view class="flex justify-between">
 							<view></view>
 							<view class="flex mt-2 items-center">
 								<view class="discount"></view>
 								<view class="col666 text12  ">使用折扣价</view>
 							</view>
-						</view>
+						</view> -->
 					</view>
 				</shopCard>
 			</view>
 
 		</view>
-		<view class="h-8">
-
-		</view>
+		<view class="h160"></view>
 		<!-- 底部锁定 -->
 		<view class="bottomView flex p-4 text12 items-center">
 			<view class="col666">实付金额</view>

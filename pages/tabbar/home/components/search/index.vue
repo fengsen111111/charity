@@ -31,24 +31,15 @@
 		</view>
 		<!-- 触发 -->
 		<view class="" v-else>
-			<view class=" grid grid-cols-2 text-center bg-whilt text14 py-2">
-				<view class="flex items-center mxAuto">
-						<view class="" @click="handleUpDown(1)">销量</view>
-						<view class="uni-ml-1">
-							<view class='iconBig' v-if="valueCheck.searchOne==1"><image src="@/static/home/search/up_c.png" class='iconBig' mode=""></image></view>
-							<view class='iconBig' v-else><image src="@/static/home/search/up.png" class='iconBig' mode=""></image></view>
-							<view class='iconBigTwo' v-if="valueCheck.searchOne==2"><image src="@/static/home/search/down_c.png" class='iconBigTwo'  mode=""></image></view>
-							<view class='iconBigTwo' v-else><image src="@/static/home/search/down.png"class='iconBigTwo'  mode=""></image></view>
-						</view>		
+			<view class=" grid grid-cols-3 text-center bg-whilt text14 py-2">
+				<view :class="searchIndex==1?'text-black':'col999'" @click="handleUpDown(1)">
+					默认
 				</view>
-				<view class="flex items-center mxAuto">
-						<view class="" @click="handleUpDown(2)">价格</view>
-						<view class="uni-ml-1">
-							<view class='iconBig' v-if="valueCheck.searchTwo==1"><image src="@/static/home/search/up_c.png" class='iconBig' mode=""></image></view>
-							<view class='iconBig' v-else><image src="@/static/home/search/up.png" class='iconBig' mode=""></image></view>
-							<view class='iconBigTwo' v-if="valueCheck.searchTwo==2"><image src="@/static/home/search/down_c.png" class='iconBigTwo'  mode=""></image></view>
-							<view class='iconBigTwo' v-else><image src="@/static/home/search/down.png"class='iconBigTwo'  mode=""></image></view>
-						</view>		
+				<view :class="searchIndex==2?'text-black':'col999'" @click="handleUpDown(2)">
+					价格优先
+				</view>
+				<view :class="searchIndex==3?'text-black':'col999'" @click="handleUpDown(3)">
+					销量优先
 				</view>
 			</view>
 			<view class="px-3" v-if="showShop">
@@ -68,10 +59,7 @@
 		},
 		data() {
 			return {
-				valueCheck: {
-					searchOne: 1,
-					searchTwo: 1,
-				},
+				searchIndex: 1,
 				searchVal: '',
 				// 状态栏高度
 				statusBarHeight: 0,
@@ -121,19 +109,7 @@
 			},
 			// 
 			handleUpDown(index){
-				if(index==1){
-					if(this.valueCheck.searchOne==1){
-						this.valueCheck.searchOne=2
-					}else{
-						this.valueCheck.searchOne=1
-					}
-				}else{
-					if(this.valueCheck.searchTwo==1){
-						this.valueCheck.searchTwo=2
-					}else{
-						this.valueCheck.searchTwo=1
-					}
-				}
+				this.searchIndex = index
 				// 
 				uni.showLoading({
 					title: "加载中"

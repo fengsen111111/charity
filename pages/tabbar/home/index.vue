@@ -3,14 +3,12 @@
 		<view class="px-3">
 			<homeTop />
 			<view class="">
-			<!-- 	<image src="https://imgos.cn/2024/08/12/66b9d747830a1.png" @click="handleUrl('/pages/sonView/swiperActive/index')" mode="" class="w-full mt-3 h100 rending1">
-				</image> -->
 				<swiper class="swiper-box mt-3" @change="change" :current="swiperDotIndex">
 					<swiper-item v-for="(item, index) in [1,2,3]" :key="index">
 						<view class="swiper-item">
-							<image src="https://imgos.cn/2024/08/12/66b9d747830a1.png" mode="" class="w-full h100 rending1"></image>
-							<image src="https://imgos.cn/2024/08/12/66b9d747830a1.png" mode="" class="w-full h100 rending1"></image>
-							<image src="https://imgos.cn/2024/08/12/66b9d747830a1.png"  mode="" class="w-full h100 rending1"></image>
+							<image src="https://img.picui.cn/free/2024/08/28/66ce75db995cc.png" mode="" class="w-full h100 rending1"></image>
+							<image src="https://img.picui.cn/free/2024/08/28/66ce75db995cc.png" mode="" class="w-full h100 rending1"></image>
+							<image src="https://img.picui.cn/free/2024/08/28/66ce75db995cc.png"  mode="" class="w-full h100 rending1"></image>
 						</view>
 					</swiper-item>
 				</swiper>

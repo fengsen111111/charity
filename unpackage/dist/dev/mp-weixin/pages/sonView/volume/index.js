@@ -132,12 +132,12 @@ exports.default = void 0;
 var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var viewTop = function viewTop() {
   __webpack_require__.e(/*! require.ensure | pages/sonView/volume/components/viewTop/index */ "pages/sonView/volume/components/viewTop/index").then((function () {
-    return resolve(__webpack_require__(/*! @/pages/sonView/volume/components/viewTop/index.vue */ 400));
+    return resolve(__webpack_require__(/*! @/pages/sonView/volume/components/viewTop/index.vue */ 401));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var volumeTag = function volumeTag() {
   Promise.all(/*! require.ensure | components/volumeTag/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/volumeTag/index")]).then((function () {
-    return resolve(__webpack_require__(/*! @/components/volumeTag/index.vue */ 386));
+    return resolve(__webpack_require__(/*! @/components/volumeTag/index.vue */ 387));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {

@@ -1,7 +1,7 @@
 <template>
 	<view class="">
 		<view class="grid grid-cols-2">
-			<image src="https://imgos.cn/2024/08/12/66b9d773df181.png" mode="" class="w-full h-full"></image>
+			<image src="https://img.picui.cn/free/2024/08/28/66ce75dba97d1.png" mode="" class="w-full h-full"></image>
 			<view class="">
 				<!-- 一分秒杀 -->
 				<view class="card p-2 h7">
