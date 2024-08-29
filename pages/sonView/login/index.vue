@@ -75,7 +75,7 @@
 				uni.login({
 					provider: 'weixin',
 					success: res => {
-						// console.log(res)
+						console.log(res)
 						getUserRegister({
 							post_params: {
 								platform: "mini",

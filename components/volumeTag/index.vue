@@ -4,7 +4,7 @@
 			v-for="item in datalist" :key="item.id">
 			<!-- left -->
 			<view class=" p-2">
-				<view class="mt-1">
+				<view class="mt-1 text14">
 					<!-- 优惠券名称 -->
 					{{item.name}}
 				</view>
@@ -31,7 +31,7 @@
 						<view class="mt-2">{{item.coupon_data}}</view>
 					</view>
 					<view class="px-2 pt-1" @click="handleReceive(item)">
-						<view class="bgFFC text12 rending3 colED1">领取</view>
+						<view class="bgFFC text12 rending3 colED1">{{isUse?'使用':'领取'}}</view>
 					</view>
 				</view>
 			</view>
@@ -68,9 +68,10 @@
 	} from '@/request/api.js'
 	export default {
 		props: {
-			isFFF: false,
-			isLapse: false,
-			isBtn: false,
+			isFFF: false,//背景白色
+			isLapse: false,//失效class
+			isBtn: false,//显示按钮
+			isUse:false,//使用
 			datalist: {
 				type: Array,
 				default: () => []

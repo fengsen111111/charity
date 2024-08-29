@@ -595,7 +595,7 @@
 		background-image: url('@/static/home/shopDetailIcon.png');
 		background-size: 100% 100%;
 		width: 3.5rem;
-		padding-top: 105rpx
+		padding-top: 109rpx
 		
 	}
 

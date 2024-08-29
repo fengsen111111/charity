@@ -29215,7 +29215,7 @@ module.exports = index_cjs;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.submitWithdrawal = exports.getWithdrawalList = exports.getUserRegister = exports.getUserInfo = exports.getUserCouponList = exports.getUserCity = exports.getUpdateUserInfo = exports.getTeamUserList = exports.getStoreCouponList = exports.getRichTextContent = exports.getReceiveNewUserCoupon = exports.getReceiveCoupon = exports.getPromoterMsg = exports.getPhoneNumber = exports.getNewUserCouponList = exports.getMoneyLogList = exports.getLoginAndRegister = exports.getIndexGoodsTypeList = exports.getHotKeyWords = exports.getHotCity = exports.getGoodsTypeList = exports.getGoodsList = exports.getFindStore = exports.getConfig = exports.getBannerList = exports.getBankList = exports.getAreasByLocation = exports.getAreas = exports.getAddressList = exports.editBank = exports.editAddresst = exports.deleteBank = exports.deleteAddress = void 0;
+exports.submitWithdrawal = exports.payOrder = exports.getWorkerOrderList = exports.getWithdrawalList = exports.getUserRegister = exports.getUserOrderList = exports.getUserOrderDetail = exports.getUserInfo = exports.getUserCouponList = exports.getUserCity = exports.getUpdateUserInfo = exports.getTeamUserList = exports.getStoreCouponList = exports.getRichTextContent = exports.getReceiveNewUserCoupon = exports.getReceiveCoupon = exports.getPromoterMsg = exports.getPromoterCompanyList = exports.getPhoneNumber = exports.getPhoneCode = exports.getNewUserCouponList = exports.getMoneyLogList = exports.getLoginAndRegister = exports.getIndexGoodsTypeList = exports.getHotKeyWords = exports.getHotCity = exports.getGoodsTypeList = exports.getGoodsList = exports.getFindStore = exports.getConfig = exports.getCarList = exports.getBannerList = exports.getBankList = exports.getAreasByLocation = exports.getAreas = exports.getAddressList = exports.evaluateOrder = exports.editCarGoods = exports.editBank = exports.editAddresst = exports.deleteOrder = exports.deleteBank = exports.deleteAddress = exports.delCarGoods = exports.createOrder = exports.computeOrderPrice = exports.arriveOrder = exports.applyAfterSale = exports.addCar = exports.acceptOrder = void 0;
 var _index = __webpack_require__(/*! ./index.js */ 36);
 // 引入 request 文件
 
@@ -29229,6 +29229,16 @@ var api = {
   // 获取用户微信手机号
   USER_REGISTER: base_url + '/factory_system/Base/wechatUserRegister',
   // 微信授权
+  VERIFY_CODE: base_url + '/factory_system/Base/getVerifyCode',
+  // 获取验证码
+
+  // 上传
+  FILE_TICKET: base_url + '/factory_storage/Ticket/getTicket',
+  // 获取文件存储权限
+  FILE_CONFIG: base_url + '/factory_storage/File/getUploadType',
+  // 获取文件存储配置
+  FILE_UPLOAD: base_url + '/factory_storage/File/uploadFile',
+  // 上传文件到本地长期保存
 
   // 优惠卷
   COPON_NEWUSER_LIST: base_url + '/beverage/Coupon/getNewUserCouponList',
@@ -29285,6 +29295,8 @@ var api = {
   // 获取用户银行卡列表
   DEL_BANK: base_url + '/beverage/Bank/deleteBank',
   // 删除用户银行卡
+  COMPANY_LIST: base_url + '/beverage/Company/getPromoterCompanyList',
+  // 获取分公司列表
   PROMOTER_MSG: base_url + '/beverage/User/getPromoterMsg',
   // 获取推广人信息
   TEAM_USER_LIST: base_url + '/beverage/User/getTeamUserList',
@@ -29293,11 +29305,127 @@ var api = {
   // 申请提现
   WITHDRAWAL_LIST: base_url + '/beverage/Withdrawal/getWithdrawalList',
   // 获取提现记录列表
-  MONEY_LOG_LIST: base_url + '/beverage/MoneyLog/getMoneyLogList' // 获取收益明细
+  MONEY_LOG_LIST: base_url + '/beverage/MoneyLog/getMoneyLogList',
+  // 获取收益明细
+
+  // 订单
+  CAR_ADDCAR: base_url + '/beverage/Car/addCar',
+  // 加入购物车
+  GET_CAR_LIST: base_url + '/beverage/Car/getCarList',
+  // 获取用户购物车列表
+  EDIT_CARGOODS: base_url + '/beverage/Car/editCarGoods',
+  // 修改购物车商品数量
+  DEL_CARGOODS: base_url + '/beverage/Car/deleteCarGoods',
+  // 删除购物车商品
+  CMPUT_PRICE: base_url + '/beverage/Order/computeOrderPrice',
+  // 计算订单费用
+  CREATED_ORDER: base_url + '/beverage/Order/createOrder',
+  // 创建订单
+  USER_ORDER_LIST: base_url + '/beverage/Order/getUserOrderList',
+  // 获取用户订单列表
+  USER_ORDER_DETAILS: base_url + '/beverage/Order/getUserOrderDetail',
+  // 获取用户订单详情
+  CANCEL_ORDER: base_url + '/beverage/Order/deleteOrder',
+  // 取消订单
+  PAY_ORDER: base_url + '/beverage/Order/payOrder',
+  // 支付订单
+  APPLY_AFTER_SALE: base_url + '/beverage/Order/applyAfterSale',
+  // 申请订单售后
+  EVALUAT_ORDER: base_url + '/beverage/Order/evaluateOrder',
+  // 评价订单
+
+  // 骑手端
+  WORKER_ORDER_LIST: base_url + '/beverage/Order/getWorkerOrderList',
+  // 获取骑手订单列表
+  ACCEPT_ORDER: base_url + '/beverage/Order/acceptOrder',
+  // 骑手接单
+  ARRIVE_ORDER: base_url + '/beverage/Order/arriveOrder' // 骑手送达订单
 };
+
+// 骑手端 ----------------------------------------------------------------------
+// 获取骑手订单列表
+var getWorkerOrderList = function getWorkerOrderList(params) {
+  return (0, _index.post)(api.WORKER_ORDER_LIST, params);
+};
+// 骑手接单
+exports.getWorkerOrderList = getWorkerOrderList;
+var acceptOrder = function acceptOrder(params) {
+  return (0, _index.post)(api.ACCEPT_ORDER, params);
+};
+// 骑手送达订单
+exports.acceptOrder = acceptOrder;
+var arriveOrder = function arriveOrder(params) {
+  return (0, _index.post)(api.ARRIVE_ORDER, params);
+};
+// 骑手端 end ----------------------------------------------------------------------
+
+// 订单 ----------------------------------------------------------------------
+// 加入购物车
+exports.arriveOrder = arriveOrder;
+var addCar = function addCar(params) {
+  return (0, _index.post)(api.CAR_ADDCAR, params);
+};
+// 获取用户购物车列表
+exports.addCar = addCar;
+var getCarList = function getCarList(params) {
+  return (0, _index.post)(api.GET_CAR_LIST, params);
+};
+// 修改购物车商品数量
+exports.getCarList = getCarList;
+var editCarGoods = function editCarGoods(params) {
+  return (0, _index.post)(api.EDIT_CARGOODS, params);
+};
+// 删除购物车商品
+exports.editCarGoods = editCarGoods;
+var delCarGoods = function delCarGoods(params) {
+  return (0, _index.post)(api.DEL_CARGOODS, params);
+};
+// 计算订单费用
+exports.delCarGoods = delCarGoods;
+var computeOrderPrice = function computeOrderPrice(params) {
+  return (0, _index.post)(api.CMPUT_PRICE, params);
+};
+// 创建订单
+exports.computeOrderPrice = computeOrderPrice;
+var createOrder = function createOrder(params) {
+  return (0, _index.post)(api.CREATED_ORDER, params);
+};
+// 获取用户订单列表
+exports.createOrder = createOrder;
+var getUserOrderList = function getUserOrderList(params) {
+  return (0, _index.post)(api.USER_ORDER_LIST, params);
+};
+// 获取用户订单详情
+exports.getUserOrderList = getUserOrderList;
+var getUserOrderDetail = function getUserOrderDetail(params) {
+  return (0, _index.post)(api.USER_ORDER_DETAILS, params);
+};
+// 取消订单
+exports.getUserOrderDetail = getUserOrderDetail;
+var deleteOrder = function deleteOrder(params) {
+  return (0, _index.post)(api.CANCEL_ORDER, params);
+};
+// 支付订单
+exports.deleteOrder = deleteOrder;
+var payOrder = function payOrder(params) {
+  return (0, _index.post)(api.PAY_ORDER, params);
+};
+// 申请订单售后
+exports.payOrder = payOrder;
+var applyAfterSale = function applyAfterSale(params) {
+  return (0, _index.post)(api.APPLY_AFTER_SALE, params);
+};
+// 评价订单
+exports.applyAfterSale = applyAfterSale;
+var evaluateOrder = function evaluateOrder(params) {
+  return (0, _index.post)(api.EVALUAT_ORDER, params);
+};
+
+// 订单 end ----------------------------------------------------------------------
 
 // 用户 ----------------------------------------------------------------------
 // 获取提现记录列表
+exports.evaluateOrder = evaluateOrder;
 var getWithdrawalList = function getWithdrawalList(params) {
   return (0, _index.post)(api.WITHDRAWAL_LIST, params);
 };
@@ -29316,8 +29444,13 @@ exports.submitWithdrawal = submitWithdrawal;
 var getTeamUserList = function getTeamUserList(params) {
   return (0, _index.post)(api.TEAM_USER_LIST, params);
 };
-// 获取推广人信息
+// 获取分公司列表
 exports.getTeamUserList = getTeamUserList;
+var getPromoterCompanyList = function getPromoterCompanyList(params) {
+  return (0, _index.post)(api.COMPANY_LIST, params);
+};
+// 获取推广人信息
+exports.getPromoterCompanyList = getPromoterCompanyList;
 var getPromoterMsg = function getPromoterMsg(params) {
   return (0, _index.post)(api.PROMOTER_MSG, params);
 };
@@ -29476,7 +29609,12 @@ exports.getPhoneNumber = getPhoneNumber;
 var getUserRegister = function getUserRegister(params) {
   return (0, _index.post)(api.USER_REGISTER, params);
 };
+// 获取验证码
 exports.getUserRegister = getUserRegister;
+var getPhoneCode = function getPhoneCode(params) {
+  return (0, _index.post)(api.VERIFY_CODE, params);
+};
+exports.getPhoneCode = getPhoneCode;
 
 /***/ }),
 

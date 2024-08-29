@@ -94,6 +94,9 @@ uni-button:after {
 	line-height: 51rpx;
 	border-radius: 0px 1rem 1rem 0px;
 }
+.h136{
+	height: 136rpx;
+}
 .itemImg {
 	width: 6.5rem;
 	height: 5rem;

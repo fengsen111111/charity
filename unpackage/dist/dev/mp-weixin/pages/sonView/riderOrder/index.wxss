@@ -1,4 +1,7 @@
 
+.w300rpx{
+	width:300rpx
+}
 .bgMyImg {
 	color: #fff;
 	/* background-image: url('@/static/my/topBg.png'); */

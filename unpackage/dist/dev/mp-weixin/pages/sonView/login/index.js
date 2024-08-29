@@ -216,7 +216,7 @@ var _default = {
       uni.login({
         provider: 'weixin',
         success: function success(res) {
-          // console.log(res)
+          console.log(res);
           (0, _api.getUserRegister)({
             post_params: {
               platform: "mini",

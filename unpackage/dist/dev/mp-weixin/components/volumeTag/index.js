@@ -188,8 +188,13 @@ var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var _default2 = {
   props: {
     isFFF: false,
+    //背景白色
     isLapse: false,
+    //失效class
     isBtn: false,
+    //显示按钮
+    isUse: false,
+    //使用
     datalist: {
       type: Array,
       default: function _default() {

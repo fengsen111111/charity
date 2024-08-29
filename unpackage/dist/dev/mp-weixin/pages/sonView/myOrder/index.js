@@ -136,16 +136,23 @@ var render = function () {
     _vm.e0 = function ($event) {
       return _vm.handleUrl("/pages/sonView/myOrderDetails/index")
     }
-    _vm.e1 = function ($event) {
-      return _vm.toggle("bottom")
+    _vm.e1 = function ($event, item) {
+      var _temp = arguments[arguments.length - 1].currentTarget.dataset,
+        _temp2 = _temp.eventParams || _temp["event-params"],
+        item = _temp2.item
+      var _temp, _temp2
+      return _vm.handleToPay(item)
     }
     _vm.e2 = function ($event) {
-      return _vm.toggleAfter("bottom")
+      return _vm.toggle("bottom")
     }
     _vm.e3 = function ($event) {
       return _vm.toggleAfter("bottom")
     }
     _vm.e4 = function ($event) {
+      return _vm.toggleAfter("bottom")
+    }
+    _vm.e5 = function ($event) {
       return _vm.toggleAfter("bottom")
     }
   }
@@ -190,6 +197,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var _methods;
 var hearch = function hearch() {
   __webpack_require__.e(/*! require.ensure | components/hearch/index */ "components/hearch/index").then((function () {
@@ -235,32 +243,77 @@ var _default = {
   },
   onLoad: function onLoad() {},
   onShow: function onShow() {},
+  created: function created() {
+    this._getUserOrderList();
+  },
   onHide: function onHide() {},
   methods: (_methods = {
-    handleItem: function handleItem(id) {
-      this.chenkIndex = id;
-    },
-    // 关闭
+    // 关闭支付结果
     close: function close() {
       this.$refs.popup.close();
     },
-    // 弹框
-    toggle: function toggle(type) {
-      this.type = type;
-      // open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
-      this.$refs.popup.open(type);
+    // 去支付
+    handleToPay: function handleToPay(item) {
+      var _this = this;
+      console.log('支付', item);
+      // 调用支付
+      (0, _api.payOrder)({
+        post_params: {
+          order_id: '' //订单id
+        }
+      }).then(function (res) {
+        _this.weixinPay(res);
+      });
     },
-    // 关闭
-    closeAfter: function closeAfter() {
-      this.$refs.popupAfter.close();
-    },
-    // 弹框
-    toggleAfter: function toggleAfter(type) {
-      this.type = type;
+    // 调用微信支付
+    weixinPay: function weixinPay(item) {
+      console.log('调用微信支付', item);
+      // 结果查询
       // open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
-      this.$refs.popupAfter.open(type);
+      this.$refs.popupPay.open('center');
+      // uni.requestPayment({
+      // 	provider: 'wxpay', // 服务提提供商
+      // 	timeStamp: this.weChatPayData.timestamp, // 时间戳
+      // 	nonceStr: this.weChatPayData.noncestr, // 随机字符串
+      // 	package: this.weChatPayData.package,
+      // 	signType: this.weChatPayData.signtype, // 签名算法
+      // 	paySign: this.weChatPayData.sign, // 签名
+      // 	success: function(res) {
+      // 		console.log('支付成功', res);
+      // 		// 业务逻辑。。。
+      // 	},
+      // 	fail: function(err) {
+      // 		console.log('支付失败', err);
+      // 	}
+      // });
+    },
+    _getUserOrderList: function _getUserOrderList(status) {
+      (0, _api.getUserOrderList)({
+        post_params: {
+          currentPage: '',
+          perPage: '',
+          status: '' //a待付款 b进行中 c待评价 d已完成 e售后  
+        }
+      }).then(function (res) {
+        console.log('订单数据', res);
+      });
+    },
+    handleItem: function handleItem(id) {
+      this.chenkIndex = id;
     }
   }, (0, _defineProperty2.default)(_methods, "close", function close() {
+    this.$refs.popup.close();
+  }), (0, _defineProperty2.default)(_methods, "toggle", function toggle(type) {
+    this.type = type;
+    // open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
+    this.$refs.popup.open(type);
+  }), (0, _defineProperty2.default)(_methods, "closeAfter", function closeAfter() {
+    this.$refs.popupAfter.close();
+  }), (0, _defineProperty2.default)(_methods, "toggleAfter", function toggleAfter(type) {
+    this.type = type;
+    // open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
+    this.$refs.popupAfter.open(type);
+  }), (0, _defineProperty2.default)(_methods, "close", function close() {
     this.$refs.popup.close();
   }), (0, _defineProperty2.default)(_methods, "toggle", function toggle(type) {
     this.type = type;

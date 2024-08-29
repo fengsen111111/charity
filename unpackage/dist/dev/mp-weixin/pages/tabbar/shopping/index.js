@@ -125,6 +125,36 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function ($event, item) {
+      var _temp = arguments[arguments.length - 1].currentTarget.dataset,
+        _temp2 = _temp.eventParams || _temp["event-params"],
+        item = _temp2.item
+      var _temp, _temp2
+      return _vm.handleCmput(item)
+    }
+    _vm.e1 = function ($event, item) {
+      var _temp3 = arguments[arguments.length - 1].currentTarget.dataset,
+        _temp4 = _temp3.eventParams || _temp3["event-params"],
+        item = _temp4.item
+      var _temp3, _temp4
+      return _vm._delCarGoods(item)
+    }
+    _vm.e2 = function ($event, item) {
+      var _temp5 = arguments[arguments.length - 1].currentTarget.dataset,
+        _temp6 = _temp5.eventParams || _temp5["event-params"],
+        item = _temp6.item
+      var _temp5, _temp6
+      return _vm.handleNumber("-1", item)
+    }
+    _vm.e3 = function ($event, item) {
+      var _temp7 = arguments[arguments.length - 1].currentTarget.dataset,
+        _temp8 = _temp7.eventParams || _temp7["event-params"],
+        item = _temp8.item
+      var _temp7, _temp8
+      return _vm.handleNumber("+1", item)
+    }
+  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -164,6 +194,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var hearch = function hearch() {
   __webpack_require__.e(/*! require.ensure | components/hearch/index */ "components/hearch/index").then((function () {
     return resolve(__webpack_require__(/*! @/components/hearch/index.vue */ 355));
@@ -185,6 +216,9 @@ var _default = {
     shopCard: shopCard,
     tarBar: tarBar
   },
+  created: function created() {
+    this._getCarList(); //购物车列表
+  },
   data: function data() {
     return {
       title: 'Hello',
@@ -196,33 +230,96 @@ var _default = {
         package: '',
         signtype: '',
         sign: ''
-      }
+      },
+      dataList: [{
+        "id": "1",
+        "goods_size_id": "1",
+        "goods_name": "泸州老窖 ",
+        "taste_name": "原味",
+        "volume": "500ml*12",
+        "size_number": "666",
+        "number": "10",
+        "ice_number": "66",
+        "price": "888.8",
+        "old_price": "1888",
+        "low_price_size": "最划算 Y是 N否",
+        "new_user_size": "新人价 Y是 N否",
+        "kill_price_size": "一分钱秒杀 Y是 N否",
+        "time_price_size": "限时秒杀 Y是 N否"
+      }]
     };
   },
   onLoad: function onLoad() {},
   methods: {
-    handlePay: function handlePay() {
-      uni.requestPayment({
-        provider: 'wxpay',
-        // 服务提提供商
-        timeStamp: this.weChatPayData.timestamp,
-        // 时间戳
-        nonceStr: this.weChatPayData.noncestr,
-        // 随机字符串
-        package: this.weChatPayData.package,
-        signType: this.weChatPayData.signtype,
-        // 签名算法
-        paySign: this.weChatPayData.sign,
-        // 签名
-        success: function success(res) {
-          console.log('支付成功', res);
-          // 业务逻辑。。。
-        },
-
-        fail: function fail(err) {
-          console.log('支付失败', err);
+    handleCmput: function handleCmput(item) {
+      console.log('计算加个', item);
+      (0, _api.computeOrderPrice)({
+        post_params: {
+          coupon_id: '',
+          //优惠券ID  
+          goods: {
+            goods_size_id: '',
+            //商品规格ID  
+            number: '' //	购买数量  
+          }
         }
+      }).then(function (res) {
+        console.log('计算金额', res);
       });
+    },
+    // 修改数量
+    handleNumber: function handleNumber(number, item) {
+      console.log('number', number, item);
+      (0, _api.editCarGoods)({
+        post_params: {
+          car_id: '',
+          //购物车ID  
+          number: '' //修改后的数量  
+        }
+      }).then(function (res) {
+        console.log('修改成功', res);
+      });
+    },
+    // 删除
+    _delCarGoods: function _delCarGoods(item) {
+      console.log('删除', item);
+      (0, _api.delCarGoods)({
+        post_params: {
+          car_id: '' //	购物车ID  
+        }
+      }).then(function (res) {
+        console.log('删除成功', res);
+      });
+    },
+    // 数据
+    _getCarList: function _getCarList() {
+      (0, _api.getCarList)({
+        post_params: {
+          store_id: '' //当前门店ID  
+        }
+      }).then(function (res) {
+        console.log('购物车数据', res);
+      });
+    },
+    handlePay: function handlePay() {
+      uni.navigateTo({
+        url: '/pages/sonView/okOrder/index'
+      });
+      // uni.requestPayment({
+      // 	provider: 'wxpay', // 服务提提供商
+      // 	timeStamp: this.weChatPayData.timestamp, // 时间戳
+      // 	nonceStr: this.weChatPayData.noncestr, // 随机字符串
+      // 	package: this.weChatPayData.package,
+      // 	signType: this.weChatPayData.signtype, // 签名算法
+      // 	paySign: this.weChatPayData.sign, // 签名
+      // 	success: function(res) {
+      // 		console.log('支付成功', res);
+      // 		// 业务逻辑。。。
+      // 	},
+      // 	fail: function(err) {
+      // 		console.log('支付失败', err);
+      // 	}
+      // });
     }
   }
 };

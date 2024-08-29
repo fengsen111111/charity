@@ -25,7 +25,7 @@
 		</view>
 		<!-- 领卷中心 -->
 		<view class="rightBottomImg text10 text-whlie text-center" @click="handleUrl('/pages/sonView/volume/index')">
-			<view class="mt90">领卷中心</view>
+			<view class="text12 uni-mt-14 uni-pt-14">领卷中心</view>
 		</view>
 	</view>
 </template>
@@ -104,8 +104,8 @@
 	.rightBottomImg{
 		background-image: url('@/static/my/rightBottomImg.png');
 		background-size: 100% 100%;
-		height: 4rem;
-		width: 3rem;
+		height: 5rem;
+		width: 4rem;
 		position: fixed;
 		bottom: 1rem;
 		right: 1rem;

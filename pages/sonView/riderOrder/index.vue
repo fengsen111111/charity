@@ -66,21 +66,38 @@
 					<view class="border999One"></view>
 					<!--  -->
 					<view class="bg-whilt">
-						<view class="flex justify-between p-3">
+						<view class="flex justify-between px-3 pt-3">
 							<view class="">商品信息</view>
-							<view class="col486 items-center flex">
+							<view v-if="shopInfoShow" class="col486 items-center flex" @click="handleDownUp()">
+								收起<uni-icons type="up" size="16" color="#4867CF"></uni-icons>
+							</view>
+							<view v-else class="col486 items-center flex" @click="handleDownUp()">
 								展开<uni-icons type="down" size="16" color="#4867CF"></uni-icons>
 							</view>
 						</view>
 						<!-- 展开商品文件 -->
-						<view class=""></view>
+						<view v-if="shopInfoShow">
+							<view class="flex justify-between items-center px-3 pt-3" v-for="item in [1,2,3]" :key="item">
+								<image src="https://img.picui.cn/free/2024/08/16/66bf135fa40a3.png" style="width: 100rpx;height: 100rpx;" mode=""></image>
+								<view class="uni-ml-5">
+									<view class="w300rpx">五粮液股份 五粮春二代菁萃 浓香型白酒 52度 550ml...</view>
+									<view class="col999">规格 <text>550ml*12</text></view>
+								</view>
+								<view class="uni-ml-5">
+									<view class="text16">X 888888</view>
+									<view class="col999">冰冻<text class="uni-ml-2">888888</text></view>
+								</view>
+							</view>
+						</view>
 						
-						<view v-if="activeIndex==1" class="bg486 text14 rending2 text-whlie text-center py-2 w85 mxAuto">
-							接单
-						</view>
-						<view v-if="activeIndex==2" class="bg68B  text14 rending2 text-whlie text-center py-2 w85 mxAuto">
-							确认送达
-						</view>
+					    <view class="mt-3">
+					    	<view @click="_acceptOrder(item)" v-if="activeIndex==1" class="bg486 text14 rending2 text-whlie text-center py-2 w85 mxAuto">
+					    		接单
+					    	</view>
+					    	<view @click="_arriveOrder(item)" v-if="activeIndex==2" class="bg68B text14 rending2 text-whlie text-center py-2 w85 mxAuto">
+					    		确认送达
+					    	</view>
+					    </view>
 						<view class="h-4"></view>
 					</view>
 				</view>
@@ -92,6 +109,11 @@
 </template>
 
 <script>
+	import {
+		getWorkerOrderList,//list
+		acceptOrder,//接单
+		arriveOrder,//送到
+	} from '@/request/api.js'
 	export default {
 		data() {
 			return {
@@ -110,6 +132,7 @@
 				
 				// 
 				activeIndex: 1,//待接单 带送达 已送达
+				shopInfoShow:true,//打开 关闭
 				
 				
 			};
@@ -117,6 +140,7 @@
 		mounted() {
 			this.distance = this.getMapDistance('104.04311', '30.64242', '104.060268', '30.642047');
 			console.log('距离', this.distance);
+			this._getWorkerOrderList()
 		},
 		components: {},
 		onLoad() {},
@@ -125,6 +149,43 @@
 		},
 		onHide() {},
 		methods: {
+			// 商品信息展示隐藏
+			handleDownUp(){
+				this.shopInfoShow = !this.shopInfoShow
+			},
+			// list
+			_getWorkerOrderList(){
+				getWorkerOrderList({
+					post_params:{
+						currentPage:'',
+						perPage:'',
+						status:''//	a待接单 b配送中  c已完成  
+					}
+				}).then((res)=>{
+					console.log('列表',res);
+				})
+			},
+			// 接单
+			_acceptOrder(item){
+				acceptOrder({
+					post_params:{
+						order_id:item//	订单ID  
+					}
+				}).then((res)=>{
+					console.log('接单',res);
+				})
+			},
+			// 送达
+			_arriveOrder(item){
+				arriveOrder({
+					post_params:{
+						order_id:item//	订单ID  
+					}
+				}).then((res)=>{
+					console.log('送达',res);
+				})
+			},
+			
 			handleActive(index){
 				this.activeIndex = index
 			},
@@ -282,6 +343,9 @@
 </script>
 
 <style>
+	.w300rpx{
+		width:300rpx
+	}
 	.bgMyImg {
 		color: #fff;
 		/* background-image: url('@/static/my/topBg.png'); */

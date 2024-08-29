@@ -185,7 +185,7 @@ var viewTop = function viewTop() {
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var volumeTag = function volumeTag() {
-  Promise.all(/*! require.ensure | components/volumeTag/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/volumeTag/index")]).then((function () {
+  __webpack_require__.e(/*! require.ensure | components/volumeTag/index */ "components/volumeTag/index").then((function () {
     return resolve(__webpack_require__(/*! @/components/volumeTag/index.vue */ 387));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };

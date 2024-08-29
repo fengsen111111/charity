@@ -34,7 +34,7 @@
 			<view class="h-8"></view>
 			<view class="h-8"></view>
 			<view class="h-8"></view>
-			<view class="bg486 text-whlie w-full py-3 rending2 text-center text16">
+			<view class="bg486 text-whlie w-full py-3 rending2 text-center text16" @click="_editAddresst()">
 				提交
 			</view>
 		</view>

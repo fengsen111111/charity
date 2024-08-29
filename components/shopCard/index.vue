@@ -1,8 +1,12 @@
 <template>
 	<!-- <view class="w90 space-x-2  rending2  p-4" :class="isBgWhilt?'bgF9':'bg-whilt'"> -->
 	<view class="">
-		<view class=" flex justify-between">
-			<image src="https://img.picui.cn/free/2024/08/28/66ce7753c9079.png" mode="" class="imgShop rending1"></image>
+		<view class=" flex justify-between items-center">
+			<view class="relative">
+				<image src="https://img.picui.cn/free/2024/08/29/66cfcffbc9dcb.png" mode="" class="imgShop rending1">
+				</image>
+				<view class="rightTop">一分秒杀</view>
+			</view>
 			<view class="w-full w70 px-2">
 				<view class="flex justify-between  w-full">
 					<view class="text12 fontBold w70">
@@ -17,7 +21,7 @@
 					<view class="col666">口味</view>
 					<view class="text-black space-x-1">原味</view>
 				</view>
-				<view class="flex justify-between">
+				<view class="flex justify-between items-center">
 					<view class="flex text12 ">
 						<view class="col666">规格</view>
 						<view class="text-black space-x-1">550ml*12</view>
@@ -38,15 +42,26 @@
 
 <script>
 	export default {
-		props:{
-			isBgWhilt:true
+		props: {
+			isBgWhilt: true
 		}
 	}
 </script>
 
 <style>
-	.imgShop{
+	.rightTop {
+		background: linear-gradient(134deg, #FA311D 0%, #FF8E34 100%);
+		border-radius: 4rpx 4rpx 4rpx 4rpx;
+		font-size: 20rpx;
+		color: white;
+		position: absolute;
+		bottom: 2px;
+		right: 1rpx;
+		padding: 2rpx 10rpx;
+	}
+	.imgShop {
 		width: 4rem;
-		height: 5.25rem;
+		height: 4rem;
+		margin-left: 20rpx;
 	}
 </style>

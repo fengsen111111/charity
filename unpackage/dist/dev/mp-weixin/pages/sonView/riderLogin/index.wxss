@@ -1,4 +1,22 @@
 
+.code{
+	    border: 1rpx solid #4867CF;
+	    padding: 4rpx;
+	    margin-right: 8rpx;
+	    border-radius: 8rpx;
+	    color: #4867CF;
+		width: 90rpx;
+		text-align: center;
+}
+.codeTime{
+	    border: 1rpx solid #999999;
+	    padding: 4rpx;
+	    margin-right: 8rpx;
+	    border-radius: 8rpx;
+	    color: #999999;
+		width: 90rpx;
+		text-align: center;
+}
 .imgUser{
 	width: 7rem;
 	height: 7rem;

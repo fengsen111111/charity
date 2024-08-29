@@ -25,7 +25,7 @@
 					</view>
 					<view class="flex">
 						<uni-icons type="compose" size="20" color="#4867CF"></uni-icons>
-						<uni-icons type="trash" size="20" class="space-x-3" color="#FC6265"
+						<uni-icons type="trash" size="20" class="space-x-2" color="#FC6265"
 							@click="toggle('center',item)"></uni-icons>
 					</view>
 				</view>
@@ -138,7 +138,7 @@
 			},
 			// 删除
 			_deleteAddress(){
-				_deleteAddress({
+				deleteAddress({
 					post_params:{
 						address_id:''
 					}

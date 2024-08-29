@@ -100,14 +100,14 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
+    uniIcons: function () {
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 321))
+    },
     uniEasyinput: function () {
       return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 415))
     },
     uniPopup: function () {
       return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 314))
-    },
-    uniIcons: function () {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 321))
     },
   }
 } catch (e) {
@@ -131,6 +131,15 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var g0 = _vm.data.length
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        g0: g0,
+      },
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -170,6 +179,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var hearch = function hearch() {
   __webpack_require__.e(/*! require.ensure | components/hearch/index */ "components/hearch/index").then((function () {
     return resolve(__webpack_require__(/*! @/components/hearch/index.vue */ 355));
@@ -181,7 +191,7 @@ var shopCard = function shopCard() {
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var volumeTag = function volumeTag() {
-  Promise.all(/*! require.ensure | components/volumeTag/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/volumeTag/index")]).then((function () {
+  __webpack_require__.e(/*! require.ensure | components/volumeTag/index */ "components/volumeTag/index").then((function () {
     return resolve(__webpack_require__(/*! @/components/volumeTag/index.vue */ 387));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
@@ -195,7 +205,36 @@ var _default = {
     return {
       active: false,
       value: '',
-      textarea: ''
+      textarea: '',
+      data: [{
+        id: '1',
+        name: '优惠券名称',
+        type: 'a',
+        use_type: 'a',
+        top_price: '100',
+        coupon_data: '30',
+        end_time: '2023-12-16',
+        areas: '成都'
+      }],
+      datalist: [{
+        id: '1',
+        name: '优惠券名称',
+        type: 'a',
+        use_type: 'a',
+        top_price: '100',
+        coupon_data: '30',
+        end_time: '2023-12-16',
+        areas: '成都'
+      }, {
+        id: '2',
+        name: '优惠券名称',
+        type: 'b',
+        use_type: 'b',
+        top_price: '',
+        coupon_data: '6折',
+        end_time: '2023-12-16',
+        areas: '成都'
+      }]
     };
   },
   onLoad: function onLoad() {},
@@ -214,9 +253,58 @@ var _default = {
     },
     // 弹框
     toggle: function toggle(type) {
-      this.type = type;
+      var _this = this;
+      // 生成订单
+      (0, _api.createOrder)({
+        post_params: {
+          address_id: '',
+          //收货地址ID  
+          coupon_id: '',
+          //优惠券ID  
+          remark: '',
+          //备注  
+          goods: [{
+            goods_size_id: '',
+            // 商品规格ID
+            number: '',
+            //购买数量  
+            ice_number: '' //	冰冻数量  
+          }]
+        }
+      }).then(function (res) {
+        console.log('生成订单', res);
+        // 调用支付
+        (0, _api.payOrder)({
+          post_params: {
+            order_id: '' //订单id
+          }
+        }).then(function (res) {
+          _this.weixinPay(res);
+        });
+      });
+      // 调用支付
+    },
+    // 调用微信支付
+    weixinPay: function weixinPay(item) {
+      console.log('调用微信支付', item);
+      // 结果查询
       // open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
-      this.$refs.popup.open(type);
+      this.$refs.popup.open('center');
+      // uni.requestPayment({
+      // 	provider: 'wxpay', // 服务提提供商
+      // 	timeStamp: this.weChatPayData.timestamp, // 时间戳
+      // 	nonceStr: this.weChatPayData.noncestr, // 随机字符串
+      // 	package: this.weChatPayData.package,
+      // 	signType: this.weChatPayData.signtype, // 签名算法
+      // 	paySign: this.weChatPayData.sign, // 签名
+      // 	success: function(res) {
+      // 		console.log('支付成功', res);
+      // 		// 业务逻辑。。。
+      // 	},
+      // 	fail: function(err) {
+      // 		console.log('支付失败', err);
+      // 	}
+      // });
     },
     // 关闭
     closeGift: function closeGift() {

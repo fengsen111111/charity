@@ -98,7 +98,7 @@
 									<uni-icons type="right" color="#666666" size="18"></uni-icons>
 								</button>
 							</view>
-							<uni-icons style="margin-top: 3rpx;" @click="handleUrl(item.url)" v-else="item.id!==6"
+							<uni-icons style="margin-top: 3rpx;" @click="handleUrl(item.url)" v-else-if="item.id!==6"
 								type="right" color="#666666" size="18"></uni-icons>
 							<view v-else>
 								1.2.222

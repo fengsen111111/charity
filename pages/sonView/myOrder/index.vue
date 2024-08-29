@@ -19,7 +19,7 @@
 								<view class="col666">实付金额</view>
 								<view class="text16 colED1 space-x-2">￥100</view>
 							</view>
-							<view class="bg486 text14 rending5 text-whlie py-2 w6 text-center">去支付</view>
+							<view class="bg486 text14 rending5 text-whlie py-2 w6 text-center" @click="handleToPay(item)">去支付</view>
 						</view>
 						<!-- 进行中 -->
 						<view class="flex justify-between items-center mt-3" v-else-if="item == 2">
@@ -132,12 +132,46 @@
 				</view>
 			</view>
 		</uni-popup>
+		<!-- 支付弹窗 -->
+		<uni-popup ref="popupPay" background-color="#fff" borderRadius="0.5rem 0.5rem 0.5rem 0.5rem">
+			<view class="bgF9 p-4 overflowAuto rending2" style="width: 17rem;">
+				<view class="flex justify-between">
+					<view class="w-4"></view>
+					<view class="text16">
+						支付失败/成功
+					</view>
+					<view class="w-4"></view>
+				</view>
+				<view class="h-8"></view>
+				<view class="p-3 text-center ">
+					<uni-icons type="clear" size="90" color="#FC6265"></uni-icons>
+				</view>
+				<view class="p-3 text-center">
+					<uni-icons type="checkbox" size="90" color="#68BF7B"></uni-icons>
+				</view>
+				<view class="mt-3 text-center ">
+					订单支付支付失败/成功
+				</view>
+				<view class="h-8"></view>
+				<!-- 留白 -->
+				<view class="w-full bg486 text-whlie py-3 mt-3 rending1 text-center" @click="close">
+					返回
+				</view>
+			</view>
+		</uni-popup>
 	</view>
 </template>
 
 <script>
 	import hearch from "@/components/hearch/index.vue"
 	import orderStatus from "@/components/orderStatus/index.vue"
+	import {
+		getUserOrderList,//lsit
+		deleteOrder,//del
+		payOrder,//pay]
+		applyAfterSale,//售后
+		evaluateOrder,//评价
+	} from '@/request/api.js'
 	export default {
 		components: {
 			hearch,
@@ -180,8 +214,60 @@
 		onShow() {
 
 		},
+		created(){
+			this._getUserOrderList()
+		},
 		onHide() {},
 		methods: {
+			// 关闭支付结果
+			close() {
+				this.$refs.popup.close()
+			},
+			// 去支付
+			handleToPay(item){
+				console.log('支付',item);
+				// 调用支付
+				payOrder({
+					post_params: {
+						order_id: '', //订单id
+					}
+				}).then((res) => {
+					this.weixinPay(res)
+				})
+			},
+			// 调用微信支付
+			weixinPay(item) {
+				console.log('调用微信支付', item);
+				// 结果查询
+				// open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
+				this.$refs.popupPay.open('center')
+				// uni.requestPayment({
+				// 	provider: 'wxpay', // 服务提提供商
+				// 	timeStamp: this.weChatPayData.timestamp, // 时间戳
+				// 	nonceStr: this.weChatPayData.noncestr, // 随机字符串
+				// 	package: this.weChatPayData.package,
+				// 	signType: this.weChatPayData.signtype, // 签名算法
+				// 	paySign: this.weChatPayData.sign, // 签名
+				// 	success: function(res) {
+				// 		console.log('支付成功', res);
+				// 		// 业务逻辑。。。
+				// 	},
+				// 	fail: function(err) {
+				// 		console.log('支付失败', err);
+				// 	}
+				// });
+			},
+			_getUserOrderList(status){
+				getUserOrderList({
+					post_params:{
+						currentPage:'',
+						perPage:'',
+						status:'',//a待付款 b进行中 c待评价 d已完成 e售后  
+					}
+				}).then((res)=>{
+					console.log('订单数据',res);
+				})
+			},
 			handleItem(id) {
 				this.chenkIndex = id
 			},

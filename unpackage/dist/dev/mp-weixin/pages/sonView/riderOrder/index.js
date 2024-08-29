@@ -129,6 +129,26 @@ var render = function () {
     _vm.e0 = function ($event) {
       return _vm.openMap("104.060268", "30.642047")
     }
+    _vm.e1 = function ($event) {
+      return _vm.handleDownUp()
+    }
+    _vm.e2 = function ($event) {
+      return _vm.handleDownUp()
+    }
+    _vm.e3 = function ($event, item) {
+      var _temp = arguments[arguments.length - 1].currentTarget.dataset,
+        _temp2 = _temp.eventParams || _temp["event-params"],
+        item = _temp2.item
+      var _temp, _temp2
+      return _vm._acceptOrder(item)
+    }
+    _vm.e4 = function ($event, item) {
+      var _temp3 = arguments[arguments.length - 1].currentTarget.dataset,
+        _temp4 = _temp3.eventParams || _temp3["event-params"],
+        item = _temp4.item
+      var _temp3, _temp4
+      return _vm._arriveOrder(item)
+    }
   }
 }
 var recyclableRender = false
@@ -169,6 +189,24 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -283,18 +321,57 @@ var _default = {
       //门店地址
 
       // 
-      activeIndex: 1 //待接单 带送达 已送达
+      activeIndex: 1,
+      //待接单 带送达 已送达
+      shopInfoShow: true //打开 关闭
     };
   },
   mounted: function mounted() {
     this.distance = this.getMapDistance('104.04311', '30.64242', '104.060268', '30.642047');
     console.log('距离', this.distance);
+    this._getWorkerOrderList();
   },
   components: {},
   onLoad: function onLoad() {},
   onShow: function onShow() {},
   onHide: function onHide() {},
   methods: {
+    // 商品信息展示隐藏
+    handleDownUp: function handleDownUp() {
+      this.shopInfoShow = !this.shopInfoShow;
+    },
+    // list
+    _getWorkerOrderList: function _getWorkerOrderList() {
+      (0, _api.getWorkerOrderList)({
+        post_params: {
+          currentPage: '',
+          perPage: '',
+          status: '' //	a待接单 b配送中  c已完成  
+        }
+      }).then(function (res) {
+        console.log('列表', res);
+      });
+    },
+    // 接单
+    _acceptOrder: function _acceptOrder(item) {
+      (0, _api.acceptOrder)({
+        post_params: {
+          order_id: item //	订单ID  
+        }
+      }).then(function (res) {
+        console.log('接单', res);
+      });
+    },
+    // 送达
+    _arriveOrder: function _arriveOrder(item) {
+      (0, _api.arriveOrder)({
+        post_params: {
+          order_id: item //	订单ID  
+        }
+      }).then(function (res) {
+        console.log('送达', res);
+      });
+    },
     handleActive: function handleActive(index) {
       this.activeIndex = index;
     },

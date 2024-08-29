@@ -164,6 +164,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -199,7 +206,8 @@ var _default = {
     return {
       active: false,
       value1: '666666',
-      value2: '123456'
+      value2: '123456',
+      times: 0
     };
   },
   components: {},
@@ -207,6 +215,33 @@ var _default = {
   onShow: function onShow() {},
   onHide: function onHide() {},
   methods: {
+    // 获取倒计时
+    handleCode: function handleCode() {
+      var _this = this;
+      (0, _api.getPhoneCode)({
+        account_type: '',
+        //
+        account: '' //手机号
+      }).then(function (res) {
+        // 获取验证码成功，打开倒计时
+        _this.settimeCode();
+      });
+    },
+    // 倒计时
+    settimeCode: function settimeCode() {
+      console.log('发送验证码');
+      var that = this;
+      that.times = 60;
+      if (that.times == 60) {
+        that.sid = setInterval(function () {
+          that.times--;
+          if (that.times == 0) {
+            //时间到了清除计时器
+            clearInterval(that.sid);
+          }
+        }, 1000);
+      }
+    },
     handleUrl: function handleUrl(url) {
       console.log(url);
       uni.navigateTo({

@@ -226,23 +226,15 @@ var _default = {
       });
     },
     // 删除
-    _deleteAddress: function (_deleteAddress2) {
-      function _deleteAddress() {
-        return _deleteAddress2.apply(this, arguments);
-      }
-      _deleteAddress.toString = function () {
-        return _deleteAddress2.toString();
-      };
-      return _deleteAddress;
-    }(function () {
-      _deleteAddress({
+    _deleteAddress: function _deleteAddress() {
+      (0, _api.deleteAddress)({
         post_params: {
           address_id: ''
         }
       }).then(function (res) {
         console.log('删除成功', res);
       });
-    }),
+    },
     handleUrl: function handleUrl(url) {
       console.log(url);
       uni.navigateTo({

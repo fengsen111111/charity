@@ -182,8 +182,7 @@
 	import shopCard from '@/components/shopCard/index.vue'
 	import volumeTag from '@/components/volumeTag/index.vue'
 	import {
-		createOrder,
-		payOrder
+		createOrder
 	} from '@/request/api.js'
 	export default {
 		components: {
@@ -254,7 +253,8 @@
 						coupon_id: '', //优惠券ID  
 						remark: '', //备注  
 						goods: [{
-							goods_size_id: '', // 商品规格ID
+							goods_size_id: '',
+							商品规格ID
 							number: '', //购买数量  
 							ice_number: '', //	冰冻数量  
 						}]
@@ -271,13 +271,14 @@
 					})
 				})
 				// 调用支付
+				// 结果查询
+				this.type = type
+				// open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
+				this.$refs.popup.open(type)
 			},
 			// 调用微信支付
 			weixinPay(item) {
 				console.log('调用微信支付', item);
-				// 结果查询
-				// open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
-				this.$refs.popup.open('center')
 				// uni.requestPayment({
 				// 	provider: 'wxpay', // 服务提提供商
 				// 	timeStamp: this.weChatPayData.timestamp, // 时间戳
