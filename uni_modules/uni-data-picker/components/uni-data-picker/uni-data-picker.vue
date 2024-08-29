@@ -1,5 +1,5 @@
 <template>
-  <view class="uni-data-tree">
+  <view class="uni-data-tree" >
     <view class="uni-data-tree-input" @click="handleInput">
       <slot :options="options" :data="inputSelected" :error="errorMessage">
         <view class="input-value" :class="{'input-value-border': border}">
@@ -11,11 +11,11 @@
             <view class="selected-list">
               <view class="selected-item" v-for="(item,index) in inputSelected" :key="index">
                 <text class="text-color">{{item.text}}</text><text v-if="index<inputSelected.length-1"
-                  class="input-split-line">{{split}}</text>
+                  class="input-split-line" style="color: black;">1{{split}}(当前选择)</text>
               </view>
             </view>
           </scroll-view>
-          <text v-else class="selected-area placeholder">{{placeholder}}</text>
+          <text v-else class="selected-area placeholder">2{{placeholder}}</text>
           <view v-if="clearIcon && !readonly && inputSelected.length" class="icon-clear" @click.stop="clear">
             <uni-icons type="clear" color="#c0c4cc" size="24"></uni-icons>
           </view>
@@ -320,6 +320,7 @@
   }
 
   .selected-area {
+	color: black;
     flex: 1;
     overflow: hidden;
     /* #ifndef APP-NVUE */
@@ -347,6 +348,7 @@
   }
 
   .selected-item {
+	color:black;
     flex-direction: row;
     /* padding: 0 1px; */
     /* #ifndef APP-NVUE */
@@ -405,7 +407,7 @@
     position: fixed;
     left: 0;
     /* #ifndef APP-NVUE */
-    top: 20%;
+    top: 50%;
     /* #endif */
     /* #ifdef APP-NVUE */
     top: 200px;
@@ -449,6 +451,7 @@
   .dialog-title {
     /* font-weight: bold; */
     line-height: 44px;
+	color: black;
   }
 
   .dialog-close {

@@ -101,7 +101,10 @@ var components
 try {
   components = {
     uniIcons: function () {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 321))
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 325))
+    },
+    uniDataPicker: function () {
+      return Promise.all(/*! import() | uni_modules/uni-data-picker/components/uni-data-picker/uni-data-picker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-data-picker/components/uni-data-picker/uni-data-picker")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-data-picker/components/uni-data-picker/uni-data-picker.vue */ 373))
     },
   }
 } catch (e) {
@@ -164,9 +167,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var tarBar = function tarBar() {
   Promise.all(/*! require.ensure | components/tarBar/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tarBar/index")]).then((function () {
-    return resolve(__webpack_require__(/*! @/components/tarBar/index.vue */ 299));
+    return resolve(__webpack_require__(/*! @/components/tarBar/index.vue */ 303));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -200,17 +204,49 @@ var _default = {
         id: 6,
         text: '当前版本',
         url: ''
+      }],
+      items: [{
+        text: "一号公司",
+        value: "1"
+      }, {
+        text: "二号公司",
+        value: "2"
+      }, {
+        text: "三号公司",
+        value: "3"
       }]
     };
   },
   onLoad: function onLoad() {},
+  created: function created() {
+    // 分公司信息
+    this._getPromoterCompanyList();
+  },
   methods: {
+    // 分公司列表
+    _getPromoterCompanyList: function _getPromoterCompanyList() {
+      (0, _api.getPromoterCompanyList)().then(function (res) {
+        console.log('分公司信息', res);
+      });
+    },
+    handleOpen: function handleOpen() {
+      this.$refs.picker.show();
+    },
     handleUrl: function handleUrl(url) {
       console.log(url);
       uni.navigateTo({
         url: url + ''
       });
-    }
+    },
+    onchange: function onchange(e) {
+      var value = e.detail.value;
+      console.log('当前选择', e, value);
+      // 跳转推广人
+      uni.navigateTo({
+        url: '/pages/sonView/popularize/index?company_id=' + value.value
+      });
+    },
+    onnodeclick: function onnodeclick(node) {}
   }
 };
 exports.default = _default;

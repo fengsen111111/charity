@@ -22,6 +22,7 @@
 
 <script>
 	import hearch from "@/components/hearch/index.vue"
+	import {getMoneyLogList} from '@/request/api.js'
 	export default {
 		components:{hearch},
 		data() {
@@ -30,13 +31,27 @@
 				value:'',
 			};
 		},
-		onLoad() {},
+		onLoad(options) {
+			console.log('options',options);
+			this._getMoneyLogList(options) //收益明细
+		},
 		onShow() {
 			
 		},
 		onHide() {
 		},
 		methods: {
+			_getMoneyLogList(options){
+				getMoneyLogList({
+					post_params:{
+						company_id:options.company_id,
+						currentPage:'',
+						perPage:''
+					}
+				}).then((res)=>{
+					console.log('收益明细',res)
+				})
+			}
 		}
 	};
 </script>

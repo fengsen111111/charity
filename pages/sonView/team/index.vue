@@ -19,6 +19,7 @@
 
 <script>
 	import hearch from "@/components/hearch/index.vue"
+	import {getTeamUserList} from '@/request/api.js'
 	export default {
 		components:{hearch},
 		data() {
@@ -27,13 +28,26 @@
 				value:'',
 			};
 		},
-		onLoad() {},
+		onLoad(options) {
+			console.log('options',options);
+			this._getTeamUserList(options) //团队信息
+		},
 		onShow() {
 			
 		},
 		onHide() {
 		},
 		methods: {
+			// 团队信息
+			_getTeamUserList(options){
+				getTeamUserList({
+					post_params:{
+						company_id:options.company_id//	分公司ID  
+					}
+				}).then((res)=>{
+					console.log('团队信息',res);
+				})
+			}
 		}
 	};
 </script>

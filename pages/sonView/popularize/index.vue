@@ -24,19 +24,19 @@
 						推广二维码
 					</view>
 					<view class="bg486 text-whlie text12 px-4 rending4 mt-4"
-						@click="handleUrl('/pages/sonView/payouts/index')">
+						@click="handleUrl('/pages/sonView/payouts/index?company_id='+option.company_id)">
 						提现
 					</view>
 				</view>
 			</view>
 			<view class="h-2"></view>
 			<view class="p-4 bg-whilt mt-1 rending1 flex justify-between"
-				@click="handleUrl('/pages/sonView/team/index')">
+				@click="handleUrl('/pages/sonView/team/index?company_id='+option.company_id)">
 				<view class="text14">我的团队</view>
 				<uni-icons type="right" color="#666666" size="18"></uni-icons>
 			</view>
 			<view class="p-4 bg-whilt mt-1 rending1 flex justify-between"
-				@click="handleUrl('/pages/sonView/earnings/index')">
+				@click="handleUrl('/pages/sonView/earnings/index?company_id='+option.company_id)">
 				<view class="text14">收益明细</view>
 				<uni-icons type="right" color="#666666" size="18"></uni-icons>
 			</view>
@@ -67,21 +67,39 @@
 
 <script>
 	import hearch from "@/components/hearch/index.vue"
+	import {
+		getPromoterMsg,//推广人信息
+		
+	} from '@/request/api.js'
 	export default {
 		data() {
 			return {
-				active: false
+				active: false,
+				option:{}
 			};
 		},
 		components: {
 			hearch
 		},
-		onLoad() {},
+		onLoad(options) {
+			console.log('options',options);
+			this.option = options
+			this._getPromoterMsg(options) //推广人信息
+		},
 		onShow() {
 
 		},
 		onHide() {},
 		methods: {
+			_getPromoterMsg(options){
+				getPromoterMsg({
+					post_params:{
+						company_id:options.company_id //	分公司ID  
+					}
+				}).then((res)=>{
+					console.log('推广人信息',res);
+				})
+			},
 			handleUrl(url) {
 				console.log(url);
 				uni.navigateTo({

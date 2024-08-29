@@ -235,6 +235,7 @@
 </script>
 <style lang="scss">
 	.uni-swipe {
+		margin-top: 10px
 		position: relative;
 		/* #ifndef APP-NVUE */
 		overflow: hidden;

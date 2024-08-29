@@ -143,12 +143,12 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var viewTop = function viewTop() {
   __webpack_require__.e(/*! require.ensure | pages/sonView/volume/components/viewTop/index */ "pages/sonView/volume/components/viewTop/index").then((function () {
-    return resolve(__webpack_require__(/*! @/pages/sonView/volume/components/viewTop/index.vue */ 401));
+    return resolve(__webpack_require__(/*! @/pages/sonView/volume/components/viewTop/index.vue */ 425));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var shopCardTwo = function shopCardTwo() {
   __webpack_require__.e(/*! require.ensure | components/shopCardTwo/index */ "components/shopCardTwo/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/shopCardTwo/index.vue */ 408));
+    return resolve(__webpack_require__(/*! @/components/shopCardTwo/index.vue */ 432));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {

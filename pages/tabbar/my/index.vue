@@ -58,8 +58,7 @@
 			<!--  -->
 			<view class="px-3">
 				<view class="flex justify-between mt-3">
-					<view class="centerBg rending1"
-						style="">
+					<view class="centerBg rending1" style="">
 						<view class="flex justify-between text-whlie px-4 py-2">
 							<view class="">
 								我的优惠卷
@@ -74,13 +73,10 @@
 							<view class="text16">66</view>
 						</view>
 					</view>
-					<view class="centerBg2"
-						style=""
-						@click="handleUrl('/pages/sonView/volume/index')"></view>
+					<view class="centerBg2" style="" @click="handleUrl('/pages/sonView/volume/index')"></view>
 				</view>
 				<!-- img -->
-				<view class="centerBgTwo mt-3"
-					style=""></view>
+				<view class="centerBgTwo mt-3" style=""></view>
 				<!-- cardItem -->
 				<view class="mt-3">
 					<view class="flex bg-whilt rending1 text-black mt-1 justify-between p-3" v-for="item in cards"
@@ -98,6 +94,9 @@
 									<uni-icons type="right" color="#666666" size="18"></uni-icons>
 								</button>
 							</view>
+								<!-- 推广员 -->
+							<uni-icons style="margin-top: 3rpx;" @click="handleOpen()" v-else-if="item.id==1"
+								type="right" color="#666666" size="18"></uni-icons>
 							<uni-icons style="margin-top: 3rpx;" @click="handleUrl(item.url)" v-else-if="item.id!==6"
 								type="right" color="#666666" size="18"></uni-icons>
 							<view v-else>
@@ -106,11 +105,15 @@
 						</view>
 					</view>
 				</view>
+			
 				<view class="h5">
 
 				</view>
 			</view>
 			<!-- 111 -->
+			<!-- 选择公司 -->
+			<uni-data-picker ref="picker" :localdata="items" popup-title="请选择公司" @change="onchange"
+				@nodeclick="onnodeclick"></uni-data-picker>
 		</view>
 		<!-- 底部导航 -->
 		<tarBar :checkIndex="5" />
@@ -119,6 +122,7 @@
 
 <script>
 	import tarBar from '@/components/tarBar/index.vue'
+	import { getPromoterCompanyList } from '@/request/api.js'
 	export default {
 		components: {
 			tarBar
@@ -156,19 +160,55 @@
 						text: '当前版本',
 						url: ''
 					}
+				],
+				items: [
+					{
+						text: "一号公司",
+						value: "1",
+					},
+					{
+						text: "二号公司",
+						value: "2"
+					},
+					{
+						text: "三号公司",
+						value: "3"
+					}
 				]
 			}
 		},
 		onLoad() {
 
 		},
+		created(){
+			// 分公司信息
+			this._getPromoterCompanyList()
+		},
 		methods: {
+			// 分公司列表
+			_getPromoterCompanyList(){
+				getPromoterCompanyList().then((res)=>{
+					console.log('分公司信息',res);
+				})
+			},
+			handleOpen(){
+				this.$refs.picker.show()
+			},
 			handleUrl(url) {
 				console.log(url);
 				uni.navigateTo({
 					url: url + ''
 				})
-			}
+			},
+			onchange(e) {
+				const value = e.detail.value
+				console.log('当前选择',e,value);
+				// 跳转推广人
+				uni.navigateTo({
+					url: '/pages/sonView/popularize/index?company_id='+value.value
+				})
+			},
+			onnodeclick(node) {}
 		}
 	}
 </script>

@@ -101,10 +101,10 @@ var components
 try {
   components = {
     uniIcons: function () {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 321))
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 325))
     },
     uniPopup: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 314))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 318))
     },
   }
 } catch (e) {
@@ -167,24 +167,39 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var hearch = function hearch() {
   __webpack_require__.e(/*! require.ensure | components/hearch/index */ "components/hearch/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/hearch/index.vue */ 355));
+    return resolve(__webpack_require__(/*! @/components/hearch/index.vue */ 359));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
   data: function data() {
     return {
-      active: false
+      active: false,
+      option: {}
     };
   },
   components: {
     hearch: hearch
   },
-  onLoad: function onLoad() {},
+  onLoad: function onLoad(options) {
+    console.log('options', options);
+    this.option = options;
+    this._getPromoterMsg(options); //推广人信息
+  },
   onShow: function onShow() {},
   onHide: function onHide() {},
   methods: {
+    _getPromoterMsg: function _getPromoterMsg(options) {
+      (0, _api.getPromoterMsg)({
+        post_params: {
+          company_id: options.company_id //	分公司ID  
+        }
+      }).then(function (res) {
+        console.log('推广人信息', res);
+      });
+    },
     handleUrl: function handleUrl(url) {
       console.log(url);
       uni.navigateTo({

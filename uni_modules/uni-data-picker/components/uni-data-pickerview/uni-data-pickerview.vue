@@ -1,5 +1,5 @@
 <template>
-  <view class="uni-data-pickerview">
+  <view class="uni-data-pickerview" style="color: balck !important;" >
     <scroll-view v-if="!isCloudDataList" class="selected-area" scroll-x="true">
       <view class="selected-list">
           <view 
@@ -256,6 +256,7 @@
 
 	.selected-item-active {
 		border-bottom: 2px solid $uni-primary;
+		color: black;
 	}
 
 	.selected-item-text {

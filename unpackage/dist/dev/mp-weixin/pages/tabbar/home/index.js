@@ -144,32 +144,32 @@ exports.default = void 0;
 var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var homeTop = function homeTop() {
   __webpack_require__.e(/*! require.ensure | components/home/homeTop/index */ "components/home/homeTop/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/home/homeTop/index.vue */ 264));
+    return resolve(__webpack_require__(/*! @/components/home/homeTop/index.vue */ 268));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var bomShop = function bomShop() {
   __webpack_require__.e(/*! require.ensure | components/home/bomShop/index */ "components/home/bomShop/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/home/bomShop/index.vue */ 271));
+    return resolve(__webpack_require__(/*! @/components/home/bomShop/index.vue */ 275));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var homeCard = function homeCard() {
   __webpack_require__.e(/*! require.ensure | components/home/homeCard/index */ "components/home/homeCard/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/home/homeCard/index.vue */ 278));
+    return resolve(__webpack_require__(/*! @/components/home/homeCard/index.vue */ 282));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var twoCard = function twoCard() {
   __webpack_require__.e(/*! require.ensure | components/home/twoCard/index */ "components/home/twoCard/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/home/twoCard/index.vue */ 285));
+    return resolve(__webpack_require__(/*! @/components/home/twoCard/index.vue */ 289));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var active = function active() {
   __webpack_require__.e(/*! require.ensure | components/home/active/index */ "components/home/active/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/home/active/index.vue */ 292));
+    return resolve(__webpack_require__(/*! @/components/home/active/index.vue */ 296));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var tarBar = function tarBar() {
   Promise.all(/*! require.ensure | components/tarBar/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tarBar/index")]).then((function () {
-    return resolve(__webpack_require__(/*! @/components/tarBar/index.vue */ 299));
+    return resolve(__webpack_require__(/*! @/components/tarBar/index.vue */ 303));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
