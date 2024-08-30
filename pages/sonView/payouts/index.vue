@@ -20,7 +20,7 @@
 				</view>
 				<view>
 					<uni-swipe-action ref="swipeAction">
-						<uni-swipe-action-item class="mt-3"  v-for="(item, index) in swipeList" :right-options="item.options" :key="item.id"
+						<uni-swipe-action-item class="mt-3" v-for="(item, index) in swipeList" :right-options="item.options" :key="item.id"
 						@click="swipeClick($event, index)">
 							<view class=" bgF9 col666 p-2 rending1" :class="item.id==1?'border486 bgF2F':''">
 								<view class="flex justify-between items-center">
@@ -53,7 +53,8 @@
 	import hearch from "@/components/hearch/index.vue"
 	import {
 		submitWithdrawal,
-		getBankList
+		getBankList,
+		deleteBank
 	} from '@/request/api.js'
 	export default {
 		components: {
@@ -80,7 +81,7 @@
 							backgroundColor: '#F56C6C'
 						}
 					}],
-					content: []
+					content: {}
 				  }, {
 					id: 2,
 					options: [{
@@ -95,7 +96,7 @@
 							backgroundColor: '#F56C6C'
 						}
 					}],
-					content: []
+					content: {}
 				  },{
 					id: 3,
 					options: [{
@@ -110,7 +111,7 @@
 							backgroundColor: '#F56C6C'
 						}
 					}],
-					content: []
+					content: {}
 				  },
 				]
 			};
@@ -127,32 +128,39 @@
 		methods: {
 			swipeClick(e, index) {
 				let {content} = e;
-				console.log('e',e);
-				// if (content.text === '删除') {
-				// 	uni.showModal({
-				// 		title: '提示',
-				// 		content: '是否删除',
-				// 		success: res => {
-				// 			if (res.confirm) {
-				// 				this.swipeList.splice(index, 1);
-				// 			} else if (res.cancel) {
-				// 				console.log('用户点击取消');
-				// 			}
-				// 		}
-				// 	});
-				// })
+				if (content.text === '删除') {
+					uni.showModal({
+						title: '提示',
+						content: '是否删除',
+						success: res => {
+							if (res.confirm) {
+								// this.swipeList.splice(index, 1);
+								// 调用删除接口
+								this._deleteBank()
+							} else if (res.cancel) {
+								console.log('用户点击取消');
+								this.$refs.swipeAction.closeAll()
+							}
+						}
+					});
+				}else if (content.text === '修改'){
+					console.log('修改',this.swipeList[index]);
+					// 跳转编辑页面
+					// 		uni.navigateTo({
+					// 			url:'/pages/sonView/addCard/index?bank_id='+item.id
+					// 		})
+				}
 			},
-			// bindClick(e,item) {
-			// 	console.log(e,item);
-			// 	return
-			// 	this.$refs.swipeAction.closeAll()
-			// 	if(e.content.text=='编辑'){
-			// 		uni.navigateTo({
-			// 			url:'/pages/sonView/addCard/index?bank_id='+item.id
-			// 		})
-			// 	}
-			// },
-			// 
+			// 删除银行卡
+			_deleteBank(){
+				deleteBank({
+					post_params:{
+						address_id:'',//id
+					}
+				}).then((res)=>{
+					console.log('删除成功',res);
+				})
+			},
 			_getBankList() {
 				getBankList().then((res) => {
 					console.log('银行卡列表', res);

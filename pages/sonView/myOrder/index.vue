@@ -10,155 +10,10 @@
 				</view>
 			</view>
 			<!-- card -->
-			<view v-for="item in [1,2,3,4,5]" :key="item" @click="handleUrl('/pages/sonView/myOrderDetails/index')">
-				<orderStatus>
-					<view>
-						<!-- 待付款 -->
-						<view class="flex justify-between items-center mt-3" v-if="item == 1">
-							<view class="flex items-center">
-								<view class="col666">实付金额</view>
-								<view class="text16 colED1 space-x-2">￥100</view>
-							</view>
-							<view class="bg486 text14 rending5 text-whlie py-2 w6 text-center" @click="handleToPay(item)">去支付</view>
-						</view>
-						<!-- 进行中 -->
-						<view class="flex justify-between items-center mt-3" v-else-if="item == 2">
-							<view class="flex w5"></view>
-							<view class="bgEBA text14 rending5 text-whlie py-2 w6 text-center">再来一单</view>
-							<view class="bg68B text14 rending5 text-whlie py-2 w6 text-center">联系骑手</view>
-						</view>
-						<!-- 待评价 -->
-						<view class="flex justify-between items-center mt-3" v-else-if="item == 3">
-							<view class="bgEBA text14 rending5 text-whlie py-2 w6 text-center">再来一单</view>
-							<view @click="toggle('bottom')"
-								class="bgFC6 text14 rending5 text-whlie py-2 w6 text-center">立即评价</view>
-							<view @click="toggleAfter('bottom')" class="bg486 text14 rending5 text-whlie py-2 w6 text-center">申请售后</view>
-						</view>
-						<!-- 已完成 -->
-						<view class="flex justify-between items-center mt-3" v-else-if="item == 4">
-							<view class="flex w5"></view>
-							<view class="bgEBA text14 rending5 text-whlie py-2 w6 text-center">再来一单</view>
-							<view @click="toggleAfter('bottom')" class="bg486 text14 rending5 text-whlie py-2 w7 text-center">申请售后</view>
-						</view>
-						<!-- 售后 -->
-						<view class="flex justify-between items-center mt-3" v-else-if="item == 5">
-							<view class="flex w5"></view>
-							<view class="bgF2F text14 rending5 col999 py-2 w6 text-center">售后中</view>
-							<view class="bgF2F text14 rending5 col999 py-2 w6 text-center">已退货退款</view>
-							<view class="bgF2F text14 rending5 col999 py-2 w6 text-center">已退款</view>
-							<view class="bgF2F text14 rending5 col999 py-2 w6 text-center">已换货</view>
-							<view @click="toggleAfter('bottom')" class="bg486 text16 rending5 text-whlie py-2 w7 text-center">重新申请</view>
-							<view class="flex w5"></view>
-						</view>
-					</view>
-				</orderStatus>
+			<view>
+				<orderStatus :dataList='datalist' />
 			</view>
 		</view>
-		<!-- 评价 -->
-		<uni-popup ref="popup" background-color="#fff" borderRadius="0.5rem 0.5rem 0px 0px">
-			<view class="bgF9 p-4 overflowAuto" style="height:65vh">
-				<view class="fiexdTop">
-					<view class="w-4"></view>
-					<view class="text16">
-						评价
-					</view>
-					<view class="" @click="close">
-						<uni-icons type="closeempty" size="20"></uni-icons>
-					</view>
-				</view>
-				<view class="h-8"></view>
-				<!-- 留白 -->
-				<view class="text12 bg-whilt p-3 mt-3">
-					<view class="">
-						评价
-					</view>
-					<view class="flex text14 justify-between text-center col999 mt-3">
-						<view class="py-2 w6 rending1 bgF2F col486 border486">好评</view>
-						<view class="py-2 w6 rending1 bgF9">中评</view>
-						<view class="py-2 w6 rending1 bgF9">差评</view>
-					</view>
-				</view>
-				<!--  -->
-				<view class="text12 bg-whilt p-3 mt-3">
-					<view class="">
-						评价内容
-					</view>
-					<uni-easyinput type="textarea" class="mt-3" v-model="textarea" placeholder="请输入内容"></uni-easyinput>
-					<view class="mt-3">
-						<view class="example-body">
-							<uni-file-picker limit="9" title=""></uni-file-picker>
-						</view>
-					</view>
-				</view>
-			</view>
-		</uni-popup>
-		<!-- 售后 -->
-		<uni-popup ref="popupAfter" background-color="#fff" borderRadius="0.5rem 0.5rem 0px 0px">
-			<view class="bgF9 p-4 overflowAuto" style="height:65vh">
-				<view class="fiexdTop">
-					<view class="w-4"></view>
-					<view class="text16">
-						售后
-					</view>
-					<view class="" @click="closeAfter">
-						<uni-icons type="closeempty" size="20"></uni-icons>
-					</view>
-				</view>
-				<view class="h-8"></view>
-				
-				<!--  -->
-				<view class="text12 bg-whilt p-3 mt-3">
-					<view class="flex justify-between">
-						<text>售后原因</text>
-						<text>请填写售后原因</text>
-					</view>
-					<uni-easyinput type="textarea" class="mt-3" v-model="textarea" placeholder="请输入内容"></uni-easyinput>
-					<view class="mt-3">
-						<view class="example-body">
-							<uni-file-picker limit="9" title=""></uni-file-picker>
-						</view>
-					</view>
-				</view>
-				<!--  -->
-				<view class="text12 bg-whilt p-3 mt-3">
-					<view class="flex justify-between">
-						<text>售后方式</text>
-					</view>
-					<view class="flex text14 justify-between text-center col999 mt-3">
-						<view class="py-2 w6 rending1 bgF2F col486 border486">退货退款</view>
-						<view class="py-2 w6 rending1 bgF9">退款</view>
-						<view class="py-2 w6 rending1 bgF9">换货</view>
-					</view>
-				</view>
-			</view>
-		</uni-popup>
-		<!-- 支付弹窗 -->
-		<uni-popup ref="popupPay" background-color="#fff" borderRadius="0.5rem 0.5rem 0.5rem 0.5rem">
-			<view class="bgF9 p-4 overflowAuto rending2" style="width: 17rem;">
-				<view class="flex justify-between">
-					<view class="w-4"></view>
-					<view class="text16">
-						支付失败/成功
-					</view>
-					<view class="w-4"></view>
-				</view>
-				<view class="h-8"></view>
-				<view class="p-3 text-center ">
-					<uni-icons type="clear" size="90" color="#FC6265"></uni-icons>
-				</view>
-				<view class="p-3 text-center">
-					<uni-icons type="checkbox" size="90" color="#68BF7B"></uni-icons>
-				</view>
-				<view class="mt-3 text-center ">
-					订单支付支付失败/成功
-				</view>
-				<view class="h-8"></view>
-				<!-- 留白 -->
-				<view class="w-full bg486 text-whlie py-3 mt-3 rending1 text-center" @click="close">
-					返回
-				</view>
-			</view>
-		</uni-popup>
 	</view>
 </template>
 
@@ -166,11 +21,7 @@
 	import hearch from "@/components/hearch/index.vue"
 	import orderStatus from "@/components/orderStatus/index.vue"
 	import {
-		getUserOrderList,//lsit
-		deleteOrder,//del
-		payOrder,//pay]
-		applyAfterSale,//售后
-		evaluateOrder,//评价
+		getUserOrderList, //lsit
 	} from '@/request/api.js'
 	export default {
 		components: {
@@ -183,6 +34,8 @@
 				value: '',
 				chenkIndex: 2,
 				textarea: '',
+				// 
+				datalist: [],
 				tabsList: [{
 						id: 1,
 						text: '全部'
@@ -214,100 +67,154 @@
 		onShow() {
 
 		},
-		created(){
+		created() {
 			this._getUserOrderList()
 		},
 		onHide() {},
 		methods: {
-			// 关闭支付结果
-			close() {
-				this.$refs.popup.close()
-			},
-			// 去支付
-			handleToPay(item){
-				console.log('支付',item);
-				// 调用支付
-				payOrder({
+			
+			_getUserOrderList(status) {
+				getUserOrderList({
 					post_params: {
-						order_id: '', //订单id
+						currentPage: '',
+						perPage: '',
+						status: '', //a待付款 b进行中 c待评价 d已完成 e售后  
 					}
 				}).then((res) => {
-					this.weixinPay(res)
-				})
-			},
-			// 调用微信支付
-			weixinPay(item) {
-				console.log('调用微信支付', item);
-				// 结果查询
-				// open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
-				this.$refs.popupPay.open('center')
-				// uni.requestPayment({
-				// 	provider: 'wxpay', // 服务提提供商
-				// 	timeStamp: this.weChatPayData.timestamp, // 时间戳
-				// 	nonceStr: this.weChatPayData.noncestr, // 随机字符串
-				// 	package: this.weChatPayData.package,
-				// 	signType: this.weChatPayData.signtype, // 签名算法
-				// 	paySign: this.weChatPayData.sign, // 签名
-				// 	success: function(res) {
-				// 		console.log('支付成功', res);
-				// 		// 业务逻辑。。。
-				// 	},
-				// 	fail: function(err) {
-				// 		console.log('支付失败', err);
-				// 	}
-				// });
-			},
-			_getUserOrderList(status){
-				getUserOrderList({
-					post_params:{
-						currentPage:'',
-						perPage:'',
-						status:'',//a待付款 b进行中 c待评价 d已完成 e售后  
-					}
-				}).then((res)=>{
-					console.log('订单数据',res);
+					console.log('订单数据', res);
+					this.datalist = [{
+						"id": "1",
+						"status": "a",//订单状态:a待付款(可取消)  b待抢单(可售后) c配送中(可售后,联系骑手) d已完成，待评价(可评价，售后)  e已评价/已售后  
+						"after_sale_status": "a",//售后状态:a未申请 b售后中  c换货  d退货退款 e退款 z售后关闭  
+						"delivey_status": "a",//配送状态:a待接单  b配送中  c已送达  
+						"create_time": "12:12:12",
+						"order_num": "324312412212312",
+						"user_name": "张三",
+						"user_mobile": "14544554455",
+						"user_address": "四川省成都市武侯区世纪城天府大道中段588号天天小区快鸟驿站",
+						"distance": "1.1km",
+						"remark": "无备注",
+						"pay_price": "12.33",
+						"preferential_price": "1.33",
+						"worker_mobile": "18488448844",
+						"goods_list": [{
+							"goods_name": "五粮液股份五粮春二代菁萃浓香型白酒",
+							"taste_name": "甜酒",
+							"cover_image": "https://img.picui.cn/free/2024/08/16/66bf135fa40a3.png",
+							"volume": "550",
+							"size_number": "12",
+							"number": "666666",
+							"ice_number": "666666"
+						}]
+					},
+					{
+						"id": "2",
+						"status": "c",//订单状态:a待付款(可取消)  b待抢单(可售后) c配送中(可售后,联系骑手) d已完成，待评价(可评价，售后)  e已评价/已售后  
+						"after_sale_status": "a",//售后状态:a未申请 b售后中  c换货  d退货退款 e退款 z售后关闭  
+						"delivey_status": "b",//配送状态:a待接单  b配送中  c已送达  
+						"create_time": "12:12:12",
+						"order_num": "324312412212312",
+						"user_name": "张三",
+						"user_mobile": "14544554455",
+						"user_address": "四川省成都市武侯区世纪城天府大道中段588号天天小区快鸟驿站",
+						"distance": "1.1km",
+						"remark": "无备注",
+						"pay_price": "12.33",
+						"preferential_price": "1.33",
+						"worker_mobile": "18488448844",
+						"goods_list": [{
+							"goods_name": "五粮液股份五粮春二代菁萃浓香型白酒",
+							"taste_name": "甜酒",
+							"cover_image": "https://img.picui.cn/free/2024/08/16/66bf135fa40a3.png",
+							"volume": "550",
+							"size_number": "12",
+							"number": "666666",
+							"ice_number": "666666"
+						}]
+					},
+					{
+						"id": "3",
+						"status": "c",//订单状态:a待付款(可取消)  b待抢单(可售后) c配送中(可售后,联系骑手) d已完成，待评价(可评价，售后)  e已评价/已售后  
+						"after_sale_status": "a",//售后状态:a未申请 b售后中  c换货  d退货退款 e退款 z售后关闭  
+						"delivey_status": "c",//配送状态:a待接单  b配送中  c已送达  
+						"create_time": "12:12:12",
+						"order_num": "324312412212312",
+						"user_name": "张三",
+						"user_mobile": "14544554455",
+						"user_address": "四川省成都市武侯区世纪城天府大道中段588号天天小区快鸟驿站",
+						"distance": "1.1km",
+						"remark": "无备注",
+						"pay_price": "12.33",
+						"preferential_price": "1.33",
+						"worker_mobile": "18488448844",
+						"goods_list": [{
+							"goods_name": "五粮液股份五粮春二代菁萃浓香型白酒",
+							"taste_name": "甜酒",
+							"cover_image": "https://img.picui.cn/free/2024/08/16/66bf135fa40a3.png",
+							"volume": "550",
+							"size_number": "12",
+							"number": "666666",
+							"ice_number": "666666"
+						}]
+					},
+					{
+						"id": "4",
+						"status": "d",//订单状态:a待付款(可取消)  b待抢单(可售后) c配送中(可售后,联系骑手) d已完成，待评价(可评价，售后)  e已评价/已售后  
+						"after_sale_status": "a",//售后状态:a未申请 b售后中  c换货  d退货退款 e退款 z售后关闭  
+						"delivey_status": "a",//配送状态:a待接单  b配送中  c已送达  
+						"create_time": "12:12:12",
+						"order_num": "324312412212312",
+						"user_name": "张三",
+						"user_mobile": "14544554455",
+						"user_address": "四川省成都市武侯区世纪城天府大道中段588号天天小区快鸟驿站",
+						"distance": "1.1km",
+						"remark": "无备注",
+						"pay_price": "12.33",
+						"preferential_price": "1.33",
+						"worker_mobile": "18488448844",
+						"goods_list": [{
+							"goods_name": "五粮液股份五粮春二代菁萃浓香型白酒",
+							"taste_name": "甜酒",
+							"cover_image": "https://img.picui.cn/free/2024/08/16/66bf135fa40a3.png",
+							"volume": "550",
+							"size_number": "12",
+							"number": "666666",
+							"ice_number": "666666"
+						}]
+					},
+					{
+						"id": "5",
+						"status": "e",//订单状态:a待付款(可取消)  b待抢单(可售后) c配送中(可售后,联系骑手) d已完成，待评价(可评价，售后)  e已评价/已售后  
+						"after_sale_status": "a",//售后状态:a未申请 b售后中  c换货  d退货退款 e退款 z售后关闭  
+						"delivey_status": "c",//配送状态:a待接单  b配送中  c已送达  
+						"create_time": "12:12:12",
+						"order_num": "324312412212312",
+						"user_name": "张三",
+						"user_mobile": "14544554455",
+						"user_address": "四川省成都市武侯区世纪城天府大道中段588号天天小区快鸟驿站",
+						"distance": "1.1km",
+						"remark": "无备注",
+						"pay_price": "12.33",
+						"preferential_price": "1.33",
+						"worker_mobile": "18488448844",
+						"goods_list": [{
+							"goods_name": "五粮液股份五粮春二代菁萃浓香型白酒",
+							"taste_name": "甜酒",
+							"cover_image": "https://img.picui.cn/free/2024/08/16/66bf135fa40a3.png",
+							"volume": "550",
+							"size_number": "12",
+							"number": "666666",
+							"ice_number": "666666"
+						}]
+					},
+					]
+
 				})
 			},
 			handleItem(id) {
 				this.chenkIndex = id
 			},
-			// 关闭
-			close() {
-				this.$refs.popup.close()
-			},
-			// 弹框
-			toggle(type) {
-				this.type = type
-				// open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
-				this.$refs.popup.open(type)
-			},
-			// 关闭
-			closeAfter() {
-				this.$refs.popupAfter.close()
-			},
-			// 弹框
-			toggleAfter(type) {
-				this.type = type
-				// open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
-				this.$refs.popupAfter.open(type)
-			},
-
-// 关闭
-			close() {
-				this.$refs.popup.close()
-			},
-			// 弹框
-			toggle(type) {
-				this.type = type
-				// open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
-				this.$refs.popup.open(type)
-			},		
-			handleUrl(url) {
-				console.log(url);
-				uni.navigateTo({
-					url: url + ''
-				})
-			}
+			
 		}
 	};
 </script>

@@ -13,6 +13,7 @@
 </template>
 
 <script>
+	import {getIndexGoodsTypeList} from '@/request/api.js'
 	export default {
 
 		data() {
@@ -23,8 +24,20 @@
 		onLoad() {
 
 		},
+		created(){
+			this._getIndexGoodsTypeList()
+		},
 		methods: {
-
+			_getIndexGoodsTypeList(){
+				getIndexGoodsTypeList({
+					post_params:{
+						store_id:'',//
+						show_position:'',//
+					}
+				}).then((res)=>{
+					console.log('获取门店商品一级分类列表',res);
+				})
+			}
 		}
 	}
 </script>

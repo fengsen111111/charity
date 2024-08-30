@@ -1,6 +1,9 @@
 {
   "usingComponents": {
     "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons",
+    "uni-popup": "/uni_modules/uni-popup/components/uni-popup/uni-popup",
+    "uni-easyinput": "/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput",
+    "uni-file-picker": "/uni_modules/uni-file-picker/components/uni-file-picker/uni-file-picker",
     "hearch": "/components/hearch/index",
     "shop-card": "/components/shopCard/index"
   }

@@ -10,14 +10,16 @@
 			<view class="flex items-center" v-for="item in [1,2,3,4,5,6,7]" :key="item">
 				<uni-icons type="checkbox-filled" v-if="item==checkIndex" color="#4867CF" size="20" class="uni-ml-2 uni-mr-2"></uni-icons>
 				<uni-icons @click="handleIndex(item)" type="circle" size="20" v-else class="uni-ml-2 uni-mr-2"></uni-icons>
-				<shopCardTwo>
-					<!-- 选规格 -->
-					<view class="">
-						<view class="bg486 text-whlie text12 px-2 rending1 py-1 space-x-2" @click="toggle('bottom')">
-							选规格
+				<view class=""  @click="handleDetails(item)">
+					<shopCardTwo>
+						<!-- 选规格 -->
+						<view class="">
+							<view class="bg486 text-whlie text12 px-2 rending1 py-1 space-x-2" @click.stop="toggle('bottom')">
+								选规格
+							</view>
 						</view>
-					</view>
-				</shopCardTwo>
+					</shopCardTwo>
+				</view>
 			</view>
 		</view>
 		<!--  -->
@@ -134,6 +136,7 @@
 <script>
 	import shopCardTwo from '@/components/shopCardTwo/index.vue'
 	import ruleItem from "@/components/ruleItem/index"
+	import {getGoodsTypeList,getGoodsList} from '@/request/api.js'
 	export default {
 		components: {
 			shopCardTwo,ruleItem
@@ -193,7 +196,44 @@
 		onLoad() {
 
 		},
+		created(){
+			this._getGoodsTypeList()
+		},
 		methods: {
+			// 详情
+			handleDetails(item){
+				uni.navigateTo({
+					url:'/pages/tabbar/home/components/shopDetails/index'
+				})
+			},
+			// 
+			_getGoodsTypeList(){
+				getGoodsTypeList({
+					post_params:{
+						store_id:''
+					}
+				}).then((res)=>{
+					console.log('所有商品分类',res);
+					// 
+					// this._getGoodsList(item)
+				})
+			},
+			_getGoodsList(){
+				getGoodsList({
+					post_params:{
+						store_id:'',
+						position:'',
+						goods_type_id:'',
+						key_word:'',
+						time_process:'',
+						order:'',
+						currentPage:'',
+						perPage:'',
+					}
+				}).then((res)=>{
+					console.log('门店商品列表',res);
+				})
+			},
 			handleIndex(index){
 				this.checkIndex = index
 			},

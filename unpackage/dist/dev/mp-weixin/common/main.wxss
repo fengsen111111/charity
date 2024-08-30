@@ -62,6 +62,9 @@ uni-button:after {
 .flex {
 	display: flex
 }
+.bg999{
+	background-color: #999999;
+}
 .borderFF8{
 	border:1rpx solid #FF8E34
 }
@@ -385,7 +388,7 @@ uni-button:after {
 	margin-top: 4.5rem;
 }
 .borderED1 {
-	border: 1aspx solid #ED1805;
+	border: 1rpx solid #ED1805;
 }
 .relative {
 	position: relative;

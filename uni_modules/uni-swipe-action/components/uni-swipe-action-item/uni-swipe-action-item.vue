@@ -235,7 +235,6 @@
 </script>
 <style lang="scss">
 	.uni-swipe {
-		margin-top: 10px
 		position: relative;
 		/* #ifndef APP-NVUE */
 		overflow: hidden;
@@ -243,6 +242,7 @@
 	}
 
 	.uni-swipe_box {
+		margin-top: 0.75rem;
 		/* #ifndef APP-NVUE */
 		display: flex;
 		flex-shrink: 0;

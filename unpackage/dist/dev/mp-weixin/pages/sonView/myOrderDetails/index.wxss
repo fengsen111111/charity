@@ -1,11 +1,11 @@
 
-.pendingView{
+.pendingView {
 	position: fixed;
 	bottom: 0px;
 	width: 100%;
 	background-color: #fff;
 }
-.threeViewW{
+.threeViewW {
 	width: 5.5rem;
 }
 

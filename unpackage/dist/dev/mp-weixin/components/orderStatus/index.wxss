@@ -1,0 +1,20 @@
+
+.heighe1 {
+	height: 1rpx;
+}
+.check_a {
+	color: #ED1805;
+	border: 1rpx solid #ED1805;
+}
+.check_c {
+	color: #68BF7B;
+	border: 1rpx solid #68BF7B;
+}
+.check_e {
+	color: #4867CF;
+	border: 1rpx solid #4867CF;
+}
+.w300rpx {
+	width: 300rpx
+}
+
