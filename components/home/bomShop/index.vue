@@ -9,12 +9,12 @@
 				<view class="fontBold text12 ling125 ">
 					泸州老窖六年窖头曲特惠浓香白酒52度精品装...
 				</view>
-				<text class="colFA3 px-1 text10 rending1 tagShopItem">200ml/瓶</text>
-				<view class="flex justify-between">
+				<text class="colFA3 px-1 text10 tagShopItem">200ml/瓶</text>
+				<view class="flex justify-between mt-1">
 					<view class="">
-						<view class="flex px-1 items-center">
-							<view class="colED1 text14 fontBold space-x-1">
-								1888.8
+						<view class="flex items-center">
+							<view class="colED1 text14 fontBold">
+								￥1888.8
 							</view>
 							<view class="col999 text10 space-x-2 textDel">
 								￥8888
@@ -256,6 +256,7 @@
 
 	.tagShopItem {
 		border: 1px solid #ED1805;
+		border-radius: 4rpx;
 	}
 
 	.gridRow {

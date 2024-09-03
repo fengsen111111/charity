@@ -45,6 +45,7 @@
 }
 .tagShopItem {
 	border: 1px solid #ED1805;
+	border-radius: 4rpx;
 }
 .gridRow {
 	grid-column-gap: 0.5rem;
