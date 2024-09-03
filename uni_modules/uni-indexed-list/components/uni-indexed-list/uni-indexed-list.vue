@@ -150,7 +150,7 @@
 					let indexBefore = index
 					let items = value.children.map(item => {
 						let obj = {}
-						obj['key'] = value.label
+						obj['key'] = value.id
 						obj['name'] = item.label
 						obj['itemIndex'] = index
 						index++

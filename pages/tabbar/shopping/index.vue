@@ -15,7 +15,7 @@
 						<view class="flex text12 items-center">
 							<view class="w-6">总计</view>
 							<view class="colED1 fontBold space-x-1">￥<text class="text20 ">888</text>.8</view>
-							<view class="space-x-3" @click="_delCarGoods(item)">
+							<view class="space-x-3" @click="handleDel(item)">
 								<uni-icons type="trash" size="22" color="#FC6265" class="space-x-3"></uni-icons>
 							</view>
 							<view class="w-8"></view>
@@ -65,10 +65,13 @@
 	import shopCard from '@/components/shopCard/index.vue'
 	import tarBar from '@/components/tarBar/index.vue'
 	import {
-		getCarList,//list
-		delCarGoods,//删除
-		editCarGoods,//修i该
-		computeOrderPrice//计费
+		debounce
+	} from '@/utils/index.js' //节流
+	import {
+		getCarList, //list
+		delCarGoods, //删除
+		editCarGoods, //修i该
+		computeOrderPrice //计费
 	} from '@/request/api.js'
 	export default {
 		components: {
@@ -112,32 +115,39 @@
 
 		},
 		methods: {
-			handleCmput(item){
-				console.log('计算加个',item);
+			handleCmput(item) {
+				console.log('计算加个', item);
 				computeOrderPrice({
-					post_params:{
-						coupon_id:'', //优惠券ID  
-						goods:{
-							goods_size_id:'', //商品规格ID  
-							number:'',//	购买数量  
+					post_params: {
+						coupon_id: '', //优惠券ID  
+						goods: {
+							goods_size_id: '', //商品规格ID  
+							number: '', //	购买数量  
 						}
 					}
-				}).then((res)=>{
-					console.log('计算金额',res);
+				}).then((res) => {
+					console.log('计算金额', res);
 				})
 			},
-			// 修改数量
-			handleNumber(number,item){
-				console.log('number',number,item);
+			// 修改数量 防抖
+			handleNumber: debounce(function(number, item) {
+				this._editCarGoods(number, item)
+			}, 500),
+			_editCarGoods(number, item) {
+				console.log('number', number, item);
 				editCarGoods({
-					post_params:{
-						car_id:'',//购物车ID  
-						number:'',//修改后的数量  
+					post_params: {
+						car_id: '', //购物车ID  
+						number: '', //修改后的数量  
 					}
-				}).then((res)=>{
-					console.log('修改成功',res);
+				}).then((res) => {
+					console.log('修改成功', res);
 				})
 			},
+			// 修改数量 防抖
+			handleDel: debounce(function(item) {
+				this._delCarGoods(item)
+			}, 500),
 			// 删除
 			_delCarGoods(item) {
 				console.log('删除', item);
@@ -161,7 +171,7 @@
 			},
 			handlePay() {
 				uni.navigateTo({
-					url:'/pages/sonView/okOrder/index'
+					url: '/pages/sonView/okOrder/index'
 				})
 				// uni.requestPayment({
 				// 	provider: 'wxpay', // 服务提提供商

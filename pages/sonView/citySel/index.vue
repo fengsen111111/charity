@@ -65,7 +65,8 @@
 <script>
 	import { 
 		getAreas,//行政区
-		getHotCity//热门城市
+		getHotCity,//热门城市
+		getFindStore//获取门店信息
 	} from '@/request/api.js'
 	// import {provice} from './index.js'
 	import {provice} from './index_new.js'
@@ -74,7 +75,7 @@
 			//获取手机状态栏高度
 			this.statusBarHeight = uni.getSystemInfoSync()['statusBarHeight'];
 			// this._getAreas(),//行政区
-		    // this._getHotCity()//热门城市
+		    this._getHotCity()//热门城市
 			console.log('provice',provice);
 			uni.showLoading({
 				title: "加载中"
@@ -101,6 +102,16 @@
 			console.log('加载结束')
 		},
 		methods: {
+			_getFindStore(){
+				getFindStore({
+					post_params:{
+						location:'',  //经纬度
+						adcode:''  //行政区
+					}
+				}).then((res)=>{
+					conslole.log('门店信息',res)
+				})
+			},
 			handleIss(iss){
 				console.log('点击项',iss)
 			},

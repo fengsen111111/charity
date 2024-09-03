@@ -353,6 +353,7 @@
 			},
 			// 上传 ---------------------------------------------------------------
 			async handleSelect(res) {
+			    console.log('上传图片',res.tempFilePaths,this.filePathsList);
 				await this.uploadImg(res.tempFilePaths, 1);
 			},
 			async uploadImg(tempFilePaths, token) {

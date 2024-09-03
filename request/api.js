@@ -37,6 +37,7 @@ const api = {
 	GOODS_TYPE_LIST: base_url + '/beverage/GoodsType/getIndexGoodsTypeList', // 获取门店商品一级分类列表
 	GET_GOODS_TYPE_LIST: base_url + '/beverage/GoodsType/getGoodsTypeList', // 获取门店所有商品分类列表
 	GOODS_LIST: base_url + '/beverage/Goods/getGoodsList', // 获取门店商品列表：规格相关字段暂未提供
+	GOODS_DETAILS: base_url + '/beverage/Goods/getGoodsDetail', //获取商品详情
 	
 	// 用户
 	LOGIN_AND_REGISTER: base_url + '/beverage/User/loginAndRegister', // 登陆与注册
@@ -222,6 +223,10 @@ export const getGoodsTypeList = (params) => {
 // 获取门店商品列表
 export const getGoodsList = (params) => {
 	return post(api.GOODS_LIST, params)
+}
+// 获取商品详情
+export const getGoodsDetail = (params) => {
+	return post(api.GOODS_DETAILS, params)
 }
 
 // 商品 end --------------------------------------------

@@ -70,6 +70,7 @@
 					sizeType: ['compressed'], // 压缩后的图片
 					sourceType: ['album', 'camera'], // 从相册或相机获取
 					success: (res) => {
+						console.log('res',res);
 						const tempFilePath = res.tempFilePaths[0];
 						this.uploadAvatar(tempFilePath);
 					}

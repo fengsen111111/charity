@@ -1,7 +1,7 @@
 <template>
 	<view class="">
 		<view class="grid grid-cols-2">
-			<image src="https://img.picui.cn/free/2024/08/28/66ce75dba97d1.png" mode="" class="w-full h-full"></image>
+			<image src="https://pic.imge.cc/2024/09/02/66d5700ed5bcd.png" mode="" class="w-full h-full"></image>
 			<view class="">
 				<!-- 一分秒杀 -->
 				<view class="card p-2 h7">
@@ -11,7 +11,7 @@
 					</view>
 					<view class="flex justify-between">
 						<view v-for="item in [1,2]" :key="item">
-							<image @click="handDetailds" src="https://img.picui.cn/free/2024/08/16/66bf135fa40a3.png" mode="" class="mt-1 h4 w4"></image>
+							<image @click="handDetailds" src="https://pic.imge.cc/2024/09/02/66d57005de359.png" mode="" class="mt-1 h4 w4"></image>
 							<view class="relativeTop">
 								<text class="tagBg px-1">
 									0.01
@@ -43,7 +43,7 @@
 					</view>
 					<view class="flex justify-between">
 						<view v-for="item in [1,2]" :key="item">
-							<image @click="handDetailds" src="https://img.picui.cn/free/2024/08/16/66bf135fa40a3.png" mode="" class="mt-1 h4 w4"></image>
+							<image @click="handDetailds" src="https://pic.imge.cc/2024/09/02/66d57005de359.png" mode="" class="mt-1 h4 w4"></image>
 							<view class="relativeTop">
 								<text class="tagBg px-1">
 									0.01

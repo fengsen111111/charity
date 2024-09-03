@@ -29,6 +29,7 @@
 				</text>
 			</view>
 		</view>
+		
 		<!-- 触发 -->
 		<view class="" v-else>
 			<view class=" grid grid-cols-3 text-center bg-whilt text14 py-2">

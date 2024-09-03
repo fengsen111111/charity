@@ -34,7 +34,6 @@
 <script>
 	export default {
 		components: {},
-		props: {},
 		data() {
 			return {
 				checkItem: 1,

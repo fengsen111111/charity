@@ -10,9 +10,15 @@
 						<view class="statusBar" :style="{ paddingTop: statusBarHeight + 'px' }"></view>
 						<view class=" col999 flex items-center px-3" style="margin-top: 10rpx;">
 							<uni-icons type="left" size="30" color="#D7D9EC" @click="handleLeft"></uni-icons>
-							<uni-search-bar clearButton="none" class="h-8 space-x-3 uni-search-bar" radius="100" placeholder="输入搜索内容"
+							<view @click="handleSearch()" class="classifySearch">
+							<!-- 	<uni-search-bar readonly="true" clearButton="none" class="h-8 space-x-3 uni-search-bar" radius="100" placeholder="输入搜索内容"
 								cancelButton="none" @confirm="search" />
-							</uni-section>
+				     			</uni-section> -->
+								<view style="margin-top: 4rpx;">
+									<uni-icons type="search" size="19" color="#D7D9EC"></uni-icons>
+								</view>
+								<view class="">输入搜索内容</view>
+							</view>
 						</view>
 					</view>
 				</view>
@@ -42,6 +48,12 @@
 
 		},
 		methods: {
+			handleSearch(){
+				console.log('跳转搜索')
+				uni.navigateTo({
+					url:'/pages/tabbar/home/components/search/index'
+				})
+			},
 			handleLeft() {
 				uni.navigateBack()
 			}
@@ -50,12 +62,24 @@
 </script>
 
 <style>
+	.classifySearch{
+		display: flex;
+		font-size: 26rpx;
+		height: 2rem;
+		width: 300rpx;
+		background-color: white;
+		border-radius: 60rpx;
+		margin-left: 0.75rem;
+		align-items: center;
+		line-height: 2rem;
+		padding: 0px 20rpx;
+	}
 	.navBarBox {}
 	
 	.navBarBox .statusBar {}
 	
 	.navBarBox .navBar {
-		padding-bottom: 8rpx;
+		padding-bottom: 20rpx;
 		flex-direction: row;
 		justify-content: center;
 		align-items: center;
