@@ -38,6 +38,10 @@ button::after {
 	border-bottom-right-radius: 10px;
 	border-bottom-left-radius: 10px;
 }
+.py6rpx{
+	padding-top: 6rpx;
+	padding-bottom: 6rpx;
+}
 uni-button:after {
 	content: " ";
 	width: 200%;

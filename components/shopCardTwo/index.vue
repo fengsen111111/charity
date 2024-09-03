@@ -7,13 +7,13 @@
 					<view class="fontBold text12 ling4">
 						泸州老窖 六年窖头曲 浓香白酒 52度精品装 500ml...
 					</view>
-					<view class="flex mt-2 ling4 rending1 hidden">
-						<text class="tagCol text-whlie px-2 text10">
-							领取优惠券
-						</text>
-						<text class="tagBor colED1 px-2 text10 rightRadius8">
+					<view class="flex mt-2 rending1 hidden">
+						<view class="tagCol py6rpx text-whlie px-2 text10">
+							<view style="margin-top: 1rpx;">领取优惠券</view>
+						</view>
+						<view class="tagBor py6rpx colED1 px-2 text10 rightRadius8">
 							6.2折
-						</text>
+						</view>
 					</view>
 					<!--  -->
 					<view class="flex mt-2 ling4 items-center">

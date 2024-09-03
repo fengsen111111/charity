@@ -1,7 +1,7 @@
 <template>
 	<view class="">
 		<viewTop :title="'新人专享'">
-			<view class="bgNew "></view>
+			<view class="bgNew " style="background-image: url('../../../static/home/bgNew.png');"></view>
 		</viewTop>
 		<!--  -->
 		<view class="bgBottom">
@@ -119,10 +119,9 @@
 		margin-top: 100rpx;
 	}
 	.bgNew{
-		background-image: url('https://imgos.cn/2024/08/12/66b9d7aace430.png');
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
-		height: 10rem;
+		height: 18rem;
 		margin-top: 1.5rem;
 	}
 		

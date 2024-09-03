@@ -33,10 +33,10 @@
 						</view>
 					</view>
 					<view class="flex mt-2">
-						<view class="bgED1 py-1 ling1 w-6 px-2  text10 text-whlie text-center">
+						<view class="bgED1 borLeft py-1 w-6 px-2  text10 text-whlie text-center">
 							{{(detailsList.show_price/detailsList.show_old_price).toFixed(2)*100}}折
 						</view>
-						<view class="colED1 text11 ling1 borTag pt-1 px-2">
+						<view class="colED1 text11 borTag px-2">
 							均价：{{detailsList.average_price}}元/瓶
 						</view>
 					</view>
@@ -284,13 +284,13 @@
 							<view class="fontBold text12 ling4">
 								{{detailsList.name}}
 							</view>
-							<view class="flex mt-2 ling4 rending1 hidden">
-								<text class="tagCol text-whlie px-2 text10">
-									领取优惠券
-								</text>
-								<text class="tagBor colED1 px-2 text10 rightRadius8">
+							<view class="flex mt-2  rending1 hidden">
+								<view class="tagCol py6rpx text-whlie px-2 text10">
+									<view style="margin-top: 1rpx;">领取优惠券</view>
+								</view>
+								<view class="tagBor py6rpx colED1 px-2 text10 rightRadius8">
 									6.2折
-								</text>
+								</view>
 							</view>
 							<!--  -->
 							<view class="flex mt-2 ling4 items-center">
@@ -742,13 +742,17 @@
 		background-image: url('@/static/home/shopDetailIcon.png');
 		background-size: 100% 100%;
 		width: 3.5rem;
-		padding-top: 109rpx
+		padding-top: 108rpx
 	}
 
 	.borTag {
 		border: 1px solid #ED1805;
+		padding-top: 1rpx;
+		border-radius: 0rpx 8rpx 8rpx 0rpx;
 	}
-
+	.borLeft{
+		border-radius: 8rpx 0rpx 0rpx 8rpx;
+	}
 	.viewLeft {
 		width: 4.5rem;
 		padding: 0.5rem;
