@@ -258,7 +258,7 @@ export const getHotKeyWords = (params) => {
 	return post(api.HOTKEY_WORDS, params)
 }
 //根据定位/选择的区县获取门店信息
-export const getFindStore = (params) => {
+export const findStore = (params) => {
 	return post(api.STORE_FIND_STORE, params)
 }
 

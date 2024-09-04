@@ -65,7 +65,11 @@
 	import active from '@/components/home/active/index.vue'
 	import tarBar from '@/components/tarBar/index.vue'
 	
-	import {getBannerList} from '@/request/api.js'
+	import {
+		getBannerList,//轮播图
+		findStore,//门店信息
+		
+	} from '@/request/api.js'
 	export default {
 		created(){
 			// 获取基本config配置
@@ -100,8 +104,20 @@
 				swiperDotIndex: 0,
 			};
 		},
-		onLoad() {},
+		onLoad(options) {
+			console.log('携带的门店信息',options);
+		},
 		methods: {
+			_findStore(){
+				findStore({
+					post_params:{
+						location:'',//二选一
+						adcode:'',//二选一
+					}
+				}).then((res)=>{
+					console.log('门店信息',res.data.data);
+				})
+			},
 			_getBannerList(){
 				console.log('获取轮播图');
 				getBannerList({

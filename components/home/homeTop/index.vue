@@ -35,11 +35,13 @@
 				<view class="">标签测试</view>
 			</view>
 		</view>
+
 	</view>
 
 </template>
 
 <script>
+	import {getAreasByLocation} from '@/request/api.js'
 	export default {
 		data() {
 			return {
@@ -48,9 +50,12 @@
 				statusBarHeight: 0,
 				// 导航栏高度
 				navBarHeight: 82 + 11,
+				
+				
 			};
 		},
 		methods: {
+			
 			handleSearch() {
 				console.log('跳转');
 				uni.navigateTo({
@@ -75,30 +80,13 @@
 						that.latitude = res.latitude; //32.05024;
 						console.log("获取当前的用户经度", that.longitude);
 						console.log("获取当前的用户纬度", that.latitude);
-						var long = 0;
-						var lat = 0;
-						//小数点保留六位  经度
-						if (that.longitude.toString().indexOf('.') > 0) {
-							const longlatsplit = that.longitude.toString().split('.');
-							if (longlatsplit.length >= 2) {
-								long = parseFloat(longlatsplit[0] === "" ? 0 : longlatsplit[0]) + parseFloat("." + longlatsplit[1].slice(0,6));
+						getAreasByLocation({
+							post_params:{
+								location: that.longitude+','+that.latitude
 							}
-						}
-						if (that.latitude.toString().indexOf('.') > 0) {
-							const longlatsplit1 = that.latitude.toString().split('.');
-							if (longlatsplit1.length >= 2) {
-								lat = parseFloat(longlatsplit1[0] === "" ? 0 : longlatsplit1[0]) + parseFloat("." + longlatsplit1[1].slice(0,6));
-							}
-						}
-						console.log("纬度", lat);
-						that.markers = [{
-							id: "",
-							latitude: res.latitude,
-							longitude: res.longitude,
-							iconPath: "../../static/img/phone.png",
-							width: that.markerHeight, //宽
-							height: that.markerHeight, //高
-						}, ];
+						}).then((res)=>{
+							console.log('坐标',res);		
+						})
 					},
 				});
 			},

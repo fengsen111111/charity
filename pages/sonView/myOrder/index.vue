@@ -5,8 +5,8 @@
 			<view class="flex justify-between">
 				<view @click="handleItem(item.id)" class="text-center" :class="chenkIndex==item.id?'col486':''"
 					v-for="item in tabsList" :key="item.id">
-					{{item.text}}
-					<view v-if="chenkIndex==item.id" class="border486 bg486 w-4 mxAuto rending1"></view>
+					<view class="mb-1">{{item.text}}</view>
+					<view v-if="chenkIndex==item.id" class="border486 bg486 w-6 mxAuto rending1"></view>
 				</view>
 			</view>
 			<!-- card -->

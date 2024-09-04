@@ -5,7 +5,7 @@
 				<uni-collapse-item :show-animation="false" :title="list.title">
 					<view class="content">
 						<view class="mt-1 grid grid-cols-4 ">
-							<view @click="onClick(idx, index)" v-for="(iss,index) in list.items" :key="iss.itemIndex" class="bgF9 mb-3 w80 mxAuto text14 p-1 text-center">{{iss.name}}</view>
+							<view @click="onClick(idx, index)" v-for="(iss,index) in list.items" :key="iss.itemIndex" style="height: fit-content" class="bgF9 mb-3 w80 mxAuto text14 p-1 text-center">{{iss.name}}</view>
 						</view>
 					</view>
 				</uni-collapse-item>

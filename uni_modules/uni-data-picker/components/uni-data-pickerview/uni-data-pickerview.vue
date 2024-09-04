@@ -285,6 +285,7 @@
     /* #endif */
     flex-direction: row;
     justify-content: space-between;
+	background-color: #fff;
   }
 
   .is-disabled {
