@@ -81,12 +81,13 @@
 				uni.hideLoading()
 			}, 1000)
 		},
+
 		data() {
 			return {
 				cityName: {
 					name: '成都'
 				},
-				cityItem:{},
+				cityItem: {},
 				searchVal: '',
 				// 状态栏高度
 				statusBarHeight: 0,
@@ -110,34 +111,39 @@
 						value: "3"
 					}
 				]
-
 			};
 		},
-		watch:{
-			cityName(newVal, oldVal) {
-				console.log('cityName改变了',newVal,oldVal);
-				// 获取店铺列表
-				// this.$refs.picker.show() //打开店铺选择
-				this._findStore('',newVal.key)
+		watch: {
+			searchVal(newVal, oldVal) {
+				console.log('searchVal改变了', newVal, oldVal);
+				this.list = provice.filter(p => {
+					return p.label.indexOf(this.searchVal) != -1
+				})
+				console.log('cityNamethis.list',this.list);
 			}
 		},
+		// watch:{
+		// 	cityName(newVal, oldVal) {
+		// 		console.log('cityName改变了',newVal,oldVal);
+		// 		// 获取店铺列表
+		// 		// this.$refs.picker.show() //打开店铺选择
+		// 		this._findStore('',newVal.key)
+		// 	}
+		// },
 		onLoad(options) {
-			console.log('加载结束',options)
-			if(this.$store.state.address){
+			console.log('加载结束', options)
+			if (this.$store.state.address) {
 				console.log('已授权');
-			}else{
-				this.handleCity(options)//获取定位
+			} else {
+				this.handleCity(options) //获取定位
 			}
-		},
-		onReady() {
-			//   wx请求获取位置权限
 		},
 		methods: {
 			onchange(e) {
 				const value = e.detail.value
-				console.log('选择店铺',value)
-				this.$store.commit('addressStatus')//已选择
-				this.$store.commit('shopInfoSet',value)//存入店铺信息
+				console.log('选择店铺', value)
+				this.$store.commit('addressStatus') //已选择
+				this.$store.commit('shopInfoSet', value) //存入店铺信息
 			},
 			onnodeclick(node) {},
 			handleCity(options) {
@@ -150,19 +156,19 @@
 						that.latitude = res.latitude; //32.05024;
 						console.log("获取当前的用户经度", that.longitude);
 						console.log("获取当前的用户纬度", that.latitude);
-						that.$refs.picker.show() //打开店铺选择
+						// that.$refs.picker.show() //打开店铺选择
 						getAreasByLocation({
 							post_params: {
 								location: options.longitude + ',' + options.latitude
 							}
 						}).then((res) => {
 							console.log('坐标', res);
-							
+
 						})
 					},
 				});
 			},
-			_findStore(location,adcode) {
+			_findStore(location, adcode) {
 				findStore({
 					post_params: {
 						location: location, //经纬度
@@ -170,7 +176,7 @@
 					}
 				}).then((res) => {
 					console.log('门店信息', res)
-					this.$refs.picker.show() //打开店铺选择
+					// this.$refs.picker.show() //打开店铺选择
 				})
 			},
 			handleIss(iss) {
@@ -198,7 +204,6 @@
 				}).then((res) => {
 					this.dataList = res.data.data.areas
 					console.log('res所有城市', this.dataList);
-
 				})
 			},
 			// 热门城市
@@ -244,7 +249,6 @@
 	}
 
 	.item {
-		/* opacity: 0.1; */
 		background-color: #81B1EE;
 		border-radius: 1rem;
 		padding: 0px 0.25rem;

@@ -24,7 +24,6 @@
 	background-color: #D7D9EC;
 }
 .item {
-	/* opacity: 0.1; */
 	background-color: #81B1EE;
 	border-radius: 1rem;
 	padding: 0px 0.25rem;

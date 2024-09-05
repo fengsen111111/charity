@@ -11,8 +11,11 @@ const store = new Vuex.Store({
 		userInfo:{},//用户数据
 		config:{},//config数据
 		token: '',//token
-		address: false,//店铺地址
-		shopInfo:{},//门店信息
+		address: true,//店铺地址
+		shopInfo:{
+			text: "某某某某店铺",
+			value: "3"
+		},//门店信息
 		
 	},
     mutations: {

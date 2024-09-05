@@ -82,7 +82,7 @@
 							console.log('已授权');
 						}else{
 							uni.navigateTo({
-								url: '/pages/sonView/citySel/index?longitude='+that.longitude+'&latitude='+that.latitude
+								url: '/pages/sonView/citySel/index?longitude='+that.longitude+'&longitude'+that.latitude
 							})
 						}
 						getAreasByLocation({
