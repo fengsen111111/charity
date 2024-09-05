@@ -42,6 +42,7 @@
 		getNewUserCouponList,//新人优惠卷列表
 		getReceiveNewUserCoupon,//一件领取
 		getReceiveCoupon, //单个领取
+		getGoodsList,
 		} from '@/request/api.js'
 	export default {
 		data() {
@@ -73,17 +74,10 @@
 			};
 		},
 		created(){
-			// 获取列表
-			getNewUserCouponList({
-				post_params:{
-					adcode:'',//行政区
-					currentPage: '',
-					perPage:'',
-					user_id:''
-				}
-			}).then((res)=>{
-				console.log(res)
-			})
+			// 获取优惠卷列表
+			this._getNewUserCouponList()
+			// 专享商品
+			
 		},
 		components:{viewTop,volumeTag,bomShop},
 		onLoad() {},
@@ -93,6 +87,36 @@
 		onHide() {
 		},
 		methods: {
+			// 
+			_getGoodsList(){
+				getGoodsList({
+					post_params: {
+							store_id: "",
+							position: "",
+							goods_type_id: "",
+							key_word: "",
+							time_process: "",
+							order: null,
+							currentPage: null,
+							perPage: null
+						}
+				}).then((res)=>{
+					console.log('商品列表',res);
+				})
+			},
+			// 
+			_getNewUserCouponList(){
+				getNewUserCouponList({
+					post_params:{
+						adcode:'',//行政区
+						currentPage: '',
+						perPage:'',
+						user_id:''
+					}
+				}).then((res)=>{
+					console.log(res)
+				})
+			},
 			_getReceiveNewUserCoupon(){
 				console.log('一键领取');
 				getReceiveNewUserCoupon().then((res)=>{

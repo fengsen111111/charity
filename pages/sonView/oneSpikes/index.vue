@@ -26,6 +26,7 @@
 <script>
 	import viewTop from "@/pages/sonView/volume/components/viewTop/index.vue"
 	import shopCardTwo from '@/components/shopCardTwo/index.vue'
+	import {getGoodsList} from '@/request/api.js'
 	export default {
 		data() {
 			return {
@@ -33,13 +34,31 @@
 			};
 		},
 		components:{viewTop,shopCardTwo},
-		onLoad() {},
+		onLoad() {
+			this._getGoodsList() //商品列表 一分秒杀
+		},
 		onShow() {
 			
 		},
 		onHide() {
 		},
 		methods: {
+			_getGoodsList(){
+				getGoodsList({
+					post_params: {
+							store_id: "",
+							position: "price",
+							goods_type_id: "",
+							key_word: "",
+							time_process: "",
+							order: null,
+							currentPage: null,
+							perPage: null
+						}
+				}).then((res)=>{
+					console.log('商品列表',res);
+				})
+			},
 		}
 	};
 </script>

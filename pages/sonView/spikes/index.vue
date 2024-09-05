@@ -70,6 +70,10 @@
 <script>
 	import viewTop from "@/pages/sonView/volume/components/viewTop/index.vue"
 	import shopCardTwo from '@/components/shopCardTwo/index.vue'
+	import {getGoodsList} from '@/request/api.js'
+	import {
+		debounce
+	} from '@/utils/index.js' //节流
 	export default {
 		data() {
 			return {
@@ -78,7 +82,9 @@
 				itemCheck:1
 			};
 		},
-		onLoad() {},
+		onLoad() {
+			this._getGoodsList() //限时秒杀
+		},
 		components:{viewTop,shopCardTwo},
 		onShow() {
 			
@@ -86,15 +92,33 @@
 		onHide() {
 		},
 		methods: {
+			_getGoodsList(){
+				getGoodsList({
+					post_params: {
+							store_id: "",
+							position: "time",
+							goods_type_id: "",
+							key_word: "",
+							time_process: this.indexCheck==1?'a':'b',//限时秒杀进度  a进行中  b即将开始  
+							order: null,
+							currentPage: null,
+							perPage: null
+						}
+				}).then((res)=>{
+					console.log('商品列表',res);
+				})
+			},
 			timeup(){
 				
 			},
 			handleItemCheck(index){
 				this.itemCheck = index
 			},
-			handleCheck(index){
+			// 节流切换加载
+			handleCheck:debounce(function(index){
 				this.indexCheck = index
-			}
+				this._getGoodsList()
+			},500)
 		}
 	};
 </script>

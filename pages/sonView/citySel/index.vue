@@ -119,7 +119,6 @@
 				this.list = provice.filter(p => {
 					return p.label.indexOf(this.searchVal) != -1
 				})
-				console.log('cityNamethis.list',this.list);
 			}
 		},
 		// watch:{

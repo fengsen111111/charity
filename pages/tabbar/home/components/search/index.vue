@@ -8,7 +8,7 @@
 				<view class="bg486">
 					<view class="statusBar" :style="{ paddingTop: statusBarHeight + 'px' }"></view>
 					<view class="col999 flex items-center px-3" style="margin-top: 10rpx;">
-						<uni-icons type="left" size="30" color="#fff" @click="handleLeft"></uni-icons>
+						<uni-icons type="left" size="30" color="#fff" @click="handleLeft()"></uni-icons>
 						<uni-search-bar v-model="searchVal" clearButton="none" class="space-x-3" radius="100"
 							placeholder="输入搜索内容" cancelButton="none" @confirm="search" />
 						</uni-section>
@@ -37,10 +37,10 @@
 					默认
 				</view>
 				<view :class="searchIndex==2?'text-black':'col999'" @click="handleUpDown(2)">
-					价格优先
+					销量优先
 				</view>
 				<view :class="searchIndex==3?'text-black':'col999'" @click="handleUpDown(3)">
-					销量优先
+					价格优先
 				</view>
 			</view>
 			<view class="px-3" v-if="showShop">
@@ -53,7 +53,7 @@
 
 <script>
 	import bomShop from '@/components/home/bomShop/index.vue'
-	import {getHotKeyWords} from '@/request/api.js'
+	import {getHotKeyWords,getGoodsList} from '@/request/api.js'
 	export default {
 		components: {
 			bomShop
@@ -106,11 +106,29 @@
 			_getHotKeyWords(){
 				getHotKeyWords().then((res)=>{
 					console.log('热门词',res);
+					this._getGoodsList()
+				})
+			},
+			_getGoodsList(){
+				getGoodsList({
+					post_params:{
+						store_id:'',
+						position:'search',
+						goods_type_id:'',
+						key_word: this.searchVal,//关键词
+						time_process:'',//限时秒杀进度  a进行中  b即将开始  
+						order:this.searchIndex==1?'':this.searchIndex==2?'a':'b',//position为search时必传 a销量从高到低 b价格从低到高  
+						currentPage:'',
+						perPage:'',
+					}
+				}).then((res)=>{
+					console.log('搜索结果',res);
 				})
 			},
 			// 
 			handleUpDown(index){
 				this.searchIndex = index
+				this._getGoodsList()
 				// 
 				uni.showLoading({
 					title: "加载中"
@@ -126,12 +144,14 @@
 					title: '搜索：' + res.value,
 					icon: 'none'
 				})
+				
 			},
 			handleItem(item) {
 				console.log(item)
 				this.searchVal = item.text
 			},
 			handleLeft() {
+				console.log('返回上一页')
 				uni.navigateBack()
 			}
 		}

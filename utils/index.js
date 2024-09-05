@@ -36,12 +36,16 @@ export function rsaDecode(data) {
 }
 // 防抖
 export const debounce = (fn, delay) => {
+	uni.showLoading({
+		title: "加载中"
+	})
 	var time = null
 	return function() {
 		let context = this;//记录一下this指向
 		let args = arguments;
 		//清除定时任务
 		if (time) clearTimeout(time);
+		uni.hideLoading()
 		time = setTimeout(function() {
 			time = null;
 			fn.apply(context, args)
