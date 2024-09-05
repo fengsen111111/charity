@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+    "uni-countdown": "/uni_modules/uni-countdown/components/uni-countdown/uni-countdown",
     "view-top": "/pages/sonView/volume/components/viewTop/index",
     "shop-card-two": "/components/shopCardTwo/index"
   }

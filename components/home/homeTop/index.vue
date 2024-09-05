@@ -51,11 +51,9 @@
 				// 导航栏高度
 				navBarHeight: 82 + 11,
 				
-				
 			};
 		},
 		methods: {
-			
 			handleSearch() {
 				console.log('跳转');
 				uni.navigateTo({
@@ -80,6 +78,13 @@
 						that.latitude = res.latitude; //32.05024;
 						console.log("获取当前的用户经度", that.longitude);
 						console.log("获取当前的用户纬度", that.latitude);
+						if(that.$store.state.address){
+							console.log('已授权');
+						}else{
+							uni.navigateTo({
+								url: '/pages/sonView/citySel/index?longitude='+that.longitude+'&latitude='+that.latitude
+							})
+						}
 						getAreasByLocation({
 							post_params:{
 								location: that.longitude+','+that.latitude
@@ -114,7 +119,7 @@
 			},
 			rejectGetLocation() {
 				uni.showToast({
-					title: "你拒绝了授权，无法获得周边信息",
+					title: "你拒绝了授权，无法就近匹配门店",
 					icon: "none",
 					duration: 2000,
 				});
@@ -138,6 +143,7 @@
 		created() {
 			//获取手机状态栏高度
 			this.statusBarHeight = uni.getSystemInfoSync()['statusBarHeight'];
+			
 		},
 		onReady() {
 			//   wx请求获取位置权限

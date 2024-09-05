@@ -10,8 +10,8 @@
 						<view class="h-4"></view>
 					</view>
 					<view class="flex items-center pt-2" v-else>
-						<image src="@/static/my/user.png" mode="" class="imageItem mt-3 space-x-2"></image>
-						<view class="col486 space-x-2 mt-2" @click="handleUpload">
+						<image src="@/static/my/user.png" mode="" class="imageItem  space-x-2"></image>
+						<view class="col486 space-x-2 " @click="handleUpload">
 							替换
 						</view>
 
@@ -20,7 +20,7 @@
 			</view>
 			<view class="h10"></view>
 			<view class="h10"></view>
-			<view class="bg486 text-whlie w-full py-3 rending2 text-center text16">
+			<view class="bg486 text-whlie w-full py-3 rending2 text-center text16" @click="_getUpdateUserInfo()">
 				保存
 			</view>
 		</view>
@@ -62,43 +62,29 @@
 						nickname:'',//昵称  
 						head_image:'',//头像图片的url  
 					}
+				}).then((res)=>{
+					console.log(res);
 				})
 			},
 			handleUpload() {
 				uni.chooseImage({
-					count: 1, // 只允许上传一张图片
-					sizeType: ['compressed'], // 压缩后的图片
-					sourceType: ['album', 'camera'], // 从相册或相机获取
-					success: (res) => {
-						console.log('res',res);
-						const tempFilePath = res.tempFilePaths[0];
-						this.uploadAvatar(tempFilePath);
+					success: (chooseImageRes) => {
+						const tempFilePaths = chooseImageRes.tempFilePaths;
+						uni.uploadFile({
+							url: 'https://beverage.api.sczhiyun.net/factory_storage/File/uploadFile', //
+							filePath: tempFilePaths[0],
+							name: 'file',
+							formData: {
+								'user': 'test'
+							},
+							success: (uploadFileRes) => {
+								console.log('数据',uploadFileRes.data);
+							}
+						});
 					}
 				});
 			},
-			// 2
-			uploadAvatar(tempFilePath) {
-				// uni.uploadFile({
-				// 	url: 'https://yourserver.com/upload', // 服务器接口地址
-				// 	filePath: tempFilePath,
-				// 	name: 'file', // 后端接收文件的字段名
-				// 	formData: {
-				// 		'user': 'test' // 其他附加数据，可以根据需要添加
-				// 	},
-				// 	success: (uploadFileRes) => {
-				// 		console.log('上传成功', uploadFileRes);
-				// 		const data = JSON.parse(uploadFileRes.data);
-				// 		if (data.code === 200) {
-				// 			this.avatarUrl = data.url; // 获取上传后的图片地址
-				// 		} else {
-				// 			console.log('上传失败');
-				// 		}
-				// 	},
-				// 	fail: (err) => {
-				// 		console.log('上传失败', err);
-				// 	}
-				// });
-			}
+			
 		}
 	};
 </script>

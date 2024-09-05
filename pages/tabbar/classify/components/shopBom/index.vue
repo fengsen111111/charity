@@ -1,7 +1,7 @@
 <template>
 	<view class="mt-3 h-full flex text14 ">
 		<view class="bg-whilt px-3 rending1 ">
-			<view class="py-2" :class="item.id>1?'col999':'col666'" v-for="item in dataTab" :key="item.id">
+			<view @click="handleItem(item)" class="py-2" :class="item.id == itemIndex ?'col999':'col666'" v-for="item in dataTab" :key="item.id">
 				{{item.text}}
 			</view>
 		</view>
@@ -87,7 +87,7 @@
 				<view class="w95 space-x-2 bg-whilt mt-3 ">
 					<view class="p-3">
 						<view class="text14">
-							冰冻选择
+							冰冻选择 
 						</view>
 						<view class="flex justify-between mt-3">
 							<view @click=handleTemper(item) :class="temperatureIndex==item?'bgF2F col486 border486':' bg-whilt border999'" class=" h-8 w5 text-center rending2 " v-for="item in [1,2,3]" :key="item">
@@ -190,7 +190,8 @@
 						text: '燕2京'
 					},
 					
-				]
+				],
+				itemIndex: 1
 			}
 		},
 		onLoad() {
@@ -200,6 +201,10 @@
 			this._getGoodsTypeList()
 		},
 		methods: {
+			handleItem(item){
+				console.log('item',item);
+				this.itemIndex = item.id
+			},
 			// 详情
 			handleDetails(item){
 				uni.navigateTo({

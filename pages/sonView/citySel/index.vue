@@ -73,7 +73,7 @@
 			//获取手机状态栏高度
 			this.statusBarHeight = uni.getSystemInfoSync()['statusBarHeight'];
 			this._getHotCity() //热门城市
-			console.log('provice', provice);
+			// console.log('provice', provice);
 			uni.showLoading({
 				title: "加载中"
 			})
@@ -121,8 +121,13 @@
 				this._findStore('',newVal.key)
 			}
 		},
-		onLoad() {
-			console.log('加载结束')
+		onLoad(options) {
+			console.log('加载结束',options)
+			if(this.$store.state.address){
+				console.log('已授权');
+			}else{
+				this.handleCity(options)//获取定位
+			}
 		},
 		onReady() {
 			//   wx请求获取位置权限
@@ -130,9 +135,12 @@
 		methods: {
 			onchange(e) {
 				const value = e.detail.value
+				console.log('选择店铺',value)
+				this.$store.commit('addressStatus')//已选择
+				this.$store.commit('shopInfoSet',value)//存入店铺信息
 			},
 			onnodeclick(node) {},
-			handleCity() {
+			handleCity(options) {
 				const that = this;
 				uni.getLocation({
 					type: "gcj02",
@@ -142,12 +150,14 @@
 						that.latitude = res.latitude; //32.05024;
 						console.log("获取当前的用户经度", that.longitude);
 						console.log("获取当前的用户纬度", that.latitude);
+						that.$refs.picker.show() //打开店铺选择
 						getAreasByLocation({
 							post_params: {
-								location: that.longitude + ',' + that.latitude
+								location: options.longitude + ',' + options.latitude
 							}
 						}).then((res) => {
 							console.log('坐标', res);
+							
 						})
 					},
 				});
@@ -159,8 +169,8 @@
 						adcode: adcode //行政区
 					}
 				}).then((res) => {
-					conslole.log('门店信息', res)
-					// this.$refs.picker.show() //打开店铺选择
+					console.log('门店信息', res)
+					this.$refs.picker.show() //打开店铺选择
 				})
 			},
 			handleIss(iss) {

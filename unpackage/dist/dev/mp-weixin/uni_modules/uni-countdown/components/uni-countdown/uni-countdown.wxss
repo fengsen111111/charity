@@ -10,7 +10,6 @@
 .uni-countdown__splitor.data-v-6b44ea80 {
   margin: 0 2px;
   font-size: 10px !important;
-  color: #333;
 }
 .uni-countdown__number.data-v-6b44ea80 {
   border-radius: 3px;

@@ -139,7 +139,7 @@
 			splitorStyle() {
 				const { splitorColor, fontSize, backgroundColor } = this
 				return {
-					color: splitorColor,
+					color: '#FA311D',
 					fontSize: `${fontSize * 12 / 14}px`,
 					margin: backgroundColor ? `${fontSize * 4 / 14}px` : ''
 				}
@@ -267,7 +267,7 @@
 		&__splitor {
 			margin: 0 2px;
 			font-size: $font-size;
-			color: #333;
+			// color: #333;
 		}
 
 		&__number {

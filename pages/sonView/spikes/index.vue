@@ -39,13 +39,17 @@
 					<shopCardTwo>
 						<!-- 疯抢 -->
 						<view v-if="indexCheck==1" class="borderFF8 space-x-3 colFF8  flex items-center rending1">
-							<text class="text11 fontBold space-x-3">01:59:59</text>
-							<text class="text10 btnGo space-x-2 text-whlie px-3 py4rpx">去抢购</text>
+							<view class="text11 fontBold space-x-3">
+								<uni-countdown @timeup="timeup" :show-day="false" :hour="12" :minute="12" :second="40" />
+							</view>
+							<view class="text10 btnGo space-x-2 text-whlie px-3 py4rpx">去抢购</view>
 						</view>
 						<!-- 即将开始 -->
 						<view v-else class="border999 space-x-3 col999 px-2 flex items-center rending1">
-							<text class="text10">开始倒计时</text>
-							<text class="text11 fontBold space-x-1 px-1 py4rpx">01:59:59</text>
+							<view class="text10">开始倒计时</view>
+							<view class="text11 fontBold space-x-1 px-1 py4rpx">
+								<uni-countdown @timeup="timeup" :show-day="false" :hour="12" :minute="12" :second="40" />
+							</view>
 						</view>
 						
 					</shopCardTwo>
@@ -82,6 +86,9 @@
 		onHide() {
 		},
 		methods: {
+			timeup(){
+				
+			},
 			handleItemCheck(index){
 				this.itemCheck = index
 			},

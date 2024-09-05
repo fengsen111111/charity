@@ -73,9 +73,9 @@
 	export default {
 		created(){
 			// 获取基本config配置
-			this.$store.commit('configInfo')
+			// this.$store.commit('configInfo')
 			// 获取轮播图
-			this._getBannerList()
+			// this._getBannerList()
 		},
 		onPageScroll(e) {
 		    // e.scrollTop 表示当前页面滚动的距离
