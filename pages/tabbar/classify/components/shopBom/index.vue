@@ -1,20 +1,24 @@
 <template>
 	<view class="mt-3 h-full flex text14 ">
 		<view class="bg-whilt px-3 rending1 ">
-			<view @click="handleItem(item)" class="py-2" :class="item.id == itemIndex ?'col999':'col666'" v-for="item in dataTab" :key="item.id">
+			<view @click="handleItem(item)" class="py-2" :class="item.id == itemIndex ?'col999':'col666'"
+				v-for="item in dataTab" :key="item.id">
 				{{item.text}}
 			</view>
 		</view>
 		<!-- shop -->
 		<view class="rightWidth">
 			<view class="flex items-center" v-for="item in [1,2,3,4,5,6,7]" :key="item">
-				<uni-icons type="checkbox-filled" v-if="item==checkIndex" color="#4867CF" size="20" class="uni-ml-2 uni-mr-2"></uni-icons>
-				<uni-icons @click="handleIndex(item)" type="circle" size="20" v-else class="uni-ml-2 uni-mr-2"></uni-icons>
-				<view class=""  @click="handleDetails(item)">
+				<uni-icons type="checkbox-filled" v-if="item==checkIndex" color="#4867CF" size="20"
+					class="uni-ml-2 uni-mr-2"></uni-icons>
+				<uni-icons @click="handleIndex(item)" type="circle" size="20" v-else
+					class="uni-ml-2 uni-mr-2"></uni-icons>
+				<view class="" @click="handleDetails(item)">
 					<shopCardTwo>
 						<!-- 选规格 -->
 						<view class="">
-							<view class="bg486 text-whlie text12 px-2 rending1 py-1 space-x-2" @click.stop="toggle('bottom')">
+							<view class="bg486 text-whlie text12 px-2 rending1 py-1 space-x-2"
+								@click.stop="toggle('bottom')">
 								选规格
 							</view>
 						</view>
@@ -68,8 +72,8 @@
 				</view>
 				<!-- 选数量 -->
 				<view class="w95 space-x-2 bg-whilt mt-3">
-				   	<view class="flex text14 justify-between items-center p-3 ">
-				   		<view>选择数量</view>
+					<view class="flex text14 justify-between items-center p-3 ">
+						<view>选择数量</view>
 						<view class="flex space-x-3 text24 text-center">
 							<view class="leftView" @click="handleDown">
 								<!-- - -->
@@ -81,17 +85,19 @@
 								<!-- + -->
 							</view>
 						</view>
-				   	</view>
+					</view>
 				</view>
 				<!-- 冰冻选择 -->
 				<view class="w95 space-x-2 bg-whilt mt-3 ">
 					<view class="p-3">
 						<view class="text14">
-							冰冻选择 
+							冰冻选择
 						</view>
 						<view class="flex justify-between mt-3">
-							<view @click=handleTemper(item) :class="temperatureIndex==item?'bgF2F col486 border486':' bg-whilt border999'" class=" h-8 w5 text-center rending2 " v-for="item in [1,2,3]" :key="item">
-								<text class="" style="line-height:2rem">常温</text>
+							<view @click=handleTemper(item)
+								:class="temperatureIndex==item?'bgF2F col486 border486':' bg-whilt border999'"
+								class=" h-8 w5 text-center rending2 " v-for="item in [1,2,3]" :key="item">
+								<text class="" style="line-height:2rem">{{item==1?'全部':item==2?'一半':'常温'}}</text>
 							</view>
 						</view>
 					</view>
@@ -108,7 +114,8 @@
 								<view class="w85 mxAuto">
 									<view class="mx-2 text-center">
 										<view class="">{{duration}}</view>
-										<slider backgroundColor="#F9F9F9" activeColor="#4867CF" @change="durationChange" :value="duration" :max="max" :min="min" />
+										<slider backgroundColor="#F9F9F9" activeColor="#4867CF" @change="durationChange"
+											:value="duration" :max="max" :min="min" />
 									</view>
 								</view>
 								<view class="">{{max}}</view>
@@ -136,23 +143,27 @@
 <script>
 	import shopCardTwo from '@/components/shopCardTwo/index.vue'
 	import ruleItem from "@/components/ruleItem/index"
-	import {getGoodsTypeList,getGoodsList} from '@/request/api.js'
+	import {
+		getGoodsTypeList,
+		getGoodsList
+	} from '@/request/api.js'
 	export default {
 		components: {
-			shopCardTwo,ruleItem
+			shopCardTwo,
+			ruleItem
 		},
 		data() {
 			return {
 				title: 'Hello',
-				min:0,
-				max:10,
-				number:2,
+				min: 0,
+				max: 10,
+				number: 2,
 				// 温度选着
-				temperatureIndex:1,
+				temperatureIndex: 1,
 				// 冰冻
 				duration: 0,
 				// 单选
-				checkIndex:1,
+				checkIndex: 1,
 				dataTab: [{
 						id: 1,
 						text: '国产风味'
@@ -189,7 +200,7 @@
 						id: 9,
 						text: '燕2京'
 					},
-					
+
 				],
 				itemIndex: 1
 			}
@@ -197,60 +208,71 @@
 		onLoad() {
 
 		},
-		created(){
+		created() {
 			this._getGoodsTypeList()
 		},
 		methods: {
-			handleItem(item){
-				console.log('item',item);
+			handleItem(item) {
+				console.log('item', item);
 				this.itemIndex = item.id
 			},
 			// 详情
-			handleDetails(item){
+			handleDetails(item) {
 				uni.navigateTo({
-					url:'/pages/tabbar/home/components/shopDetails/index'
+					url: '/pages/tabbar/home/components/shopDetails/index'
 				})
 			},
 			// 
-			_getGoodsTypeList(){
+			_getGoodsTypeList() {
 				getGoodsTypeList({
-					post_params:{
-						store_id:''
+					post_params: {
+						store_id: ''
 					}
-				}).then((res)=>{
-					console.log('所有商品分类',res);
+				}).then((res) => {
+					console.log('所有商品分类', res);
 					// 
 					// this._getGoodsList(item)
 				})
 			},
-			_getGoodsList(){
+			_getGoodsList() {
 				getGoodsList({
-					post_params:{
-						store_id:'',
-						position:'',
-						goods_type_id:'',
-						key_word:'',
-						time_process:'',
-						order:'',
-						currentPage:'',
-						perPage:'',
+					post_params: {
+						store_id: '',
+						position: '',
+						goods_type_id: '',
+						key_word: '',
+						time_process: '',
+						order: '',
+						currentPage: '',
+						perPage: '',
 					}
-				}).then((res)=>{
-					console.log('门店商品列表',res);
+				}).then((res) => {
+					console.log('门店商品列表', res);
 				})
 			},
-			handleIndex(index){
+			handleIndex(index) {
 				this.checkIndex = index
 			},
-			handleTemper(index){
+			handleTemper(index) {
 				this.temperatureIndex = index
+				console.log('index', index);
+				switch (index) {
+					case 1:
+						return this.duration = this.max
+					case 2:
+						return this.duration = this.max / 2
+					case 3:
+						return this.duration = this.min
+					default:
+						break;
+				}
 			},
 			handleDown() {
-				if(this.number>0){
+				if (this.number > 0) {
 					this.number--
 				}
 			},
-			handleUp(){
+			handleUp() {
 				this.number++
 			},
 			// 关闭
@@ -274,9 +296,11 @@
 	.rightWidth {
 		width: 17.25rem;
 	}
-	.btnPoupr{
+
+	.btnPoupr {
 		width: 9rem;
 	}
+
 	.leftView {
 		background-image: url('@/static/home/subtract.png');
 		background-size: 100% 100%;
@@ -285,6 +309,7 @@
 		line-height: 51rpx;
 		border-radius: 1rem 0px 0px 1rem;
 	}
+
 	.cenVire {
 		background-color: #F9F9F9;
 		width: 2rem;
@@ -292,7 +317,7 @@
 		text-align: center;
 		line-height: 1.75rem;
 	}
-	
+
 	.rightView {
 		background-image: url('@/static/home/add.png');
 		background-size: 100% 100%;
@@ -301,29 +326,34 @@
 		line-height: 51rpx;
 		border-radius: 0px 1rem 1rem 0px;
 	}
+
 	.specs {
 		width: 2.5rem;
 		height: 2.5rem;
 	}
-	.tagCol{
-		background: linear-gradient( 270deg, #FA311D 0%, #FF8E34 100%);
+
+	.tagCol {
+		background: linear-gradient(270deg, #FA311D 0%, #FF8E34 100%);
 	}
-	.tagBor{
+
+	.tagBor {
 		border: 1px solid #FA311D;
 	}
-	.itemImg{
+
+	.itemImg {
 		width: 6.5rem;
 		height: 5rem;
 	}
+
 	.checkboxItem {
 		border-bottom: 3px solid #4867CF;
 		padding: 0px 0.5rem;
 	}
-	
+
 	.tagShopItem {
 		border: 1px solid #ED1805;
 	}
-	
+
 	.gridRow {
 		grid-column-gap: 0.5rem;
 	}

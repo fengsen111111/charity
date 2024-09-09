@@ -2,10 +2,14 @@
 	<view class="">
 		<view class="grid grid-cols-2 gridRow">
 			<view class="bg-whilt rending1 p-2 mt-3" v-for="item in [1,2,3,4]" :key="item">
-				<image v-if="item==1" @click="handDetailds" src="https://pic.imge.cc/2024/09/02/66d57005de359.png" mode="" class="w-full h10"></image>
-				<image v-else-if="item ==2" @click="handDetailds" src="https://pic.imge.cc/2024/09/02/66d57005de359.png" mode="" class="w-full h10"></image>
-				<image v-else-if="item ==3" @click="handDetailds" src="https://pic.imge.cc/2024/09/02/66d57005de359.png" mode="" class="w-full h10"></image>
-				<image v-else-if="item ==4" @click="handDetailds" src="https://pic.imge.cc/2024/09/02/66d57005de359.png" mode="" class="w-full h10"></image>
+				<image v-if="item==1" @click="handDetailds" src="https://pic.imge.cc/2024/09/02/66d57005de359.png"
+					mode="" class="w-full h10"></image>
+				<image v-else-if="item ==2" @click="handDetailds" src="https://pic.imge.cc/2024/09/02/66d57005de359.png"
+					mode="" class="w-full h10"></image>
+				<image v-else-if="item ==3" @click="handDetailds" src="https://pic.imge.cc/2024/09/02/66d57005de359.png"
+					mode="" class="w-full h10"></image>
+				<image v-else-if="item ==4" @click="handDetailds" src="https://pic.imge.cc/2024/09/02/66d57005de359.png"
+					mode="" class="w-full h10"></image>
 				<view class="fontBold text12 ling125 ">
 					泸州老窖六年窖头曲特惠浓香白酒52度精品装...
 				</view>
@@ -101,7 +105,7 @@
 							<view @click=handleTemper(item)
 								:class="temperatureIndex==item?'bgF2F col486 border486':' bg-whilt border999'"
 								class=" h-8 w5 text-center rending2 " v-for="item in [1,2,3]" :key="item">
-								<text class="" style="line-height:2rem">常温</text>
+								<text class="" style="line-height:2rem">{{item==1?'全部':item==2?'一半':'常温'}}</text>
 							</view>
 						</view>
 					</view>
@@ -118,7 +122,8 @@
 								<view class="w85 mxAuto">
 									<view class="mx-2 text-center">
 										<view class="">{{duration}}</view>
-										<slider backgroundColor="#F9F9F9" activeColor="#4867CF" @change="durationChange" :value="duration" :max="max" :min="min" />
+										<slider backgroundColor="#F9F9F9" activeColor="#4867CF" @change="durationChange"
+											:value="duration" :max="max" :min="min" />
 									</view>
 								</view>
 								<view class="">{{max}}</view>
@@ -168,9 +173,20 @@
 		methods: {
 			handleTemper(index) {
 				this.temperatureIndex = index
+				console.log('index', index);
+				switch (index) {
+					case 1:
+						return this.duration = this.max
+					case 2:
+						return this.duration = this.max/2
+					case 3:
+						return this.duration = this.min
+					default:
+						break;
+				}
 			},
 			handleDown() {
-				if(this.number>0){
+				if (this.number > 0) {
 					this.number--
 				}
 			},

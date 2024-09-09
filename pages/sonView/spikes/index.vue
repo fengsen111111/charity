@@ -90,12 +90,12 @@
 			
 		},
 		onHide() {
-		},
+		}, 
 		methods: {
 			_getGoodsList(){
 				getGoodsList({
 					post_params: {
-							store_id: "",
+							store_id: "",   
 							position: "time",
 							goods_type_id: "",
 							key_word: "",
@@ -117,7 +117,7 @@
 			// 节流切换加载
 			handleCheck:debounce(function(index){
 				this.indexCheck = index
-				this._getGoodsList()
+				this._getGoodsList()  
 			},500)
 		}
 	};
@@ -125,7 +125,7 @@
 
 <style>
 	.btnGo{
-		background: linear-gradient( 270deg, #FA311D 0%, #FF8E34 100%);
+		background: linear-gradient( 270deg, #FA311D 0%, #FF8E34 100%); 
 		/* border-radius: 10rpx 10rpx 10rpx 10rpx; */
 		border-radius: 8rpx 6rpx 6rpx 8rpx
 	}

@@ -359,7 +359,7 @@
 							<view @click=handleTemper(item)
 								:class="temperatureIndex==item?'bgF2F col486 border486':' bg-whilt border999'"
 								class=" h-8 w5 text-center rending2 " v-for="item in [1,2,3]" :key="item">
-								<text class="" style="line-height:2rem">常温</text>
+								<text class="" style="line-height:2rem">{{item==1?'全部':item==2?'一半':'常温'}}</text>
 							</view>
 						</view>
 					</view>
@@ -631,6 +631,17 @@
 			},
 			handleTemper(index) {
 				this.temperatureIndex = index
+				console.log('index', index);
+				switch (index) {
+					case 1:
+						return this.duration = this.max
+					case 2:
+						return this.duration = this.max/2
+					case 3:
+						return this.duration = this.min
+					default:
+						break;
+				}
 			},
 			handleDown() {
 				this.number--

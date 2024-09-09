@@ -2,7 +2,7 @@
 .rightWidth {
 	width: 17.25rem;
 }
-.btnPoupr{
+.btnPoupr {
 	width: 9rem;
 }
 .leftView {
@@ -32,13 +32,13 @@
 	width: 2.5rem;
 	height: 2.5rem;
 }
-.tagCol{
-	background: linear-gradient( 270deg, #FA311D 0%, #FF8E34 100%);
+.tagCol {
+	background: linear-gradient(270deg, #FA311D 0%, #FF8E34 100%);
 }
-.tagBor{
+.tagBor {
 	border: 1px solid #FA311D;
 }
-.itemImg{
+.itemImg {
 	width: 6.5rem;
 	height: 5rem;
 }
