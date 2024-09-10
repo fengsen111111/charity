@@ -13,7 +13,7 @@
 			<view class="h10"></view>
 			<!-- <view class="bg486 text-whlie w-full py-3 rending2 text-center text16">
 				保存
-			</view> -->
+			</view> --> 
 		</view>
 		<!--  -->
 		<view class="btnFixed">

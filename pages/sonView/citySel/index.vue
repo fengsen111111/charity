@@ -10,7 +10,7 @@
 					<view class="col999 flex items-center px-3" style="margin-top: 9rpx;">
 						<uni-icons type="left" size="30" color="#fff" @click="handleLeft"></uni-icons>
 						<uni-search-bar v-model="searchVal" clearButton="none" class="space-x-3" radius="100"
-							placeholder="输入搜索内容" cancelButton="none" @confirm="search" />
+							placeholder="请输入省份" cancelButton="none" @confirm="search" />
 						</uni-section>
 					</view>
 					<view class="h-4"></view>
@@ -30,7 +30,7 @@
 				</view>
 				<view class="mt-1 flex justify-between">
 					<view class="bgF9 text14 py-1 px-6 text-center">
-						{{cityName.name}}
+						{{cityName.name?cityName.name:'--'}}
 					</view>
 					<view class="col486 text12 flex items-center" @click="handleCity">
 						<uni-icons type="location" color="#4867CF" size="14"></uni-icons>
@@ -85,7 +85,7 @@
 		data() {
 			return {
 				cityName: {
-					name: '成都'
+					name: ''
 				},
 				cityItem: {},
 				searchVal: '',

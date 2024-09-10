@@ -359,7 +359,7 @@
 							<view @click=handleTemper(item)
 								:class="temperatureIndex==item?'bgF2F col486 border486':' bg-whilt border999'"
 								class=" h-8 w5 text-center rending2 " v-for="item in [1,2,3]" :key="item">
-								<text class="" style="line-height:2rem">{{item==1?'全部':item==2?'一半':'常温'}}</text>
+								<text class="text14" style="line-height:2rem">{{item==1?'全部':item==2?'一半':'常温'}}</text>
 							</view>
 						</view>
 					</view>
@@ -417,10 +417,10 @@
 			comments
 		},
 		created() {
-			// 获取优惠卷
-			this._getStoreCouponList()
 			// 商品详情
 			this._getGoodsDetail()
+			// 获取优惠卷
+			this._getStoreCouponList()
 		},
 		data() {
 			return {
@@ -461,7 +461,45 @@
 					}
 				],
 				// 
-				detailsList: {},
+				detailsList: {
+					"id": "1",
+					"name": "泸州老窖六年窖头曲浓香白酒52度精品装500ml",//
+					"show_price": "1888.8",//折扣价   折扣率前端计算  
+					"show_old_price": "8888",//原价  
+					"first_price": "6.88",//一级规格价格  
+					"second_price": "6.88",//	二级规格价格 
+					"average_price": "6.88",//二级规格均价
+					"first_size": "12",//一级规格：箱
+					"second_size": "1",//二级规格：瓶
+					"volume": "550",//体积,单位ml 
+					"has_coupon": "Y",//是否有可领取优惠券 Y是 N否
+					"introduce": "摘要多行文本摘要多行文本摘要多行文本摘要多行文文本摘要多行文本摘要多行文文本摘要多行文本摘要多行文...",//摘要  多行文本  
+					"introduce_two": "摘要多行文本摘要多行文本摘要多行文本摘要多行文本摘要多行文本摘要多行文本摘要多行文本摘要多行文本摘要多行文本摘要多行文本摘要多行文本摘要多行文本摘要多行文本摘要多行文本摘要多行文本摘要多行文本摘要多行文本摘要多行文本",//摘要  多行文本  
+					"content": "详情富文本详情富文本详情富文本详情富文本详情富文本详情富文本详情富文本详情富文本详情富文本详情富文本详情富文本",//详情  富文本
+					"attributes": [{//属性  
+						"name": "",
+						"value": ""
+					}],
+					"service": [{//服务  
+						"name": "",
+						"icon": ""
+					}],
+					"tastes": [{//口味
+						"taste_id": "",//	口味ID  
+						"taste_name": "",//口味名称  
+						"number": "",//该口味库存数量  
+						"sizes": [{//售卖规格
+							"size_id": "",//售卖规格ID  
+							"low_price_size": "",//最划算 Y是 N否
+							"new_user_size": "",//新人价 Y是 N否
+							"kill_price_size": "",//一分钱秒杀 Y是 N否 
+							"time_price_size": "",//限时秒杀 Y是 N否    
+							"ice_size": "",//支持冰冻  Y是  N否  
+							"size_number": "",//单位规格出售数量  
+							"price": ""//单‘瓶’出售价格 
+						}]
+					}]
+				},
 				// 规格
 				checkItem: 1,
 				value: null,

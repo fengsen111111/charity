@@ -9,10 +9,10 @@
 		<!-- shop -->
 		<view class="rightWidth">
 			<view class="flex items-center" v-for="item in [1,2,3,4,5,6,7]" :key="item">
-				<uni-icons type="checkbox-filled" v-if="item==checkIndex" color="#4867CF" size="20"
-					class="uni-ml-2 uni-mr-2"></uni-icons>
-				<uni-icons @click="handleIndex(item)" type="circle" size="20" v-else
-					class="uni-ml-2 uni-mr-2"></uni-icons>
+				<uni-icons type="checkbox-filled" v-if="item==checkIndex" color="#4867CF" size="16"
+					class="uni-ml-1 uni-mr-1"></uni-icons>
+				<uni-icons @click="handleIndex(item)" type="circle" size="16" v-else
+					class="uni-ml-1 uni-mr-1"></uni-icons>
 				<view class="" @click="handleDetails(item)">
 					<shopCardTwo>
 						<!-- 选规格 -->
@@ -97,7 +97,7 @@
 							<view @click=handleTemper(item)
 								:class="temperatureIndex==item?'bgF2F col486 border486':' bg-whilt border999'"
 								class=" h-8 w5 text-center rending2 " v-for="item in [1,2,3]" :key="item">
-								<text class="" style="line-height:2rem">{{item==1?'全部':item==2?'一半':'常温'}}</text>
+								<text class="text14" style="line-height:2rem">{{item==1?'全部':item==2?'一半':'常温'}}</text>
 							</view>
 						</view>
 					</view>

@@ -41,7 +41,10 @@
 </template>
 
 <script>
-	import {getAreasByLocation} from '@/request/api.js'
+	import {
+		getAreasByLocation,// 位置信息
+		getHotKeyWords,//热门词
+		} from '@/request/api.js'
 	export default {
 		data() {
 			return {
@@ -54,6 +57,11 @@
 			};
 		},
 		methods: {
+			_getHotKeyWords(){
+				getHotKeyWords().then((res)=>{
+					console.log('res',res);
+				})
+			},
 			handleSearch() {
 				console.log('跳转');
 				uni.navigateTo({
@@ -143,6 +151,7 @@
 		created() {
 			//获取手机状态栏高度
 			this.statusBarHeight = uni.getSystemInfoSync()['statusBarHeight'];
+			this._getHotKeyWords()//热门词
 			
 		},
 		onReady() {

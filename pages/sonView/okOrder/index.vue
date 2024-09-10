@@ -19,7 +19,7 @@
 				</view>
 			</view>
 			<!--  -->
-			<view class="bg-whilt rending1 py-3 mt-3">
+			<view class="bg-whilt rending1 py-3 mt-3">	
 				<view class=" space-x-3">商品清单</view>
 				<view class="w95">
 					<view class="mt-3">
@@ -76,7 +76,7 @@
 				<view class="colED1 fontBold space-x-3">￥<text class="text20 ">888</text>.8</view>
 				<view class="colED1 text12 space-x-3">已优惠：￥888</view>
 			</view>
-			<view class="btnPay space-x-2 rending1" @click="toggle('center')">去支付</view>
+			<view class="btnPay space-x-2 rending1" @click.stop="toggle('center')">去支付</view>
 		</view>
 		<!-- 支付弹窗 -->
 		<uni-popup ref="popup" background-color="#fff" borderRadius="0.5rem 0.5rem 0.5rem 0.5rem">
