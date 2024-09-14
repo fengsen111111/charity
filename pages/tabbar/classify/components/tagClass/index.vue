@@ -2,7 +2,7 @@
 	<view class="">
 		<view  class="text-center mt-3 p-2 imgCenter flex hidden overflowAuto">
 			<view class="mb-1 space-x-4" style="width: 200px" v-for="item in [1,2,3,4,5,6,7,8,9]" :key="item">
-				<image src="https://pic.imge.cc/2024/09/02/66d57005de359.png" mode="" style="width: 50px;height: 50px;border-radius: 50%;">
+				<image src="https://img.picui.cn/free/2024/09/14/66e4e030c8115.png" mode="" style="width: 50px;height: 50px;border-radius: 50%;">
 				</image>
 				<view class="text-black text12">
 					畅饮啤酒

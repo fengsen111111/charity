@@ -78,7 +78,7 @@
 						<!-- 展开商品文件 -->
 						<view v-if="shopInfoShow">
 							<view class="flex justify-between items-center px-3 pt-3" v-for="item in [1,2,3]" :key="item">
-								<image src="https://img.picui.cn/free/2024/08/16/66bf135fa40a3.png" style="width: 100rpx;height: 100rpx;" mode=""></image>
+								<image src="https://img.picui.cn/free/2024/09/14/66e4e030c8115.png" style="width: 100rpx;height: 100rpx;" mode=""></image>
 								<view class="uni-ml-5">
 									<view class="w300rpx">五粮液股份 五粮春二代菁萃 浓香型白酒 52度 550ml...</view>
 									<view class="col999">规格 <text>550ml*12</text></view>

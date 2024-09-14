@@ -22,8 +22,8 @@
 			</view>
 			<!-- card -->
 			<view class="px-3 mt-3">
-				<view class="bg-whilt rending1 flex justify-between p-4">
-					<view class="text-center" @click="handleUrl('/pages/sonView/myOrder/index')">
+				<view class="bg-whilt rending1 flex justify-between p-4"  @click="handleUrl('/pages/sonView/myOrder/index')">
+					<view class="text-center">
 						<image src="@/static/my/icon1_new.png" mode="" class="iconWH"></image>
 						<view class="text-black text12">
 							待付款
@@ -163,15 +163,15 @@
 				],
 				items: [
 					{
-						text: "一号公司",
+						text: "东门酒业责任有限公司",
 						value: "1",
 					},
 					{
-						text: "二号公司",
+						text: "巨鹿送酒责任公司",
 						value: "2"
 					},
 					{
-						text: "三号公司",
+						text: "天马到家股份责任有限公司",
 						value: "3"
 					}
 				]

@@ -128,7 +128,7 @@
 				</view>
 				<!-- 加入购物车 结算 -->
 				<view class="flex justify-between w95 space-x-2 mt-3 text-center">
-					<view class="bgFF8 py-2 text14 text-whlie rending1 w-full" v-if="bottomStatus==1">
+					<view class="bgFF8 py-2 text14 text-whlie rending1 w-full" v-if="bottomStatus==1" @click="handleShopping()">
 						加入购物车
 					</view>
 					<view class="bg486 py-2 text14 text-whlie rending1 w-full" v-else @click="handleOrder">
@@ -161,7 +161,7 @@
 				max: 10,
 				min: 0,
 				number: 2,
-				duration: '0',
+				duration: '10',
 				// 温度选着
 				temperatureIndex: 1,
 				// 
@@ -172,6 +172,11 @@
 
 		},
 		methods: {
+			handleShopping(){
+				uni.navigateTo({
+					url:'/pages/tabbar/shopping/index'
+				})
+			},
 			handleTemper(index) {
 				this.temperatureIndex = index
 				console.log('index', index);

@@ -82,9 +82,15 @@
 						})
 						break;
 					case 4:
-						uni.reLaunch({
-							url: item.path
-						})
+						if (this.$store.state.login) {
+							uni.reLaunch({
+								url: item.path
+							})
+						} else {
+							uni.reLaunch({
+								url: '/pages/sonView/login/index'
+							})
+						}
 						break;
 					case 5:
 						// 判断有无权限

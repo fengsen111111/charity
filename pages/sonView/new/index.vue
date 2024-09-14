@@ -30,7 +30,6 @@
 			<!--  -->
 			<view class="h-4"></view>
 		</view>
-		
 	</view>
 </template>
 

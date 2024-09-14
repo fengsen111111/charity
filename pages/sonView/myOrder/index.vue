@@ -100,7 +100,7 @@
 						"goods_list": [{
 							"goods_name": "五粮液股份五粮春二代菁萃浓香型白酒",
 							"taste_name": "甜酒",
-							"cover_image": "https://img.picui.cn/free/2024/08/16/66bf135fa40a3.png",
+							"cover_image": "https://img.picui.cn/free/2024/09/14/66e4e030c8115.png",
 							"volume": "550",
 							"size_number": "12",
 							"number": "666666",
@@ -125,7 +125,7 @@
 						"goods_list": [{
 							"goods_name": "五粮液股份五粮春二代菁萃浓香型白酒",
 							"taste_name": "甜酒",
-							"cover_image": "https://img.picui.cn/free/2024/08/16/66bf135fa40a3.png",
+							"cover_image": "https://img.picui.cn/free/2024/09/14/66e4e030c8115.png",
 							"volume": "550",
 							"size_number": "12",
 							"number": "666666",
@@ -150,7 +150,7 @@
 						"goods_list": [{
 							"goods_name": "五粮液股份五粮春二代菁萃浓香型白酒",
 							"taste_name": "甜酒",
-							"cover_image": "https://img.picui.cn/free/2024/08/16/66bf135fa40a3.png",
+							"cover_image": "https://img.picui.cn/free/2024/09/14/66e4e030c8115.png",
 							"volume": "550",
 							"size_number": "12",
 							"number": "666666",
@@ -175,7 +175,7 @@
 						"goods_list": [{
 							"goods_name": "五粮液股份五粮春二代菁萃浓香型白酒",
 							"taste_name": "甜酒",
-							"cover_image": "https://img.picui.cn/free/2024/08/16/66bf135fa40a3.png",
+							"cover_image": "https://img.picui.cn/free/2024/09/14/66e4e030c8115.png",
 							"volume": "550",
 							"size_number": "12",
 							"number": "666666",
@@ -200,7 +200,7 @@
 						"goods_list": [{
 							"goods_name": "五粮液股份五粮春二代菁萃浓香型白酒",
 							"taste_name": "甜酒",
-							"cover_image": "https://img.picui.cn/free/2024/08/16/66bf135fa40a3.png",
+							"cover_image": "https://img.picui.cn/free/2024/09/14/66e4e030c8115.png",
 							"volume": "550",
 							"size_number": "12",
 							"number": "666666",

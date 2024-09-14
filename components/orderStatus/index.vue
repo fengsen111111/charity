@@ -32,7 +32,7 @@
 				<!-- 展开商品文件 -->
 				<view v-if="shopInfoShow">
 					<view class="flex justify-between items-center px-3 pt-3" v-for="iss in item.goods_list" :key="iss">
-						<image src="https://img.picui.cn/free/2024/08/16/66bf135fa40a3.png"
+						<image src="https://img.picui.cn/free/2024/09/14/66e4e030c8115.png"
 							style="width: 100rpx;height: 100rpx;" mode=""></image>
 						<view class="uni-ml-5">
 							<view class="w300rpx">{{iss.goods_name}}</view>

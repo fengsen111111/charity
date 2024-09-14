@@ -602,10 +602,10 @@
 		font-size: 14px;
 		margin: 6px;
 		margin-left: 0;
-		height: 80px;
-		min-height: 80px;
+		height: 100rpx;
+		min-height: 100rpx;
 		/* #ifndef APP-NVUE */
-		min-height: 80px;
+		min-height: 100rpx;
 		width: auto;
 		/* #endif */
 	}

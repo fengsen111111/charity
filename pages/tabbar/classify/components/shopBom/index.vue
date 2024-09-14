@@ -125,10 +125,10 @@
 				</view>
 				<!-- 加入购物车 结算 -->
 				<view class="flex justify-between w95 space-x-2 mt-3 text-center">
-					<view class="bgFF8 py-2 text14 text-whlie rending1 btnPoupr">
+					<view class="bgFF8 py-2 text14 text-whlie rending1 btnPoupr" @click="handleShopping()">
 						加入购物车
 					</view>
-					<view class="bg486 py-2 text14  text-whlie rending1 btnPoupr">
+					<view class="bg486 py-2 text14  text-whlie rending1 btnPoupr" @click="handleBuy()">
 						去结算
 					</view>
 				</view>
@@ -161,7 +161,7 @@
 				// 温度选着
 				temperatureIndex: 1,
 				// 冰冻
-				duration: 0,
+				duration: 10,
 				// 单选
 				checkIndex: 1,
 				dataTab: [{
@@ -212,6 +212,16 @@
 			this._getGoodsTypeList()
 		},
 		methods: {
+			handleShopping(){
+				uni.navigateTo({
+					url:'/pages/tabbar/shopping/index'
+				})
+			},
+			handleBuy(){
+				uni.navigateTo({
+					url:'/pages/sonView/okOrder/index'
+				})
+			},
 			handleItem(item) {
 				console.log('item', item);
 				this.itemIndex = item.id

@@ -145,9 +145,24 @@
 				})
 			},
 			// 修改数量 防抖
-			handleDel: debounce(function(item) {
-				this._delCarGoods(item)
-			}, 500),
+			// handleDel: debounce(function(item) {
+			// 	this._delCarGoods(item)
+			// }, 500),
+			// 加提示删除
+			handleDel(item){
+				const that = this
+				uni.showModal({
+					title: '提示',
+					content: '你确定要删除吗?',
+					success: function(res) {
+						if (res.confirm) {
+							that._delCarGoods(item)
+						} else if (res.cancel) {
+							console.log('取消');
+						}
+					}
+				});
+			},
 			// 删除
 			_delCarGoods(item) {
 				console.log('删除', item);

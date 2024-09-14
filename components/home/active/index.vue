@@ -11,7 +11,7 @@
 					</view>
 					<view class="flex justify-between">
 						<view v-for="item in [1,2]" :key="item">
-							<image @click="handDetailds" src="https://pic.imge.cc/2024/09/02/66d57005de359.png" mode="" class="mt-1 h4 w4"></image>
+							<image @click="handDetailds" src="https://img.picui.cn/free/2024/09/14/66e4e030c8115.png" mode="" class="mt-1 h4 w4"></image>
 							<view class="relativeTop">
 								<text class="tagBg px-1">
 									0.01
@@ -43,7 +43,7 @@
 					</view>
 					<view class="flex justify-between">
 						<view v-for="item in [1,2]" :key="item">
-							<image @click="handDetailds" src="https://pic.imge.cc/2024/09/02/66d57005de359.png" mode="" class="mt-1 h4 w4"></image>
+							<image @click="handDetailds" src="https://img.picui.cn/free/2024/09/14/66e4e030c8115.png" mode="" class="mt-1 h4 w4"></image>
 							<view class="relativeTop">
 								<text class="tagBg px-1">
 									0.01

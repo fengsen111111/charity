@@ -1,7 +1,7 @@
 <template>
 	<view class="">
 		<hearch :title="'商品详情'" :isLeft="true" />
-		<!-- img -->
+		<!-- 轮播图 -- 口味相册 -->
 		<swiper class="swiper-box" @change="change" :current="swiperDotIndex">
 			<swiper-item v-for="(item, index) in [1,2,3]" :key="index">
 				<view class="swiper-item">
@@ -77,7 +77,7 @@
 					<view class="rending1 p-2 flex w7 mr-2 relative" @click="handleCheck(item)"
 						:class="checkItem == item?'bgF2F col486 border486':' bg-whilt border999'" v-for="item in [1,2]"
 						:key="item">
-						<image src="https://img.picui.cn/free/2024/08/28/66ce75dac3e65.png" mode="" class="specs"></image>
+						<image src="https://img.picui.cn/free/2024/09/14/66e4e030c8115.png" mode="" class="specs"></image>
 						<view class=" space-x-2">
 							<view class="text14">550ml*6</view>
 							<view class="text12 ling1 mt-1">6.88元/瓶</view>
@@ -322,7 +322,7 @@
 							<view class="rending1 p-2 flex w7 mr-2 relative" @click="handleCheck(item)"
 								:class="checkItem == item?'bgF2F col486 border486':' bg-whilt border999'" v-for="item in [1,2]"
 								:key="item">
-								<image src="https://img.picui.cn/free/2024/08/28/66ce75dac3e65.png" mode="" class="specs"></image>
+								<image src="https://img.picui.cn/free/2024/09/14/66e4e030c8115.png" mode="" class="specs"></image>
 								<view class=" space-x-2">
 									<view class="text14">550ml*6</view>
 									<view class="text12 ling1 mt-1">6.88元/瓶</view>
@@ -387,7 +387,7 @@
 				</view>
 				<!-- 加入购物车 结算 -->
 				<view class="flex justify-between w95 space-x-2 mt-3 text-center">
-					<view class="bgFF8 py-2 text14 text-whlie rending1 w-full" v-if="bottomStatus==1">
+					<view class="bgFF8 py-2 text14 text-whlie rending1 w-full" v-if="bottomStatus==1" @click="handleShopping()">
 						加入购物车
 					</view>
 					<view class="bg486 py-2 text14 text-whlie rending1 w-full" v-else @click="handleOrder">
@@ -426,15 +426,15 @@
 			return {
 				type: 'center',
 				imgs: [
-					'https://imgos.cn/2024/08/12/66b9d71baf094.png',
-					'https://imgos.cn/2024/08/12/66b9d67b2c357.png',
-					'https://imgos.cn/2024/08/12/66b9d71baf094.png'
+					'https://pic.imge.cc/2024/08/12/66b9d6e61d2b7.png',
+					'https://pic.imge.cc/2024/08/12/66b9d6e61d2b7.png',
+					'https://pic.imge.cc/2024/08/12/66b9d6e61d2b7.png'
 				],
 				swiperDotIndex: 0,
 				max: 10,
 				min: 0,
 				number: 2,
-				duration: '0',
+				duration: '10',
 				// 温度选着
 				temperatureIndex: 1,
 				// 
@@ -522,6 +522,11 @@
 		},
 		onLoad() {},
 		methods: {
+			handleShopping(){
+				uni.navigateTo({
+					url:'/pages/tabbar/shopping/index'
+				})
+			},
 			upDown(){
 				this.upDownShow = !this.upDownShow
 			},

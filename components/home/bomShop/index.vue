@@ -2,13 +2,13 @@
 	<view class="">
 		<view class="grid grid-cols-2 gridRow">
 			<view class="bg-whilt rending1 p-2 mt-3" v-for="item in [1,2,3,4]" :key="item">
-				<image v-if="item==1" @click="handDetailds" src="https://pic.imge.cc/2024/09/02/66d57005de359.png"
+				<image v-if="item==1" @click="handDetailds" src="https://img.picui.cn/free/2024/09/14/66e4e030c8115.png"
 					mode="" class="w-full h10"></image>
-				<image v-else-if="item ==2" @click="handDetailds" src="https://pic.imge.cc/2024/09/02/66d57005de359.png"
+				<image v-else-if="item ==2" @click="handDetailds" src="https://img.picui.cn/free/2024/09/14/66e4e030c8115.png"
 					mode="" class="w-full h10"></image>
-				<image v-else-if="item ==3" @click="handDetailds" src="https://pic.imge.cc/2024/09/02/66d57005de359.png"
+				<image v-else-if="item ==3" @click="handDetailds" src="https://img.picui.cn/free/2024/09/14/66e4e030c8115.png"
 					mode="" class="w-full h10"></image>
-				<image v-else-if="item ==4" @click="handDetailds" src="https://pic.imge.cc/2024/09/02/66d57005de359.png"
+				<image v-else-if="item ==4" @click="handDetailds" src="https://img.picui.cn/free/2024/09/14/66e4e030c8115.png"
 					mode="" class="w-full h10"></image>
 				<view class="fontBold text12 ling125 ">
 					泸州老窖六年窖头曲特惠浓香白酒52度精品装...
@@ -133,10 +133,10 @@
 				</view>
 				<!-- 加入购物车 结算 -->
 				<view class="flex justify-between w95 space-x-2 mt-3 text-center">
-					<view class="bgFF8 py-2 text14 text-whlie rending1 btnPoupr">
+					<view class="bgFF8 py-2 text14 text-whlie rending1 btnPoupr" @click="handleShopping()">
 						加入购物车
 					</view>
-					<view class="bg486 py-2 text14  text-whlie rending1 btnPoupr">
+					<view class="bg486 py-2 text14  text-whlie rending1 btnPoupr" @click="handleBuy()">
 						去结算
 					</view>
 				</view>
@@ -166,11 +166,21 @@
 				temperatureIndex: 1,
 
 				// 
-				duration: '0'
+				duration: '10'
 			};
 		},
 		onLoad() {},
 		methods: {
+			handleShopping(){
+				uni.navigateTo({
+					url:'/pages/tabbar/shopping/index'
+				})
+			},
+			handleBuy(){
+				uni.navigateTo({
+					url:'/pages/sonView/okOrder/index'
+				})
+			},
 			handleTemper(index) {
 				this.temperatureIndex = index
 				console.log('index', index);

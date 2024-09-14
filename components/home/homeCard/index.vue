@@ -13,10 +13,10 @@
 			<!-- shop -->
 			<view class="flex pt-3 overflowAuto" >
 				<view class="bg-whilt mr-2 rending1" style="width: 800rpx;" @click="handDetailds" v-for="item in [1,2,3,4]" :key="item">
-					<image v-if="item==1" src="https://img.picui.cn/free/2024/08/28/66ce75dac3e65.png" mode="" class="w-full mt-3" style="height: 100px;"></image>
-					<image v-else-if="item==2" src="https://pic.imge.cc/2024/09/02/66d57005de359.png" mode="" class="w-full mt-3" style="height: 100px;"></image>
-					<image v-else-if="item==3" src="https://pic.imge.cc/2024/09/02/66d57005de359.png" mode="" class="w-full mt-3" style="height: 100px;"></image>
-					<image v-else src="https://img.picui.cn/free/2024/08/28/66ce75dac3e65.png" mode="" class="w-full mt-3" style="height: 100px;"></image>
+					<image v-if="item==1" src="https://img.picui.cn/free/2024/09/14/66e4e030c8115.png" mode="" class="w-full mt-3" style="height: 100px;"></image>
+					<image v-else-if="item==2" src="https://img.picui.cn/free/2024/09/14/66e4e030c8115.png" mode="" class="w-full mt-3" style="height: 100px;"></image>
+					<image v-else-if="item==3" src="https://img.picui.cn/free/2024/09/14/66e4e030c8115.png" mode="" class="w-full mt-3" style="height: 100px;"></image>
+					<image v-else src="https://img.picui.cn/free/2024/09/14/66e4e030c8115.png" mode="" class="w-full mt-3" style="height: 100px;"></image>
 					<view class="text12 text-black text-center">
 						高度浓香型白酒......
 					</view>

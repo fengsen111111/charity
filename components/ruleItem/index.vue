@@ -16,7 +16,7 @@
 				<view class="rending1 p-2 flex w7 mr-2 relative" @click="handleCheck(item)"
 					:class="checkItem == item?'bgF2F col486 border486':' bg-whilt border999'" v-for="item in [1,2]"
 					:key="item">
-					<image src="https://img.picui.cn/free/2024/08/28/66ce75dac3e65.png" mode="" class="specs"></image>
+					<image src="https://img.picui.cn/free/2024/09/14/66e4e030c8115.png" mode="" class="specs"></image>
 					<view class=" space-x-2">
 						<view class="text14">550ml*6</view>
 						<view class="text12 ling1 mt-1">6.88元/瓶</view>
