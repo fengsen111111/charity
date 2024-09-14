@@ -3,14 +3,14 @@ import {
 	get,
 	post
 } from './index.js'
-const base_url = 'https://beverage.api.sczhiyun.net'
+const base_url = 'https://flower.api.sczhiyun.net'
 
 const api = {
 	GETAREAS: base_url + '/factory_system/Base/getAreas', // 获取行政区
 	GETAREAS_BYLOACTION: base_url + '/factory_system/Base/getAreasByLocation', // 根据坐标获取行政区
 	PHONE_NUMBER: base_url + '/factory_system/Base/getWechatPhoneNumber', // 获取用户微信手机号
 	USER_REGISTER: base_url + '/factory_system/Base/wechatUserRegister', // 微信授权
-	VERIFY_CODE: base_url + '/factory_system/Base/getVerifyCode', // 获取验证码
+	VERIFY_CODE: base_url + '', // 获取验证码
 	
 	// 上传
 	FILE_TICKET: base_url + '/factory_storage/Ticket/getTicket', // 获取文件存储权限

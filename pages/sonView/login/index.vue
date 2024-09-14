@@ -35,7 +35,7 @@
 		data() {
 			return {
 				active: false,
-				isOk: true, //true 未勾选 false 已勾选
+				isOk: false, //true 未勾选 false 已勾选
 			};
 		},
 		components: {
@@ -55,7 +55,11 @@
 					}
 				}).then((res)=>{
 					console.log('token',res);
-					this.$store.commit('setToken',res.data.token)
+					this.$store.commit('setToken',res.data.data.token)
+					// 跳转首页
+					uni.navigateTo({
+						url: '/pages/tabbar/home/index'
+					})
 				})
 			},
 			handleOk() {
@@ -82,14 +86,10 @@
 								code: res.code
 							}
 						}).then((res)=>{
-							console.log('数据',res.data);
-							this.$store.commit('setState',res.data) //存入appid等
+							console.log('数据',res.data.data);
+							this.$store.commit('setState',res.data.data) //存入appid等
 							this.$store.commit('loginStatus') //修改登录状态
-							this._getLoginAndRegister(res.data.openid) //获取token
-							// 跳转首页
-							uni.navigateTo({
-								url: '/pages/tabbar/home/index'
-							})
+							this._getLoginAndRegister(res.data.data.mini_openid) //获取token
 							
 						})
 						// this.$store.commit('loginStatus')

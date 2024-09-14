@@ -42,21 +42,68 @@ const interceptRequest = (options) => {
 };
 
 const interceptResponse = (response) => {
-	// console.log('响应拦截器',response);
+	// console.log('响应拦截器', response);
 	// 例如，处理特定状态码
-	if (response.statusCode === 401) {
-		// 重定向到登录页面
-		uni.redirectTo({
-			url: '/pages/sonView/login/index'
-		});
-		return null; // 阻止后续的 resolve
+	const {
+		code,
+		messgage
+	} = response.data
+	if (response.statusCode !== 200) {
+		switch (Number(code)) {
+			case 999:
+				uni.showToast({
+					icon:'error',
+					title: messgage,
+					duration: 2000
+				})
+				return response;
+			case 3:
+				uni.showToast({
+					icon:'error',
+					title: messgage,
+					duration: 2000
+				})
+				return null;
+			case 2:
+				uni.showToast({
+					icon:'error',
+					title: messgage,
+					duration: 2000
+				})
+				return null;
+			case 1:
+				uni.redirectTo({
+					url: '/pages/sonView/login/index'
+				});
+				return null;
+			case 0:
+				uni.showToast({
+					icon:'error',
+					title: messgage,
+					duration: 2000
+				})
+				return null;
+			default:
+				return response;
+		}
+	}else{
+		// 请求成功
+		return response; // 执行后续的 resolve
 	}
+
+	// if (Number(response.statusCode) === 999) {
+	// 	// 重定向到登录页面
+	// 	uni.redirectTo({
+	// 		url: '/pages/sonView/login/index'
+	// 	});
+	// 	return null; // 阻止后续的 resolve
+	// }else if ()
 	return response;
 };
 
 // 封装的 GET 请求
 const get = (url, data = {}, options = {}) => {
-	console.log('get')
+	// console.log('get')
 	return request({
 		url,
 		data,
@@ -69,7 +116,7 @@ const get = (url, data = {}, options = {}) => {
 
 // 封装的 POST 请求
 const post = (url, data = {}, options = {}) => {
-	console.log('post')
+	// console.log('post')
 	return request({
 		url,
 		data,
