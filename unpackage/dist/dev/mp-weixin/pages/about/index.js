@@ -153,7 +153,7 @@ var hearch = function hearch() {
 };
 var swiperItems = function swiperItems() {
   __webpack_require__.e(/*! require.ensure | components/swiperItems/index */ "components/swiperItems/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/swiperItems/index.vue */ 91));
+    return resolve(__webpack_require__(/*! @/components/swiperItems/index.vue */ 101));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {

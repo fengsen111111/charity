@@ -43,38 +43,11 @@
 			</view>
 			<!-- 慈善基金 -->
 			<view class="mt40" v-if="indexItem==1">
-				<view class="flex mt20 py20 bg-white px36" v-for="item in [1,2,3,4,5]" :key="item">
-					<image src="https://img.picui.cn/free/2024/09/18/66ea73b25c621.png" class="cardImg" mode=""></image>
-					<view class=" ml30">
-						<view class="text32">基金名称</view>
-						<view class="col787878 text24 mt20">负责单位名称</view>
-						<view class="flex items-center text24">
-							<view class="">已募集</view>
-							<view class=" colD6B07A ml106"><text class="text60 font-bold mr10">33,340</text>元</view>
-						</view>
-					</view>
-				</view>
+				<cardFunds />
 			</view>
 			<!-- 活动报名 -->
 			<view class="mt40" v-else>
-				<view class="flex mt20 py20 bg-white px36" v-for="item in [1,2,3]" :key="item">
-					<image src="https://img.picui.cn/free/2024/09/18/66ea73b25c621.png" class="cardImg" mode=""></image>
-					<view class=" ml30">
-						<view class="flex">
-							<view class="text32 font-bold w-3-4">活动名称活动名称活动名称</view>
-							<view v-if="item==1" class="status_1">进行中</view>
-							<view v-else-if="item==2" class="status_2">已结束</view>
-							<view  v-else-if="item==3" class="status_3">待开始</view>
-						</view>
-						<view class="flex justify-between items-center mt10">
-							<view class="font-bold text32 col205D57">名额：15人</view>
-							<view class="text24 col-black">可获得<text class="ml10 colD6B07A">12,000积分</text></view>
-						</view>
-						<view class="flex text18 col787878 mt10">
-							活动时间：2024-12-12 16:30至2024-12-12 16:30
-						</view>
-					</view>
-				</view>
+				<cardActivity />
 			</view>
 			<!-- 留白 -->
 			<view class="h160"></view>
@@ -86,11 +59,15 @@
 
 <script>
 	import tarBar from '@/components/tarbar/index.vue'
+	import cardFunds from '@/components/card_funds/index.vue'
+	import cardActivity from '@/components/card_activity/index.vue'
 	import swiperItems from '@/components/swiperItems/index.vue'
 	export default {
 		components: {
 			tarBar,
-			swiperItems
+			swiperItems,
+			cardFunds,
+			cardActivity
 		},
 		data() {
 			return {

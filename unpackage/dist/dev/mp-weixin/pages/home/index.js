@@ -146,15 +146,27 @@ var tarBar = function tarBar() {
     return resolve(__webpack_require__(/*! @/components/tarbar/index.vue */ 73));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
+var cardFunds = function cardFunds() {
+  __webpack_require__.e(/*! require.ensure | components/card_funds/index */ "components/card_funds/index").then((function () {
+    return resolve(__webpack_require__(/*! @/components/card_funds/index.vue */ 91));
+  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+};
+var cardActivity = function cardActivity() {
+  __webpack_require__.e(/*! require.ensure | components/card_activity/index */ "components/card_activity/index").then((function () {
+    return resolve(__webpack_require__(/*! @/components/card_activity/index.vue */ 96));
+  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+};
 var swiperItems = function swiperItems() {
   __webpack_require__.e(/*! require.ensure | components/swiperItems/index */ "components/swiperItems/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/swiperItems/index.vue */ 91));
+    return resolve(__webpack_require__(/*! @/components/swiperItems/index.vue */ 101));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
   components: {
     tarBar: tarBar,
-    swiperItems: swiperItems
+    swiperItems: swiperItems,
+    cardFunds: cardFunds,
+    cardActivity: cardActivity
   },
   data: function data() {
     return {
