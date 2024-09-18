@@ -4,6 +4,7 @@ import {
 	post
 } from './index.js'
 const base_url = 'https://flower.api.sczhiyun.net'
+// const base_url = 'https://beverage.api.sczhiyun.net'
 
 const api = {
 	GETAREAS: base_url + '/factory_system/Base/getAreas', // 获取行政区
@@ -76,6 +77,21 @@ const api = {
 	ACCEPT_ORDER: base_url + '/beverage/Order/acceptOrder', // 骑手接单
 	ARRIVE_ORDER: base_url + '/beverage/Order/arriveOrder', // 骑手送达订单
 	
+}
+
+
+
+// 获取文件存储权限
+export const getTicket = (params) => {
+	return post(api.FILE_TICKET, params)
+}
+ // 获取文件存储配置
+export const getUploadType = (params) => {
+	return post(api.FILE_CONFIG, params)
+}
+ // 上传文件到本地长期保存
+export const uploadFile = (params) => {
+	return post(api.FILE_UPLOAD, params)
 }
 
 // 骑手端 ----------------------------------------------------------------------

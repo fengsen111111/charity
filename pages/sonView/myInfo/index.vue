@@ -29,7 +29,13 @@
 
 <script>
 	import hearch from "@/components/hearch/index.vue"
-	import {getUserInfo,getUpdateUserInfo} from "@/request/api.js"
+	import {
+		getUserInfo,
+		getUpdateUserInfo,
+		getTicket,
+		getUploadType,
+		uploadFile
+	} from "@/request/api.js"
 	export default {
 		components: {
 			hearch
@@ -49,42 +55,62 @@
 		onHide() {},
 		methods: {
 			// 获取用户信息
-			_getUserInfo(){
-				getUserInfo().then((res)=>{
+			_getUserInfo() {
+				getUserInfo().then((res) => {
 					console.log('获取用户信息');
 				})
 			},
 			// 修改用户信息
-			_getUpdateUserInfo(){
+			_getUpdateUserInfo() {
 				getUpdateUserInfo({
-					post_params:{
-						mobile:'',//	手机号  
-						nickname:'',//昵称  
-						head_image:'',//头像图片的url  
+					post_params: {
+						mobile: '', //	手机号  
+						nickname: '', //昵称  
+						head_image: '', //头像图片的url  
 					}
-				}).then((res)=>{
+				}).then((res) => {
 					console.log(res);
 				})
 			},
 			handleUpload() {
 				uni.chooseImage({
 					success: (chooseImageRes) => {
+						console.log('数据',chooseImageRes);
 						const tempFilePaths = chooseImageRes.tempFilePaths;
-						uni.uploadFile({
-							url: 'https://beverage.api.sczhiyun.net/factory_storage/File/uploadFile', //
-							filePath: tempFilePaths[0],
-							name: 'file',
-							formData: {
-								'user': 'test'
-							},
-							success: (uploadFileRes) => {
-								console.log('数据',uploadFileRes.data);
-							}
-						});
+						getTicket().then((res) => {
+							console.log('获取文件存储权限', res.data)
+							getUploadType().then((res_two) => {
+								console.log('获取文件存储配置', res_two.data)
+								const params = {
+									"ticket_time": "1000000000",
+									"file": "http://tmp/uxvjfT8yfJES7d3247a045c2f38fc378d41a77e8900d.png",
+									"folder": "/sendwine",
+									"file_type": "image"
+								}
+								uploadFile(params).then((fileRes) => {
+									console.log('上传图片', fileRes.data)
+								})
+							})
+						})
+
+						// console.log('数据',tempFilePaths);
+						// uni.uploadFile({
+						// 	url: 'https://flower.api.sczhiyun.net/factory_storage/File/uploadFile', //
+						// 	filePath: tempFilePaths[0],
+						// 	name: 'file',
+						// 	formData: {
+						// 		'ticket_time': '10000000',
+						// 		'folder': 'sendWine',
+						// 		'file_type':'local'
+						// 	},
+						// 	success: (uploadFileRes) => {
+						// 		console.log(uploadFileRes.data);
+						// 	}
+						// });
 					}
 				});
 			},
-			
+
 		}
 	};
 </script>
