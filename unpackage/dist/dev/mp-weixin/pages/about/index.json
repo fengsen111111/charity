@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "hearch": "/components/hearch/index",
+    "swiper-items": "/components/swiperItems/index",
+    "tar-bar": "/components/tarbar/index"
+  }
+}

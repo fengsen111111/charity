@@ -534,7 +534,6 @@
 		text-align: left;
 		color: #333;
 		font-size: 14px;
-		
 	}
 
 	.uni-easyinput__content {
@@ -602,10 +601,10 @@
 		font-size: 14px;
 		margin: 6px;
 		margin-left: 0;
-		height: 100rpx;
-		min-height: 100rpx;
+		height: 80px;
+		min-height: 80px;
 		/* #ifndef APP-NVUE */
-		min-height: 100rpx;
+		min-height: 80px;
 		width: auto;
 		/* #endif */
 	}

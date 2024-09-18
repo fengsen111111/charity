@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "tar-bar": "/components/tarbar/index",
+    "swiper-items": "/components/swiperItems/index"
+  }
+}

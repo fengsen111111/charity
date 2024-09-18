@@ -1,9 +1,9 @@
 <template>
-	<view class="tarBarClass text12 flex justify-evenly">
-		<view @click="handleCheck(item)" class="col666 mt-3 text-center" v-for="item in tarbarList" :key="item.id">
+	<view class="tarBarClass text24 font-bold flex justify-around">
+		<view @click="handleCheck(item)" class=" text-center" v-for="item in tarbarList" :key="item.id">
 			<image v-if="checkIndex==item.id" :src="item.checkUrl" mode="" class="iconAll"></image>
 			<image v-else :src="item.url" mode="" class="iconAll"></image>
-			<view class="ling4" :class="checkIndex==item.id?'col486':''">{{item.text}}</view>
+			<view class="" :class="checkIndex==item.id?'color205D57':''">{{item.text}}</view>
 		</view>
 	</view>
 </template>
@@ -11,7 +11,10 @@
 <script>
 	export default {
 		props: {
-			checkIndex: 0
+			checkIndex: {
+				type: String,
+				default: '1'
+			}
 		},
 		data() {
 			return {
@@ -19,43 +22,28 @@
 				tarbarList: [{
 						id: 1,
 						text: '首页',
-						url: require('@/static/tabbar/home.png'),
-						checkUrl: require('@/static/tabbar/home_checked.png'),
-						path: '/pages/tabbar/home/index',
+						url: require('@/static/home.png'),
+						checkUrl: require('@/static/home.png'),
+						path: '/pages/home/index',
 					},
 					{
 						id: 2,
-						text: '分类',
-						url: require('@/static/tabbar/classify.png'),
-						checkUrl: require('@/static/tabbar/classify.png'),
-						path: '/pages/tabbar/classify/index',
+						text: '关于基金',
+						url: require('@/static/ax.png'),
+						checkUrl: require('@/static/ax.png'),
+						path: '/pages/about/index',
 					},
 					{
 						id: 3,
-						text: '联系我们',
-						url: require('@/static/tabbar/phone.png'),
-						checkUrl: require('@/static/tabbar/phone.png'),
-						path: '/pages/tabbar/phone/index',
-					},
-					{
-						id: 4,
-						text: '购物车',
-						url: require('@/static/tabbar/shopping.png'),
-						checkUrl: require('@/static/tabbar/shopping_checked.png'),
-						path: '/pages/tabbar/shopping/index',
-					},
-					{
-						id: 5,
 						text: '我的',
-						url: require('@/static/tabbar/my.png'),
-						checkUrl: require('@/static/tabbar/my_checked.png'),
-						path: '/pages/tabbar/my/index',
+						url: require('@/static/my.png'),
+						checkUrl: require('@/static/my_check.png'),
+						path: '/pages/my/index',
 					},
 				]
 			}
 		},
 		created() {
-			
 			const pages = getCurrentPages();
 			const page = pages[pages.length - 1];
 			console.log('底部生命周期', page.route);
@@ -64,55 +52,13 @@
 		methods: {
 			handleCheck(item) {
 				console.log('执行跳转', item)
-				switch (Number(item.id)) {
-					case 1:
-						uni.reLaunch({
-							url: item.path
-						})
-						break;
-					case 3:
-						uni.makePhoneCall({
-							phoneNumber: '1111111',
-							success: function() {
-								console.log('拨号');
-							},
-							fail: function() {
-								console.log('拨号失败！');
-							}
-						})
-						break;
-					case 4:
-						if (this.$store.state.login) {
-							uni.reLaunch({
-								url: item.path
-							})
-						} else {
-							uni.reLaunch({
-								url: '/pages/sonView/login/index'
-							})
-						}
-						break;
-					case 5:
-						// 判断有无权限
-						if (this.$store.state.login) {
-							uni.reLaunch({
-								url: item.path
-							})
-						} else {
-							uni.navigateTo({
-								url: '/pages/sonView/login/index'
-							})
-						}
-						break;
-					default:
-						// 跳转
-						if (item.path == '/' + this.route) {
-							console.log("跳转当前页，拒绝")
-						} else {
-							uni.navigateTo({
-								url: item.path
-							})
-						}
+				// 跳转
+				if (item.path == '/' + this.route) {
+					console.log("跳转当前页，拒绝")
+				} else {
+					uni.navigateTo({
+						url: item.path
+					})
 				}
 			}
 		},
@@ -125,16 +71,18 @@
 	}
 
 	.iconAll {
-		width: 40rpx;
-		height: 40rpx;
+		width: 63rpx;
+		height: 63rpx;
 	}
 
 	.tarBarClass {
 		width: 100%;
 		position: fixed;
 		bottom: 0px;
-		height: 4rem;
+		height: 133rpx;
 		/* border-top: 1px solid #D7D9EC; */
 		background-color: #fff;
+		padding-top: 20rpx;
+		color: #6A8986;
 	}
 </style>

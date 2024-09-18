@@ -1,126 +1,19 @@
 {
-	"pages": [
-		{
-		  "path": "pages/tabbar/home/index",
-		  "style": {}
-	    },
-		{
-			"path": "pages/tabbar/classify/index",
+	"pages": [{
+			"path": "pages/my/index",
 			"style": {}
 		},
 		{
-			"path": "pages/tabbar/phone/index",
+			"path": "pages/index/index",
+			"style": {}
+		}, {
+			"path": "pages/home/index",
 			"style": {}
 		},
 		{
-			"path": "pages/tabbar/shopping/index",
+			"path": "pages/about/index",
 			"style": {}
-		},
-		{
-			"path": "pages/tabbar/my/index",
-			"style": {}
-		},
-		{
-		  "path": "pages/tabbar/home/components/search/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/tabbar/home/components/shopDetails/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/login/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/volume/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/spikes/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/new/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/oneSpikes/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/commentsAll/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/swiperActive/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/popularize/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/payouts/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/addCard/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/earnings/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/team/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/myInfo/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/discountAll/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/address/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/addressForm/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/okOrder/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/myOrder/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/myOrderDetails/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/riderLogin/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/riderOrder/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/citySel/index",
-		  "style": {}
-		},
-		{
-		  "path": "pages/sonView/cityTo/index",
-		  "style": {}
 		}
-	
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -131,5 +24,4 @@
 			"titleView": false
 		}
 	}
-	
 }

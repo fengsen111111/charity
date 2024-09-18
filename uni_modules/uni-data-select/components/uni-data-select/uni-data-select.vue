@@ -387,7 +387,8 @@
 		border-bottom: solid 1px $uni-border-3;
 		width: 100%;
 		flex: 1;
-		height: 26px;
+		height: 35px;
+
 		&--disabled {
 			background-color: #f5f7fa;
 			cursor: not-allowed;

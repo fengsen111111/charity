@@ -1,9 +1,0 @@
-
-.widView{
-	width: 200rpx;
-}
-.imageItem{
-	width: 3.25rem;
-	height: 3.25rem;
-}
-

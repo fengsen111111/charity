@@ -6,7 +6,7 @@
   },
   "setting": {
     "urlCheck": false,
-    "es6": false,
+    "es6": true,
     "postcss": false,
     "minified": true,
     "newFeature": true,
@@ -15,13 +15,12 @@
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
-    },
-    "ignoreUploadUnusedFiles": true
+    }
   },
   "compileType": "miniprogram",
-  "libVersion": "3.5.5",
-  "appid": "wxf2a79babfa7f01c5",
-  "projectname": "快鹿送酒小程序",
+  "libVersion": "3.5.7",
+  "appid": "wxa21f9de5cfa486d0",
+  "projectname": "charity",
   "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",

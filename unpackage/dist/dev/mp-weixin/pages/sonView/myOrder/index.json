@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "hearch": "/components/hearch/index",
-    "order-status": "/components/orderStatus/index"
-  }
-}

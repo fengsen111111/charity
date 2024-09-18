@@ -1,7 +1,0 @@
-
-.viewContent{
-	position: relative;
-	top: -4rem;
-	border-radius: 1rem 1rem 0px 0px;
-}
-

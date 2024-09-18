@@ -1,0 +1,13 @@
+
+.itemsImg {
+	width: 100%;
+	height: 389rpx;
+	border-radius: 20rpx;
+}
+.img_bottoms {
+	width: 34rpx;
+	height: 6rpx;
+	margin-right: 8rpx;
+	margin-left: 8rpx;
+}
+

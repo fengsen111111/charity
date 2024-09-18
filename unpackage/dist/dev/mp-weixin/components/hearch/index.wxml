@@ -1,1 +1,1 @@
-<view><uni-nav-bar vue-id="676540d5-1" dark="{{true}}" fixed="{{true}}" shadow="{{true}}" background-color="#4867CF" status-bar="{{true}}" left-icon="{{isLeft?'left':''}}" left-text="{{leftText}}" title="{{title}}" data-event-opts="{{[['^clickLeft',[['back']]]]}}" bind:clickLeft="__e" bind:__l="__l"></uni-nav-bar></view>
+<view><view><view class="navBarBox"><view class="navBar"><view><view class="statusBar" style="{{'padding-top:'+(statusBarHeight+'px')+';'}}"></view><view class="text30 text-center pt20">{{''+title+''}}</view></view></view></view></view></view>

@@ -21,12 +21,10 @@
 		<view class="uni-indexed-list__menu" @touchstart="touchStart" @touchmove.stop.prevent="touchMove"
 			@touchend="touchEnd" @mousedown.stop="mousedown" @mousemove.stop.prevent="mousemove"
 			@mouseleave.stop="mouseleave">
-			<view v-for="(list, key) in lists" :key="key" >
-				<view v-if="list.key" class="uni-indexed-list__menu-item"
-					:class="touchmoveIndex == key ? 'uni-indexed-list__menu--active' : ''">
-					<text class="uni-indexed-list__menu-text"
-						:class="touchmoveIndex == key ? 'uni-indexed-list__menu-text--active' : ''">{{ list.key }}</text>
-				</view>
+			<view v-for="(list, key) in lists" :key="key" class="uni-indexed-list__menu-item"
+				:class="touchmoveIndex == key ? 'uni-indexed-list__menu--active' : ''">
+				<text class="uni-indexed-list__menu-text"
+					:class="touchmoveIndex == key ? 'uni-indexed-list__menu-text--active' : ''">{{ list.key }}</text>
 			</view>
 		</view>
 		<view v-if="touchmove" class="uni-indexed-list__alert-wrapper">
@@ -131,40 +129,38 @@
 			// #ifdef H5
 			this.isPC = this.IsPC()
 			// #endif
-			// setTimeout(() => {
+			setTimeout(() => {
 				this.setList()
-			// }, 50)
+			}, 50)
 			setTimeout(() => {
 				this.loaded = true
 			}, 300);
 		},
 		methods: {
-			// 处理数据
 			setList() {
 				let index = 0;
 				this.lists = []
 				this.options.forEach((value, index) => {
-					if (value.children.length === 0) {
+					if (value.data.length === 0) {
 						return
 					}
 					let indexBefore = index
-					let items = value.children.map(item => {
+					let items = value.data.map(item => {
 						let obj = {}
-						obj['key'] = value.id
-						obj['name'] = item.label
+						obj['key'] = value.letter
+						obj['name'] = item
 						obj['itemIndex'] = index
 						index++
 						obj.checked = item.checked ? item.checked : false
 						return obj
 					})
 					this.lists.push({
-						title: value.label,
-						key: value.key,
+						title: value.letter,
+						key: value.letter,
 						items: items,
 						itemIndex: indexBefore
 					})
 				})
-				// console.log('this.lists',this.lists);
 				// #ifndef APP-NVUE
 				uni.createSelectorQuery()
 					.in(this)
@@ -316,7 +312,6 @@
 		display: flex;
 		/* #endif */
 		flex: 1;
-		margin: 16rpx 0rpx;
 		align-items: center;
 		justify-content: center;
 		/* #ifdef H5 */

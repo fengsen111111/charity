@@ -242,7 +242,6 @@
 	}
 
 	.uni-swipe_box {
-		margin-top: 0.75rem;
 		/* #ifndef APP-NVUE */
 		display: flex;
 		flex-shrink: 0;

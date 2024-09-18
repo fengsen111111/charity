@@ -239,7 +239,7 @@
 		/* #endif */
 		flex-direction: row;
 		position: relative;
-		// padding: 10px;
+		padding: 10px;
 		// background-color: #fff;
 	}
 
@@ -254,9 +254,8 @@
 		flex: 1;
 		flex-direction: row;
 		align-items: center;
-		height: 64rpx;
+		height: $uni-searchbar-height;
 		padding: 5px 8px 5px 0px;
-		width: 300rpx;
 	}
 
 	.uni-searchbar__box-icon-search {

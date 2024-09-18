@@ -130,16 +130,18 @@
 					fontSize
 				} = this
 				return {
-					color:'#FA311D',
+					color,
 					backgroundColor,
 					fontSize: `${fontSize}px`,
+					width: `${fontSize * 22 / 14}px`, // 按字体大小为 14px 时的比例缩放
+ 					lineHeight: `${fontSize * 20 / 14}px`,
 					borderRadius: `${fontSize * 3 / 14}px`,
 				}
 			},
 			splitorStyle() {
 				const { splitorColor, fontSize, backgroundColor } = this
 				return {
-					color: '#FA311D',
+					color: splitorColor,
 					fontSize: `${fontSize * 12 / 14}px`,
 					margin: backgroundColor ? `${fontSize * 4 / 14}px` : ''
 				}
@@ -256,7 +258,7 @@
 	}
 </script>
 <style lang="scss" scoped>
-	$font-size: 10px !important;
+	$font-size: 14px;
 
 	.uni-countdown {
 		display: flex;
@@ -267,7 +269,7 @@
 		&__splitor {
 			margin: 0 2px;
 			font-size: $font-size;
-			// color: #333;
+			color: #333;
 		}
 
 		&__number {

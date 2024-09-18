@@ -1,35 +1,9 @@
 {
   "pages": [
-    "pages/tabbar/home/index",
-    "pages/tabbar/classify/index",
-    "pages/tabbar/phone/index",
-    "pages/tabbar/shopping/index",
-    "pages/tabbar/my/index",
-    "pages/tabbar/home/components/search/index",
-    "pages/tabbar/home/components/shopDetails/index",
-    "pages/sonView/login/index",
-    "pages/sonView/volume/index",
-    "pages/sonView/spikes/index",
-    "pages/sonView/new/index",
-    "pages/sonView/oneSpikes/index",
-    "pages/sonView/commentsAll/index",
-    "pages/sonView/swiperActive/index",
-    "pages/sonView/popularize/index",
-    "pages/sonView/payouts/index",
-    "pages/sonView/addCard/index",
-    "pages/sonView/earnings/index",
-    "pages/sonView/team/index",
-    "pages/sonView/myInfo/index",
-    "pages/sonView/discountAll/index",
-    "pages/sonView/address/index",
-    "pages/sonView/addressForm/index",
-    "pages/sonView/okOrder/index",
-    "pages/sonView/myOrder/index",
-    "pages/sonView/myOrderDetails/index",
-    "pages/sonView/riderLogin/index",
-    "pages/sonView/riderOrder/index",
-    "pages/sonView/citySel/index",
-    "pages/sonView/cityTo/index"
+    "pages/my/index",
+    "pages/index/index",
+    "pages/home/index",
+    "pages/about/index"
   ],
   "subPackages": [],
   "window": {
@@ -38,15 +12,5 @@
     "backgroundColor": "#F8F8F8",
     "navigationStyle": "custom"
   },
-  "lazyCodeLoading": "requiredComponents",
-  "permission": {
-    "scope.userLocation": {
-      "desc": "你的位置信息将用于为您就近匹配门店"
-    }
-  },
-  "requiredPrivateInfos": [
-    "getLocation",
-    "chooseLocation"
-  ],
   "usingComponents": {}
 }

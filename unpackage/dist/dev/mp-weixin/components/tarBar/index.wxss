@@ -3,15 +3,17 @@ image {
 	will-change: transform
 }
 .iconAll {
-	width: 40rpx;
-	height: 40rpx;
+	width: 63rpx;
+	height: 63rpx;
 }
 .tarBarClass {
 	width: 100%;
 	position: fixed;
 	bottom: 0px;
-	height: 4rem;
+	height: 133rpx;
 	/* border-top: 1px solid #D7D9EC; */
 	background-color: #fff;
+	padding-top: 20rpx;
+	color: #6A8986;
 }
 

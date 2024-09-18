@@ -1,0 +1,19 @@
+
+.activeItemImg{
+	width: 225rpx;
+	height: 165rpx;
+	border-radius: 20rpx;
+}
+.titleView{
+	border-left: 6rpx solid #205D57;
+}
+.image_about{
+	width: 100%;
+	height: 380rpx;
+}
+.bgItems{
+	background-color: #EBEBEB;
+	height: 16rpx;
+}
+
+

@@ -247,7 +247,6 @@
   .selected-item {
     flex-direction: row;
     flex-wrap: nowrap;
-	color: black
   }
 
   .text-color {
