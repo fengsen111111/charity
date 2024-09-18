@@ -39,7 +39,7 @@
 						</view>
 						<uni-icons type="right" size="20" color="#878787"></uni-icons>
 					</view>
-					<view class="border_bottom" v-if="item.id !== 5"></view>
+					<view class="border_bottom" v-if="item.id !== '5'"></view>
 				</view>
 			</view>
 		</view>

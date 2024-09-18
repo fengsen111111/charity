@@ -143,12 +143,12 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var tarBar = function tarBar() {
   Promise.all(/*! require.ensure | components/tarbar/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tarbar/index")]).then((function () {
-    return resolve(__webpack_require__(/*! @/components/tarbar/index.vue */ 65));
+    return resolve(__webpack_require__(/*! @/components/tarbar/index.vue */ 73));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var swiperItems = function swiperItems() {
   __webpack_require__.e(/*! require.ensure | components/swiperItems/index */ "components/swiperItems/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/swiperItems/index.vue */ 82));
+    return resolve(__webpack_require__(/*! @/components/swiperItems/index.vue */ 91));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
