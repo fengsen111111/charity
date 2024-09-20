@@ -1,15 +1,69 @@
 {
-	"pages": [{
-			"path": "pages/my/index",
-			"style": {}
-		},
+	"pages": [
 		{
 			"path": "pages/index/index",
 			"style": {}
+		},{
+			"path": "pages/components/myDonation/index",
+			"style": {}
+		},{
+			"path": "pages/components/myRedemptions/index",
+			"style": {}
+		},{
+			"path": "pages/components/address/index",
+			"style": {}
+		},{
+			"path": "pages/components/redemptionHistory/index",
+			"style": {}
+		},{
+			"path": "pages/components/okOrderOk/index",
+			"style": {}
+		},{
+			"path": "pages/components/okOrder/index",
+			"style": {}
+		},{
+			"path": "pages/components/pointsMallDetails/index",
+			"style": {}
 		}, {
+			"path": "pages/components/pointsMall/index",
+			"style": {}
+		}, {
+			"path": "pages/components/eventRegistrationDetails/index",
+			"style": {}
+		},
+		{
+			"path": "pages/components/eventRegistration/index",
+			"style": {}
+		},
+		{
+			"path": "pages/components/charitableFundsDetails/index",
+			"style": {}
+		},
+		{
+			"path": "pages/components/charitableFunds/index",
+			"style": {}
+		},
+		{
+			"path": "pages/components/volunteer/index",
+			"style": {}
+		},
+		{
 			"path": "pages/home/index",
 			"style": {}
 		},
+		{
+			"path": "pages/components/search/index",
+			"style": {}
+		},
+		{
+			"path": "pages/components/textContent/index",
+			"style": {}
+		},
+		{
+			"path": "pages/my/index",
+			"style": {}
+		},
+		
 		{
 			"path": "pages/about/index",
 			"style": {}

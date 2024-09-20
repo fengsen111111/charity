@@ -6,11 +6,11 @@
 				<view class="flex justify-between items-center mt10">
 					<view class="flex">
 						<view class="imgSearch p10 flex text24 justify-between  items-center">
-							<view class="flex items-center ml10">
+							<view class="flex items-center ml10" @click="handleSearch">
 								<image src='../../static/home_search_icon.png' class="img36" mode=""></image>
 								<view class="col29545A">关键词搜索</view>
 							</view>
-							<image src='../../static/home_search_right.png' class="img36 mr20" mode=""></image>
+							<image src='../../static/home_search_right.png' class="img36 mr20" @click="handleCode" mode=""></image>
 						</view>
 						<view class="imgactive font-bold col29545A flex items-center p10">
 							<view class="text24 ml10">积分</view>
@@ -29,10 +29,10 @@
 				</view>
 				<!-- card -->
 				<view class="flex justify-between mt20">
-					<image src="../../static/item_1.png" class="cards_img" mode=""></image>
-					<image src="../../static/item_1.png" class="cards_img" mode=""></image>
-					<image src="../../static/item_2.png" class="cards_img" mode=""></image>
-					<image src="../../static/item_3.png" class="cards_img" mode=""></image>
+					<image src="../../static/item_1.png" class="cards_img" @click="handUrl('/pages/components/charitableFunds/index')" mode=""></image>
+					<image src="../../static/item_1.png" class="cards_img" @click="handUrl('/pages/components/eventRegistration/index')" mode=""></image>
+					<image src="../../static/item_2.png" class="cards_img" @click="handUrl('/pages/components/volunteer/index')" mode=""></image>
+					<image src="../../static/item_3.png" class="cards_img" @click="handUrl('/pages/components/pointsMall/index')" mode=""></image>
 				</view>
 
 				<!--  -->
@@ -42,11 +42,15 @@
 				</view>
 			</view>
 			<!-- 慈善基金 -->
-			<view class="mt40" v-if="indexItem==1">
+			<view class="mt40" v-if="indexItem==1" @click="handUrl('/pages/components/charitableFundsDetails/index')">
+				<cardFunds />
+				<cardFunds />
+				<cardFunds />
+				<cardFunds />
 				<cardFunds />
 			</view>
 			<!-- 活动报名 -->
-			<view class="mt40" v-else>
+			<view class="mt40" v-else @click="handUrl('/pages/components/pointsMallDetails/index')">
 				<cardActivity />
 			</view>
 			<!-- 留白 -->
@@ -78,6 +82,27 @@
 		mounted() {},
 		watch: {},
 		methods: {
+			handUrl(item){
+				uni.navigateTo({
+					url: item
+				})
+			},
+			// 扫码
+			handleCode(){
+				uni.scanCode({
+					success: function (res) {
+						console.log('条码类型：' + res.scanType);
+						console.log('条码内容：' + res.result);
+					}
+				});
+			},
+			// 搜索
+			handleSearch(){
+				uni.navigateTo({
+					url:'/pages/components/search/index'
+				})
+			},
+			// 切换
 			handleIndex(index) {
 				this.indexItem = index
 			},
@@ -86,45 +111,9 @@
 </script>
 
 <style>
-	.status_1 {
-		background: linear-gradient(90deg, #1A4A3B 0%, #205F43 100%);
-		border-radius: 23rpx 0rpx 0rpx 23rpx;
-		position: absolute;
-		right: 0rpx;
-		padding: 8rpx 20rpx;
-		font-size: 24rpx;
-		color: #fff;
-	}
-	.status_2 {
-		background: linear-gradient(90deg, #656465 0%, #8B8B8A 100%);
-		border-radius: 23rpx 0rpx 0rpx 23rpx;
-		position: absolute;
-		right: 0rpx;
-		padding: 8rpx 20rpx;
-		font-size: 24rpx;
-		color: #fff;
-	}
-	.status_3 {
-		background: linear-gradient(90deg, #A38043 0%, #D8B880 100%);
-		border-radius: 23rpx 0rpx 0rpx 23rpx;
-		position: absolute;
-		right: 0rpx;
-		padding: 8rpx 20rpx;
-		font-size: 24rpx;
-		color: #fff;
-	}
+	
+	
 
-	.cardImg {
-		width: 225rpx;
-		height: 165rpx;
-		border-radius: 20rpx;
-	}
-
-	.border_bottom {
-		/* width: 34rpx; */
-		border-bottom: 4rpx solid #205D57;
-		padding-bottom: 10rpx;
-	}
 
 	.cards_img {
 		width: 142rpx;

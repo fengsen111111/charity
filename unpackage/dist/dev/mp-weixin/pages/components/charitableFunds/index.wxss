@@ -1,0 +1,9 @@
+
+.charitableImg {
+	width: 170rpx;
+	height: 65rpx;
+}
+.bgtwo {
+	background: linear-gradient(90deg, #164336 0%, #226043 100%);
+}
+

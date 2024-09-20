@@ -1,0 +1,16 @@
+
+.relative_fei {
+	position: relative;
+	left: 84vw;
+}
+.border-bottom-dotted {
+	border: 1rpx dotted #9B9B9B;
+}
+.charitableImg {
+	width: 170rpx;
+	height: 65rpx;
+}
+.bgtwo {
+	background: linear-gradient(90deg, #164336 0%, #226043 100%);
+}
+

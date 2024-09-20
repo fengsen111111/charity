@@ -1,0 +1,1 @@
+<view><hearch-item vue-id="10ef4dd6-1" isLeft="{{true}}" title="积分兑换" bind:__l="__l"></hearch-item><view class="text-center mt176"><image class="img152" src="../../../static/order_ok_ok.png" mode></image><view class="font-bold text48 col205D57 mt20">兑换成功</view></view></view>

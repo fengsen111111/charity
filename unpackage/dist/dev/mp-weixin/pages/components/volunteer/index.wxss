@@ -1,0 +1,14 @@
+
+.volunterImg{
+	width: 182rpx;
+	height: 156rpx;
+}
+.pickerView {
+	position: fixed;
+	bottom: -100px;
+}
+.img_null {
+	width: 200rpx;
+	height: 130rpx;
+}
+

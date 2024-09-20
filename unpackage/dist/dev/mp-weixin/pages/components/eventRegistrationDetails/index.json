@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "hearch-item": "/components/hearchItem/index",
+    "swiper-items": "/components/swiperItems/index",
+    "card-funds": "/components/card_funds/index"
+  }
+}

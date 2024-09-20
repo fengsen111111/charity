@@ -1,9 +1,9 @@
 <template>
 	<view class="uni-navbar" :class="{'uni-dark':dark, 'uni-nvue-fixed': fixed}">
-		<view class="uni-navbar__content" :class="{ 'uni-navbar--fixed': fixed, 'uni-navbar--shadow': shadow, 'uni-navbar--border': border }"
-			:style="{ 'background-color': themeBgColor, 'border-bottom-color':themeColor }" >
-			<status-bar v-if="statusBar" />
-			<view :style="{ color: themeColor,backgroundColor: themeBgColor ,height:navbarHeight}"
+		<view class="uni-navbar__content" :class="{ 'uni-navbar--fixed': fixed, 'uni-navbar--shadow': shadow, }"
+			:style="{ 'border-bottom-color':themeColor }" style="background: linear-gradient(90deg, #174437 0%, #225F43 100%)">
+			<status-bar v-if="statusBar" />                    <!-- 渐变背景色  -->
+			<view :style="{ color: themeColor,height:navbarHeight}" style="background: linear-gradient(90deg, #174437 0%, #225F43 100%)"
 				class="uni-navbar__header">
 				<view @tap="onClickLeft" class="uni-navbar__header-btns uni-navbar__header-btns-left"
 					:style="{width:leftIconWidth}">
@@ -17,7 +17,7 @@
 						</view>
 					</slot>
 				</view>
-				<view class="uni-navbar__header-container " @tap="onClickTitle">
+				<view class="uni-navbar__header-container" @tap="onClickTitle">
 					<slot>
 						<view class="uni-navbar__header-container-inner" v-if="title.length>0">
 							<text class="uni-nav-bar-text uni-ellipsis-1"
@@ -295,7 +295,7 @@
 		/* #endif */
 		flex: 1;
 		padding: 0 10px;
-		overflow: hidden;
+		// overflow: hidden;
 	}
 
 	.uni-navbar__header-container-inner {

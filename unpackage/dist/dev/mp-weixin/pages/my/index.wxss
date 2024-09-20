@@ -1,6 +1,6 @@
 
 .border_bottom {
-	border: 1rpx solid #F0F0F0;
+	border-bottom: 1rpx solid #F0F0F0;
 	margin: 30rpx 0px;
 }
 .titleView {

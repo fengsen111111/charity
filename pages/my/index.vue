@@ -1,6 +1,6 @@
 <template>
 	<view class="">
-		<hearch title="我的" />
+		<hearchItem :title="'我的'" />
 		<view class="topView ">
 			<view class="px36">
 				<view class="bg-white radius20 w-full">
@@ -22,8 +22,8 @@
 						<view class="flex  colD6B07A">
 							<view class="text36 font-bold ">18,888</view>
 							<view class="text18 ml10 mt16">积分</view>
-							<view class="w100"></view>
-							<image src="../../static/record.png" class="imgConfig ml40" mode=""></image>
+							<view class="w100"></view> 
+							<image src="../../static/record.png" class="imgConfig ml40" mode="" @click="handUrl('/pages/components/redemptionHistory/index')"></image>
 						</view>
 					</view>
 				</view>
@@ -32,7 +32,7 @@
 
 		<view class="px36 py30  mt20 ">
 			<view class="bg-white radius20 p30">
-				<view class="" v-for="item in tagList" :key="item.id">
+				<view class="" v-for="item in tagList" :key="item.id" @click="handUrl(item.url)">
 					<view class="flex justify-between">
 						<view class="flex titleView">
 							<view class="ml20">{{item.text}}</view>
@@ -51,10 +51,10 @@
 
 <script>
 	import tarBar from '@/components/tarbar/index.vue'
-	import hearch from '@/components/hearch/index.vue'
+	import hearchItem from '@/components/hearchItem/index.vue'
 	export default {
 		components: {
-			hearch,
+			hearchItem,
 			tarBar
 		},
 		data() {
@@ -62,22 +62,22 @@
 				tagList:[
 					{
 						id:'1',
-						url:'',
+						url:'/pages/components/myDonation/index',
 						text:'我的捐赠',
 					},
 					{
 						id:'2',
-						url:'',
+						url:'/pages/components/redemptionHistory/index',
 						text:'我的兑换',
 					},
 					{
 						id:'3',
-						url:'',
+						url:'/pages/components/address/index',
 						text:'我的地址',
 					},
 					{
 						id:'4',
-						url:'',
+						url:'/pages/components/myRedemptions/index',
 						text:'我参与的活动',
 					},
 					{
@@ -96,14 +96,18 @@
 		},
 		watch: {},
 		methods: {
-
+			handUrl(item) {
+				uni.navigateTo({
+					url: item
+				})
+			},
 		}
 	}
 </script>
 
 <style>
 	.border_bottom {
-		border: 1rpx solid #F0F0F0;
+		border-bottom: 1rpx solid #F0F0F0;
 		margin: 30rpx 0px;
 	}
 

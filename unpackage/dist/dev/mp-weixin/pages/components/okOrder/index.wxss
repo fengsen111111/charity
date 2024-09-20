@@ -1,0 +1,20 @@
+
+.border-bottom-dotted {
+	border: 1rpx dotted #9B9B9B;
+}
+.orderImg{
+	width: 40rpx;
+	height: 62rpx;
+}
+.btnForm_a {
+	padding: 33rpx;
+	text-align: center;
+	font-size: 36rpx;
+	font-weight: bold;
+	color: #D6B07A;
+	background: white;
+	border: 2rpx solid #D6B07A;
+	border-radius: 20rpx;
+}
+
+

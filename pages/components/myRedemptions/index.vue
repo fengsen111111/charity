@@ -1,0 +1,83 @@
+<template>
+	<view class="">
+		<hearchItem :isLeft="true" :title="'我参与的活动'" />
+		<view class="bg-white p40">
+			<view class="flex justify-around  col6A8986 text30 font-bold">
+				<view @click="handleIndex(1)" :class="indexItem==1?'border_bottom col205D57':''">待开始</view>
+				<view @click="handleIndex(2)" :class="indexItem==2?'border_bottom col205D57':''">进行中</view>
+				<view @click="handleIndex(3)" :class="indexItem==3?'border_bottom col205D57':''">已结束</view>
+			</view>
+		</view>
+		<view class="p35">
+			<view class="bg-white radius10 p20 mb20" v-for="item in [1,2,3]" :key="item">
+				<view class="flex">
+					<image src="https://img.picui.cn/free/2024/09/18/66ea73b25c621.png" class="w200 h100 radius10" mode=""></image>
+					<view class="ml20 w-full">
+						<view class="flex w-full text28 justify-between items-center">
+							<view class="">商品名称商品名称...</view>
+							<view class="flex colD6B07A items-baseline">
+								<view class="text36 font-bold ">18,888</view>
+								<view class="text18 ml10">积分</view>
+							</view>
+						</view>
+						<view class="text20 col787878 mt30">x12</view>
+					</view>
+				</view>
+				<view v-if="item==1">
+					<view class="flex justify-between items-center mt15">
+						<view class="flex">
+							<view class="text28">圆通快递</view>
+							<view class="text28 col49A3EF ml20 flex items-center">
+								<image src="../../../static/copy.png" class="mr10 img30" mode=""></image>
+								<text>1661222315464</text>
+							</view>
+						</view>
+						<view class="py20 px36 font-bold col-white text30 radius20" style="background: linear-gradient(90deg, #BC9E61 0%, #DCB77E 100%);">
+							确认收货
+						</view>
+					</view>
+				</view>
+				<view v-else-if="item==2">
+					<view class="text28 mt20">等待发货中...</view>
+				</view>
+				<view v-else>
+					<view class="text28 mt20 col205D57">已完成</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	import hearchItem from '@/components/hearchItem/index.vue'
+	import cardActivity from '@/components/card_activity/index.vue'
+	export default {
+		components: {
+			hearchItem,
+			cardActivity
+		},
+		data() {
+			return {
+				indexItem:1,
+			}
+		},
+		created() {
+			//获取手机状态栏高度
+		},
+		mounted() {
+
+		},
+		watch: {},
+		methods: {
+			// 
+			handleIndex(index){
+				this.indexItem = index
+			}
+			
+		}
+	}
+</script>
+
+<style>
+
+</style>

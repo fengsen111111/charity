@@ -1,0 +1,6 @@
+
+.textItem {
+	height: 10rpx !important;
+	padding: 20rpx 10rpx;
+}
+

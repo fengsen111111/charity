@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "hearch-item": "/components/hearchItem/index"
+  }
+}

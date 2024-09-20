@@ -1,1 +1,0 @@
-<view><view><view class="navBarBox"><view class="navBar"><view><view class="statusBar" style="{{'padding-top:'+(statusBarHeight+'px')+';'}}"></view><view class="text30 text-center pt20">{{''+title+''}}</view></view></view></view></view></view>

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons",
+    "uni-data-select": "/uni_modules/uni-data-select/components/uni-data-select/uni-data-select",
+    "hearch-item": "/components/hearchItem/index",
+    "card-activity": "/components/card_activity/index"
+  }
+}

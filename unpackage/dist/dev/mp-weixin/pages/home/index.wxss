@@ -1,41 +1,4 @@
 
-.status_1 {
-	background: linear-gradient(90deg, #1A4A3B 0%, #205F43 100%);
-	border-radius: 23rpx 0rpx 0rpx 23rpx;
-	position: absolute;
-	right: 0rpx;
-	padding: 8rpx 20rpx;
-	font-size: 24rpx;
-	color: #fff;
-}
-.status_2 {
-	background: linear-gradient(90deg, #656465 0%, #8B8B8A 100%);
-	border-radius: 23rpx 0rpx 0rpx 23rpx;
-	position: absolute;
-	right: 0rpx;
-	padding: 8rpx 20rpx;
-	font-size: 24rpx;
-	color: #fff;
-}
-.status_3 {
-	background: linear-gradient(90deg, #A38043 0%, #D8B880 100%);
-	border-radius: 23rpx 0rpx 0rpx 23rpx;
-	position: absolute;
-	right: 0rpx;
-	padding: 8rpx 20rpx;
-	font-size: 24rpx;
-	color: #fff;
-}
-.cardImg {
-	width: 225rpx;
-	height: 165rpx;
-	border-radius: 20rpx;
-}
-.border_bottom {
-	/* width: 34rpx; */
-	border-bottom: 4rpx solid #205D57;
-	padding-bottom: 10rpx;
-}
 .cards_img {
 	width: 142rpx;
 	height: 142rpx;
