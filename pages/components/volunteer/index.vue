@@ -15,7 +15,7 @@
 				<view class="flex justify-between py30">
 					<view class="">性别</view>
 					<view class="">
-						<uni-data-checkbox v-model="form.sex" :localdata="sexs" />
+						<uni-data-checkbox v-model="form.gender" :localdata="sexs" />
 					</view>
 				</view>
 				<view class="borderF0F0F0"></view>
@@ -30,7 +30,7 @@
 				<view class="borderF0F0F0"></view>
 				<view class="flex justify-between py30">
 					<view class="">手机号</view>
-					<view class="text-right"><input type="text" placeholder="请输入手机号..." v-model="form.name"
+					<view class="text-right"><input type="text" placeholder="请输入手机号..." v-model="form.mobile"
 							class=" col205D57" /></view>
 				</view>
 				<view class="borderF0F0F0"></view>
@@ -44,7 +44,7 @@
 				<view class="borderF0F0F0"></view>
 				<view class="flex justify-between py30">
 					<view class="">特长</view>
-					<view class="text-right"><input type="text" placeholder="请输入特长..." v-model="form.name"
+					<view class="text-right"><input type="text" placeholder="请输入特长..." v-model="form.skills"
 							class=" col205D57" /></view>
 				</view>
 
@@ -82,6 +82,7 @@
 
 <script>
 	import hearchItem from '@/components/hearchItem/index.vue'
+	import {joinTeam} from '@/request/api.js'
 	export default {
 		components: {
 			hearchItem,
@@ -89,9 +90,13 @@
 		data() {
 			return {
 				form: {
+					time:'',//S
 					name: '',
-					sex: 1,
-					time: ''
+					gender: 1,
+					mobile: '',
+					id_card:'',
+					skills:'',
+					areas:[],
 				},
 				sexs: [{
 					text: '男',
@@ -112,8 +117,21 @@
 		},
 		watch: {},
 		methods: {
+			
 			// 提交
 			btnSubmit() {
+				joinTeam({
+					post_params:{
+						name: this.form.name,
+						gender: this.form.sex==1?'男':'女',
+						mobile: this.form.mobile,
+						id_card:this.form.id_card,
+						skills:this.form.skills,
+						areas:this.form.areas,
+					}
+				}).then(()=>{
+					console.log('数据提交结果',res.data.data);
+				})
 				this.submitShow = true
 			},
 			// 打开时间

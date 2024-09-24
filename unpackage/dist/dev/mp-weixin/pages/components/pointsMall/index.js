@@ -167,12 +167,13 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var hearchItem = function hearchItem() {
   __webpack_require__.e(/*! require.ensure | components/hearchItem/index */ "components/hearchItem/index").then((function () {
     return resolve(__webpack_require__(/*! @/components/hearchItem/index.vue */ 179));
@@ -190,21 +191,10 @@ var _default = {
   },
   data: function data() {
     return {
-      value: 0,
-      range: [{
-        value: 0,
-        text: "全部"
-      }, {
-        value: 1,
-        text: "进行中"
-      }, {
-        value: 2,
-        text: "已结束"
-      }, {
-        value: 3,
-        text: "待开始"
-      }],
-      checkIndex: 1
+      checkIndex: 1,
+      key_word: '',
+      //搜索
+      jfList: [] //积分商品
     };
   },
   created: function created() {
@@ -213,21 +203,29 @@ var _default = {
   mounted: function mounted() {},
   watch: {},
   methods: {
+    _getGoodsList: function _getGoodsList() {
+      var _this = this;
+      (0, _api.getGoodsList)({
+        post_params: {
+          key_word: this.key_word,
+          integral: '',
+          currentPage: 1,
+          perPage: 20
+        }
+      }).then(function (res) {
+        console.log("积分商品", res.data.data.list);
+        _this.jfList = res.data.data.list;
+      });
+    },
     change: function change(e) {
       console.log("e:", e);
     },
     handleIndex: function handleIndex(index) {
       this.checkIndex = index;
-    },
-    handUrl: function handUrl(item) {
-      uni.navigateTo({
-        url: item
-      });
     }
   }
 };
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 

@@ -2251,7 +2251,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -17830,7 +17830,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -17851,14 +17851,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -17954,7 +17954,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -18384,7 +18384,7 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 265:
+/***/ 272:
 /*!****************************************************************************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/index.js ***!
   \****************************************************************************************************************/
@@ -18399,9 +18399,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 266));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 267));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 268));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 273));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 274));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 275));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -18411,7 +18411,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 266:
+/***/ 273:
 /*!***************************************************************************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/en.json ***!
   \***************************************************************************************************************/
@@ -18422,7 +18422,7 @@ module.exports = JSON.parse("{\"uni-datetime-picker.selectDate\":\"select date\"
 
 /***/ }),
 
-/***/ 267:
+/***/ 274:
 /*!********************************************************************************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/zh-Hans.json ***!
   \********************************************************************************************************************/
@@ -18433,7 +18433,7 @@ module.exports = JSON.parse("{\"uni-datetime-picker.selectDate\":\"选择日期\
 
 /***/ }),
 
-/***/ 268:
+/***/ 275:
 /*!********************************************************************************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/zh-Hant.json ***!
   \********************************************************************************************************************/
@@ -18444,7 +18444,7 @@ module.exports = JSON.parse("{\"uni-datetime-picker.selectDate\":\"選擇日期\
 
 /***/ }),
 
-/***/ 269:
+/***/ 276:
 /*!**********************************************************************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-datetime-picker/components/uni-datetime-picker/util.js ***!
   \**********************************************************************************************************/
@@ -18894,7 +18894,7 @@ function fixIosDateFormat(value) {
 
 /***/ }),
 
-/***/ 277:
+/***/ 284:
 /*!********************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/static/icon/home.png ***!
   \********************************************************/
@@ -18905,7 +18905,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 
 /***/ }),
 
-/***/ 278:
+/***/ 285:
 /*!************************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/static/icon_che/home.png ***!
   \************************************************************/
@@ -18916,7 +18916,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 
 /***/ }),
 
-/***/ 279:
+/***/ 286:
 /*!*********************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/static/icon/aixin.png ***!
   \*********************************************************/
@@ -18927,7 +18927,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 
 /***/ }),
 
-/***/ 280:
+/***/ 287:
 /*!*************************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/static/icon_che/aixin.png ***!
   \*************************************************************/
@@ -18938,7 +18938,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 
 /***/ }),
 
-/***/ 281:
+/***/ 288:
 /*!******************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/static/icon/my.png ***!
   \******************************************************/
@@ -18949,7 +18949,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 
 /***/ }),
 
-/***/ 282:
+/***/ 289:
 /*!**********************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/static/icon_che/my.png ***!
   \**********************************************************/
@@ -18960,7 +18960,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 
 /***/ }),
 
-/***/ 290:
+/***/ 297:
 /*!***************************************************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/popup.js ***!
   \***************************************************************************************/
@@ -19002,7 +19002,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 291:
+/***/ 298:
 /*!********************************************************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/i18n/index.js ***!
   \********************************************************************************************/
@@ -19017,9 +19017,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 292));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 293));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 294));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 299));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 300));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 301));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -19029,7 +19029,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 292:
+/***/ 299:
 /*!*******************************************************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/i18n/en.json ***!
   \*******************************************************************************************/
@@ -19037,28 +19037,6 @@ exports.default = _default;
 /***/ (function(module) {
 
 module.exports = JSON.parse("{\"uni-popup.cancel\":\"cancel\",\"uni-popup.ok\":\"ok\",\"uni-popup.placeholder\":\"pleace enter\",\"uni-popup.title\":\"Hint\",\"uni-popup.shareTitle\":\"Share to\"}");
-
-/***/ }),
-
-/***/ 293:
-/*!************************************************************************************************!*\
-  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hans.json ***!
-  \************************************************************************************************/
-/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\"确定\",\"uni-popup.placeholder\":\"请输入\",\"uni-popup.title\":\"提示\",\"uni-popup.shareTitle\":\"分享到\"}");
-
-/***/ }),
-
-/***/ 294:
-/*!************************************************************************************************!*\
-  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hant.json ***!
-  \************************************************************************************************/
-/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\"確定\",\"uni-popup.placeholder\":\"請輸入\",\"uni-popup.title\":\"提示\",\"uni-popup.shareTitle\":\"分享到\"}");
 
 /***/ }),
 
@@ -19093,7 +19071,29 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 309:
+/***/ 300:
+/*!************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hans.json ***!
+  \************************************************************************************************/
+/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\"确定\",\"uni-popup.placeholder\":\"请输入\",\"uni-popup.title\":\"提示\",\"uni-popup.shareTitle\":\"分享到\"}");
+
+/***/ }),
+
+/***/ 301:
+/*!************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hant.json ***!
+  \************************************************************************************************/
+/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\"確定\",\"uni-popup.placeholder\":\"請輸入\",\"uni-popup.title\":\"提示\",\"uni-popup.shareTitle\":\"分享到\"}");
+
+/***/ }),
+
+/***/ 316:
 /*!***********************************************************************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
   \***********************************************************************************************************/
@@ -19228,66 +19228,6 @@ function createAnimation(option, _this) {
 
 /***/ }),
 
-/***/ 315:
-/*!****************************************************************************************************!*\
-  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/index.js ***!
-  \****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 316));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 317));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 318));
-var _default = {
-  en: _en.default,
-  'zh-Hans': _zhHans.default,
-  'zh-Hant': _zhHant.default
-};
-exports.default = _default;
-
-/***/ }),
-
-/***/ 316:
-/*!***************************************************************************************************!*\
-  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/en.json ***!
-  \***************************************************************************************************/
-/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"Pull up to show more\",\"uni-load-more.contentrefresh\":\"loading...\",\"uni-load-more.contentnomore\":\"No more data\"}");
-
-/***/ }),
-
-/***/ 317:
-/*!********************************************************************************************************!*\
-  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hans.json ***!
-  \********************************************************************************************************/
-/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉显示更多\",\"uni-load-more.contentrefresh\":\"正在加载...\",\"uni-load-more.contentnomore\":\"没有更多数据了\"}");
-
-/***/ }),
-
-/***/ 318:
-/*!********************************************************************************************************!*\
-  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hant.json ***!
-  \********************************************************************************************************/
-/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉顯示更多\",\"uni-load-more.contentrefresh\":\"正在加載...\",\"uni-load-more.contentnomore\":\"沒有更多數據了\"}");
-
-/***/ }),
-
 /***/ 32:
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
@@ -19417,6 +19357,66 @@ function normalizeComponent (
   }
 }
 
+
+/***/ }),
+
+/***/ 322:
+/*!****************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/index.js ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 323));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 324));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 325));
+var _default = {
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 323:
+/*!***************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/en.json ***!
+  \***************************************************************************************************/
+/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"Pull up to show more\",\"uni-load-more.contentrefresh\":\"loading...\",\"uni-load-more.contentnomore\":\"No more data\"}");
+
+/***/ }),
+
+/***/ 324:
+/*!********************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hans.json ***!
+  \********************************************************************************************************/
+/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉显示更多\",\"uni-load-more.contentrefresh\":\"正在加载...\",\"uni-load-more.contentnomore\":\"没有更多数据了\"}");
+
+/***/ }),
+
+/***/ 325:
+/*!********************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hant.json ***!
+  \********************************************************************************************************/
+/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉顯示更多\",\"uni-load-more.contentrefresh\":\"正在加載...\",\"uni-load-more.contentnomore\":\"沒有更多數據了\"}");
 
 /***/ }),
 

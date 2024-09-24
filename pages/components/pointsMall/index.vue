@@ -5,7 +5,7 @@
 			<view class="p35">
 				<view class="border205D57 col9B9B9B text24 flex p10 items-center radius30">
 					<uni-icons type="search" size="20" color="#205D57"></uni-icons>
-					<view class="ml10">请输入奖品/服务关键词搜索</view>
+					<view class="ml10"> <input type="text" class="w-full" :value="key_word" placeholder="请输入奖品/服务关键词搜索" /></view>
 				</view>
 			</view>
 			<view class="flex items-center justify-between px36 pb30">
@@ -15,8 +15,8 @@
 				</view>
 			</view>
 		</view>
-		<view class="p35" @click="handUrl('/pages/components/pointsMallDetails/index')">
-			<shopItem />
+		<view class="p35">
+			<shopItem :jfList="jfList" />
 		</view>
 
 	</view>
@@ -25,6 +25,7 @@
 <script>
 	import hearchItem from '@/components/hearchItem/index.vue'
 	import shopItem from '@/components/shopItem/index.vue'
+	import {getGoodsList} from '@/request/api.js'
 	export default {
 		components: {
 			hearchItem,
@@ -32,26 +33,10 @@
 		},
 		data() {
 			return {
-				value: 0,
-				range: [{
-						value: 0,
-						text: "全部"
-					},
-					{
-						value: 1,
-						text: "进行中"
-					},
-					{
-						value: 2,
-						text: "已结束"
-					},
-					{
-						value: 3,
-						text: "待开始"
-					},
-				],
 
 				checkIndex: 1,
+				key_word:'',//搜索
+				jfList:[] //积分商品
 			}
 		},
 		created() {
@@ -62,17 +47,26 @@
 		},
 		watch: {},
 		methods: {
+			_getGoodsList(){
+				getGoodsList({
+					post_params:{
+						key_word: this.key_word,
+						integral: '',
+						currentPage:1,
+						perPage:20
+					}
+				}).then((res)=>{
+					console.log("积分商品",res.data.data.list)
+					this.jfList = res.data.data.list
+				})
+			},
 			change(e) {
 				console.log("e:", e);
 			},
 			handleIndex(index) {
 				this.checkIndex = index
 			},
-			handUrl(item) {
-				uni.navigateTo({
-					url: item
-				})
-			},
+			
 		}
 	}
 </script>

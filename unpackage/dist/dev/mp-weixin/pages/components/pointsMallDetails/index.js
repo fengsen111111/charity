@@ -141,6 +141,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var hearchItem = function hearchItem() {
   __webpack_require__.e(/*! require.ensure | components/hearchItem/index */ "components/hearchItem/index").then((function () {
     return resolve(__webpack_require__(/*! @/components/hearchItem/index.vue */ 179));
@@ -152,29 +153,41 @@ var swiperItems = function swiperItems() {
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
-  props: {
-    // 积分商品id
-    points_shop_id: {
-      type: String,
-      default: ''
-    }
-  },
+  props: {},
   components: {
     hearchItem: hearchItem,
     swiperItems: swiperItems
   },
   data: function data() {
-    return {};
+    return {
+      jf_id: "",
+      //积分id
+      jfObj: {} //积分详情数据
+    };
   },
-  created: function created() {
-    //获取手机状态栏高度
+  onLoad: function onLoad(option) {
+    this.jf_id = option.jf_id;
+    console.log('option', option);
   },
-  mounted: function mounted() {},
+  onReady: function onReady() {
+    this._getGoodsDetail();
+  },
   watch: {},
   methods: {
     handUrl: function handUrl(item) {
       uni.navigateTo({
         url: item
+      });
+    },
+    _getGoodsDetail: function _getGoodsDetail() {
+      var _this = this;
+      (0, _api.getGoodsDetail)({
+        post_params: {
+          id: this.jf_id
+        }
+      }).then(function (res) {
+        console.log('积分商品详情', res.data.data);
+        _this.jfObj = res.data.data;
       });
     }
   }

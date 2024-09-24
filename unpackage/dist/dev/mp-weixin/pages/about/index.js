@@ -148,7 +148,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var tarBar = function tarBar() {
   Promise.all(/*! require.ensure | components/tarbar/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tarbar/index")]).then((function () {
-    return resolve(__webpack_require__(/*! @/components/tarbar/index.vue */ 272));
+    return resolve(__webpack_require__(/*! @/components/tarbar/index.vue */ 279));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var hearchItem = function hearchItem() {

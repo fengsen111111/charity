@@ -104,7 +104,7 @@ try {
       return Promise.all(/*! import() | uni_modules/uni-data-checkbox/components/uni-data-checkbox/uni-data-checkbox */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-data-checkbox/components/uni-data-checkbox/uni-data-checkbox")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-data-checkbox/components/uni-data-checkbox/uni-data-checkbox.vue */ 208))
     },
     uniDatetimePicker: function () {
-      return Promise.all(/*! import() | uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker.vue */ 260))
+      return Promise.all(/*! import() | uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker.vue */ 267))
     },
     uniIcons: function () {
       return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 193))
@@ -170,6 +170,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var hearchItem = function hearchItem() {
   __webpack_require__.e(/*! require.ensure | components/hearchItem/index */ "components/hearchItem/index").then((function () {
     return resolve(__webpack_require__(/*! @/components/hearchItem/index.vue */ 179));
@@ -182,9 +183,14 @@ var _default = {
   data: function data() {
     return {
       form: {
+        time: '',
+        //S
         name: '',
-        sex: 1,
-        time: ''
+        gender: 1,
+        mobile: '',
+        id_card: '',
+        skills: '',
+        areas: []
       },
       sexs: [{
         text: '男',
@@ -205,6 +211,18 @@ var _default = {
   methods: {
     // 提交
     btnSubmit: function btnSubmit() {
+      (0, _api.joinTeam)({
+        post_params: {
+          name: this.form.name,
+          gender: this.form.sex == 1 ? '男' : '女',
+          mobile: this.form.mobile,
+          id_card: this.form.id_card,
+          skills: this.form.skills,
+          areas: this.form.areas
+        }
+      }).then(function () {
+        console.log('数据提交结果', res.data.data);
+      });
       this.submitShow = true;
     },
     // 打开时间

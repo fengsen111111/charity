@@ -79,6 +79,24 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function ($event, item) {
+      var _temp = arguments[arguments.length - 1].currentTarget.dataset,
+        _temp2 = _temp.eventParams || _temp["event-params"],
+        item = _temp2.item
+      var _temp, _temp2
+      return _vm.handUrl(
+        "/pages/components/pointsMallDetails/index?jf_id=" + item
+      )
+    }
+    _vm.e1 = function ($event, item) {
+      var _temp3 = arguments[arguments.length - 1].currentTarget.dataset,
+        _temp4 = _temp3.eventParams || _temp3["event-params"],
+        item = _temp4.item
+      var _temp3, _temp4
+      return _vm.handUrl("/pages/components/okOrder/index?jf_id=" + item)
+    }
+  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -112,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(uni) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -138,7 +156,30 @@ exports.default = void 0;
 //
 //
 //
-var _default = {
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default2 = {
+  props: {
+    jfList: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
+    }
+  },
   components: {},
   data: function data() {
     return {};
@@ -148,9 +189,16 @@ var _default = {
   },
   mounted: function mounted() {},
   watch: {},
-  methods: {}
+  methods: {
+    handUrl: function handUrl(item) {
+      uni.navigateTo({
+        url: item
+      });
+    }
+  }
 };
-exports.default = _default;
+exports.default = _default2;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ })
 

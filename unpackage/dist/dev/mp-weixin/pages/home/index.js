@@ -144,7 +144,7 @@ exports.default = void 0;
 var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var tarBar = function tarBar() {
   Promise.all(/*! require.ensure | components/tarbar/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tarbar/index")]).then((function () {
-    return resolve(__webpack_require__(/*! @/components/tarbar/index.vue */ 272));
+    return resolve(__webpack_require__(/*! @/components/tarbar/index.vue */ 279));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var cardFunds = function cardFunds() {

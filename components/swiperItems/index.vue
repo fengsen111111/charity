@@ -83,7 +83,7 @@
 					})
 				}else if(item.jump_type=='c'){//c积分商品、
 					uni.navigateto({
-						url:'/pages/components/pointsMallDetails/index?points_shop_id='+item.jump_data
+						url:'/pages/components/pointsMallDetails/index?jf_id='+item.jump_data
 					})
 				}else if(item.jump_type=='d'){//d基金详情、
 					uni.navigateto({
