@@ -10,7 +10,7 @@
 						<view class="ml30 ">
 							<view class="flex items-center justify-between">
 								<view class="text36">微信昵称</view>
-								<image src="../../static/config.png" class="imgConfig" mode=""></image>
+								<image src="../../static/config.png" class="imgConfig" mode=""  @click="inputDialogToggle"></image>
 							</view>
 							<view class="col787878 text30 font-bold mt20">
 								188 8888 8888
@@ -22,8 +22,9 @@
 						<view class="flex  colD6B07A">
 							<view class="text36 font-bold ">18,888</view>
 							<view class="text18 ml10 mt16">积分</view>
-							<view class="w100"></view> 
-							<image src="../../static/record.png" class="imgConfig ml40" mode="" @click="handUrl('/pages/components/redemptionHistory/index')"></image>
+							<view class="w100"></view>
+							<image src="../../static/record.png" class="imgConfig ml40" mode=""
+								@click="handUrl('/pages/components/redemptionHistory/index')"></image>
 						</view>
 					</view>
 				</view>
@@ -43,7 +44,11 @@
 				</view>
 			</view>
 		</view>
-		<view class="h160"></view>
+		<!--  -->
+		<uni-popup ref="inputDialog" type="dialog">
+			<uni-popup-dialog ref="inputClose" mode="input" title="昵称" value="微信用户" placeholder="请输入内容"
+				@confirm="dialogInputConfirm"></uni-popup-dialog>
+		</uni-popup>
 		<!--  -->
 		<tarBar :checkIndex='3' />
 	</view>
@@ -59,31 +64,30 @@
 		},
 		data() {
 			return {
-				tagList:[
-					{
-						id:'1',
-						url:'/pages/components/myDonation/index',
-						text:'我的捐赠',
+				tagList: [{
+						id: '1',
+						url: '/pages/components/myDonation/index',
+						text: '我的捐赠',
 					},
 					{
-						id:'2',
-						url:'/pages/components/redemptionHistory/index',
-						text:'我的兑换',
+						id: '2',
+						url: '/pages/components/redemptionHistory/index',
+						text: '我的兑换',
 					},
 					{
-						id:'3',
-						url:'/pages/components/address/index',
-						text:'我的地址',
+						id: '3',
+						url: '/pages/components/address/index',
+						text: '我的地址',
 					},
 					{
-						id:'4',
-						url:'/pages/components/myRedemptions/index',
-						text:'我参与的活动',
+						id: '4',
+						url: '/pages/components/myRedemptions/index',
+						text: '我参与的活动',
 					},
 					{
-						id:'5',
-						url:'',
-						text:'活动核销',
+						id: '5',
+						url: '',
+						text: '活动核销',
 					}
 				]
 			}
@@ -100,6 +104,13 @@
 				uni.navigateTo({
 					url: item
 				})
+			},
+			inputDialogToggle() {
+				this.$refs.inputDialog.open()
+			},
+			dialogInputConfirm(val) {
+				console.log(val)
+				this.$refs.inputDialog.close()
 			},
 		}
 	}

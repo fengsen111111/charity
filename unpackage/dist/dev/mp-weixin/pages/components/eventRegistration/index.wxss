@@ -44,7 +44,7 @@
 /* 隐藏滚动条，启用滚动 */
 .scrollable {
   overflow: scroll; /* 或者 overflow: auto */
-  width: 77vw;
+  width: 70vw;
   white-space: nowrap
 }
 /* 针对 WebKit 浏览器隐藏滚动条 */

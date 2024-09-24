@@ -7,24 +7,25 @@
 					<uni-icons type="search" size="20" color="#205D57"></uni-icons>
 					<view class="ml10">请输入奖品/服务关键词搜索</view>
 				</view>
-				<image src="../../../static/charitable_right.png" class="charitableImg" mode=""></image>
+				<image src="../../../static/charitable_right.png" class="charitableImg" @click="handlePhone" mode="">
+				</image>
 			</view>
 		</view>
 		<view class="py30 px36">
-			<swiperItems />
+			<swiperItems :swiperList="configInfo.about_us_images" />
 			<!-- 文字滚动 -->
-			<textSwiper />
+			<textSwiper :textList="textList" />
 			<view class="mt20 flex items-baseline justify-between">
 				<view class="text30 col3C3C3C">爱心捐助次数</view>
 				<view class="flex colD6B07A items-baseline">
-					<view class="font-bold text60 ">33,340</view>
-					<view class=" text24 ml10">元</view>
+					<view class="font-bold text60 ">{{configInfo.donate_times}}</view>
+					<view class=" text24 ml10">次</view>
 				</view>
 			</view>
 			<view class="mt20 flex items-baseline justify-between">
 				<view class="text30 col3C3C3C">捐款金额</view>
 				<view class="flex colD6B07A items-baseline">
-					<view class="font-bold text60 ">33,340</view>
+					<view class="font-bold text60 ">{{configInfo.donate_money}}</view>
 					<view class=" text24 ml10">元</view>
 				</view>
 			</view>
@@ -34,12 +35,24 @@
 			</view>
 		</view>
 		<view class="bgEBEBEB h18 "></view>
-		<cardFunds />
-		<view class="mt20 px75">
-			<view class="btnForm" @click="handleMoney()">
-				我要捐款
+		<!-- <cardFunds /> -->
+		<!-- 慈善基金 -->
+		<view class="" v-if="indexItem==1">
+			<cardFunds :donList="donList" />
+		</view>
+		<!-- 活动报名 -->
+		<view class="" v-else>
+			<cardActivity :activeList="activeList" />
+		</view>
+		<view class="h50"></view>
+		<view style="position: fixed;bottom: 0rpx;" class="w-full bgEBEBEB">
+			<view class="mt20 px75" v-if="indexItem==1">
+				<view class="btnForm" @click="handleMoney()">
+					我要捐款
+				</view>
 			</view>
 		</view>
+
 		<view class="h20"></view>
 		<!-- 弹框 -->
 		<uni-popup ref="popup" background-color="#fff">
@@ -48,20 +61,21 @@
 					<view class="grid grid-cols-3  items-center p35 border-bottom-dotted">
 						<view class=""></view>
 						<view class="text30 font-bold text-center col205D57">非定向捐助</view>
-						<view class="text-right"><uni-icons type="closeempty" size="26" color="#205D57" @click="close"></uni-icons></view>
+						<view class="text-right"><uni-icons type="closeempty" size="26" color="#205D57"
+								@click="close"></uni-icons></view>
 					</view>
 					<view class="p30">
-					    <view class="py30 px20 border205D57 radius20">
-					    	<input type="text" v-model="form.name" placeholder="请输入参与者姓名" />	
-					    </view>
+						<view class="py30 px20 border205D57 radius20">
+							<input type="text" v-model="form.name" placeholder="请输入参与者姓名" />
+						</view>
 					</view>
 					<view class="p30">
-					    <view class="py30 px20 border205D57 radius20">
-					    	<input type="text" v-model="form.money" placeholder="请输入捐助金额" />	
-					    </view>
+						<view class="py30 px20 border205D57 radius20">
+							<input type="text" v-model="form.money" placeholder="请输入捐助金额" />
+						</view>
 					</view>
 					<view class="mt77 px75">
-						<view class="btnForm">
+						<view class="btnForm" @click="_joinDonate">
 							提 交
 						</view>
 					</view>
@@ -76,6 +90,12 @@
 	import swiperItems from '@/components/swiperItems/index.vue'
 	import cardFunds from '@/components/card_funds/index.vue'
 	import textSwiper from '@/components/text_swiper/index.vue'
+	import {
+		getDonateList, //基金
+		getActivityList, //活动
+		getIntegralList, //滚动字体
+		joinDonate //捐赠
+	} from '@/request/api.js'
 	export default {
 		components: {
 			hearchItem,
@@ -86,22 +106,85 @@
 		data() {
 			return {
 				indexItem: 1,
-				form:{
-					name:'',
-					money:''
-				}
+				form: {
+					name: '',
+					money: ''
+				},
+
+				// config
+				configInfo: {},
+
+				donList: [], //基金列表
+				activeList: [], //活动列表
+				textList: [], //字体滚动
 			}
 		},
-		created() {
+		onLoad() {
 			//获取手机状态栏高度
+			this.configInfo = this.$store.state.config ? this.$store.state.config : {}
 		},
-		mounted() {
-
+		onReady() {
+			this._getDonateList() //基金
+			this._getActivityList() //活动
+			this._getIntegralList() //滚动字体
 		},
 		watch: {},
 		methods: {
-			goDetail(id) {
-				console.log(id)
+			// 电话
+			handlePhone() {
+				uni.makePhoneCall({
+					phoneNumber: this.configInfo.mobile
+				})
+			},
+			// 捐款
+			_joinDonate() {
+				joinDonate({
+					post_params: {
+						donate_id: '', //基金id
+						user_name: this.form.name,
+						money: this.form.money
+					}
+				}).then((res) => {
+					console.log('非定向捐助', res.data.data);
+				})
+			},
+			// 滚动字体
+			_getIntegralList() {
+				getIntegralList({
+					post_params: {
+						currentPage: 1,
+						perPage: 20
+					}
+				}).then((res) => {
+					console.log('滚栋字体', res.data.data.list);
+					this.textList = res.data.data.list
+				})
+			},
+			// 活动
+			_getActivityList() {
+				getActivityList({
+					post_params: {
+						show_position: 'a',
+						currentPage: 1,
+						perPage: 10
+					}
+				}).then((res) => {
+					console.log('首页活动列表', res.data.data.list);
+					this.activeList = res.data.data.list
+				})
+			},
+			// 基金列表
+			_getDonateList() {
+				getDonateList({
+					post_params: {
+						show_position: 'a',
+						currentPage: 1,
+						perPage: 10
+					}
+				}).then((res) => {
+					console.log('首页基金列表', res.data.data.list);
+					this.donList = res.data.data.list
+				})
 			},
 			// 切换
 			handleIndex(index) {
@@ -112,7 +195,7 @@
 				console.log('我要捐款');
 				this.$refs.popup.open('bottom')
 			},
-			close(){
+			close() {
 				this.$refs.popup.close()
 			}
 		}
@@ -120,8 +203,6 @@
 </script>
 
 <style>
-
-
 	.charitableImg {
 		width: 170rpx;
 		height: 65rpx;

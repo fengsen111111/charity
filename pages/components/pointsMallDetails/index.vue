@@ -36,6 +36,13 @@
 	import hearchItem from '@/components/hearchItem/index.vue'
 	import swiperItems from '@/components/swiperItems/index.vue'
 	export default {
+		props:{
+			// 积分商品id
+			points_shop_id:{
+				type: String,
+				default: ''
+			}
+		},
 		components: {
 			hearchItem,
 			swiperItems,

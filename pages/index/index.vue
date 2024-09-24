@@ -23,16 +23,18 @@
 	export default {
 		data() {
 			return {
-				image: 'https://img.picui.cn/free/2024/09/18/66ea43fe1407e.png',
+				image: '',
 				time: 1,
 				// 状态栏高度
 				statusBarHeight: 0,
 				timer: '', //计时器
 			}
 		},
-		created() {
+		onReady() {
 			//获取手机状态栏高度
 			this.statusBarHeight = uni.getSystemInfoSync()['statusBarHeight'];
+			this.image = this.$store.state.config.open_image?this.$store.state.config.open_image:''
+			console.log('开平动画',this.imgae)
 		},
 		mounted() {
 			this.timer = setInterval(() => {

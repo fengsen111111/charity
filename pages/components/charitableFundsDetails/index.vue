@@ -3,12 +3,12 @@
 		<hearchItem :isLeft="true" :title="'慈善基金详情'" />
 		<swiperItems :isBottom="false" />
 		<view class="py30 px36">
-			<view class="text32 font-bold">慈善基金名称</view>
-			<view class="text24 mt20 col787878">负责单位名称</view>
+			<view class="text32 font-bold">{{fundDetails.name}}</view>
+			<view class="text24 mt20 col787878">{{fundDetails.org_name}}</view>
 			<view class="flex items-baseline">
 				<view class="text24 ">已募集</view>
 				<view class="flex colD6B07A items-baseline ml100">
-					<view class="text60  font-bold">33,340</view>
+					<view class="text60  font-bold">{{fundDetails.all_money}}</view>
 					<view class="text24 ml10">元</view>
 				</view>
 			</view>
@@ -19,13 +19,13 @@
 			<view class="titleView text24">
 				<view class="ml20 col205D57 font-bold">已实施项目使用资金情况</view>
 			</view>
-			<view class="p20 mt20 border205D57 radius20 flex justify-between items-center" v-for="item in [1,2,3]"
-				:key="item">
-				<view class="">某某实施项目名称</view>
+			<view class="p20 mt20 border205D57 radius20 flex justify-between items-center" v-for="item in fundDetails.use_log"
+				:key="item.name">
+				<view class="">{{item.name}}</view>
 				<view class="flex items-center">
 					<view class="text24 col205D57">已使用</view>
 					<view class="flex colD6B07A items-center ml20">
-						<view class="text60 font-bold">33,340</view>
+						<view class="text60 font-bold">{{item.money}}</view>
 						<view class="text24 ml10">元</view>
 					</view>
 				</view>
@@ -33,6 +33,7 @@
 		</view>
 		<view class="bgEBEBEB h18 "></view>
 		<view class="py30 px36 text32 indent32">
+			<view v-html="fundDetails.content"></view>
 			慈善基金详情，慈善基金详情，慈善基金详基金基金基金情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情。
 		</view>
 		<view class="h100"></view>
@@ -58,7 +59,7 @@
 							<uni-icons type="closeempty" size="26" color="#205D57" @click="close"></uni-icons>
 						</view>
 					</view>
-					<cardFunds />
+					<cardFundsTwo :itemObj = "fundDetails" />
 					<view class="bgEBEBEB h18 "></view>
 					<view class="p30">
 						<view class="py30 px20 border205D57 radius20">
@@ -71,7 +72,7 @@
 						</view>
 					</view>
 					<view class="mt40 px75">
-						<view class="btnForm">
+						<view class="btnForm" @click="_joinDonate">
 							提 交
 						</view>
 					</view>
@@ -84,12 +85,19 @@
 <script>
 	import hearchItem from '@/components/hearchItem/index.vue'
 	import swiperItems from '@/components/swiperItems/index.vue'
-	import cardFunds from '@/components/card_funds/index.vue'
+	import cardFundsTwo from '@/components/card_funds/index_two.vue'
+	import {
+		getDonateDetail,
+		joinDonate
+	} from "@/request/api.js"
 	export default {
+		props: {
+
+		},
 		components: {
 			hearchItem,
 			swiperItems,
-			cardFunds
+			cardFundsTwo
 		},
 		data() {
 			return {
@@ -97,17 +105,43 @@
 				form: {
 					name: '',
 					money: ''
-				}
+				},
+				funds_id: '',
+				fundDetails: {}
 			}
 		},
-		created() {
+		onLoad(option) {
 			//获取手机状态栏高度
+			this.funds_id = option.funds_id
 		},
-		mounted() {
+		onReady() {
 
 		},
 		watch: {},
 		methods: {
+			// 基金详情
+			_getDonateDetail() {
+				getDonateDetail({
+					post_params: {
+						id: this.funds_id
+					}
+				}).then((res) => {
+					console.log('res基金详情', res.data.data);
+					this.fundDetails = res.data.data
+				})
+			},
+			_joinDonate() {
+				joinDonate({
+					post_params: {
+						donate_id: this.funds_id,
+						user_name: this.form.name,
+						money: this.form.money,
+					}
+				}).then((res) => {
+					console.log('捐款结束', res.data.data);
+				})
+			},
+			// 捐款
 			goDetail(id) {
 				console.log(id)
 			},
@@ -120,7 +154,7 @@
 				console.log('我要捐款');
 				this.$refs.popup.open('bottom')
 			},
-			close(){
+			close() {
 				this.$refs.popup.close()
 			}
 		}

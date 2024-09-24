@@ -22,22 +22,22 @@
 				tarbarList: [{
 						id: 1,
 						text: '首页',
-						url: require('@/static/home.png'),
-						checkUrl: require('@/static/home.png'),
+						url: require('@/static/icon/home.png'),
+						checkUrl: require('@/static/icon_che/home.png'),
 						path: '/pages/home/index',
 					},
 					{
 						id: 2,
 						text: '关于基金',
-						url: require('@/static/ax.png'),
-						checkUrl: require('@/static/ax.png'),
+						url: require('@/static/icon/aixin.png'),
+						checkUrl: require('@/static/icon_che/aixin.png'),
 						path: '/pages/about/index',
 					},
 					{
 						id: 3,
 						text: '我的',
-						url: require('@/static/my.png'),
-						checkUrl: require('@/static/my_check.png'),
+						url: require('@/static/icon/my.png'),
+						checkUrl: require('@/static/icon_che/my.png'),
 						path: '/pages/my/index',
 					},
 				]

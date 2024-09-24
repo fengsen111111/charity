@@ -13,11 +13,30 @@
 					</swiper-item>
 				</swiper>
 			</view>
+			<view class="swiper-wrapper bgtwo mt20 text24 col-white radius20">
+				<swiper class="swiper" :indicator-dots="false" :autoplay="true" :interval="2000" :duration="2000"
+					:circular="true" :vertical="true" :display-multiple-items="3" easing-function="linear">
+					<swiper-item class="textItem" v-for="item in textList" :key="item.id">
+						<view class="flex justify-between" style="width: 97%;">
+							<view class="">周某某</view>
+							<view class="">{{item.name}}</view>
+							<view class="">{{item.integral}}</view>
+							<view class="">{{item.create_time}}</view>
+						</view>
+					</swiper-item>
+				</swiper>
+			</view>
 	</view>
 </template>
 
 <script>
 	export default {
+		props:{
+			textList:{
+				type:Array,
+				default:()=>[]
+			}
+		},
 		components: {
 		},
 		data() {

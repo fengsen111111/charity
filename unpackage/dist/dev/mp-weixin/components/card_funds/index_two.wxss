@@ -1,0 +1,7 @@
+
+.cardImg {
+	width: 225rpx;
+	height: 165rpx;
+	border-radius: 20rpx;
+}
+

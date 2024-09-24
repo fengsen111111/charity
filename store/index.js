@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {getConfig} from '@/request/api.js'
+import {getSetting} from '@/request/api.js'
 Vue.use(Vuex)
 
 
@@ -8,43 +8,31 @@ const store = new Vuex.Store({
     state: {
 		//公共的变量，这里的变量不能随便修改，只能通过触发mutations的方法才能改变
 		login: true, //是否已经登录
-		userInfo:{},//用户数据
-		config:{},//config数据
 		token: '',//token
-		address: true,//店铺地址
-		shopInfo:{
-			text: "某某某某店铺",
-			value: "3"
-		},//门店信息
-		
+		config:{},//设置数据
 	},
     mutations: {
 		//相当于同步的操作
 		loginStatus(state){
 			state.login = true //已登录
 		},
-		// 用户数据存入
-		setState(state,data){
-			console.log('state',state);
-			console.log('data',data);
-			state.userInfo = data  //存入appid等
-		},
-		configInfo(state){
-			getConfig().then((res)=>{
-				console.log('config',res.data);
-			  state.config = res.data //存入config配置
-			})
-		},
 		setToken(state,token){
-			// console.log('state',state);
-			// console.log('data',token);
 			state.token = token// 存入token
 		},
-		addressStatus(state){
-			state.address = true// 地址状态已选择
-		},
-		shopInfoSet(state,item){
-			state.shopInfo = item// 存入店铺信息
+		// 设置
+		configInfo(state){
+			getSetting().then((res)=>{
+				console.log('设置数据',res.data.data);
+			    state.config.open_image = res.data.data.open_image//开屏图片URL  
+			    state.config.mobile = res.data.data.mobile//捐赠电话  
+			    state.config.donate_times = res.data.data.donate_times//捐赠总次数  
+			    state.config.donate_money = res.data.data.donate_money//捐赠总金额
+			    state.config.service_agreement = res.data.data.service_agreement//服务协议  富文本 
+			    state.config.areas = res.data.data.areas//加入志愿者->常驻区域
+			    state.config.about_us = res.data.data.about_us//关于基金  富文本
+			    state.config.about_us_images = res.data.data.about_us_images//关于基金 轮播图
+			    state.config.integral = res.data.data.integral//积分区间：展示时，在后面拼接‘分’文字；如果这个字段不包含 中横线 ‘-’，那么就在后面拼接 ‘分以上’文字
+			})
 		},
 	},
     actions: {

@@ -3,18 +3,13 @@
 		<view class="">
 			<swiper @change="change" :current="current" class="h389 w-full" :class="isBottom?'radius20':''" circular
 				:indicator-dots="false" :autoplay="true" :interval="4000">
-				<swiper-item class="h389">
-					<image src="https://img.picui.cn/free/2024/09/18/66ea73b25c621.png" class="itemsImg"
-						:class="isBottom?'radius20':''" mode="">
+
+				<swiper-item class="h389" v-for="item in swiperList" :key="item.id">
+					<image @click="handleUrl(item)" :src="item.image" class="itemsImg" :class="isBottom?'radius20':''" mode="" >
 					</image>
 				</swiper-item>
 				<swiper-item class="h389">
-					<image src="https://img.picui.cn/free/2024/09/18/66ea73b25c621.png" class="itemsImg"
-						:class="isBottom?'radius20':''" mode="">
-					</image>
-				</swiper-item>
-				<swiper-item class="h389">
-					<image src="https://img.picui.cn/free/2024/09/18/66ea73b25c621.png" class="itemsImg"
+					<image @click="handleUrl(item)" src="https://img.picui.cn/free/2024/09/18/66ea73b25c621.png" class="itemsImg"
 						:class="isBottom?'radius20':''" mode="">
 					</image>
 				</swiper-item>
@@ -38,11 +33,16 @@
 </template>
 
 <script>
+	import { getBannerDetail } from '@/request/api.js'
 	export default {
 		props: {
 			isBottom: {
 				type: Boolean,
 				default: true
+			},
+			swiperList:{
+				type:Array,
+				default:()=>[]
 			}
 		},
 		data() {
@@ -60,6 +60,41 @@
 		methods: {
 			change(e) {
 				this.current = e.detail.current
+			},
+			_getBannerDetail(id){
+				getBannerDetail({
+					post_params:{
+						id:id
+					}
+				}).then((res)=>{
+					console.log('富文本数据',res.data.data.content);
+					uni.navigateto({
+						url:'/pages/components/textContent/index?content='+res.data.data.content
+					})
+				})
+			},
+			handleUrl(item){
+				console.log('点击跳转',item);
+				if(item.jump_type=='a'){// a富文本、
+					this._getBannerDetail(item.id)
+				}else if(item.jump_type=='b'){ //b志愿者申请页、
+					uni.navigateto({
+						url:'/pages/components/volunteer/index'
+					})
+				}else if(item.jump_type=='c'){//c积分商品、
+					uni.navigateto({
+						url:'/pages/components/pointsMallDetails/index?points_shop_id='+item.jump_data
+					})
+				}else if(item.jump_type=='d'){//d基金详情、
+					uni.navigateto({
+						url:'/pages/components/charitableFundsDetails/index?funds_id='+item.jump_data
+					})
+				}else if(item.jump_type=='e'){//e活动详情  
+					uni.navigateto({
+						url:'/pages/components/eventRegistrationDetails/index?active_id='+item.jump_data
+					})
+				}
+				
 			}
 		}
 	}
