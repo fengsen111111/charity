@@ -10,6 +10,9 @@ const store = new Vuex.Store({
 		login: true, //是否已经登录
 		token: '',//token
 		config:{},//设置数据
+		userInfo:{
+			mini_openid:''
+		}
 	},
     mutations: {
 		//相当于同步的操作
@@ -18,6 +21,9 @@ const store = new Vuex.Store({
 		},
 		setToken(state,token){
 			state.token = token// 存入token
+		},
+		setAppid(state,data){
+			state.userInfo.mini_openid = data  //存入appid等
 		},
 		// 设置
 		configInfo(state){
@@ -33,6 +39,21 @@ const store = new Vuex.Store({
 			    state.config.about_us_images = res.data.data.about_us_images//关于基金 轮播图
 			    state.config.integral = res.data.data.integral//积分区间：展示时，在后面拼接‘分’文字；如果这个字段不包含 中横线 ‘-’，那么就在后面拼接 ‘分以上’文字
 			})
+		},
+		// 储存state
+		setState(state){
+			uni.setStorageSync('state', JSON.stringify(state))
+		},
+		// 取出state
+		getState(state){
+			const stateObj = uni.getStorageSync('state')
+			// console.log('取出state',stateObj);
+			if(stateObj){
+				const objs = JSON.parse(stateObj)
+				state.login = objs.login
+				state.token = objs.token
+				state.userInfo.mini_openid = objs.userInfo.mini_openid
+			}
 		},
 	},
     actions: {

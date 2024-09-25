@@ -66,7 +66,9 @@
 		getBannerList,//轮播
 		getDonateList,//基金
 		getActivityList,//活动
-		getUserInfo
+		getUserInfo,//用户信息
+		loginAndRegister,//登陆注册
+		wechatUserRegister//授权
 		} from '@/request/api.js'
 	export default {
 		components: {
@@ -92,10 +94,47 @@
 			this._getActivityList()//活动
 			this._getUserInfo()
 			this.areas = this.$store.state.config.areas //四大区域
+			// 自动授权
+			this.isLogin()
 		},
 		mounted() {},
 		watch: {},
 		methods: {
+			// 授权
+			isLogin() {
+				uni.login({
+					provider: 'weixin',
+					success: res => {
+						console.log(res)
+						wechatUserRegister({
+							post_params: {
+								platform: "mini",
+								code: res.code
+							}
+						}).then((res) => {
+							this.info = res.data.data;
+							console.log('数据', this.info);
+							this.$store.commit('setAppid', this.info.mini_openid) //存入appid等
+							this._loginAndRegister(this.info.mini_openid) //获取token
+						})
+					}
+				});
+			},
+			// 获取token
+			_loginAndRegister(item) {
+				loginAndRegister({
+					post_params: {
+						openid: item,
+						mobile:''
+					}
+				}).then((res) => {
+					console.log('token', res);
+					this.$store.commit('setToken', res.data.data.token)
+					uni.setStorageSync('token', res.data.data.token)
+					this.$store.commit('loginStatus') //修改登录状态
+				})
+			},
+			// 用户信息
 			_getUserInfo(){
 				getUserInfo().then((res)=>{
 					console.log('用户信息',res.data.data);

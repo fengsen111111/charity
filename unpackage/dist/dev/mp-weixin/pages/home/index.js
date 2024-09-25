@@ -190,20 +190,59 @@ var _default = {
     this._getActivityList(); //活动
     this._getUserInfo();
     this.areas = this.$store.state.config.areas; //四大区域
+    // 自动授权
+    this.isLogin();
   },
   mounted: function mounted() {},
   watch: {},
   methods: {
-    _getUserInfo: function _getUserInfo() {
+    // 授权
+    isLogin: function isLogin() {
       var _this = this;
+      uni.login({
+        provider: 'weixin',
+        success: function success(res) {
+          console.log(res);
+          (0, _api.wechatUserRegister)({
+            post_params: {
+              platform: "mini",
+              code: res.code
+            }
+          }).then(function (res) {
+            _this.info = res.data.data;
+            console.log('数据', _this.info);
+            _this.$store.commit('setAppid', _this.info.mini_openid); //存入appid等
+            _this._loginAndRegister(_this.info.mini_openid); //获取token
+          });
+        }
+      });
+    },
+    // 获取token
+    _loginAndRegister: function _loginAndRegister(item) {
+      var _this2 = this;
+      (0, _api.loginAndRegister)({
+        post_params: {
+          openid: item,
+          mobile: ''
+        }
+      }).then(function (res) {
+        console.log('token', res);
+        _this2.$store.commit('setToken', res.data.data.token);
+        uni.setStorageSync('token', res.data.data.token);
+        _this2.$store.commit('loginStatus'); //修改登录状态
+      });
+    },
+    // 用户信息
+    _getUserInfo: function _getUserInfo() {
+      var _this3 = this;
       (0, _api.getUserInfo)().then(function (res) {
         console.log('用户信息', res.data.data);
-        _this.userInfo = res.data.data;
+        _this3.userInfo = res.data.data;
       });
     },
     // 活动
     _getActivityList: function _getActivityList() {
-      var _this2 = this;
+      var _this4 = this;
       (0, _api.getActivityList)({
         post_params: {
           show_position: 'a',
@@ -212,12 +251,12 @@ var _default = {
         }
       }).then(function (res) {
         console.log('首页活动列表', res.data.data.list);
-        _this2.activeList = res.data.data.list;
+        _this4.activeList = res.data.data.list;
       });
     },
     // 基金列表
     _getDonateList: function _getDonateList() {
-      var _this3 = this;
+      var _this5 = this;
       (0, _api.getDonateList)({
         post_params: {
           show_position: 'a',
@@ -226,19 +265,19 @@ var _default = {
         }
       }).then(function (res) {
         console.log('首页基金列表', res.data.data.list);
-        _this3.donList = res.data.data.list;
+        _this5.donList = res.data.data.list;
       });
     },
     // 轮播图列表
     _getBannerList: function _getBannerList() {
-      var _this4 = this;
+      var _this6 = this;
       (0, _api.getBannerList)({
         post_params: {
           type: 'index'
         }
       }).then(function (res) {
         console.log('轮播数据', res.data.data.list);
-        _this4.swiperList = res.data.data.list;
+        _this6.swiperList = res.data.data.list;
       });
     },
     handUrl: function handUrl(item) {

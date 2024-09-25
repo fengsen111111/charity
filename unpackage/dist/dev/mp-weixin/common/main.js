@@ -105,6 +105,7 @@ var _default = {
   onLaunch: function onLaunch() {
     console.log('App Launch系统信息');
     this.$store.commit('configInfo');
+    this.$store.commit('getState');
   },
   onShow: function onShow() {
     console.log('App Show');
