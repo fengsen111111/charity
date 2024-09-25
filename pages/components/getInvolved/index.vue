@@ -8,13 +8,16 @@
 				<view @click="handleIndex(3)" :class="indexItem==3?'border_bottom col205D57':''">已结束</view>
 			</view>
 		</view>
-		<cardActivity :isCode="true" />
+		<cardActivity :isCode="true" :activeList="activeList"/>
 	</view>
 </template>
 
 <script>
 	import hearchItem from '@/components/hearchItem/index.vue'
 	import cardActivity from '@/components/card_activity/index.vue'
+	import {
+		getActivityOrderList//
+	} from '@/request/api.js'
 	export default {
 		components: {
 			hearchItem,
@@ -28,14 +31,25 @@
 		created() {
 			//获取手机状态栏高度
 		},
-		mounted() {
-
+		onReady() {
+			this._getActivityOrderList()
 		},
 		watch: {},
 		methods: {
+			_getActivityOrderList(){
+				getActivityOrderList({
+					post_params:{
+						status: this.indexItem==1?'a': this.indexItem==2?'b':'c'
+					}
+				}).then((res)=>{
+					console.log('参与活动',res.data.data.list);
+					this.activeList = res.data.data.list
+				})
+			},
 			// 
 			handleIndex(index){
 				this.indexItem = index
+				this._getActivityOrderList()
 			}
 			
 		}

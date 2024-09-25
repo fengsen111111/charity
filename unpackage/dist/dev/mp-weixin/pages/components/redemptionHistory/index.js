@@ -139,6 +139,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var hearchItem = function hearchItem() {
   __webpack_require__.e(/*! require.ensure | components/hearchItem/index */ "components/hearchItem/index").then((function () {
     return resolve(__webpack_require__(/*! @/components/hearchItem/index.vue */ 179));
@@ -149,14 +150,31 @@ var _default = {
     hearchItem: hearchItem
   },
   data: function data() {
-    return {};
+    return {
+      logList: [] //获取积分日志列表
+    };
   },
   created: function created() {
     //获取手机状态栏高度
   },
-  mounted: function mounted() {},
+  onReady: function onReady() {
+    this._getIntegralList();
+  },
   watch: {},
-  methods: {}
+  methods: {
+    _getIntegralList: function _getIntegralList() {
+      var _this = this;
+      (0, _api.getIntegralList)({
+        post_params: {
+          currentPage: 1,
+          perPage: 20
+        }
+      }).then(function (res) {
+        console.log('获取积分日志列表', res.data.data);
+        _this.logList = res.data.data.list;
+      });
+    }
+  }
 };
 exports.default = _default;
 

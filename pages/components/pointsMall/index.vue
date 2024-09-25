@@ -33,7 +33,6 @@
 		},
 		data() {
 			return {
-
 				checkIndex: 1,
 				key_word:'',//搜索
 				jfList:[] //积分商品

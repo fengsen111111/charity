@@ -14,7 +14,7 @@
 						</view>
 						<view class="imgactive font-bold col29545A flex items-center p10">
 							<view class="text24 ml10">积分</view>
-							<view class="text30 ml10 mr10">999</view>
+							<view class="text30 ml10 mr10">{{userInfo.integral}}</view>
 						</view>
 					</view>
 					<view class="flex">
@@ -65,7 +65,8 @@
 	import {
 		getBannerList,//轮播
 		getDonateList,//基金
-		getActivityList//活动
+		getActivityList,//活动
+		getUserInfo
 		} from '@/request/api.js'
 	export default {
 		components: {
@@ -81,18 +82,26 @@
 				areas:[],//四大区域
 				
 				donList:[],//基金列表
-				activeList:[]//活动列表
+				activeList:[],//活动列表
+				userInfo:{}//用户信息
 			}
 		},
 		onReady() {
 			this._getBannerList()//轮播
 			this._getDonateList()//基金
 			this._getActivityList()//活动
+			this._getUserInfo()
 			this.areas = this.$store.state.config.areas //四大区域
 		},
 		mounted() {},
 		watch: {},
 		methods: {
+			_getUserInfo(){
+				getUserInfo().then((res)=>{
+					console.log('用户信息',res.data.data);
+					this.userInfo = res.data.data
+				})
+			},
 			// 活动
 			_getActivityList(){
 				getActivityList({

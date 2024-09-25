@@ -6,6 +6,10 @@
 		},{
 			"path": "pages/components/myDonation/index",
 			"style": {}
+		},
+		{
+			"path": "pages/components/getInvolved/index",
+			"style": {}
 		},{
 			"path": "pages/components/myRedemptions/index",
 			"style": {}

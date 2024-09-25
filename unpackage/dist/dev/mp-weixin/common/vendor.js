@@ -2251,7 +2251,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -12160,6 +12160,9 @@ var _default = {
     "path": "pages/components/myDonation/index",
     "style": {}
   }, {
+    "path": "pages/components/getInvolved/index",
+    "style": {}
+  }, {
     "path": "pages/components/myRedemptions/index",
     "style": {}
   }, {
@@ -17830,7 +17833,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -17851,14 +17854,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -17954,7 +17957,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -20753,7 +20756,7 @@ module.exports = index_cjs;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.updateUserInfo = exports.setDefaultUserAddress = exports.overOrder = exports.overActivityOrder = exports.loginAndRegister = exports.joinTeam = exports.joinDonate = exports.joinActivity = exports.getUserInfo = exports.getUserAddressList = exports.getUserAddressDetail = exports.getSetting = exports.getOrderList = exports.getMyDonateLogList = exports.getIntegralList = exports.getGoodsList = exports.getGoodsDetail = exports.getDonateTypeList = exports.getDonateLogList = exports.getDonateList = exports.getDonateDetail = exports.getBannerList = exports.getBannerDetail = exports.getActivityTypeList = exports.getActivityOrderList = exports.getActivityList = exports.getActivityDetail = exports.editUserAddress = exports.deleteUserAddress = exports.addOrder = void 0;
+exports.wechatUserRegister = exports.updateUserInfo = exports.setDefaultUserAddress = exports.overOrder = exports.overActivityOrder = exports.loginAndRegister = exports.joinTeam = exports.joinDonate = exports.joinActivity = exports.getUserInfo = exports.getUserAddressList = exports.getUserAddressDetail = exports.getSetting = exports.getPhoneNumber = exports.getOrderList = exports.getMyDonateLogList = exports.getIntegralList = exports.getGoodsList = exports.getGoodsDetail = exports.getDonateTypeList = exports.getDonateLogList = exports.getDonateList = exports.getDonateDetail = exports.getBannerList = exports.getBannerDetail = exports.getActivityTypeList = exports.getActivityOrderList = exports.getActivityList = exports.getActivityDetail = exports.editUserAddress = exports.deleteUserAddress = exports.addOrder = void 0;
 var _index = __webpack_require__(/*! ./index.js */ 36);
 // 引入 request 文件
 
@@ -20817,9 +20820,23 @@ var api = {
   // 基金详情
   DONATE_JOIN: base_url + '/donate/DonateLog/joinDonate',
   // 捐赠
-  DONATE_LIST_MY: base_url + '/donate/DonateLog/getMyDonateLogList' // 我的列表
+  DONATE_LIST_MY: base_url + '/donate/DonateLog/getMyDonateLogList',
+  // 我的列表
+  PHONE_NUMBER: base_url + '/factory_system/Base/getWechatPhoneNumber',
+  // 获取用户微信手机号
+  REGISTER: base_url + '/factory_system/Base/wechatUserRegister' // 微信授权
+};
+// 获取用户微信手机号
+var wechatUserRegister = function wechatUserRegister(params) {
+  return (0, _index.post)(api.REGISTER, params);
+};
+// 获取用户微信手机号
+exports.wechatUserRegister = wechatUserRegister;
+var getPhoneNumber = function getPhoneNumber(params) {
+  return (0, _index.post)(api.PHONE_NUMBER, params);
 };
 // 我的列表
+exports.getPhoneNumber = getPhoneNumber;
 var getMyDonateLogList = function getMyDonateLogList(params) {
   return (0, _index.post)(api.DONATE_LIST_MY, params);
 };

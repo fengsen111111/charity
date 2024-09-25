@@ -148,7 +148,7 @@ var hearchItem = function hearchItem() {
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var swiperItems = function swiperItems() {
-  Promise.all(/*! require.ensure | components/swiperItems/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/swiperItems/index")]).then((function () {
+  __webpack_require__.e(/*! require.ensure | components/swiperItems/index */ "components/swiperItems/index").then((function () {
     return resolve(__webpack_require__(/*! @/components/swiperItems/index.vue */ 227));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };

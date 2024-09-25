@@ -5,22 +5,27 @@
 			<view class="px36">
 				<view class="bg-white radius20 w-full">
 					<view class="p30 flex">
-						<image src="https://img.picui.cn/free/2024/09/18/66ea73b25c621.png" class="userImg" mode="">
+						<image :src="userInfo.head_image" class="userImg" mode="">
 						</image>
 						<view class="ml30 ">
 							<view class="flex items-center justify-between">
-								<view class="text36">微信昵称</view>
-								<image src="../../static/config.png" class="imgConfig" mode=""  @click="inputDialogToggle"></image>
+								<view class="text36">{{userInfo.nickname}}</view>
+								<image src="../../static/config.png" class="imgConfig" mode=""
+									@click="inputDialogToggle"></image>
 							</view>
-							<view class="col787878 text30 font-bold mt20">
-								188 8888 8888
+							<view class="col787878 text30 font-bold mt20" v-if="userInfo.mobile">
+								{{userInfo.mobile}}
 							</view>
+							<button v-else style="font-size:32rpx;margin-left:20rpx" open-type="getPhoneNumber"
+								@getphonenumber="_getPhoneNumber" id="sqphone" ref="sqphone">
+								授权
+							</button>
 						</view>
 					</view>
 					<view class="px36 py30 flex items-center justify-between">
 						<view class="text24">我的积分</view>
 						<view class="flex  colD6B07A">
-							<view class="text36 font-bold ">18,888</view>
+							<view class="text36 font-bold ">{{userInfo.integral}}</view>
 							<view class="text18 ml10 mt16">积分</view>
 							<view class="w100"></view>
 							<image src="../../static/record.png" class="imgConfig ml40" mode=""
@@ -57,6 +62,11 @@
 <script>
 	import tarBar from '@/components/tarbar/index.vue'
 	import hearchItem from '@/components/hearchItem/index.vue'
+	import {
+		getUserInfo, //用户信息
+		updateUserInfo, //修改用户信息
+		getPhoneNumber //手机号
+	} from '@/request/api.js'
 	export default {
 		components: {
 			hearchItem,
@@ -71,7 +81,7 @@
 					},
 					{
 						id: '2',
-						url: '/pages/components/redemptionHistory/index',
+						url: '/pages/components/myRedemptions/index',
 						text: '我的兑换',
 					},
 					{
@@ -81,7 +91,7 @@
 					},
 					{
 						id: '4',
-						url: '/pages/components/myRedemptions/index',
+						url: '/pages/components/getInvolved/index',
 						text: '我参与的活动',
 					},
 					{
@@ -89,28 +99,74 @@
 						url: '',
 						text: '活动核销',
 					}
-				]
+				],
+				userInfo: {}, //用户信息
+				mobile: '', //手机号
+				nickname: '', //name
 			}
 		},
 		created() {
 			//获取手机状态栏高度
 		},
-		mounted() {
-
+		onReady() {
+			this._getUserInfo()
 		},
 		watch: {},
 		methods: {
-			handUrl(item) {
-				uni.navigateTo({
-					url: item
+			// 用户信息
+			_getUserInfo() {
+				getUserInfo().then((res) => {
+					console.log('用户信息', res.data.data);
+					this.userInfo = res.data.data
 				})
+			},
+			handUrl(item) {
+				console.log('跳转', item);
+				if (item) {
+					uni.navigateTo({
+						url: item
+					})
+				} else {
+					// 扫码
+					uni.scanCode({
+						success: function(res) {
+							console.log('条码类型：' + res.scanType);
+							console.log('条码内容：' + res.result);
+						}
+					});
+				}
 			},
 			inputDialogToggle() {
 				this.$refs.inputDialog.open()
 			},
 			dialogInputConfirm(val) {
 				console.log(val)
-				this.$refs.inputDialog.close()
+				this.nickname = val
+				updateUserInfo({
+					post_params: {
+						mobile: this.mobile,
+						nickname: this.nickname,
+						head_image: ''
+					}
+				}).then((res) => {
+					console.log('修改用户信息', res.data.data);
+					this.$refs.inputDialog.close()
+					this._getUserInfo()
+				})
+			},
+			_getPhoneNumber(e) {
+				console.log('搜全会', e.detail.code)
+				getPhoneNumber({
+					post_params: {
+						platform: 'mini',
+						code: e.detail.code,
+						mini_openid: ''
+					}
+				}).then((res) => {
+					console.log('授权成功', res.data.data.phone_number)
+					this.mobile = res.data.data.phone_number
+					this.dialogInputConfirm()
+				})
 			},
 		}
 	}

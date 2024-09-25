@@ -242,7 +242,9 @@ var _default2 = {
   },
   components: {},
   data: function data() {
-    return {};
+    return {
+      scan_image: '' //核销码  
+    };
   },
   created: function created() {
     //获取手机状态栏高度
@@ -250,7 +252,8 @@ var _default2 = {
   mounted: function mounted() {},
   watch: {},
   methods: {
-    handleCode: function handleCode() {
+    handleCode: function handleCode(item) {
+      this.scan_image = item.scan_image;
       this.$refs.popup.open('bottom');
     },
     close: function close() {

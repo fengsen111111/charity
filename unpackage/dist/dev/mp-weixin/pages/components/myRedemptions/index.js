@@ -133,12 +133,13 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(uni) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var hearchItem = function hearchItem() {
   __webpack_require__.e(/*! require.ensure | components/hearchItem/index */ "components/hearchItem/index").then((function () {
     return resolve(__webpack_require__(/*! @/components/hearchItem/index.vue */ 179));
@@ -156,15 +157,56 @@ var _default = {
   },
   data: function data() {
     return {
-      indexItem: 1
+      indexItem: 1,
+      orderList: [] //
     };
   },
   created: function created() {
     //获取手机状态栏高度
   },
-  mounted: function mounted() {},
+  onReady: function onReady() {
+    this._getOrderList();
+  },
   watch: {},
   methods: {
+    copy: function copy(value) {
+      console.log('copy', value);
+      uni.setClipboardData({
+        data: value,
+        //要被复制的内容
+        success: function success() {
+          //复制成功的回调函数
+          uni.showToast({
+            //提示
+            title: '复制成功'
+          });
+        }
+      });
+    },
+    _overOrder: function _overOrder(item) {
+      var _this = this;
+      (0, _api.overOrder)({
+        post_params: {
+          order_id: item.id
+        }
+      }).then(function (res) {
+        console.log('收获成功', res.data.data);
+        _this._getOrderList();
+      });
+    },
+    _getOrderList: function _getOrderList() {
+      var _this2 = this;
+      (0, _api.getOrderList)({
+        post_params: {
+          status: this.indexItem == 1 ? 'a' : this.indexItem == 2 ? 'b' : 'c',
+          currentPage: 1,
+          perPage: 10
+        }
+      }).then(function (res) {
+        console.log('订单列表', res.data.data.list);
+        _this2.orderList = res.data.data.list;
+      });
+    },
     // 
     handleIndex: function handleIndex(index) {
       this.indexItem = index;
@@ -172,6 +214,7 @@ var _default = {
   }
 };
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ })
 

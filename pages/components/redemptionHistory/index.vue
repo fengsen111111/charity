@@ -2,11 +2,11 @@
 	<view class="">
 		<hearchItem :isLeft="true" :title="'兑换记录'" />
 		<view class="p40">
-			<view v-for="item in [1,2,3]" :key="item">
+			<view v-for="item in logList" :key="item.id">
 				<view class="flex text28  justify-between">
-					<view class="">活动名称</view>
-					<view class="col787878">2024-12-12 16:00</view>
-					<view :class="item==2?'col787878':'colD6B07A'" class=" text36 font-bold">+18,888</view>
+					<view class="">{{item.name}}</view>
+					<view class="col787878">{{item.create_time}}</view>
+					<view :class="item==2?'col787878':'colD6B07A'" class=" text36 font-bold">{{item.integral}}</view>
 				</view>
 				<view class="h1 bgEBEBEB my34"></view>
 			</view>
@@ -16,23 +16,37 @@
 
 <script>
 	import hearchItem from '@/components/hearchItem/index.vue'
-
+	import {
+		getIntegralList//获取积分日志列表
+	} from '@/request/api.js'
 	export default {
 		components: {
 			hearchItem,
 		},
 		data() {
-			return {}
+			return {
+				logList:[],//获取积分日志列表
+			}
 		},
 		created() {
 			//获取手机状态栏高度
 		},
-		mounted() {
-
+		onReady() {
+			this._getIntegralList()
 		},
 		watch: {},
 		methods: {
-
+			_getIntegralList(){
+				getIntegralList({
+					post_params:{
+						currentPage:1,
+						perPage:20
+					}
+				}).then((res)=>{
+					console.log('获取积分日志列表',res.data.data);
+					this.logList = res.data.data.list
+				})
+			}
 		}
 	}
 </script>

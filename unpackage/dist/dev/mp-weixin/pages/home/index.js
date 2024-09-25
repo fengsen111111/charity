@@ -158,7 +158,7 @@ var cardActivity = function cardActivity() {
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var swiperItems = function swiperItems() {
-  Promise.all(/*! require.ensure | components/swiperItems/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/swiperItems/index")]).then((function () {
+  __webpack_require__.e(/*! require.ensure | components/swiperItems/index */ "components/swiperItems/index").then((function () {
     return resolve(__webpack_require__(/*! @/components/swiperItems/index.vue */ 227));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
@@ -179,21 +179,31 @@ var _default = {
 
       donList: [],
       //基金列表
-      activeList: [] //活动列表
+      activeList: [],
+      //活动列表
+      userInfo: {} //用户信息
     };
   },
   onReady: function onReady() {
     this._getBannerList(); //轮播
     this._getDonateList(); //基金
     this._getActivityList(); //活动
+    this._getUserInfo();
     this.areas = this.$store.state.config.areas; //四大区域
   },
   mounted: function mounted() {},
   watch: {},
   methods: {
+    _getUserInfo: function _getUserInfo() {
+      var _this = this;
+      (0, _api.getUserInfo)().then(function (res) {
+        console.log('用户信息', res.data.data);
+        _this.userInfo = res.data.data;
+      });
+    },
     // 活动
     _getActivityList: function _getActivityList() {
-      var _this = this;
+      var _this2 = this;
       (0, _api.getActivityList)({
         post_params: {
           show_position: 'a',
@@ -202,12 +212,12 @@ var _default = {
         }
       }).then(function (res) {
         console.log('首页活动列表', res.data.data.list);
-        _this.activeList = res.data.data.list;
+        _this2.activeList = res.data.data.list;
       });
     },
     // 基金列表
     _getDonateList: function _getDonateList() {
-      var _this2 = this;
+      var _this3 = this;
       (0, _api.getDonateList)({
         post_params: {
           show_position: 'a',
@@ -216,19 +226,19 @@ var _default = {
         }
       }).then(function (res) {
         console.log('首页基金列表', res.data.data.list);
-        _this2.donList = res.data.data.list;
+        _this3.donList = res.data.data.list;
       });
     },
     // 轮播图列表
     _getBannerList: function _getBannerList() {
-      var _this3 = this;
+      var _this4 = this;
       (0, _api.getBannerList)({
         post_params: {
           type: 'index'
         }
       }).then(function (res) {
         console.log('轮播数据', res.data.data.list);
-        _this3.swiperList = res.data.data.list;
+        _this4.swiperList = res.data.data.list;
       });
     },
     handUrl: function handUrl(item) {

@@ -170,6 +170,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var tarBar = function tarBar() {
   Promise.all(/*! require.ensure | components/tarbar/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tarbar/index")]).then((function () {
     return resolve(__webpack_require__(/*! @/components/tarbar/index.vue */ 279));
@@ -193,7 +194,7 @@ var _default = {
         text: '我的捐赠'
       }, {
         id: '2',
-        url: '/pages/components/redemptionHistory/index',
+        url: '/pages/components/myRedemptions/index',
         text: '我的兑换'
       }, {
         id: '3',
@@ -201,32 +202,85 @@ var _default = {
         text: '我的地址'
       }, {
         id: '4',
-        url: '/pages/components/myRedemptions/index',
+        url: '/pages/components/getInvolved/index',
         text: '我参与的活动'
       }, {
         id: '5',
         url: '',
         text: '活动核销'
-      }]
+      }],
+      userInfo: {},
+      //用户信息
+      mobile: '',
+      //手机号
+      nickname: '' //name
     };
   },
   created: function created() {
     //获取手机状态栏高度
   },
-  mounted: function mounted() {},
+  onReady: function onReady() {
+    this._getUserInfo();
+  },
   watch: {},
   methods: {
-    handUrl: function handUrl(item) {
-      uni.navigateTo({
-        url: item
+    // 用户信息
+    _getUserInfo: function _getUserInfo() {
+      var _this = this;
+      (0, _api.getUserInfo)().then(function (res) {
+        console.log('用户信息', res.data.data);
+        _this.userInfo = res.data.data;
       });
+    },
+    handUrl: function handUrl(item) {
+      console.log('跳转', item);
+      if (item) {
+        uni.navigateTo({
+          url: item
+        });
+      } else {
+        // 扫码
+        uni.scanCode({
+          success: function success(res) {
+            console.log('条码类型：' + res.scanType);
+            console.log('条码内容：' + res.result);
+          }
+        });
+      }
     },
     inputDialogToggle: function inputDialogToggle() {
       this.$refs.inputDialog.open();
     },
     dialogInputConfirm: function dialogInputConfirm(val) {
+      var _this2 = this;
       console.log(val);
-      this.$refs.inputDialog.close();
+      this.nickname = val;
+      (0, _api.updateUserInfo)({
+        post_params: {
+          mobile: this.mobile,
+          nickname: this.nickname,
+          head_image: ''
+        }
+      }).then(function (res) {
+        console.log('修改用户信息', res.data.data);
+        _this2.$refs.inputDialog.close();
+        _this2._getUserInfo();
+      });
+    },
+    _getPhoneNumber: function _getPhoneNumber(e) {
+      var _this3 = this;
+      console.log('搜全会', e.detail.code);
+      (0, _api.getPhoneNumber)({
+        post_params: {
+          platform: 'mini',
+          code: e.detail.code,
+          mini_openid: ''
+        }
+      }).then(function (res) {
+        console.log('授权成功', res.data.data.phone_number);
+        _this3.mobile = res.data.data.phone_number;
+        _this3.dialogInputConfirm();
+      });
     }
   }
 };

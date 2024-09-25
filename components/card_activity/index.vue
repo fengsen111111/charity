@@ -1,7 +1,7 @@
 <template>
 	<view class="">
-		<view class="flex mt20 py20 bg-white px36" v-for="item in [1]" :key="item" @click="handelUrl(item.id)">
-			<image src="https://img.picui.cn/free/2024/09/18/66ea73b25c621.png" class="cardImg" mode=""></image>
+		<view class="flex mt20 py20 bg-white px36" v-for="item in [1]" :key="item" >
+			<image @click="handelUrl(item.id)" src="https://img.picui.cn/free/2024/09/18/66ea73b25c621.png" class="cardImg" mode=""></image>
 			<view class=" ml30">
 				<view class="flex">
 					<view class="text32 font-bold w-3-4">活动名称活动名称活动名称</view>
@@ -17,7 +17,7 @@
 					活动时间：2024-12-12 16:30至2024-12-12 16:30
 				</view>
 
-				<view v-if="isCode&&item==1">
+				<view v-if="isCode">
 					<view @click="handleCode" class="py20 mt30 px30 radius20 w120 flex items-center"
 						style="background: linear-gradient(-5deg, #BC9E61 0%, #DCB77E 100%);">
 						<image src="../../static/code_er.png" class="img30" mode=""></image>
@@ -26,8 +26,8 @@
 				</view>
 			</view>
 		</view>
-		<view class="flex mt20 py20 bg-white px36" v-for="item in activeList" :key="item.id" @click="handelUrl(item.id)">
-			<image :src="item.cover_image" class="cardImg" mode=""></image>
+		<view class="flex mt20 py20 bg-white px36" v-for="item in activeList" :key="item.id" >
+			<image @click="handelUrl(item.id)" :src="item.cover_image" class="cardImg" mode=""></image>
 			<view class=" ml30">
 				<view class="flex">
 					<view class="text32 font-bold w-3-4">{{item.name}}</view>
@@ -42,8 +42,8 @@
 				<view class="flex text18 col787878 mt10">
 					活动时间：{{item.start_time}}至{{item.end_time}}
 				</view>
-				<view v-if="isCode&&item==1">
-					<view @click="handleCode" class="py20 mt30 px30 radius20 w120 flex items-center"
+				<view v-if="isCode">
+					<view @click="handleCode(item)" class="py20 mt30 px30 radius20 w120 flex items-center"
 						style="background: linear-gradient(-5deg, #BC9E61 0%, #DCB77E 100%);">
 						<image src="../../static/code_er.png" class="img30" mode=""></image>
 						<view class="text24 col-white ml20">核销码</view>
@@ -62,7 +62,7 @@
 								@click="close"></uni-icons></view>
 					</view>
 					<view class="text-center padding_code">
-						<image src="../../static/item_1.png" class="imgCode" mode=""></image>
+						<image :src="scan_image" class="imgCode" mode=""></image>
 					</view>
 				</view>
 			</view>
@@ -85,6 +85,7 @@
 		components: {},
 		data() {
 			return {
+				scan_image:'',//核销码  
 			}
 		},
 		created() {
@@ -95,7 +96,8 @@
 		},
 		watch: {},
 		methods: {
-			handleCode() {
+			handleCode(item) {
+				this.scan_image = item.scan_image
 				this.$refs.popup.open('bottom')
 			},
 			close() {

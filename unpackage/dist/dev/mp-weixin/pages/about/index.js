@@ -103,8 +103,12 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   if (!_vm._isMounted) {
-    _vm.e0 = function ($event) {
-      return _vm.handUrl("/pages/components/textContent/index")
+    _vm.e0 = function ($event, item) {
+      var _temp = arguments[arguments.length - 1].currentTarget.dataset,
+        _temp2 = _temp.eventParams || _temp["event-params"],
+        item = _temp2.item
+      var _temp, _temp2
+      return _vm.handUrl(item)
     }
   }
 }
@@ -146,6 +150,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var tarBar = function tarBar() {
   Promise.all(/*! require.ensure | components/tarbar/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tarbar/index")]).then((function () {
     return resolve(__webpack_require__(/*! @/components/tarbar/index.vue */ 279));
@@ -157,7 +162,7 @@ var hearchItem = function hearchItem() {
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var swiperItems = function swiperItems() {
-  Promise.all(/*! require.ensure | components/swiperItems/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/swiperItems/index")]).then((function () {
+  __webpack_require__.e(/*! require.ensure | components/swiperItems/index */ "components/swiperItems/index").then((function () {
     return resolve(__webpack_require__(/*! @/components/swiperItems/index.vue */ 227));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
@@ -168,17 +173,43 @@ var _default = {
     tarBar: tarBar
   },
   data: function data() {
-    return {};
+    return {
+      configInfo: {},
+      //config
+      activeList: [] //活动列表
+    };
   },
-  created: function created() {
-    //获取手机状态栏高度
+  onLoad: function onLoad() {
+    this.configInfo = this.$store.state.config ? this.$store.state.config : {};
   },
-  mounted: function mounted() {},
+  onReady: function onReady() {
+    this._getActivityList();
+  },
   watch: {},
   methods: {
     handUrl: function handUrl(item) {
-      uni.navigateTo({
-        url: item
+      (0, _api.getActivityDetail)({
+        post_params: {
+          id: item.id
+        }
+      }).then(function (res) {
+        console.log('活动详情富文本', res.data.data);
+        uni.navigateTo({
+          url: '/pages/components/textContent/index?content=' + res.data.data.content
+        });
+      });
+    },
+    _getActivityList: function _getActivityList() {
+      var _this = this;
+      (0, _api.getActivityList)({
+        post_params: {
+          show_position: 'b',
+          currentPage: 1,
+          perPage: 10
+        }
+      }).then(function (res) {
+        console.log('活动列表', res.data.data.list);
+        _this.activeList = res.data.data.list;
       });
     }
   }

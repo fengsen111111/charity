@@ -1,21 +1,20 @@
 <template>
 	<view class="">
 		<hearchItem :isLeft="true" :title="'我的地址'" />
-
-		<view v-for="item in [1,2]" :key="item">
+		<view v-for="item in addressList" :key="item.id">
 			<view class="p40">
 				<view class="flex items-center">
 					<view class=" text24 w-full">
 						<view class="flex justify-between items-center">
 							<view class="">
-								<view>张某某 188 8888 8888</view>
-								<view>四川省成都市高新区某某街道某某号</view>
+								<view>{{item.name}}  {{item.mobile}}</view>
+								<view>{{item.complete_address}}</view>
 							</view>
-							<uni-icons type="compose" size="26" color="#205D57"></uni-icons>
+							<uni-icons type="compose" size="26" color="#205D57" @click="handleAddAddress(2)"></uni-icons>
 						</view>
 						<view class="mt15 flex justify-between">
-							<view class="col205D57">默认地址</view>
-							<view class="colEC1010">删除地址</view>
+							<view class="col205D57">{{item.is_default=='Y'?'默认地址':''}}</view>
+							<view class="colEC1010" @click="_deleteUserAddress(item.id)">删除地址</view>
 						</view>
 					</view>
 				</view>
@@ -25,7 +24,7 @@
 
 		<view class="btnMoney w-full">
 			<view class="mt20 px75 ">
-				<view class="btnForm" @click="handleAddAddress()">
+				<view class="btnForm" @click="handleAddAddress(1)">
 					新增收货地址
 				</view>
 			</view>
@@ -37,7 +36,7 @@
 				<view class="bg-white" style="height: 60vh;">
 					<view class="grid grid-cols-3  items-center p35 border-bottom-dotted">
 						<view class=""></view>
-						<view class="text30 font-bold text-center col205D57">新增/修改收货地址</view>
+						<view class="text30 font-bold text-center col205D57">{{type==1?'新增':'修改'}}收货地址</view>
 						<view class="text-right"><uni-icons type="closeempty" size="26" color="#205D57"
 								@click="close"></uni-icons></view>
 					</view>
@@ -70,7 +69,7 @@
 						</view>
 					</view>
 					<view class="mt77 px75">
-						<view class="btnForm">
+						<view class="btnForm" @click="_editUserAddress()">
 							提 交
 						</view>
 					</view>
@@ -82,7 +81,11 @@
 
 <script>
 	import hearchItem from '@/components/hearchItem/index.vue'
-
+	import {
+		getUserAddressList,//列表
+		editUserAddress,//新增修改
+		deleteUserAddress//删除
+	} from '@/request/api.js'
 	export default {
 		components: {
 			hearchItem,
@@ -102,18 +105,77 @@
 					text: '否',
 					value: 2
 				}],
+				
+				addressList:[],//地址列表
+				defaulrObj:{},//默认地址
+				type:1,//新增 2编辑
 			}
 		},
 		created() {
 			//获取手机状态栏高度
 		},
-		mounted() {
-
+		onReady() {
+			this._getUserAddressList()
 		},
 		watch: {},
 		methods: {
+			// 删除
+			_deleteUserAddress(id){
+				deleteUserAddress({
+					post_params:{
+						id: id
+					}
+				}).then((res)=>{
+					console.log('删除成功',res.data.data);
+					this._getUserAddressList()
+				})
+			},
+			// 新增修改
+			_editUserAddress(){
+				editUserAddress({
+					post_params:{
+						id: this.type==1?'':this.defaulrObj.id,
+						is_default: this.form.is_default == 1?'Y':'N',
+						name: this.form.name,
+						mobile: this.form.phone,
+						address: this.form.address
+					}
+				}).then((res)=>{
+					console.log('新增编辑成功',res.data.data);
+					this._getUserAddressList()
+				})
+			},
+			_getUserAddressList(){
+				getUserAddressList({
+					post_params:{
+						currentPage:1,
+						perPage:10
+					}
+				}).then((res)=>{
+					console.log('地址列表',res.data.data.list);
+					this.addressList = res.data.data.list
+					res.data.data.list.map((item)=>{
+						if(item.is_default=='Y'){
+							this.defaulrObj = item
+						}
+					})
+				})
+			},
 			// 
-			handleAddAddress() {
+			handleAddAddress(index) {
+				this.type = index
+				if(this.type ==1){
+					// 新增
+					this.form.name = ''
+					this.form.phone = ''
+					this.form.address = ''
+					this.form.is_default = 2
+				}else{
+					this.form.name = this.defaulrObj.name
+					this.form.phone = this.defaulrObj.mobile
+					this.form.address = this.defaulrObj.complete_address
+					this.form.is_default = this.defaulrObj.is_default=='Y'?1:2
+				}
 				this.$refs.popup.open('bottom')
 			},
 			close() {

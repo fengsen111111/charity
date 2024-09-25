@@ -131,11 +131,6 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  if (!_vm._isMounted) {
-    _vm.e0 = function ($event) {
-      return _vm.addAddress()
-    }
-  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -175,13 +170,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var hearchItem = function hearchItem() {
   __webpack_require__.e(/*! require.ensure | components/hearchItem/index */ "components/hearchItem/index").then((function () {
     return resolve(__webpack_require__(/*! @/components/hearchItem/index.vue */ 179));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var swiperItems = function swiperItems() {
-  Promise.all(/*! require.ensure | components/swiperItems/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/swiperItems/index")]).then((function () {
+  __webpack_require__.e(/*! require.ensure | components/swiperItems/index */ "components/swiperItems/index").then((function () {
     return resolve(__webpack_require__(/*! @/components/swiperItems/index.vue */ 227));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
@@ -216,25 +212,111 @@ var _default = {
       }, {
         text: '否',
         value: 2
-      }]
+      }],
+      jf_id: '',
+      //积分id
+      addressList: [],
+      //地址list
+      addressDefaule: {},
+      //默认地址
+      add_type: 1,
+      //1新增2编辑
+      jfDetails: {},
+      //积分详情
+      number: 1 //商品购买个数
     };
   },
-  created: function created() {
+  onLoad: function onLoad(option) {
     //获取手机状态栏高度
+    console.log('option', option);
+    this.jf_id = option.jf_id;
   },
-  mounted: function mounted() {},
+  onShow: function onShow() {
+    this._getUserAddressList();
+    this._getGoodsDetail();
+  },
   watch: {},
   methods: {
+    handleJ: function handleJ(type) {
+      if (this.type == 1) {
+        if (this.number > 1) {
+          this.number--;
+        }
+      } else {
+        this.number++;
+      }
+    },
+    // 积分详情
+    _getGoodsDetail: function _getGoodsDetail() {
+      var _this = this;
+      (0, _api.getGoodsDetail)({
+        post_params: {
+          id: this.jf_id
+        }
+      }).then(function (res) {
+        console.log('积分详情', res.data.data);
+        _this.jfDetails = res.data.data;
+      });
+    },
+    // 设置默认地址
+    handDefault: function handDefault(id) {
+      var _this2 = this;
+      (0, _api.setDefaultUserAddress)({
+        post_params: {
+          id: id
+        }
+      }).then(function (res) {
+        console.log('设置默认地址');
+        _this2._getUserAddressList();
+      });
+    },
+    // 选择的地址
+    handItemAdd: function handItemAdd(item) {
+      this.addressDefaule = item;
+    },
+    // 地址list
+    _getUserAddressList: function _getUserAddressList() {
+      var _this3 = this;
+      (0, _api.getUserAddressList)({
+        post_params: {
+          currentPage: 1,
+          perPage: 100
+        }
+      }).then(function (res) {
+        console.log('地址列表', res.data.data);
+        _this3.addressList = res.data.data.list;
+        res.data.data.list.map(function (item) {
+          if (item.is_default == 'Y') {
+            _this3.addressDefaule = item; //默认地址
+          }
+        });
+      });
+    },
     // 确认兑换
     handOk: function handOk() {
-      uni.navigateTo({
-        url: '/pages/components/okOrderOk/index'
+      (0, _api.addOrder)({
+        post_params: {
+          id: this.jf_id,
+          number: this.number,
+          address_id: this.addressDefaule.id
+        }
+      }).then(function (res) {
+        uni.navigateTo({
+          url: '/pages/components/okOrderOk/index'
+        });
       });
     },
     // 选择收获地址-->新增收货地址
     addAddress: function addAddress() {
       this.closeSel();
-      this.handleAddAddress();
+      // 新增
+      this.add_type = 1;
+      // 赋值
+      this.form.name = '';
+      this.form.phone = '';
+      this.form.address = '';
+      this.form.is_default = 2; //是否默认
+      this.$refs.popup.open('bottom');
     },
     //
     handleSel: function handleSel() {
@@ -245,6 +327,14 @@ var _default = {
     },
     // 
     handleAddAddress: function handleAddAddress() {
+      // 编辑
+      this.add_type = 2;
+      // 赋值
+      this.form.name = this.addressDefaule.name;
+      this.form.phone = this.addressDefaule.mobile;
+      this.form.address = this.addressDefaule.complete_address;
+      this.form.is_default = this.addressDefaule.is_default == 'Y' ? 1 : 2; //是否默认
+
       this.$refs.popup.open('bottom');
     },
     close: function close() {

@@ -135,7 +135,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -147,33 +147,22 @@ var hearchItem = function hearchItem() {
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
-  props: {
-    // content:{
-    // 	type:String;
-    // 	default:''
-    // },
-  },
   components: {
     hearchItem: hearchItem
   },
   data: function data() {
-    return {};
+    return {
+      option: {} //传递数据
+    };
   },
-  created: function created() {
-    //获取手机状态栏高度
+  onload: function onload(option) {
+    this.option = option;
   },
   mounted: function mounted() {},
   watch: {},
-  methods: {
-    confirm: function confirm() {
-      uni.showToast({
-        title: '搜索'
-      });
-    }
-  }
+  methods: {}
 };
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 

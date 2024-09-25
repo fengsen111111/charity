@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/components/myDonation/index",
+    "pages/components/getInvolved/index",
     "pages/components/myRedemptions/index",
     "pages/components/address/index",
     "pages/components/redemptionHistory/index",

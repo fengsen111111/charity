@@ -168,6 +168,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var hearchItem = function hearchItem() {
   __webpack_require__.e(/*! require.ensure | components/hearchItem/index */ "components/hearchItem/index").then((function () {
     return resolve(__webpack_require__(/*! @/components/hearchItem/index.vue */ 179));
@@ -191,17 +192,82 @@ var _default = {
       }, {
         text: '否',
         value: 2
-      }]
+      }],
+      addressList: [],
+      //地址列表
+      defaulrObj: {},
+      //默认地址
+      type: 1 //新增 2编辑
     };
   },
   created: function created() {
     //获取手机状态栏高度
   },
-  mounted: function mounted() {},
+  onReady: function onReady() {
+    this._getUserAddressList();
+  },
   watch: {},
   methods: {
+    // 删除
+    _deleteUserAddress: function _deleteUserAddress(id) {
+      var _this = this;
+      (0, _api.deleteUserAddress)({
+        post_params: {
+          id: id
+        }
+      }).then(function (res) {
+        console.log('删除成功', res.data.data);
+        _this._getUserAddressList();
+      });
+    },
+    // 新增修改
+    _editUserAddress: function _editUserAddress() {
+      var _this2 = this;
+      (0, _api.editUserAddress)({
+        post_params: {
+          id: this.type == 1 ? '' : this.defaulrObj.id,
+          is_default: this.form.is_default == 1 ? 'Y' : 'N',
+          name: this.form.name,
+          mobile: this.form.phone,
+          address: this.form.address
+        }
+      }).then(function (res) {
+        console.log('新增编辑成功', res.data.data);
+        _this2._getUserAddressList();
+      });
+    },
+    _getUserAddressList: function _getUserAddressList() {
+      var _this3 = this;
+      (0, _api.getUserAddressList)({
+        post_params: {
+          currentPage: 1,
+          perPage: 10
+        }
+      }).then(function (res) {
+        console.log('地址列表', res.data.data.list);
+        _this3.addressList = res.data.data.list;
+        res.data.data.list.map(function (item) {
+          if (item.is_default == 'Y') {
+            _this3.defaulrObj = item;
+          }
+        });
+      });
+    },
     // 
-    handleAddAddress: function handleAddAddress() {
+    handleAddAddress: function handleAddAddress(index) {
+      this.type = index;
+      if (this.type == 1) {
+        // 新增
+        this.form.name = '';
+        this.form.phone = '';
+        this.form.address = '';
+        this.form.is_default = 2;
+      } else {
+        this.form.name = this.defaulrObj.name;
+        this.form.phone = this.defaulrObj.mobile;
+        this.form.address = this.defaulrObj.complete_address;
+        this.form.is_default = this.defaulrObj.is_default == 'Y' ? 1 : 2;
+      }
       this.$refs.popup.open('bottom');
     },
     close: function close() {

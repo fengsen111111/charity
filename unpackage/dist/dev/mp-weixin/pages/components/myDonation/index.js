@@ -139,6 +139,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var hearchItem = function hearchItem() {
   __webpack_require__.e(/*! require.ensure | components/hearchItem/index */ "components/hearchItem/index").then((function () {
     return resolve(__webpack_require__(/*! @/components/hearchItem/index.vue */ 179));
@@ -149,14 +150,31 @@ var _default = {
     hearchItem: hearchItem
   },
   data: function data() {
-    return {};
+    return {
+      donList: [] //最新数据
+    };
   },
   created: function created() {
     //获取手机状态栏高度
   },
-  mounted: function mounted() {},
+  onReady: function onReady() {
+    this._getDonateLogList();
+  },
   watch: {},
-  methods: {}
+  methods: {
+    _getDonateLogList: function _getDonateLogList() {
+      var _this = this;
+      (0, _api.getDonateLogList)({
+        post_params: {
+          currentPage: 1,
+          perPage: 10
+        }
+      }).then(function (res) {
+        console.log('最新数据', res.data.data);
+        _this.donList = res.data.data.list;
+      });
+    }
+  }
 };
 exports.default = _default;
 
