@@ -1,6 +1,6 @@
 <template>
 	<view class="">
-		<view class="flex py20 bg-white px36" @click="handelUrl()">
+	<!-- 	<view class="flex py20 bg-white px36" @click="handelUrl()">
 			<image src="https://img.picui.cn/free/2024/09/18/66ea73b25c621.png" class="cardImg" mode=""></image>
 			<view class=" ml30">
 				<view class="text32">基金名称</view>
@@ -10,7 +10,7 @@
 					<view class=" colD6B07A ml106"><text class="text60 font-bold mr10">33,340</text>元</view>
 				</view>
 			</view>
-		</view>
+		</view> -->
 		<view class="flex py20 bg-white px36" v-for="item in donList" :key="item.id" @click="handelUrl(item.id)">
 			<image :src="item.cover_image" class="cardImg" mode=""></image>
 			<view class=" ml30">

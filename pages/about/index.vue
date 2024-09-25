@@ -27,14 +27,14 @@
 					{{item.name}}
 				</view>
 			</view>
-			<view class="mt30 flex " v-for="item in [1,2,3]" :key="item"
+			<!-- <view class="mt30 flex " v-for="item in [1,2,3]" :key="item"
 				@click="handUrl(item)">
 				<image src="https://img.picui.cn/free/2024/09/18/66ea73b25c621.png" class="activeItemImg" mode="">
 				</image>
 				<view class="ml30 text32 font-bold">
 					活动名称活动名称活动名称活动名称
 				</view>
-			</view>
+			</view> -->
 			
 		</view>
 		<view class="h160"></view>

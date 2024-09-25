@@ -29,10 +29,10 @@
 				</view>
 				<view class="flex justify-between mt20">
 					<image v-for="(item,index) in areas" :key="index" :src="item" class="cards_img" @click="handUrl('/pages/components/charitableFunds/index')" mode=""></image>
-					<image src="../../static/item_0.png" class="cards_img" @click="handUrl('/pages/components/charitableFunds/index')" mode=""></image>
+					<!-- <image src="../../static/item_0.png" class="cards_img" @click="handUrl('/pages/components/charitableFunds/index')" mode=""></image>
 					<image src="../../static/item_1.png" class="cards_img" @click="handUrl('/pages/components/eventRegistration/index')" mode=""></image>
 					<image src="../../static/item_2.png" class="cards_img" @click="handUrl('/pages/components/volunteer/index')" mode=""></image>
-					<image src="../../static/item_3.png" class="cards_img" @click="handUrl('/pages/components/pointsMall/index')" mode=""></image>
+					<image src="../../static/item_3.png" class="cards_img" @click="handUrl('/pages/components/pointsMall/index')" mode=""></image> -->
 				</view>
 
 				<!--  -->

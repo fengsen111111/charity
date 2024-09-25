@@ -1,6 +1,6 @@
 <template>
 	<view class="">
-		<view class="flex mt20 py20 bg-white px36" v-for="item in [1]" :key="item" >
+		<!-- <view class="flex mt20 py20 bg-white px36" v-for="item in [1]" :key="item" >
 			<image @click="handelUrl(item.id)" src="https://img.picui.cn/free/2024/09/18/66ea73b25c621.png" class="cardImg" mode=""></image>
 			<view class=" ml30">
 				<view class="flex">
@@ -25,7 +25,7 @@
 					</view>
 				</view>
 			</view>
-		</view>
+		</view> -->
 		<view class="flex mt20 py20 bg-white px36" v-for="item in activeList" :key="item.id" >
 			<image @click="handelUrl(item.id)" :src="item.cover_image" class="cardImg" mode=""></image>
 			<view class=" ml30">

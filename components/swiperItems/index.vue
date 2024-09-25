@@ -8,17 +8,17 @@
 					<image @click="handleUrl(item)" :src="item.image" class="itemsImg" :class="isBottom?'radius20':''" mode="" >
 					</image>
 				</swiper-item>
-				<swiper-item class="h389">
+				<!-- <swiper-item class="h389">
 					<image @click="handleUrl(item)" src="https://img.picui.cn/free/2024/09/18/66ea73b25c621.png" class="itemsImg"
 						:class="isBottom?'radius20':''" mode="">
 					</image>
-				</swiper-item>
+				</swiper-item> -->
 			</swiper>
 		</view>
 		<view class="flex" v-if="isBottom">
 			<view class="flex mx-auto">
-				<view class="" v-for="item in [0,1,2]" :key="item">
-					<image src="../../static/img_bottom.png" class="img_bottoms" v-if="item==current" mode="">
+				<view class="" v-for="(item,index) in swiperList" :key="index">
+					<image src="../../static/img_bottom.png" class="img_bottoms" v-if="index==current" mode="">
 					</image>
 					<image src="../../static/img_bottom_active.png" class="img_bottoms" v-else mode=""></image>
 				</view>

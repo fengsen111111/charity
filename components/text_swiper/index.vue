@@ -1,6 +1,6 @@
 <template>
 	<view class="">
-			<view class="swiper-wrapper bgtwo mt20 text24 col-white radius20">
+			<!-- <view class="swiper-wrapper bgtwo mt20 text24 col-white radius20">
 				<swiper class="swiper" :indicator-dots="false" :autoplay="true" :interval="2000" :duration="2000"
 					:circular="true" :vertical="true" :display-multiple-items="3" easing-function="linear">
 					<swiper-item class="textItem" v-for="item in [1,2,3,4,5,6,7,8]" :key="item">
@@ -12,7 +12,7 @@
 						</view>
 					</swiper-item>
 				</swiper>
-			</view>
+			</view> -->
 			<view class="swiper-wrapper bgtwo mt20 text24 col-white radius20">
 				<swiper class="swiper" :indicator-dots="false" :autoplay="true" :interval="2000" :duration="2000"
 					:circular="true" :vertical="true" :display-multiple-items="3" easing-function="linear">
