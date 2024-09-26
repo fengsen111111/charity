@@ -28,5 +28,6 @@
     "backgroundColor": "#F8F8F8",
     "navigationStyle": "custom"
   },
+  "lazyCodeLoading": "requiredComponents",
   "usingComponents": {}
 }

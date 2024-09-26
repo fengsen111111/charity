@@ -14,11 +14,11 @@ const api = {
 	GET_INTEGRAL_LIST: base_url + '/donate/Integral/getIntegralList', // 获取积分日志列表
 	JOIN_TEAM: base_url + '/donate/User/joinTeam', // 加入志愿者
 	EDIT_USERINFO: base_url + '/donate/User/updateUserInfo', // 修改用户信息
-	EDIT_ADDRESS: base_url + '/donate/UserAddress/editUserAddress', // 添加/修改用户收货信息
-	SET_DEFAULT_ADDRESS: base_url + '/donate/UserAddress/setDefaultUserAddress', // 设置用户收货信息为默认
-	DEL_ADDRESS: base_url + '/donate/UserAddress/deleteUserAddress', // 删除用户收货信息
-	ADDRESS_LIST: base_url + '/donate/UserAddress/getUserAddressList', // 获取用户收货信息列表
-	ADDRESS_DETAILS: base_url + '/donate/UserAddress/getUserAddressDetail', // 获取用户收货信息详情
+	EDIT_ADDRESS: base_url + '/donate/Address/editUserAddress', // 添加/修改用户收货信息
+	// SET_DEFAULT_ADDRESS: base_url + '/donate/UserAddress/setDefaultUserAddress', // 设置用户收货信息为默认
+	DEL_ADDRESS: base_url + '/donate/Address/deleteUserAddress', // 删除用户收货信息
+	ADDRESS_LIST: base_url + '/donate/Address/getUserAddressList', // 获取用户收货信息列表
+	ADDRESS_DETAILS: base_url + '/donate/Address/getUserAddressDetail', // 获取用户收货信息详情
 	SHOP_LIST: base_url + '/donate/Goods/getGoodsList', // 积分商品列表
 	SHOP_DETAILS: base_url + '/donate/Goods/getGoodsDetail', // 积分商品详情
 	ADD_ORDER: base_url + '/donate/Order/addOrder', // 下单

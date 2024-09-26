@@ -24,17 +24,20 @@
 		data() {
 			return {
 				image: '',
-				time: 1,
+				time: 5,
 				// 状态栏高度
 				statusBarHeight: 0,
 				timer: '', //计时器
 			}
 		},
-		onReady() {
+		onLoad() {
 			//获取手机状态栏高度
 			this.statusBarHeight = uni.getSystemInfoSync()['statusBarHeight'];
-			this.image = this.$store.state.config.open_image?this.$store.state.config.open_image:''
-			console.log('开平动画',this.imgae)
+			const _this = this
+			setTimeout(()=>{
+				_this.image = _this.$store.state.config.open_image?_this.$store.state.config.open_image:''
+				// console.log('开平动画',_this.$store.state.config.open_image,_this.imgae)
+			},1000)
 		},
 		mounted() {
 			this.timer = setInterval(() => {
@@ -43,7 +46,7 @@
 		},
 		watch:{
 			time(newVal,oldVal){
-				console.log('newVal',newVal);
+				// console.log('newVal',newVal);
 				if(newVal==0){
 					clearInterval(this.timer);
 					uni.navigateTo({

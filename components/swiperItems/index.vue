@@ -67,9 +67,9 @@
 						id:id
 					}
 				}).then((res)=>{
-					console.log('富文本数据',res.data.data.content);
-					uni.navigateto({
-						url:'/pages/components/textContent/index?content='+res.data.data.content
+					console.log('富文本数据',res.data.data);
+					uni.navigateTo({
+						url:'/pages/components/textContent/index?content='+res.data.data
 					})
 				})
 			},
@@ -78,19 +78,19 @@
 				if(item.jump_type=='a'){// a富文本、
 					this._getBannerDetail(item.id)
 				}else if(item.jump_type=='b'){ //b志愿者申请页、
-					uni.navigateto({
+					uni.navigateTo({
 						url:'/pages/components/volunteer/index'
 					})
 				}else if(item.jump_type=='c'){//c积分商品、
-					uni.navigateto({
+					uni.navigateTo({
 						url:'/pages/components/pointsMallDetails/index?jf_id='+item.jump_data
 					})
 				}else if(item.jump_type=='d'){//d基金详情、
-					uni.navigateto({
+					uni.navigateTo({
 						url:'/pages/components/charitableFundsDetails/index?funds_id='+item.jump_data
 					})
 				}else if(item.jump_type=='e'){//e活动详情  
-					uni.navigateto({
+					uni.navigateTo({
 						url:'/pages/components/eventRegistrationDetails/index?active_id='+item.jump_data
 					})
 				}

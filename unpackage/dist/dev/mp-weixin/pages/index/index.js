@@ -166,27 +166,30 @@ var _default = {
   data: function data() {
     return {
       image: '',
-      time: 1,
+      time: 5,
       // 状态栏高度
       statusBarHeight: 0,
       timer: '' //计时器
     };
   },
-  onReady: function onReady() {
+  onLoad: function onLoad() {
     //获取手机状态栏高度
     this.statusBarHeight = uni.getSystemInfoSync()['statusBarHeight'];
-    this.image = this.$store.state.config.open_image ? this.$store.state.config.open_image : '';
-    console.log('开平动画', this.imgae);
+    var _this = this;
+    setTimeout(function () {
+      _this.image = _this.$store.state.config.open_image ? _this.$store.state.config.open_image : '';
+      // console.log('开平动画',_this.$store.state.config.open_image,_this.imgae)
+    }, 1000);
   },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
     this.timer = setInterval(function () {
-      _this.time = _this.time - 1;
+      _this2.time = _this2.time - 1;
     }, 1000);
   },
   watch: {
     time: function time(newVal, oldVal) {
-      console.log('newVal', newVal);
+      // console.log('newVal',newVal);
       if (newVal == 0) {
         clearInterval(this.timer);
         uni.navigateTo({

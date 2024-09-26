@@ -23,12 +23,15 @@
 						<view class="checkboxTz"></view>
 					</view>
 				</view>
+				
 				<!-- 轮播 -->
 				<view class="mt20">
 					<swiperItems :swiperList = "swiperList" />
 				</view>
-				<view class="flex justify-between mt20">
-					<image v-for="(item,index) in areas" :key="index" :src="item" class="cards_img" @click="handUrl('/pages/components/charitableFunds/index')" mode=""></image>
+				<view class="grid grid-cols-4 mt20">
+					<view  v-for="(item,index) in areas" :key="index">
+						<image :src="item" class="cards_img" @click="handUrl('/pages/components/charitableFunds/index')" mode=""></image>
+					</view>
 					<!-- <image src="../../static/item_0.png" class="cards_img" @click="handUrl('/pages/components/charitableFunds/index')" mode=""></image>
 					<image src="../../static/item_1.png" class="cards_img" @click="handUrl('/pages/components/eventRegistration/index')" mode=""></image>
 					<image src="../../static/item_2.png" class="cards_img" @click="handUrl('/pages/components/volunteer/index')" mode=""></image>
@@ -82,20 +85,23 @@
 				indexItem: 1,
 				swiperList:[],//轮播图列表
 				areas:[],//四大区域
-				
 				donList:[],//基金列表
 				activeList:[],//活动列表
 				userInfo:{}//用户信息
 			}
 		},
 		onReady() {
+			this.isLogin()// 自动授权
 			this._getBannerList()//轮播
-			this._getDonateList()//基金
-			this._getActivityList()//活动
-			this._getUserInfo()
-			this.areas = this.$store.state.config.areas //四大区域
-			// 自动授权
-			this.isLogin()
+			// this._getDonateList()//基金
+			// this._getActivityList()//活动
+			// this._getUserInfo()
+			
+			const _this = this
+			setTimeout(()=>{
+				_this.areas = _this.$store.state.config.areas //四大区域
+				console.log('this.areas',_this.areas);
+			},500)
 		},
 		mounted() {},
 		watch: {},
