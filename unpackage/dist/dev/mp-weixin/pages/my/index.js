@@ -274,11 +274,12 @@ var _default = {
         post_params: {
           platform: 'mini',
           code: e.detail.code,
-          mini_openid: ''
+          mini_openid: this.$store.state.userInfo.mini_openid
         }
       }).then(function (res) {
         console.log('授权成功', res.data.data.phone_number);
         _this3.mobile = res.data.data.phone_number;
+        uni.setStorageSync('phone', _this3.mobile); //存入电话号码
         _this3.dialogInputConfirm();
       });
     }
