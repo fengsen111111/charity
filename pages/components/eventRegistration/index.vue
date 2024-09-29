@@ -9,15 +9,12 @@
 				</view>
 			</view>
 			<view class="flex items-center px36 pb30">
-				<view class=" col205D57 w120">
+				<view class=" col205D57 w180" >
 					<uni-data-select v-model="value" :clear="false" :localdata="range" @change="change"></uni-data-select>
 				</view>
 				<view class="py5 ml20">
 					<view class="titleView text-center text26 col205D57 hidden scrollable">
 						<view class="flex items-center ml10">
-							<view class="px10" @click="handleIndex(item)" v-for="item in [1,2,3,4,5,6,7,8,9]" :key="item">
-								<view :class="checkIndex==item?'checkIndex':''">公益慈善</view>
-							</view>
 							<view class="px10" @click="handleIndex(item.id)" v-for="item in typeList" :key="item.id">
 								<view :class="checkIndex==item.id?'checkIndex':''">{{item.name}}</view>
 							</view>
@@ -118,6 +115,7 @@
 				}else if(e==3){
 					this.status = 'a'
 				}
+				this._getActivityList()
 			},
 			handleIndex(index){
 				this.checkIndex =index

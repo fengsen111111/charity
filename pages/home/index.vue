@@ -14,7 +14,7 @@
 						</view>
 						<view class="imgactive font-bold col29545A flex items-center p10">
 							<view class="text24 ml10">积分</view>
-							<view class="text30 ml10 mr10">{{userInfo.integral}}</view>
+							<view class="text30 ml10 mr10">{{userInfo.integral||0}}</view>
 						</view>
 					</view>
 					<view class="flex">
@@ -28,14 +28,12 @@
 				<view class="mt20">
 					<swiperItems :swiperList = "swiperList" />
 				</view>
-				<view class="grid grid-cols-4 mt20">
-					<view  v-for="(item,index) in areas" :key="index">
-						<image :src="item" class="cards_img" @click="handUrl('/pages/components/charitableFunds/index')" mode=""></image>
-					</view>
-					<!-- <image src="../../static/item_0.png" class="cards_img" @click="handUrl('/pages/components/charitableFunds/index')" mode=""></image>
+				<view class="flex justify-between mt20">
+					<image src="../../static/item_0.png" class="cards_img" @click="handUrl('/pages/components/charitableFunds/index')" mode=""></image>
 					<image src="../../static/item_1.png" class="cards_img" @click="handUrl('/pages/components/eventRegistration/index')" mode=""></image>
-					<image src="../../static/item_2.png" class="cards_img" @click="handUrl('/pages/components/volunteer/index')" mode=""></image>
-					<image src="../../static/item_3.png" class="cards_img" @click="handUrl('/pages/components/pointsMall/index')" mode=""></image> -->
+					<!-- <image src="../../static/item_2.png" class="cards_img" @click="handUrl('/pages/components/volunteer/index')" mode=""></image> -->
+					<image src="../../static/item_2.png" class="cards_img" @click="handUrlThree()" mode=""></image>
+					<image src="../../static/item_3.png" class="cards_img" @click="handUrl('/pages/components/pointsMall/index')" mode=""></image>
 				</view>
 
 				<!--  -->
@@ -61,7 +59,7 @@
 </template>
 
 <script>
-	import tarBar from '@/components/tarbar/index.vue'
+	import tarBar from '@/components/tarBar/index.vue'
 	import cardFunds from '@/components/card_funds/index.vue'
 	import cardActivity from '@/components/card_activity/index.vue'
 	import swiperItems from '@/components/swiperItems/index.vue'
@@ -93,12 +91,12 @@
 		onReady() {
 			this.isLogin()// 自动授权
 			this._getBannerList()//轮播
-			// this._getDonateList()//基金
-			// this._getActivityList()//活动
-			// this._getUserInfo()
 			
 			const _this = this
 			setTimeout(()=>{
+				_this._getDonateList()//基金
+				_this._getActivityList()//活动
+				_this._getUserInfo()
 				_this.areas = _this.$store.state.config.areas //四大区域
 				console.log('this.areas',_this.areas);
 			},500)
@@ -106,6 +104,17 @@
 		mounted() {},
 		watch: {},
 		methods: {
+			handUrlThree(){
+				if(this.userInfo.is_worker=='N'){
+					uni.navigateTo({
+						url:'/pages/components/volunteer/index?submitShow='+'false'
+					})
+				}else{
+					uni.navigateTo({
+						url:'/pages/components/volunteer/index?submitShow='+'true'
+					})
+				}
+			},
 			// 授权
 			isLogin() {
 				uni.login({
@@ -134,7 +143,7 @@
 						mobile:''
 					}
 				}).then((res) => {
-					console.log('token', res);
+					console.log('token', res.data);
 					this.$store.commit('setToken', res.data.data.token)
 					uni.setStorageSync('token', res.data.data.token)
 					this.$store.commit('loginStatus') //修改登录状态

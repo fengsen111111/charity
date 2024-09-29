@@ -1,9 +1,9 @@
 <template>
 	<view class="uni-navbar" :class="{'uni-dark':dark, 'uni-nvue-fixed': fixed}">
 		<view class="uni-navbar__content" :class="{ 'uni-navbar--fixed': fixed, 'uni-navbar--shadow': shadow, }"
-			:style="{ 'border-bottom-color':themeColor }" style="background: linear-gradient(90deg, #174437 0%, #225F43 100%)">
+			:style="{ 'border-bottom-color':themeColor }" style="background: linear-gradient(90deg, #1d523d 0%, #215540 100%)">
 			<status-bar v-if="statusBar" />                    <!-- 渐变背景色  -->
-			<view :style="{ color: themeColor,height:navbarHeight}" style="background: linear-gradient(90deg, #174437 0%, #225F43 100%)"
+			<view :style="{ color: themeColor,height:navbarHeight}" style="background: linear-gradient(90deg, #1d523d 0%, #215540 100%)"
 				class="uni-navbar__header">
 				<view @tap="onClickLeft" class="uni-navbar__header-btns uni-navbar__header-btns-left"
 					:style="{width:leftIconWidth}">

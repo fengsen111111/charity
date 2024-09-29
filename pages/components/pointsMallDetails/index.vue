@@ -1,7 +1,7 @@
 <template>
 	<view class="">
 		<hearchItem :isLeft="true" :title="'商品详情'" />
-		<swiperItems :isBottom="false" />
+		<swiperItemsTwo :isBottom="false" :swiperList="[jfObj.cover_image]" />
 		<view class="py30 px36">
 			<view class="text32 font-bold">{{jfObj.name}}</view>
 			<view class="flex items-baseline justify-between mt20">
@@ -16,7 +16,6 @@
 		<view class="bgEBEBEB h18 "></view>
 		<view class="py30 px36 text32 indent32">
 			<view v-html="jfObj.detail"></view>
-			慈善基金详情，慈善基金详情，慈善基金详基金基金基金情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情。
 		</view>
 		<view class="h100"></view>
 		<!-- 屏幕定位 -->
@@ -35,14 +34,14 @@
 
 <script>
 	import hearchItem from '@/components/hearchItem/index.vue'
-	import swiperItems from '@/components/swiperItems/index.vue'
+	import swiperItemsTwo from '@/components/swiperItems/index_two.vue'
 	import {getGoodsDetail} from '@/request/api.js'
 	export default {
 		props:{
 		},
 		components: {
 			hearchItem,
-			swiperItems,
+			swiperItemsTwo,
 		},
 		data() {
 			return {

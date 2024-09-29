@@ -2,7 +2,7 @@
 	<view class="">
 		<hearchItem :title="'关于基金'" />
 		<view class="px36 py30">
-			<swiperItems :swiperList="configInfo.about_us_images" />
+			<swiperItems :swiperList="swiperList" />
 		</view>
 		<view class="bgItems"></view>
 		<view class="px36 py30">
@@ -10,7 +10,6 @@
 				<view class="ml20 col205D57 font-bold">关于基金</view>
 			</view>
 			<view class="mt15 text24 indent2">
-				<!-- 慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情。 -->
 				<view v-html="configInfo.about_us"></view>
 			</view>
 		</view>
@@ -44,12 +43,13 @@
 </template>
 
 <script>
-	import tarBar from '@/components/tarbar/index.vue'
+	import tarBar from '@/components/tarBar/index.vue'
 	import hearchItem from '@/components/hearchItem/index.vue'
 	import swiperItems from '@/components/swiperItems/index.vue'
 	import {
 		getActivityList,//活动列表
-		getActivityDetail//活动详情
+		getActivityDetail,//活动详情
+		getBannerList//轮播图
 	} from '@/request/api.js'
 	export default {
 		components: {
@@ -61,6 +61,7 @@
 			return {
 				configInfo:{},//config
 				activeList:[],//活动列表
+				swiperList:[]
 			}
 		},
 		onLoad() {
@@ -68,9 +69,21 @@
 		},
 		onReady() {
 			this._getActivityList()
+			this._getBannerList()//轮播图
 		},
 		watch: {},
 		methods: {
+			// 轮播图列表
+			_getBannerList(){
+				getBannerList({
+					post_params:{
+						type:'about_us'
+					}
+				}).then((res)=>{
+					console.log('轮播数据',res.data.data.list);
+					this.swiperList = res.data.data.list
+				})
+			},
 			handUrl(item) {
 				getActivityDetail({
 					post_params:{
@@ -101,6 +114,9 @@
 </script>
 
 <style>
+	.titleView{
+		
+	}
 	.activeItemImg {
 		width: 225rpx;
 		height: 165rpx;

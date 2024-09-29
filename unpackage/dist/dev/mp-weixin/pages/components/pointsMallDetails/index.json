@@ -1,6 +1,6 @@
 {
   "usingComponents": {
     "hearch-item": "/components/hearchItem/index",
-    "swiper-items": "/components/swiperItems/index"
+    "swiper-items-two": "/components/swiperItems/index_two"
   }
 }

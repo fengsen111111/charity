@@ -1,7 +1,7 @@
 <template>
 	<view class="">
 		<hearchItem :isLeft="true" :title="'慈善基金详情'" />
-		<swiperItems :isBottom="false" />
+		<swiperItemsTwo :isBottom="false" :swiperList="[fundDetails.images]" />
 		<view class="py30 px36">
 			<view class="text32 font-bold">{{fundDetails.name}}</view>
 			<view class="text24 mt20 col787878">{{fundDetails.org_name}}</view>
@@ -84,7 +84,7 @@
 
 <script>
 	import hearchItem from '@/components/hearchItem/index.vue'
-	import swiperItems from '@/components/swiperItems/index.vue'
+	import swiperItemsTwo from '@/components/swiperItems/index_two.vue'
 	import cardFundsTwo from '@/components/card_funds/index_two.vue'
 	import {
 		getDonateDetail,
@@ -96,7 +96,7 @@
 		},
 		components: {
 			hearchItem,
-			swiperItems,
+			swiperItemsTwo,
 			cardFundsTwo
 		},
 		data() {
@@ -115,7 +115,7 @@
 			this.funds_id = option.funds_id
 		},
 		onReady() {
-
+			this._getDonateDetail()
 		},
 		watch: {},
 		methods: {

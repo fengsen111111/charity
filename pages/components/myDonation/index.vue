@@ -24,7 +24,7 @@
 <script>
 	import hearchItem from '@/components/hearchItem/index.vue'
 	import {
-		getDonateLogList//最新捐赠记录
+		getDonateOrderList//最新捐赠记录
 	} from '@/request/api.js'
 	export default {
 		components: {
@@ -39,12 +39,12 @@
 			//获取手机状态栏高度
 		},
 		onReady() {
-			this._getDonateLogList()
+			this._getDonateOrderList()
 		},
 		watch: {},
 		methods: {
-			_getDonateLogList(){
-				getDonateLogList({
+			_getDonateOrderList(){
+				getDonateOrderList({
 					post_params:{
 						currentPage:1,
 						perPage:10

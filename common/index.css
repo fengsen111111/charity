@@ -710,10 +710,6 @@ textarea {
 	height: 50rpx;
 }
 
-.ml30 {
-	margin-left: 30rpx;
-}
-
 .img30 {
 	width: 30rpx;
 	height: 30rpx;
@@ -834,7 +830,13 @@ textarea {
 .borderDCC896 {
 	border: 1px solid #DCC896;
 }
-
+.ml30{
+	margin-left: 30rpx;
+}
+.img36{
+	width: 36rpx;
+	height: 36rpx;
+}
 .colDCC896 {
 	color: #DCC896;
 }

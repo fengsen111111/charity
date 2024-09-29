@@ -24,7 +24,7 @@
 		data() {
 			return {
 				image: '',
-				time: 5,
+				time: 2,
 				// 状态栏高度
 				statusBarHeight: 0,
 				timer: '', //计时器

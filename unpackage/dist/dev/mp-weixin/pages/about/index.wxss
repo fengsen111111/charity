@@ -1,4 +1,6 @@
 
+.titleView{
+}
 .activeItemImg {
 	width: 225rpx;
 	height: 165rpx;

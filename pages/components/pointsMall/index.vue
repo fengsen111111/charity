@@ -8,10 +8,12 @@
 					<view class="ml10"> <input type="text" class="w-full" :value="key_word" placeholder="请输入奖品/服务关键词搜索" /></view>
 				</view>
 			</view>
-			<view class="flex items-center justify-between px36 pb30">
-				<view class="px10 text26 col205D57" @click="handleIndex(item)" v-for="item in [1,2,3,4]" :key="item">
-					<view :class="checkIndex==item?'checkIndex':''">
-						{{item==1?'全部':item==2?'1-50分':item==3?'51-100分':'100分以上'}}</view>
+			<view class="flex items-center px36 pb30">
+				<view class="px10 text26 col205D57" @click="handleIndex(index)" v-for="(item,index) in configInfo.integral" :key="index">
+					<view :class="checkIndex==index?'checkIndex':''">
+						<!-- {{item==1?'全部':item==2?'1-50分':item==3?'51-100分':'100分以上'}} -->
+						{{item}}
+					</view>
 				</view>
 			</view>
 		</view>
@@ -35,11 +37,14 @@
 			return {
 				checkIndex: 1,
 				key_word:'',//搜索
-				jfList:[] //积分商品
+				jfList:[] ,//积分商品
+				configInfo:{}
 			}
 		},
 		created() {
 			//获取手机状态栏高度
+			this._getGoodsList()
+			this.configInfo = this.$store.state.config //四大区域
 		},
 		mounted() {
 

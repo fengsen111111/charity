@@ -8,7 +8,7 @@
 						<image :src="userInfo.head_image" class="userImg" mode="">
 						</image>
 						<view class="ml30 ">
-							<view class="flex items-center justify-between">
+							<view class="flex items-center justify-between"  v-if="userInfo.mobile">
 								<view class="text36">{{userInfo.nickname}}</view>
 								<image src="../../static/config.png" class="imgConfig" mode=""
 									@click="inputDialogToggle"></image>
@@ -25,7 +25,7 @@
 					<view class="px36 py30 flex items-center justify-between">
 						<view class="text24">我的积分</view>
 						<view class="flex  colD6B07A">
-							<view class="text36 font-bold ">{{userInfo.integral}}</view>
+							<view class="text36 font-bold ">{{userInfo.integral||0}}</view>
 							<view class="text18 ml10 mt16">积分</view>
 							<view class="w100"></view>
 							<image src="../../static/record.png" class="imgConfig ml40" mode=""
@@ -60,7 +60,7 @@
 </template>
 
 <script>
-	import tarBar from '@/components/tarbar/index.vue'
+	import tarBar from '@/components/tarBar/index.vue'
 	import hearchItem from '@/components/hearchItem/index.vue'
 	import {
 		getUserInfo, //用户信息
@@ -202,6 +202,7 @@
 		background-size: 100% 100%;
 		width: 100%;
 		height: 240rpx;
+		margin-top: -1rpx;
 	}
 
 	.activeItemImg {

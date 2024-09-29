@@ -12,7 +12,7 @@
 			</view>
 		</view>
 		<view class="py30 px36">
-			<swiperItems :swiperList="configInfo.about_us_images" />
+			<swiperItems :swiperList="swiperList" />
 			<!-- 文字滚动 -->
 			<textSwiper :textList="textList" />
 			<view class="mt20 flex items-baseline justify-between">
@@ -94,7 +94,8 @@
 		getDonateList, //基金
 		getActivityList, //活动
 		getIntegralList, //滚动字体
-		joinDonate //捐赠
+		joinDonate ,//捐赠
+		getBannerList//轮播图
 	} from '@/request/api.js'
 	export default {
 		components: {
@@ -117,19 +118,31 @@
 				donList: [], //基金列表
 				activeList: [], //活动列表
 				textList: [], //字体滚动
+				swiperList:[]//轮播图
 			}
 		},
 		onLoad() {
-			//获取手机状态栏高度
 			this.configInfo = this.$store.state.config ? this.$store.state.config : {}
 		},
 		onReady() {
 			this._getDonateList() //基金
 			this._getActivityList() //活动
 			this._getIntegralList() //滚动字体
+			this._getBannerList()//轮播图
 		},
 		watch: {},
 		methods: {
+			// 轮播图列表
+			_getBannerList(){
+				getBannerList({
+					post_params:{
+						type:'donate'
+					}
+				}).then((res)=>{
+					console.log('轮播数据',res.data.data.list);
+					this.swiperList = res.data.data.list
+				})
+			},
 			// 电话
 			handlePhone() {
 				uni.makePhoneCall({

@@ -1,0 +1,24 @@
+
+.imgs_details {
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHQAAAAuBAMAAAALoSCFAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAVUExURQAAAEdwTAAAAAAAAAAAAAAAAAAAAKRKkeEAAAAHdFJOU5kACYhSdDLmdTK+AAAA00lEQVRIx8XWuQ7CMBAE0BFO6GMENVaAOkoQtQWiDwhRc4j//wVMDpEynikyjatXrGzvLrIuu3OFEalur16gPewHo3N3Q2pPiMjeDegbUTn86QaROfbU1rE0dR3NEZ2ypbaIp8Y1dAsi14Z6hiY/ugKVZ6A5R8tAPUeTQAuOGgey1FAsliy9YM3SGR4sncOzNEHN0hQFS41Cp8k0tQqXIzwJ4SEKz1/4dMJXt+TthAajtLUF30yFFi4MDmVcCUPS8qNZWQiENURZfrKMX7mERY9aL789YR9I2XM4AgAAAABJRU5ErkJggg==);
+	background-size: 100% 100%;
+	color: white;
+	font-size: 30rpx;
+	font-weight: bold;
+	position: absolute;
+	right: 36rpx;
+	top: 265px;
+	text-align: center;
+	padding: 8rpx 30rpx;
+}
+.itemsImg {
+	width: 100%;
+	height: 389rpx;
+}
+.img_bottoms {
+	width: 34rpx;
+	height: 6rpx;
+	margin-right: 8rpx;
+	margin-left: 8rpx;
+}
+

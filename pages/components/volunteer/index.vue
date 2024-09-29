@@ -37,7 +37,7 @@
 				<view class="flex justify-between py30">
 					<view class="">获取验证码</view>
 					<view class="flex items-center ">
-						<input type="text" placeholder="请输入验证码..." v-model="form.name" class="w160 col205D57" />
+						<input type="text" placeholder="请输入验证码..." v-model="form.code" class="w160 col205D57" />
 						<view class="col21A3E6 ml10">重发</view>
 					</view>
 				</view>
@@ -109,15 +109,14 @@
 				submitShow: false
 			}
 		},
-		created() {
-			//获取手机状态栏高度
+		onLoad(option) {
+			this.submitShow = option.submitShow
 		},
 		mounted() {
 
 		},
 		watch: {},
 		methods: {
-			
 			// 提交
 			btnSubmit() {
 				joinTeam({
@@ -127,12 +126,12 @@
 						mobile: this.form.mobile,
 						id_card:this.form.id_card,
 						skills:this.form.skills,
-						areas:this.form.areas,
 					}
 				}).then(()=>{
 					console.log('数据提交结果',res.data.data);
+					this.submitShow = true
 				})
-				this.submitShow = true
+				
 			},
 			// 打开时间
 			handleTime() {

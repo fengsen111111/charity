@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "tar-bar": "/components/tarbar/index",
+    "tar-bar": "/components/tarBar/index",
     "swiper-items": "/components/swiperItems/index",
     "card-funds": "/components/card_funds/index",
     "card-activity": "/components/card_activity/index"

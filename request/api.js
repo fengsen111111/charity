@@ -11,7 +11,7 @@ const api = {
 	GET_BANNER_DETAILS: base_url + '/donate/Banner/getBannerDetail', // 轮播图富文本详情
 	LOGIN_AND_REGISTER: base_url + '/donate/User/loginAndRegister', // 登陆与注册
 	GET_USER_INFO: base_url + '/donate/User/getUserInfo', // 获取用户信息
-	GET_INTEGRAL_LIST: base_url + '/donate/Integral/getIntegralList', // 获取积分日志列表
+	GET_INTEGRAL_LIST: base_url + '/donate/User/getIntegralList', // 获取积分日志列表
 	JOIN_TEAM: base_url + '/donate/User/joinTeam', // 加入志愿者
 	EDIT_USERINFO: base_url + '/donate/User/updateUserInfo', // 修改用户信息
 	EDIT_ADDRESS: base_url + '/donate/Address/editUserAddress', // 添加/修改用户收货信息
@@ -30,7 +30,7 @@ const api = {
 	ACTIBE_JOIN: base_url + '/donate/ActivityOrder/joinActivity', // 活动报名
 	ACTIBE_LIST_ORDER: base_url + '/donate/ActivityOrder/getActivityOrderList', // 我参与的活动列表
 	OVER_ACTIBE_ORDER: base_url + '/donate/ActivityOrder/overActivityOrder', // 核销报名
-	LOG_LIST: base_url + '/donate/DonateLog/getDonateLogList', // 最新的捐赠记录列表
+	LOG_LIST: base_url + '//donate/DonateOrder/getDonateOrderList', // 最新的捐赠记录列表
 	DONATE_LIST_TYPE: base_url + '/donate/DonateType/getDonateTypeList', // 基金类型列表
 	DONATE_LIST: base_url + '/donate/Donate/getDonateList', // 基金列表
 	DONATE_DETAILS: base_url + '/donate/Donate/getDonateDetail', // 基金详情
@@ -69,7 +69,7 @@ export const getDonateTypeList = (params) => {
 	return post(api.DONATE_LIST_TYPE, params)
 }
 // 最新的捐赠记录列表
-export const getDonateLogList = (params) => {
+export const getDonateOrderList = (params) => {
 	return post(api.LOG_LIST, params)
 }
 // 核销报名
@@ -154,7 +154,7 @@ export const getUserInfo = (params) => {
 }
 // 登陆与注册
 export const loginAndRegister = (params) => {
-	return post(api.GET_SETTING, params)
+	return post(api.LOGIN_AND_REGISTER, params)
 }
 // 轮播图富文本详情
 export const getBannerDetail = (params) => {

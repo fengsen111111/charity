@@ -8,11 +8,6 @@
 					<image @click="handleUrl(item)" :src="item.image" class="itemsImg" :class="isBottom?'radius20':''" mode="" >
 					</image>
 				</swiper-item>
-				<!-- <swiper-item class="h389">
-					<image @click="handleUrl(item)" src="https://img.picui.cn/free/2024/09/18/66ea73b25c621.png" class="itemsImg"
-						:class="isBottom?'radius20':''" mode="">
-					</image>
-				</swiper-item> -->
 			</swiper>
 		</view>
 		<view class="flex" v-if="isBottom">
@@ -26,7 +21,7 @@
 		</view>
 		<view v-else>
 			<view class="imgs_details">
-				{{current+1}}/3
+				{{current+1}}/{{swiperList.length}}
 			</view>
 		</view>
 	</view>

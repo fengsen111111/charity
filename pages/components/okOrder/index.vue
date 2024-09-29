@@ -17,13 +17,13 @@
 				<view class="text-center font-bold text30 col205D57" @click="handleSel()">选择收货地址</view>
 			</view>
 
-			<view class="mt30 flex justify-between bg-white p20 radius10">
-				<image src="https://img.picui.cn/free/2024/09/18/66ea73b25c621.png" class="w200 h160 radius10" mode=""></image>
+			<view class="mt30 flex  bg-white p20 radius10">
+				<image :src="jfDetails.cover_image" class="w200 h160 radius10" mode=""></image>
 				<view class="ml20">
 					<view class="text28 font-bold">{{jfDetails.name}}</view>
 					<view class="text20 mt10 col787878">库存：{{jfDetails.stock}}</view>
 					<view class="flex mt10 justify-between items-center">
-						<view class="text36 colD6B07A font-bold">{{jfDetails.integral}}<text class="ml10 text18">积分</text> </view>
+						<view class="text36 colD6B07A font-bold">{{jfDetails.integral}}<text class="ml10 text18 mr10">积分</text> </view>
 						<view class="flex ">
 							<image src="../../../static/order_left.png" class="orderImg" @click="handleJ('1')" mode=""></image>
 							<view class="bgEBEBEB px30 line62"> {{number}} </view>
@@ -50,10 +50,10 @@
 					</view>
 				</view>
 				<view class="mt77 px10">
-					<view class="btnForm" @click="handOk">
+					<view class="btnForm" @click="handOk" v-if="Number(userInfo.integral)-Number(jfDetails.integral*number)>0">
 						确认兑换
 					</view>
-					<view class="btnForm_close" >
+					<view class="btnForm_close" v-else>
 						剩余积分不足
 					</view>
 				</view>
@@ -159,7 +159,8 @@
 		getUserAddressList,//收获地址list
 		setDefaultUserAddress,//设置 默认
 		getGoodsDetail,//积分详情
-		addOrder//下单
+		addOrder,//下单
+		getUserInfo
 	} from '@/request/api.js'
 	export default {
 		components: {
@@ -188,7 +189,8 @@
 				addressDefaule:{},//默认地址
 				add_type:1,//1新增2编辑
 				jfDetails:{},//积分详情
-				number: 1//商品购买个数
+				number: 1,//商品购买个数
+				userInfo:{}
 			}
 		},
 		onLoad(option) {
@@ -199,14 +201,21 @@
 		onShow() {
 			this._getUserAddressList()
 			this._getGoodsDetail()
+			_this._getUserInfo()
 		},
 		watch: {},
 		methods: {
+			// 用户信息
+			_getUserInfo(){
+				getUserInfo().then((res)=>{
+					console.log('用户信息',res.data.data);
+					this.userInfo = res.data.data
+				})
+			},
 			handleJ(type){
-				if(this.type==1){
-					if(this.number>1){
+				console.log(type)
+				if(type>=1){
 						this.number--
-					}
 				}else{
 					this.number++
 				}
