@@ -39,7 +39,7 @@
 					<view class="font-bold text32 col205D57">名额：{{item.person_number}}人</view>
 					<view class="text24 col-black">可获得<text class="ml10 colD6B07A">{{item.integral}}积分</text></view>
 				</view>
-				<view class="flex text18 col787878 mt10">
+				<view class="flex text18 col787878 mt10 " style="white-space: nowrap;" >
 					活动时间：{{item.start_time}}至{{item.end_time}}
 				</view>
 				<view v-if="isCode">

@@ -66,10 +66,12 @@
 			return {
 				indexItem: 1,
 				orderList:[],//
+				limit:20
 			}
 		},
-		created() {
-			//获取手机状态栏高度
+		onReachBottom(){
+			this.limit = this.limit+20
+			this._getOrderList()
 		},
 		onReady() {
 			this._getOrderList()
@@ -102,7 +104,7 @@
 					post_params: {
 						status: this.indexItem == 1 ? 'a' : this.indexItem == 2 ? 'b' : 'c',
 						currentPage: 1,
-						perPage: 10
+						perPage: this.limit
 					}
 				}).then((res) => {
 					console.log('订单列表', res.data.data.list);
@@ -112,6 +114,7 @@
 			// 
 			handleIndex(index) {
 				this.indexItem = index
+				this._getOrderList()
 			}
 
 		}

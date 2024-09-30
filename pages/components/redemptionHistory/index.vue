@@ -26,6 +26,7 @@
 		data() {
 			return {
 				logList:[],//获取积分日志列表
+				limit:20
 			}
 		},
 		created() {
@@ -35,12 +36,16 @@
 			this._getIntegralList()
 		},
 		watch: {},
+		onReachBottom(){
+			this.limit = this.limit+20
+			this._getIntegralList()
+		},
 		methods: {
 			_getIntegralList(){
 				getIntegralList({
 					post_params:{
 						currentPage:1,
-						perPage:20
+						perPage:this.limit
 					}
 				}).then((res)=>{
 					console.log('获取积分日志列表',res.data.data);

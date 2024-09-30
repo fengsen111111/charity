@@ -26,11 +26,13 @@
 		data() {
 			return {
 				indexItem:1,
+				limit:10
 			}
 		},
-		created() {
-			//获取手机状态栏高度
-		},
+		// onReachBottom(){
+		// 	this.limit = this.limit+20
+		// 	this._getActivityOrderList()
+		// },
 		onReady() {
 			this._getActivityOrderList()
 		},

@@ -1,7 +1,7 @@
 <template>
 	<view class="">
 		<hearchItem :isLeft="true" :title="'活动详情'" />
-		<swiperItems :isBottom="false" />
+		<swiperItemsTwo :isBottom="false" :swiperList="[activeDetails.images]" />
 		<view class="py30 flex justify-between ml36">
 			<view class="text32 font-bold w-4-5">
 				{{activeDetails.name}}
@@ -12,7 +12,7 @@
 		<view class="py30 text24 px36">
 			<view class="flex justify-between">
 				<view class="">活动地址</view>
-				<view class="col205D57 w-7-10">{{activeDetails.address}}</view>
+				<view class="col205D57 w-7-10 text-right">{{activeDetails.address}}</view>
 			</view>
 			<view class="px36 py30">
 				<view class=" bgEBEBEB h1"></view>
@@ -49,7 +49,7 @@
 			</view>
 			<view class="flex justify-between">
 				<view class="">集合地址</view>
-				<view class="col205D57 w-7-10">{{activeDetails.point_address}}</view>
+				<view class="col205D57 w-7-10 text-right">{{activeDetails.point_address}}</view>
 			</view>
 			
 		</view>
@@ -59,13 +59,18 @@
 		</view>
 		<!-- 屏幕定位 -->
 		<view class="btnMoney w-full">
-			<image src="../../../static/fenxiang.png" class="w100 h100 relative_fei" mode=""></image>
+			<image src="../../../static/fenxiang.png" class="w100 h100 relative_fei" mode="" @click="handleFX()">
+			</image>
 			<view class="mt20 px75 ">
 				<view class="btnForm">
 					活动报名
 				</view>
 			</view>
 		</view>
+		<uni-popup ref="share" type="share" safeArea backgroundColor="#fff">
+			<button type="default" open-type="share">分享到微信</button>
+			<button type="default" @click="handleCol">取消</button>
+		</uni-popup>
 
 		<view class="h20"></view>
 	</view>
@@ -73,7 +78,7 @@
 
 <script>
 	import hearchItem from '@/components/hearchItem/index.vue'
-	import swiperItems from '@/components/swiperItems/index.vue'
+	import swiperItemsTwo from '@/components/swiperItems/index_two.vue'
 	import cardFunds from '@/components/card_funds/index.vue'
 	import {
 		getActivityDetail,
@@ -82,7 +87,7 @@
 	export default {
 		components: {
 			hearchItem,
-			swiperItems,
+			swiperItemsTwo,
 			cardFunds
 		},
 		data() {
@@ -108,6 +113,22 @@
 		},
 		watch: {},
 		methods: {
+			handleCol(){
+				this.$refs.share.close()
+			},
+			onShareAppMessage(res) {
+				if (res.from === 'button') { // 判断分享是否来自页面内分享按钮
+					console.log(res.target)
+				}
+				return {
+					title: '不凡',
+					path: path
+				}
+			},
+			handleFX() {
+				console.log('分享');
+				this.$refs.share.open()
+			},
 			// 下单
 			_joinActivity(){
 				joinActivity({

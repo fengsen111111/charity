@@ -5,10 +5,11 @@
 		<view class="p35">
 			<view class="bg-white p20 radius10">
 				<view class="flex  text24 justify-between items-center">
-					<view>
+					<view v-if="addressDefaule.name">
 						<view class="">{{addressDefaule.name}} {{addressDefaule.mobile}}</view>
 						<view class="mt20">{{addressDefaule.complete_address}}</view>
 					</view>
+					<view v-else></view>
 					<uni-icons type="compose" color="#205D57" size="30" @click="handleAddAddress()"></uni-icons>
 				</view>
 				<view class="px20 py30">
@@ -38,10 +39,6 @@
 					<view>{{jfDetails.name}}</view>
 					<view>x {{number}}</view>
 				</view>
-				<!-- <view class="flex mb20 justify-between text28 items-center">
-					<view>商品名称...</view>
-					<view>x 18</view>
-				</view> -->
 				<view class="flex mb20 justify-between text28 items-center">
 					<view>共计</view>
 					<view class="flex items-baseline colD6B07A">
@@ -50,7 +47,7 @@
 					</view>
 				</view>
 				<view class="mt77 px10">
-					<view class="btnForm" @click="handOk" v-if="Number(userInfo.integral)-Number(jfDetails.integral*number)>0">
+					<view class="btnForm" @click="handOk" v-if="Number(userInfo.integral)-Number(jfDetails.integral*number)>=0">
 						确认兑换
 					</view>
 					<view class="btnForm_close" v-else>
@@ -80,7 +77,7 @@
 							<view class="bgEBEBEB h1 mt30"></view>
 							<view class="flex justify-between items-center mt30">
 								<view>电话</view>
-								<view class="text-right"><input v-model="form.phone" type="text" placeholder="请输入电话..." /></view>
+								<view class="text-right"><input v-model="form.mobile" type="text" placeholder="请输入电话..." /></view>
 							</view>
 							<view class="bgEBEBEB h1 mt30"></view>
 							<view class="flex justify-between items-center mt30">
@@ -97,7 +94,7 @@
 						</view>
 					</view>
 					<view class="mt77 px75">
-						<view class="btnForm">
+						<view class="btnForm" @click="_editUserAddress">
 							提 交
 						</view>
 					</view>
@@ -160,7 +157,8 @@
 		setDefaultUserAddress,//设置 默认
 		getGoodsDetail,//积分详情
 		addOrder,//下单
-		getUserInfo
+		getUserInfo,
+		editUserAddress//新增
 	} from '@/request/api.js'
 	export default {
 		components: {
@@ -172,9 +170,9 @@
 		data() {
 			return {
 				form: {
-					name: '',
-					phone: '',
-					address: '',
+					name: '那么',
+					mobile: '14465656798',
+					address: '阿斯顿撒旦撒旦',
 					is_default: 1,
 				},
 				sexs: [{
@@ -205,6 +203,20 @@
 		},
 		watch: {},
 		methods: {
+			_editUserAddress(){
+				editUserAddress({
+					post_params:{
+						// id: this.type==1?'':this.defaulrObj.id,
+						is_default: this.form.is_default == 1?'Y':'N',
+						name: this.form.name,
+						mobile: this.form.mobile,
+						address: this.form.address
+					}
+				}).then((res)=>{
+					console.log('新增编辑成功',res.data.data);
+					this._getUserAddressList()
+				})
+			},
 			// 用户信息
 			_getUserInfo(){
 				getUserInfo().then((res)=>{

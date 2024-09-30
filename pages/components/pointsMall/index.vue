@@ -5,12 +5,12 @@
 			<view class="p35">
 				<view class="border205D57 col9B9B9B text24 flex p10 items-center radius30">
 					<uni-icons type="search" size="20" color="#205D57"></uni-icons>
-					<view class="ml10"> <input type="text" class="w-full" :value="key_word" placeholder="请输入奖品/服务关键词搜索" /></view>
+					<view class="ml10 w-full"> <input type="text" class="w-full" :value="key_word" placeholder="请输入奖品/服务关键词搜索" /></view>
 				</view>
 			</view>
 			<view class="flex items-center px36 pb30">
-				<view class="px10 text26 col205D57" @click="handleIndex(index)" v-for="(item,index) in configInfo.integral" :key="index">
-					<view :class="checkIndex==index?'checkIndex':''">
+				<view class="px10 text26 col205D57" @click="handleIndex(item)" v-for="item in configInfo.integral" :key="item">
+					<view :class="checkIndex==item?'checkIndex':''">
 						<!-- {{item==1?'全部':item==2?'1-50分':item==3?'51-100分':'100分以上'}} -->
 						{{item}}
 					</view>
@@ -35,19 +35,20 @@
 		},
 		data() {
 			return {
-				checkIndex: 1,
+				checkIndex: '',
 				key_word:'',//搜索
 				jfList:[] ,//积分商品
-				configInfo:{}
+				configInfo:{},
+				limit:20
 			}
 		},
 		created() {
-			//获取手机状态栏高度
 			this._getGoodsList()
 			this.configInfo = this.$store.state.config //四大区域
 		},
-		mounted() {
-
+		onReachBottom(){
+			this.limit = this.limit+20
+			this._getGoodsList()
 		},
 		watch: {},
 		methods: {
@@ -55,9 +56,9 @@
 				getGoodsList({
 					post_params:{
 						key_word: this.key_word,
-						integral: '',
+						integral: this.checkIndex,
 						currentPage:1,
-						perPage:20
+						perPage: this.limit
 					}
 				}).then((res)=>{
 					console.log("积分商品",res.data.data.list)
@@ -69,6 +70,7 @@
 			},
 			handleIndex(index) {
 				this.checkIndex = index
+				this._getGoodsList()
 			},
 			
 		}

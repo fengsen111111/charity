@@ -20,14 +20,18 @@
 		<view class="h100"></view>
 		<!-- 屏幕定位 -->
 		<view class="btnMoney w-full">
-			<image src="../../../static/fenxiang.png" class="w100 h100 relative_fei" mode=""></image>
-			<view class="mt20 px75 ">  
+			<image src="../../../static/fenxiang.png" class="w100 h100 relative_fei" mode="" @click="handleFX()">
+			</image>
+			<view class="mt20 px75 ">
 				<view class="btnForm" @click="handUrl('/pages/components/okOrder/index?jf_id='+jf_id)">
 					立即下单
 				</view>
 			</view>
 		</view>
-
+		<uni-popup ref="share" type="share" safeArea backgroundColor="#fff">
+			<button type="default" open-type="share">分享到微信</button>
+			<button type="default" @click="handleCol">取消</button>
+		</uni-popup>
 		<view class="h20"></view>
 	</view>
 </template>
@@ -35,41 +39,58 @@
 <script>
 	import hearchItem from '@/components/hearchItem/index.vue'
 	import swiperItemsTwo from '@/components/swiperItems/index_two.vue'
-	import {getGoodsDetail} from '@/request/api.js'
+	import {
+		getGoodsDetail
+	} from '@/request/api.js'
 	export default {
-		props:{
-		},
+		props: {},
 		components: {
 			hearchItem,
 			swiperItemsTwo,
 		},
 		data() {
 			return {
-				jf_id:"",//积分id
-				jfObj:{},//积分详情数据
+				jf_id: "", //积分id
+				jfObj: {}, //积分详情数据
 			}
 		},
 		onLoad(option) {
 			this.jf_id = option.jf_id
-			console.log('option',option);
+			console.log('option', option);
 		},
 		onReady() {
 			this._getGoodsDetail()
 		},
 		watch: {},
 		methods: {
+			handleCol(){
+				this.$refs.share.close()
+			},
+			onShareAppMessage(res) {
+				if (res.from === 'button') { // 判断分享是否来自页面内分享按钮
+					console.log(res.target)
+				}
+				return {
+					title: '不凡',
+					path: path
+				}
+			},
+			handleFX() {
+				console.log('分享');
+				this.$refs.share.open()
+			},
 			handUrl(item) {
 				uni.navigateTo({
 					url: item
 				})
 			},
-			_getGoodsDetail(){
+			_getGoodsDetail() {
 				getGoodsDetail({
-					post_params:{
-						id:this.jf_id
+					post_params: {
+						id: this.jf_id
 					}
-				}).then((res)=>{
-					console.log('积分商品详情',res.data.data);
+				}).then((res) => {
+					console.log('积分商品详情', res.data.data);
 					this.jfObj = res.data.data
 				})
 			}

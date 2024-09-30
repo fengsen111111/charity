@@ -5,8 +5,8 @@
 			<view class="px36">
 				<view class="bg-white radius20 w-full">
 					<view class="p30 flex">
-						<image :src="userInfo.head_image" class="userImg" mode="">
-						</image>
+						<image v-if="userInfo.head_image" :src="userInfo.head_image" class="userImg" mode=""></image>
+						<view v-else class="userImg bgEBEBEB"></view>
 						<view class="ml30 ">
 							<view class="flex items-center justify-between"  v-if="userInfo.mobile">
 								<view class="text36">{{userInfo.nickname}}</view>
@@ -51,7 +51,7 @@
 		</view>
 		<!--  -->
 		<uni-popup ref="inputDialog" type="dialog">
-			<uni-popup-dialog ref="inputClose" mode="input" title="昵称" value="微信用户" placeholder="请输入内容"
+			<uni-popup-dialog ref="inputClose" mode="input" title="昵称" :value="userInfo.nickname" placeholder="请输入内容"
 				@confirm="dialogInputConfirm"></uni-popup-dialog>
 		</uni-popup>
 		<!--  -->

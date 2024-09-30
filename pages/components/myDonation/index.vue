@@ -33,10 +33,12 @@
 		data() {
 			return {
 				donList:[],//最新数据
+				limit:20
 			}
 		},
-		created() {
-			//获取手机状态栏高度
+		onReachBottom(){
+			this.limit = this.limit+20
+			this._getDonateOrderList()
 		},
 		onReady() {
 			this._getDonateOrderList()
@@ -47,7 +49,7 @@
 				getDonateOrderList({
 					post_params:{
 						currentPage:1,
-						perPage:10
+						perPage:this.limit
 					}
 				}).then((res)=>{
 					console.log('最新数据',res.data.data);

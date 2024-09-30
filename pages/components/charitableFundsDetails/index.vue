@@ -19,8 +19,8 @@
 			<view class="titleView text24">
 				<view class="ml20 col205D57 font-bold">已实施项目使用资金情况</view>
 			</view>
-			<view class="p20 mt20 border205D57 radius20 flex justify-between items-center" v-for="item in fundDetails.use_log"
-				:key="item.name">
+			<view class="p20 mt20 border205D57 radius20 flex justify-between items-center"
+				v-for="item in fundDetails.use_log" :key="item.name">
 				<view class="">{{item.name}}</view>
 				<view class="flex items-center">
 					<view class="text24 col205D57">已使用</view>
@@ -34,18 +34,26 @@
 		<view class="bgEBEBEB h18 "></view>
 		<view class="py30 px36 text32 indent32">
 			<view v-html="fundDetails.content"></view>
-			慈善基金详情，慈善基金详情，慈善基金详基金基金基金情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情，慈善基金详情。
 		</view>
 		<view class="h100"></view>
 		<!-- 屏幕定位 -->
 		<view class="btnMoney w-full">
-			<image src="../../../static/fenxiang.png" class="w100 h100 relative_fei" mode=""></image>
+			<image src="../../../static/fenxiang.png" class="w100 h100 relative_fei" mode="" @click="handleFX()">
+			</image>
 			<view class="mt20 px75 ">
 				<view class="btnForm" @click="handleMoney()">
 					捐款
 				</view>
 			</view>
 		</view>
+		<!-- fenx -->
+		<uni-popup ref="share" type="share" safeArea backgroundColor="#fff">
+		<!-- 	<view class="text-center py22">
+				分享
+			</view> -->
+			<button type="default" open-type="share">分享到微信</button>
+			<button type="default" @click="handleCol">取消</button>
+		</uni-popup>
 
 		<view class="h20"></view>
 		<!-- 弹框 -->
@@ -59,7 +67,7 @@
 							<uni-icons type="closeempty" size="26" color="#205D57" @click="close"></uni-icons>
 						</view>
 					</view>
-					<cardFundsTwo :itemObj = "fundDetails" />
+					<cardFundsTwo :itemObj="fundDetails" />
 					<view class="bgEBEBEB h18 "></view>
 					<view class="p30">
 						<view class="py30 px20 border205D57 radius20">
@@ -119,6 +127,22 @@
 		},
 		watch: {},
 		methods: {
+			handleCol(){
+				this.$refs.share.close()
+			},
+			onShareAppMessage(res) {
+				if (res.from === 'button') { // 判断分享是否来自页面内分享按钮
+					console.log(res.target)
+				}
+				return {
+					title: '不凡',
+					path: path
+				}
+			},
+			handleFX() {
+				console.log('分享');
+				this.$refs.share.open()
+			},
 			// 基金详情
 			_getDonateDetail() {
 				getDonateDetail({

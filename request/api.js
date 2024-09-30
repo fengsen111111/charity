@@ -22,7 +22,7 @@ const api = {
 	SHOP_LIST: base_url + '/donate/Goods/getGoodsList', // 积分商品列表
 	SHOP_DETAILS: base_url + '/donate/Goods/getGoodsDetail', // 积分商品详情
 	ADD_ORDER: base_url + '/donate/Order/addOrder', // 下单
-	ORDER_LIST: base_url + '/donate/Order/getOrderList', // 获取订单列表
+	ORDER_LIST: base_url + '/donate/IntegralOrder/getOrderList', // 获取订单列表
 	OVER_ORDER: base_url + '/donate/Order/overOrder', // 收货
 	ACTIBE_TYPE_LIST: base_url + '/donate/ActivityType/getActivityTypeList', // 活动类型列表
 	ACTIBE_LIST: base_url + '/donate/Activity/getActivityList', // 活动列表

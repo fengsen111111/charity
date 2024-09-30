@@ -102,8 +102,8 @@
 		background-image: url('@/static/boxImg.png');
 		background-size: 100% 100%;
 		width: 120rpx;
-		height: 60rpx;
+		height: 75rpx;
 		color: #4B4B4B;
-		line-height: 60rpx;
+		line-height: 75rpx;
 	}
 </style>

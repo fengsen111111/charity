@@ -149,7 +149,7 @@
 				getUserAddressList({
 					post_params:{
 						currentPage:1,
-						perPage:10
+						perPage:20
 					}
 				}).then((res)=>{
 					console.log('地址列表',res.data.data.list);

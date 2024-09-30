@@ -72,6 +72,7 @@
 				type_id:'',//活动类型ID  
 				typeList:[],//分类列表
 				activeList:[],//活动列表
+				limit: 20
 			}
 		},
 		onReady() {
@@ -81,6 +82,10 @@
 		},
 		mounted() {
 
+		},
+		onReachBottom(){
+			this.limit = this.limit+20
+			this._getActivityList()
 		},
 		watch: {},
 		methods: {
@@ -92,7 +97,7 @@
 						type_id: this.checkIndex,
 						status: this.status,
 						currentPage:1,
-						perPage:10
+						perPage: this.limit
 					}
 				}).then((res)=>{
 					console.log('活动列表',res.data.data.list);

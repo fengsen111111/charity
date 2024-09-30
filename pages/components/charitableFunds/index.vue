@@ -54,6 +54,9 @@
 		</view>
 
 		<view class="h20"></view>
+		<view class="h20"></view>
+		<view class="h20"></view>
+		<view class="h20"></view>
 		<!-- 弹框 -->
 		<uni-popup ref="popup" background-color="#fff">
 			<view class="popup-content" :class="{ 'popup-height': type === 'left' || type === 'right' }">
