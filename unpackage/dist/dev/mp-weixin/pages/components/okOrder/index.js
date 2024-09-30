@@ -247,12 +247,12 @@ var _default = {
   onShow: function onShow() {
     this._getUserAddressList();
     this._getGoodsDetail();
-    _this._getUserInfo();
+    this._getUserInfo();
   },
   watch: {},
   methods: {
     _editUserAddress: function _editUserAddress() {
-      var _this2 = this;
+      var _this = this;
       (0, _api.editUserAddress)({
         post_params: {
           // id: this.type==1?'':this.defaulrObj.id,
@@ -263,47 +263,49 @@ var _default = {
         }
       }).then(function (res) {
         console.log('新增编辑成功', res.data.data);
-        _this2._getUserAddressList();
+        _this._getUserAddressList();
       });
     },
     // 用户信息
     _getUserInfo: function _getUserInfo() {
-      var _this3 = this;
+      var _this2 = this;
       (0, _api.getUserInfo)().then(function (res) {
         console.log('用户信息', res.data.data);
-        _this3.userInfo = res.data.data;
+        _this2.userInfo = res.data.data;
       });
     },
     handleJ: function handleJ(type) {
       console.log(type);
-      if (type >= 1) {
-        this.number--;
-      } else {
+      if (type == 1) {
+        if (this.number > 1) {
+          this.number--;
+        }
+      } else if (type == 2) {
         this.number++;
       }
     },
     // 积分详情
     _getGoodsDetail: function _getGoodsDetail() {
-      var _this4 = this;
+      var _this3 = this;
       (0, _api.getGoodsDetail)({
         post_params: {
           id: this.jf_id
         }
       }).then(function (res) {
         console.log('积分详情', res.data.data);
-        _this4.jfDetails = res.data.data;
+        _this3.jfDetails = res.data.data;
       });
     },
     // 设置默认地址
     handDefault: function handDefault(id) {
-      var _this5 = this;
+      var _this4 = this;
       (0, _api.setDefaultUserAddress)({
         post_params: {
           id: id
         }
       }).then(function (res) {
         console.log('设置默认地址');
-        _this5._getUserAddressList();
+        _this4._getUserAddressList();
       });
     },
     // 选择的地址
@@ -312,7 +314,7 @@ var _default = {
     },
     // 地址list
     _getUserAddressList: function _getUserAddressList() {
-      var _this6 = this;
+      var _this5 = this;
       (0, _api.getUserAddressList)({
         post_params: {
           currentPage: 1,
@@ -320,10 +322,10 @@ var _default = {
         }
       }).then(function (res) {
         console.log('地址列表', res.data.data);
-        _this6.addressList = res.data.data.list;
+        _this5.addressList = res.data.data.list;
         res.data.data.list.map(function (item) {
           if (item.is_default == 'Y') {
-            _this6.addressDefaule = item; //默认地址
+            _this5.addressDefaule = item; //默认地址
           }
         });
       });

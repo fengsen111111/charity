@@ -2,7 +2,7 @@
 .border-bottom-dotted {
 	border: 1rpx dotted #9B9B9B;
 }
-.orderImg{
+.orderImg {
 	width: 40rpx;
 	height: 62rpx;
 }
@@ -16,5 +16,4 @@
 	border: 2rpx solid #D6B07A;
 	border-radius: 20rpx;
 }
-
 
