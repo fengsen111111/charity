@@ -121,7 +121,8 @@
 				donList: [], //基金列表
 				activeList: [], //活动列表
 				textList: [], //字体滚动
-				swiperList:[]//轮播图
+				swiperList:[],//轮播图
+				limit:20//
 			}
 		},
 		onLoad() {
@@ -134,6 +135,11 @@
 			this._getBannerList()//轮播图
 		},
 		watch: {},
+		onReachBottom(){
+			this.limit = this.limit+20
+			this._getDonateList() //基金
+			this._getActivityList() //活动
+		},
 		methods: {
 			// 轮播图列表
 			_getBannerList(){
@@ -206,7 +212,7 @@
 					post_params: {
 						show_position: 'a',
 						currentPage: 1,
-						perPage: 10
+						perPage: this.limit
 					}
 				}).then((res) => {
 					console.log('首页活动列表', res.data.data.list);
@@ -217,9 +223,8 @@
 			_getDonateList() {
 				getDonateList({
 					post_params: {
-						show_position: 'a',
 						currentPage: 1,
-						perPage: 10
+						perPage: this.limit
 					}
 				}).then((res) => {
 					console.log('首页基金列表', res.data.data.list);

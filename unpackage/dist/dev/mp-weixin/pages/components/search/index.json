@@ -2,6 +2,6 @@
   "usingComponents": {
     "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons",
     "hearch-item": "/components/hearchItem/index",
-    "card-funds": "/components/card_funds/index"
+    "card-funds-two": "/components/card_funds/index_two"
   }
 }

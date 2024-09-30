@@ -164,35 +164,58 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var hearchItem = function hearchItem() {
   __webpack_require__.e(/*! require.ensure | components/hearchItem/index */ "components/hearchItem/index").then((function () {
     return resolve(__webpack_require__(/*! @/components/hearchItem/index.vue */ 185));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
-var cardFunds = function cardFunds() {
-  __webpack_require__.e(/*! require.ensure | components/card_funds/index */ "components/card_funds/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/card_funds/index.vue */ 240));
+var cardFundsTwo = function cardFundsTwo() {
+  __webpack_require__.e(/*! require.ensure | components/card_funds/index_two */ "components/card_funds/index_two").then((function () {
+    return resolve(__webpack_require__(/*! @/components/card_funds/index_two.vue */ 273));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
   components: {
     hearchItem: hearchItem,
-    cardFunds: cardFunds
+    cardFundsTwo: cardFundsTwo
   },
   data: function data() {
     return {
-      value: ''
+      value: '',
+      donList: [] //基金列表
     };
   },
   created: function created() {
     //获取手机状态栏高度
   },
   mounted: function mounted() {},
-  watch: {},
   methods: {
+    handleMore: function handleMore() {
+      uni.navigateTo({
+        url: '/pages/components/charitableFunds/index'
+      });
+    },
     confirm: function confirm() {
-      uni.showToast({
-        title: '搜索'
+      this._getDonateList();
+    },
+    // 基金列表
+    _getDonateList: function _getDonateList() {
+      var _this = this;
+      uni.showLoading();
+      setTimeout(function () {
+        uni.hideLoading();
+      }, 500);
+      (0, _api.getDonateList)({
+        post_params: {
+          key_word: this.value,
+          //关键词
+          currentPage: 1,
+          perPage: 20
+        }
+      }).then(function (res) {
+        console.log('首页基金列表', res.data.data.list);
+        _this.donList = res.data.data.list;
       });
     }
   }

@@ -210,7 +210,9 @@ var _default = {
       //活动列表
       textList: [],
       //字体滚动
-      swiperList: [] //轮播图
+      swiperList: [],
+      //轮播图
+      limit: 20 //
     };
   },
   onLoad: function onLoad() {
@@ -224,6 +226,12 @@ var _default = {
   },
 
   watch: {},
+  onReachBottom: function onReachBottom() {
+    this.limit = this.limit + 20;
+    this._getDonateList(); //基金
+    this._getActivityList(); //活动
+  },
+
   methods: {
     // 轮播图列表
     _getBannerList: function _getBannerList() {
@@ -306,7 +314,7 @@ var _default = {
         post_params: {
           show_position: 'a',
           currentPage: 1,
-          perPage: 10
+          perPage: this.limit
         }
       }).then(function (res) {
         console.log('首页活动列表', res.data.data.list);
@@ -318,9 +326,8 @@ var _default = {
       var _this5 = this;
       (0, _api.getDonateList)({
         post_params: {
-          show_position: 'a',
           currentPage: 1,
-          perPage: 10
+          perPage: this.limit
         }
       }).then(function (res) {
         console.log('首页基金列表', res.data.data.list);

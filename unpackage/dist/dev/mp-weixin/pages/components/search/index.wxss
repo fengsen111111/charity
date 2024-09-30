@@ -1,5 +1,5 @@
 
-.img_null{
+.img_null {
 	width: 200rpx;
 	height: 130rpx;
 }

@@ -8,23 +8,21 @@
 			</view>
 		</hearchItem>
 		<!-- list -->
-	    <view v-if="value">
-	    	<view class="py30 text30 col205D57 font-bold px36 flex justify-between">
-	    		<view class="titleView">
-	    			<view class="ml20">慈善基金</view>
-	    		</view>
-	    		<view class="flex">
-	    			<view class="">更多</view>
-	    			<uni-icons type="right" color="#205D57" size="15"></uni-icons>
-	    		</view>
-	    	</view>
-			<view class="h18 bgEBEBEB"></view>
-			<cardFunds />
-			<view class="h18 bgEBEBEB"></view>
-			<cardFunds />
-			<view class="h18 bgEBEBEB"></view>
-			<cardFunds />
-	    </view>
+		<view v-if="value">
+			<view class="py30 text30 col205D57 font-bold px36 flex justify-between">
+				<view class="titleView">
+					<view class="ml20">慈善基金</view>
+				</view>
+				<view class="flex" @click="handleMore()">
+					<view class="">更多</view>
+					<uni-icons type="right" color="#205D57" size="15"></uni-icons>
+				</view>
+			</view>
+			<view v-for="(item,index) in donList" :key="index">
+				<view class="h18 bgEBEBEB"></view>
+				<cardFundsTwo :itemObj="item" />
+			</view>
+		</view>
 		<!-- null -->
 		<view v-else>
 			<view class="pt200 flex">
@@ -36,21 +34,25 @@
 				暂无搜索数据
 			</view>
 		</view>
-	   
+
 	</view>
 </template>
 
 <script>
 	import hearchItem from '@/components/hearchItem/index.vue'
-	import cardFunds from '@/components/card_funds/index.vue'
+	import cardFundsTwo from '@/components/card_funds/index_two.vue'
+	import {
+		getDonateList
+	} from '@/request/api.js'
 	export default {
 		components: {
 			hearchItem,
-			cardFunds
+			cardFundsTwo
 		},
 		data() {
 			return {
-				value:''
+				value: '',
+				donList:[]//基金列表
 			}
 		},
 		created() {
@@ -59,20 +61,39 @@
 		mounted() {
 
 		},
-		watch: {},
 		methods: {
-			confirm() {
-				uni.showToast({
-					title: '搜索'
+			handleMore(){
+				uni.navigateTo({
+					url:'/pages/components/charitableFunds/index'
 				})
-			}
+			},
+			confirm() {
+				this._getDonateList()
+			},
+			// 基金列表
+			_getDonateList() {
+				uni.showLoading();
+				setTimeout(()=>{
+				    uni.hideLoading();
+				},500)
+				getDonateList({
+					post_params: {
+						key_word: this.value,//关键词
+						currentPage: 1,
+						perPage: 20
+					}
+				}).then((res) => {
+					console.log('首页基金列表', res.data.data.list);
+					this.donList = res.data.data.list
+				})
+			},
 		}
 	}
 </script>
 
 <style>
-.img_null{
-	width: 200rpx;
-	height: 130rpx;
-}
+	.img_null {
+		width: 200rpx;
+		height: 130rpx;
+	}
 </style>
