@@ -2656,9 +2656,9 @@ module.exports = _iterableToArray, module.exports.__esModule = true, module.expo
 /***/ }),
 
 /***/ 204:
-/*!************************************************************************************************!*\
-  !*** D:/Users/Desktop/charity/uni_modules/uni-icons/components/uni-icons/uniicons_file_vue.js ***!
-  \************************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-icons/components/uni-icons/uniicons_file_vue.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12139,9 +12139,9 @@ module.exports = _isNativeFunction, module.exports.__esModule = true, module.exp
 /***/ }),
 
 /***/ 229:
-/*!************************************************************************!*\
-  !*** D:/Users/Desktop/charity/pages.json?{"type":"origin-pages-json"} ***!
-  \************************************************************************/
+/*!***************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/pages.json?{"type":"origin-pages-json"} ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12245,9 +12245,9 @@ module.exports = _classCallCheck, module.exports.__esModule = true, module.expor
 /***/ }),
 
 /***/ 230:
-/*!***********************************************************!*\
-  !*** D:/Users/Desktop/charity/pages.json?{"type":"stat"} ***!
-  \***********************************************************/
+/*!**************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/pages.json?{"type":"stat"} ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18377,9 +18377,9 @@ internalMixin(Vue);
 /***/ }),
 
 /***/ 26:
-/*!*******************************************!*\
-  !*** D:/Users/Desktop/charity/pages.json ***!
-  \*******************************************/
+/*!**********************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/pages.json ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -18387,10 +18387,10 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 297:
-/*!*****************************************************!*\
-  !*** D:/Users/Desktop/charity/static/icon/home.png ***!
-  \*****************************************************/
+/***/ 285:
+/*!********************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/static/icon/home.png ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -18398,10 +18398,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 
 /***/ }),
 
-/***/ 298:
-/*!*********************************************************!*\
-  !*** D:/Users/Desktop/charity/static/icon_che/home.png ***!
-  \*********************************************************/
+/***/ 286:
+/*!************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/static/icon_che/home.png ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -18409,10 +18409,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 
 /***/ }),
 
-/***/ 299:
-/*!******************************************************!*\
-  !*** D:/Users/Desktop/charity/static/icon/aixin.png ***!
-  \******************************************************/
+/***/ 287:
+/*!*********************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/static/icon/aixin.png ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -18420,41 +18420,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 
 /***/ }),
 
-/***/ 3:
-/*!***********************************!*\
-  !*** (webpack)/buildin/global.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-
-/***/ 300:
-/*!**********************************************************!*\
-  !*** D:/Users/Desktop/charity/static/icon_che/aixin.png ***!
-  \**********************************************************/
+/***/ 288:
+/*!*************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/static/icon_che/aixin.png ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -18462,10 +18431,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 
 /***/ }),
 
-/***/ 301:
-/*!***************************************************!*\
-  !*** D:/Users/Desktop/charity/static/icon/my.png ***!
-  \***************************************************/
+/***/ 289:
+/*!******************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/static/icon/my.png ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -18473,10 +18442,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 
 /***/ }),
 
-/***/ 302:
-/*!*******************************************************!*\
-  !*** D:/Users/Desktop/charity/static/icon_che/my.png ***!
-  \*******************************************************/
+/***/ 290:
+/*!**********************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/static/icon_che/my.png ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -18484,10 +18453,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 
 /***/ }),
 
-/***/ 310:
-/*!************************************************************************************!*\
-  !*** D:/Users/Desktop/charity/uni_modules/uni-popup/components/uni-popup/popup.js ***!
-  \************************************************************************************/
+/***/ 298:
+/*!***************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/popup.js ***!
+  \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18526,10 +18495,10 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 311:
-/*!*****************************************************************************************!*\
-  !*** D:/Users/Desktop/charity/uni_modules/uni-popup/components/uni-popup/i18n/index.js ***!
-  \*****************************************************************************************/
+/***/ 299:
+/*!********************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/i18n/index.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18541,9 +18510,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 312));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 313));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 314));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 300));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 301));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 302));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -18553,10 +18522,41 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 312:
-/*!****************************************************************************************!*\
-  !*** D:/Users/Desktop/charity/uni_modules/uni-popup/components/uni-popup/i18n/en.json ***!
-  \****************************************************************************************/
+/***/ 3:
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ 300:
+/*!*******************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/i18n/en.json ***!
+  \*******************************************************************************************/
 /*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
 /***/ (function(module) {
 
@@ -18564,10 +18564,10 @@ module.exports = JSON.parse("{\"uni-popup.cancel\":\"cancel\",\"uni-popup.ok\":\
 
 /***/ }),
 
-/***/ 313:
-/*!*********************************************************************************************!*\
-  !*** D:/Users/Desktop/charity/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hans.json ***!
-  \*********************************************************************************************/
+/***/ 301:
+/*!************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hans.json ***!
+  \************************************************************************************************/
 /*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
 /***/ (function(module) {
 
@@ -18575,14 +18575,149 @@ module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\
 
 /***/ }),
 
-/***/ 314:
-/*!*********************************************************************************************!*\
-  !*** D:/Users/Desktop/charity/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hant.json ***!
-  \*********************************************************************************************/
+/***/ 302:
+/*!************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hant.json ***!
+  \************************************************************************************************/
 /*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
 /***/ (function(module) {
 
 module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\"確定\",\"uni-popup.placeholder\":\"請輸入\",\"uni-popup.title\":\"提示\",\"uni-popup.shareTitle\":\"分享到\"}");
+
+/***/ }),
+
+/***/ 317:
+/*!***********************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
+  \***********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.createAnimation = createAnimation;
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+// const defaultOption = {
+// 	duration: 300,
+// 	timingFunction: 'linear',
+// 	delay: 0,
+// 	transformOrigin: '50% 50% 0'
+// }
+var MPAnimation = /*#__PURE__*/function () {
+  function MPAnimation(options, _this) {
+    (0, _classCallCheck2.default)(this, MPAnimation);
+    this.options = options;
+    // 在iOS10+QQ小程序平台下，传给原生的对象一定是个普通对象而不是Proxy对象，否则会报parameter should be Object instead of ProxyObject的错误
+    this.animation = uni.createAnimation(_objectSpread({}, options));
+    this.currentStepAnimates = {};
+    this.next = 0;
+    this.$ = _this;
+  }
+  (0, _createClass2.default)(MPAnimation, [{
+    key: "_nvuePushAnimates",
+    value: function _nvuePushAnimates(type, args) {
+      var aniObj = this.currentStepAnimates[this.next];
+      var styles = {};
+      if (!aniObj) {
+        styles = {
+          styles: {},
+          config: {}
+        };
+      } else {
+        styles = aniObj;
+      }
+      if (animateTypes1.includes(type)) {
+        if (!styles.styles.transform) {
+          styles.styles.transform = '';
+        }
+        var unit = '';
+        if (type === 'rotate') {
+          unit = 'deg';
+        }
+        styles.styles.transform += "".concat(type, "(").concat(args + unit, ") ");
+      } else {
+        styles.styles[type] = "".concat(args);
+      }
+      this.currentStepAnimates[this.next] = styles;
+    }
+  }, {
+    key: "_animateRun",
+    value: function _animateRun() {
+      var styles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var ref = this.$.$refs['ani'].ref;
+      if (!ref) return;
+      return new Promise(function (resolve, reject) {
+        nvueAnimation.transition(ref, _objectSpread({
+          styles: styles
+        }, config), function (res) {
+          resolve();
+        });
+      });
+    }
+  }, {
+    key: "_nvueNextAnimate",
+    value: function _nvueNextAnimate(animates) {
+      var _this2 = this;
+      var step = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+      var fn = arguments.length > 2 ? arguments[2] : undefined;
+      var obj = animates[step];
+      if (obj) {
+        var styles = obj.styles,
+          config = obj.config;
+        this._animateRun(styles, config).then(function () {
+          step += 1;
+          _this2._nvueNextAnimate(animates, step, fn);
+        });
+      } else {
+        this.currentStepAnimates = {};
+        typeof fn === 'function' && fn();
+        this.isEnd = true;
+      }
+    }
+  }, {
+    key: "step",
+    value: function step() {
+      var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      this.animation.step(config);
+      return this;
+    }
+  }, {
+    key: "run",
+    value: function run(fn) {
+      this.$.animationData = this.animation.export();
+      this.$.timer = setTimeout(function () {
+        typeof fn === 'function' && fn();
+      }, this.$.durationTime);
+    }
+  }]);
+  return MPAnimation;
+}();
+var animateTypes1 = ['matrix', 'matrix3d', 'rotate', 'rotate3d', 'rotateX', 'rotateY', 'rotateZ', 'scale', 'scale3d', 'scaleX', 'scaleY', 'scaleZ', 'skew', 'skewX', 'skewY', 'translate', 'translate3d', 'translateX', 'translateY', 'translateZ'];
+var animateTypes2 = ['opacity', 'backgroundColor'];
+var animateTypes3 = ['width', 'height', 'left', 'right', 'top', 'bottom'];
+animateTypes1.concat(animateTypes2, animateTypes3).forEach(function (type) {
+  MPAnimation.prototype[type] = function () {
+    var _this$animation;
+    (_this$animation = this.animation)[type].apply(_this$animation, arguments);
+    return this;
+  };
+});
+function createAnimation(option, _this) {
+  if (!_this) return;
+  clearTimeout(_this.timer);
+  return new MPAnimation(option, _this);
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 
@@ -18718,145 +18853,70 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 329:
-/*!********************************************************************************************************!*\
-  !*** D:/Users/Desktop/charity/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
-  \********************************************************************************************************/
+/***/ 323:
+/*!****************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/index.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
+
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.createAnimation = createAnimation;
-var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
-var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-// const defaultOption = {
-// 	duration: 300,
-// 	timingFunction: 'linear',
-// 	delay: 0,
-// 	transformOrigin: '50% 50% 0'
-// }
-var MPAnimation = /*#__PURE__*/function () {
-  function MPAnimation(options, _this) {
-    (0, _classCallCheck2.default)(this, MPAnimation);
-    this.options = options;
-    // 在iOS10+QQ小程序平台下，传给原生的对象一定是个普通对象而不是Proxy对象，否则会报parameter should be Object instead of ProxyObject的错误
-    this.animation = uni.createAnimation(_objectSpread({}, options));
-    this.currentStepAnimates = {};
-    this.next = 0;
-    this.$ = _this;
-  }
-  (0, _createClass2.default)(MPAnimation, [{
-    key: "_nvuePushAnimates",
-    value: function _nvuePushAnimates(type, args) {
-      var aniObj = this.currentStepAnimates[this.next];
-      var styles = {};
-      if (!aniObj) {
-        styles = {
-          styles: {},
-          config: {}
-        };
-      } else {
-        styles = aniObj;
-      }
-      if (animateTypes1.includes(type)) {
-        if (!styles.styles.transform) {
-          styles.styles.transform = '';
-        }
-        var unit = '';
-        if (type === 'rotate') {
-          unit = 'deg';
-        }
-        styles.styles.transform += "".concat(type, "(").concat(args + unit, ") ");
-      } else {
-        styles.styles[type] = "".concat(args);
-      }
-      this.currentStepAnimates[this.next] = styles;
-    }
-  }, {
-    key: "_animateRun",
-    value: function _animateRun() {
-      var styles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      var ref = this.$.$refs['ani'].ref;
-      if (!ref) return;
-      return new Promise(function (resolve, reject) {
-        nvueAnimation.transition(ref, _objectSpread({
-          styles: styles
-        }, config), function (res) {
-          resolve();
-        });
-      });
-    }
-  }, {
-    key: "_nvueNextAnimate",
-    value: function _nvueNextAnimate(animates) {
-      var _this2 = this;
-      var step = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-      var fn = arguments.length > 2 ? arguments[2] : undefined;
-      var obj = animates[step];
-      if (obj) {
-        var styles = obj.styles,
-          config = obj.config;
-        this._animateRun(styles, config).then(function () {
-          step += 1;
-          _this2._nvueNextAnimate(animates, step, fn);
-        });
-      } else {
-        this.currentStepAnimates = {};
-        typeof fn === 'function' && fn();
-        this.isEnd = true;
-      }
-    }
-  }, {
-    key: "step",
-    value: function step() {
-      var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      this.animation.step(config);
-      return this;
-    }
-  }, {
-    key: "run",
-    value: function run(fn) {
-      this.$.animationData = this.animation.export();
-      this.$.timer = setTimeout(function () {
-        typeof fn === 'function' && fn();
-      }, this.$.durationTime);
-    }
-  }]);
-  return MPAnimation;
-}();
-var animateTypes1 = ['matrix', 'matrix3d', 'rotate', 'rotate3d', 'rotateX', 'rotateY', 'rotateZ', 'scale', 'scale3d', 'scaleX', 'scaleY', 'scaleZ', 'skew', 'skewX', 'skewY', 'translate', 'translate3d', 'translateX', 'translateY', 'translateZ'];
-var animateTypes2 = ['opacity', 'backgroundColor'];
-var animateTypes3 = ['width', 'height', 'left', 'right', 'top', 'bottom'];
-animateTypes1.concat(animateTypes2, animateTypes3).forEach(function (type) {
-  MPAnimation.prototype[type] = function () {
-    var _this$animation;
-    (_this$animation = this.animation)[type].apply(_this$animation, arguments);
-    return this;
-  };
-});
-function createAnimation(option, _this) {
-  if (!_this) return;
-  clearTimeout(_this.timer);
-  return new MPAnimation(option, _this);
-}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+exports.default = void 0;
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 324));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 325));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 326));
+var _default = {
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 324:
+/*!***************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/en.json ***!
+  \***************************************************************************************************/
+/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"Pull up to show more\",\"uni-load-more.contentrefresh\":\"loading...\",\"uni-load-more.contentnomore\":\"No more data\"}");
+
+/***/ }),
+
+/***/ 325:
+/*!********************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hans.json ***!
+  \********************************************************************************************************/
+/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉显示更多\",\"uni-load-more.contentrefresh\":\"正在加载...\",\"uni-load-more.contentnomore\":\"没有更多数据了\"}");
+
+/***/ }),
+
+/***/ 326:
+/*!********************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hant.json ***!
+  \********************************************************************************************************/
+/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉顯示更多\",\"uni-load-more.contentrefresh\":\"正在加載...\",\"uni-load-more.contentnomore\":\"沒有更多數據了\"}");
 
 /***/ }),
 
 /***/ 33:
-/*!***********************************************!*\
-  !*** D:/Users/Desktop/charity/store/index.js ***!
-  \***********************************************/
+/*!**************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/store/index.js ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18934,66 +18994,6 @@ var store = new _vuex.default.Store({
 var _default = store;
 exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-
-/***/ 335:
-/*!*************************************************************************************************!*\
-  !*** D:/Users/Desktop/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/index.js ***!
-  \*************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 336));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 337));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 338));
-var _default = {
-  en: _en.default,
-  'zh-Hans': _zhHans.default,
-  'zh-Hant': _zhHant.default
-};
-exports.default = _default;
-
-/***/ }),
-
-/***/ 336:
-/*!************************************************************************************************!*\
-  !*** D:/Users/Desktop/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/en.json ***!
-  \************************************************************************************************/
-/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"Pull up to show more\",\"uni-load-more.contentrefresh\":\"loading...\",\"uni-load-more.contentnomore\":\"No more data\"}");
-
-/***/ }),
-
-/***/ 337:
-/*!*****************************************************************************************************!*\
-  !*** D:/Users/Desktop/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hans.json ***!
-  \*****************************************************************************************************/
-/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉显示更多\",\"uni-load-more.contentrefresh\":\"正在加载...\",\"uni-load-more.contentnomore\":\"没有更多数据了\"}");
-
-/***/ }),
-
-/***/ 338:
-/*!*****************************************************************************************************!*\
-  !*** D:/Users/Desktop/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hant.json ***!
-  \*****************************************************************************************************/
-/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉顯示更多\",\"uni-load-more.contentrefresh\":\"正在加載...\",\"uni-load-more.contentnomore\":\"沒有更多數據了\"}");
 
 /***/ }),
 
@@ -20255,9 +20255,9 @@ module.exports = index_cjs;
 /***/ }),
 
 /***/ 35:
-/*!***********************************************!*\
-  !*** D:/Users/Desktop/charity/request/api.js ***!
-  \***********************************************/
+/*!**************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/request/api.js ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20302,7 +20302,7 @@ var api = {
   // 积分商品列表
   SHOP_DETAILS: base_url + '/donate/Goods/getGoodsDetail',
   // 积分商品详情
-  ADD_ORDER: base_url + '/donate/Order/addOrder',
+  ADD_ORDER: base_url + '/donate/IntegralOrder/addOrder',
   // 下单
   ORDER_LIST: base_url + '/donate/IntegralOrder/getOrderList',
   // 获取订单列表
@@ -20328,7 +20328,7 @@ var api = {
   // 基金列表
   DONATE_DETAILS: base_url + '/donate/Donate/getDonateDetail',
   // 基金详情
-  DONATE_JOIN: base_url + '/donate/DonateLog/joinDonate',
+  DONATE_JOIN: base_url + '/donate/DonateOrder/joinDonate',
   // 捐赠
   DONATE_LIST_MY: base_url + '/donate/DonateLog/getMyDonateLogList',
   // 我的列表
@@ -20500,9 +20500,9 @@ exports.getSetting = getSetting;
 /***/ }),
 
 /***/ 36:
-/*!*************************************************!*\
-  !*** D:/Users/Desktop/charity/request/index.js ***!
-  \*************************************************/
+/*!****************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/request/index.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

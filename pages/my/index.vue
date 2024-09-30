@@ -16,7 +16,7 @@
 							<view class="col787878 text30 font-bold mt20" v-if="userInfo.mobile">
 								{{userInfo.mobile}}
 							</view>
-							<button v-else style="font-size:32rpx;margin-left:20rpx" open-type="getPhoneNumber"
+							<button class="clear-style" v-else style="font-size:32rpx;margin-left:20rpx" open-type="getPhoneNumber"
 								@getphonenumber="_getPhoneNumber" id="sqphone" ref="sqphone">
 								授权
 							</button>
@@ -60,7 +60,7 @@
 </template>
 
 <script>
-	import tarBar from '@/components/tarBar/index.vue'
+	import tarBar from '@/components/tarbar/index.vue'
 	import hearchItem from '@/components/hearchItem/index.vue'
 	import {
 		getUserInfo, //用户信息

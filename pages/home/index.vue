@@ -58,7 +58,7 @@
 </template>
 
 <script>
-	import tarBar from '@/components/tarBar/index.vue'
+	import tarBar from '@/components/tarbar/index.vue'
 	import cardFunds from '@/components/card_funds/index.vue'
 	import cardActivity from '@/components/card_activity/index.vue'
 	import swiperItems from '@/components/swiperItems/index.vue'

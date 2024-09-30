@@ -2,6 +2,20 @@
 	background-color: white;
 }
 
+.clear-style {
+	border: none;
+	border-radius: 0;
+	background-color: transparent !important;
+	padding: 0rpx !important;
+	margin: 0rpx !important;
+	text-align: left;
+	height: 140rpx;
+}
+
+.clear-style::after {
+	border: none;
+}
+
 .-left80 {
 	left: -80rpx;
 }
@@ -109,9 +123,11 @@
 .border-bottom-dotted {
 	border: 1rpx dotted #9B9B9B;
 }
-.col49A3EF{
+
+.col49A3EF {
 	color: #49A3EF;
 }
+
 .col6A8986 {
 	color: #6A8986;
 }
@@ -830,13 +846,16 @@ textarea {
 .borderDCC896 {
 	border: 1px solid #DCC896;
 }
-.ml30{
+
+.ml30 {
 	margin-left: 30rpx;
 }
-.img36{
+
+.img36 {
 	width: 36rpx;
 	height: 36rpx;
 }
+
 .colDCC896 {
 	color: #DCC896;
 }

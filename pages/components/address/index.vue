@@ -8,9 +8,9 @@
 						<view class="flex justify-between items-center">
 							<view class="">
 								<view>{{item.name}}  {{item.mobile}}</view>
-								<view>{{item.complete_address}}</view>
+								<view>{{item.address}}</view>
 							</view>
-							<uni-icons type="compose" size="26" color="#205D57" @click="handleAddAddress(2)"></uni-icons>
+							<uni-icons type="compose" size="26" color="#205D57" @click="handleAddAddress(2,item)"></uni-icons>
 						</view>
 						<view class="mt15 flex justify-between">
 							<view class="col205D57">{{item.is_default=='Y'?'默认地址':''}}</view>
@@ -109,6 +109,7 @@
 				addressList:[],//地址列表
 				defaulrObj:{},//默认地址
 				type:1,//新增 2编辑
+				addressCheck:{},//编辑地址
 			}
 		},
 		created() {
@@ -163,6 +164,7 @@
 						    icon: 'success',					    
 							duration: 1000
 						});
+						this.close()
 						this._getUserAddressList()
 					}
 				})
@@ -184,7 +186,8 @@
 				})
 			},
 			// 
-			handleAddAddress(index) {
+			handleAddAddress(index,item) {
+				console.log('选择的地址',item);
 				this.type = index
 				if(this.type ==1){
 					// 新增
@@ -193,10 +196,10 @@
 					this.form.address = ''
 					this.form.is_default = 2
 				}else{
-					this.form.name = this.defaulrObj.name
-					this.form.phone = this.defaulrObj.mobile
-					this.form.address = this.defaulrObj.complete_address
-					this.form.is_default = this.defaulrObj.is_default=='Y'?1:2
+					this.form.name = item.name
+					this.form.phone = item.mobile
+					this.form.address = item.address
+					this.form.is_default = item.is_default=='Y'?1:2
 				}
 				this.$refs.popup.open('bottom')
 			},

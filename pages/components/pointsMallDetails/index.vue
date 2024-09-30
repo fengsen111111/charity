@@ -20,8 +20,9 @@
 		<view class="h100"></view>
 		<!-- 屏幕定位 -->
 		<view class="btnMoney w-full">
-			<image src="../../../static/fenxiang.png" class="w100 h100 relative_fei" mode="" @click="handleFX()">
-			</image>
+			<button type="default" open-type="share" class="clear-style">
+				<image src="../../../static/fenxiang.png" class="w100 h100 relative_fei" mode="">
+			</button>
 			<view class="mt20 px75 ">
 				<view class="btnForm" @click="handUrl('/pages/components/okOrder/index?jf_id='+jf_id)">
 					立即下单
@@ -77,7 +78,23 @@
 			},
 			handleFX() {
 				console.log('分享');
-				this.$refs.share.open()
+				uni.share({
+				    provider: 'weixin',
+				    scene: "WXSceneSession",
+				    type: 5,
+				    imageUrl: 'https://vkceyugu.cdn.bspapp.com/VKCEYUGU-uni-app-doc/962fc340-4f2c-11eb-bdc1-8bd33eb6adaa.png',
+				    title: '欢迎体验uniapp',
+				    miniProgram: {
+				        id: 'gh_abcdefg',
+				        path: 'pages/index/index',
+				        type: 0,
+				        webUrl: 'http://uniapp.dcloud.io'
+				    },
+				    success: ret => {
+				        console.log(JSON.stringify(ret));
+				    }
+				});
+				// this.$refs.share.open()
 			},
 			handUrl(item) {
 				uni.navigateTo({

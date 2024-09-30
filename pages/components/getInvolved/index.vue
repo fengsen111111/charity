@@ -26,7 +26,8 @@
 		data() {
 			return {
 				indexItem:1,
-				limit:10
+				limit:10,
+				activeList:[]
 			}
 		},
 		// onReachBottom(){

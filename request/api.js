@@ -21,7 +21,7 @@ const api = {
 	ADDRESS_DETAILS: base_url + '/donate/Address/getUserAddressDetail', // 获取用户收货信息详情
 	SHOP_LIST: base_url + '/donate/Goods/getGoodsList', // 积分商品列表
 	SHOP_DETAILS: base_url + '/donate/Goods/getGoodsDetail', // 积分商品详情
-	ADD_ORDER: base_url + '/donate/Order/addOrder', // 下单
+	ADD_ORDER: base_url + '/donate/IntegralOrder/addOrder', // 下单
 	ORDER_LIST: base_url + '/donate/IntegralOrder/getOrderList', // 获取订单列表
 	OVER_ORDER: base_url + '/donate/Order/overOrder', // 收货
 	ACTIBE_TYPE_LIST: base_url + '/donate/ActivityType/getActivityTypeList', // 活动类型列表
@@ -34,7 +34,7 @@ const api = {
 	DONATE_LIST_TYPE: base_url + '/donate/DonateType/getDonateTypeList', // 基金类型列表
 	DONATE_LIST: base_url + '/donate/Donate/getDonateList', // 基金列表
 	DONATE_DETAILS: base_url + '/donate/Donate/getDonateDetail', // 基金详情
-	DONATE_JOIN: base_url + '/donate/DonateLog/joinDonate', // 捐赠
+	DONATE_JOIN: base_url + '/donate/DonateOrder/joinDonate', // 捐赠
 	DONATE_LIST_MY: base_url + '/donate/DonateLog/getMyDonateLogList', // 我的列表
 	PHONE_NUMBER: base_url + '/factory_system/Base/getWechatPhoneNumber', // 获取用户微信手机号
 	REGISTER: base_url + '/factory_system/Base/wechatUserRegister', // 微信授权

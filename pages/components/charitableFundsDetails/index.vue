@@ -38,7 +38,9 @@
 		<view class="h100"></view>
 		<!-- 屏幕定位 -->
 		<view class="btnMoney w-full">
-			<image src="../../../static/fenxiang.png" class="w100 h100 relative_fei" mode="" @click="handleFX()">
+			<button type="default" open-type="share" class="clear-style">
+				<image src="../../../static/fenxiang.png" class="w100 h100 relative_fei" mode="">
+			</button>
 			</image>
 			<view class="mt20 px75 ">
 				<view class="btnForm" @click="handleMoney()">
@@ -141,7 +143,8 @@
 			},
 			handleFX() {
 				console.log('分享');
-				this.$refs.share.open()
+				// this.$refs.share.open()
+				
 			},
 			// 基金详情
 			_getDonateDetail() {
@@ -152,6 +155,7 @@
 				}).then((res) => {
 					console.log('res基金详情', res.data.data);
 					this.fundDetails = res.data.data
+					this.fundDetails.cover_image = res.data.data.images
 				})
 			},
 			_joinDonate() {
@@ -181,6 +185,11 @@
 					paySign:item.paySign, // 签名
 					success: function(res) {
 						console.log('支付成功', res);
+						uni.showToast({						    
+							title: '捐款成功!',					
+						    icon: 'success',					    
+							duration: 1000
+						});
 						that.close()
 					},
 					fail: function(err) {
@@ -210,6 +219,7 @@
 </script>
 
 <style>
+	
 	.relative_fei {
 		position: relative;
 		left: 84vw;

@@ -7,7 +7,7 @@
 				<view class="flex  text24 justify-between items-center">
 					<view v-if="addressDefaule.name">
 						<view class="">{{addressDefaule.name}} {{addressDefaule.mobile}}</view>
-						<view class="mt20">{{addressDefaule.complete_address}}</view>
+						<view class="mt20">{{addressDefaule.address}}</view>
 					</view>
 					<view v-else></view>
 					<uni-icons type="compose" color="#205D57" size="30" @click="handleAddAddress()"></uni-icons>
@@ -111,30 +111,31 @@
 		<!-- 选择收货地址 -->
 		<uni-popup ref="popupSel" background-color="#fff">
 			<view class="popup-content" :class="{ 'popup-height': type === 'left' || type === 'right' }">
-				<view class="bg-white" style="height: 45vh;">
+				<view class="bg-white">
 					<view class="grid grid-cols-3  items-center p35 border-bottom-dotted">
 						<view class=""></view>
 						<view class="text30 font-bold text-center col205D57">选择收货地址</view>
 						<view class="text-right"><uni-icons type="closeempty" size="26" color="#205D57"
 								@click="closeSel"></uni-icons></view>
 					</view>
-					<view v-for="item in addressList" :key="item.id" @click="handItemAdd(item)">
+					<view v-for="item in addressList" :key="item.id">
 						<view class="p30">
 							<view class="flex items-center">
-								<uni-icons :type="item.is_default=='Y'?'checkbox-filled':'circle'" size="26"
-									color="#205D57" @click="handDefault(item.id)"></uni-icons>
+								<uni-icons  @click="handItemAdd(item)" :type="item.id==addressDefaule.id?'checkbox-filled':'circle'" size="26"
+									color="#205D57"></uni-icons>
 								<view class="ml20 text24 w-full">
 									<view class="flex justify-between items-center">
 										<view class="">
 											<view>{{item.name}} {{item.mobile}}</view>
-											<view>{{item.complete_address}}</view>
+											<view>{{item.address}}</view>
 										</view>
+										<!-- 编辑地址 -->
 										<uni-icons type="compose" size="26" color="#205D57"
-											@click="addAddress()"></uni-icons>
+											@click="handleAddAddress()"></uni-icons>
 									</view>
 									<view class="mt15 flex justify-between">
 										<view class="col205D57">{{item.is_default=='Y'?'默认地址':''}}</view>
-										<view class="colEC1010">删除地址</view>
+										<view class="colEC1010" @click="_deleteUserAddress(item.id)">删除地址</view>
 									</view>
 								</view>
 							</view>
@@ -143,13 +144,14 @@
 					</view>
 
 					<view class="mt77 px75 grid grid-cols-2 grid-column-20">
-						<view class="btnForm_a" @click="addAddress()">
+						<view class="btnForm_a" @click="addAddress(1)">
 							新增收货地址
 						</view>
-						<view class="btnForm">
+						<view class="btnForm" @click="closeSel()">
 							确认收货地址
 						</view>
 					</view>
+					<view class="h40"></view>
 				</view>
 			</view>
 		</uni-popup>
@@ -167,7 +169,8 @@
 		getGoodsDetail, //积分详情
 		addOrder, //下单
 		getUserInfo,
-		editUserAddress //新增
+		editUserAddress ,//新增
+		deleteUserAddress
 	} from '@/request/api.js'
 	export default {
 		components: {
@@ -212,6 +215,28 @@
 		},
 		watch: {},
 		methods: {
+			// 删除
+			_deleteUserAddress(id){
+				uni.showLoading();
+				setTimeout(()=>{
+				    uni.hideLoading();
+				},500)
+				deleteUserAddress({
+					post_params:{
+						id: id
+					}
+				}).then((res)=>{
+					console.log('删除成功',res.data.data);
+					if(res.data.code==1){
+						uni.showToast({						    
+							title: '操作成功!',					
+						    icon: 'success',					    
+							duration: 1000
+						});
+						this._getUserAddressList()
+					}
+				})
+			},
 			_editUserAddress() {
 				editUserAddress({
 					post_params: {
@@ -295,9 +320,22 @@
 						address_id: this.addressDefaule.id,
 					}
 				}).then((res) => {
-					uni.navigateTo({
-						url: '/pages/components/okOrderOk/index'
-					})
+					if(res.data.code==1){
+						uni.showToast({						    
+							title: '兑换成功!',					
+						    icon: 'success',					    
+							duration: 1000
+						});
+						uni.navigateTo({
+							url: '/pages/components/okOrderOk/index'
+						})
+					}else{
+						uni.showToast({
+							title: res.data.message,					
+						    icon: 'error',					    
+							duration: 1000
+						});
+					}
 				})
 			},
 			// 选择收获地址-->新增收货地址
@@ -326,7 +364,7 @@
 				// 赋值
 				this.form.name = this.addressDefaule.name
 				this.form.phone = this.addressDefaule.mobile
-				this.form.address = this.addressDefaule.complete_address
+				this.form.address = this.addressDefaule.address
 				this.form.is_default = this.addressDefaule.is_default == 'Y' ? 1 : 2 //是否默认
 
 				this.$refs.popup.open('bottom')
