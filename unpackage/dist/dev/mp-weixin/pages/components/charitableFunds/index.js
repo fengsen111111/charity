@@ -245,6 +245,7 @@ var _default = {
     },
     // 捐款
     _joinDonate: function _joinDonate() {
+      var _this2 = this;
       (0, _api.joinDonate)({
         post_params: {
           donate_id: '',
@@ -254,11 +255,40 @@ var _default = {
         }
       }).then(function (res) {
         console.log('非定向捐助', res.data.data);
+        _this2.weixinPay(res.data.data.pay_data);
+      });
+    },
+    // 调用微信支付
+    weixinPay: function weixinPay(item) {
+      var that = this;
+      console.log('调用微信支付', item);
+      // 结果查询
+      // open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
+      uni.requestPayment({
+        provider: 'wxpay',
+        // 服务提提供商
+        timeStamp: item.timeStamp,
+        // 时间戳
+        nonceStr: item.nonceStr,
+        // 随机字符串
+        package: item.package,
+        signType: item.signType,
+        // 签名算法
+        paySign: item.paySign,
+        // 签名
+        success: function success(res) {
+          console.log('支付成功', res);
+          // 业务逻辑。。。
+        },
+
+        fail: function fail(err) {
+          console.log('支付失败', err);
+        }
       });
     },
     // 滚动字体
     _getIntegralList: function _getIntegralList() {
-      var _this2 = this;
+      var _this3 = this;
       (0, _api.getIntegralList)({
         post_params: {
           currentPage: 1,
@@ -266,12 +296,12 @@ var _default = {
         }
       }).then(function (res) {
         console.log('滚栋字体', res.data.data.list);
-        _this2.textList = res.data.data.list;
+        _this3.textList = res.data.data.list;
       });
     },
     // 活动
     _getActivityList: function _getActivityList() {
-      var _this3 = this;
+      var _this4 = this;
       (0, _api.getActivityList)({
         post_params: {
           show_position: 'a',
@@ -280,12 +310,12 @@ var _default = {
         }
       }).then(function (res) {
         console.log('首页活动列表', res.data.data.list);
-        _this3.activeList = res.data.data.list;
+        _this4.activeList = res.data.data.list;
       });
     },
     // 基金列表
     _getDonateList: function _getDonateList() {
-      var _this4 = this;
+      var _this5 = this;
       (0, _api.getDonateList)({
         post_params: {
           show_position: 'a',
@@ -294,7 +324,7 @@ var _default = {
         }
       }).then(function (res) {
         console.log('首页基金列表', res.data.data.list);
-        _this4.donList = res.data.data.list;
+        _this5.donList = res.data.data.list;
       });
     },
     // 切换

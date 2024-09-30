@@ -162,7 +162,30 @@
 					}
 				}).then((res) => {
 					console.log('非定向捐助', res.data.data);
+					this.weixinPay(res.data.data.pay_data)
 				})
+			},
+			// 调用微信支付
+			weixinPay(item) {
+				const that = this
+				console.log('调用微信支付', item);
+				// 结果查询
+				// open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
+				uni.requestPayment({
+					provider: 'wxpay', // 服务提提供商
+					timeStamp: item.timeStamp, // 时间戳
+					nonceStr: item.nonceStr, // 随机字符串
+					package: item.package,
+					signType: item.signType, // 签名算法
+					paySign:item.paySign, // 签名
+					success: function(res) {
+						console.log('支付成功', res);
+						// 业务逻辑。。。
+					},
+					fail: function(err) {
+						console.log('支付失败', err);
+					}
+				});
 			},
 			// 滚动字体
 			_getIntegralList() {

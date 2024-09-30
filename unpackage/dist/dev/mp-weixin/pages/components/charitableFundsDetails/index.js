@@ -161,7 +161,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(uni) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -240,6 +240,7 @@ var _default = {
       });
     },
     _joinDonate: function _joinDonate() {
+      var _this2 = this;
       (0, _api.joinDonate)({
         post_params: {
           donate_id: this.funds_id,
@@ -248,6 +249,35 @@ var _default = {
         }
       }).then(function (res) {
         console.log('捐款结束', res.data.data);
+        _this2.weixinPay(res.data.data.pay_data);
+      });
+    },
+    // 调用微信支付
+    weixinPay: function weixinPay(item) {
+      var that = this;
+      console.log('调用微信支付', item);
+      // 结果查询
+      // open 方法传入参数 等同在 uni-popup 组件上绑定 type属性
+      uni.requestPayment({
+        provider: 'wxpay',
+        // 服务提提供商
+        timeStamp: item.timeStamp,
+        // 时间戳
+        nonceStr: item.nonceStr,
+        // 随机字符串
+        package: item.package,
+        signType: item.signType,
+        // 签名算法
+        paySign: item.paySign,
+        // 签名
+        success: function success(res) {
+          console.log('支付成功', res);
+          // 业务逻辑。。。
+        },
+
+        fail: function fail(err) {
+          console.log('支付失败', err);
+        }
       });
     },
     // 捐款
@@ -269,6 +299,7 @@ var _default = {
   }
 };
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 
