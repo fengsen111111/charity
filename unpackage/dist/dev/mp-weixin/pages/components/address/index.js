@@ -162,7 +162,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(uni) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -211,18 +211,33 @@ var _default = {
     // 删除
     _deleteUserAddress: function _deleteUserAddress(id) {
       var _this = this;
+      uni.showLoading();
+      setTimeout(function () {
+        uni.hideLoading();
+      }, 500);
       (0, _api.deleteUserAddress)({
         post_params: {
           id: id
         }
       }).then(function (res) {
         console.log('删除成功', res.data.data);
-        _this._getUserAddressList();
+        if (res.data.code == 1) {
+          uni.showToast({
+            title: '操作成功!',
+            icon: 'success',
+            duration: 1000
+          });
+          _this._getUserAddressList();
+        }
       });
     },
     // 新增修改
     _editUserAddress: function _editUserAddress() {
       var _this2 = this;
+      uni.showLoading();
+      setTimeout(function () {
+        uni.hideLoading();
+      }, 500);
       (0, _api.editUserAddress)({
         post_params: {
           id: this.type == 1 ? '' : this.defaulrObj.id,
@@ -233,7 +248,14 @@ var _default = {
         }
       }).then(function (res) {
         console.log('新增编辑成功', res.data.data);
-        _this2._getUserAddressList();
+        if (res.data.code == 1) {
+          uni.showToast({
+            title: '操作成功!',
+            icon: 'success',
+            duration: 1000
+          });
+          _this2._getUserAddressList();
+        }
       });
     },
     _getUserAddressList: function _getUserAddressList() {
@@ -276,6 +298,7 @@ var _default = {
   }
 };
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ })
 

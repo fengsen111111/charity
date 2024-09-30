@@ -272,11 +272,11 @@ var _default = {
         // 签名
         success: function success(res) {
           console.log('支付成功', res);
-          // 业务逻辑。。。
+          that.close();
         },
-
         fail: function fail(err) {
           console.log('支付失败', err);
+          that.close();
         }
       });
     },

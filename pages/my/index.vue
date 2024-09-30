@@ -142,6 +142,10 @@
 			dialogInputConfirm(val) {
 				console.log(val)
 				this.nickname = val
+				uni.showLoading();
+				setTimeout(()=>{
+				    uni.hideLoading();
+				},500)
 				updateUserInfo({
 					post_params: {
 						mobile: this.mobile,
@@ -150,12 +154,19 @@
 					}
 				}).then((res) => {
 					console.log('修改用户信息', res.data.data);
-					this.$refs.inputDialog.close()
-					this._getUserInfo()
+					if(res.data.code==1){
+						uni.showToast({
+							title: '操作成功!',					
+						    icon: 'success',					    
+							duration: 1000
+						});
+						this.$refs.inputDialog.close()
+						this._getUserInfo()
+					}
 				})
 			},
 			_getPhoneNumber(e) {
-				console.log('搜全会', e.detail.code)
+				console.log('手机号', e.detail.code)
 				getPhoneNumber({
 					post_params: {
 						platform: 'mini',

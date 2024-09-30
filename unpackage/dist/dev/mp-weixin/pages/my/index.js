@@ -255,6 +255,10 @@ var _default = {
       var _this2 = this;
       console.log(val);
       this.nickname = val;
+      uni.showLoading();
+      setTimeout(function () {
+        uni.hideLoading();
+      }, 500);
       (0, _api.updateUserInfo)({
         post_params: {
           mobile: this.mobile,
@@ -263,13 +267,20 @@ var _default = {
         }
       }).then(function (res) {
         console.log('修改用户信息', res.data.data);
-        _this2.$refs.inputDialog.close();
-        _this2._getUserInfo();
+        if (res.data.code == 1) {
+          uni.showToast({
+            title: '操作成功!',
+            icon: 'success',
+            duration: 1000
+          });
+          _this2.$refs.inputDialog.close();
+          _this2._getUserInfo();
+        }
       });
     },
     _getPhoneNumber: function _getPhoneNumber(e) {
       var _this3 = this;
-      console.log('搜全会', e.detail.code);
+      console.log('手机号', e.detail.code);
       (0, _api.getPhoneNumber)({
         post_params: {
           platform: 'mini',

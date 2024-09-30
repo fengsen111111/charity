@@ -25,7 +25,7 @@
 			</view>
 		</view>
 
-		<view class="mt40">
+		<view class="mt20">
 			<cardActivity :activeList = "activeList"/>
 		</view>
 

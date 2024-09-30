@@ -220,6 +220,10 @@ var _default = {
     // 提交
     btnSubmit: function btnSubmit() {
       var _this = this;
+      uni.showLoading();
+      setTimeout(function () {
+        uni.hideLoading();
+      }, 500);
       (0, _api.joinTeam)({
         post_params: {
           name: this.form.name,
@@ -231,7 +235,14 @@ var _default = {
         }
       }).then(function () {
         console.log('数据提交结果', res.data.data);
-        _this.submitShow = true;
+        if (res.data.code == 1) {
+          uni.showToast({
+            title: '提交成功!',
+            icon: 'success',
+            duration: 1000
+          });
+          _this.submitShow = true;
+        }
       });
     },
     // 打开时间

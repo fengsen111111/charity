@@ -31,7 +31,6 @@
 				<view class="flex justify-between mt20">
 					<image src="../../static/item_0.png" class="cards_img" @click="handUrl('/pages/components/charitableFunds/index')" mode=""></image>
 					<image src="../../static/item_1.png" class="cards_img" @click="handUrl('/pages/components/eventRegistration/index')" mode=""></image>
-					<!-- <image src="../../static/item_2.png" class="cards_img" @click="handUrl('/pages/components/volunteer/index')" mode=""></image> -->
 					<image src="../../static/item_2.png" class="cards_img" @click="handUrlThree()" mode=""></image>
 					<image src="../../static/item_3.png" class="cards_img" @click="handUrl('/pages/components/pointsMall/index')" mode=""></image>
 				</view>

@@ -60,7 +60,7 @@
 		<!-- 弹框 -->
 		<uni-popup ref="popup" background-color="#fff">
 			<view class="popup-content" :class="{ 'popup-height': type === 'left' || type === 'right' }">
-				<view class="bg-white" style="height: 40vh;">
+				<view class="bg-white">
 					<view class="grid grid-cols-3  items-center p35 border-bottom-dotted">
 						<view class=""></view>
 						<view class="text30 font-bold text-center col205D57">非定向捐助</view>
@@ -180,10 +180,11 @@
 					paySign:item.paySign, // 签名
 					success: function(res) {
 						console.log('支付成功', res);
-						// 业务逻辑。。。
+						that.close()
 					},
 					fail: function(err) {
 						console.log('支付失败', err);
+						that.close()
 					}
 				});
 			},

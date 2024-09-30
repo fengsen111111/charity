@@ -181,10 +181,11 @@
 					paySign:item.paySign, // 签名
 					success: function(res) {
 						console.log('支付成功', res);
-						// 业务逻辑。。。
+						that.close()
 					},
 					fail: function(err) {
 						console.log('支付失败', err);
+						that.close()
 					}
 				});
 			},

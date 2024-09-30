@@ -6,7 +6,9 @@
 			<view class="text32 font-bold w-4-5">
 				{{activeDetails.name}}
 			</view>
-			<view :class="activeDetails.status=='a'?'status_3':activeDetails.status=='b'?'status_1':'status_2'">{{activeDetails.status=='a'?'待开始':activeDetails.status=='b'?'进行中':'已结束'}}</view>
+			<view :class="activeDetails.status=='a'?'status_3':activeDetails.status=='b'?'status_1':'status_2'">
+				{{activeDetails.status=='a'?'待开始':activeDetails.status=='b'?'进行中':'已结束'}}
+			</view>
 		</view>
 		<view class="bgEBEBEB h18 "></view>
 		<view class="py30 text24 px36">
@@ -19,7 +21,8 @@
 			</view>
 			<view class="flex justify-between">
 				<view class="">活动时间</view>
-				<view class="col205D57 w-7-10 text-right">{{activeDetails.start_time}} 至 {{activeDetails.end_time}}</view>
+				<view class="col205D57 w-7-10 text-right">{{activeDetails.start_time}} 至 {{activeDetails.end_time}}
+				</view>
 			</view>
 			<view class="px36 py30">
 				<view class=" bgEBEBEB h1"></view>
@@ -34,7 +37,8 @@
 			<view class="flex justify-between items-center">
 				<view class="">活动名额(剩余/共计)</view>
 				<view class="colD6B07A w-3-5 text-right items-baseline ">
-					<view class="text36">{{activeDetails.residue_number}}/{{activeDetails.person_number}}<text class="ml10 text24">人</text></view>
+					<view class="text36">{{activeDetails.residue_number}}/{{activeDetails.person_number}}<text
+							class="ml10 text24">人</text></view>
 				</view>
 			</view>
 			<view class="px36 py30">
@@ -51,7 +55,7 @@
 				<view class="">集合地址</view>
 				<view class="col205D57 w-7-10 text-right">{{activeDetails.point_address}}</view>
 			</view>
-			
+
 		</view>
 		<view class="bgEBEBEB h18 "></view>
 		<view class="py30 px36 text32 indent32">
@@ -62,7 +66,7 @@
 			<image src="../../../static/fenxiang.png" class="w100 h100 relative_fei" mode="" @click="handleFX()">
 			</image>
 			<view class="mt20 px75 ">
-				<view class="btnForm">
+				<view class="btnForm" @click="_joinActivity">
 					活动报名
 				</view>
 			</view>
@@ -83,7 +87,7 @@
 	import {
 		getActivityDetail,
 		joinActivity
-		} from "@/request/api.js"
+	} from "@/request/api.js"
 	export default {
 		components: {
 			hearchItem,
@@ -97,8 +101,8 @@
 					name: '',
 					money: ''
 				},
-				active_id:'',//
-				activeDetails:{}
+				active_id: '', //
+				activeDetails: {}
 			}
 		},
 		created() {
@@ -113,7 +117,7 @@
 		},
 		watch: {},
 		methods: {
-			handleCol(){
+			handleCol() {
 				this.$refs.share.close()
 			},
 			onShareAppMessage(res) {
@@ -130,26 +134,38 @@
 				this.$refs.share.open()
 			},
 			// 下单
-			_joinActivity(){
+			_joinActivity() {
+				uni.showLoading();
+				setTimeout(()=>{
+					uni.hideLoading();
+				},500)
 				joinActivity({
-					post_params:{
-						activity_id:this.activeDetails.id
+					post_params: {
+						activity_id: this.activeDetails.id
 					}
-				}).then((res)=>{
-					console.log('下单结束',res.data.data);
+				}).then((res) => {
+					console.log('下单结束', res.data);
+					if(res.data.code==1){
+						uni.showToast({
+							title: '下单成功!',
+							icon: 'success',
+							duration: 1000
+						});
+					}
 				})
+				
 			},
 			// 切换
 			handleIndex(index) {
 				this.indexItem = index
 			},
-			_getActivityDetail(){
+			_getActivityDetail() {
 				getActivityDetail({
-					post_params:{
+					post_params: {
 						id: this.active_id
 					}
-				}).then((res)=>{
-					console.log('res活动详情',res.data.data);
+				}).then((res) => {
+					console.log('res活动详情', res.data.data);
 					this.activeDetails = res.data.data
 				})
 			}

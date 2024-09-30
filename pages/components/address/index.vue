@@ -121,17 +121,32 @@
 		methods: {
 			// 删除
 			_deleteUserAddress(id){
+				uni.showLoading();
+				setTimeout(()=>{
+				    uni.hideLoading();
+				},500)
 				deleteUserAddress({
 					post_params:{
 						id: id
 					}
 				}).then((res)=>{
 					console.log('删除成功',res.data.data);
-					this._getUserAddressList()
+					if(res.data.code==1){
+						uni.showToast({						    
+							title: '操作成功!',					
+						    icon: 'success',					    
+							duration: 1000
+						});
+						this._getUserAddressList()
+					}
 				})
 			},
 			// 新增修改
 			_editUserAddress(){
+				uni.showLoading();
+				setTimeout(()=>{
+				    uni.hideLoading();
+				},500)
 				editUserAddress({
 					post_params:{
 						id: this.type==1?'':this.defaulrObj.id,
@@ -142,7 +157,14 @@
 					}
 				}).then((res)=>{
 					console.log('新增编辑成功',res.data.data);
-					this._getUserAddressList()
+					if(res.data.code==1){
+						uni.showToast({						    
+							title: '操作成功!',					
+						    icon: 'success',					    
+							duration: 1000
+						});
+						this._getUserAddressList()
+					}
 				})
 			},
 			_getUserAddressList(){

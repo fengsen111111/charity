@@ -158,7 +158,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(uni) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -229,12 +229,23 @@ var _default = {
     },
     // 下单
     _joinActivity: function _joinActivity() {
+      uni.showLoading();
+      setTimeout(function () {
+        uni.hideLoading();
+      }, 500);
       (0, _api.joinActivity)({
         post_params: {
           activity_id: this.activeDetails.id
         }
       }).then(function (res) {
-        console.log('下单结束', res.data.data);
+        console.log('下单结束', res.data);
+        if (res.data.code == 1) {
+          uni.showToast({
+            title: '下单成功!',
+            icon: 'success',
+            duration: 1000
+          });
+        }
       });
     },
     // 切换
@@ -255,6 +266,7 @@ var _default = {
   }
 };
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 

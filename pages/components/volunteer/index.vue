@@ -89,7 +89,8 @@
 				<view class="text-center py22">
 					常驻区域
 				</view>
-				<view class="flex justify-between p20" @click="handleArea(item)"  v-for="item in form.areas" :key="item.value">
+				<view class="flex justify-between p20" @click="handleArea(item)" v-for="item in form.areas"
+					:key="item.value">
 					<view class="">{{item.label}}</view>
 					<view v-if="index_areas == item.value">
 						<uni-icons type="checkmarkempty" size="16" color="#205D57"></uni-icons>
@@ -131,7 +132,7 @@
 				}],
 				// 
 				submitShow: false,
-				
+
 				index_areas: ''
 			}
 		},
@@ -146,12 +147,16 @@
 		},
 		watch: {},
 		methods: {
-			handleArea(item){
+			handleArea(item) {
 				this.index_areas = item.value
 				this.$refs.popup.close()
 			},
 			// 提交
 			btnSubmit() {
+				uni.showLoading();
+				setTimeout(() => {
+					uni.hideLoading();
+				}, 500)
 				joinTeam({
 					post_params: {
 						name: this.form.name,
@@ -163,7 +168,15 @@
 					}
 				}).then(() => {
 					console.log('数据提交结果', res.data.data);
-					this.submitShow = true
+					if (res.data.code == 1) {
+						uni.showToast({
+							title: '提交成功!',
+							icon: 'success',
+							duration: 1000
+						});
+						this.submitShow = true
+					}
+
 				})
 
 			},
