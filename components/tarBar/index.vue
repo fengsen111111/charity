@@ -71,8 +71,8 @@
 	}
 
 	.iconAll {
-		width: 63rpx;
-		height: 63rpx;
+		width: 55rpx;
+		height: 55rpx;
 	}
 
 	.tarBarClass {
