@@ -7,7 +7,7 @@
 					<view class="ml20 col205D57 font-bold">基础信息填写</view>
 				</view>
 				<view class="flex justify-between py30">
-					<view class="">姓名</view>
+					<view class="">姓名<text class="colFF0000 ml10">*</text></view>
 					<view class="text-right"><input type="text" placeholder="请输入姓名..." v-model="form.name"
 							class=" col205D57" /></view>
 				</view>
@@ -19,7 +19,7 @@
 					</view>
 				</view>
 				<view class="borderF0F0F0"></view>
-				<!-- 	<view class="flex justify-between py30">
+					<view class="flex justify-between py30">
 					<view class="">出生日期</view>
 					<view class="pickerView">
 						<uni-datetime-picker ref="pickerView" type="date" :clear-icon="false" v-model="form.time"
@@ -27,27 +27,27 @@
 					</view>
 					<view class="col21A3E6" @click="handleTime">{{form.time?form.time:'选择'}}</view>
 				</view>
-				<view class="borderF0F0F0"></view> -->
+				<view class="borderF0F0F0"></view>
 				<view class="flex justify-between py30">
 					<view class="">手机号</view>
 					<view class="text-right"><input type="text" placeholder="请输入手机号..." v-model="form.mobile"
 							class=" col205D57" /></view>
 				</view>
 				<view class="borderF0F0F0"></view>
-				<view class="flex justify-between py30">
+				<!-- <view class="flex justify-between py30">
 					<view class="">身份证号</view>
 					<view class="text-right"><input type="text" placeholder="请输入身份证号..." v-model="form.id_card"
 							class=" col205D57" /></view>
 				</view>
-				<view class="borderF0F0F0"></view>
-				<!-- <view class="flex justify-between py30">
+				<view class="borderF0F0F0"></view> -->
+				<view class="flex justify-between py30">
 					<view class="">获取验证码</view>
 					<view class="flex items-center ">
 						<input type="text" placeholder="请输入验证码..." v-model="form.code" class="w160 col205D57" />
 						<view class="col21A3E6 ml10">重发</view>
 					</view>
 				</view>
-				<view class="borderF0F0F0"></view> -->
+				<view class="borderF0F0F0"></view>
 				<view class="flex justify-between py30">
 					<view class="">特长</view>
 					<view class="text-right"><input type="text" placeholder="请输入特长..." v-model="form.skills"
@@ -117,7 +117,7 @@
 				form: {
 					time: '', //S
 					name: '',
-					gender: 1,
+					gender: '',
 					mobile: '',
 					id_card: '',
 					skills: '',

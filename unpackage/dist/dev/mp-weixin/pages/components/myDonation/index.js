@@ -168,22 +168,22 @@ var _default = {
   data: function data() {
     return {
       donList: [],
-      //最新数据
+      //wode数据
       limit: 20
     };
   },
   onReachBottom: function onReachBottom() {
     this.limit = this.limit + 20;
-    this._getDonateOrderList();
+    this._getMyDonateLogList();
   },
   onReady: function onReady() {
-    this._getDonateOrderList();
+    this._getMyDonateLogList();
   },
   watch: {},
   methods: {
-    _getDonateOrderList: function _getDonateOrderList() {
+    _getMyDonateLogList: function _getMyDonateLogList() {
       var _this = this;
-      (0, _api.getDonateOrderList)({
+      (0, _api.getMyDonateLogList)({
         post_params: {
           currentPage: 1,
           perPage: this.limit

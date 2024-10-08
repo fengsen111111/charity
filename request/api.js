@@ -35,7 +35,7 @@ const api = {
 	DONATE_LIST: base_url + '/donate/Donate/getDonateList', // 基金列表
 	DONATE_DETAILS: base_url + '/donate/Donate/getDonateDetail', // 基金详情
 	DONATE_JOIN: base_url + '/donate/DonateOrder/joinDonate', // 捐赠
-	DONATE_LIST_MY: base_url + '/donate/DonateLog/getMyDonateLogList', // 我的列表
+	DONATE_LIST_MY: base_url + '/donate/DonateOrder/getMyDonateLogList', // 我的列表
 	PHONE_NUMBER: base_url + '/factory_system/Base/getWechatPhoneNumber', // 获取用户微信手机号
 	REGISTER: base_url + '/factory_system/Base/wechatUserRegister', // 微信授权
 	// 上传

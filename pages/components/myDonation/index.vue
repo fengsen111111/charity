@@ -24,7 +24,7 @@
 <script>
 	import hearchItem from '@/components/hearchItem/index.vue'
 	import {
-		getDonateOrderList//最新捐赠记录
+		getMyDonateLogList//wode捐赠记录
 	} from '@/request/api.js'
 	export default {
 		components: {
@@ -32,21 +32,21 @@
 		},
 		data() {
 			return {
-				donList:[],//最新数据
+				donList:[],//wode数据
 				limit:20
 			}
 		},
 		onReachBottom(){
 			this.limit = this.limit+20
-			this._getDonateOrderList()
+			this._getMyDonateLogList()
 		},
 		onReady() {
-			this._getDonateOrderList()
+			this._getMyDonateLogList()
 		},
 		watch: {},
 		methods: {
-			_getDonateOrderList(){
-				getDonateOrderList({
+			_getMyDonateLogList(){
+				getMyDonateLogList({
 					post_params:{
 						currentPage:1,
 						perPage:this.limit
