@@ -185,12 +185,14 @@
 					paySign:item.paySign, // 签名
 					success: function(res) {
 						console.log('支付成功', res);
+						that.close()
+						that._getDonateDetail()
 						uni.showToast({						    
 							title: '捐款成功!',					
 						    icon: 'success',					    
 							duration: 1000
 						});
-						that.close()
+						
 					},
 					fail: function(err) {
 						console.log('支付失败', err);

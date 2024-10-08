@@ -197,7 +197,7 @@ var _default = {
   },
   data: function data() {
     return {
-      indexItem: 1,
+      indexItem: '',
       form: {
         name: '',
         money: ''
@@ -212,37 +212,49 @@ var _default = {
       //字体滚动
       swiperList: [],
       //轮播图
-      limit: 20 //
+      limit: 20,
+      //
+      typeList: [] //类型
     };
   },
   onLoad: function onLoad() {
     this.configInfo = this.$store.state.config ? this.$store.state.config : {};
   },
   onReady: function onReady() {
-    this._getDonateList(); //基金
-    this._getActivityList(); //活动
+    // this._getDonateList() //基金
+    // this._getActivityList() //活动
     this._getIntegralList(); //滚动字体
     this._getBannerList(); //轮播图
+    this._getDonateTypeList(); //类型
   },
 
   watch: {},
   onReachBottom: function onReachBottom() {
     this.limit = this.limit + 20;
     this._getDonateList(); //基金
-    this._getActivityList(); //活动
+    // this._getActivityList() //活动
   },
 
   methods: {
+    _getDonateTypeList: function _getDonateTypeList() {
+      var _this = this;
+      (0, _api.getDonateTypeList)().then(function (res) {
+        console.log('基金类型', res.data.data.list);
+        _this.typeList = res.data.data.list;
+        _this.indexItem = res.data.data.list[0].id; //默认项
+        _this._getDonateList(); //基金
+      });
+    },
     // 轮播图列表
     _getBannerList: function _getBannerList() {
-      var _this = this;
+      var _this2 = this;
       (0, _api.getBannerList)({
         post_params: {
           type: 'donate'
         }
       }).then(function (res) {
         console.log('轮播数据', res.data.data.list);
-        _this.swiperList = res.data.data.list;
+        _this2.swiperList = res.data.data.list;
       });
     },
     // 电话
@@ -253,7 +265,7 @@ var _default = {
     },
     // 捐款
     _joinDonate: function _joinDonate() {
-      var _this2 = this;
+      var _this3 = this;
       (0, _api.joinDonate)({
         post_params: {
           donate_id: '',
@@ -263,7 +275,7 @@ var _default = {
         }
       }).then(function (res) {
         console.log('非定向捐助', res.data.data);
-        _this2.weixinPay(res.data.data.pay_data);
+        _this3.weixinPay(res.data.data.pay_data);
       });
     },
     // 调用微信支付
@@ -296,7 +308,7 @@ var _default = {
     },
     // 滚动字体
     _getIntegralList: function _getIntegralList() {
-      var _this3 = this;
+      var _this4 = this;
       (0, _api.getIntegralList)({
         post_params: {
           currentPage: 1,
@@ -304,12 +316,12 @@ var _default = {
         }
       }).then(function (res) {
         console.log('滚栋字体', res.data.data.list);
-        _this3.textList = res.data.data.list;
+        _this4.textList = res.data.data.list;
       });
     },
     // 活动
     _getActivityList: function _getActivityList() {
-      var _this4 = this;
+      var _this5 = this;
       (0, _api.getActivityList)({
         post_params: {
           show_position: 'a',
@@ -318,25 +330,27 @@ var _default = {
         }
       }).then(function (res) {
         console.log('首页活动列表', res.data.data.list);
-        _this4.activeList = res.data.data.list;
+        _this5.activeList = res.data.data.list;
       });
     },
     // 基金列表
     _getDonateList: function _getDonateList() {
-      var _this5 = this;
+      var _this6 = this;
       (0, _api.getDonateList)({
         post_params: {
+          type_id: this.indexItem,
           currentPage: 1,
           perPage: this.limit
         }
       }).then(function (res) {
         console.log('首页基金列表', res.data.data.list);
-        _this5.donList = res.data.data.list;
+        _this6.donList = res.data.data.list;
       });
     },
     // 切换
     handleIndex: function handleIndex(index) {
       this.indexItem = index;
+      this._getDonateList(); //基金
     },
     // 捐款
     handleMoney: function handleMoney() {

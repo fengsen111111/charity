@@ -66,8 +66,8 @@
 			<button type="default" open-type="share" class="clear-style">
 				<image src="../../../static/fenxiang.png" class="w100 h100 relative_fei" mode="">
 			</button>
-			<view class="mt20 px75 ">
-				<view class="btnForm" @click="_joinActivity">
+			<view class="mt20 px75">
+				<view class="btnForm" @click="_joinActivity" >
 					活动报名
 				</view>
 			</view>
@@ -152,6 +152,14 @@
 			},
 			// 下单
 			_joinActivity() {
+				if(this.activeDetails.residue_number<=0){
+					uni.showToast({
+						title: '活动已无名额！',
+						icon: 'error',
+						duration: 1000
+					});
+					return 
+				}
 				uni.showLoading();
 				setTimeout(()=>{
 					uni.hideLoading();

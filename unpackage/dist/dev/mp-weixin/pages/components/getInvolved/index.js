@@ -145,15 +145,15 @@ var hearchItem = function hearchItem() {
     return resolve(__webpack_require__(/*! @/components/hearchItem/index.vue */ 185));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
-var cardActivity = function cardActivity() {
-  __webpack_require__.e(/*! require.ensure | components/card_activity/index */ "components/card_activity/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/card_activity/index.vue */ 192));
+var cardActivityTwo = function cardActivityTwo() {
+  __webpack_require__.e(/*! require.ensure | components/card_activity/index_two */ "components/card_activity/index_two").then((function () {
+    return resolve(__webpack_require__(/*! @/components/card_activity/index_two.vue */ 367));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
   components: {
     hearchItem: hearchItem,
-    cardActivity: cardActivity
+    cardActivityTwo: cardActivityTwo
   },
   data: function data() {
     return {

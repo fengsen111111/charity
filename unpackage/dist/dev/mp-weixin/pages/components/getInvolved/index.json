@@ -1,6 +1,6 @@
 {
   "usingComponents": {
     "hearch-item": "/components/hearchItem/index",
-    "card-activity": "/components/card_activity/index"
+    "card-activity-two": "/components/card_activity/index_two"
   }
 }

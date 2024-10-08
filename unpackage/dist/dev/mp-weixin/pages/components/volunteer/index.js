@@ -227,7 +227,7 @@ var _default = {
       (0, _api.joinTeam)({
         post_params: {
           name: this.form.name,
-          gender: this.form.sex == 1 ? '男' : '女',
+          gender: this.form.gender == 1 ? '男' : '女',
           mobile: this.form.mobile,
           id_card: this.form.id_card,
           skills: this.form.skills,

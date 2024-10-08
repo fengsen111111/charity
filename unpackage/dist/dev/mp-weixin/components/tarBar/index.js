@@ -174,7 +174,7 @@ var _default = {
       if (item.path == '/' + this.route) {
         console.log("跳转当前页，拒绝");
       } else {
-        uni.navigateTo({
+        uni.reLaunch({
           url: item.path
         });
       }

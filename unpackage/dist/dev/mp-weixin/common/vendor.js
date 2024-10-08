@@ -20267,7 +20267,7 @@ module.exports = index_cjs;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.wechatUserRegister = exports.updateUserInfo = exports.setDefaultUserAddress = exports.overOrder = exports.overActivityOrder = exports.loginAndRegister = exports.joinTeam = exports.joinDonate = exports.joinActivity = exports.getUserInfo = exports.getUserAddressList = exports.getUserAddressDetail = exports.getSetting = exports.getPhoneNumber = exports.getOrderList = exports.getMyDonateLogList = exports.getIntegralList = exports.getGoodsList = exports.getGoodsDetail = exports.getDonateTypeList = exports.getDonateOrderList = exports.getDonateList = exports.getDonateDetail = exports.getBannerList = exports.getBannerDetail = exports.getActivityTypeList = exports.getActivityOrderList = exports.getActivityList = exports.getActivityDetail = exports.editUserAddress = exports.deleteUserAddress = exports.addOrder = void 0;
+exports.wechatUserRegister = exports.uploadFile = exports.updateUserInfo = exports.setDefaultUserAddress = exports.overOrder = exports.overActivityOrder = exports.loginAndRegister = exports.joinTeam = exports.joinDonate = exports.joinActivity = exports.getUserInfo = exports.getUserAddressList = exports.getUserAddressDetail = exports.getUploadType = exports.getTicket = exports.getSetting = exports.getPhoneNumber = exports.getOrderList = exports.getMyDonateLogList = exports.getIntegralList = exports.getGoodsList = exports.getGoodsDetail = exports.getDonateTypeList = exports.getDonateOrderList = exports.getDonateList = exports.getDonateDetail = exports.getBannerList = exports.getBannerDetail = exports.getActivityTypeList = exports.getActivityOrderList = exports.getActivityList = exports.getActivityDetail = exports.editUserAddress = exports.deleteUserAddress = exports.addOrder = void 0;
 var _index = __webpack_require__(/*! ./index.js */ 36);
 // 引入 request 文件
 
@@ -20322,7 +20322,7 @@ var api = {
   // 核销报名
   LOG_LIST: base_url + '//donate/DonateOrder/getDonateOrderList',
   // 最新的捐赠记录列表
-  DONATE_LIST_TYPE: base_url + '/donate/DonateType/getDonateTypeList',
+  DONATE_LIST_TYPE: base_url + '/donate/FundType/getDonateTypeList',
   // 基金类型列表
   DONATE_LIST: base_url + '/donate/Donate/getDonateList',
   // 基金列表
@@ -20334,9 +20334,31 @@ var api = {
   // 我的列表
   PHONE_NUMBER: base_url + '/factory_system/Base/getWechatPhoneNumber',
   // 获取用户微信手机号
-  REGISTER: base_url + '/factory_system/Base/wechatUserRegister' // 微信授权
+  REGISTER: base_url + '/factory_system/Base/wechatUserRegister',
+  // 微信授权
+  // 上传
+  FILE_TICKET: base_url + '/factory_storage/Ticket/getTicket',
+  // 获取文件存储权限
+  FILE_CONFIG: base_url + '/factory_storage/File/getUploadType',
+  // 获取文件存储配置
+  FILE_UPLOAD: base_url + '/factory_storage/File/uploadFile' // 上传文件到本地长期保存
+};
+// 获取文件存储权限
+var getTicket = function getTicket(params) {
+  return (0, _index.post)(api.FILE_TICKET, params);
+};
+// 获取文件存储配置
+exports.getTicket = getTicket;
+var getUploadType = function getUploadType(params) {
+  return (0, _index.post)(api.FILE_CONFIG, params);
+};
+// 上传文件到本地长期保存
+exports.getUploadType = getUploadType;
+var uploadFile = function uploadFile(params) {
+  return (0, _index.post)(api.FILE_UPLOAD, params);
 };
 // 获取用户微信手机号
+exports.uploadFile = uploadFile;
 var wechatUserRegister = function wechatUserRegister(params) {
   return (0, _index.post)(api.REGISTER, params);
 };

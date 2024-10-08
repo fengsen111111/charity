@@ -61,7 +61,8 @@
 			return {
 				configInfo:{},//config
 				activeList:[],//活动列表
-				swiperList:[]
+				swiperList:[],
+				limit: 20,
 			}
 		},
 		onLoad() {
@@ -70,6 +71,10 @@
 		onReady() {
 			this._getActivityList()
 			this._getBannerList()//轮播图
+		},
+		onReachBottom(){
+			this.limit = this.limit+20
+			this._getActivityList() //活动
 		},
 		watch: {},
 		methods: {
@@ -102,7 +107,7 @@
 					post_params:{
 						show_position:'b',
 						currentPage:1,
-						perPage:10
+						perPage: this.limit
 					}
 				}).then((res)=>{
 					console.log('活动列表',res.data.data.list);

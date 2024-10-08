@@ -30,23 +30,23 @@
 				</view>
 			</view>
 			<view class="flex justify-around mt50 col205D57 text30 font-bold">
-				<view @click="handleIndex(1)" :class="indexItem==1?'border_bottom':''">慈善基金</view>
-				<view @click="handleIndex(2)" :class="indexItem==2?'border_bottom':''">活动报名</view>
+				<view @click="handleIndex(item.id)" :class="indexItem==item.id?'border_bottom':''" v-for="item in typeList" :key="item.id">{{item.name}}</view>
+				<!-- <view @click="handleIndex(2)" :class="indexItem==2?'border_bottom':''">活动报名</view> -->
 			</view>
 		</view>
 		<view class="bgEBEBEB h18 "></view>
 		<!-- <cardFunds /> -->
 		<!-- 慈善基金 -->
-		<view class="" v-if="indexItem==1">
+		<view class="" v-if="indexItem">
 			<cardFunds :donList="donList" />
 		</view>
 		<!-- 活动报名 -->
-		<view class="" v-else>
+	<!-- 	<view class="" v-else>
 			<cardActivity :activeList="activeList" />
-		</view>
+		</view> -->
 		<view class="h50"></view>
 		<view style="position: fixed;bottom: 0rpx;" class="w-full bgEBEBEB">
-			<view class="mt20 px75" v-if="indexItem==1">
+			<view class="mt20 px75" v-if="indexItem">
 				<view class="btnForm" @click="handleMoney()">
 					我要捐款
 				</view>
@@ -98,7 +98,8 @@
 		getActivityList, //活动
 		getIntegralList, //滚动字体
 		joinDonate ,//捐赠
-		getBannerList//轮播图
+		getBannerList,//轮播图
+		getDonateTypeList//类型
 	} from '@/request/api.js'
 	export default {
 		components: {
@@ -109,7 +110,7 @@
 		},
 		data() {
 			return {
-				indexItem: 1,
+				indexItem: '',
 				form: {
 					name: '',
 					money: ''
@@ -122,25 +123,35 @@
 				activeList: [], //活动列表
 				textList: [], //字体滚动
 				swiperList:[],//轮播图
-				limit:20//
+				limit:20,//
+				typeList:[],//类型
 			}
 		},
 		onLoad() {
 			this.configInfo = this.$store.state.config ? this.$store.state.config : {}
 		},
 		onReady() {
-			this._getDonateList() //基金
-			this._getActivityList() //活动
+			// this._getDonateList() //基金
+			// this._getActivityList() //活动
 			this._getIntegralList() //滚动字体
 			this._getBannerList()//轮播图
+			this._getDonateTypeList()//类型
 		},
 		watch: {},
 		onReachBottom(){
 			this.limit = this.limit+20
 			this._getDonateList() //基金
-			this._getActivityList() //活动
+			// this._getActivityList() //活动
 		},
 		methods: {
+			_getDonateTypeList(){
+				getDonateTypeList().then((res)=>{
+					console.log('基金类型',res.data.data.list);
+					this.typeList = res.data.data.list
+					this.indexItem = res.data.data.list[0].id //默认项
+					this._getDonateList()//基金
+				})
+			},
 			// 轮播图列表
 			_getBannerList(){
 				getBannerList({
@@ -223,6 +234,7 @@
 			_getDonateList() {
 				getDonateList({
 					post_params: {
+						type_id: this.indexItem,
 						currentPage: 1,
 						perPage: this.limit
 					}
@@ -234,6 +246,7 @@
 			// 切换
 			handleIndex(index) {
 				this.indexItem = index
+				this._getDonateList()//基金
 			},
 			// 捐款
 			handleMoney() {

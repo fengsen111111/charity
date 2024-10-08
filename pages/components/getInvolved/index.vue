@@ -8,20 +8,20 @@
 				<view @click="handleIndex(3)" :class="indexItem==3?'border_bottom col205D57':''">已结束</view>
 			</view>
 		</view>
-		<cardActivity :isCode="true" :activeList="activeList"/>
+		<cardActivityTwo :isCode="true" :activeList="activeList"/>
 	</view>
 </template>
 
 <script>
 	import hearchItem from '@/components/hearchItem/index.vue'
-	import cardActivity from '@/components/card_activity/index.vue'
+	import cardActivityTwo from '@/components/card_activity/index_two.vue'
 	import {
 		getActivityOrderList//
 	} from '@/request/api.js'
 	export default {
 		components: {
 			hearchItem,
-			cardActivity
+			cardActivityTwo
 		},
 		data() {
 			return {

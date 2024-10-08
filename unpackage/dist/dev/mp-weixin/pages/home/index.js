@@ -273,7 +273,7 @@ var _default = {
       var _this6 = this;
       (0, _api.getDonateList)({
         post_params: {
-          show_position: 'a',
+          show_index: 'Y',
           currentPage: 1,
           perPage: 10
         }

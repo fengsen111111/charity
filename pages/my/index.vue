@@ -5,8 +5,13 @@
 			<view class="px36">
 				<view class="bg-white radius20 w-full">
 					<view class="p30 flex">
-						<image v-if="userInfo.head_image" :src="userInfo.head_image" class="userImg" mode=""></image>
-						<view v-else class="userImg bgEBEBEB"></view>
+						<!-- <image @click="handleUpload" v-if="userInfo.head_image" :src="userInfo.head_image" class="userImg" mode=""></image> -->
+						<!-- <button v-else class="clear-style" open-type="chooseAvatar" @chooseavatar="chooseAvatar"> -->
+						<button class="clear-style" open-type="chooseAvatar" @chooseavatar="chooseAvatar">
+							<!--  @click="handleUpload"   -->
+							<image :src="img_user" v-if="img_user" mode="" class="userImg"></image>
+							<view v-else class="userImg bgEBEBEB"></view>
+						</button>
 						<view class="ml30 ">
 							<view class="flex items-center justify-between"  v-if="userInfo.mobile">
 								<view class="text36">{{userInfo.nickname}}</view>
@@ -35,7 +40,7 @@
 				</view>
 			</view>
 		</view>
-
+		
 		<view class="px36 py30  mt20 ">
 			<view class="bg-white radius20 p30">
 				<view class="" v-for="item in tagList" :key="item.id" @click="handUrl(item.url)">
@@ -45,14 +50,24 @@
 						</view>
 						<uni-icons type="right" size="20" color="#878787"></uni-icons>
 					</view>
-					<view class="border_bottom" v-if="item.id !== '5'"></view>
+					<view class="border_bottom" v-if="item.id!=4"></view>
+				</view>
+				<view v-if="userInfo.is_worker == 'Y'" @click="handUrl('')">
+					<view class="border_bottom"></view>
+					<view class="flex justify-between">
+						<view class="flex titleView">
+							<view class="ml20">活动核销</view>
+						</view>
+						<uni-icons type="right" size="20" color="#878787"></uni-icons>
+					</view>
 				</view>
 			</view>
 		</view>
 		<!--  -->
 		<uni-popup ref="inputDialog" type="dialog">
-			<uni-popup-dialog ref="inputClose" mode="input" title="昵称" :value="userInfo.nickname" placeholder="请输入内容"
+			<uni-popup-dialog ref="inputClose" mode="input" title="昵称" :value="userInfo.nickname" placeholder="请输入昵称"
 				@confirm="dialogInputConfirm"></uni-popup-dialog>
+			
 		</uni-popup>
 		<!--  -->
 		<tarBar :checkIndex='3' />
@@ -66,7 +81,10 @@
 		getUserInfo, //用户信息
 		updateUserInfo, //修改用户信息
 		getPhoneNumber ,//手机号
-		overActivityOrder
+		overActivityOrder,
+		getTicket,//上传1
+		getUploadType,//上传2
+		uploadFile//上传3
 	} from '@/request/api.js'
 	export default {
 		components: {
@@ -95,25 +113,78 @@
 						url: '/pages/components/getInvolved/index',
 						text: '我参与的活动',
 					},
-					{
-						id: '5',
-						url: '',
-						text: '活动核销',
-					}
+					// {
+					// 	id: '5',
+					// 	url: '',
+					// 	text: '活动核销',
+					// }
 				],
 				userInfo: {}, //用户信息
 				mobile: '', //手机号
 				nickname: '', //name
+				
+				img_user:'',//用户头像
 			}
 		},
 		created() {
 			//获取手机状态栏高度
 		},
 		onReady() {
+			this.img_user = uni.getStorageSync('imgUser')
 			this._getUserInfo()
 		},
 		watch: {},
 		methods: {
+			chooseAvatar(e) {
+				console.log(' e.detail', e.detail);
+				const {avatarUrl} = e.detail //储存当前头像
+				this.img_user = avatarUrl
+				uni.setStorageSync('imgUser',this.img_user)
+				getTicket().then((res) => {
+					console.log('获取文件存储权限', res.data)
+					getUploadType().then((res_two) => {
+						console.log('获取文件存储配置', res_two.data)
+						const params = {
+							"ticket_time": res.data.data.ticket_time,
+							"file": e.detail,
+							"folder": res_two.data.data.config.folder?res_two.data.data.config.folder:'userInfo',
+							"file_type": res_two.data.data.config.file_type?res_two.data.data.config.file_type:'image',
+							"upload_type":'local'
+						}
+						uploadFile(params).then((fileRes) => {
+							console.log('上传图片', fileRes.data)
+							this.img_user = fileRes.data
+							this.dialogInputConfirm()
+						})
+					})
+				})
+			},
+			handleUpload() {
+				uni.chooseImage({
+					success: (chooseImageRes) => {
+						console.log('数据', chooseImageRes);
+						const tempFilePaths = chooseImageRes.tempFilePaths;
+						getTicket().then((res) => {
+							console.log('获取文件存储权限', res.data)
+							getUploadType().then((res_two) => {
+								console.log('获取文件存储配置', res_two.data)
+								const params = {
+									"ticket_time": res.data.data.ticket_time,
+									"file": tempFilePaths,
+									"folder": res_two.data.data.config.folder?res_two.data.data.config.folder:'userInfo',
+									"file_type": res_two.data.data.config.file_type?res_two.data.data.config.file_type:'image',
+									"upload_type":'local'
+								}
+								uploadFile(params).then((fileRes) => {
+									console.log('上传图片', fileRes.data)
+									this.img_user = fileRes.data
+									this.dialogInputConfirm()
+								})
+							})
+						})
+					}
+				});
+			},
 			// 用户信息
 			_getUserInfo() {
 				getUserInfo().then((res) => {
@@ -175,7 +246,7 @@
 					post_params: {
 						mobile: this.mobile,
 						nickname: this.nickname,
-						head_image: ''
+						head_image: this.img_user
 					}
 				}).then((res) => {
 					console.log('修改用户信息', res.data.data);

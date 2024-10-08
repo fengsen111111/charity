@@ -204,32 +204,91 @@ var _default = {
         id: '4',
         url: '/pages/components/getInvolved/index',
         text: '我参与的活动'
-      }, {
-        id: '5',
-        url: '',
-        text: '活动核销'
-      }],
+      }
+      // {
+      // 	id: '5',
+      // 	url: '',
+      // 	text: '活动核销',
+      // }
+      ],
+
       userInfo: {},
       //用户信息
       mobile: '',
       //手机号
-      nickname: '' //name
+      nickname: '',
+      //name
+
+      img_user: '' //用户头像
     };
   },
   created: function created() {
     //获取手机状态栏高度
   },
   onReady: function onReady() {
+    this.img_user = uni.getStorageSync('imgUser');
     this._getUserInfo();
   },
   watch: {},
   methods: {
+    chooseAvatar: function chooseAvatar(e) {
+      var _this = this;
+      console.log(' e.detail', e.detail);
+      var avatarUrl = e.detail.avatarUrl; //储存当前头像
+      this.img_user = avatarUrl;
+      uni.setStorageSync('imgUser', this.img_user);
+      (0, _api.getTicket)().then(function (res) {
+        console.log('获取文件存储权限', res.data);
+        (0, _api.getUploadType)().then(function (res_two) {
+          console.log('获取文件存储配置', res_two.data);
+          var params = {
+            "ticket_time": res.data.data.ticket_time,
+            "file": e.detail,
+            "folder": res_two.data.data.config.folder ? res_two.data.data.config.folder : 'userInfo',
+            "file_type": res_two.data.data.config.file_type ? res_two.data.data.config.file_type : 'image',
+            "upload_type": 'local'
+          };
+          (0, _api.uploadFile)(params).then(function (fileRes) {
+            console.log('上传图片', fileRes.data);
+            _this.img_user = fileRes.data;
+            _this.dialogInputConfirm();
+          });
+        });
+      });
+    },
+    handleUpload: function handleUpload() {
+      var _this2 = this;
+      uni.chooseImage({
+        success: function success(chooseImageRes) {
+          console.log('数据', chooseImageRes);
+          var tempFilePaths = chooseImageRes.tempFilePaths;
+          (0, _api.getTicket)().then(function (res) {
+            console.log('获取文件存储权限', res.data);
+            (0, _api.getUploadType)().then(function (res_two) {
+              console.log('获取文件存储配置', res_two.data);
+              var params = {
+                "ticket_time": res.data.data.ticket_time,
+                "file": tempFilePaths,
+                "folder": res_two.data.data.config.folder ? res_two.data.data.config.folder : 'userInfo',
+                "file_type": res_two.data.data.config.file_type ? res_two.data.data.config.file_type : 'image',
+                "upload_type": 'local'
+              };
+              (0, _api.uploadFile)(params).then(function (fileRes) {
+                console.log('上传图片', fileRes.data);
+                _this2.img_user = fileRes.data;
+                _this2.dialogInputConfirm();
+              });
+            });
+          });
+        }
+      });
+    },
     // 用户信息
     _getUserInfo: function _getUserInfo() {
-      var _this = this;
+      var _this3 = this;
       (0, _api.getUserInfo)().then(function (res) {
         console.log('用户信息', res.data.data);
-        _this.userInfo = res.data.data;
+        _this3.userInfo = res.data.data;
       });
     },
     handUrl: function handUrl(item) {
@@ -276,7 +335,7 @@ var _default = {
       this.$refs.inputDialog.open();
     },
     dialogInputConfirm: function dialogInputConfirm(val) {
-      var _this2 = this;
+      var _this4 = this;
       console.log(val);
       this.nickname = val;
       uni.showLoading();
@@ -287,7 +346,7 @@ var _default = {
         post_params: {
           mobile: this.mobile,
           nickname: this.nickname,
-          head_image: ''
+          head_image: this.img_user
         }
       }).then(function (res) {
         console.log('修改用户信息', res.data.data);
@@ -297,13 +356,13 @@ var _default = {
             icon: 'success',
             duration: 1000
           });
-          _this2.$refs.inputDialog.close();
-          _this2._getUserInfo();
+          _this4.$refs.inputDialog.close();
+          _this4._getUserInfo();
         }
       });
     },
     _getPhoneNumber: function _getPhoneNumber(e) {
-      var _this3 = this;
+      var _this5 = this;
       console.log('手机号', e.detail.code);
       (0, _api.getPhoneNumber)({
         post_params: {
@@ -313,9 +372,9 @@ var _default = {
         }
       }).then(function (res) {
         console.log('授权成功', res.data.data.phone_number);
-        _this3.mobile = res.data.data.phone_number;
-        uni.setStorageSync('phone', _this3.mobile); //存入电话号码
-        _this3.dialogInputConfirm();
+        _this5.mobile = res.data.data.phone_number;
+        uni.setStorageSync('phone', _this5.mobile); //存入电话号码
+        _this5.dialogInputConfirm();
       });
     }
   }

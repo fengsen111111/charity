@@ -31,14 +31,30 @@ const api = {
 	ACTIBE_LIST_ORDER: base_url + '/donate/ActivityOrder/getActivityOrderList', // 我参与的活动列表
 	OVER_ACTIBE_ORDER: base_url + '/donate/ActivityOrder/overActivityOrder', // 核销报名
 	LOG_LIST: base_url + '//donate/DonateOrder/getDonateOrderList', // 最新的捐赠记录列表
-	DONATE_LIST_TYPE: base_url + '/donate/DonateType/getDonateTypeList', // 基金类型列表
+	DONATE_LIST_TYPE: base_url + '/donate/FundType/getDonateTypeList', // 基金类型列表
 	DONATE_LIST: base_url + '/donate/Donate/getDonateList', // 基金列表
 	DONATE_DETAILS: base_url + '/donate/Donate/getDonateDetail', // 基金详情
 	DONATE_JOIN: base_url + '/donate/DonateOrder/joinDonate', // 捐赠
 	DONATE_LIST_MY: base_url + '/donate/DonateLog/getMyDonateLogList', // 我的列表
 	PHONE_NUMBER: base_url + '/factory_system/Base/getWechatPhoneNumber', // 获取用户微信手机号
 	REGISTER: base_url + '/factory_system/Base/wechatUserRegister', // 微信授权
+	// 上传
+	FILE_TICKET: base_url + '/factory_storage/Ticket/getTicket', // 获取文件存储权限
+	FILE_CONFIG: base_url + '/factory_storage/File/getUploadType', // 获取文件存储配置
+	FILE_UPLOAD: base_url + '/factory_storage/File/uploadFile', // 上传文件到本地长期保存
 	
+}
+// 获取文件存储权限
+export const getTicket = (params) => {
+	return post(api.FILE_TICKET, params)
+}
+ // 获取文件存储配置
+export const getUploadType = (params) => {
+	return post(api.FILE_CONFIG, params)
+}
+ // 上传文件到本地长期保存
+export const uploadFile = (params) => {
+	return post(api.FILE_UPLOAD, params)
 }
 // 获取用户微信手机号
 export const wechatUserRegister = (params) => {

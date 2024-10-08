@@ -245,6 +245,14 @@ var _default = {
     },
     // 下单
     _joinActivity: function _joinActivity() {
+      if (this.activeDetails.residue_number <= 0) {
+        uni.showToast({
+          title: '活动已无名额！',
+          icon: 'error',
+          duration: 1000
+        });
+        return;
+      }
       uni.showLoading();
       setTimeout(function () {
         uni.hideLoading();

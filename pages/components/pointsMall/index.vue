@@ -5,8 +5,8 @@
 			<view class="p35">
 				<view class="border205D57 col9B9B9B text24 flex p10 items-center radius30">
 					<uni-icons type="search" size="20" color="#205D57"></uni-icons>
-					<view class="ml10 w-full"> <input type="text" class="w-full col-black" :value="key_word"
-							@bindconfirm="confirmTap" placeholder="请输入奖品/服务关键词搜索" /></view>
+					<view class="ml10 w-full"> <input type="text" class="w-full col-black" v-model="key_word"
+							@blur="_getGoodsList" placeholder="请输入奖品/服务关键词搜索" /></view>
 				</view>
 			</view>
 			<view class="flex items-center px36 pb30">
