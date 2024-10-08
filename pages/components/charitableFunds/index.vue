@@ -3,7 +3,7 @@
 		<hearchItem :isLeft="true" :title="'慈善基金'" />
 		<view class="mt30">
 			<view class="flex justify-between ml36">
-				<view class="border205D57 col9B9B9B w-3-5 text24 flex p10 items-center radius30">
+				<view class="border205D57 col9B9B9B w-3-5 text24 flex p10 items-center radius30" @click="handleUrl">
 					<uni-icons type="search" size="20" color="#205D57"></uni-icons>
 					<view class="ml10">请输入奖品/服务关键词搜索</view>
 				</view>
@@ -99,7 +99,8 @@
 		getIntegralList, //滚动字体
 		joinDonate ,//捐赠
 		getBannerList,//轮播图
-		getDonateTypeList//类型
+		getDonateTypeList,//类型
+		getDonateOrderList//最近捐赠记录
 	} from '@/request/api.js'
 	export default {
 		components: {
@@ -133,7 +134,8 @@
 		onReady() {
 			// this._getDonateList() //基金
 			// this._getActivityList() //活动
-			this._getIntegralList() //滚动字体
+			// this._getIntegralList() //滚动字体
+			this._getDonateOrderList()
 			this._getBannerList()//轮播图
 			this._getDonateTypeList()//类型
 		},
@@ -144,6 +146,24 @@
 			// this._getActivityList() //活动
 		},
 		methods: {
+			// 最近捐献记录
+			_getDonateOrderList(){
+				getDonateOrderList({
+					post_params:{
+						currentPage:1,
+						perPage:20
+					}
+				}).then((res)=>{
+					console.log('最新捐赠数据',res.data.data);
+					this.textList = res.data.data.list
+				})
+			},
+			// 跳转积分商城
+			handleUrl(){
+				uni.navigateTo({
+					url:'/pages/components/pointsMall/index'
+				})
+			},
 			_getDonateTypeList(){
 				getDonateTypeList().then((res)=>{
 					console.log('基金类型',res.data.data.list);
@@ -171,16 +191,24 @@
 			},
 			// 捐款
 			_joinDonate() {
-				joinDonate({
-					post_params: {
-						donate_id: '', //基金id
-						user_name: this.form.name,
-						money: this.form.money
-					}
-				}).then((res) => {
-					console.log('非定向捐助', res.data.data);
-					this.weixinPay(res.data.data.pay_data)
-				})
+				if(this.form.money>0){
+					joinDonate({
+						post_params: {
+							donate_id: '', //基金id
+							name: this.form.name,
+							money: this.form.money
+						}
+					}).then((res) => {
+						console.log('非定向捐助', res.data.data);
+						this.weixinPay(res.data.data.pay_data)
+					})
+				}else{
+					uni.showToast({
+						title: '捐款金额大于0!',					
+					    icon: 'error',					    
+						duration: 1000
+					});
+				}
 			},
 			// 调用微信支付
 			weixinPay(item) {

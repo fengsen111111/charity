@@ -176,6 +176,12 @@
 							icon: 'success',
 							duration: 1000
 						});
+					}else{
+						uni.showToast({
+							title: res.data.message+'!',
+							icon: 'error',
+							duration: 1000
+						});
 					}
 				})
 				

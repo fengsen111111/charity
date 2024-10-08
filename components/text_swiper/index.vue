@@ -18,9 +18,9 @@
 					:circular="true" :vertical="true" :display-multiple-items="3" easing-function="linear">
 					<swiper-item class="textItem" v-for="item in textList" :key="item.id">
 						<view class="flex justify-between" style="width: 97%;">
-							<view class="">周某某</view>
-							<view class="">{{item.name}}</view>
-							<view class="">{{item.integral}}</view>
+							<view class="">{{item.user_name?item.user_name:'周某某'}}</view>
+							<view class="">{{item.money}}</view>
+							<view class="">{{item.donate_name}}</view>
 							<view class="">{{item.create_time}}</view>
 						</view>
 					</swiper-item>

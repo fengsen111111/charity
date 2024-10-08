@@ -200,7 +200,7 @@ var _default = {
   watch: {},
   methods: {
     handUrlThree: function handUrlThree() {
-      if (this.userInfo.is_worker == 'N') {
+      if (this.userInfo.is_volunteer == 'a') {
         uni.navigateTo({
           url: '/pages/components/volunteer/index?submitShow=' + 'false'
         });

@@ -186,7 +186,7 @@ var _default = {
   data: function data() {
     return {
       form: {
-        time: '',
+        birthday: '',
         //S
         name: '',
         gender: '',
@@ -203,19 +203,27 @@ var _default = {
         value: 2
       }],
       // 
-      submitShow: false,
+      submitShow: true,
       index_areas: ''
     };
   },
   onLoad: function onLoad(option) {
     console.log('option', option.submitShow);
     this.submitShow = option.submitShow;
-    this.$refs.popup.open('bottom');
-    this.form.areas = this.$store.state.config.areas; //四大区域
+    // false
+    if (!option.submitShow) {
+      this.$refs.popup.open('bottom');
+      this.form.areas = this.$store.state.config.areas; //四大区域
+    }
   },
   mounted: function mounted() {},
   watch: {},
   methods: {
+    handleUrlSer: function handleUrlSer() {
+      uni.navigateTo({
+        url: '/pages/components/textContent/index?title=服务协议&content=' + this.$store.state.config.service_agreement
+      });
+    },
     handleArea: function handleArea(item) {
       this.index_areas = item.value;
       this.$refs.popup.close();
@@ -234,9 +242,10 @@ var _default = {
           mobile: this.form.mobile,
           id_card: this.form.id_card,
           skills: this.form.skills,
-          area_id: this.index_areas
+          area_id: this.index_areas,
+          birthday: this.form.birthday
         }
-      }).then(function () {
+      }).then(function (res) {
         console.log('数据提交结果', res.data.data);
         if (res.data.code == 1) {
           uni.showToast({
@@ -245,6 +254,9 @@ var _default = {
             duration: 1000
           });
           _this.submitShow = true;
+          setTimeout(function () {
+            uni.navigateBack();
+          }, 2000);
         }
       });
     },

@@ -1,1 +1,1 @@
-<view class="bg-white" style="height:100vh;"><hearch-item vue-id="51b813d2-1" isLeft="{{true}}" title="内容详情" bind:__l="__l"></hearch-item><view class="p40"><view><rich-text nodes="{{option.content}}"></rich-text></view></view></view>
+<view class="bg-white" style="height:100vh;"><hearch-item vue-id="51b813d2-1" isLeft="{{true}}" title="{{option.title?option.title:'内容详情'}}" bind:__l="__l"></hearch-item><view class="p40"><view><rich-text nodes="{{option.content}}"></rich-text></view></view></view>

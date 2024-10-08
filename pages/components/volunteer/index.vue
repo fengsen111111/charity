@@ -1,7 +1,7 @@
 <template>
 	<view class="">
 		<hearchItem :isLeft="true" :title="'加入志愿者'" />
-		<view class="py30 px36" v-if="submitShow">
+		<view class="py30 px36" v-if="!submitShow">
 			<view class="py30 text24 bg-white radius10 px36">
 				<view class="titleView">
 					<view class="ml20 col205D57 font-bold">基础信息填写</view>
@@ -19,14 +19,21 @@
 					</view>
 				</view>
 				<view class="borderF0F0F0"></view>
-					<view class="flex justify-between py30">
+				<view class="flex justify-between py30">
 					<view class="">出生日期</view>
 					<view class="pickerView">
-						<uni-datetime-picker ref="pickerView" type="date" :clear-icon="false" v-model="form.time"
+						<uni-datetime-picker ref="pickerView" type="date" :clear-icon="false" v-model="form.birthday"
 							@maskClick="maskClick" />
 					</view>
-					<view class="col21A3E6" @click="handleTime">{{form.time?form.time:'选择'}}</view>
+					<view class="col21A3E6" @click="handleTime">{{form.birthday?form.birthday:'选择'}}</view>
 				</view>
+				<view class="borderF0F0F0"></view>
+				<view class="flex justify-between py30">
+					<view class="">身份证号</view>
+					<view class="text-right"><input type="text" placeholder="请输入身份证号..." v-model="form.id_card"
+							class=" col205D57" /></view>
+				</view>
+
 				<view class="borderF0F0F0"></view>
 				<view class="flex justify-between py30">
 					<view class="">手机号</view>
@@ -34,20 +41,15 @@
 							class=" col205D57" /></view>
 				</view>
 				<view class="borderF0F0F0"></view>
+
 				<!-- <view class="flex justify-between py30">
-					<view class="">身份证号</view>
-					<view class="text-right"><input type="text" placeholder="请输入身份证号..." v-model="form.id_card"
-							class=" col205D57" /></view>
-				</view>
-				<view class="borderF0F0F0"></view> -->
-				<view class="flex justify-between py30">
 					<view class="">获取验证码</view>
 					<view class="flex items-center ">
 						<input type="text" placeholder="请输入验证码..." v-model="form.code" class="w160 col205D57" />
 						<view class="col21A3E6 ml10">重发</view>
 					</view>
 				</view>
-				<view class="borderF0F0F0"></view>
+				<view class="borderF0F0F0"></view> -->
 				<view class="flex justify-between py30">
 					<view class="">特长</view>
 					<view class="text-right"><input type="text" placeholder="请输入特长..." v-model="form.skills"
@@ -61,7 +63,7 @@
 							<uni-icons type="checkbox-filled" color="#205D57" size="20"></uni-icons>
 							<view class="ml10 flex">
 								<view class="col787878">勾选同意志愿者</view>
-								<view class="col21A3E6">服务协议</view>
+								<view class="col21A3E6" @click="handleUrlSer">服务协议</view>
 							</view>
 						</view>
 					</view>
@@ -115,7 +117,7 @@
 		data() {
 			return {
 				form: {
-					time: '', //S
+					birthday: '', //S
 					name: '',
 					gender: '',
 					mobile: '',
@@ -131,7 +133,7 @@
 					value: 2
 				}],
 				// 
-				submitShow: false,
+				submitShow: true,
 
 				index_areas: ''
 			}
@@ -139,14 +141,24 @@
 		onLoad(option) {
 			console.log('option', option.submitShow);
 			this.submitShow = option.submitShow
-			this.$refs.popup.open('bottom')
-			this.form.areas = this.$store.state.config.areas //四大区域
+			// false
+			if(!option.submitShow){
+				this.$refs.popup.open('bottom')
+				this.form.areas = this.$store.state.config.areas //四大区域
+			}
+		
 		},
 		mounted() {
 
 		},
 		watch: {},
 		methods: {
+			handleUrlSer() {
+				uni.navigateTo({
+					url: '/pages/components/textContent/index?title=服务协议&content=' + this.$store.state.config
+						.service_agreement
+				})
+			},
 			handleArea(item) {
 				this.index_areas = item.value
 				this.$refs.popup.close()
@@ -164,9 +176,10 @@
 						mobile: this.form.mobile,
 						id_card: this.form.id_card,
 						skills: this.form.skills,
-						area_id: this.index_areas
+						area_id: this.index_areas,
+						birthday: this.form.birthday
 					}
-				}).then(() => {
+				}).then((res) => {
 					console.log('数据提交结果', res.data.data);
 					if (res.data.code == 1) {
 						uni.showToast({
@@ -175,6 +188,9 @@
 							duration: 1000
 						});
 						this.submitShow = true
+						setTimeout(()=>{
+							uni.navigateBack()
+						},2000)
 					}
 
 				})

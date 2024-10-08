@@ -3,7 +3,6 @@
 		<view class="">
 			<swiper @change="change" :current="current" class="h389 w-full" :class="isBottom?'radius20':''" circular
 				:indicator-dots="false" :autoplay="true" :interval="4000">
-
 				<swiper-item class="h389" v-for="item in swiperList" :key="item.id">
 					<image @click="handleUrl(item)" :src="item" class="itemsImg" :class="isBottom?'radius20':''" mode="" >
 					</image>

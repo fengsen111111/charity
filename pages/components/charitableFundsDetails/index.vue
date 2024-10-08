@@ -159,16 +159,25 @@
 				})
 			},
 			_joinDonate() {
-				joinDonate({
-					post_params: {
-						donate_id: this.funds_id,
-						user_name: this.form.name,
-						money: this.form.money,
-					}
-				}).then((res) => {
-					console.log('捐款结束', res.data.data);
-					this.weixinPay(res.data.data.pay_data)
-				})
+				if(this.form.money>0){
+					joinDonate({
+						post_params: {
+							donate_id: this.funds_id,
+							name: this.form.name,
+							money: this.form.money,
+						}
+					}).then((res) => {
+						console.log('捐款结束', res.data.data);
+						this.weixinPay(res.data.data.pay_data)
+					})
+				}else{
+					uni.showToast({
+						title: '捐款金额大于0!',					
+					    icon: 'error',					    
+						duration: 1000
+					});
+				}
+				
 			},
 			// 调用微信支付
 			weixinPay(item) {

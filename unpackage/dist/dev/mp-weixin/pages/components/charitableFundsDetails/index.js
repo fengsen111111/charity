@@ -242,16 +242,24 @@ var _default = {
     },
     _joinDonate: function _joinDonate() {
       var _this2 = this;
-      (0, _api.joinDonate)({
-        post_params: {
-          donate_id: this.funds_id,
-          user_name: this.form.name,
-          money: this.form.money
-        }
-      }).then(function (res) {
-        console.log('捐款结束', res.data.data);
-        _this2.weixinPay(res.data.data.pay_data);
-      });
+      if (this.form.money > 0) {
+        (0, _api.joinDonate)({
+          post_params: {
+            donate_id: this.funds_id,
+            name: this.form.name,
+            money: this.form.money
+          }
+        }).then(function (res) {
+          console.log('捐款结束', res.data.data);
+          _this2.weixinPay(res.data.data.pay_data);
+        });
+      } else {
+        uni.showToast({
+          title: '捐款金额大于0!',
+          icon: 'error',
+          duration: 1000
+        });
+      }
     },
     // 调用微信支付
     weixinPay: function weixinPay(item) {
