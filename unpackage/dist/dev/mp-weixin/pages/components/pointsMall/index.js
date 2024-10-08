@@ -117,6 +117,10 @@ var _default = {
   },
   watch: {},
   methods: {
+    // 触发搜索
+    confirmTap: function confirmTap() {
+      console.log('按下完成触发');
+    },
     _getGoodsList: function _getGoodsList() {
       var _this = this;
       (0, _api.getGoodsList)({
@@ -135,7 +139,12 @@ var _default = {
       console.log("e:", e);
     },
     handleIndex: function handleIndex(index) {
-      this.checkIndex = index;
+      console.log('index', index);
+      if (this.checkIndex == index) {
+        this.checkIndex = '';
+      } else {
+        this.checkIndex = index;
+      }
       this._getGoodsList();
     }
   }

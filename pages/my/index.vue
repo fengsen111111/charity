@@ -65,7 +65,8 @@
 	import {
 		getUserInfo, //用户信息
 		updateUserInfo, //修改用户信息
-		getPhoneNumber //手机号
+		getPhoneNumber ,//手机号
+		overActivityOrder
 	} from '@/request/api.js'
 	export default {
 		components: {
@@ -131,7 +132,31 @@
 					uni.scanCode({
 						success: function(res) {
 							console.log('条码类型：' + res.scanType);
-							console.log('条码内容：' + res.result);
+							console.log('条码内容：' + res.result.split('='));
+							uni.showLoading();
+							setTimeout(()=>{
+							    uni.hideLoading();
+							},500)
+							overActivityOrder({
+								post_params:{
+									activity_id:res.result.split('=')[1]
+								}
+							}).then((res)=>{
+								console.log('扫码结果',res.data);
+								if(res.data.code==1){
+									uni.showToast({
+										title: '核销成功!',					
+									    icon: 'success',					    
+										duration: 1000
+									});
+								}else{
+									uni.showToast({
+										title: '核销失败!',					
+									    icon: 'error',					    
+										duration: 1000
+									});
+								}
+							})
 						}
 					});
 				}

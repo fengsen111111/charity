@@ -10,18 +10,18 @@
 								<image src='../../static/home_search_icon.png' class="img36" mode=""></image>
 								<view class="col29545A">关键词搜索</view>
 							</view>
-							<image src='../../static/home_search_right.png' class="img36 mr20" @click="handleCode" mode=""></image>
+							<!-- <image src='../../static/home_search_right.png' class="img36 mr20" @click="handleCode" mode=""></image> -->
 						</view>
 						<view class="imgactive font-bold col29545A flex items-center p10">
 							<view class="text24 ml10">积分</view>
 							<view class="text30 ml10 mr10">{{userInfo.integral||0}}</view>
 						</view>
 					</view>
-					<view class="flex">
+					<!-- <view class="flex">
 						<image src="../../static/home_tz.png" class="tzImg" mode="">
 						</image>
 						<view class="checkboxTz"></view>
-					</view>
+					</view> -->
 				</view>
 				
 				<!-- 轮播 -->
@@ -68,7 +68,8 @@
 		getActivityList,//活动
 		getUserInfo,//用户信息
 		loginAndRegister,//登陆注册
-		wechatUserRegister//授权
+		wechatUserRegister,//授权
+		overActivityOrder
 		} from '@/request/api.js'
 	export default {
 		components: {
@@ -202,7 +203,31 @@
 				uni.scanCode({
 					success: function (res) {
 						console.log('条码类型：' + res.scanType);
-						console.log('条码内容：' + res.result);
+						console.log('条码内容：' + res.result.split('='));
+						uni.showLoading();
+						setTimeout(()=>{
+						    uni.hideLoading();
+						},500)
+						overActivityOrder({
+							post_params:{
+								activity_id:res.result.split('=')[1]
+							}
+						}).then((res)=>{
+							console.log('扫码结果',res.data);
+							if(res.data.code==1){
+								uni.showToast({
+									title: '核销成功!',					
+								    icon: 'success',					    
+									duration: 1000
+								});
+							}else{
+								uni.showToast({
+									title: '核销失败!',					
+								    icon: 'error',					    
+									duration: 1000
+								});
+							}
+						})
 					}
 				});
 			},

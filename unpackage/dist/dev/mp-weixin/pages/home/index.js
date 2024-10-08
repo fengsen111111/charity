@@ -304,7 +304,31 @@ var _default = {
       uni.scanCode({
         success: function success(res) {
           console.log('条码类型：' + res.scanType);
-          console.log('条码内容：' + res.result);
+          console.log('条码内容：' + res.result.split('='));
+          uni.showLoading();
+          setTimeout(function () {
+            uni.hideLoading();
+          }, 500);
+          (0, _api.overActivityOrder)({
+            post_params: {
+              activity_id: res.result.split('=')[1]
+            }
+          }).then(function (res) {
+            console.log('扫码结果', res.data);
+            if (res.data.code == 1) {
+              uni.showToast({
+                title: '核销成功!',
+                icon: 'success',
+                duration: 1000
+              });
+            } else {
+              uni.showToast({
+                title: '核销失败!',
+                icon: 'error',
+                duration: 1000
+              });
+            }
+          });
         }
       });
     },

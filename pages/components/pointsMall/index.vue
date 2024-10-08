@@ -5,11 +5,13 @@
 			<view class="p35">
 				<view class="border205D57 col9B9B9B text24 flex p10 items-center radius30">
 					<uni-icons type="search" size="20" color="#205D57"></uni-icons>
-					<view class="ml10 w-full"> <input type="text" class="w-full" :value="key_word" placeholder="请输入奖品/服务关键词搜索" /></view>
+					<view class="ml10 w-full"> <input type="text" class="w-full col-black" :value="key_word"
+							@bindconfirm="confirmTap" placeholder="请输入奖品/服务关键词搜索" /></view>
 				</view>
 			</view>
 			<view class="flex items-center px36 pb30">
-				<view class="px10 text26 col205D57" @click="handleIndex(item)" v-for="item in configInfo.integral" :key="item">
+				<view class="px10 text26 col205D57" @click="handleIndex(item)" v-for="item in configInfo.integral"
+					:key="item">
 					<view :class="checkIndex==item?'checkIndex':''">
 						<!-- {{item==1?'全部':item==2?'1-50分':item==3?'51-100分':'100分以上'}} -->
 						{{item}}
@@ -27,7 +29,9 @@
 <script>
 	import hearchItem from '@/components/hearchItem/index.vue'
 	import shopItem from '@/components/shopItem/index.vue'
-	import {getGoodsList} from '@/request/api.js'
+	import {
+		getGoodsList
+	} from '@/request/api.js'
 	export default {
 		components: {
 			hearchItem,
@@ -36,32 +40,36 @@
 		data() {
 			return {
 				checkIndex: '',
-				key_word:'',//搜索
-				jfList:[] ,//积分商品
-				configInfo:{},
-				limit:20
+				key_word: '', //搜索
+				jfList: [], //积分商品
+				configInfo: {},
+				limit: 20
 			}
 		},
 		created() {
 			this._getGoodsList()
 			this.configInfo = this.$store.state.config //四大区域
 		},
-		onReachBottom(){
-			this.limit = this.limit+20
+		onReachBottom() {
+			this.limit = this.limit + 20
 			this._getGoodsList()
 		},
 		watch: {},
 		methods: {
-			_getGoodsList(){
+			// 触发搜索
+			confirmTap() {
+			      console.log('按下完成触发')
+			 },
+			_getGoodsList() {
 				getGoodsList({
-					post_params:{
+					post_params: {
 						key_word: this.key_word,
 						integral: this.checkIndex,
-						currentPage:1,
+						currentPage: 1,
 						perPage: this.limit
 					}
-				}).then((res)=>{
-					console.log("积分商品",res.data.data.list)
+				}).then((res) => {
+					console.log("积分商品", res.data.data.list)
 					this.jfList = res.data.data.list
 				})
 			},
@@ -69,10 +77,15 @@
 				console.log("e:", e);
 			},
 			handleIndex(index) {
-				this.checkIndex = index
+				console.log('index', index);
+				if (this.checkIndex == index) {
+					this.checkIndex = ''
+				} else {
+					this.checkIndex = index
+				}
 				this._getGoodsList()
 			},
-			
+
 		}
 	}
 </script>
