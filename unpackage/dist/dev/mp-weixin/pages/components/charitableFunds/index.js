@@ -101,10 +101,10 @@ var components
 try {
   components = {
     uniIcons: function () {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 199))
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 206))
     },
     uniPopup: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 207))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 214))
     },
   }
 } catch (e) {
@@ -175,17 +175,17 @@ var hearchItem = function hearchItem() {
 };
 var swiperItems = function swiperItems() {
   __webpack_require__.e(/*! require.ensure | components/swiperItems/index */ "components/swiperItems/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/swiperItems/index.vue */ 233));
+    return resolve(__webpack_require__(/*! @/components/swiperItems/index.vue */ 240));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var cardFunds = function cardFunds() {
   __webpack_require__.e(/*! require.ensure | components/card_funds/index */ "components/card_funds/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/card_funds/index.vue */ 240));
+    return resolve(__webpack_require__(/*! @/components/card_funds/index.vue */ 247));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var textSwiper = function textSwiper() {
   __webpack_require__.e(/*! require.ensure | components/text_swiper/index */ "components/text_swiper/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/text_swiper/index.vue */ 247));
+    return resolve(__webpack_require__(/*! @/components/text_swiper/index.vue */ 254));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {

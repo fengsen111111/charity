@@ -143,23 +143,23 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var tarBar = function tarBar() {
-  Promise.all(/*! require.ensure | components/tarbar/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tarbar/index")]).then((function () {
-    return resolve(__webpack_require__(/*! @/components/tarbar/index.vue */ 280));
+  Promise.all(/*! require.ensure | components/tarBar/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tarBar/index")]).then((function () {
+    return resolve(__webpack_require__(/*! @/components/tarBar/index.vue */ 299));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var cardFunds = function cardFunds() {
   __webpack_require__.e(/*! require.ensure | components/card_funds/index */ "components/card_funds/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/card_funds/index.vue */ 240));
+    return resolve(__webpack_require__(/*! @/components/card_funds/index.vue */ 247));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var cardActivity = function cardActivity() {
   __webpack_require__.e(/*! require.ensure | components/card_activity/index */ "components/card_activity/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/card_activity/index.vue */ 192));
+    return resolve(__webpack_require__(/*! @/components/card_activity/index.vue */ 199));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var swiperItems = function swiperItems() {
   __webpack_require__.e(/*! require.ensure | components/swiperItems/index */ "components/swiperItems/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/swiperItems/index.vue */ 233));
+    return resolve(__webpack_require__(/*! @/components/swiperItems/index.vue */ 240));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {

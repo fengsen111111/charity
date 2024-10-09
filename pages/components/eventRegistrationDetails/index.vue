@@ -176,6 +176,7 @@
 							icon: 'success',
 							duration: 1000
 						});
+						this._getActivityDetail()
 					}else{
 						uni.showToast({
 							title: res.data.message+'!',

@@ -101,7 +101,7 @@ var components
 try {
   components = {
     uniPopup: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 207))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 214))
     },
   }
 } catch (e) {
@@ -172,12 +172,12 @@ var hearchItem = function hearchItem() {
 };
 var swiperItemsTwo = function swiperItemsTwo() {
   __webpack_require__.e(/*! require.ensure | components/swiperItems/index_two */ "components/swiperItems/index_two").then((function () {
-    return resolve(__webpack_require__(/*! @/components/swiperItems/index_two.vue */ 254));
+    return resolve(__webpack_require__(/*! @/components/swiperItems/index_two.vue */ 261));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var cardFunds = function cardFunds() {
   __webpack_require__.e(/*! require.ensure | components/card_funds/index */ "components/card_funds/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/card_funds/index.vue */ 240));
+    return resolve(__webpack_require__(/*! @/components/card_funds/index.vue */ 247));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -245,6 +245,7 @@ var _default = {
     },
     // 下单
     _joinActivity: function _joinActivity() {
+      var _this = this;
       if (this.activeDetails.residue_number <= 0) {
         uni.showToast({
           title: '活动已无名额！',
@@ -269,6 +270,7 @@ var _default = {
             icon: 'success',
             duration: 1000
           });
+          _this._getActivityDetail();
         } else {
           uni.showToast({
             title: res.data.message + '!',
@@ -283,14 +285,14 @@ var _default = {
       this.indexItem = index;
     },
     _getActivityDetail: function _getActivityDetail() {
-      var _this = this;
+      var _this2 = this;
       (0, _api.getActivityDetail)({
         post_params: {
           id: this.active_id
         }
       }).then(function (res) {
         console.log('res活动详情', res.data.data);
-        _this.activeDetails = res.data.data;
+        _this2.activeDetails = res.data.data;
       });
     }
   }

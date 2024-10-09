@@ -1,0 +1,6 @@
+
+.text_number {
+	width: 260rpx;
+	word-break: break-all;
+}
+

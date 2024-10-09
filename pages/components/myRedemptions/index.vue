@@ -14,23 +14,26 @@
 					<image :src="item.cover_image" class="w200 h100 radius10" mode=""></image>
 					<view class="ml20 w-full">
 						<view class="flex w-full text28 justify-between items-center">
-							<view class="">{{item.name}}</view>
+							<view class="">{{item.goods_name}}</view>
 							<view class="flex colD6B07A items-baseline">
 								<view class="text36 font-bold ">{{item.integral}}</view>
 								<view class="text18 ml10">积分</view>
 							</view>
 						</view>
-						<view class="text20 col787878 mt30">x{{item.stock}}</view>
+						<view class="text20 col787878 mt30">x{{item.number}}</view>
 					</view>
 				</view>
-				<view>
+				<view v-if="item.status=='a'">
+					<view class="text28 mt20">等待发货中...</view>
+				</view>
+				<view v-else-if="item.status=='b'">
 					<view class="flex justify-between items-center mt15">
-						<view class="flex">
+						<view class="flex items-center">
 							<view class="text28">{{item.express_name}}</view>
 							<view class="text28 col49A3EF ml20 flex items-center">
 								<image @click="copy(item.express_number)" src="../../../static/copy.png"
 									class="mr10 img30" mode=""></image>
-								<text>{{item.express_number}}</text>
+								<text class="text_number">{{item.express_number}}</text>
 							</view>
 						</view>
 						<view @click="_overOrder(item)" class="py20 px36 font-bold col-white text30 radius20"
@@ -39,10 +42,7 @@
 						</view>
 					</view>
 				</view>
-				<view>
-					<view class="text28 mt20">等待发货中...</view>
-				</view>
-				<view>
+				<view v-else-if="item.status=='c'">
 					<view class="text28 mt20 col205D57">已完成</view>
 				</view>
 			</view>
@@ -65,12 +65,12 @@
 		data() {
 			return {
 				indexItem: 1,
-				orderList:[],//
-				limit:20
+				orderList: [], //
+				limit: 20
 			}
 		},
-		onReachBottom(){
-			this.limit = this.limit+20
+		onReachBottom() {
+			this.limit = this.limit + 20
 			this._getOrderList()
 		},
 		onReady() {
@@ -79,7 +79,7 @@
 		watch: {},
 		methods: {
 			copy(value) {
-				console.log('copy',value);
+				console.log('copy', value);
 				uni.setClipboardData({
 					data: value, //要被复制的内容
 					success: () => { //复制成功的回调函数
@@ -90,13 +90,30 @@
 				});
 			},
 			_overOrder(item) {
+				uni.showLoading();
+				setTimeout(() => {
+					uni.hideLoading();
+				}, 500)
 				overOrder({
 					post_params: {
 						order_id: item.id
 					}
 				}).then((res) => {
-					console.log('收获成功', res.data.data);
-					this._getOrderList()
+					// console.log('收获成功', res.data.data);
+					if (res.data.code == 1) {
+						uni.showToast({
+							title: '收货成功!',
+							icon: 'success',
+							duration: 1000
+						});
+						this._getOrderList()
+					} else {
+						uni.showToast({
+							title: '收货失败!',
+							icon: 'error',
+							duration: 1000
+						});
+					}
 				})
 			},
 			_getOrderList() {
@@ -122,5 +139,8 @@
 </script>
 
 <style>
-
+	.text_number {
+		width: 260rpx;
+		word-break: break-all;
+	}
 </style>

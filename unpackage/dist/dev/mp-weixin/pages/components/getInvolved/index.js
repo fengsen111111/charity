@@ -147,7 +147,7 @@ var hearchItem = function hearchItem() {
 };
 var cardActivityTwo = function cardActivityTwo() {
   __webpack_require__.e(/*! require.ensure | components/card_activity/index_two */ "components/card_activity/index_two").then((function () {
-    return resolve(__webpack_require__(/*! @/components/card_activity/index_two.vue */ 367));
+    return resolve(__webpack_require__(/*! @/components/card_activity/index_two.vue */ 192));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {

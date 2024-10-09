@@ -101,13 +101,13 @@ var components
 try {
   components = {
     uniIcons: function () {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 199))
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 206))
     },
     uniPopup: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 207))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 214))
     },
     uniPopupDialog: function () {
-      return Promise.all(/*! import() | uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog.vue */ 293))
+      return Promise.all(/*! import() | uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog.vue */ 312))
     },
   }
 } catch (e) {
@@ -172,8 +172,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var tarBar = function tarBar() {
-  Promise.all(/*! require.ensure | components/tarbar/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tarbar/index")]).then((function () {
-    return resolve(__webpack_require__(/*! @/components/tarbar/index.vue */ 280));
+  Promise.all(/*! require.ensure | components/tarBar/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tarBar/index")]).then((function () {
+    return resolve(__webpack_require__(/*! @/components/tarBar/index.vue */ 299));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var hearchItem = function hearchItem() {
@@ -232,7 +232,7 @@ var _default = {
   watch: {},
   methods: {
     chooseAvatar: function chooseAvatar(e) {
-      var _this = this;
+      var _this2 = this;
       console.log(' e.detail', e.detail);
       var avatarUrl = e.detail.avatarUrl; //储存当前头像
       this.img_user = avatarUrl;
@@ -250,14 +250,14 @@ var _default = {
           };
           (0, _api.uploadFile)(params).then(function (fileRes) {
             console.log('上传图片', fileRes.data);
-            _this.img_user = fileRes.data;
-            _this.dialogInputConfirm();
+            _this2.img_user = fileRes.data;
+            _this2.dialogInputConfirm();
           });
         });
       });
     },
     handleUpload: function handleUpload() {
-      var _this2 = this;
+      var _this3 = this;
       uni.chooseImage({
         success: function success(chooseImageRes) {
           console.log('数据', chooseImageRes);
@@ -275,8 +275,8 @@ var _default = {
               };
               (0, _api.uploadFile)(params).then(function (fileRes) {
                 console.log('上传图片', fileRes.data);
-                _this2.img_user = fileRes.data;
-                _this2.dialogInputConfirm();
+                _this3.img_user = fileRes.data;
+                _this3.dialogInputConfirm();
               });
             });
           });
@@ -285,13 +285,14 @@ var _default = {
     },
     // 用户信息
     _getUserInfo: function _getUserInfo() {
-      var _this3 = this;
+      var _this4 = this;
       (0, _api.getUserInfo)().then(function (res) {
         console.log('用户信息', res.data.data);
-        _this3.userInfo = res.data.data;
+        _this4.userInfo = res.data.data;
       });
     },
     handUrl: function handUrl(item) {
+      var _this = this;
       console.log('跳转', item);
       if (item) {
         uni.navigateTo({
@@ -319,6 +320,7 @@ var _default = {
                   icon: 'success',
                   duration: 1000
                 });
+                _this._getUserInfo(); //刷新积分
               } else {
                 uni.showToast({
                   title: '核销失败!',
@@ -335,7 +337,7 @@ var _default = {
       this.$refs.inputDialog.open();
     },
     dialogInputConfirm: function dialogInputConfirm(val) {
-      var _this4 = this;
+      var _this5 = this;
       console.log(val);
       this.nickname = val;
       uni.showLoading();
@@ -356,13 +358,13 @@ var _default = {
             icon: 'success',
             duration: 1000
           });
-          _this4.$refs.inputDialog.close();
-          _this4._getUserInfo();
+          _this5.$refs.inputDialog.close();
+          _this5._getUserInfo();
         }
       });
     },
     _getPhoneNumber: function _getPhoneNumber(e) {
-      var _this5 = this;
+      var _this6 = this;
       console.log('手机号', e.detail.code);
       (0, _api.getPhoneNumber)({
         post_params: {
@@ -372,9 +374,9 @@ var _default = {
         }
       }).then(function (res) {
         console.log('授权成功', res.data.data.phone_number);
-        _this5.mobile = res.data.data.phone_number;
-        uni.setStorageSync('phone', _this5.mobile); //存入电话号码
-        _this5.dialogInputConfirm();
+        _this6.mobile = res.data.data.phone_number;
+        uni.setStorageSync('phone', _this6.mobile); //存入电话号码
+        _this6.dialogInputConfirm();
       });
     }
   }

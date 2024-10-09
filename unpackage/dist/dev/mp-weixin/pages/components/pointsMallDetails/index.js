@@ -101,7 +101,7 @@ var components
 try {
   components = {
     uniPopup: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 207))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 214))
     },
   }
 } catch (e) {
@@ -172,7 +172,7 @@ var hearchItem = function hearchItem() {
 };
 var swiperItemsTwo = function swiperItemsTwo() {
   __webpack_require__.e(/*! require.ensure | components/swiperItems/index_two */ "components/swiperItems/index_two").then((function () {
-    return resolve(__webpack_require__(/*! @/components/swiperItems/index_two.vue */ 254));
+    return resolve(__webpack_require__(/*! @/components/swiperItems/index_two.vue */ 261));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {

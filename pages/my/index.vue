@@ -75,7 +75,7 @@
 </template>
 
 <script>
-	import tarBar from '@/components/tarbar/index.vue'
+	import tarBar from '@/components/tarBar/index.vue'
 	import hearchItem from '@/components/hearchItem/index.vue'
 	import {
 		getUserInfo, //用户信息
@@ -193,6 +193,7 @@
 				})
 			},
 			handUrl(item) {
+				const _this = this
 				console.log('跳转', item);
 				if (item) {
 					uni.navigateTo({
@@ -220,6 +221,7 @@
 									    icon: 'success',					    
 										duration: 1000
 									});
+									_this._getUserInfo() //刷新积分
 								}else{
 									uni.showToast({
 										title: '核销失败!',					

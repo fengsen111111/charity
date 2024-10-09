@@ -43,7 +43,7 @@
 </template>
 
 <script>
-	import tarBar from '@/components/tarbar/index.vue'
+	import tarBar from '@/components/tarBar/index.vue'
 	import hearchItem from '@/components/hearchItem/index.vue'
 	import swiperItems from '@/components/swiperItems/index.vue'
 	import {

@@ -2655,7 +2655,21 @@ module.exports = _iterableToArray, module.exports.__esModule = true, module.expo
 
 /***/ }),
 
-/***/ 204:
+/***/ 21:
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/nonIterableSpread.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+module.exports = _nonIterableSpread, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 211:
 /*!***************************************************************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-icons/components/uni-icons/uniicons_file_vue.js ***!
   \***************************************************************************************************/
@@ -3159,21 +3173,544 @@ exports.fontData = fontData;
 
 /***/ }),
 
-/***/ 21:
-/*!******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/nonIterableSpread.js ***!
-  \******************************************************************/
+/***/ 22:
+/*!*************************************************************!*\
+  !*** ./node_modules/@dcloudio/uni-i18n/dist/uni-i18n.es.js ***!
+  \*************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni, global) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.LOCALE_ZH_HANT = exports.LOCALE_ZH_HANS = exports.LOCALE_FR = exports.LOCALE_ES = exports.LOCALE_EN = exports.I18n = exports.Formatter = void 0;
+exports.compileI18nJsonStr = compileI18nJsonStr;
+exports.hasI18nJson = hasI18nJson;
+exports.initVueI18n = initVueI18n;
+exports.isI18nStr = isI18nStr;
+exports.isString = void 0;
+exports.normalizeLocale = normalizeLocale;
+exports.parseI18nJson = parseI18nJson;
+exports.resolveLocale = resolveLocale;
+var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ 5));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
+var isObject = function isObject(val) {
+  return val !== null && (0, _typeof2.default)(val) === 'object';
+};
+var defaultDelimiters = ['{', '}'];
+var BaseFormatter = /*#__PURE__*/function () {
+  function BaseFormatter() {
+    (0, _classCallCheck2.default)(this, BaseFormatter);
+    this._caches = Object.create(null);
+  }
+  (0, _createClass2.default)(BaseFormatter, [{
+    key: "interpolate",
+    value: function interpolate(message, values) {
+      var delimiters = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : defaultDelimiters;
+      if (!values) {
+        return [message];
+      }
+      var tokens = this._caches[message];
+      if (!tokens) {
+        tokens = parse(message, delimiters);
+        this._caches[message] = tokens;
+      }
+      return compile(tokens, values);
+    }
+  }]);
+  return BaseFormatter;
+}();
+exports.Formatter = BaseFormatter;
+var RE_TOKEN_LIST_VALUE = /^(?:\d)+/;
+var RE_TOKEN_NAMED_VALUE = /^(?:\w)+/;
+function parse(format, _ref) {
+  var _ref2 = (0, _slicedToArray2.default)(_ref, 2),
+    startDelimiter = _ref2[0],
+    endDelimiter = _ref2[1];
+  var tokens = [];
+  var position = 0;
+  var text = '';
+  while (position < format.length) {
+    var char = format[position++];
+    if (char === startDelimiter) {
+      if (text) {
+        tokens.push({
+          type: 'text',
+          value: text
+        });
+      }
+      text = '';
+      var sub = '';
+      char = format[position++];
+      while (char !== undefined && char !== endDelimiter) {
+        sub += char;
+        char = format[position++];
+      }
+      var isClosed = char === endDelimiter;
+      var type = RE_TOKEN_LIST_VALUE.test(sub) ? 'list' : isClosed && RE_TOKEN_NAMED_VALUE.test(sub) ? 'named' : 'unknown';
+      tokens.push({
+        value: sub,
+        type: type
+      });
+    }
+    //  else if (char === '%') {
+    //   // when found rails i18n syntax, skip text capture
+    //   if (format[position] !== '{') {
+    //     text += char
+    //   }
+    // }
+    else {
+      text += char;
+    }
+  }
+  text && tokens.push({
+    type: 'text',
+    value: text
+  });
+  return tokens;
 }
-module.exports = _nonIterableSpread, module.exports.__esModule = true, module.exports["default"] = module.exports;
+function compile(tokens, values) {
+  var compiled = [];
+  var index = 0;
+  var mode = Array.isArray(values) ? 'list' : isObject(values) ? 'named' : 'unknown';
+  if (mode === 'unknown') {
+    return compiled;
+  }
+  while (index < tokens.length) {
+    var token = tokens[index];
+    switch (token.type) {
+      case 'text':
+        compiled.push(token.value);
+        break;
+      case 'list':
+        compiled.push(values[parseInt(token.value, 10)]);
+        break;
+      case 'named':
+        if (mode === 'named') {
+          compiled.push(values[token.value]);
+        } else {
+          if (true) {
+            console.warn("Type of token '".concat(token.type, "' and format of value '").concat(mode, "' don't match!"));
+          }
+        }
+        break;
+      case 'unknown':
+        if (true) {
+          console.warn("Detect 'unknown' type of token!");
+        }
+        break;
+    }
+    index++;
+  }
+  return compiled;
+}
+var LOCALE_ZH_HANS = 'zh-Hans';
+exports.LOCALE_ZH_HANS = LOCALE_ZH_HANS;
+var LOCALE_ZH_HANT = 'zh-Hant';
+exports.LOCALE_ZH_HANT = LOCALE_ZH_HANT;
+var LOCALE_EN = 'en';
+exports.LOCALE_EN = LOCALE_EN;
+var LOCALE_FR = 'fr';
+exports.LOCALE_FR = LOCALE_FR;
+var LOCALE_ES = 'es';
+exports.LOCALE_ES = LOCALE_ES;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var hasOwn = function hasOwn(val, key) {
+  return hasOwnProperty.call(val, key);
+};
+var defaultFormatter = new BaseFormatter();
+function include(str, parts) {
+  return !!parts.find(function (part) {
+    return str.indexOf(part) !== -1;
+  });
+}
+function startsWith(str, parts) {
+  return parts.find(function (part) {
+    return str.indexOf(part) === 0;
+  });
+}
+function normalizeLocale(locale, messages) {
+  if (!locale) {
+    return;
+  }
+  locale = locale.trim().replace(/_/g, '-');
+  if (messages && messages[locale]) {
+    return locale;
+  }
+  locale = locale.toLowerCase();
+  if (locale === 'chinese') {
+    // 支付宝
+    return LOCALE_ZH_HANS;
+  }
+  if (locale.indexOf('zh') === 0) {
+    if (locale.indexOf('-hans') > -1) {
+      return LOCALE_ZH_HANS;
+    }
+    if (locale.indexOf('-hant') > -1) {
+      return LOCALE_ZH_HANT;
+    }
+    if (include(locale, ['-tw', '-hk', '-mo', '-cht'])) {
+      return LOCALE_ZH_HANT;
+    }
+    return LOCALE_ZH_HANS;
+  }
+  var locales = [LOCALE_EN, LOCALE_FR, LOCALE_ES];
+  if (messages && Object.keys(messages).length > 0) {
+    locales = Object.keys(messages);
+  }
+  var lang = startsWith(locale, locales);
+  if (lang) {
+    return lang;
+  }
+}
+var I18n = /*#__PURE__*/function () {
+  function I18n(_ref3) {
+    var locale = _ref3.locale,
+      fallbackLocale = _ref3.fallbackLocale,
+      messages = _ref3.messages,
+      watcher = _ref3.watcher,
+      formater = _ref3.formater;
+    (0, _classCallCheck2.default)(this, I18n);
+    this.locale = LOCALE_EN;
+    this.fallbackLocale = LOCALE_EN;
+    this.message = {};
+    this.messages = {};
+    this.watchers = [];
+    if (fallbackLocale) {
+      this.fallbackLocale = fallbackLocale;
+    }
+    this.formater = formater || defaultFormatter;
+    this.messages = messages || {};
+    this.setLocale(locale || LOCALE_EN);
+    if (watcher) {
+      this.watchLocale(watcher);
+    }
+  }
+  (0, _createClass2.default)(I18n, [{
+    key: "setLocale",
+    value: function setLocale(locale) {
+      var _this = this;
+      var oldLocale = this.locale;
+      this.locale = normalizeLocale(locale, this.messages) || this.fallbackLocale;
+      if (!this.messages[this.locale]) {
+        // 可能初始化时不存在
+        this.messages[this.locale] = {};
+      }
+      this.message = this.messages[this.locale];
+      // 仅发生变化时，通知
+      if (oldLocale !== this.locale) {
+        this.watchers.forEach(function (watcher) {
+          watcher(_this.locale, oldLocale);
+        });
+      }
+    }
+  }, {
+    key: "getLocale",
+    value: function getLocale() {
+      return this.locale;
+    }
+  }, {
+    key: "watchLocale",
+    value: function watchLocale(fn) {
+      var _this2 = this;
+      var index = this.watchers.push(fn) - 1;
+      return function () {
+        _this2.watchers.splice(index, 1);
+      };
+    }
+  }, {
+    key: "add",
+    value: function add(locale, message) {
+      var override = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+      var curMessages = this.messages[locale];
+      if (curMessages) {
+        if (override) {
+          Object.assign(curMessages, message);
+        } else {
+          Object.keys(message).forEach(function (key) {
+            if (!hasOwn(curMessages, key)) {
+              curMessages[key] = message[key];
+            }
+          });
+        }
+      } else {
+        this.messages[locale] = message;
+      }
+    }
+  }, {
+    key: "f",
+    value: function f(message, values, delimiters) {
+      return this.formater.interpolate(message, values, delimiters).join('');
+    }
+  }, {
+    key: "t",
+    value: function t(key, locale, values) {
+      var message = this.message;
+      if (typeof locale === 'string') {
+        locale = normalizeLocale(locale, this.messages);
+        locale && (message = this.messages[locale]);
+      } else {
+        values = locale;
+      }
+      if (!hasOwn(message, key)) {
+        console.warn("Cannot translate the value of keypath ".concat(key, ". Use the value of keypath as default."));
+        return key;
+      }
+      return this.formater.interpolate(message[key], values).join('');
+    }
+  }]);
+  return I18n;
+}();
+exports.I18n = I18n;
+function watchAppLocale(appVm, i18n) {
+  // 需要保证 watch 的触发在组件渲染之前
+  if (appVm.$watchLocale) {
+    // vue2
+    appVm.$watchLocale(function (newLocale) {
+      i18n.setLocale(newLocale);
+    });
+  } else {
+    appVm.$watch(function () {
+      return appVm.$locale;
+    }, function (newLocale) {
+      i18n.setLocale(newLocale);
+    });
+  }
+}
+function getDefaultLocale() {
+  if (typeof uni !== 'undefined' && uni.getLocale) {
+    return uni.getLocale();
+  }
+  // 小程序平台，uni 和 uni-i18n 互相引用，导致访问不到 uni，故在 global 上挂了 getLocale
+  if (typeof global !== 'undefined' && global.getLocale) {
+    return global.getLocale();
+  }
+  return LOCALE_EN;
+}
+function initVueI18n(locale) {
+  var messages = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var fallbackLocale = arguments.length > 2 ? arguments[2] : undefined;
+  var watcher = arguments.length > 3 ? arguments[3] : undefined;
+  // 兼容旧版本入参
+  if (typeof locale !== 'string') {
+    var _ref4 = [messages, locale];
+    locale = _ref4[0];
+    messages = _ref4[1];
+  }
+  if (typeof locale !== 'string') {
+    // 因为小程序平台，uni-i18n 和 uni 互相引用，导致此时访问 uni 时，为 undefined
+    locale = getDefaultLocale();
+  }
+  if (typeof fallbackLocale !== 'string') {
+    fallbackLocale = typeof __uniConfig !== 'undefined' && __uniConfig.fallbackLocale || LOCALE_EN;
+  }
+  var i18n = new I18n({
+    locale: locale,
+    fallbackLocale: fallbackLocale,
+    messages: messages,
+    watcher: watcher
+  });
+  var _t = function t(key, values) {
+    if (typeof getApp !== 'function') {
+      // app view
+      /* eslint-disable no-func-assign */
+      _t = function t(key, values) {
+        return i18n.t(key, values);
+      };
+    } else {
+      var isWatchedAppLocale = false;
+      _t = function t(key, values) {
+        var appVm = getApp().$vm;
+        // 可能$vm还不存在，比如在支付宝小程序中，组件定义较早，在props的default里使用了t()函数（如uni-goods-nav），此时app还未初始化
+        // options: {
+        // 	type: Array,
+        // 	default () {
+        // 		return [{
+        // 			icon: 'shop',
+        // 			text: t("uni-goods-nav.options.shop"),
+        // 		}, {
+        // 			icon: 'cart',
+        // 			text: t("uni-goods-nav.options.cart")
+        // 		}]
+        // 	}
+        // },
+        if (appVm) {
+          // 触发响应式
+          appVm.$locale;
+          if (!isWatchedAppLocale) {
+            isWatchedAppLocale = true;
+            watchAppLocale(appVm, i18n);
+          }
+        }
+        return i18n.t(key, values);
+      };
+    }
+    return _t(key, values);
+  };
+  return {
+    i18n: i18n,
+    f: function f(message, values, delimiters) {
+      return i18n.f(message, values, delimiters);
+    },
+    t: function t(key, values) {
+      return _t(key, values);
+    },
+    add: function add(locale, message) {
+      var override = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+      return i18n.add(locale, message, override);
+    },
+    watch: function watch(fn) {
+      return i18n.watchLocale(fn);
+    },
+    getLocale: function getLocale() {
+      return i18n.getLocale();
+    },
+    setLocale: function setLocale(newLocale) {
+      return i18n.setLocale(newLocale);
+    }
+  };
+}
+var isString = function isString(val) {
+  return typeof val === 'string';
+};
+exports.isString = isString;
+var formater;
+function hasI18nJson(jsonObj, delimiters) {
+  if (!formater) {
+    formater = new BaseFormatter();
+  }
+  return walkJsonObj(jsonObj, function (jsonObj, key) {
+    var value = jsonObj[key];
+    if (isString(value)) {
+      if (isI18nStr(value, delimiters)) {
+        return true;
+      }
+    } else {
+      return hasI18nJson(value, delimiters);
+    }
+  });
+}
+function parseI18nJson(jsonObj, values, delimiters) {
+  if (!formater) {
+    formater = new BaseFormatter();
+  }
+  walkJsonObj(jsonObj, function (jsonObj, key) {
+    var value = jsonObj[key];
+    if (isString(value)) {
+      if (isI18nStr(value, delimiters)) {
+        jsonObj[key] = compileStr(value, values, delimiters);
+      }
+    } else {
+      parseI18nJson(value, values, delimiters);
+    }
+  });
+  return jsonObj;
+}
+function compileI18nJsonStr(jsonStr, _ref5) {
+  var locale = _ref5.locale,
+    locales = _ref5.locales,
+    delimiters = _ref5.delimiters;
+  if (!isI18nStr(jsonStr, delimiters)) {
+    return jsonStr;
+  }
+  if (!formater) {
+    formater = new BaseFormatter();
+  }
+  var localeValues = [];
+  Object.keys(locales).forEach(function (name) {
+    if (name !== locale) {
+      localeValues.push({
+        locale: name,
+        values: locales[name]
+      });
+    }
+  });
+  localeValues.unshift({
+    locale: locale,
+    values: locales[locale]
+  });
+  try {
+    return JSON.stringify(compileJsonObj(JSON.parse(jsonStr), localeValues, delimiters), null, 2);
+  } catch (e) {}
+  return jsonStr;
+}
+function isI18nStr(value, delimiters) {
+  return value.indexOf(delimiters[0]) > -1;
+}
+function compileStr(value, values, delimiters) {
+  return formater.interpolate(value, values, delimiters).join('');
+}
+function compileValue(jsonObj, key, localeValues, delimiters) {
+  var value = jsonObj[key];
+  if (isString(value)) {
+    // 存在国际化
+    if (isI18nStr(value, delimiters)) {
+      jsonObj[key] = compileStr(value, localeValues[0].values, delimiters);
+      if (localeValues.length > 1) {
+        // 格式化国际化语言
+        var valueLocales = jsonObj[key + 'Locales'] = {};
+        localeValues.forEach(function (localValue) {
+          valueLocales[localValue.locale] = compileStr(value, localValue.values, delimiters);
+        });
+      }
+    }
+  } else {
+    compileJsonObj(value, localeValues, delimiters);
+  }
+}
+function compileJsonObj(jsonObj, localeValues, delimiters) {
+  walkJsonObj(jsonObj, function (jsonObj, key) {
+    compileValue(jsonObj, key, localeValues, delimiters);
+  });
+  return jsonObj;
+}
+function walkJsonObj(jsonObj, walk) {
+  if (Array.isArray(jsonObj)) {
+    for (var i = 0; i < jsonObj.length; i++) {
+      if (walk(jsonObj, i)) {
+        return true;
+      }
+    }
+  } else if (isObject(jsonObj)) {
+    for (var key in jsonObj) {
+      if (walk(jsonObj, key)) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+function resolveLocale(locales) {
+  return function (locale) {
+    if (!locale) {
+      return locale;
+    }
+    locale = normalizeLocale(locale) || locale;
+    return resolveLocaleChain(locale).find(function (locale) {
+      return locales.indexOf(locale) > -1;
+    });
+  };
+}
+function resolveLocaleChain(locale) {
+  var chain = [];
+  var tokens = locale.split('-');
+  while (tokens.length) {
+    chain.push(tokens.join('-'));
+    tokens.pop();
+  }
+  return chain;
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./../../../webpack/buildin/global.js */ 3)))
 
 /***/ }),
 
-/***/ 219:
+/***/ 226:
 /*!************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js ***!
   \************************************************************************************/
@@ -3188,20 +3725,20 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 220));
-var _assertThisInitialized2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ 222));
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 227));
+var _assertThisInitialized2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ 229));
 var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ 5));
 var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
 var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 223));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 230));
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ 224));
-var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ 225));
-var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ 226));
-var _wrapNativeSuper2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/wrapNativeSuper */ 227));
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ 231));
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ 232));
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ 233));
+var _wrapNativeSuper2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/wrapNativeSuper */ 234));
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
 var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
-var _pages = _interopRequireDefault(__webpack_require__(/*! @/pages.json */ 229));
+var _pages = _interopRequireDefault(__webpack_require__(/*! @/pages.json */ 236));
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e33) { throw _e33; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e34) { didErr = true; err = _e34; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
@@ -3654,7 +4191,7 @@ var S = "development" === "development",
   x = true;
 var O = "";
 try {
-  O = (__webpack_require__(/*! uni-stat-config */ 230).default || __webpack_require__(/*! uni-stat-config */ 230)).appid;
+  O = (__webpack_require__(/*! uni-stat-config */ 237).default || __webpack_require__(/*! uni-stat-config */ 237)).appid;
 } catch (e) {}
 var E = {};
 function L(e) {
@@ -11082,544 +11619,7 @@ exports.default = Js;
 
 /***/ }),
 
-/***/ 22:
-/*!*************************************************************!*\
-  !*** ./node_modules/@dcloudio/uni-i18n/dist/uni-i18n.es.js ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni, global) {
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.LOCALE_ZH_HANT = exports.LOCALE_ZH_HANS = exports.LOCALE_FR = exports.LOCALE_ES = exports.LOCALE_EN = exports.I18n = exports.Formatter = void 0;
-exports.compileI18nJsonStr = compileI18nJsonStr;
-exports.hasI18nJson = hasI18nJson;
-exports.initVueI18n = initVueI18n;
-exports.isI18nStr = isI18nStr;
-exports.isString = void 0;
-exports.normalizeLocale = normalizeLocale;
-exports.parseI18nJson = parseI18nJson;
-exports.resolveLocale = resolveLocale;
-var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ 5));
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
-var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
-var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
-var isObject = function isObject(val) {
-  return val !== null && (0, _typeof2.default)(val) === 'object';
-};
-var defaultDelimiters = ['{', '}'];
-var BaseFormatter = /*#__PURE__*/function () {
-  function BaseFormatter() {
-    (0, _classCallCheck2.default)(this, BaseFormatter);
-    this._caches = Object.create(null);
-  }
-  (0, _createClass2.default)(BaseFormatter, [{
-    key: "interpolate",
-    value: function interpolate(message, values) {
-      var delimiters = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : defaultDelimiters;
-      if (!values) {
-        return [message];
-      }
-      var tokens = this._caches[message];
-      if (!tokens) {
-        tokens = parse(message, delimiters);
-        this._caches[message] = tokens;
-      }
-      return compile(tokens, values);
-    }
-  }]);
-  return BaseFormatter;
-}();
-exports.Formatter = BaseFormatter;
-var RE_TOKEN_LIST_VALUE = /^(?:\d)+/;
-var RE_TOKEN_NAMED_VALUE = /^(?:\w)+/;
-function parse(format, _ref) {
-  var _ref2 = (0, _slicedToArray2.default)(_ref, 2),
-    startDelimiter = _ref2[0],
-    endDelimiter = _ref2[1];
-  var tokens = [];
-  var position = 0;
-  var text = '';
-  while (position < format.length) {
-    var char = format[position++];
-    if (char === startDelimiter) {
-      if (text) {
-        tokens.push({
-          type: 'text',
-          value: text
-        });
-      }
-      text = '';
-      var sub = '';
-      char = format[position++];
-      while (char !== undefined && char !== endDelimiter) {
-        sub += char;
-        char = format[position++];
-      }
-      var isClosed = char === endDelimiter;
-      var type = RE_TOKEN_LIST_VALUE.test(sub) ? 'list' : isClosed && RE_TOKEN_NAMED_VALUE.test(sub) ? 'named' : 'unknown';
-      tokens.push({
-        value: sub,
-        type: type
-      });
-    }
-    //  else if (char === '%') {
-    //   // when found rails i18n syntax, skip text capture
-    //   if (format[position] !== '{') {
-    //     text += char
-    //   }
-    // }
-    else {
-      text += char;
-    }
-  }
-  text && tokens.push({
-    type: 'text',
-    value: text
-  });
-  return tokens;
-}
-function compile(tokens, values) {
-  var compiled = [];
-  var index = 0;
-  var mode = Array.isArray(values) ? 'list' : isObject(values) ? 'named' : 'unknown';
-  if (mode === 'unknown') {
-    return compiled;
-  }
-  while (index < tokens.length) {
-    var token = tokens[index];
-    switch (token.type) {
-      case 'text':
-        compiled.push(token.value);
-        break;
-      case 'list':
-        compiled.push(values[parseInt(token.value, 10)]);
-        break;
-      case 'named':
-        if (mode === 'named') {
-          compiled.push(values[token.value]);
-        } else {
-          if (true) {
-            console.warn("Type of token '".concat(token.type, "' and format of value '").concat(mode, "' don't match!"));
-          }
-        }
-        break;
-      case 'unknown':
-        if (true) {
-          console.warn("Detect 'unknown' type of token!");
-        }
-        break;
-    }
-    index++;
-  }
-  return compiled;
-}
-var LOCALE_ZH_HANS = 'zh-Hans';
-exports.LOCALE_ZH_HANS = LOCALE_ZH_HANS;
-var LOCALE_ZH_HANT = 'zh-Hant';
-exports.LOCALE_ZH_HANT = LOCALE_ZH_HANT;
-var LOCALE_EN = 'en';
-exports.LOCALE_EN = LOCALE_EN;
-var LOCALE_FR = 'fr';
-exports.LOCALE_FR = LOCALE_FR;
-var LOCALE_ES = 'es';
-exports.LOCALE_ES = LOCALE_ES;
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-var hasOwn = function hasOwn(val, key) {
-  return hasOwnProperty.call(val, key);
-};
-var defaultFormatter = new BaseFormatter();
-function include(str, parts) {
-  return !!parts.find(function (part) {
-    return str.indexOf(part) !== -1;
-  });
-}
-function startsWith(str, parts) {
-  return parts.find(function (part) {
-    return str.indexOf(part) === 0;
-  });
-}
-function normalizeLocale(locale, messages) {
-  if (!locale) {
-    return;
-  }
-  locale = locale.trim().replace(/_/g, '-');
-  if (messages && messages[locale]) {
-    return locale;
-  }
-  locale = locale.toLowerCase();
-  if (locale === 'chinese') {
-    // 支付宝
-    return LOCALE_ZH_HANS;
-  }
-  if (locale.indexOf('zh') === 0) {
-    if (locale.indexOf('-hans') > -1) {
-      return LOCALE_ZH_HANS;
-    }
-    if (locale.indexOf('-hant') > -1) {
-      return LOCALE_ZH_HANT;
-    }
-    if (include(locale, ['-tw', '-hk', '-mo', '-cht'])) {
-      return LOCALE_ZH_HANT;
-    }
-    return LOCALE_ZH_HANS;
-  }
-  var locales = [LOCALE_EN, LOCALE_FR, LOCALE_ES];
-  if (messages && Object.keys(messages).length > 0) {
-    locales = Object.keys(messages);
-  }
-  var lang = startsWith(locale, locales);
-  if (lang) {
-    return lang;
-  }
-}
-var I18n = /*#__PURE__*/function () {
-  function I18n(_ref3) {
-    var locale = _ref3.locale,
-      fallbackLocale = _ref3.fallbackLocale,
-      messages = _ref3.messages,
-      watcher = _ref3.watcher,
-      formater = _ref3.formater;
-    (0, _classCallCheck2.default)(this, I18n);
-    this.locale = LOCALE_EN;
-    this.fallbackLocale = LOCALE_EN;
-    this.message = {};
-    this.messages = {};
-    this.watchers = [];
-    if (fallbackLocale) {
-      this.fallbackLocale = fallbackLocale;
-    }
-    this.formater = formater || defaultFormatter;
-    this.messages = messages || {};
-    this.setLocale(locale || LOCALE_EN);
-    if (watcher) {
-      this.watchLocale(watcher);
-    }
-  }
-  (0, _createClass2.default)(I18n, [{
-    key: "setLocale",
-    value: function setLocale(locale) {
-      var _this = this;
-      var oldLocale = this.locale;
-      this.locale = normalizeLocale(locale, this.messages) || this.fallbackLocale;
-      if (!this.messages[this.locale]) {
-        // 可能初始化时不存在
-        this.messages[this.locale] = {};
-      }
-      this.message = this.messages[this.locale];
-      // 仅发生变化时，通知
-      if (oldLocale !== this.locale) {
-        this.watchers.forEach(function (watcher) {
-          watcher(_this.locale, oldLocale);
-        });
-      }
-    }
-  }, {
-    key: "getLocale",
-    value: function getLocale() {
-      return this.locale;
-    }
-  }, {
-    key: "watchLocale",
-    value: function watchLocale(fn) {
-      var _this2 = this;
-      var index = this.watchers.push(fn) - 1;
-      return function () {
-        _this2.watchers.splice(index, 1);
-      };
-    }
-  }, {
-    key: "add",
-    value: function add(locale, message) {
-      var override = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-      var curMessages = this.messages[locale];
-      if (curMessages) {
-        if (override) {
-          Object.assign(curMessages, message);
-        } else {
-          Object.keys(message).forEach(function (key) {
-            if (!hasOwn(curMessages, key)) {
-              curMessages[key] = message[key];
-            }
-          });
-        }
-      } else {
-        this.messages[locale] = message;
-      }
-    }
-  }, {
-    key: "f",
-    value: function f(message, values, delimiters) {
-      return this.formater.interpolate(message, values, delimiters).join('');
-    }
-  }, {
-    key: "t",
-    value: function t(key, locale, values) {
-      var message = this.message;
-      if (typeof locale === 'string') {
-        locale = normalizeLocale(locale, this.messages);
-        locale && (message = this.messages[locale]);
-      } else {
-        values = locale;
-      }
-      if (!hasOwn(message, key)) {
-        console.warn("Cannot translate the value of keypath ".concat(key, ". Use the value of keypath as default."));
-        return key;
-      }
-      return this.formater.interpolate(message[key], values).join('');
-    }
-  }]);
-  return I18n;
-}();
-exports.I18n = I18n;
-function watchAppLocale(appVm, i18n) {
-  // 需要保证 watch 的触发在组件渲染之前
-  if (appVm.$watchLocale) {
-    // vue2
-    appVm.$watchLocale(function (newLocale) {
-      i18n.setLocale(newLocale);
-    });
-  } else {
-    appVm.$watch(function () {
-      return appVm.$locale;
-    }, function (newLocale) {
-      i18n.setLocale(newLocale);
-    });
-  }
-}
-function getDefaultLocale() {
-  if (typeof uni !== 'undefined' && uni.getLocale) {
-    return uni.getLocale();
-  }
-  // 小程序平台，uni 和 uni-i18n 互相引用，导致访问不到 uni，故在 global 上挂了 getLocale
-  if (typeof global !== 'undefined' && global.getLocale) {
-    return global.getLocale();
-  }
-  return LOCALE_EN;
-}
-function initVueI18n(locale) {
-  var messages = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var fallbackLocale = arguments.length > 2 ? arguments[2] : undefined;
-  var watcher = arguments.length > 3 ? arguments[3] : undefined;
-  // 兼容旧版本入参
-  if (typeof locale !== 'string') {
-    var _ref4 = [messages, locale];
-    locale = _ref4[0];
-    messages = _ref4[1];
-  }
-  if (typeof locale !== 'string') {
-    // 因为小程序平台，uni-i18n 和 uni 互相引用，导致此时访问 uni 时，为 undefined
-    locale = getDefaultLocale();
-  }
-  if (typeof fallbackLocale !== 'string') {
-    fallbackLocale = typeof __uniConfig !== 'undefined' && __uniConfig.fallbackLocale || LOCALE_EN;
-  }
-  var i18n = new I18n({
-    locale: locale,
-    fallbackLocale: fallbackLocale,
-    messages: messages,
-    watcher: watcher
-  });
-  var _t = function t(key, values) {
-    if (typeof getApp !== 'function') {
-      // app view
-      /* eslint-disable no-func-assign */
-      _t = function t(key, values) {
-        return i18n.t(key, values);
-      };
-    } else {
-      var isWatchedAppLocale = false;
-      _t = function t(key, values) {
-        var appVm = getApp().$vm;
-        // 可能$vm还不存在，比如在支付宝小程序中，组件定义较早，在props的default里使用了t()函数（如uni-goods-nav），此时app还未初始化
-        // options: {
-        // 	type: Array,
-        // 	default () {
-        // 		return [{
-        // 			icon: 'shop',
-        // 			text: t("uni-goods-nav.options.shop"),
-        // 		}, {
-        // 			icon: 'cart',
-        // 			text: t("uni-goods-nav.options.cart")
-        // 		}]
-        // 	}
-        // },
-        if (appVm) {
-          // 触发响应式
-          appVm.$locale;
-          if (!isWatchedAppLocale) {
-            isWatchedAppLocale = true;
-            watchAppLocale(appVm, i18n);
-          }
-        }
-        return i18n.t(key, values);
-      };
-    }
-    return _t(key, values);
-  };
-  return {
-    i18n: i18n,
-    f: function f(message, values, delimiters) {
-      return i18n.f(message, values, delimiters);
-    },
-    t: function t(key, values) {
-      return _t(key, values);
-    },
-    add: function add(locale, message) {
-      var override = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-      return i18n.add(locale, message, override);
-    },
-    watch: function watch(fn) {
-      return i18n.watchLocale(fn);
-    },
-    getLocale: function getLocale() {
-      return i18n.getLocale();
-    },
-    setLocale: function setLocale(newLocale) {
-      return i18n.setLocale(newLocale);
-    }
-  };
-}
-var isString = function isString(val) {
-  return typeof val === 'string';
-};
-exports.isString = isString;
-var formater;
-function hasI18nJson(jsonObj, delimiters) {
-  if (!formater) {
-    formater = new BaseFormatter();
-  }
-  return walkJsonObj(jsonObj, function (jsonObj, key) {
-    var value = jsonObj[key];
-    if (isString(value)) {
-      if (isI18nStr(value, delimiters)) {
-        return true;
-      }
-    } else {
-      return hasI18nJson(value, delimiters);
-    }
-  });
-}
-function parseI18nJson(jsonObj, values, delimiters) {
-  if (!formater) {
-    formater = new BaseFormatter();
-  }
-  walkJsonObj(jsonObj, function (jsonObj, key) {
-    var value = jsonObj[key];
-    if (isString(value)) {
-      if (isI18nStr(value, delimiters)) {
-        jsonObj[key] = compileStr(value, values, delimiters);
-      }
-    } else {
-      parseI18nJson(value, values, delimiters);
-    }
-  });
-  return jsonObj;
-}
-function compileI18nJsonStr(jsonStr, _ref5) {
-  var locale = _ref5.locale,
-    locales = _ref5.locales,
-    delimiters = _ref5.delimiters;
-  if (!isI18nStr(jsonStr, delimiters)) {
-    return jsonStr;
-  }
-  if (!formater) {
-    formater = new BaseFormatter();
-  }
-  var localeValues = [];
-  Object.keys(locales).forEach(function (name) {
-    if (name !== locale) {
-      localeValues.push({
-        locale: name,
-        values: locales[name]
-      });
-    }
-  });
-  localeValues.unshift({
-    locale: locale,
-    values: locales[locale]
-  });
-  try {
-    return JSON.stringify(compileJsonObj(JSON.parse(jsonStr), localeValues, delimiters), null, 2);
-  } catch (e) {}
-  return jsonStr;
-}
-function isI18nStr(value, delimiters) {
-  return value.indexOf(delimiters[0]) > -1;
-}
-function compileStr(value, values, delimiters) {
-  return formater.interpolate(value, values, delimiters).join('');
-}
-function compileValue(jsonObj, key, localeValues, delimiters) {
-  var value = jsonObj[key];
-  if (isString(value)) {
-    // 存在国际化
-    if (isI18nStr(value, delimiters)) {
-      jsonObj[key] = compileStr(value, localeValues[0].values, delimiters);
-      if (localeValues.length > 1) {
-        // 格式化国际化语言
-        var valueLocales = jsonObj[key + 'Locales'] = {};
-        localeValues.forEach(function (localValue) {
-          valueLocales[localValue.locale] = compileStr(value, localValue.values, delimiters);
-        });
-      }
-    }
-  } else {
-    compileJsonObj(value, localeValues, delimiters);
-  }
-}
-function compileJsonObj(jsonObj, localeValues, delimiters) {
-  walkJsonObj(jsonObj, function (jsonObj, key) {
-    compileValue(jsonObj, key, localeValues, delimiters);
-  });
-  return jsonObj;
-}
-function walkJsonObj(jsonObj, walk) {
-  if (Array.isArray(jsonObj)) {
-    for (var i = 0; i < jsonObj.length; i++) {
-      if (walk(jsonObj, i)) {
-        return true;
-      }
-    }
-  } else if (isObject(jsonObj)) {
-    for (var key in jsonObj) {
-      if (walk(jsonObj, key)) {
-        return true;
-      }
-    }
-  }
-  return false;
-}
-function resolveLocale(locales) {
-  return function (locale) {
-    if (!locale) {
-      return locale;
-    }
-    locale = normalizeLocale(locale) || locale;
-    return resolveLocaleChain(locale).find(function (locale) {
-      return locales.indexOf(locale) > -1;
-    });
-  };
-}
-function resolveLocaleChain(locale) {
-  var chain = [];
-  var tokens = locale.split('-');
-  while (tokens.length) {
-    chain.push(tokens.join('-'));
-    tokens.pop();
-  }
-  return chain;
-}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./../../../webpack/buildin/global.js */ 3)))
-
-/***/ }),
-
-/***/ 220:
+/***/ 227:
 /*!************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/@babel/runtime/regenerator/index.js ***!
   \************************************************************************************************/
@@ -11628,12 +11628,12 @@ function resolveLocaleChain(locale) {
 
 // TODO(Babel 8): Remove this file.
 
-var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 221)();
+var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime */ 228)();
 module.exports = runtime;
 
 /***/ }),
 
-/***/ 221:
+/***/ 228:
 /*!*******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/regeneratorRuntime.js ***!
   \*******************************************************************/
@@ -11955,7 +11955,7 @@ module.exports = _regeneratorRuntime, module.exports.__esModule = true, module.e
 
 /***/ }),
 
-/***/ 222:
+/***/ 229:
 /*!**********************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/assertThisInitialized.js ***!
   \**********************************************************************/
@@ -11972,7 +11972,23 @@ module.exports = _assertThisInitialized, module.exports.__esModule = true, modul
 
 /***/ }),
 
-/***/ 223:
+/***/ 23:
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/classCallCheck.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+module.exports = _classCallCheck, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 230:
 /*!*****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/asyncToGenerator.js ***!
   \*****************************************************************/
@@ -12013,7 +12029,7 @@ module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exp
 
 /***/ }),
 
-/***/ 224:
+/***/ 231:
 /*!*********************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/inherits.js ***!
   \*********************************************************/
@@ -12041,7 +12057,7 @@ module.exports = _inherits, module.exports.__esModule = true, module.exports["de
 
 /***/ }),
 
-/***/ 225:
+/***/ 232:
 /*!**************************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js ***!
   \**************************************************************************/
@@ -12049,7 +12065,7 @@ module.exports = _inherits, module.exports.__esModule = true, module.exports["de
 /***/ (function(module, exports, __webpack_require__) {
 
 var _typeof = __webpack_require__(/*! ./typeof.js */ 13)["default"];
-var assertThisInitialized = __webpack_require__(/*! ./assertThisInitialized.js */ 222);
+var assertThisInitialized = __webpack_require__(/*! ./assertThisInitialized.js */ 229);
 function _possibleConstructorReturn(self, call) {
   if (call && (_typeof(call) === "object" || typeof call === "function")) {
     return call;
@@ -12062,7 +12078,7 @@ module.exports = _possibleConstructorReturn, module.exports.__esModule = true, m
 
 /***/ }),
 
-/***/ 226:
+/***/ 233:
 /*!***************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/getPrototypeOf.js ***!
   \***************************************************************/
@@ -12079,16 +12095,16 @@ module.exports = _getPrototypeOf, module.exports.__esModule = true, module.expor
 
 /***/ }),
 
-/***/ 227:
+/***/ 234:
 /*!****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/wrapNativeSuper.js ***!
   \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getPrototypeOf = __webpack_require__(/*! ./getPrototypeOf.js */ 226);
+var getPrototypeOf = __webpack_require__(/*! ./getPrototypeOf.js */ 233);
 var setPrototypeOf = __webpack_require__(/*! ./setPrototypeOf.js */ 16);
-var isNativeFunction = __webpack_require__(/*! ./isNativeFunction.js */ 228);
+var isNativeFunction = __webpack_require__(/*! ./isNativeFunction.js */ 235);
 var construct = __webpack_require__(/*! ./construct.js */ 15);
 function _wrapNativeSuper(Class) {
   var _cache = typeof Map === "function" ? new Map() : undefined;
@@ -12120,7 +12136,7 @@ module.exports = _wrapNativeSuper, module.exports.__esModule = true, module.expo
 
 /***/ }),
 
-/***/ 228:
+/***/ 235:
 /*!*****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/isNativeFunction.js ***!
   \*****************************************************************/
@@ -12138,7 +12154,7 @@ module.exports = _isNativeFunction, module.exports.__esModule = true, module.exp
 
 /***/ }),
 
-/***/ 229:
+/***/ 236:
 /*!***************************************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/pages.json?{"type":"origin-pages-json"} ***!
   \***************************************************************************/
@@ -12228,23 +12244,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 23:
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/classCallCheck.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-module.exports = _classCallCheck, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
-/***/ 230:
+/***/ 237:
 /*!**************************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/pages.json?{"type":"stat"} ***!
   \**************************************************************/
@@ -18387,7 +18387,548 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 285:
+/***/ 292:
+/*!****************************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/index.js ***!
+  \****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 293));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 294));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 295));
+var _default = {
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 293:
+/*!***************************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/en.json ***!
+  \***************************************************************************************************************/
+/*! exports provided: uni-datetime-picker.selectDate, uni-datetime-picker.selectTime, uni-datetime-picker.selectDateTime, uni-datetime-picker.startDate, uni-datetime-picker.endDate, uni-datetime-picker.startTime, uni-datetime-picker.endTime, uni-datetime-picker.ok, uni-datetime-picker.clear, uni-datetime-picker.cancel, uni-datetime-picker.year, uni-datetime-picker.month, uni-calender.MON, uni-calender.TUE, uni-calender.WED, uni-calender.THU, uni-calender.FRI, uni-calender.SAT, uni-calender.SUN, uni-calender.confirm, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-datetime-picker.selectDate\":\"select date\",\"uni-datetime-picker.selectTime\":\"select time\",\"uni-datetime-picker.selectDateTime\":\"select date and time\",\"uni-datetime-picker.startDate\":\"start date\",\"uni-datetime-picker.endDate\":\"end date\",\"uni-datetime-picker.startTime\":\"start time\",\"uni-datetime-picker.endTime\":\"end time\",\"uni-datetime-picker.ok\":\"ok\",\"uni-datetime-picker.clear\":\"clear\",\"uni-datetime-picker.cancel\":\"cancel\",\"uni-datetime-picker.year\":\"-\",\"uni-datetime-picker.month\":\"\",\"uni-calender.MON\":\"MON\",\"uni-calender.TUE\":\"TUE\",\"uni-calender.WED\":\"WED\",\"uni-calender.THU\":\"THU\",\"uni-calender.FRI\":\"FRI\",\"uni-calender.SAT\":\"SAT\",\"uni-calender.SUN\":\"SUN\",\"uni-calender.confirm\":\"confirm\"}");
+
+/***/ }),
+
+/***/ 294:
+/*!********************************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/zh-Hans.json ***!
+  \********************************************************************************************************************/
+/*! exports provided: uni-datetime-picker.selectDate, uni-datetime-picker.selectTime, uni-datetime-picker.selectDateTime, uni-datetime-picker.startDate, uni-datetime-picker.endDate, uni-datetime-picker.startTime, uni-datetime-picker.endTime, uni-datetime-picker.ok, uni-datetime-picker.clear, uni-datetime-picker.cancel, uni-datetime-picker.year, uni-datetime-picker.month, uni-calender.SUN, uni-calender.MON, uni-calender.TUE, uni-calender.WED, uni-calender.THU, uni-calender.FRI, uni-calender.SAT, uni-calender.confirm, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-datetime-picker.selectDate\":\"选择日期\",\"uni-datetime-picker.selectTime\":\"选择时间\",\"uni-datetime-picker.selectDateTime\":\"选择日期时间\",\"uni-datetime-picker.startDate\":\"开始日期\",\"uni-datetime-picker.endDate\":\"结束日期\",\"uni-datetime-picker.startTime\":\"开始时间\",\"uni-datetime-picker.endTime\":\"结束时间\",\"uni-datetime-picker.ok\":\"确定\",\"uni-datetime-picker.clear\":\"清除\",\"uni-datetime-picker.cancel\":\"取消\",\"uni-datetime-picker.year\":\"年\",\"uni-datetime-picker.month\":\"月\",\"uni-calender.SUN\":\"日\",\"uni-calender.MON\":\"一\",\"uni-calender.TUE\":\"二\",\"uni-calender.WED\":\"三\",\"uni-calender.THU\":\"四\",\"uni-calender.FRI\":\"五\",\"uni-calender.SAT\":\"六\",\"uni-calender.confirm\":\"确认\"}");
+
+/***/ }),
+
+/***/ 295:
+/*!********************************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/zh-Hant.json ***!
+  \********************************************************************************************************************/
+/*! exports provided: uni-datetime-picker.selectDate, uni-datetime-picker.selectTime, uni-datetime-picker.selectDateTime, uni-datetime-picker.startDate, uni-datetime-picker.endDate, uni-datetime-picker.startTime, uni-datetime-picker.endTime, uni-datetime-picker.ok, uni-datetime-picker.clear, uni-datetime-picker.cancel, uni-datetime-picker.year, uni-datetime-picker.month, uni-calender.SUN, uni-calender.MON, uni-calender.TUE, uni-calender.WED, uni-calender.THU, uni-calender.FRI, uni-calender.SAT, uni-calender.confirm, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-datetime-picker.selectDate\":\"選擇日期\",\"uni-datetime-picker.selectTime\":\"選擇時間\",\"uni-datetime-picker.selectDateTime\":\"選擇日期時間\",\"uni-datetime-picker.startDate\":\"開始日期\",\"uni-datetime-picker.endDate\":\"結束日期\",\"uni-datetime-picker.startTime\":\"開始时间\",\"uni-datetime-picker.endTime\":\"結束时间\",\"uni-datetime-picker.ok\":\"確定\",\"uni-datetime-picker.clear\":\"清除\",\"uni-datetime-picker.cancel\":\"取消\",\"uni-datetime-picker.year\":\"年\",\"uni-datetime-picker.month\":\"月\",\"uni-calender.SUN\":\"日\",\"uni-calender.MON\":\"一\",\"uni-calender.TUE\":\"二\",\"uni-calender.WED\":\"三\",\"uni-calender.THU\":\"四\",\"uni-calender.FRI\":\"五\",\"uni-calender.SAT\":\"六\",\"uni-calender.confirm\":\"確認\"}");
+
+/***/ }),
+
+/***/ 296:
+/*!**********************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-datetime-picker/components/uni-datetime-picker/util.js ***!
+  \**********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Calendar = void 0;
+exports.addZero = addZero;
+exports.checkDate = checkDate;
+exports.dateCompare = dateCompare;
+exports.fixIosDateFormat = fixIosDateFormat;
+exports.getDate = getDate;
+exports.getDateTime = getDateTime;
+exports.getDefaultSecond = getDefaultSecond;
+exports.getTime = getTime;
+var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
+var Calendar = /*#__PURE__*/function () {
+  function Calendar() {
+    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      selected = _ref.selected,
+      startDate = _ref.startDate,
+      endDate = _ref.endDate,
+      range = _ref.range;
+    (0, _classCallCheck2.default)(this, Calendar);
+    // 当前日期
+    this.date = this.getDateObj(new Date()); // 当前初入日期
+    // 打点信息
+    this.selected = selected || [];
+    // 起始时间
+    this.startDate = startDate;
+    // 终止时间
+    this.endDate = endDate;
+    // 是否范围选择
+    this.range = range;
+    // 多选状态
+    this.cleanMultipleStatus();
+    // 每周日期
+    this.weeks = {};
+    this.lastHover = false;
+  }
+  /**
+   * 设置日期
+   * @param {Object} date
+   */
+  (0, _createClass2.default)(Calendar, [{
+    key: "setDate",
+    value: function setDate(date) {
+      var selectDate = this.getDateObj(date);
+      this.getWeeks(selectDate.fullDate);
+    }
+
+    /**
+     * 清理多选状态
+     */
+  }, {
+    key: "cleanMultipleStatus",
+    value: function cleanMultipleStatus() {
+      this.multipleStatus = {
+        before: '',
+        after: '',
+        data: []
+      };
+    }
+  }, {
+    key: "setStartDate",
+    value: function setStartDate(startDate) {
+      this.startDate = startDate;
+    }
+  }, {
+    key: "setEndDate",
+    value: function setEndDate(endDate) {
+      this.endDate = endDate;
+    }
+  }, {
+    key: "getPreMonthObj",
+    value: function getPreMonthObj(date) {
+      date = fixIosDateFormat(date);
+      date = new Date(date);
+      var oldMonth = date.getMonth();
+      date.setMonth(oldMonth - 1);
+      var newMonth = date.getMonth();
+      if (oldMonth !== 0 && newMonth - oldMonth === 0) {
+        date.setMonth(newMonth - 1);
+      }
+      return this.getDateObj(date);
+    }
+  }, {
+    key: "getNextMonthObj",
+    value: function getNextMonthObj(date) {
+      date = fixIosDateFormat(date);
+      date = new Date(date);
+      var oldMonth = date.getMonth();
+      date.setMonth(oldMonth + 1);
+      var newMonth = date.getMonth();
+      if (newMonth - oldMonth > 1) {
+        date.setMonth(newMonth - 1);
+      }
+      return this.getDateObj(date);
+    }
+
+    /**
+     * 获取指定格式Date对象
+     */
+  }, {
+    key: "getDateObj",
+    value: function getDateObj(date) {
+      date = fixIosDateFormat(date);
+      date = new Date(date);
+      return {
+        fullDate: getDate(date),
+        year: date.getFullYear(),
+        month: addZero(date.getMonth() + 1),
+        date: addZero(date.getDate()),
+        day: date.getDay()
+      };
+    }
+
+    /**
+     * 获取上一个月日期集合
+     */
+  }, {
+    key: "getPreMonthDays",
+    value: function getPreMonthDays(amount, dateObj) {
+      var result = [];
+      for (var i = amount - 1; i >= 0; i--) {
+        var month = dateObj.month - 1;
+        result.push({
+          date: new Date(dateObj.year, month, -i).getDate(),
+          month: month,
+          disable: true
+        });
+      }
+      return result;
+    }
+    /**
+     * 获取本月日期集合
+     */
+  }, {
+    key: "getCurrentMonthDays",
+    value: function getCurrentMonthDays(amount, dateObj) {
+      var _this = this;
+      var result = [];
+      var fullDate = this.date.fullDate;
+      var _loop = function _loop(i) {
+        var currentDate = "".concat(dateObj.year, "-").concat(dateObj.month, "-").concat(addZero(i));
+        var isToday = fullDate === currentDate;
+        // 获取打点信息
+        var info = _this.selected && _this.selected.find(function (item) {
+          if (_this.dateEqual(currentDate, item.date)) {
+            return item;
+          }
+        });
+
+        // 日期禁用
+        var disableBefore = true;
+        var disableAfter = true;
+        if (_this.startDate) {
+          disableBefore = dateCompare(_this.startDate, currentDate);
+        }
+        if (_this.endDate) {
+          disableAfter = dateCompare(currentDate, _this.endDate);
+        }
+        var multiples = _this.multipleStatus.data;
+        var multiplesStatus = -1;
+        if (_this.range && multiples) {
+          multiplesStatus = multiples.findIndex(function (item) {
+            return _this.dateEqual(item, currentDate);
+          });
+        }
+        var checked = multiplesStatus !== -1;
+        result.push({
+          fullDate: currentDate,
+          year: dateObj.year,
+          date: i,
+          multiple: _this.range ? checked : false,
+          beforeMultiple: _this.isLogicBefore(currentDate, _this.multipleStatus.before, _this.multipleStatus.after),
+          afterMultiple: _this.isLogicAfter(currentDate, _this.multipleStatus.before, _this.multipleStatus.after),
+          month: dateObj.month,
+          disable: _this.startDate && !dateCompare(_this.startDate, currentDate) || _this.endDate && !dateCompare(currentDate, _this.endDate),
+          isToday: isToday,
+          userChecked: false,
+          extraInfo: info
+        });
+      };
+      for (var i = 1; i <= amount; i++) {
+        _loop(i);
+      }
+      return result;
+    }
+    /**
+     * 获取下一个月日期集合
+     */
+  }, {
+    key: "_getNextMonthDays",
+    value: function _getNextMonthDays(amount, dateObj) {
+      var result = [];
+      var month = dateObj.month + 1;
+      for (var i = 1; i <= amount; i++) {
+        result.push({
+          date: i,
+          month: month,
+          disable: true
+        });
+      }
+      return result;
+    }
+
+    /**
+     * 获取当前日期详情
+     * @param {Object} date
+     */
+  }, {
+    key: "getInfo",
+    value: function getInfo(date) {
+      var _this2 = this;
+      if (!date) {
+        date = new Date();
+      }
+      return this.calendar.find(function (item) {
+        return item.fullDate === _this2.getDateObj(date).fullDate;
+      });
+    }
+
+    /**
+     * 比较时间是否相等
+     */
+  }, {
+    key: "dateEqual",
+    value: function dateEqual(before, after) {
+      before = new Date(fixIosDateFormat(before));
+      after = new Date(fixIosDateFormat(after));
+      return before.valueOf() === after.valueOf();
+    }
+
+    /**
+     *  比较真实起始日期
+     */
+  }, {
+    key: "isLogicBefore",
+    value: function isLogicBefore(currentDate, before, after) {
+      var logicBefore = before;
+      if (before && after) {
+        logicBefore = dateCompare(before, after) ? before : after;
+      }
+      return this.dateEqual(logicBefore, currentDate);
+    }
+  }, {
+    key: "isLogicAfter",
+    value: function isLogicAfter(currentDate, before, after) {
+      var logicAfter = after;
+      if (before && after) {
+        logicAfter = dateCompare(before, after) ? after : before;
+      }
+      return this.dateEqual(logicAfter, currentDate);
+    }
+
+    /**
+     * 获取日期范围内所有日期
+     * @param {Object} begin
+     * @param {Object} end
+     */
+  }, {
+    key: "geDateAll",
+    value: function geDateAll(begin, end) {
+      var arr = [];
+      var ab = begin.split('-');
+      var ae = end.split('-');
+      var db = new Date();
+      db.setFullYear(ab[0], ab[1] - 1, ab[2]);
+      var de = new Date();
+      de.setFullYear(ae[0], ae[1] - 1, ae[2]);
+      var unixDb = db.getTime() - 24 * 60 * 60 * 1000;
+      var unixDe = de.getTime() - 24 * 60 * 60 * 1000;
+      for (var k = unixDb; k <= unixDe;) {
+        k = k + 24 * 60 * 60 * 1000;
+        arr.push(this.getDateObj(new Date(parseInt(k))).fullDate);
+      }
+      return arr;
+    }
+
+    /**
+     *  获取多选状态
+     */
+  }, {
+    key: "setMultiple",
+    value: function setMultiple(fullDate) {
+      if (!this.range) return;
+      var _this$multipleStatus = this.multipleStatus,
+        before = _this$multipleStatus.before,
+        after = _this$multipleStatus.after;
+      if (before && after) {
+        if (!this.lastHover) {
+          this.lastHover = true;
+          return;
+        }
+        this.multipleStatus.before = fullDate;
+        this.multipleStatus.after = '';
+        this.multipleStatus.data = [];
+        this.multipleStatus.fulldate = '';
+        this.lastHover = false;
+      } else {
+        if (!before) {
+          this.multipleStatus.before = fullDate;
+          this.multipleStatus.after = undefined;
+          this.lastHover = false;
+        } else {
+          this.multipleStatus.after = fullDate;
+          if (dateCompare(this.multipleStatus.before, this.multipleStatus.after)) {
+            this.multipleStatus.data = this.geDateAll(this.multipleStatus.before, this.multipleStatus.after);
+          } else {
+            this.multipleStatus.data = this.geDateAll(this.multipleStatus.after, this.multipleStatus.before);
+          }
+          this.lastHover = true;
+        }
+      }
+      this.getWeeks(fullDate);
+    }
+
+    /**
+     *  鼠标 hover 更新多选状态
+     */
+  }, {
+    key: "setHoverMultiple",
+    value: function setHoverMultiple(fullDate) {
+      //抖音小程序点击会触发hover事件，需要避免一下
+
+      if (!this.range || this.lastHover) return;
+      var before = this.multipleStatus.before;
+      if (!before) {
+        this.multipleStatus.before = fullDate;
+      } else {
+        this.multipleStatus.after = fullDate;
+        if (dateCompare(this.multipleStatus.before, this.multipleStatus.after)) {
+          this.multipleStatus.data = this.geDateAll(this.multipleStatus.before, this.multipleStatus.after);
+        } else {
+          this.multipleStatus.data = this.geDateAll(this.multipleStatus.after, this.multipleStatus.before);
+        }
+      }
+      this.getWeeks(fullDate);
+    }
+
+    /**
+     * 更新默认值多选状态
+     */
+  }, {
+    key: "setDefaultMultiple",
+    value: function setDefaultMultiple(before, after) {
+      this.multipleStatus.before = before;
+      this.multipleStatus.after = after;
+      if (before && after) {
+        if (dateCompare(before, after)) {
+          this.multipleStatus.data = this.geDateAll(before, after);
+          this.getWeeks(after);
+        } else {
+          this.multipleStatus.data = this.geDateAll(after, before);
+          this.getWeeks(before);
+        }
+      }
+    }
+
+    /**
+     * 获取每周数据
+     * @param {Object} dateData
+     */
+  }, {
+    key: "getWeeks",
+    value: function getWeeks(dateData) {
+      var _this$getDateObj = this.getDateObj(dateData),
+        year = _this$getDateObj.year,
+        month = _this$getDateObj.month;
+      var preMonthDayAmount = new Date(year, month - 1, 1).getDay();
+      var preMonthDays = this.getPreMonthDays(preMonthDayAmount, this.getDateObj(dateData));
+      var currentMonthDayAmount = new Date(year, month, 0).getDate();
+      var currentMonthDays = this.getCurrentMonthDays(currentMonthDayAmount, this.getDateObj(dateData));
+      var nextMonthDayAmount = 42 - preMonthDayAmount - currentMonthDayAmount;
+      var nextMonthDays = this._getNextMonthDays(nextMonthDayAmount, this.getDateObj(dateData));
+      var calendarDays = [].concat((0, _toConsumableArray2.default)(preMonthDays), (0, _toConsumableArray2.default)(currentMonthDays), (0, _toConsumableArray2.default)(nextMonthDays));
+      var weeks = new Array(6);
+      for (var i = 0; i < calendarDays.length; i++) {
+        var index = Math.floor(i / 7);
+        if (!weeks[index]) {
+          weeks[index] = new Array(7);
+        }
+        weeks[index][i % 7] = calendarDays[i];
+      }
+      this.calendar = calendarDays;
+      this.weeks = weeks;
+    }
+  }]);
+  return Calendar;
+}();
+exports.Calendar = Calendar;
+function getDateTime(date, hideSecond) {
+  return "".concat(getDate(date), " ").concat(getTime(date, hideSecond));
+}
+function getDate(date) {
+  date = fixIosDateFormat(date);
+  date = new Date(date);
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+  return "".concat(year, "-").concat(addZero(month), "-").concat(addZero(day));
+}
+function getTime(date, hideSecond) {
+  date = fixIosDateFormat(date);
+  date = new Date(date);
+  var hour = date.getHours();
+  var minute = date.getMinutes();
+  var second = date.getSeconds();
+  return hideSecond ? "".concat(addZero(hour), ":").concat(addZero(minute)) : "".concat(addZero(hour), ":").concat(addZero(minute), ":").concat(addZero(second));
+}
+function addZero(num) {
+  if (num < 10) {
+    num = "0".concat(num);
+  }
+  return num;
+}
+function getDefaultSecond(hideSecond) {
+  return hideSecond ? '00:00' : '00:00:00';
+}
+function dateCompare(startDate, endDate) {
+  startDate = new Date(fixIosDateFormat(startDate));
+  endDate = new Date(fixIosDateFormat(endDate));
+  return startDate <= endDate;
+}
+function checkDate(date) {
+  var dateReg = /((19|20)\d{2})(-|\/)\d{1,2}(-|\/)\d{1,2}/g;
+  return date.match(dateReg);
+}
+//ios低版本15及以下，无法匹配 没有 ’秒‘ 时的情况，所以需要在末尾 秒 加上 问号
+var dateTimeReg = /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])( [0-5]?[0-9]:[0-5]?[0-9](:[0-5]?[0-9])?)?$/;
+function fixIosDateFormat(value) {
+  if (typeof value === 'string' && dateTimeReg.test(value)) {
+    value = value.replace(/-/g, '/');
+  }
+  return value;
+}
+
+/***/ }),
+
+/***/ 3:
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ 304:
 /*!********************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/static/icon/home.png ***!
   \********************************************************/
@@ -18398,7 +18939,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 
 /***/ }),
 
-/***/ 286:
+/***/ 305:
 /*!************************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/static/icon_che/home.png ***!
   \************************************************************/
@@ -18409,7 +18950,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 
 /***/ }),
 
-/***/ 287:
+/***/ 306:
 /*!*********************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/static/icon/aixin.png ***!
   \*********************************************************/
@@ -18420,7 +18961,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 
 /***/ }),
 
-/***/ 288:
+/***/ 307:
 /*!*************************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/static/icon_che/aixin.png ***!
   \*************************************************************/
@@ -18431,7 +18972,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 
 /***/ }),
 
-/***/ 289:
+/***/ 308:
 /*!******************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/static/icon/my.png ***!
   \******************************************************/
@@ -18442,7 +18983,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 
 /***/ }),
 
-/***/ 290:
+/***/ 309:
 /*!**********************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/static/icon_che/my.png ***!
   \**********************************************************/
@@ -18453,7 +18994,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 
 /***/ }),
 
-/***/ 298:
+/***/ 317:
 /*!***************************************************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/popup.js ***!
   \***************************************************************************************/
@@ -18495,7 +19036,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 299:
+/***/ 318:
 /*!********************************************************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/i18n/index.js ***!
   \********************************************************************************************/
@@ -18510,9 +19051,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 300));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 301));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 302));
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 319));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 320));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 321));
 var _default = {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -18522,38 +19063,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 3:
-/*!***********************************!*\
-  !*** (webpack)/buildin/global.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-
-/***/ 300:
+/***/ 319:
 /*!*******************************************************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/i18n/en.json ***!
   \*******************************************************************************************/
@@ -18561,163 +19071,6 @@ module.exports = g;
 /***/ (function(module) {
 
 module.exports = JSON.parse("{\"uni-popup.cancel\":\"cancel\",\"uni-popup.ok\":\"ok\",\"uni-popup.placeholder\":\"pleace enter\",\"uni-popup.title\":\"Hint\",\"uni-popup.shareTitle\":\"Share to\"}");
-
-/***/ }),
-
-/***/ 301:
-/*!************************************************************************************************!*\
-  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hans.json ***!
-  \************************************************************************************************/
-/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\"确定\",\"uni-popup.placeholder\":\"请输入\",\"uni-popup.title\":\"提示\",\"uni-popup.shareTitle\":\"分享到\"}");
-
-/***/ }),
-
-/***/ 302:
-/*!************************************************************************************************!*\
-  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hant.json ***!
-  \************************************************************************************************/
-/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\"確定\",\"uni-popup.placeholder\":\"請輸入\",\"uni-popup.title\":\"提示\",\"uni-popup.shareTitle\":\"分享到\"}");
-
-/***/ }),
-
-/***/ 317:
-/*!***********************************************************************************************************!*\
-  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
-  \***********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.createAnimation = createAnimation;
-var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
-var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-// const defaultOption = {
-// 	duration: 300,
-// 	timingFunction: 'linear',
-// 	delay: 0,
-// 	transformOrigin: '50% 50% 0'
-// }
-var MPAnimation = /*#__PURE__*/function () {
-  function MPAnimation(options, _this) {
-    (0, _classCallCheck2.default)(this, MPAnimation);
-    this.options = options;
-    // 在iOS10+QQ小程序平台下，传给原生的对象一定是个普通对象而不是Proxy对象，否则会报parameter should be Object instead of ProxyObject的错误
-    this.animation = uni.createAnimation(_objectSpread({}, options));
-    this.currentStepAnimates = {};
-    this.next = 0;
-    this.$ = _this;
-  }
-  (0, _createClass2.default)(MPAnimation, [{
-    key: "_nvuePushAnimates",
-    value: function _nvuePushAnimates(type, args) {
-      var aniObj = this.currentStepAnimates[this.next];
-      var styles = {};
-      if (!aniObj) {
-        styles = {
-          styles: {},
-          config: {}
-        };
-      } else {
-        styles = aniObj;
-      }
-      if (animateTypes1.includes(type)) {
-        if (!styles.styles.transform) {
-          styles.styles.transform = '';
-        }
-        var unit = '';
-        if (type === 'rotate') {
-          unit = 'deg';
-        }
-        styles.styles.transform += "".concat(type, "(").concat(args + unit, ") ");
-      } else {
-        styles.styles[type] = "".concat(args);
-      }
-      this.currentStepAnimates[this.next] = styles;
-    }
-  }, {
-    key: "_animateRun",
-    value: function _animateRun() {
-      var styles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      var ref = this.$.$refs['ani'].ref;
-      if (!ref) return;
-      return new Promise(function (resolve, reject) {
-        nvueAnimation.transition(ref, _objectSpread({
-          styles: styles
-        }, config), function (res) {
-          resolve();
-        });
-      });
-    }
-  }, {
-    key: "_nvueNextAnimate",
-    value: function _nvueNextAnimate(animates) {
-      var _this2 = this;
-      var step = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-      var fn = arguments.length > 2 ? arguments[2] : undefined;
-      var obj = animates[step];
-      if (obj) {
-        var styles = obj.styles,
-          config = obj.config;
-        this._animateRun(styles, config).then(function () {
-          step += 1;
-          _this2._nvueNextAnimate(animates, step, fn);
-        });
-      } else {
-        this.currentStepAnimates = {};
-        typeof fn === 'function' && fn();
-        this.isEnd = true;
-      }
-    }
-  }, {
-    key: "step",
-    value: function step() {
-      var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      this.animation.step(config);
-      return this;
-    }
-  }, {
-    key: "run",
-    value: function run(fn) {
-      this.$.animationData = this.animation.export();
-      this.$.timer = setTimeout(function () {
-        typeof fn === 'function' && fn();
-      }, this.$.durationTime);
-    }
-  }]);
-  return MPAnimation;
-}();
-var animateTypes1 = ['matrix', 'matrix3d', 'rotate', 'rotate3d', 'rotateX', 'rotateY', 'rotateZ', 'scale', 'scale3d', 'scaleX', 'scaleY', 'scaleZ', 'skew', 'skewX', 'skewY', 'translate', 'translate3d', 'translateX', 'translateY', 'translateZ'];
-var animateTypes2 = ['opacity', 'backgroundColor'];
-var animateTypes3 = ['width', 'height', 'left', 'right', 'top', 'bottom'];
-animateTypes1.concat(animateTypes2, animateTypes3).forEach(function (type) {
-  MPAnimation.prototype[type] = function () {
-    var _this$animation;
-    (_this$animation = this.animation)[type].apply(_this$animation, arguments);
-    return this;
-  };
-});
-function createAnimation(option, _this) {
-  if (!_this) return;
-  clearTimeout(_this.timer);
-  return new MPAnimation(option, _this);
-}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 
@@ -18853,63 +19206,25 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 323:
-/*!****************************************************************************************************!*\
-  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/index.js ***!
-  \****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 320:
+/*!************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hans.json ***!
+  \************************************************************************************************/
+/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
+/***/ (function(module) {
 
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 324));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 325));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 326));
-var _default = {
-  en: _en.default,
-  'zh-Hans': _zhHans.default,
-  'zh-Hant': _zhHant.default
-};
-exports.default = _default;
+module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\"确定\",\"uni-popup.placeholder\":\"请输入\",\"uni-popup.title\":\"提示\",\"uni-popup.shareTitle\":\"分享到\"}");
 
 /***/ }),
 
-/***/ 324:
-/*!***************************************************************************************************!*\
-  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/en.json ***!
-  \***************************************************************************************************/
-/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
+/***/ 321:
+/*!************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hant.json ***!
+  \************************************************************************************************/
+/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"Pull up to show more\",\"uni-load-more.contentrefresh\":\"loading...\",\"uni-load-more.contentnomore\":\"No more data\"}");
-
-/***/ }),
-
-/***/ 325:
-/*!********************************************************************************************************!*\
-  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hans.json ***!
-  \********************************************************************************************************/
-/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉显示更多\",\"uni-load-more.contentrefresh\":\"正在加载...\",\"uni-load-more.contentnomore\":\"没有更多数据了\"}");
-
-/***/ }),
-
-/***/ 326:
-/*!********************************************************************************************************!*\
-  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hant.json ***!
-  \********************************************************************************************************/
-/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉顯示更多\",\"uni-load-more.contentrefresh\":\"正在加載...\",\"uni-load-more.contentnomore\":\"沒有更多數據了\"}");
+module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\"確定\",\"uni-popup.placeholder\":\"請輸入\",\"uni-popup.title\":\"提示\",\"uni-popup.shareTitle\":\"分享到\"}");
 
 /***/ }),
 
@@ -18993,6 +19308,141 @@ var store = new _vuex.default.Store({
 });
 var _default = store;
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+
+/***/ 336:
+/*!***********************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
+  \***********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.createAnimation = createAnimation;
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+// const defaultOption = {
+// 	duration: 300,
+// 	timingFunction: 'linear',
+// 	delay: 0,
+// 	transformOrigin: '50% 50% 0'
+// }
+var MPAnimation = /*#__PURE__*/function () {
+  function MPAnimation(options, _this) {
+    (0, _classCallCheck2.default)(this, MPAnimation);
+    this.options = options;
+    // 在iOS10+QQ小程序平台下，传给原生的对象一定是个普通对象而不是Proxy对象，否则会报parameter should be Object instead of ProxyObject的错误
+    this.animation = uni.createAnimation(_objectSpread({}, options));
+    this.currentStepAnimates = {};
+    this.next = 0;
+    this.$ = _this;
+  }
+  (0, _createClass2.default)(MPAnimation, [{
+    key: "_nvuePushAnimates",
+    value: function _nvuePushAnimates(type, args) {
+      var aniObj = this.currentStepAnimates[this.next];
+      var styles = {};
+      if (!aniObj) {
+        styles = {
+          styles: {},
+          config: {}
+        };
+      } else {
+        styles = aniObj;
+      }
+      if (animateTypes1.includes(type)) {
+        if (!styles.styles.transform) {
+          styles.styles.transform = '';
+        }
+        var unit = '';
+        if (type === 'rotate') {
+          unit = 'deg';
+        }
+        styles.styles.transform += "".concat(type, "(").concat(args + unit, ") ");
+      } else {
+        styles.styles[type] = "".concat(args);
+      }
+      this.currentStepAnimates[this.next] = styles;
+    }
+  }, {
+    key: "_animateRun",
+    value: function _animateRun() {
+      var styles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var ref = this.$.$refs['ani'].ref;
+      if (!ref) return;
+      return new Promise(function (resolve, reject) {
+        nvueAnimation.transition(ref, _objectSpread({
+          styles: styles
+        }, config), function (res) {
+          resolve();
+        });
+      });
+    }
+  }, {
+    key: "_nvueNextAnimate",
+    value: function _nvueNextAnimate(animates) {
+      var _this2 = this;
+      var step = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+      var fn = arguments.length > 2 ? arguments[2] : undefined;
+      var obj = animates[step];
+      if (obj) {
+        var styles = obj.styles,
+          config = obj.config;
+        this._animateRun(styles, config).then(function () {
+          step += 1;
+          _this2._nvueNextAnimate(animates, step, fn);
+        });
+      } else {
+        this.currentStepAnimates = {};
+        typeof fn === 'function' && fn();
+        this.isEnd = true;
+      }
+    }
+  }, {
+    key: "step",
+    value: function step() {
+      var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      this.animation.step(config);
+      return this;
+    }
+  }, {
+    key: "run",
+    value: function run(fn) {
+      this.$.animationData = this.animation.export();
+      this.$.timer = setTimeout(function () {
+        typeof fn === 'function' && fn();
+      }, this.$.durationTime);
+    }
+  }]);
+  return MPAnimation;
+}();
+var animateTypes1 = ['matrix', 'matrix3d', 'rotate', 'rotate3d', 'rotateX', 'rotateY', 'rotateZ', 'scale', 'scale3d', 'scaleX', 'scaleY', 'scaleZ', 'skew', 'skewX', 'skewY', 'translate', 'translate3d', 'translateX', 'translateY', 'translateZ'];
+var animateTypes2 = ['opacity', 'backgroundColor'];
+var animateTypes3 = ['width', 'height', 'left', 'right', 'top', 'bottom'];
+animateTypes1.concat(animateTypes2, animateTypes3).forEach(function (type) {
+  MPAnimation.prototype[type] = function () {
+    var _this$animation;
+    (_this$animation = this.animation)[type].apply(_this$animation, arguments);
+    return this;
+  };
+});
+function createAnimation(option, _this) {
+  if (!_this) return;
+  clearTimeout(_this.timer);
+  return new MPAnimation(option, _this);
+}
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
@@ -20254,6 +20704,66 @@ module.exports = index_cjs;
 
 /***/ }),
 
+/***/ 342:
+/*!****************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/index.js ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 343));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 344));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 345));
+var _default = {
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 343:
+/*!***************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/en.json ***!
+  \***************************************************************************************************/
+/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"Pull up to show more\",\"uni-load-more.contentrefresh\":\"loading...\",\"uni-load-more.contentnomore\":\"No more data\"}");
+
+/***/ }),
+
+/***/ 344:
+/*!********************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hans.json ***!
+  \********************************************************************************************************/
+/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉显示更多\",\"uni-load-more.contentrefresh\":\"正在加载...\",\"uni-load-more.contentnomore\":\"没有更多数据了\"}");
+
+/***/ }),
+
+/***/ 345:
+/*!********************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hant.json ***!
+  \********************************************************************************************************/
+/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉顯示更多\",\"uni-load-more.contentrefresh\":\"正在加載...\",\"uni-load-more.contentnomore\":\"沒有更多數據了\"}");
+
+/***/ }),
+
 /***/ 35:
 /*!**************************************************!*\
   !*** D:/Users/Desktop/送酒/charity/request/api.js ***!
@@ -20306,7 +20816,7 @@ var api = {
   // 下单
   ORDER_LIST: base_url + '/donate/IntegralOrder/getOrderList',
   // 获取订单列表
-  OVER_ORDER: base_url + '/donate/Order/overOrder',
+  OVER_ORDER: base_url + '/donate/IntegralOrder/overOrder',
   // 收货
   ACTIBE_TYPE_LIST: base_url + '/donate/ActivityType/getActivityTypeList',
   // 活动类型列表
@@ -20673,516 +21183,6 @@ var post = function post(url) {
 };
 exports.post = post;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
-
-/***/ }),
-
-/***/ 380:
-/*!****************************************************************************************************************!*\
-  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/index.js ***!
-  \****************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 381));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 382));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 383));
-var _default = {
-  en: _en.default,
-  'zh-Hans': _zhHans.default,
-  'zh-Hant': _zhHant.default
-};
-exports.default = _default;
-
-/***/ }),
-
-/***/ 381:
-/*!***************************************************************************************************************!*\
-  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/en.json ***!
-  \***************************************************************************************************************/
-/*! exports provided: uni-datetime-picker.selectDate, uni-datetime-picker.selectTime, uni-datetime-picker.selectDateTime, uni-datetime-picker.startDate, uni-datetime-picker.endDate, uni-datetime-picker.startTime, uni-datetime-picker.endTime, uni-datetime-picker.ok, uni-datetime-picker.clear, uni-datetime-picker.cancel, uni-datetime-picker.year, uni-datetime-picker.month, uni-calender.MON, uni-calender.TUE, uni-calender.WED, uni-calender.THU, uni-calender.FRI, uni-calender.SAT, uni-calender.SUN, uni-calender.confirm, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-datetime-picker.selectDate\":\"select date\",\"uni-datetime-picker.selectTime\":\"select time\",\"uni-datetime-picker.selectDateTime\":\"select date and time\",\"uni-datetime-picker.startDate\":\"start date\",\"uni-datetime-picker.endDate\":\"end date\",\"uni-datetime-picker.startTime\":\"start time\",\"uni-datetime-picker.endTime\":\"end time\",\"uni-datetime-picker.ok\":\"ok\",\"uni-datetime-picker.clear\":\"clear\",\"uni-datetime-picker.cancel\":\"cancel\",\"uni-datetime-picker.year\":\"-\",\"uni-datetime-picker.month\":\"\",\"uni-calender.MON\":\"MON\",\"uni-calender.TUE\":\"TUE\",\"uni-calender.WED\":\"WED\",\"uni-calender.THU\":\"THU\",\"uni-calender.FRI\":\"FRI\",\"uni-calender.SAT\":\"SAT\",\"uni-calender.SUN\":\"SUN\",\"uni-calender.confirm\":\"confirm\"}");
-
-/***/ }),
-
-/***/ 382:
-/*!********************************************************************************************************************!*\
-  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/zh-Hans.json ***!
-  \********************************************************************************************************************/
-/*! exports provided: uni-datetime-picker.selectDate, uni-datetime-picker.selectTime, uni-datetime-picker.selectDateTime, uni-datetime-picker.startDate, uni-datetime-picker.endDate, uni-datetime-picker.startTime, uni-datetime-picker.endTime, uni-datetime-picker.ok, uni-datetime-picker.clear, uni-datetime-picker.cancel, uni-datetime-picker.year, uni-datetime-picker.month, uni-calender.SUN, uni-calender.MON, uni-calender.TUE, uni-calender.WED, uni-calender.THU, uni-calender.FRI, uni-calender.SAT, uni-calender.confirm, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-datetime-picker.selectDate\":\"选择日期\",\"uni-datetime-picker.selectTime\":\"选择时间\",\"uni-datetime-picker.selectDateTime\":\"选择日期时间\",\"uni-datetime-picker.startDate\":\"开始日期\",\"uni-datetime-picker.endDate\":\"结束日期\",\"uni-datetime-picker.startTime\":\"开始时间\",\"uni-datetime-picker.endTime\":\"结束时间\",\"uni-datetime-picker.ok\":\"确定\",\"uni-datetime-picker.clear\":\"清除\",\"uni-datetime-picker.cancel\":\"取消\",\"uni-datetime-picker.year\":\"年\",\"uni-datetime-picker.month\":\"月\",\"uni-calender.SUN\":\"日\",\"uni-calender.MON\":\"一\",\"uni-calender.TUE\":\"二\",\"uni-calender.WED\":\"三\",\"uni-calender.THU\":\"四\",\"uni-calender.FRI\":\"五\",\"uni-calender.SAT\":\"六\",\"uni-calender.confirm\":\"确认\"}");
-
-/***/ }),
-
-/***/ 383:
-/*!********************************************************************************************************************!*\
-  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/zh-Hant.json ***!
-  \********************************************************************************************************************/
-/*! exports provided: uni-datetime-picker.selectDate, uni-datetime-picker.selectTime, uni-datetime-picker.selectDateTime, uni-datetime-picker.startDate, uni-datetime-picker.endDate, uni-datetime-picker.startTime, uni-datetime-picker.endTime, uni-datetime-picker.ok, uni-datetime-picker.clear, uni-datetime-picker.cancel, uni-datetime-picker.year, uni-datetime-picker.month, uni-calender.SUN, uni-calender.MON, uni-calender.TUE, uni-calender.WED, uni-calender.THU, uni-calender.FRI, uni-calender.SAT, uni-calender.confirm, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-datetime-picker.selectDate\":\"選擇日期\",\"uni-datetime-picker.selectTime\":\"選擇時間\",\"uni-datetime-picker.selectDateTime\":\"選擇日期時間\",\"uni-datetime-picker.startDate\":\"開始日期\",\"uni-datetime-picker.endDate\":\"結束日期\",\"uni-datetime-picker.startTime\":\"開始时间\",\"uni-datetime-picker.endTime\":\"結束时间\",\"uni-datetime-picker.ok\":\"確定\",\"uni-datetime-picker.clear\":\"清除\",\"uni-datetime-picker.cancel\":\"取消\",\"uni-datetime-picker.year\":\"年\",\"uni-datetime-picker.month\":\"月\",\"uni-calender.SUN\":\"日\",\"uni-calender.MON\":\"一\",\"uni-calender.TUE\":\"二\",\"uni-calender.WED\":\"三\",\"uni-calender.THU\":\"四\",\"uni-calender.FRI\":\"五\",\"uni-calender.SAT\":\"六\",\"uni-calender.confirm\":\"確認\"}");
-
-/***/ }),
-
-/***/ 384:
-/*!**********************************************************************************************************!*\
-  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-datetime-picker/components/uni-datetime-picker/util.js ***!
-  \**********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Calendar = void 0;
-exports.addZero = addZero;
-exports.checkDate = checkDate;
-exports.dateCompare = dateCompare;
-exports.fixIosDateFormat = fixIosDateFormat;
-exports.getDate = getDate;
-exports.getDateTime = getDateTime;
-exports.getDefaultSecond = getDefaultSecond;
-exports.getTime = getTime;
-var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
-var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
-var Calendar = /*#__PURE__*/function () {
-  function Calendar() {
-    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-      selected = _ref.selected,
-      startDate = _ref.startDate,
-      endDate = _ref.endDate,
-      range = _ref.range;
-    (0, _classCallCheck2.default)(this, Calendar);
-    // 当前日期
-    this.date = this.getDateObj(new Date()); // 当前初入日期
-    // 打点信息
-    this.selected = selected || [];
-    // 起始时间
-    this.startDate = startDate;
-    // 终止时间
-    this.endDate = endDate;
-    // 是否范围选择
-    this.range = range;
-    // 多选状态
-    this.cleanMultipleStatus();
-    // 每周日期
-    this.weeks = {};
-    this.lastHover = false;
-  }
-  /**
-   * 设置日期
-   * @param {Object} date
-   */
-  (0, _createClass2.default)(Calendar, [{
-    key: "setDate",
-    value: function setDate(date) {
-      var selectDate = this.getDateObj(date);
-      this.getWeeks(selectDate.fullDate);
-    }
-
-    /**
-     * 清理多选状态
-     */
-  }, {
-    key: "cleanMultipleStatus",
-    value: function cleanMultipleStatus() {
-      this.multipleStatus = {
-        before: '',
-        after: '',
-        data: []
-      };
-    }
-  }, {
-    key: "setStartDate",
-    value: function setStartDate(startDate) {
-      this.startDate = startDate;
-    }
-  }, {
-    key: "setEndDate",
-    value: function setEndDate(endDate) {
-      this.endDate = endDate;
-    }
-  }, {
-    key: "getPreMonthObj",
-    value: function getPreMonthObj(date) {
-      date = fixIosDateFormat(date);
-      date = new Date(date);
-      var oldMonth = date.getMonth();
-      date.setMonth(oldMonth - 1);
-      var newMonth = date.getMonth();
-      if (oldMonth !== 0 && newMonth - oldMonth === 0) {
-        date.setMonth(newMonth - 1);
-      }
-      return this.getDateObj(date);
-    }
-  }, {
-    key: "getNextMonthObj",
-    value: function getNextMonthObj(date) {
-      date = fixIosDateFormat(date);
-      date = new Date(date);
-      var oldMonth = date.getMonth();
-      date.setMonth(oldMonth + 1);
-      var newMonth = date.getMonth();
-      if (newMonth - oldMonth > 1) {
-        date.setMonth(newMonth - 1);
-      }
-      return this.getDateObj(date);
-    }
-
-    /**
-     * 获取指定格式Date对象
-     */
-  }, {
-    key: "getDateObj",
-    value: function getDateObj(date) {
-      date = fixIosDateFormat(date);
-      date = new Date(date);
-      return {
-        fullDate: getDate(date),
-        year: date.getFullYear(),
-        month: addZero(date.getMonth() + 1),
-        date: addZero(date.getDate()),
-        day: date.getDay()
-      };
-    }
-
-    /**
-     * 获取上一个月日期集合
-     */
-  }, {
-    key: "getPreMonthDays",
-    value: function getPreMonthDays(amount, dateObj) {
-      var result = [];
-      for (var i = amount - 1; i >= 0; i--) {
-        var month = dateObj.month - 1;
-        result.push({
-          date: new Date(dateObj.year, month, -i).getDate(),
-          month: month,
-          disable: true
-        });
-      }
-      return result;
-    }
-    /**
-     * 获取本月日期集合
-     */
-  }, {
-    key: "getCurrentMonthDays",
-    value: function getCurrentMonthDays(amount, dateObj) {
-      var _this = this;
-      var result = [];
-      var fullDate = this.date.fullDate;
-      var _loop = function _loop(i) {
-        var currentDate = "".concat(dateObj.year, "-").concat(dateObj.month, "-").concat(addZero(i));
-        var isToday = fullDate === currentDate;
-        // 获取打点信息
-        var info = _this.selected && _this.selected.find(function (item) {
-          if (_this.dateEqual(currentDate, item.date)) {
-            return item;
-          }
-        });
-
-        // 日期禁用
-        var disableBefore = true;
-        var disableAfter = true;
-        if (_this.startDate) {
-          disableBefore = dateCompare(_this.startDate, currentDate);
-        }
-        if (_this.endDate) {
-          disableAfter = dateCompare(currentDate, _this.endDate);
-        }
-        var multiples = _this.multipleStatus.data;
-        var multiplesStatus = -1;
-        if (_this.range && multiples) {
-          multiplesStatus = multiples.findIndex(function (item) {
-            return _this.dateEqual(item, currentDate);
-          });
-        }
-        var checked = multiplesStatus !== -1;
-        result.push({
-          fullDate: currentDate,
-          year: dateObj.year,
-          date: i,
-          multiple: _this.range ? checked : false,
-          beforeMultiple: _this.isLogicBefore(currentDate, _this.multipleStatus.before, _this.multipleStatus.after),
-          afterMultiple: _this.isLogicAfter(currentDate, _this.multipleStatus.before, _this.multipleStatus.after),
-          month: dateObj.month,
-          disable: _this.startDate && !dateCompare(_this.startDate, currentDate) || _this.endDate && !dateCompare(currentDate, _this.endDate),
-          isToday: isToday,
-          userChecked: false,
-          extraInfo: info
-        });
-      };
-      for (var i = 1; i <= amount; i++) {
-        _loop(i);
-      }
-      return result;
-    }
-    /**
-     * 获取下一个月日期集合
-     */
-  }, {
-    key: "_getNextMonthDays",
-    value: function _getNextMonthDays(amount, dateObj) {
-      var result = [];
-      var month = dateObj.month + 1;
-      for (var i = 1; i <= amount; i++) {
-        result.push({
-          date: i,
-          month: month,
-          disable: true
-        });
-      }
-      return result;
-    }
-
-    /**
-     * 获取当前日期详情
-     * @param {Object} date
-     */
-  }, {
-    key: "getInfo",
-    value: function getInfo(date) {
-      var _this2 = this;
-      if (!date) {
-        date = new Date();
-      }
-      return this.calendar.find(function (item) {
-        return item.fullDate === _this2.getDateObj(date).fullDate;
-      });
-    }
-
-    /**
-     * 比较时间是否相等
-     */
-  }, {
-    key: "dateEqual",
-    value: function dateEqual(before, after) {
-      before = new Date(fixIosDateFormat(before));
-      after = new Date(fixIosDateFormat(after));
-      return before.valueOf() === after.valueOf();
-    }
-
-    /**
-     *  比较真实起始日期
-     */
-  }, {
-    key: "isLogicBefore",
-    value: function isLogicBefore(currentDate, before, after) {
-      var logicBefore = before;
-      if (before && after) {
-        logicBefore = dateCompare(before, after) ? before : after;
-      }
-      return this.dateEqual(logicBefore, currentDate);
-    }
-  }, {
-    key: "isLogicAfter",
-    value: function isLogicAfter(currentDate, before, after) {
-      var logicAfter = after;
-      if (before && after) {
-        logicAfter = dateCompare(before, after) ? after : before;
-      }
-      return this.dateEqual(logicAfter, currentDate);
-    }
-
-    /**
-     * 获取日期范围内所有日期
-     * @param {Object} begin
-     * @param {Object} end
-     */
-  }, {
-    key: "geDateAll",
-    value: function geDateAll(begin, end) {
-      var arr = [];
-      var ab = begin.split('-');
-      var ae = end.split('-');
-      var db = new Date();
-      db.setFullYear(ab[0], ab[1] - 1, ab[2]);
-      var de = new Date();
-      de.setFullYear(ae[0], ae[1] - 1, ae[2]);
-      var unixDb = db.getTime() - 24 * 60 * 60 * 1000;
-      var unixDe = de.getTime() - 24 * 60 * 60 * 1000;
-      for (var k = unixDb; k <= unixDe;) {
-        k = k + 24 * 60 * 60 * 1000;
-        arr.push(this.getDateObj(new Date(parseInt(k))).fullDate);
-      }
-      return arr;
-    }
-
-    /**
-     *  获取多选状态
-     */
-  }, {
-    key: "setMultiple",
-    value: function setMultiple(fullDate) {
-      if (!this.range) return;
-      var _this$multipleStatus = this.multipleStatus,
-        before = _this$multipleStatus.before,
-        after = _this$multipleStatus.after;
-      if (before && after) {
-        if (!this.lastHover) {
-          this.lastHover = true;
-          return;
-        }
-        this.multipleStatus.before = fullDate;
-        this.multipleStatus.after = '';
-        this.multipleStatus.data = [];
-        this.multipleStatus.fulldate = '';
-        this.lastHover = false;
-      } else {
-        if (!before) {
-          this.multipleStatus.before = fullDate;
-          this.multipleStatus.after = undefined;
-          this.lastHover = false;
-        } else {
-          this.multipleStatus.after = fullDate;
-          if (dateCompare(this.multipleStatus.before, this.multipleStatus.after)) {
-            this.multipleStatus.data = this.geDateAll(this.multipleStatus.before, this.multipleStatus.after);
-          } else {
-            this.multipleStatus.data = this.geDateAll(this.multipleStatus.after, this.multipleStatus.before);
-          }
-          this.lastHover = true;
-        }
-      }
-      this.getWeeks(fullDate);
-    }
-
-    /**
-     *  鼠标 hover 更新多选状态
-     */
-  }, {
-    key: "setHoverMultiple",
-    value: function setHoverMultiple(fullDate) {
-      //抖音小程序点击会触发hover事件，需要避免一下
-
-      if (!this.range || this.lastHover) return;
-      var before = this.multipleStatus.before;
-      if (!before) {
-        this.multipleStatus.before = fullDate;
-      } else {
-        this.multipleStatus.after = fullDate;
-        if (dateCompare(this.multipleStatus.before, this.multipleStatus.after)) {
-          this.multipleStatus.data = this.geDateAll(this.multipleStatus.before, this.multipleStatus.after);
-        } else {
-          this.multipleStatus.data = this.geDateAll(this.multipleStatus.after, this.multipleStatus.before);
-        }
-      }
-      this.getWeeks(fullDate);
-    }
-
-    /**
-     * 更新默认值多选状态
-     */
-  }, {
-    key: "setDefaultMultiple",
-    value: function setDefaultMultiple(before, after) {
-      this.multipleStatus.before = before;
-      this.multipleStatus.after = after;
-      if (before && after) {
-        if (dateCompare(before, after)) {
-          this.multipleStatus.data = this.geDateAll(before, after);
-          this.getWeeks(after);
-        } else {
-          this.multipleStatus.data = this.geDateAll(after, before);
-          this.getWeeks(before);
-        }
-      }
-    }
-
-    /**
-     * 获取每周数据
-     * @param {Object} dateData
-     */
-  }, {
-    key: "getWeeks",
-    value: function getWeeks(dateData) {
-      var _this$getDateObj = this.getDateObj(dateData),
-        year = _this$getDateObj.year,
-        month = _this$getDateObj.month;
-      var preMonthDayAmount = new Date(year, month - 1, 1).getDay();
-      var preMonthDays = this.getPreMonthDays(preMonthDayAmount, this.getDateObj(dateData));
-      var currentMonthDayAmount = new Date(year, month, 0).getDate();
-      var currentMonthDays = this.getCurrentMonthDays(currentMonthDayAmount, this.getDateObj(dateData));
-      var nextMonthDayAmount = 42 - preMonthDayAmount - currentMonthDayAmount;
-      var nextMonthDays = this._getNextMonthDays(nextMonthDayAmount, this.getDateObj(dateData));
-      var calendarDays = [].concat((0, _toConsumableArray2.default)(preMonthDays), (0, _toConsumableArray2.default)(currentMonthDays), (0, _toConsumableArray2.default)(nextMonthDays));
-      var weeks = new Array(6);
-      for (var i = 0; i < calendarDays.length; i++) {
-        var index = Math.floor(i / 7);
-        if (!weeks[index]) {
-          weeks[index] = new Array(7);
-        }
-        weeks[index][i % 7] = calendarDays[i];
-      }
-      this.calendar = calendarDays;
-      this.weeks = weeks;
-    }
-  }]);
-  return Calendar;
-}();
-exports.Calendar = Calendar;
-function getDateTime(date, hideSecond) {
-  return "".concat(getDate(date), " ").concat(getTime(date, hideSecond));
-}
-function getDate(date) {
-  date = fixIosDateFormat(date);
-  date = new Date(date);
-  var year = date.getFullYear();
-  var month = date.getMonth() + 1;
-  var day = date.getDate();
-  return "".concat(year, "-").concat(addZero(month), "-").concat(addZero(day));
-}
-function getTime(date, hideSecond) {
-  date = fixIosDateFormat(date);
-  date = new Date(date);
-  var hour = date.getHours();
-  var minute = date.getMinutes();
-  var second = date.getSeconds();
-  return hideSecond ? "".concat(addZero(hour), ":").concat(addZero(minute)) : "".concat(addZero(hour), ":").concat(addZero(minute), ":").concat(addZero(second));
-}
-function addZero(num) {
-  if (num < 10) {
-    num = "0".concat(num);
-  }
-  return num;
-}
-function getDefaultSecond(hideSecond) {
-  return hideSecond ? '00:00' : '00:00:00';
-}
-function dateCompare(startDate, endDate) {
-  startDate = new Date(fixIosDateFormat(startDate));
-  endDate = new Date(fixIosDateFormat(endDate));
-  return startDate <= endDate;
-}
-function checkDate(date) {
-  var dateReg = /((19|20)\d{2})(-|\/)\d{1,2}(-|\/)\d{1,2}/g;
-  return date.match(dateReg);
-}
-//ios低版本15及以下，无法匹配 没有 ’秒‘ 时的情况，所以需要在末尾 秒 加上 问号
-var dateTimeReg = /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])( [0-5]?[0-9]:[0-5]?[0-9](:[0-5]?[0-9])?)?$/;
-function fixIosDateFormat(value) {
-  if (typeof value === 'string' && dateTimeReg.test(value)) {
-    value = value.replace(/-/g, '/');
-  }
-  return value;
-}
 
 /***/ }),
 
