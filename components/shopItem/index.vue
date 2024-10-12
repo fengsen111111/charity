@@ -10,8 +10,11 @@
 								class="ml10 text18">积分</text></view>
 						<view class="col787878 text18">库存：{{item.stock}}</view>
 					</view>
-					<view class="btnForm_shop mt15" @click="handUrl('/pages/components/okOrder/index?jf_id='+item.id)">
+					<view v-if="item.stock>0" class="btnForm_shop mt15" @click="handUrl('/pages/components/okOrder/index?jf_id='+item.id)">
 						立即兑换
+					</view>
+					<view v-else class="btnForm_close mt15">
+						暂无库存
 					</view>
 				</view>
 			</view>

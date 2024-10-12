@@ -103,7 +103,7 @@
 		font-weight: bold;
 		position: absolute;
 		right: 36rpx;
-		top: 265px;
+		top: 480rpx;
 		text-align: center;
 		padding: 8rpx 30rpx;
 	}

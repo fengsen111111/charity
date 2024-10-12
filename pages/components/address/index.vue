@@ -33,7 +33,7 @@
 		<!-- 新增编辑弹框 -->
 		<uni-popup ref="popup" background-color="#fff">
 			<view class="popup-content" :class="{ 'popup-height': type === 'left' || type === 'right' }">
-				<view class="bg-white" style="height: 60vh;">
+				<view class="bg-white">
 					<view class="grid grid-cols-3  items-center p35 border-bottom-dotted">
 						<view class=""></view>
 						<view class="text30 font-bold text-center col205D57">{{type==1?'新增':'修改'}}收货地址</view>

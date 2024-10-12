@@ -113,7 +113,11 @@
 					uni.navigateTo({
 						url: '/pages/components/volunteer/index?submitShow=' + 'false'
 					})
-				} else {
+				} else if(this.userInfo.is_volunteer == 'N') {
+					uni.navigateTo({
+						url: '/pages/components/volunteer/index?submitShow=' + 'false'
+					})
+				}else {
 					uni.navigateTo({
 						url: '/pages/components/volunteer/index?submitShow=' + 'true'
 					})
@@ -244,6 +248,13 @@
 			// 切换
 			handleIndex(index) {
 				this.indexItem = index
+				if(index==1){
+					// 慈善
+					this._getDonateList() //基金
+				}else{
+					// 活动
+					this._getActivityList() //活动
+				}
 			},
 		}
 	}

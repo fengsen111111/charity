@@ -13,7 +13,7 @@
 							<view v-else class="userImg bgEBEBEB"></view>
 						</button>
 						<view class="ml30 ">
-							<view class="flex items-center justify-between"  v-if="userInfo.mobile">
+							<view class="flex items-center justify-between" v-if="userInfo.mobile">
 								<view class="text36">{{userInfo.nickname}}</view>
 								<image src="../../static/config.png" class="imgConfig" mode=""
 									@click="inputDialogToggle"></image>
@@ -21,8 +21,8 @@
 							<view class="col787878 text30 font-bold mt20" v-if="userInfo.mobile">
 								{{userInfo.mobile}}
 							</view>
-							<button class="clear-style" v-else style="font-size:32rpx;margin-left:20rpx" open-type="getPhoneNumber"
-								@getphonenumber="_getPhoneNumber" id="sqphone" ref="sqphone">
+							<button class="clear-style" v-else style="font-size:32rpx;margin-left:20rpx"
+								open-type="getPhoneNumber" @getphonenumber="_getPhoneNumber" id="sqphone" ref="sqphone">
 								授权
 							</button>
 						</view>
@@ -40,7 +40,7 @@
 				</view>
 			</view>
 		</view>
-		
+
 		<view class="px36 py30  mt20 ">
 			<view class="bg-white radius20 p30">
 				<view class="" v-for="item in tagList" :key="item.id" @click="handUrl(item.url)">
@@ -67,7 +67,7 @@
 		<uni-popup ref="inputDialog" type="dialog">
 			<uni-popup-dialog ref="inputClose" mode="input" title="昵称" :value="userInfo.nickname" placeholder="请输入昵称"
 				@confirm="dialogInputConfirm"></uni-popup-dialog>
-			
+
 		</uni-popup>
 		<!--  -->
 		<tarBar :checkIndex='3' />
@@ -80,11 +80,11 @@
 	import {
 		getUserInfo, //用户信息
 		updateUserInfo, //修改用户信息
-		getPhoneNumber ,//手机号
+		getPhoneNumber, //手机号
 		overActivityOrder,
-		getTicket,//上传1
-		getUploadType,//上传2
-		uploadFile//上传3
+		getTicket, //上传1
+		getUploadType, //上传2
+		uploadFile //上传3
 	} from '@/request/api.js'
 	export default {
 		components: {
@@ -122,8 +122,8 @@
 				userInfo: {}, //用户信息
 				mobile: '', //手机号
 				nickname: '', //name
-				
-				img_user:'',//用户头像
+
+				img_user: '', //用户头像
 			}
 		},
 		created() {
@@ -137,9 +137,11 @@
 		methods: {
 			chooseAvatar(e) {
 				console.log(' e.detail', e.detail);
-				const {avatarUrl} = e.detail //储存当前头像
+				const {
+					avatarUrl
+				} = e.detail //储存当前头像
 				this.img_user = avatarUrl
-				uni.setStorageSync('imgUser',this.img_user)
+				uni.setStorageSync('imgUser', this.img_user)
 				getTicket().then((res) => {
 					console.log('获取文件存储权限', res.data)
 					getUploadType().then((res_two) => {
@@ -147,9 +149,11 @@
 						const params = {
 							"ticket_time": res.data.data.ticket_time,
 							"file": e.detail,
-							"folder": res_two.data.data.config.folder?res_two.data.data.config.folder:'userInfo',
-							"file_type": res_two.data.data.config.file_type?res_two.data.data.config.file_type:'image',
-							"upload_type":'local'
+							"folder": res_two.data.data.config.folder ? res_two.data.data.config
+								.folder : 'userInfo',
+							"file_type": res_two.data.data.config.file_type ? res_two.data.data.config
+								.file_type : 'image',
+							"upload_type": 'local'
 						}
 						uploadFile(params).then((fileRes) => {
 							console.log('上传图片', fileRes.data)
@@ -171,9 +175,11 @@
 								const params = {
 									"ticket_time": res.data.data.ticket_time,
 									"file": tempFilePaths,
-									"folder": res_two.data.data.config.folder?res_two.data.data.config.folder:'userInfo',
-									"file_type": res_two.data.data.config.file_type?res_two.data.data.config.file_type:'image',
-									"upload_type":'local'
+									"folder": res_two.data.data.config.folder ? res_two
+										.data.data.config.folder : 'userInfo',
+									"file_type": res_two.data.data.config.file_type ?
+										res_two.data.data.config.file_type : 'image',
+									"upload_type": 'local'
 								}
 								uploadFile(params).then((fileRes) => {
 									console.log('上传图片', fileRes.data)
@@ -206,26 +212,26 @@
 							console.log('条码类型：' + res.scanType);
 							console.log('条码内容：' + res.result.split('='));
 							uni.showLoading();
-							setTimeout(()=>{
-							    uni.hideLoading();
-							},500)
+							setTimeout(() => {
+								uni.hideLoading();
+							}, 500)
 							overActivityOrder({
-								post_params:{
-									activity_id:res.result.split('=')[1]
+								post_params: {
+									activity_id: res.result.split('=')[1]
 								}
-							}).then((res)=>{
-								console.log('扫码结果',res.data);
-								if(res.data.code==1){
+							}).then((res) => {
+								console.log('扫码结果', res.data);
+								if (res.data.code == 1) {
 									uni.showToast({
-										title: '核销成功!',					
-									    icon: 'success',					    
+										title: '核销成功!',
+										icon: 'success',
 										duration: 1000
 									});
 									_this._getUserInfo() //刷新积分
-								}else{
+								} else {
 									uni.showToast({
-										title: '核销失败!',					
-									    icon: 'error',					    
+										title: '核销失败!',
+										icon: 'error',
 										duration: 1000
 									});
 								}
@@ -241,9 +247,9 @@
 				console.log(val)
 				this.nickname = val
 				uni.showLoading();
-				setTimeout(()=>{
-				    uni.hideLoading();
-				},500)
+				setTimeout(() => {
+					uni.hideLoading();
+				}, 500)
 				updateUserInfo({
 					post_params: {
 						mobile: this.mobile,
@@ -252,10 +258,10 @@
 					}
 				}).then((res) => {
 					console.log('修改用户信息', res.data.data);
-					if(res.data.code==1){
+					if (res.data.code == 1) {
 						uni.showToast({
-							title: '操作成功!',					
-						    icon: 'success',					    
+							title: '操作成功!',
+							icon: 'success',
 							duration: 1000
 						});
 						this.$refs.inputDialog.close()
@@ -274,7 +280,7 @@
 				}).then((res) => {
 					console.log('授权成功', res.data.data.phone_number)
 					this.mobile = res.data.data.phone_number
-					uni.setStorageSync('phone',this.mobile)//存入电话号码
+					uni.setStorageSync('phone', this.mobile) //存入电话号码
 					this.dialogInputConfirm()
 				})
 			},

@@ -1,7 +1,7 @@
 <template>
 	<view class="">
 		<hearchItem :isLeft="true" :title="'加入志愿者'" />
-		<view class="py30 px36" v-if="!submitShow">
+		<view class="py30 px36" v-if="submitShow=='false'">
 			<view class="py30 text24 bg-white radius10 px36">
 				<view class="titleView">
 					<view class="ml20 col205D57 font-bold">基础信息填写</view>
@@ -133,7 +133,7 @@
 					value: 2
 				}],
 				// 
-				submitShow: true,
+				submitShow: '',
 
 				index_areas: ''
 			}
@@ -142,7 +142,7 @@
 			console.log('option', option.submitShow);
 			this.submitShow = option.submitShow
 			// false
-			if(!option.submitShow){
+			if(this.submitShow=='false'){
 				this.$refs.popup.open('bottom')
 				this.form.areas = this.$store.state.config.areas //四大区域
 			}

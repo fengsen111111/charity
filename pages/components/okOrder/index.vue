@@ -65,7 +65,7 @@
 		<!-- 新增编辑弹框 -->
 		<uni-popup ref="popup" background-color="#fff">
 			<view class="popup-content" :class="{ 'popup-height': type === 'left' || type === 'right' }">
-				<view class="bg-white" style="height: 60vh;">
+				<view class="bg-white">
 					<view class="grid grid-cols-3  items-center p35 border-bottom-dotted">
 						<view class=""></view>
 						<view class="text30 font-bold text-center col205D57">{{add_type==1?'新增':'修改'}}收货地址</view>
@@ -131,7 +131,7 @@
 										</view>
 										<!-- 编辑地址 -->
 										<uni-icons type="compose" size="26" color="#205D57"
-											@click="handleAddAddress()"></uni-icons>
+											@click="handleAddAddress(item)"></uni-icons>
 									</view>
 									<view class="mt15 flex justify-between">
 										<view class="col205D57">{{item.is_default=='Y'?'默认地址':''}}</view>
@@ -183,7 +183,7 @@
 			return {
 				form: {
 					name: '那么',
-					mobile: '14465656798',
+					mobile: '',
 					address: '阿斯顿撒旦撒旦',
 					is_default: 1,
 				},
@@ -238,9 +238,10 @@
 				})
 			},
 			_editUserAddress() {
+				console.log('this.addressDefaule',this.addressDefaule);
 				editUserAddress({
 					post_params: {
-						// id: this.type==1?'':this.defaulrObj.id,
+						id: this.type==1?'':this.addressDefaule.id,
 						is_default: this.form.is_default == 1 ? 'Y' : 'N',
 						name: this.form.name,
 						mobile: this.form.mobile,
@@ -248,7 +249,15 @@
 					}
 				}).then((res) => {
 					console.log('新增编辑成功', res.data.data);
-					this._getUserAddressList()
+					if(res.data.code==1){
+						uni.showToast({						    
+							title: '操作成功!',					
+						    icon: 'success',					    
+							duration: 1000
+						});
+						this._getUserAddressList()
+						this.close()
+					}
 				})
 			},
 			// 用户信息
@@ -265,7 +274,15 @@
 						this.number--
 					}
 				} else if (type == 2) {
-					this.number++
+					if(this.jfDetails.stock>this.number){
+						this.number++
+					}else{
+						uni.showToast({
+							title: '库存不足!',					
+						    icon: 'error',					    
+							duration: 1000
+						});
+					}
 				}
 			},
 			// 积分详情
@@ -345,7 +362,7 @@
 				this.add_type = 1
 				// 赋值
 				this.form.name = ''
-				this.form.phone = ''
+				this.form.mobile = ''
 				this.form.address = ''
 				this.form.is_default = 2 //是否默认
 				this.$refs.popup.open('bottom')
@@ -358,12 +375,17 @@
 				this.$refs.popupSel.close()
 			},
 			// 
-			handleAddAddress() {
+			handleAddAddress(item) {
+				// console.log('默认',this.addressDefaule);
+				if(item){
+					this.addressDefaule = item
+				}
+				this.closeSel()
 				// 编辑
 				this.add_type = 2
 				// 赋值
 				this.form.name = this.addressDefaule.name
-				this.form.phone = this.addressDefaule.mobile
+				this.form.mobile = this.addressDefaule.mobile
 				this.form.address = this.addressDefaule.address
 				this.form.is_default = this.addressDefaule.is_default == 'Y' ? 1 : 2 //是否默认
 

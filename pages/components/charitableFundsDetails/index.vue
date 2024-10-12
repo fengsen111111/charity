@@ -61,7 +61,7 @@
 		<!-- 弹框 -->
 		<uni-popup ref="popup" background-color="#fff">
 			<view class="popup-content" :class="{ 'popup-height': type === 'left' || type === 'right' }">
-				<view class="bg-white" style="height: 50vh;">
+				<view class="bg-white">
 					<view class="grid grid-cols-3  items-center p35 border-bottom-dotted">
 						<view class=""></view>
 						<view class="text30 font-bold text-center col205D57">捐助</view>
@@ -86,6 +86,7 @@
 							提 交
 						</view>
 					</view>
+					
 				</view>
 			</view>
 		</uni-popup>
@@ -169,6 +170,7 @@
 					}).then((res) => {
 						console.log('捐款结束', res.data.data);
 						this.weixinPay(res.data.data.pay_data)
+						this.$store.commit('configInfo')
 					})
 				}else{
 					uni.showToast({

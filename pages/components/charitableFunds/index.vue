@@ -201,6 +201,7 @@
 					}).then((res) => {
 						console.log('非定向捐助', res.data.data);
 						this.weixinPay(res.data.data.pay_data)
+						this.$store.commit('configInfo')
 					})
 				}else{
 					uni.showToast({
