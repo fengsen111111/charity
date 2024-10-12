@@ -54,6 +54,9 @@
 			this.limit = this.limit + 20
 			this._getGoodsList()
 		},
+		onShow(){
+			this._getGoodsList()
+		},
 		watch: {},
 		methods: {
 			// 触发搜索
