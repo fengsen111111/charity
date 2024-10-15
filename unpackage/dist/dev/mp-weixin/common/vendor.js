@@ -21095,13 +21095,13 @@ var interceptRequest = function interceptRequest(options) {
   return options;
 };
 var interceptResponse = function interceptResponse(response) {
-  console.log('响应拦截器', response);
+  // console.log('响应拦截器', response);
   // 例如，处理特定状态码
   var _response$data = response.data,
     code = _response$data.code,
     message = _response$data.message;
   if (response.statusCode == 200) {
-    console.log('code', Number(code));
+    // console.log('code', Number(code));
     switch (Number(code)) {
       case -999:
         uni.showToast({

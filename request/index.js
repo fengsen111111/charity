@@ -46,14 +46,14 @@ const interceptRequest = (options) => {
 };
 
 const interceptResponse = (response) => {
-	console.log('响应拦截器', response);
+	// console.log('响应拦截器', response);
 	// 例如，处理特定状态码
 	const {
 		code,
 		message
 	} = response.data
 	if (response.statusCode == 200) {
-		console.log('code', Number(code));
+		// console.log('code', Number(code));
 		switch (Number(code)) {
 			case -999:
 				uni.showToast({
