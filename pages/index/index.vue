@@ -40,7 +40,7 @@
 			const _this = this
 			setTimeout(()=>{
 				_this.image = _this.$store.state.config.open_image?_this.$store.state.config.open_image:''
-				// console.log('开平动画',_this.$store.state.config.open_image,_this.imgae)
+				// console.log('开屏动画',_this.$store.state.config.open_image,_this.imgae)
 			},1000)
 			this.isLogin() // 自动授权
 		},

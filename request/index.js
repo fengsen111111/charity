@@ -80,7 +80,7 @@ const interceptResponse = (response) => {
 				uni.showToast({
 					icon: 'error',
 					title: '前往登陆！',
-					duration: 2000
+					duration: 2000,
 				})
 				uni.clearStorageSync()
 				uni.redirectTo({

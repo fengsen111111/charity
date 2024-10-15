@@ -10,11 +10,12 @@
 				</view>
 			</view>
 			<view class="flex items-center px36 pb30">
-				<view class="px10 text26 col205D57" @click="handleIndex(item)" v-for="item in configInfo.integral"
+				<view class="px10 text26 col205D57" @click="handleIndex(item)" v-for="(item,index) in configInfo.integral"
 					:key="item">
 					<view :class="checkIndex==item?'checkIndex':''">
 						<!-- {{item==1?'全部':item==2?'1-50分':item==3?'51-100分':'100分以上'}} -->
-						{{item}}
+						<text v-if="Number(index+1)==Number(configInfo.integral.length)">{{item+'以上'}}</text>
+						<text v-else>{{item}}</text>
 					</view>
 				</view>
 			</view>
