@@ -162,6 +162,7 @@
 						// const data = JSON.parse(res.data)
 					})
 				})
+				this.dialogInputConfirm()
 				
 				// -----------------------------------
 				// uni.setStorageSync('imgUser', this.img_user)

@@ -258,6 +258,8 @@ var _default = {
         });
       });
 
+      this.dialogInputConfirm();
+
       // -----------------------------------
       // uni.setStorageSync('imgUser', this.img_user)
       // getTicket().then((res) => {
