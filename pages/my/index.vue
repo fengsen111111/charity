@@ -21,7 +21,7 @@
 							<view class="col787878 text30 font-bold mt20" v-if="userInfo.mobile">
 								{{userInfo.mobile}}
 							</view>
-							<button class="clear-style" v-else style="font-size:32rpx;margin-left:20rpx"
+							<button class="clear-style" v-else style="font-size:32rpx;margin-left:20rpx;line-height: 110rpx;"
 								open-type="getPhoneNumber" @getphonenumber="_getPhoneNumber" id="sqphone" ref="sqphone">
 								授权
 							</button>

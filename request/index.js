@@ -11,9 +11,9 @@ const request = (options) => {
 		uni.request({
 			...options,
 			success: (response) => {
-				setTimeout(()=>{
+				setTimeout(() => {
 					uni.hideLoading()
-				},3000)
+				}, 3000)
 				// 响应拦截器
 				if (options.interceptResponse) {
 					const newResponse = options.interceptResponse(response);
@@ -25,9 +25,9 @@ const request = (options) => {
 				resolve(response);
 			},
 			fail: (error) => {
-				setTimeout(()=>{
+				setTimeout(() => {
 					uni.hideLoading()
-				},3000)
+				}, 3000)
 				reject(error);
 			},
 		});
@@ -46,52 +46,59 @@ const interceptRequest = (options) => {
 };
 
 const interceptResponse = (response) => {
-	// console.log('响应拦截器', response);
+	console.log('响应拦截器', response);
 	// 例如，处理特定状态码
 	const {
 		code,
-		messgage
+		message
 	} = response.data
-	if (response.statusCode !== 200) {
+	if (response.statusCode == 200) {
+		console.log('code', Number(code));
 		switch (Number(code)) {
-			case 999:
+			case -999:
 				uni.showToast({
-					icon:'error',
-					title: messgage,
+					icon: 'error',
+					title: message,
 					duration: 2000
 				})
 				return response;
-			case 3:
+			case -3:
 				uni.showToast({
-					icon:'error',
-					title: messgage,
+					icon: 'error',
+					title: '没有操作权限!',
 					duration: 2000
 				})
-				return null;
-			case 2:
+				return false;
+			case -2:
 				uni.showToast({
-					icon:'error',
-					title: messgage,
+					icon: 'error',
+					title: '登陆异常!',
 					duration: 2000
 				})
-				return null;
-			case 1:
+				return false;
+			case -1:
+				uni.showToast({
+					icon: 'error',
+					title: '前往登陆！',
+					duration: 2000
+				})
+				uni.clearStorageSync()
 				uni.redirectTo({
-					url: '/pages/sonView/login/index'
+					url: '/pages/index/index'
 				});
-				return null;
+				return false;
 			case 0:
 				uni.showToast({
-					icon:'error',
-					title: messgage,
+					icon: 'error',
+					title: message+'!',
 					duration: 2000
 				})
-				return null;
+				return false;
 			default:
 				return response;
 		}
-	}else{
-		// 请求成功
+	} else {
+		// 请求失败
 		return response; // 执行后续的 resolve
 	}
 
@@ -102,7 +109,7 @@ const interceptResponse = (response) => {
 	// 	});
 	// 	return null; // 阻止后续的 resolve
 	// }else if ()
-	return response;
+	// return response;
 };
 
 // 封装的 GET 请求

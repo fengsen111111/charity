@@ -184,7 +184,7 @@ var _default = {
     };
   },
   onReady: function onReady() {
-    this.isLogin(); // 自动授权
+    // this.isLogin() // 自动授权
     this._getBannerList(); //轮播
 
     var _this = this;
@@ -240,8 +240,7 @@ var _default = {
       var _this3 = this;
       (0, _api.loginAndRegister)({
         post_params: {
-          openid: item,
-          mobile: ''
+          openid: item
         }
       }).then(function (res) {
         console.log('token', res.data);

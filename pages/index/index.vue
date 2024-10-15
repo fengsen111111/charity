@@ -6,7 +6,7 @@
 			<view class="navBarBox">
 				<!-- 真正的导航栏内容 -->
 				<view class="navBar">
-					<view class="bgMyImg">
+					<view class="bgMyImg font-bold">
 						<!-- 状态栏占位 -->
 						<view class="statusBar" :style="{ paddingTop: statusBarHeight + 'px' }"></view>
 						<view class="timeout text30 text-center">
@@ -20,11 +20,15 @@
 </template>
 
 <script>
+	import {
+		loginAndRegister, //登陆注册
+		wechatUserRegister, //授权
+	} from '@/request/api.js'
 	export default {
 		data() {
 			return {
 				image: '',
-				time: 2,
+				time: 5,
 				// 状态栏高度
 				statusBarHeight: 0,
 				timer: '', //计时器
@@ -38,6 +42,7 @@
 				_this.image = _this.$store.state.config.open_image?_this.$store.state.config.open_image:''
 				// console.log('开平动画',_this.$store.state.config.open_image,_this.imgae)
 			},1000)
+			this.isLogin() // 自动授权
 		},
 		mounted() {
 			this.timer = setInterval(() => {
@@ -49,14 +54,49 @@
 				// console.log('newVal',newVal);
 				if(newVal==0){
 					clearInterval(this.timer);
-					uni.navigateTo({
-						url:'/pages/home/index'
-					})
+					if(uni.getStorageSync('token')){
+						uni.navigateTo({
+							url:'/pages/home/index'
+						})
+					}
 				}
 			}
 		},
 		methods: {
-
+			// 授权
+			isLogin() {
+				uni.login({
+					provider: 'weixin',
+					success: res => {
+						console.log(res)
+						wechatUserRegister({
+							post_params: {
+								platform: "mini",
+								code: res.code
+							}
+						}).then((res) => {
+							this.info = res.data.data;
+							console.log('数据', this.info);
+							this.$store.commit('setAppid', this.info.mini_openid) //存入appid等
+							this._loginAndRegister(this.info.mini_openid) //获取token
+						})
+					}
+				});
+			},
+			// 获取token
+			_loginAndRegister(item) {
+				console.log('item',item);
+				loginAndRegister({
+					post_params: {
+						openid: item,
+					}
+				}).then((res) => {
+					console.log('token', res.data);
+					this.$store.commit('setToken', res.data.data.token)
+					uni.setStorageSync('token', res.data.data.token)
+					this.$store.commit('loginStatus') //修改登录状态
+				})
+			},
 		}
 	}
 </script>

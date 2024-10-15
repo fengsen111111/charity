@@ -141,6 +141,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
 //
 //
 //
@@ -166,7 +167,7 @@ var _default = {
   data: function data() {
     return {
       image: '',
-      time: 2,
+      time: 5,
       // 状态栏高度
       statusBarHeight: 0,
       timer: '' //计时器
@@ -180,6 +181,7 @@ var _default = {
       _this.image = _this.$store.state.config.open_image ? _this.$store.state.config.open_image : '';
       // console.log('开平动画',_this.$store.state.config.open_image,_this.imgae)
     }, 1000);
+    this.isLogin(); // 自动授权
   },
   mounted: function mounted() {
     var _this2 = this;
@@ -192,13 +194,52 @@ var _default = {
       // console.log('newVal',newVal);
       if (newVal == 0) {
         clearInterval(this.timer);
-        uni.navigateTo({
-          url: '/pages/home/index'
-        });
+        if (uni.getStorageSync('token')) {
+          uni.navigateTo({
+            url: '/pages/home/index'
+          });
+        }
       }
     }
   },
-  methods: {}
+  methods: {
+    // 授权
+    isLogin: function isLogin() {
+      var _this3 = this;
+      uni.login({
+        provider: 'weixin',
+        success: function success(res) {
+          console.log(res);
+          (0, _api.wechatUserRegister)({
+            post_params: {
+              platform: "mini",
+              code: res.code
+            }
+          }).then(function (res) {
+            _this3.info = res.data.data;
+            console.log('数据', _this3.info);
+            _this3.$store.commit('setAppid', _this3.info.mini_openid); //存入appid等
+            _this3._loginAndRegister(_this3.info.mini_openid); //获取token
+          });
+        }
+      });
+    },
+    // 获取token
+    _loginAndRegister: function _loginAndRegister(item) {
+      var _this4 = this;
+      console.log('item', item);
+      (0, _api.loginAndRegister)({
+        post_params: {
+          openid: item
+        }
+      }).then(function (res) {
+        console.log('token', res.data);
+        _this4.$store.commit('setToken', res.data.data.token);
+        uni.setStorageSync('token', res.data.data.token);
+        _this4.$store.commit('loginStatus'); //修改登录状态
+      });
+    }
+  }
 };
 exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))

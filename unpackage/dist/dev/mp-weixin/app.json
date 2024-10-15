@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/my/index",
     "pages/components/myDonation/index",
     "pages/components/getInvolved/index",
     "pages/components/myRedemptions/index",
@@ -18,7 +19,6 @@
     "pages/home/index",
     "pages/components/search/index",
     "pages/components/textContent/index",
-    "pages/my/index",
     "pages/about/index"
   ],
   "subPackages": [],

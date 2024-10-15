@@ -1747,7 +1747,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -12173,6 +12173,9 @@ var _default = {
     "path": "pages/index/index",
     "style": {}
   }, {
+    "path": "pages/my/index",
+    "style": {}
+  }, {
     "path": "pages/components/myDonation/index",
     "style": {}
   }, {
@@ -12222,9 +12225,6 @@ var _default = {
     "style": {}
   }, {
     "path": "pages/components/textContent/index",
-    "style": {}
-  }, {
-    "path": "pages/my/index",
     "style": {}
   }, {
     "path": "pages/about/index",
@@ -17833,7 +17833,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -17854,14 +17854,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -17957,7 +17957,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -21095,51 +21095,58 @@ var interceptRequest = function interceptRequest(options) {
   return options;
 };
 var interceptResponse = function interceptResponse(response) {
-  // console.log('响应拦截器', response);
+  console.log('响应拦截器', response);
   // 例如，处理特定状态码
   var _response$data = response.data,
     code = _response$data.code,
-    messgage = _response$data.messgage;
-  if (response.statusCode !== 200) {
+    message = _response$data.message;
+  if (response.statusCode == 200) {
+    console.log('code', Number(code));
     switch (Number(code)) {
-      case 999:
+      case -999:
         uni.showToast({
           icon: 'error',
-          title: messgage,
+          title: message,
           duration: 2000
         });
         return response;
-      case 3:
+      case -3:
         uni.showToast({
           icon: 'error',
-          title: messgage,
+          title: '没有操作权限!',
           duration: 2000
         });
-        return null;
-      case 2:
+        return false;
+      case -2:
         uni.showToast({
           icon: 'error',
-          title: messgage,
+          title: '登陆异常!',
           duration: 2000
         });
-        return null;
-      case 1:
+        return false;
+      case -1:
+        uni.showToast({
+          icon: 'error',
+          title: '前往登陆！',
+          duration: 2000
+        });
+        uni.clearStorageSync();
         uni.redirectTo({
-          url: '/pages/sonView/login/index'
+          url: '/pages/index/index'
         });
-        return null;
+        return false;
       case 0:
         uni.showToast({
           icon: 'error',
-          title: messgage,
+          title: message + '!',
           duration: 2000
         });
-        return null;
+        return false;
       default:
         return response;
     }
   } else {
-    // 请求成功
+    // 请求失败
     return response; // 执行后续的 resolve
   }
 
@@ -21150,7 +21157,7 @@ var interceptResponse = function interceptResponse(response) {
   // 	});
   // 	return null; // 阻止后续的 resolve
   // }else if ()
-  return response;
+  // return response;
 };
 
 // 封装的 GET 请求

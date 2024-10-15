@@ -92,7 +92,7 @@
 			}
 		},
 		onReady() {
-			this.isLogin() // 自动授权
+			// this.isLogin() // 自动授权
 			this._getBannerList() //轮播
 
 			const _this = this
@@ -148,7 +148,6 @@
 				loginAndRegister({
 					post_params: {
 						openid: item,
-						mobile: ''
 					}
 				}).then((res) => {
 					console.log('token', res.data);
