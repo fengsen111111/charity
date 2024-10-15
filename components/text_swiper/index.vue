@@ -17,11 +17,11 @@
 				<swiper class="swiper" :indicator-dots="false" :autoplay="true" :interval="2000" :duration="2000"
 					:circular="true" :vertical="true" :display-multiple-items="3" easing-function="linear">
 					<swiper-item class="textItem" v-for="item in textList" :key="item.id">
-						<view class="flex justify-between" style="width: 97%;">
-							<view class="">{{item.name?item.name:'周某某'}}</view>
-							<view class="">{{item.money}}</view>
-							<view class="">{{item.donate_name}}</view>
-							<view class="">{{item.create_time}}</view>
+						<view class="flex justify-between" style="width: 97%;padding-left: 10rpx;">
+							<view class="w-1-6">{{item.name?item.name:'周某某'}}</view>
+							<view class="w-1-6 text-center">{{item.money}}</view>
+							<view class="w-1-3 text-center">{{item.donate_name.length>7?item.donate_name.slice(0,10)+'...':item.donate_name}}</view>
+							<view class="w-1-2 text-center">{{item.create_time}}</view>
 						</view>
 					</swiper-item>
 				</swiper>
@@ -58,6 +58,12 @@
 </script>
 
 <style>
+	.w-1-3{
+		width: 33%;
+	}
+	.w-1-6{
+		width: 16%;
+	}
 	.textItem {
 		height: 10rpx !important;
 		padding: 20rpx 10rpx;

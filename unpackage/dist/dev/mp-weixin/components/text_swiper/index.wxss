@@ -1,4 +1,10 @@
 
+.w-1-3{
+	width: 33%;
+}
+.w-1-6{
+	width: 16%;
+}
 .textItem {
 	height: 10rpx !important;
 	padding: 20rpx 10rpx;

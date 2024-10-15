@@ -21,7 +21,8 @@
 							<view class="col787878 text30 font-bold mt20" v-if="userInfo.mobile">
 								{{userInfo.mobile}}
 							</view>
-							<button class="clear-style" v-else style="font-size:32rpx;margin-left:20rpx;line-height: 110rpx;"
+							<button class="clear-style" v-else
+								style="font-size:32rpx;margin-left:20rpx;line-height: 110rpx;"
 								open-type="getPhoneNumber" @getphonenumber="_getPhoneNumber" id="sqphone" ref="sqphone">
 								授权
 							</button>
@@ -136,32 +137,53 @@
 		watch: {},
 		methods: {
 			chooseAvatar(e) {
-				console.log(' e.detail', e.detail);
-				const {
-					avatarUrl
-				} = e.detail //储存当前头像
-				this.img_user = avatarUrl
-				uni.setStorageSync('imgUser', this.img_user)
+				console.log(' e.detail', e.detail.avatarUrl);
+				this.img_user = e.detail.avatarUrl
+				// -----------------------------------
+				// let arr = avatarUrl.split("/")
+				// const fileName = arr[arr.length - 1]
+				
+				let ticket_time = ''
 				getTicket().then((res) => {
-					console.log('获取文件存储权限', res.data)
-					getUploadType().then((res_two) => {
-						console.log('获取文件存储配置', res_two.data)
-						const params = {
-							"ticket_time": res.data.data.ticket_time,
-							"file": e.detail,
-							"folder": res_two.data.data.config.folder ? res_two.data.data.config
-								.folder : 'userInfo',
-							"file_type": res_two.data.data.config.file_type ? res_two.data.data.config
-								.file_type : 'image',
-							"upload_type": 'local'
-						}
-						uploadFile(params).then((fileRes) => {
-							console.log('上传图片', fileRes.data)
-							this.img_user = fileRes.data
-							this.dialogInputConfirm()
-						})
+					ticket_time = res.data.data.ticket_time
+					console.log('文件操作权限的时间',ticket_time);
+					console.log('e.detail.avatarUrl',e.detail.avatarUrl);
+					uni.uploadFile({
+						url: "https://donate.api.sczhiyun.net/factory_storage/File/uploadFile",
+						filePath:e.detail.avatarUrl,
+						name: "file",
+						formData: {
+							ticket_time:ticket_time,
+							folder: "image",
+							file_type: "image"
+						},
+					}).then(res => {
+						console.log('111',res);
+						// const data = JSON.parse(res.data)
 					})
 				})
+				
+				// -----------------------------------
+				// uni.setStorageSync('imgUser', this.img_user)
+				// getTicket().then((res) => {
+				// 	console.log('获取文件存储权限', res.data)
+				// 	getUploadType().then((res_two) => {
+				// 		console.log('获取文件存储配置', res_two.data)
+				// 		const params = {
+				// 			"ticket_time": res.data.data.ticket_time,
+				// 			"file": e.detail.avatarUrl,
+				// 			"folder": res_two.data.data.config.folder ? res_two.data.data.config
+				// 				.folder : 'userInfo',
+				// 			"file_type": res_two.data.data.config.file_type ? res_two.data.data.config
+				// 				.file_type : 'image'
+				// 		}
+				// 		uploadFile(params).then((fileRes) => {
+				// 			console.log('上传图片', fileRes.data)
+				// 			this.img_user = fileRes.data
+				// 			this.dialogInputConfirm()
+				// 		})
+				// 	})
+				// })
 			},
 			handleUpload() {
 				uni.chooseImage({

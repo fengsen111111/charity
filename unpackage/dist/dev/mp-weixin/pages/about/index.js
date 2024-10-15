@@ -144,17 +144,17 @@ exports.default = void 0;
 var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var tarBar = function tarBar() {
   Promise.all(/*! require.ensure | components/tarBar/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tarBar/index")]).then((function () {
-    return resolve(__webpack_require__(/*! @/components/tarBar/index.vue */ 301));
+    return resolve(__webpack_require__(/*! @/components/tarBar/index.vue */ 214));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var hearchItem = function hearchItem() {
   __webpack_require__.e(/*! require.ensure | components/hearchItem/index */ "components/hearchItem/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/hearchItem/index.vue */ 187));
+    return resolve(__webpack_require__(/*! @/components/hearchItem/index.vue */ 227));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var swiperItems = function swiperItems() {
   __webpack_require__.e(/*! require.ensure | components/swiperItems/index */ "components/swiperItems/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/swiperItems/index.vue */ 242));
+    return resolve(__webpack_require__(/*! @/components/swiperItems/index.vue */ 267));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {

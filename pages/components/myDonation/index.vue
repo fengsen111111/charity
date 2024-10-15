@@ -10,7 +10,8 @@
 				<view class="flex justify-between items-baseline">
 					<view class="flex items-baseline">
 						<view>捐赠</view>
-						<view class=" text60 colD6B07A ml10 font-bold">{{Math.floor(item.money)}}</view>
+						<!-- <view class=" text60 colD6B07A ml10 font-bold">{{Math.floor(item.money)}}</view> -->
+						<view class=" text60 colD6B07A ml10 font-bold">{{item.money}}</view>
 						<view class="ml10">元</view>
 					</view>
 					<view class="col787878">{{item.create_time}}</view>

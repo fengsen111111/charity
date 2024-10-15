@@ -201,8 +201,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _uniI18n = __webpack_require__(/*! @dcloudio/uni-i18n */ 22);
-var _index = _interopRequireDefault(__webpack_require__(/*! ./i18n/index.js */ 294));
-var _util = __webpack_require__(/*! ./util */ 298);
+var _index = _interopRequireDefault(__webpack_require__(/*! ./i18n/index.js */ 319));
+var _util = __webpack_require__(/*! ./util */ 323);
 //
 //
 //
