@@ -1,5 +1,5 @@
 <template>
-	<view class="">
+	<view class="" style="background: linear-gradient(to bottom, #e6e8e7, #f5f5f5);">
 		<hearchItem :title="'我的'" />
 		<view class="topView ">
 			<view class="px36">
@@ -47,7 +47,7 @@
 			</view>
 		</view>
 		<view class="h20"></view>
-		<view class="px36 py30  mt20 ">
+		<view class="px36 py30 mt20 ">
 			<view class="bg-white radius20 p30">
 				<view class="" v-for="item in tagList" :key="item.id" @click="handUrl(item.url)">
 					<view class="flex justify-between">
