@@ -56,7 +56,7 @@
 				if (item.path == '/' + this.route) {
 					console.log("跳转当前页，拒绝")
 				} else {
-					uni.reLaunch({
+					uni.switchTab({
 						url: item.path
 					})
 				}

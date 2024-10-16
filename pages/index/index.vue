@@ -55,7 +55,7 @@
 				if(newVal==0){
 					clearInterval(this.timer);
 					if(uni.getStorageSync('token')){
-						uni.navigateTo({
+						uni.switchTab({
 							url:'/pages/home/index'
 						})
 					}

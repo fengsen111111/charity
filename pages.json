@@ -70,5 +70,25 @@
 		"app-plus": {
 			"titleView": false
 		}
-	}
+	},
+	"tabBar": {
+		"custom":true,//隐藏官方选项卡
+	    "list": [  {
+	        "pagePath": "pages/home/index",
+	        "iconPath": "/static/icon/home.png",
+	        "selectedIconPath": "/static/icon_che/home.png",
+	        "text": "首页"
+	      },{
+	        "pagePath": "pages/about/index",
+	        "iconPath": "/static/icon/aixin.png",
+	        "selectedIconPath": "/static/icon_che/aixin.png",
+	        "text": "关于基金"
+	      }, {
+	        "pagePath": "pages/my/index",
+	        "iconPath": "/static/icon/my.png",
+	        "selectedIconPath": "/static/icon_che/my.png",
+	        "text": "我的"
+	      }
+	    ]
+	  }
 }

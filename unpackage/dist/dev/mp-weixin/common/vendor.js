@@ -18528,6 +18528,25 @@ var _default = {
     "app-plus": {
       "titleView": false
     }
+  },
+  "tabBar": {
+    "custom": true,
+    "list": [{
+      "pagePath": "pages/home/index",
+      "iconPath": "/static/icon/home.png",
+      "selectedIconPath": "/static/icon_che/home.png",
+      "text": "首页"
+    }, {
+      "pagePath": "pages/about/index",
+      "iconPath": "/static/icon/aixin.png",
+      "selectedIconPath": "/static/icon_che/aixin.png",
+      "text": "关于基金"
+    }, {
+      "pagePath": "pages/my/index",
+      "iconPath": "/static/icon/my.png",
+      "selectedIconPath": "/static/icon_che/my.png",
+      "text": "我的"
+    }]
   }
 };
 exports.default = _default;
