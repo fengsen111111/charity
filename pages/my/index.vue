@@ -159,10 +159,11 @@
 						},
 					}).then(res => {
 						console.log('111',res);
+						this.dialogInputConfirm()
 						// const data = JSON.parse(res.data)
 					})
 				})
-				this.dialogInputConfirm()
+				
 				
 				// -----------------------------------
 				// uni.setStorageSync('imgUser', this.img_user)

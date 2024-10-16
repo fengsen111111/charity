@@ -232,6 +232,7 @@ var _default = {
   watch: {},
   methods: {
     chooseAvatar: function chooseAvatar(e) {
+      var _this2 = this;
       console.log(' e.detail', e.detail.avatarUrl);
       this.img_user = e.detail.avatarUrl;
       // -----------------------------------
@@ -254,11 +255,10 @@ var _default = {
           }
         }).then(function (res) {
           console.log('111', res);
+          _this2.dialogInputConfirm();
           // const data = JSON.parse(res.data)
         });
       });
-
-      this.dialogInputConfirm();
 
       // -----------------------------------
       // uni.setStorageSync('imgUser', this.img_user)
@@ -283,7 +283,7 @@ var _default = {
       // })
     },
     handleUpload: function handleUpload() {
-      var _this2 = this;
+      var _this3 = this;
       uni.chooseImage({
         success: function success(chooseImageRes) {
           console.log('数据', chooseImageRes);
@@ -301,8 +301,8 @@ var _default = {
               };
               (0, _api.uploadFile)(params).then(function (fileRes) {
                 console.log('上传图片', fileRes.data);
-                _this2.img_user = fileRes.data;
-                _this2.dialogInputConfirm();
+                _this3.img_user = fileRes.data;
+                _this3.dialogInputConfirm();
               });
             });
           });
@@ -311,10 +311,10 @@ var _default = {
     },
     // 用户信息
     _getUserInfo: function _getUserInfo() {
-      var _this3 = this;
+      var _this4 = this;
       (0, _api.getUserInfo)().then(function (res) {
         console.log('用户信息', res.data.data);
-        _this3.userInfo = res.data.data;
+        _this4.userInfo = res.data.data;
       });
     },
     handUrl: function handUrl(item) {
@@ -363,7 +363,7 @@ var _default = {
       this.$refs.inputDialog.open();
     },
     dialogInputConfirm: function dialogInputConfirm(val) {
-      var _this4 = this;
+      var _this5 = this;
       console.log(val);
       this.nickname = val;
       uni.showLoading();
@@ -384,13 +384,13 @@ var _default = {
             icon: 'success',
             duration: 1000
           });
-          _this4.$refs.inputDialog.close();
-          _this4._getUserInfo();
+          _this5.$refs.inputDialog.close();
+          _this5._getUserInfo();
         }
       });
     },
     _getPhoneNumber: function _getPhoneNumber(e) {
-      var _this5 = this;
+      var _this6 = this;
       console.log('手机号', e.detail.code);
       (0, _api.getPhoneNumber)({
         post_params: {
@@ -400,9 +400,9 @@ var _default = {
         }
       }).then(function (res) {
         console.log('授权成功', res.data.data.phone_number);
-        _this5.mobile = res.data.data.phone_number;
-        uni.setStorageSync('phone', _this5.mobile); //存入电话号码
-        _this5.dialogInputConfirm();
+        _this6.mobile = res.data.data.phone_number;
+        uni.setStorageSync('phone', _this6.mobile); //存入电话号码
+        _this6.dialogInputConfirm();
       });
     }
   }

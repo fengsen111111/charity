@@ -123,7 +123,7 @@
 			},
 			focus: {
 				type: Boolean,
-				default: true,
+				default: false,
 			}
 		},
 		data() {

@@ -232,7 +232,7 @@ var _default = {
     },
     focus: {
       type: Boolean,
-      default: true
+      default: false
     }
   },
   data: function data() {
