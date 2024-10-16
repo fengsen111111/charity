@@ -4,44 +4,49 @@
 		<view class="topView ">
 			<view class="px36">
 				<view class="bg-white radius20 w-full">
-					<view class="p30 flex">
-						<!-- <image @click="handleUpload" v-if="userInfo.head_image" :src="userInfo.head_image" class="userImg" mode=""></image> -->
-						<!-- <button v-else class="clear-style" open-type="chooseAvatar" @chooseavatar="chooseAvatar"> -->
-						<button class="clear-style" open-type="chooseAvatar" @chooseavatar="chooseAvatar">
-							<!--  @click="handleUpload"   -->
-							<image :src="img_user" v-if="img_user" mode="" class="userImg"></image>
-							<view v-else class="userImg bgEBEBEB"></view>
-						</button>
-						<view class="ml30 ">
-							<view class="flex items-center justify-between" v-if="userInfo.mobile">
-								<view class="text36">{{userInfo.nickname}}</view>
-								<image src="../../static/config.png" class="imgConfig" mode=""
-									@click="inputDialogToggle"></image>
-							</view>
-							<view class="col787878 text30 font-bold mt20" v-if="userInfo.mobile">
-								{{userInfo.mobile}}
-							</view>
-							<button class="clear-style" v-else
-								style="font-size:32rpx;margin-left:20rpx;line-height: 110rpx;"
-								open-type="getPhoneNumber" @getphonenumber="_getPhoneNumber" id="sqphone" ref="sqphone">
-								授权
+					<view class="p30">
+						<view class="flex">
+							<!-- <image @click="handleUpload" v-if="userInfo.head_image" :src="userInfo.head_image" class="userImg" mode=""></image> -->
+							<!-- <button v-else class="clear-style" open-type="chooseAvatar" @chooseavatar="chooseAvatar"> -->
+							<button class="clear-style" open-type="chooseAvatar" @chooseavatar="chooseAvatar">
+								<!--  @click="handleUpload"   -->
+								<image :src="img_user" v-if="img_user" mode="" class="userImg"></image>
+								<view v-else class="userImg bgEBEBEB"></view>
 							</button>
+							<view class="ml30 ">
+								<view class="flex items-center justify-between" v-if="userInfo.mobile">
+									<view class="text36">{{userInfo.nickname}}</view>
+									<image src="../../static/config.png" class="imgConfig" mode=""
+										@click="inputDialogToggle"></image>
+								</view>
+								<view class="col787878 text30 font-bold mt20" v-if="userInfo.mobile">
+									{{userInfo.mobile}}
+								</view>
+								<button class="clear-style" v-else
+									style="font-size:32rpx;margin-left:20rpx;line-height: 110rpx;"
+									open-type="getPhoneNumber" @getphonenumber="_getPhoneNumber" id="sqphone" ref="sqphone">
+									授权
+								</button>
+							</view>
 						</view>
+						<view class="borderF0F0F0"></view>
 					</view>
-					<view class="px36 py30 flex items-center justify-between">
+					
+					<view class="px36 pb30 flex items-center justify-between">
 						<view class="text24">我的积分</view>
-						<view class="flex  colD6B07A">
+						<view class="flex colD6B07A">
 							<view class="text36 font-bold ">{{userInfo.integral||0}}</view>
 							<view class="text18 ml10 mt16">积分</view>
 							<view class="w100"></view>
 							<image src="../../static/record.png" class="imgConfig ml40" mode=""
 								@click="handUrl('/pages/components/redemptionHistory/index')"></image>
+							<view class="w15"></view>
 						</view>
 					</view>
 				</view>
 			</view>
 		</view>
-
+		<view class="h20"></view>
 		<view class="px36 py30  mt20 ">
 			<view class="bg-white radius20 p30">
 				<view class="" v-for="item in tagList" :key="item.id" @click="handUrl(item.url)">
