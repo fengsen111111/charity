@@ -10,11 +10,12 @@
 			</view>
 		</view>
 
+		<!-- Loading Indicator -->
+		<view v-if="isLoading" class="text-center text-gray-500 mt-4">加载中...</view>
 		<!-- Activity List Component -->
 		<cardActivityTwo :isCode="true" :activeList="activeList" />
 
-		<!-- Loading Indicator -->
-		<view v-if="isLoading" class="text-center text-gray-500 mt-4">加载中...</view>
+
 	</view>
 </template>
 

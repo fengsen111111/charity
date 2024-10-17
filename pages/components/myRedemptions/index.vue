@@ -8,9 +8,9 @@
 				<view @click="handleIndex(3)" :class="indexItem == 3 ? 'border_bottom col205D57' : ''">已完成</view>
 			</view>
 		</view>
-		<view class="p35">
+		<view>
 			<view v-if="isLoading" class="loading-spinner">加载中...</view>
-			<view v-else>
+			<view v-else class="p35">
 				<view class="bg-white radius10 p20 mb20" v-for="item in orderList" :key="item.id">
 					<view class="flex">
 						<image :src="item.cover_image" class="w200 h100 radius10" mode=""></image>
