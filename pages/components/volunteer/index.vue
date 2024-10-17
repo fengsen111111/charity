@@ -52,7 +52,7 @@
 				<view class="borderF0F0F0"></view> -->
 				<view class="flex justify-between py30">
 					<view class="">特长</view>
-					<view class="text-right"><input type="text" placeholder="请输入特长..." v-model="form.skills"
+					<view class="text-right"><input style="width: 460rpx;" type="text" placeholder="请输入特长..." v-model="form.skills"
 							class=" col205D57" /></view>
 				</view>
 

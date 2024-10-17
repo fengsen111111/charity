@@ -3,7 +3,8 @@ import {
 	get,
 	post
 } from './index.js'
-const base_url = 'https://donate.api.sczhiyun.net'
+// const base_url = 'https://donate.api.sczhiyun.net'  //测试地址
+const base_url = 'https://api.qwcsh.com/'
 
 const api = {
 	GET_SETTING: base_url + '/donate/Setting/getSetting', // 设置
