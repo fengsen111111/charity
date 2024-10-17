@@ -31,6 +31,7 @@
 		</view>
 
 		<view class="mt20">
+			<view v-if="isLoading" class="text-center text-gray-500 mt-4">加载中...</view>
 			<cardActivity :activeList="activeList" />
 		</view>
 
@@ -77,7 +78,8 @@
 				type_id: '', //活动类型ID  
 				typeList: [], //分类列表
 				activeList: [], //活动列表
-				limit: 20
+				limit: 20,
+				isLoading: false
 			}
 		},
 		onReady() {
@@ -96,6 +98,7 @@
 		methods: {
 			// 活动
 			_getActivityList() {
+				this.isLoading = true
 				getActivityList({
 					post_params: {
 						key_word: this.rearch,
@@ -107,7 +110,9 @@
 				}).then((res) => {
 					console.log('活动列表', res.data.data.list);
 					this.activeList = res.data.data.list
-				})
+				}).finally(() => {
+					this.isLoading = false;
+				});
 			},
 			// 分类
 			_getActivityTypeList() {

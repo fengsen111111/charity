@@ -40,7 +40,7 @@ const interceptRequest = (options) => {
 	// 在这里添加请求头或其他处理逻辑
 	options.header = {
 		...options.header,
-		Authorization: token, // 示例：添加 token
+		Authorization: token, // 示例：添加 token\
 	};
 	return options;
 };

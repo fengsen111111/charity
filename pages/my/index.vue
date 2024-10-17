@@ -141,18 +141,18 @@
 		},
 		watch: {},
 		methods: {
+			// 头像上传
 			chooseAvatar(e) {
 				console.log(' e.detail', e.detail.avatarUrl);
 				this.img_user = e.detail.avatarUrl
 				// -----------------------------------
 				// let arr = avatarUrl.split("/")
 				// const fileName = arr[arr.length - 1]
-				
 				let ticket_time = ''
 				getTicket().then((res) => {
 					ticket_time = res.data.data.ticket_time
 					console.log('文件操作权限的时间',ticket_time);
-					console.log('e.detail.avatarUrl',e.detail.avatarUrl);
+					console.log('获取到的头像文件临时地址',e.detail.avatarUrl);
 					uni.uploadFile({
 						url: "https://donate.api.sczhiyun.net/factory_storage/File/uploadFile",
 						filePath:e.detail.avatarUrl,
@@ -164,7 +164,7 @@
 						},
 					}).then(res => {
 						console.log('111',res);
-						this.dialogInputConfirm()
+						this.dialogInputConfirm()//存入头像信息
 						// const data = JSON.parse(res.data)
 					})
 				})

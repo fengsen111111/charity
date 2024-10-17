@@ -10,8 +10,7 @@
 				<view class="flex justify-between items-baseline">
 					<view class="flex items-baseline">
 						<view>捐赠</view>
-						<!-- <view class=" text60 colD6B07A ml10 font-bold">{{Math.floor(item.money)}}</view> -->
-						<view class=" text60 colD6B07A ml10 font-bold">{{item.money}}</view>
+						<view class="text60 colD6B07A ml10 font-bold">{{item.money}}</view>
 						<view class="ml10">元</view>
 					</view>
 					<view class="col787878">{{item.create_time}}</view>
@@ -24,43 +23,48 @@
 
 <script>
 	import hearchItem from '@/components/hearchItem/index.vue'
-	import {
-		getMyDonateLogList//wode捐赠记录
-	} from '@/request/api.js'
+	import { getMyDonateLogList } from '@/request/api.js'
+
 	export default {
 		components: {
 			hearchItem,
 		},
 		data() {
 			return {
-				donList:[],//wode数据
-				limit:20
+				donList: [],
+				limit: 20,
+				currentPage: 1,
+				loading: false
 			}
 		},
-		onReachBottom(){
-			this.limit = this.limit+20
-			this._getMyDonateLogList()
+		onReachBottom() {
+			this.currentPage++;
+			this._getMyDonateLogList();
 		},
 		onReady() {
-			this._getMyDonateLogList()
+			this._getMyDonateLogList();
 		},
-		watch: {},
 		methods: {
-			_getMyDonateLogList(){
+			_getMyDonateLogList() {
+				this.loading = true;
 				getMyDonateLogList({
-					post_params:{
-						currentPage:1,
-						perPage:this.limit
+					post_params: {
+						currentPage: this.currentPage,
+						perPage: this.limit
 					}
-				}).then((res)=>{
-					console.log('最新数据',res.data.data);
-					this.donList = res.data.data.list
-				})
+				}).then((res) => {
+					console.log('最新数据', res.data.data);
+					this.donList = this.donList.concat(res.data.data.list); // Append new data
+				}).catch(err => {
+					console.error('获取数据失败', err);
+				}).finally(() => {
+					this.loading = false;
+				});
 			}
 		}
 	}
 </script>
 
 <style>
-
+/* 添加样式根据需要 */
 </style>

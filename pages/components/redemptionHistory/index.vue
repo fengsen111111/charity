@@ -3,10 +3,10 @@
 		<hearchItem :isLeft="true" :title="'兑换记录'" />
 		<view class="p40">
 			<view v-for="item in logList" :key="item.id">
-				<view class="flex text28  justify-between">
-					<view class="">{{item.name}}</view>
+				<view class=" text28 flex justify-between items-center">
+					<view class="w-1-3">{{item.name}}</view>
 					<view class="col787878">{{item.create_time}}</view>
-					<view :class="item==2?'col787878':'colD6B07A'" class=" text36 font-bold">{{item.integral}}</view>
+					<view :class="item==2?'col787878':'colD6B07A'" class="w-1-6 text-right text36 font-bold">{{item.integral}}</view>
 				</view>
 				<view class="h1 bgEBEBEB my34"></view>
 			</view>
@@ -57,5 +57,10 @@
 </script>
 
 <style>
-
+.w-1-3{
+	width: 33%;
+}
+.w-1-6{
+		width: 16%;
+	}
 </style>

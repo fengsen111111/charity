@@ -36,6 +36,9 @@
 		</view>
 		<view class="bgEBEBEB h18 "></view>
 		<!-- <cardFunds /> -->
+		<!-- Loading Indicator -->
+		<view v-if="isLoading" class="text-center text-gray-500 mt-4">加载中...</view>
+		<view class="h20"></view>
 		<!-- 慈善基金 -->
 		<view class="" v-if="indexItem">
 			<cardFunds :donList="donList" />
@@ -126,6 +129,7 @@
 				swiperList:[],//轮播图
 				limit:20,//
 				typeList:[],//类型
+				isLoading: false
 			}
 		},
 		onLoad() {
@@ -261,6 +265,7 @@
 			},
 			// 基金列表
 			_getDonateList() {
+				this.isLoading = true
 				getDonateList({
 					post_params: {
 						type_id: this.indexItem,
@@ -270,11 +275,14 @@
 				}).then((res) => {
 					console.log('首页基金列表', res.data.data.list);
 					this.donList = res.data.data.list
-				})
+				}).finally(() => {
+					this.isLoading = false;
+				});
 			},
 			// 切换
 			handleIndex(index) {
 				this.indexItem = index
+				this.donList = []
 				this._getDonateList()//基金
 			},
 			// 捐款
@@ -297,5 +305,16 @@
 
 	.bgtwo {
 		background: linear-gradient(90deg, #164336 0%, #226043 100%);
+	}
+	.text-center {
+		text-align: center;
+	}
+	
+	.text-gray-500 {
+		color: #6B7280;
+	}
+	
+	.mt-4 {
+		margin-top: 16px;
 	}
 </style>

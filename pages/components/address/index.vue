@@ -188,6 +188,7 @@
 			// 
 			handleAddAddress(index,item) {
 				console.log('选择的地址',item);
+				this.defaulrObj = item
 				this.type = index
 				if(this.type ==1){
 					// 新增

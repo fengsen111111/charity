@@ -101,13 +101,13 @@ var components
 try {
   components = {
     uniIcons: function () {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 187))
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 189))
     },
     uniPopup: function () {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 195))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 197))
     },
     uniPopupDialog: function () {
-      return Promise.all(/*! import() | uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog.vue */ 202))
+      return Promise.all(/*! import() | uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog.vue */ 204))
     },
   }
 } catch (e) {
@@ -173,12 +173,12 @@ exports.default = void 0;
 var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var tarBar = function tarBar() {
   Promise.all(/*! require.ensure | components/tarBar/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tarBar/index")]).then((function () {
-    return resolve(__webpack_require__(/*! @/components/tarBar/index.vue */ 214));
+    return resolve(__webpack_require__(/*! @/components/tarBar/index.vue */ 216));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var hearchItem = function hearchItem() {
   __webpack_require__.e(/*! require.ensure | components/hearchItem/index */ "components/hearchItem/index").then((function () {
-    return resolve(__webpack_require__(/*! @/components/hearchItem/index.vue */ 227));
+    return resolve(__webpack_require__(/*! @/components/hearchItem/index.vue */ 229));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -231,6 +231,7 @@ var _default = {
   },
   watch: {},
   methods: {
+    // 头像上传
     chooseAvatar: function chooseAvatar(e) {
       var _this2 = this;
       console.log(' e.detail', e.detail.avatarUrl);
@@ -238,12 +239,11 @@ var _default = {
       // -----------------------------------
       // let arr = avatarUrl.split("/")
       // const fileName = arr[arr.length - 1]
-
       var ticket_time = '';
       (0, _api.getTicket)().then(function (res) {
         ticket_time = res.data.data.ticket_time;
         console.log('文件操作权限的时间', ticket_time);
-        console.log('e.detail.avatarUrl', e.detail.avatarUrl);
+        console.log('获取到的头像文件临时地址', e.detail.avatarUrl);
         uni.uploadFile({
           url: "https://donate.api.sczhiyun.net/factory_storage/File/uploadFile",
           filePath: e.detail.avatarUrl,
@@ -255,7 +255,7 @@ var _default = {
           }
         }).then(function (res) {
           console.log('111', res);
-          _this2.dialogInputConfirm();
+          _this2.dialogInputConfirm(); //存入头像信息
           // const data = JSON.parse(res.data)
         });
       });

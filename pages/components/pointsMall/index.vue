@@ -1,38 +1,51 @@
 <template>
-	<view class="">
+	<view>
 		<hearchItem :isLeft="true" :title="'积分兑换'" />
+
+		<!-- Search Bar -->
 		<view class="bg-white">
 			<view class="p35">
 				<view class="border205D57 col9B9B9B text24 flex p10 items-center radius30">
 					<uni-icons type="search" size="20" color="#205D57"></uni-icons>
-					<view class="ml10 w-full"> <input type="text" class="w-full col-black" v-model="key_word"
-							@blur="_getGoodsList" placeholder="请输入奖品/服务关键词搜索" /></view>
+					<view class="ml10 w-full">
+						<input type="text" class="w-full col-black" v-model="key_word" @input="debouncedSearch"
+							placeholder="请输入奖品/服务关键词搜索" />
+					</view>
 				</view>
 			</view>
+
+			<!-- Filter by Integral -->
 			<view class="flex items-center px36 pb30">
-				<view class="px10 text26 col205D57" @click="handleIndex(item)" v-for="(item,index) in configInfo.integral"
-					:key="item">
-					<view :class="checkIndex==item?'checkIndex':''">
-						<!-- {{item==1?'全部':item==2?'1-50分':item==3?'51-100分':'100分以上'}} -->
-						<text v-if="Number(index+1)==Number(configInfo.integral.length)">{{item+'以上'}}</text>
-						<text v-else>{{item}}</text>
+				<view class="px10 text26 col205D57" @click="handleIndex(item)"
+					v-for="(item, index) in configInfo.integral" :key="item">
+					<view :class="checkIndex === item ? 'checkIndex' : ''">
+						<text v-if="Number(index + 1) === Number(configInfo.integral.length)">{{ item + '以上' }}</text>
+						<text v-else>{{ item }}</text>
 					</view>
 				</view>
 			</view>
 		</view>
+
+		<!-- Loading Indicator -->
+		<view v-if="isLoading" class="text-center text-gray-500 mt-4">加载中...</view>
+
+		<!-- Points Exchange Items -->
 		<view class="p35">
 			<shopItem :jfList="jfList" />
 		</view>
+
 
 	</view>
 </template>
 
 <script>
-	import hearchItem from '@/components/hearchItem/index.vue'
-	import shopItem from '@/components/shopItem/index.vue'
+	import hearchItem from '@/components/hearchItem/index.vue';
+	import shopItem from '@/components/shopItem/index.vue';
 	import {
 		getGoodsList
-	} from '@/request/api.js'
+	} from '@/request/api.js';
+	import debounce from 'lodash.debounce'; // Import lodash debounce for better input handling
+
 	export default {
 		components: {
 			hearchItem,
@@ -40,31 +53,27 @@
 		},
 		data() {
 			return {
-				checkIndex: '',
-				key_word: '', //搜索
-				jfList: [], //积分商品
-				configInfo: {},
-				limit: 20
-			}
+				checkIndex: '', // Selected filter index
+				key_word: '', // Search keyword
+				jfList: [], // Points exchange items
+				configInfo: {}, // Configuration info (from store)
+				limit: 20, // Items limit per page
+				isLoading: false // Loading state indicator
+			};
 		},
 		created() {
-			this._getGoodsList()
-			this.configInfo = this.$store.state.config //四大区域
+			this.configInfo = this.$store.state.config; // Fetch config data
+			this._getGoodsList(); // Initial fetch
 		},
-		onReachBottom() {
-			this.limit = this.limit + 20
-			this._getGoodsList()
-		},
-		onShow(){
-			this._getGoodsList()
-		},
-		watch: {},
 		methods: {
-			// 触发搜索
-			confirmTap() {
-			      console.log('按下完成触发')
-			 },
+			// Debounced search to avoid excessive API calls
+			debouncedSearch: debounce(function() {
+				this._getGoodsList();
+			}, 500),
+
+			// Fetch the goods list based on the current filters
 			_getGoodsList() {
+				this.isLoading = true;
 				getGoodsList({
 					post_params: {
 						key_word: this.key_word,
@@ -73,28 +82,22 @@
 						perPage: this.limit
 					}
 				}).then((res) => {
-					console.log("积分商品", res.data.data.list)
-					this.jfList = res.data.data.list
-				})
-			},
-			change(e) {
-				console.log("e:", e);
-			},
-			handleIndex(index) {
-				console.log('index', index);
-				if (this.checkIndex == index) {
-					this.checkIndex = ''
-				} else {
-					this.checkIndex = index
-				}
-				this._getGoodsList()
+					this.jfList = res.data.data.list;
+				}).finally(() => {
+					this.isLoading = false;
+				});
 			},
 
+			// Handle index (points filter) change
+			handleIndex(index) {
+				this.checkIndex = this.checkIndex === index ? '' : index;
+				this._getGoodsList();
+			},
 		}
-	}
+	};
 </script>
 
-<style>
+<style scoped>
 	.checkIndex {
 		background: linear-gradient(90deg, #174437 0%, #225F43 100%);
 		color: white;
@@ -102,58 +105,15 @@
 		border-radius: 20rpx;
 	}
 
-	.border-bottom-dotted {
-		border: 1rpx dotted #9B9B9B;
+	.text-center {
+		text-align: center;
 	}
 
-	.charitableImg {
-		width: 170rpx;
-		height: 65rpx;
+	.text-gray-500 {
+		color: #6B7280;
 	}
 
-	.bgtwo {
-		background: linear-gradient(90deg, #164336 0%, #226043 100%);
-	}
-
-	.uni-select__input-text {
-		width: 100%;
-		color: #205D57 !important;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-		-o-text-overflow: ellipsis;
-		overflow: hidden;
-	}
-
-	.uni-select {
-		font-size: 14px;
-		border: 0px solid #e5e5e5 !important;
-		box-sizing: border-box;
-		border-radius: 4px;
-		padding: 0 5px;
-		padding-left: 10px;
-		position: relative;
-		display: flex;
-		-webkit-user-select: none;
-		user-select: none;
-		flex-direction: row;
-		align-items: center;
-		border-bottom: solid 0px #e5e5e5 !important;
-		width: 100%;
-		flex: 1;
-		height: 35px;
-	}
-
-	/* 隐藏滚动条，启用滚动 */
-	.scrollable {
-		overflow: scroll;
-		/* 或者 overflow: auto */
-		;
-		width: 77vw;
-		white-space: nowrap
-	}
-
-	/* 针对 WebKit 浏览器隐藏滚动条 */
-	.scrollable::-webkit-scrollbar {
-		display: none;
+	.mt-4 {
+		margin-top: 16px;
 	}
 </style>
