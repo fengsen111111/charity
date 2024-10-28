@@ -13,7 +13,7 @@
 				</view>
 				<view class="borderF0F0F0"></view>
 				<view class="flex justify-between py30">
-					<view class="">性别</view>
+					<view class="">性别<text class="colFF0000 ml10">*</text></view>
 					<view class="">
 						<uni-data-checkbox v-model="form.gender" :localdata="sexs" />
 					</view>
@@ -29,14 +29,14 @@
 				</view>
 				<view class="borderF0F0F0"></view>
 				<view class="flex justify-between py30">
-					<view class="">身份证号</view>
+					<view class="">身份证号<text class="colFF0000 ml10">*</text></view>
 					<view class="text-right"><input type="text" placeholder="请输入身份证号..." v-model="form.id_card"
 							class=" col205D57" /></view>
 				</view>
 
 				<view class="borderF0F0F0"></view>
 				<view class="flex justify-between py30">
-					<view class="">手机号</view>
+					<view class="">手机号<text class="colFF0000 ml10">*</text></view>
 					<view class="text-right"><input type="text" placeholder="请输入手机号..." v-model="form.mobile"
 							class=" col205D57" /></view>
 				</view>
@@ -169,6 +169,39 @@
 				setTimeout(() => {
 					uni.hideLoading();
 				}, 500)
+				
+			    if(!this.form.name){
+					uni.showToast({
+						title: '姓名必填!',
+						icon: 'error',
+						duration: 1000
+					});
+					return false
+				}
+				if(!this.form.gender){
+					uni.showToast({
+						title: '性别必填!',
+						icon: 'error',
+						duration: 1000
+					});
+					return false
+				}
+				if(!this.form.mobile){
+					uni.showToast({
+						title: '手机号必填!',
+						icon: 'error',
+						duration: 1000
+					});
+					return false
+				}
+				if(!this.form.id_card){
+					uni.showToast({
+						title: '身份证必填!',
+						icon: 'error',
+						duration: 1000
+					});
+					return false
+				}
 				joinTeam({
 					post_params: {
 						name: this.form.name,

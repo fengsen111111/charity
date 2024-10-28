@@ -102,6 +102,15 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var g0 = Math.ceil(_vm.total / _vm.limit)
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        g0: g0,
+      },
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -135,7 +144,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(uni) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -154,9 +163,10 @@ var _default = {
   data: function data() {
     return {
       donList: [],
-      limit: 20,
+      limit: 10,
       currentPage: 1,
-      loading: false
+      loading: false,
+      total: 0
     };
   },
   onReachBottom: function onReachBottom() {
@@ -167,6 +177,33 @@ var _default = {
     this._getMyDonateLogList();
   },
   methods: {
+    handleJJ: function handleJJ(type) {
+      if (type == 1) {
+        // 上一页
+        if (this.currentPage > 1) {
+          this.currentPage--;
+          this._getMyDonateLogList();
+        } else {
+          uni.showToast({
+            title: '已到最小页!',
+            icon: 'error',
+            duration: 1000
+          });
+        }
+      } else {
+        // 下一页
+        if (Math.ceil(this.total / this.limit) >= this.currentPage + 1) {
+          this.currentPage++;
+          this._getMyDonateLogList();
+        } else {
+          uni.showToast({
+            title: '已到最后一页!',
+            icon: 'error',
+            duration: 1000
+          });
+        }
+      }
+    },
     _getMyDonateLogList: function _getMyDonateLogList() {
       var _this = this;
       this.loading = true;
@@ -177,7 +214,9 @@ var _default = {
         }
       }).then(function (res) {
         console.log('最新数据', res.data.data);
-        _this.donList = _this.donList.concat(res.data.data.list); // Append new data
+        // this.donList = this.donList.concat(res.data.data.list); // Append new data
+        _this.donList = res.data.data.list;
+        _this.total = res.data.data.count;
       }).catch(function (err) {
         console.error('获取数据失败', err);
       }).finally(function () {
@@ -187,6 +226,7 @@ var _default = {
   }
 };
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 

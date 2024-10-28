@@ -26,7 +26,7 @@
 		</view>
 		<view class="uni-pagination__num uni-pagination__num-flex-none">
 			<view class="uni-pagination__num-current">
-				<text class="uni-pagination__num-current-text is-pc-hide current-index-text">{{ currentIndex }}</text>
+				<text class="uni-pagination__num-current-text is-pc-hide current-index-text" style="color: #D6B07A !important;">{{ currentIndex }}</text>
 				<text class="uni-pagination__num-current-text is-pc-hide">/{{ maxPage || 0 }}</text>
 				<!-- #ifndef APP-NVUE -->
 				<view v-for="(item, index) in paper" :key="index" :class="{ 'page--active': item === currentIndex }"

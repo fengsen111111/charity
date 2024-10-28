@@ -235,6 +235,38 @@ var _default = {
       setTimeout(function () {
         uni.hideLoading();
       }, 500);
+      if (!this.form.name) {
+        uni.showToast({
+          title: '姓名必填!',
+          icon: 'error',
+          duration: 1000
+        });
+        return false;
+      }
+      if (!this.form.gender) {
+        uni.showToast({
+          title: '性别必填!',
+          icon: 'error',
+          duration: 1000
+        });
+        return false;
+      }
+      if (!this.form.mobile) {
+        uni.showToast({
+          title: '手机号必填!',
+          icon: 'error',
+          duration: 1000
+        });
+        return false;
+      }
+      if (!this.form.id_card) {
+        uni.showToast({
+          title: '身份证必填!',
+          icon: 'error',
+          duration: 1000
+        });
+        return false;
+      }
       (0, _api.joinTeam)({
         post_params: {
           name: this.form.name,
