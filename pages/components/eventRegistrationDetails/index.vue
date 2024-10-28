@@ -1,7 +1,7 @@
 <template>
 	<view class="">
 		<hearchItem :isLeft="true" :title="'活动详情'" />
-		<swiperItemsTwo :isBottom="false" :swiperList="[activeDetails.images]" />
+		<swiperItemsTwo :isBottom="false" :swiperList="activeDetails.images" />
 		<view class="py30 flex justify-between ml36">
 			<view class="text32 font-bold w-4-5">
 				{{activeDetails.name}}

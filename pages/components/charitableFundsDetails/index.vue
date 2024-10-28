@@ -1,7 +1,7 @@
 <template>
 	<view class="">
 		<hearchItem :isLeft="true" :title="'慈善基金详情'" />
-		<swiperItemsTwo :isBottom="false" :swiperList="[fundDetails.images]" />
+		<swiperItemsTwo :isBottom="false" :swiperList="fundDetails.images" />
 		<view class="py30 px36">
 			<view class="text32 font-bold">{{fundDetails.name}}</view>
 			<view class="text24 mt20 col787878">{{fundDetails.org_name}}</view>

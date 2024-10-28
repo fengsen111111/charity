@@ -20753,7 +20753,7 @@ var _index = __webpack_require__(/*! ./index.js */ 36);
 // 引入 request 文件
 
 // const base_url = 'https://donate.api.sczhiyun.net'  //测试地址
-var base_url = 'https://api.qwcsh.com/';
+var base_url = 'https://api.qwcsh.com';
 var api = {
   GET_SETTING: base_url + '/donate/Setting/getSetting',
   // 设置
