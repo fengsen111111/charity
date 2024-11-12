@@ -2,7 +2,7 @@
 	<view class="">
 		<view class="">
 			<swiper @change="change" :current="current" class="h389 w-full" :class="isBottom?'radius20':''" circular
-				:indicator-dots="false" :autoplay="true" :interval="4000">
+				:indicator-dots="false" :autoplay="false" :interval="4000">
 				<swiper-item class="h389" v-for="item in swiperList" :key="item.id">
 					<image @click="handleUrl(item)" :src="item" class="itemsImg" :class="isBottom?'radius20':''" mode="" >
 					</image>
@@ -53,7 +53,11 @@
 		watch: {},
 		methods: {
 			change(e) {
-				this.current = e.detail.current
+				let {current, source} = e.detail
+				//只有页面自动切换，手动切换时才轮播，其他不允许
+				if (source === 'autoplay' || source === 'touch') {
+					this.current = current;
+				}
 			},
 			_getBannerDetail(id){
 				getBannerDetail({

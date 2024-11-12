@@ -141,6 +141,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var hearchItem = function hearchItem() {
   __webpack_require__.e(/*! require.ensure | components/hearchItem/index */ "components/hearchItem/index").then((function () {
     return resolve(__webpack_require__(/*! @/components/hearchItem/index.vue */ 237));
@@ -152,17 +153,41 @@ var _default = {
   },
   data: function data() {
     return {
-      option: {} //传递数据
+      option: {
+        content: ''
+      },
+      //传递数据
+
+      content: '' //
     };
   },
   onLoad: function onLoad(option) {
-    // console.log('onload');
+    console.log('onload', option);
     // console.log('option',option);
     this.option = option;
+    if (option.itemId) {
+      this._getOtherActivityDetail(option.itemId);
+    }
+    if (option.title == '服务协议') {
+      this.content = this.$store.state.config.service_agreement;
+      console.log('this.content', this.content);
+    }
   },
   mounted: function mounted() {},
   watch: {},
-  methods: {}
+  methods: {
+    _getOtherActivityDetail: function _getOtherActivityDetail(itemId) {
+      var _this = this;
+      (0, _api.getOtherActivityDetail)({
+        post_params: {
+          id: itemId
+        }
+      }).then(function (res) {
+        console.log('富文本', res.data.data.content);
+        _this.content = res.data.data.content;
+      });
+    }
+  }
 };
 exports.default = _default;
 

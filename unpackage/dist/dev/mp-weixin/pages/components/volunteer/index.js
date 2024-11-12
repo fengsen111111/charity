@@ -221,7 +221,7 @@ var _default = {
   methods: {
     handleUrlSer: function handleUrlSer() {
       uni.navigateTo({
-        url: '/pages/components/textContent/index?title=服务协议&content=' + this.$store.state.config.service_agreement
+        url: '/pages/components/textContent/index?title=服务协议'
       });
     },
     handleArea: function handleArea(item) {

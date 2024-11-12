@@ -214,16 +214,19 @@ var _default = {
       });
     },
     handUrl: function handUrl(item) {
-      (0, _api.getOtherActivityDetail)({
-        post_params: {
-          id: item.id
-        }
-      }).then(function (res) {
-        console.log('活动详情2富文本', res.data.data);
-        uni.navigateTo({
-          url: '/pages/components/textContent/index?content=' + res.data.data.content
-        });
+      uni.navigateTo({
+        url: '/pages/components/textContent/index?itemId=' + item.id
       });
+      // getOtherActivityDetail({
+      // 	post_params:{
+      // 		id:item.id
+      // 	}
+      // }).then((res)=>{
+      // 	console.log('活动详情2富文本',res.data.data);
+      // uni.navigateTo({
+      // 	url:'/pages/components/textContent/index?content='+res.data.data.content
+      // })
+      // })
     } // _getActivityList(){
     // 	getActivityList({
     // 		post_params:{

@@ -1,6 +1,5 @@
 <template>
 	<view class="bg-white" style="padding-bottom: 400rpx;">
-		<!-- <view class="home_top" style="background-image: url('../../static/home_top.png')"> -->
 		<view class="home_top" style="background-image: url('https://donate.api.sczhiyun.net/uploads/resource/activity/20241008/684313227672158358.png')">
 			<view class="px36">
 				<image src="../../static/home_text.png" class="textImg" mode=""></image>
@@ -18,11 +17,6 @@
 							<view class="text30 ml10 mr10">{{userInfo.integral||0}}</view>
 						</view>
 					</view>
-					<!-- <view class="flex">
-						<image src="../../static/home_tz.png" class="tzImg" mode="">
-						</image>
-						<view class="checkboxTz"></view>
-					</view> -->
 				</view>
 
 				<!-- 轮播 -->

@@ -159,6 +159,7 @@ var _api = __webpack_require__(/*! @/request/api.js */ 35);
 //
 //
 //
+//
 var _default2 = {
   props: {
     isBottom: {
@@ -182,7 +183,13 @@ var _default2 = {
   watch: {},
   methods: {
     change: function change(e) {
-      this.current = e.detail.current;
+      var _e$detail = e.detail,
+        current = _e$detail.current,
+        source = _e$detail.source;
+      //只有页面自动切换，手动切换时才轮播，其他不允许
+      if (source === 'autoplay' || source === 'touch') {
+        this.current = current;
+      }
     },
     _getBannerDetail: function _getBannerDetail(id) {
       (0, _api.getBannerDetail)({

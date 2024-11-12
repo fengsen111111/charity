@@ -4,7 +4,7 @@
 			<view style="width: 225rpx;height:165rpx;">
 				<image :src="itemObj.cover_image" class="cardImg" mode=""></image>
 			</view>
-			<view class=" ml30">
+			<view class=" ml30" style="width: 54vw;">
 				<view class="text32">{{itemObj.name}}</view>
 				<view class="col787878 text24 mt20">{{itemObj.org_name}}</view>
 				<view class="flex items-baseline justify-between text24">
