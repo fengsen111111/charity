@@ -2,7 +2,7 @@
 	<view class="">
 		<view class="">
 			<swiper @change="change" :current="current" class="h389 w-full" :class="isBottom?'radius20':''" circular
-				:indicator-dots="false" :autoplay="false" :interval="4000">
+				:indicator-dots="false" :autoplay="false">
 				<swiper-item class="h389" v-for="item in swiperList" :key="item.id">
 					<image @click="handleUrl(item)" :src="item" class="itemsImg" :class="isBottom?'radius20':''" mode="" >
 					</image>
@@ -59,22 +59,25 @@
 					this.current = current;
 				}
 			},
-			_getBannerDetail(id){
-				getBannerDetail({
-					post_params:{
-						id:id
-					}
-				}).then((res)=>{
-					console.log('富文本数据',res.data.data);
-					uni.navigateTo({
-						url:'/pages/components/textContent/index?content='+res.data.data
-					})
-				})
-			},
+			// _getBannerDetail(id){
+			// 	getBannerDetail({
+			// 		post_params:{
+			// 			id:id
+			// 		}
+			// 	}).then((res)=>{
+			// 		console.log('富文本数据',res.data.data);
+			// 		uni.navigateTo({
+			// 			url:'/pages/components/textContent/index?content='+res.data.data
+			// 		})
+			// 	})
+			// },
 			handleUrl(item){
 				console.log('点击跳转',item);
 				if(item.jump_type=='a'){// a富文本、
-					this._getBannerDetail(item.id)
+					// this._getBannerDetail(item.id)
+					uni.navigateTo({
+						url: '/pages/components/textContent/index?fwbId=' + item.id
+					})
 				}else if(item.jump_type=='b'){ //b志愿者申请页、
 					uni.navigateTo({
 						url:'/pages/components/volunteer/index'

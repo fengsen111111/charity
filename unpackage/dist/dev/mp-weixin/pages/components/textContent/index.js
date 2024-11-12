@@ -172,19 +172,35 @@ var _default = {
       this.content = this.$store.state.config.service_agreement;
       console.log('this.content', this.content);
     }
+    if (option.fwbId) {
+      this._getBannerDetail(option.fwbId);
+    }
   },
   mounted: function mounted() {},
   watch: {},
   methods: {
-    _getOtherActivityDetail: function _getOtherActivityDetail(itemId) {
+    //轮播图详情
+    _getBannerDetail: function _getBannerDetail(id) {
       var _this = this;
+      (0, _api.getBannerDetail)({
+        post_params: {
+          id: id
+        }
+      }).then(function (res) {
+        console.log('富文本数据', res.data.data);
+        _this.content = res.data.data;
+      });
+    },
+    // 详情
+    _getOtherActivityDetail: function _getOtherActivityDetail(itemId) {
+      var _this2 = this;
       (0, _api.getOtherActivityDetail)({
         post_params: {
           id: itemId
         }
       }).then(function (res) {
         console.log('富文本', res.data.data.content);
-        _this.content = res.data.data.content;
+        _this2.content = res.data.data.content;
       });
     }
   }

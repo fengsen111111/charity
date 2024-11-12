@@ -191,23 +191,26 @@ var _default2 = {
         this.current = current;
       }
     },
-    _getBannerDetail: function _getBannerDetail(id) {
-      (0, _api.getBannerDetail)({
-        post_params: {
-          id: id
-        }
-      }).then(function (res) {
-        console.log('富文本数据', res.data.data);
-        uni.navigateTo({
-          url: '/pages/components/textContent/index?content=' + res.data.data
-        });
-      });
-    },
+    // _getBannerDetail(id) {
+    // 	getBannerDetail({
+    // 		post_params: {
+    // 			id: id
+    // 		}
+    // 	}).then((res) => {
+    // 		console.log('富文本数据', res.data.data);
+    // 		uni.navigateTo({
+    // 			url: '/pages/components/textContent/index?fwbId=' + 
+    // 		})
+    // 	})
+    // },
     handleUrl: function handleUrl(item) {
       console.log('点击跳转', item);
       if (item.jump_type == 'a') {
         // a富文本、
-        this._getBannerDetail(item.id);
+        // this._getBannerDetail(item.id)
+        uni.navigateTo({
+          url: '/pages/components/textContent/index?fwbId=' + item.id
+        });
       } else if (item.jump_type == 'b') {
         //b志愿者申请页、
         uni.navigateTo({

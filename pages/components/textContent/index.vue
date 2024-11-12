@@ -16,7 +16,8 @@
 <script>
 	import hearchItem from '@/components/hearchItem/index.vue'
 	import {
-		getOtherActivityDetail //活动详情2
+		getOtherActivityDetail ,//活动详情2
+		getBannerDetail//富文本详情
 	} from '@/request/api.js'
 	export default {
 		components: {
@@ -42,12 +43,27 @@
 				this.content = this.$store.state.config.service_agreement
 				console.log('this.content',this.content);
 			}
+			if(option.fwbId){
+				this._getBannerDetail(option.fwbId)
+			}
 		},
 		mounted() {
 
 		},
 		watch: {},
 		methods: {
+			//轮播图详情
+			_getBannerDetail(id) {
+				getBannerDetail({
+					post_params: {
+						id: id
+					}
+				}).then((res) => {
+					console.log('富文本数据', res.data.data);
+				    this.content = res.data.data
+				})
+			},
+			// 详情
 			_getOtherActivityDetail(itemId) {
 				getOtherActivityDetail({
 					post_params: {
