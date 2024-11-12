@@ -20,7 +20,9 @@
 			</view>
 			<view class="mt30 flex " v-for="item in activeList" :key="item.id"
 				@click="handUrl(item)">
+				<view style="width: 225rpx;height:165rpx;">
 				<image :src="item.cover_image" class="activeItemImg" mode="">
+					</view>
 				</image>
 				<view class="ml30 text32 font-bold">
 					{{item.name}}
@@ -47,9 +49,11 @@
 	import hearchItem from '@/components/hearchItem/index.vue'
 	import swiperItems from '@/components/swiperItems/index.vue'
 	import {
-		getActivityList,//活动列表
-		getActivityDetail,//活动详情
-		getBannerList//轮播图
+		// getActivityList,//活动列表
+		// getActivityDetail,//活动详情
+		getBannerList,//轮播图
+		getOtherActivityList,//活动列表2
+		getOtherActivityDetail//活动详情2
 	} from '@/request/api.js'
 	export default {
 		components: {
@@ -69,15 +73,29 @@
 			this.configInfo = this.$store.state.config ? this.$store.state.config : {}
 		},
 		onReady() {
-			this._getActivityList()
+			// this._getActivityList()
 			this._getBannerList()//轮播图
+			this._getOtherActivityList()//活动列表2
 		},
 		onReachBottom(){
 			this.limit = this.limit+20
-			this._getActivityList() //活动
+			this._getOtherActivityList()//活动列表2
+			// this._getActivityList() //活动
+			
 		},
 		watch: {},
 		methods: {
+			_getOtherActivityList(){
+				getOtherActivityList({
+					post_params:{
+						currentPage:1,
+						perPage: this.limit
+					}
+				}).then((res)=>{
+					console.log('活动列表2',res.data.data.list);
+					this.activeList = res.data.data.list
+				})
+			},
 			// 轮播图列表
 			_getBannerList(){
 				getBannerList({
@@ -90,30 +108,29 @@
 				})
 			},
 			handUrl(item) {
-				getActivityDetail({
+				getOtherActivityDetail({
 					post_params:{
 						id:item.id
 					}
 				}).then((res)=>{
-					console.log('活动详情富文本',res.data.data);
+					console.log('活动详情2富文本',res.data.data);
 					uni.navigateTo({
 						url:'/pages/components/textContent/index?content='+res.data.data.content
 					})
 				})
-				
 			},
-			_getActivityList(){
-				getActivityList({
-					post_params:{
-						show_position:'b',
-						currentPage:1,
-						perPage: this.limit
-					}
-				}).then((res)=>{
-					console.log('活动列表',res.data.data.list);
-					this.activeList = res.data.data.list
-				})
-			}
+			// _getActivityList(){
+			// 	getActivityList({
+			// 		post_params:{
+			// 			show_position:'b',
+			// 			currentPage:1,
+			// 			perPage: this.limit
+			// 		}
+			// 	}).then((res)=>{
+			// 		console.log('活动列表',res.data.data.list);
+			// 		this.activeList = res.data.data.list
+			// 	})
+			// }
 		}
 	}
 </script>

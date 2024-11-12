@@ -44,7 +44,21 @@ const api = {
 	FILE_CONFIG: base_url + '/factory_storage/File/getUploadType', // 获取文件存储配置
 	FILE_UPLOAD: base_url + '/factory_storage/File/uploadFile', // 上传文件到本地长期保存
 	
+	GET_OTHER_ACTIVITY_LIST: base_url + '/donate/OtherActivity/getOtherActivityList', // 活动列表2
+	GET_OTHER_ACTIVITY_DETAIL: base_url + '/donate/OtherActivity/getOtherActivityDetail', // 活动详情2
+	
 }
+
+// 活动列表2
+export const getOtherActivityList = (params) => {
+	return post(api.GET_OTHER_ACTIVITY_LIST, params)
+}
+// 活动详情2
+export const getOtherActivityDetail = (params) => {
+	return post(api.GET_OTHER_ACTIVITY_DETAIL, params)
+}
+
+
 // 获取文件存储权限
 export const getTicket = (params) => {
 	return post(api.FILE_TICKET, params)

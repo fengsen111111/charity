@@ -128,6 +128,18 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var l0 =
+    !_vm.typeLog && _vm.fundDetails.use_log
+      ? _vm.fundDetails.use_log.slice(0, 3)
+      : null
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        l0: l0,
+      },
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -198,7 +210,8 @@ var _default = {
         money: ''
       },
       funds_id: '',
-      fundDetails: {}
+      fundDetails: {},
+      typeLog: false //false查看更多 true收起
     };
   },
   onLoad: function onLoad(option) {
@@ -210,6 +223,9 @@ var _default = {
   },
   watch: {},
   methods: {
+    handleLog: function handleLog() {
+      this.typeLog = !this.typeLog;
+    },
     handleCol: function handleCol() {
       this.$refs.share.close();
     },

@@ -1,7 +1,9 @@
 <template>
 	<view class="">
 		<view class="flex py20 bg-white px36 mb20" v-for="item in donList" :key="item.id" @click="handelUrl(item.id)">
-			<image :src="item.cover_image" class="cardImg" mode=""></image>
+			<view style="width: 225rpx;height:165rpx;">
+				<image :src="item.cover_image" class="cardImg" mode=""></image>
+			</view>
 			<view class=" ml30">
 				<view class="text32">{{item.name}}</view>
 				<view class="col787878 text24 mt20">{{item.org_name}}</view>

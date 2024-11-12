@@ -4,12 +4,12 @@
 	height: 165rpx;
 	border-radius: 20rpx;
 }
-.imgCode{
+.imgCode {
 	width: 381rpx;
 	height: 381rpx;
 	border-radius: 20rpx;
 }
-.padding_code{
+.padding_code {
 	padding: 184rpx;
 }
 

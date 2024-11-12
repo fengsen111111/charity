@@ -1,7 +1,9 @@
 <template>
 	<view class="">
-		<view class="flex mt20 py20 bg-white px36 mb20" v-for="item in activeList" :key="item.id" >
-			<image @click="handelUrl(item.activity_id)" :src="item.cover_image" class="cardImg" mode=""></image>
+		<view class="flex mt20 py20 bg-white px36 mb20" v-for="item in activeList" :key="item.id">
+			<view style="width: 225rpx;height:165rpx;">
+				<image @click="handelUrl(item.activity_id)" :src="item.cover_image" class="cardImg" mode=""></image>
+			</view>
 			<view class=" ml30">
 				<view class="flex">
 					<view class="text32 font-bold w-3-4">{{item.name}}</view>
@@ -13,7 +15,7 @@
 					<view class="font-bold text32 col205D57">名额：{{item.person_number}}人</view>
 					<view class="text24 col-black">可获得<text class="ml10 colD6B07A">{{item.integral}}积分</text></view>
 				</view>
-				<view class="flex text18 col787878 mt10 " style="white-space: nowrap;" >
+				<view class="flex text18 col787878 mt10 " style="white-space: nowrap;">
 					活动时间：{{item.start_time}}至{{item.end_time}}
 				</view>
 				<view v-if="isCode">
@@ -51,15 +53,15 @@
 				type: Boolean,
 				default: false
 			},
-			activeList:{
+			activeList: {
 				type: Array,
-				default:()=>[]
+				default: () => []
 			}
 		},
 		components: {},
 		data() {
 			return {
-				scan_image:'',//核销码  
+				scan_image: '', //核销码  
 			}
 		},
 		created() {
@@ -78,9 +80,9 @@
 				this.$refs.popup.close()
 			},
 			// 活动详情
-			handelUrl(active_id){
+			handelUrl(active_id) {
 				uni.navigateTo({
-					url:'/pages/components/eventRegistrationDetails/index?active_id='+active_id
+					url: '/pages/components/eventRegistrationDetails/index?active_id=' + active_id
 				})
 			}
 		}
@@ -93,12 +95,14 @@
 		height: 165rpx;
 		border-radius: 20rpx;
 	}
-	.imgCode{
+
+	.imgCode {
 		width: 381rpx;
 		height: 381rpx;
 		border-radius: 20rpx;
 	}
-	.padding_code{
+
+	.padding_code {
 		padding: 184rpx;
 	}
 </style>

@@ -177,53 +177,65 @@ var _default = {
     this.configInfo = this.$store.state.config ? this.$store.state.config : {};
   },
   onReady: function onReady() {
-    this._getActivityList();
+    // this._getActivityList()
     this._getBannerList(); //轮播图
+    this._getOtherActivityList(); //活动列表2
   },
   onReachBottom: function onReachBottom() {
     this.limit = this.limit + 20;
-    this._getActivityList(); //活动
+    this._getOtherActivityList(); //活动列表2
+    // this._getActivityList() //活动
   },
 
   watch: {},
   methods: {
+    _getOtherActivityList: function _getOtherActivityList() {
+      var _this = this;
+      (0, _api.getOtherActivityList)({
+        post_params: {
+          currentPage: 1,
+          perPage: this.limit
+        }
+      }).then(function (res) {
+        console.log('活动列表2', res.data.data.list);
+        _this.activeList = res.data.data.list;
+      });
+    },
     // 轮播图列表
     _getBannerList: function _getBannerList() {
-      var _this = this;
+      var _this2 = this;
       (0, _api.getBannerList)({
         post_params: {
           type: 'about_us'
         }
       }).then(function (res) {
         console.log('轮播数据', res.data.data.list);
-        _this.swiperList = res.data.data.list;
+        _this2.swiperList = res.data.data.list;
       });
     },
     handUrl: function handUrl(item) {
-      (0, _api.getActivityDetail)({
+      (0, _api.getOtherActivityDetail)({
         post_params: {
           id: item.id
         }
       }).then(function (res) {
-        console.log('活动详情富文本', res.data.data);
+        console.log('活动详情2富文本', res.data.data);
         uni.navigateTo({
           url: '/pages/components/textContent/index?content=' + res.data.data.content
         });
       });
-    },
-    _getActivityList: function _getActivityList() {
-      var _this2 = this;
-      (0, _api.getActivityList)({
-        post_params: {
-          show_position: 'b',
-          currentPage: 1,
-          perPage: this.limit
-        }
-      }).then(function (res) {
-        console.log('活动列表', res.data.data.list);
-        _this2.activeList = res.data.data.list;
-      });
-    }
+    } // _getActivityList(){
+    // 	getActivityList({
+    // 		post_params:{
+    // 			show_position:'b',
+    // 			currentPage:1,
+    // 			perPage: this.limit
+    // 		}
+    // 	}).then((res)=>{
+    // 		console.log('活动列表',res.data.data.list);
+    // 		this.activeList = res.data.data.list
+    // 	})
+    // }
   }
 };
 exports.default = _default;

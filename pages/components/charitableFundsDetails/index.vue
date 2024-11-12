@@ -19,16 +19,37 @@
 			<view class="titleView text24">
 				<view class="ml20 col205D57 font-bold">已实施项目使用资金情况</view>
 			</view>
-			<view class="p20 mt20 border205D57 radius20 flex justify-between items-center"
-				v-for="item in fundDetails.use_log" :key="item.name">
-				<view class="">{{item.name}}</view>
-				<view class="flex items-center">
-					<view class="text24 col205D57">已使用</view>
-					<view class="flex colD6B07A items-center ml20">
-						<view class="text60 font-bold">{{item.money}}</view>
-						<view class="text24 ml10">元</view>
+			<view v-if="!typeLog">
+				<view v-if="fundDetails.use_log">
+					<view class="p20 mt20 border205D57 radius20 flex justify-between items-center"
+						v-for="item in fundDetails.use_log.slice(0,3)" :key="item.name">
+							<view class="">{{item.name}}</view>
+							<view class="flex items-center">
+								<view class="text24 col205D57">已使用</view>
+								<view class="flex colD6B07A items-center ml20">
+									<view class="text60 font-bold">{{item.money}}</view>
+									<view class="text24 ml10">元</view>
+								</view>
+							</view>
 					</view>
 				</view>
+			</view>
+			<view v-else>
+				<view class="p20 mt20 border205D57 radius20 flex justify-between items-center"
+					v-for="item in fundDetails.use_log" :key="item.name">
+						<view class="">{{item.name}}</view>
+						<view class="flex items-center">
+							<view class="text24 col205D57">已使用</view>
+							<view class="flex colD6B07A items-center ml20">
+								<view class="text60 font-bold">{{item.money}}</view>
+								<view class="text24 ml10">元</view>
+							</view>
+						</view>
+				</view>
+			</view>
+			
+			<view class="text-center mt20 colD6B07A " @click="handleLog">
+				{{typeLog?'收起':'查看更多'}}
 			</view>
 		</view>
 		<view class="bgEBEBEB h18 "></view>
@@ -118,7 +139,9 @@
 					money: ''
 				},
 				funds_id: '',
-				fundDetails: {}
+				fundDetails: {},
+				
+				typeLog:false,//false查看更多 true收起
 			}
 		},
 		onLoad(option) {
@@ -130,6 +153,9 @@
 		},
 		watch: {},
 		methods: {
+			handleLog(){
+				this.typeLog = !this.typeLog
+			},
 			handleCol(){
 				this.$refs.share.close()
 			},

@@ -61,6 +61,7 @@
 		<view class="py30 px36 text32 indent32">
 			<view v-html="activeDetails.content"></view>
 		</view>
+		<view class="h160"></view>
 		<!-- 屏幕定位 -->
 		<view class="btnMoney w-full">
 			<button type="default" open-type="share" class="clear-style">
