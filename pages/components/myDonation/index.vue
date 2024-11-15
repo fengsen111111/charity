@@ -104,7 +104,7 @@
 						ctx.setFontSize(12);
 						ctx.setFillStyle('#898b8b'); // 
 						ctx.fillText(_this.itemObj.out_trade_no, 180, 143); //编号
-						ctx.setFontSize(20);
+						ctx.setFontSize(14);
 						ctx.setFillStyle('#000000'); // 
 						ctx.fillText(_this.itemObj.name, 120, 183); //名字
 						ctx.setFontSize(14);

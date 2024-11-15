@@ -348,7 +348,7 @@ var _default = {
           ctx.setFontSize(12);
           ctx.setFillStyle('#898b8b'); // 
           ctx.fillText(new Date().getTime(), 180, 143); //编号 、、没有编号时间戳替换
-          ctx.setFontSize(20);
+          ctx.setFontSize(14);
           ctx.setFillStyle('#000000'); // 
           ctx.fillText(_this.form.name, 120, 183); //名字
           ctx.setFontSize(14);
