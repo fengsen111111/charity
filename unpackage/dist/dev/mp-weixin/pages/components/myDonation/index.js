@@ -98,6 +98,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    uniPopup: function () {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 205))
+    },
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function () {
   var _vm = this
   var _h = _vm.$createElement
@@ -166,7 +189,22 @@ var _default = {
       limit: 10,
       currentPage: 1,
       loading: false,
-      total: 0
+      total: 0,
+      itemObj: {
+        code: "code",
+        create_time: "2024-10-28",
+        delete_status: "N",
+        donate_id: "691447867830701446",
+        donate_name: "九井镇回龙村慈善爱心基金",
+        id: "691482065417273852",
+        money: "0.01",
+        name: "zz",
+        out_trade_no: "691482065551494082",
+        pay_time: "1730085071",
+        status: "Y",
+        update_time: "2024-10-28 11:10:59",
+        user_id: "691471521939458445"
+      }
     };
   },
   onReachBottom: function onReachBottom() {
@@ -177,6 +215,83 @@ var _default = {
     this._getMyDonateLogList();
   },
   methods: {
+    generateImage: function generateImage() {
+      uni.showLoading({
+        title: '加载中'
+      });
+      var _this = this;
+      uni.downloadFile({
+        url: 'https://api.qwcsh.com/uploads/resource/goods/20241115/698134944626510497.jpg',
+        success: function success(res) {
+          var ctx = uni.createCanvasContext('my-canvas');
+          ctx.drawImage(res.tempFilePath, 0, 0, 375, 500);
+          // 设置文字样式
+          ctx.setFontSize(12);
+          ctx.setFillStyle('#898b8b'); // 
+          ctx.fillText(_this.itemObj.out_trade_no, 180, 143); //编号
+          ctx.setFontSize(20);
+          ctx.setFillStyle('#000000'); // 
+          ctx.fillText(_this.itemObj.name, 120, 183); //名字
+          ctx.setFontSize(14);
+          ctx.setFillStyle('#000000'); // 
+          ctx.fillText(_this.itemObj.donate_name, 132, 300); //项目
+          ctx.setFontSize(14);
+          ctx.setFillStyle('red'); // 
+          ctx.fillText(_this.itemObj.money + ' 元', 132, 331); //金额
+          ctx.setFontSize(9);
+          ctx.setFillStyle('#000000'); // 
+          ctx.fillText(_this.itemObj.create_time, 250, 440); //日期
+          ctx.draw(); //生成
+          // 绘制完成后生成图片
+          ctx.draw(true, function () {
+            console.log('11');
+            uni.hideLoading();
+          });
+        }
+      });
+    },
+    handBC: function handBC() {
+      uni.showLoading({
+        title: '加载中'
+      });
+      // 保存
+      uni.canvasToTempFilePath({
+        canvasId: 'my-canvas',
+        success: function success(res) {
+          console.log('生成的图片路径:', res.tempFilePath);
+          uni.getImageInfo({
+            src: res.tempFilePath,
+            success: function success(image) {
+              /* 保存图片到手机相册 */
+              uni.saveImageToPhotosAlbum({
+                filePath: image.path,
+                success: function success() {
+                  uni.hideLoading();
+                  uni.showModal({
+                    title: '保存成功',
+                    content: '图片已成功保存到相册',
+                    showCancel: false
+                  });
+                },
+                complete: function complete(res) {
+                  uni.hideLoading();
+                  console.log(res);
+                }
+              });
+            }
+          });
+        },
+        fail: function fail(err) {
+          console.error('生成图片失败:', err);
+        }
+      });
+    },
+    lookZS: function lookZS(item) {
+      // 查看证书
+      this.itemObj = item;
+      this.$refs.popup.open('center'); //
+      this.generateImage();
+    },
     handleJJ: function handleJJ(type) {
       if (type == 1) {
         // 上一页
@@ -205,7 +320,7 @@ var _default = {
       }
     },
     _getMyDonateLogList: function _getMyDonateLogList() {
-      var _this = this;
+      var _this2 = this;
       this.loading = true;
       (0, _api.getMyDonateLogList)({
         post_params: {
@@ -215,12 +330,12 @@ var _default = {
       }).then(function (res) {
         console.log('最新数据', res.data.data);
         // this.donList = this.donList.concat(res.data.data.list); // Append new data
-        _this.donList = res.data.data.list;
-        _this.total = res.data.data.count;
+        _this2.donList = res.data.data.list;
+        _this2.total = res.data.data.count;
       }).catch(function (err) {
         console.error('获取数据失败', err);
       }).finally(function () {
-        _this.loading = false;
+        _this2.loading = false;
       });
     }
   }

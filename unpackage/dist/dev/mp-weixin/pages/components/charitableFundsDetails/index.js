@@ -190,9 +190,9 @@ var swiperItemsTwo = function swiperItemsTwo() {
     return resolve(__webpack_require__(/*! @/components/swiperItems/index_two.vue */ 288));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
-var cardFundsTwo = function cardFundsTwo() {
-  __webpack_require__.e(/*! require.ensure | components/card_funds/index_two */ "components/card_funds/index_two").then((function () {
-    return resolve(__webpack_require__(/*! @/components/card_funds/index_two.vue */ 314));
+var cardFundsThree = function cardFundsThree() {
+  __webpack_require__.e(/*! require.ensure | components/card_funds/index_three */ "components/card_funds/index_three").then((function () {
+    return resolve(__webpack_require__(/*! @/components/card_funds/index_three.vue */ 314));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -200,7 +200,7 @@ var _default = {
   components: {
     hearchItem: hearchItem,
     swiperItemsTwo: swiperItemsTwo,
-    cardFundsTwo: cardFundsTwo
+    cardFundsThree: cardFundsThree
   },
   data: function data() {
     return {
@@ -220,7 +220,10 @@ var _default = {
   },
   onReady: function onReady() {
     this._getDonateDetail();
+    // this.$refs.popupJK.open('center')
+    // this.generateImage()//绘图
   },
+
   watch: {},
   methods: {
     handleLog: function handleLog() {
@@ -245,19 +248,19 @@ var _default = {
     },
     // 基金详情
     _getDonateDetail: function _getDonateDetail() {
-      var _this = this;
+      var _this2 = this;
       (0, _api.getDonateDetail)({
         post_params: {
           id: this.funds_id
         }
       }).then(function (res) {
         console.log('res基金详情', res.data.data);
-        _this.fundDetails = res.data.data;
-        _this.fundDetails.cover_image = res.data.data.images;
+        _this2.fundDetails = res.data.data;
+        _this2.fundDetails.cover_image = res.data.data.images;
       });
     },
     _joinDonate: function _joinDonate() {
-      var _this2 = this;
+      var _this3 = this;
       if (this.form.money > 0) {
         (0, _api.joinDonate)({
           post_params: {
@@ -267,8 +270,8 @@ var _default = {
           }
         }).then(function (res) {
           console.log('捐款结束', res.data.data);
-          _this2.weixinPay(res.data.data.pay_data);
-          _this2.$store.commit('configInfo');
+          _this3.weixinPay(res.data.data.pay_data);
+          _this3.$store.commit('configInfo');
         });
       } else {
         uni.showToast({
@@ -305,7 +308,10 @@ var _default = {
             icon: 'success',
             duration: 1000
           });
+          that.$refs.popupJK.open('center');
+          that.generateImage(); //绘图
         },
+
         fail: function fail(err) {
           console.log('支付失败', err);
           that.close();
@@ -327,6 +333,77 @@ var _default = {
     },
     close: function close() {
       this.$refs.popup.close();
+    },
+    generateImage: function generateImage() {
+      uni.showLoading({
+        title: '加载中'
+      });
+      var _this = this;
+      uni.downloadFile({
+        url: 'https://api.qwcsh.com/uploads/resource/goods/20241115/698134944626510497.jpg',
+        success: function success(res) {
+          var ctx = uni.createCanvasContext('my-canvas');
+          ctx.drawImage(res.tempFilePath, 0, 0, 375, 500);
+          // 设置文字样式
+          ctx.setFontSize(12);
+          ctx.setFillStyle('#898b8b'); // 
+          ctx.fillText(new Date().getTime(), 180, 143); //编号 、、没有编号时间戳替换
+          ctx.setFontSize(20);
+          ctx.setFillStyle('#000000'); // 
+          ctx.fillText(_this.form.name, 120, 183); //名字
+          ctx.setFontSize(14);
+          ctx.setFillStyle('#000000'); // 
+          ctx.fillText(_this.fundDetails.name, 132, 300); //项目
+          ctx.setFontSize(14);
+          ctx.setFillStyle('red'); // 
+          ctx.fillText(_this.form.money + ' 元', 132, 331); //金额
+          ctx.setFontSize(9);
+          ctx.setFillStyle('#000000'); // 
+          ctx.fillText(new Date().toISOString().slice(0, 10), 250, 440); //日期 、取当前时间
+          ctx.draw(); //生成
+          // 绘制完成后生成图片
+          ctx.draw(true, function () {
+            console.log('11');
+            uni.hideLoading();
+          });
+        }
+      });
+    },
+    handBC: function handBC() {
+      uni.showLoading({
+        title: '加载中'
+      });
+      // 保存
+      uni.canvasToTempFilePath({
+        canvasId: 'my-canvas',
+        success: function success(res) {
+          console.log('生成的图片路径:', res.tempFilePath);
+          uni.getImageInfo({
+            src: res.tempFilePath,
+            success: function success(image) {
+              /* 保存图片到手机相册 */
+              uni.saveImageToPhotosAlbum({
+                filePath: image.path,
+                success: function success() {
+                  uni.hideLoading();
+                  uni.showModal({
+                    title: '保存成功',
+                    content: '图片已成功保存到相册',
+                    showCancel: false
+                  });
+                },
+                complete: function complete(res) {
+                  uni.hideLoading();
+                  console.log(res);
+                }
+              });
+            }
+          });
+        },
+        fail: function fail(err) {
+          console.error('生成图片失败:', err);
+        }
+      });
     }
   }
 };

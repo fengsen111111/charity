@@ -1,0 +1,31 @@
+{
+    "id": "tk-view2canvas",
+    "name": "tk-view2canvas     页面截屏组件",
+    "displayName": "tk-view2canvas     页面截屏组件",
+    "version": "0.0.1",
+    "description": "将页面上view,text,image等内容保存为图片的组件",
+    "keywords": [
+        "canvas",
+        "截屏",
+        "view2canvas"
+    ],
+    "dcloudext": {
+        "category": [
+            "前端组件",
+            "通用组件"
+        ],
+        "contact": {
+            "qq": ""
+        },
+        "declaration": {
+            "ads": "无",
+            "data": "无",
+            "permissions": "本地相册写入权限"
+        },
+        "npmurl": ""
+    },
+    "repository": "",
+    "engines": {
+        "HBuilderX": "^3.8.11"
+    }
+}

@@ -90,7 +90,7 @@
 							<uni-icons type="closeempty" size="26" color="#205D57" @click="close"></uni-icons>
 						</view>
 					</view>
-					<cardFundsTwo :itemObj="fundDetails" />
+					<cardFundsThree :itemObj="fundDetails" />
 					<view class="bgEBEBEB h18 "></view>
 					<view class="p30">
 						<view class="py30 px20 border205D57 radius20">
@@ -107,7 +107,20 @@
 							提 交
 						</view>
 					</view>
-					
+				</view>
+			</view>
+		</uni-popup>
+		<!-- 证书 -->
+		<uni-popup ref="popupJK" type="bottom" border-radius="10px 10px 0 0">
+			<view class="">
+				<view class="">
+					<canvas id="my-canvas" canvas-id="my-canvas" disable-scroll="true"
+						style="width: 375px; height: 500px;"></canvas>
+				</view>
+				<view class="flex mt20">
+					<view @click="handBC" class="text-center col-white font-bold px20 py10 mx-auto"
+						style="border: 1px solid white;">
+						保存图片</view>
 				</view>
 			</view>
 		</uni-popup>
@@ -117,7 +130,7 @@
 <script>
 	import hearchItem from '@/components/hearchItem/index.vue'
 	import swiperItemsTwo from '@/components/swiperItems/index_two.vue'
-	import cardFundsTwo from '@/components/card_funds/index_two.vue'
+	import cardFundsThree from '@/components/card_funds/index_three.vue'
 	import {
 		getDonateDetail,
 		joinDonate
@@ -129,7 +142,7 @@
 		components: {
 			hearchItem,
 			swiperItemsTwo,
-			cardFundsTwo
+			cardFundsThree
 		},
 		data() {
 			return {
@@ -150,6 +163,8 @@
 		},
 		onReady() {
 			this._getDonateDetail()
+			// this.$refs.popupJK.open('center')
+			// this.generateImage()//绘图
 		},
 		watch: {},
 		methods: {
@@ -230,6 +245,9 @@
 							duration: 1000
 						});
 						
+						that.$refs.popupJK.open('center')
+						that.generateImage()//绘图
+						
 					},
 					fail: function(err) {
 						console.log('支付失败', err);
@@ -252,7 +270,80 @@
 			},
 			close() {
 				this.$refs.popup.close()
-			}
+			},
+			
+			generateImage() {
+				uni.showLoading({
+					title: '加载中'
+				});
+				const _this = this
+				uni.downloadFile({
+					url: 'https://api.qwcsh.com/uploads/resource/goods/20241115/698134944626510497.jpg',
+					success(res) {
+						const ctx = uni.createCanvasContext('my-canvas')
+						ctx.drawImage(res.tempFilePath, 0, 0, 375, 500)
+						// 设置文字样式
+						ctx.setFontSize(12);
+						ctx.setFillStyle('#898b8b'); // 
+						ctx.fillText(new Date().getTime(), 180, 143); //编号 、、没有编号时间戳替换
+						ctx.setFontSize(20);
+						ctx.setFillStyle('#000000'); // 
+						ctx.fillText(_this.form.name, 120, 183); //名字
+						ctx.setFontSize(14);
+						ctx.setFillStyle('#000000'); // 
+						ctx.fillText(_this.fundDetails.name, 132, 300); //项目
+						ctx.setFontSize(14);
+						ctx.setFillStyle('red'); // 
+						ctx.fillText(_this.form.money + ' 元', 132, 331); //金额
+						ctx.setFontSize(9);
+						ctx.setFillStyle('#000000'); // 
+						ctx.fillText(new Date().toISOString().slice(0, 10), 250, 440); //日期 、取当前时间
+						ctx.draw() //生成
+						// 绘制完成后生成图片
+						ctx.draw(true, () => {
+							console.log('11');
+							uni.hideLoading()
+						});
+					}
+				})
+			
+			},
+			handBC() {
+				uni.showLoading({
+					title: '加载中'
+				});
+				// 保存
+				uni.canvasToTempFilePath({
+					canvasId: 'my-canvas',
+					success: (res) => {
+						console.log('生成的图片路径:', res.tempFilePath);
+						uni.getImageInfo({
+							src: res.tempFilePath,
+							success: function(image) {
+								/* 保存图片到手机相册 */
+								uni.saveImageToPhotosAlbum({
+									filePath: image.path,
+									success: function() {
+										uni.hideLoading()
+										uni.showModal({
+											title: '保存成功',
+											content: '图片已成功保存到相册',
+											showCancel: false
+										});
+									},
+									complete(res) {
+										uni.hideLoading()
+										console.log(res);
+									}
+								});
+							}
+						});
+					},
+					fail: (err) => {
+						console.error('生成图片失败:', err);
+					},
+				});
+			},
 		}
 	}
 </script>
