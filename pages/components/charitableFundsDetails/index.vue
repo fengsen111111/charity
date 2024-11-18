@@ -23,20 +23,6 @@
 				<view v-if="fundDetails.use_log">
 					<view class="p20 mt20 border205D57 radius20 flex justify-between items-center"
 						v-for="item in fundDetails.use_log.slice(0,3)" :key="item.name">
-							<view class="">{{item.name}}</view>
-							<view class="flex items-center">
-								<view class="text24 col205D57">已使用</view>
-								<view class="flex colD6B07A items-center ml20">
-									<view class="text60 font-bold">{{item.money}}</view>
-									<view class="text24 ml10">元</view>
-								</view>
-							</view>
-					</view>
-				</view>
-			</view>
-			<view v-else>
-				<view class="p20 mt20 border205D57 radius20 flex justify-between items-center"
-					v-for="item in fundDetails.use_log" :key="item.name">
 						<view class="">{{item.name}}</view>
 						<view class="flex items-center">
 							<view class="text24 col205D57">已使用</view>
@@ -45,9 +31,23 @@
 								<view class="text24 ml10">元</view>
 							</view>
 						</view>
+					</view>
 				</view>
 			</view>
-			
+			<view v-else>
+				<view class="p20 mt20 border205D57 radius20 flex justify-between items-center"
+					v-for="item in fundDetails.use_log" :key="item.name">
+					<view class="">{{item.name}}</view>
+					<view class="flex items-center">
+						<view class="text24 col205D57">已使用</view>
+						<view class="flex colD6B07A items-center ml20">
+							<view class="text60 font-bold">{{item.money}}</view>
+							<view class="text24 ml10">元</view>
+						</view>
+					</view>
+				</view>
+			</view>
+
 			<view class="text-center mt20 colD6B07A " @click="handleLog">
 				{{typeLog?'收起':'查看更多'}}
 			</view>
@@ -71,7 +71,7 @@
 		</view>
 		<!-- fenx -->
 		<uni-popup ref="share" type="share" safeArea backgroundColor="#fff">
-		<!-- 	<view class="text-center py22">
+			<!-- 	<view class="text-center py22">
 				分享
 			</view> -->
 			<button type="default" open-type="share">分享到微信</button>
@@ -113,9 +113,14 @@
 		<!-- 证书 -->
 		<uni-popup ref="popupJK" type="bottom" border-radius="10px 10px 0 0">
 			<view class="">
-				<view class="">
+				<view class="flex justify-between">
+					<view class="w15"></view>
+					<uni-icons type="closeempty" @click="()=>{$refs.popupJK.close()}" color="#fff"
+						size="30"></uni-icons>
+				</view>
+				<view class="mt10">
 					<canvas id="my-canvas" canvas-id="my-canvas" disable-scroll="true"
-						style="width: 375px; height: 500px;"></canvas>
+						style="width: 320px; height: 470px;"></canvas>
 				</view>
 				<view class="flex mt20">
 					<view @click="handBC" class="text-center col-white font-bold px20 py10 mx-auto"
@@ -153,8 +158,10 @@
 				},
 				funds_id: '',
 				fundDetails: {},
-				
-				typeLog:false,//false查看更多 true收起
+
+				typeLog: false, //false查看更多 true收起
+				orderItem: {}
+
 			}
 		},
 		onLoad(option) {
@@ -168,10 +175,10 @@
 		},
 		watch: {},
 		methods: {
-			handleLog(){
+			handleLog() {
 				this.typeLog = !this.typeLog
 			},
-			handleCol(){
+			handleCol() {
 				this.$refs.share.close()
 			},
 			onShareAppMessage(res) {
@@ -186,7 +193,7 @@
 			handleFX() {
 				console.log('分享');
 				// this.$refs.share.open()
-				
+
 			},
 			// 基金详情
 			_getDonateDetail() {
@@ -201,7 +208,7 @@
 				})
 			},
 			_joinDonate() {
-				if(this.form.money>0){
+				if (this.form.money > 0) {
 					joinDonate({
 						post_params: {
 							donate_id: this.funds_id,
@@ -211,16 +218,17 @@
 					}).then((res) => {
 						console.log('捐款结束', res.data.data);
 						this.weixinPay(res.data.data.pay_data)
+						this.orderItem = res.data.data.order
 						this.$store.commit('configInfo')
 					})
-				}else{
+				} else {
 					uni.showToast({
-						title: '捐款金额大于0!',					
-					    icon: 'error',					    
+						title: '捐款金额大于0!',
+						icon: 'error',
 						duration: 1000
 					});
 				}
-				
+
 			},
 			// 调用微信支付
 			weixinPay(item) {
@@ -234,20 +242,20 @@
 					nonceStr: item.nonceStr, // 随机字符串
 					package: item.package,
 					signType: item.signType, // 签名算法
-					paySign:item.paySign, // 签名
+					paySign: item.paySign, // 签名
 					success: function(res) {
 						console.log('支付成功', res);
 						that.close()
 						that._getDonateDetail()
-						uni.showToast({						    
-							title: '捐款成功!',					
-						    icon: 'success',					    
+						uni.showToast({
+							title: '捐款成功!',
+							icon: 'success',
 							duration: 1000
 						});
-						
+
 						that.$refs.popupJK.open('center')
-						that.generateImage()//绘图
-						
+						that.generateImage() //绘图
+
 					},
 					fail: function(err) {
 						console.log('支付失败', err);
@@ -271,7 +279,7 @@
 			close() {
 				this.$refs.popup.close()
 			},
-			
+
 			generateImage() {
 				uni.showLoading({
 					title: '加载中'
@@ -280,24 +288,25 @@
 				uni.downloadFile({
 					url: 'https://api.qwcsh.com/uploads/resource/goods/20241115/698134944626510497.jpg',
 					success(res) {
+						console.log('1122', _this.orderItem.donate_name);
 						const ctx = uni.createCanvasContext('my-canvas')
-						ctx.drawImage(res.tempFilePath, 0, 0, 375, 500)
+						ctx.drawImage(res.tempFilePath, 0, 0, 320, 470)
 						// 设置文字样式
 						ctx.setFontSize(12);
 						ctx.setFillStyle('#898b8b'); // 
-						ctx.fillText(new Date().getTime(), 180, 143); //编号 、、没有编号时间戳替换
+						ctx.fillText(_this.orderItem.code + '', 153, 134); //编号 
 						ctx.setFontSize(14);
 						ctx.setFillStyle('#000000'); // 
-						ctx.fillText(_this.form.name, 120, 183); //名字
+						ctx.fillText(_this.orderItem.name + '', 98, 173); //名字
 						ctx.setFontSize(14);
 						ctx.setFillStyle('#000000'); // 
-						ctx.fillText(_this.fundDetails.name, 132, 300); //项目
+						ctx.fillText(_this.orderItem.donate_name, 110, 282); //项目
 						ctx.setFontSize(14);
 						ctx.setFillStyle('red'); // 
-						ctx.fillText(_this.form.money + ' 元', 132, 331); //金额
+						ctx.fillText(_this.orderItem.money + ' 元', 110, 311); //金额
 						ctx.setFontSize(9);
-						ctx.setFillStyle('#000000'); // 
-						ctx.fillText(new Date().toISOString().slice(0, 10), 250, 440); //日期 、取当前时间
+						ctx.setFillStyle('#000000'); //  create_time
+						ctx.fillText(_this.orderItem.create_time + '', 214, 412); //日期 
 						ctx.draw() //生成
 						// 绘制完成后生成图片
 						ctx.draw(true, () => {
@@ -306,7 +315,7 @@
 						});
 					}
 				})
-			
+
 			},
 			handBC() {
 				uni.showLoading({
@@ -349,7 +358,6 @@
 </script>
 
 <style>
-	
 	.relative_fei {
 		position: relative;
 		left: 84vw;

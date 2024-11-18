@@ -92,7 +92,6 @@
 					}
 				}).then((res) => {
 					console.log('token', res.data);
-					this.$store.commit('setToken', res.data.data.token)
 					uni.setStorageSync('token', res.data.data.token)
 					this.$store.commit('loginStatus') //修改登录状态
 				})

@@ -3,7 +3,7 @@
 		onLaunch: function() {
 			console.log('App Launch系统信息')
 			this.$store.commit('configInfo')
-			this.$store.commit('getState')
+			// this.$store.commit('getState')
 		},
 		onShow: function() {
 			console.log('App Show')

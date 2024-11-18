@@ -25,7 +25,7 @@
 								<button class="clear-style" v-else
 									style="font-size:32rpx;margin-left:20rpx;line-height: 110rpx;"
 									open-type="getPhoneNumber" @getphonenumber="_getPhoneNumber" id="sqphone" ref="sqphone">
-									授权
+									编辑
 								</button>
 							</view>
 						</view>

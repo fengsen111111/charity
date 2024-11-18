@@ -19,9 +19,9 @@ const store = new Vuex.Store({
 		loginStatus(state){
 			state.login = true //已登录
 		},
-		setToken(state,token){
-			state.token = token// 存入token
-		},
+		// setToken(state,token){
+		// 	state.token = '$2y$10$cpujtJd0mpktPXd3jaIXAekJ4geHLQAqMG.jJGn6zU09rBAcUbJwK'
+		// },
 		setAppid(state,data){
 			state.userInfo.mini_openid = data  //存入appid等
 		},
@@ -51,7 +51,6 @@ const store = new Vuex.Store({
 			if(stateObj){
 				const objs = JSON.parse(stateObj)
 				state.login = objs.login
-				state.token = objs.token
 				state.userInfo.mini_openid = objs.userInfo.mini_openid
 			}
 		},
