@@ -180,10 +180,12 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {
 
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ 5));
 var _api = __webpack_require__(/*! @/request/api.js */ 35);
 var hearchItem = function hearchItem() {
   __webpack_require__.e(/*! require.ensure | components/hearchItem/index */ "components/hearchItem/index").then((function () {
@@ -222,12 +224,22 @@ var _default = {
     };
   },
   onLoad: function onLoad(option) {
-    //获取手机状态栏高度
-    // this.funds_id = option.funds_id
-    if (option.id) {
-      this.funds_id = option.id;
+    console.log('option', option);
+    if (option.funds_id) {
+      this.funds_id = option.funds_id; //内部跳转
     } else {
-      this.funds_id = option.funds_id;
+      //外部跳转
+      var params = decodeURIComponent(option.scene).slice(1).split('&'); //解码
+      var paramObject = {};
+      params.forEach(function (param) {
+        var _param$split = param.split('='),
+          _param$split2 = (0, _slicedToArray2.default)(_param$split, 2),
+          key = _param$split2[0],
+          value = _param$split2[1];
+        paramObject[key] = value;
+      });
+      console.log('paramObject', paramObject); //转化键值对
+      this.funds_id = paramObject.id;
     }
   },
   onReady: function onReady() {

@@ -165,12 +165,19 @@
 			}
 		},
 		onLoad(option) {
-			//获取手机状态栏高度
-			// this.funds_id = option.funds_id
-			if(option.id){
-				this.funds_id = option.id
-			}else{
-				this.funds_id = option.funds_id
+			console.log('option',option);
+			if(option.funds_id){
+				this.funds_id = option.funds_id //内部跳转
+			} else {
+				//外部跳转
+				const params = decodeURIComponent(option.scene).slice(1).split('&'); //解码
+				const paramObject = {};
+				params.forEach(param => {
+				    const [key, value] = param.split('=');
+				    paramObject[key] = value;
+				});
+				console.log('paramObject', paramObject); //转化键值对
+				this.funds_id = paramObject.id
 			}
 		},
 		onReady() {
