@@ -2136,7 +2136,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -3045,9 +3045,9 @@ module.exports = _iterableToArray, module.exports.__esModule = true, module.expo
 /***/ }),
 
 /***/ 202:
-/*!***********************************************************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/uni_modules/uni-icons/components/uni-icons/uniicons_file_vue.js ***!
-  \***********************************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-icons/components/uni-icons/uniicons_file_vue.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3563,9 +3563,9 @@ module.exports = _nonIterableSpread, module.exports.__esModule = true, module.ex
 /***/ }),
 
 /***/ 217:
-/*!***********************************************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/uni_modules/uni-popup/components/uni-popup/popup.js ***!
-  \***********************************************************************************************/
+/*!***************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/popup.js ***!
+  \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3605,9 +3605,9 @@ exports.default = _default;
 /***/ }),
 
 /***/ 218:
-/*!****************************************************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/uni_modules/uni-popup/components/uni-popup/i18n/index.js ***!
-  \****************************************************************************************************/
+/*!********************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/i18n/index.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3632,9 +3632,9 @@ exports.default = _default;
 /***/ }),
 
 /***/ 219:
-/*!***************************************************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/uni_modules/uni-popup/components/uni-popup/i18n/en.json ***!
-  \***************************************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/i18n/en.json ***!
+  \*******************************************************************************************/
 /*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
 /***/ (function(module) {
 
@@ -4180,9 +4180,9 @@ function resolveLocaleChain(locale) {
 /***/ }),
 
 /***/ 220:
-/*!********************************************************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hans.json ***!
-  \********************************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hans.json ***!
+  \************************************************************************************************/
 /*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
 /***/ (function(module) {
 
@@ -4191,9 +4191,9 @@ module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\
 /***/ }),
 
 /***/ 221:
-/*!********************************************************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hant.json ***!
-  \********************************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hant.json ***!
+  \************************************************************************************************/
 /*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
 /***/ (function(module) {
 
@@ -4202,9 +4202,9 @@ module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\
 /***/ }),
 
 /***/ 229:
-/*!****************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/static/icon/home.png ***!
-  \****************************************************************/
+/*!********************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/static/icon/home.png ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -4229,9 +4229,9 @@ module.exports = _classCallCheck, module.exports.__esModule = true, module.expor
 /***/ }),
 
 /***/ 230:
-/*!********************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/static/icon_che/home.png ***!
-  \********************************************************************/
+/*!************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/static/icon_che/home.png ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -4240,9 +4240,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 /***/ }),
 
 /***/ 231:
-/*!*****************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/static/icon/aixin.png ***!
-  \*****************************************************************/
+/*!*********************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/static/icon/aixin.png ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -4251,9 +4251,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 /***/ }),
 
 /***/ 232:
-/*!*********************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/static/icon_che/aixin.png ***!
-  \*********************************************************************/
+/*!*************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/static/icon_che/aixin.png ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -4262,9 +4262,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 /***/ }),
 
 /***/ 233:
-/*!**************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/static/icon/my.png ***!
-  \**************************************************************/
+/*!******************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/static/icon/my.png ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -4273,9 +4273,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 /***/ }),
 
 /***/ 234:
-/*!******************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/static/icon_che/my.png ***!
-  \******************************************************************/
+/*!**********************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/static/icon_che/my.png ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9851,7 +9851,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -9872,14 +9872,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -9975,7 +9975,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"charity","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -18370,9 +18370,9 @@ module.exports = _possibleConstructorReturn, module.exports.__esModule = true, m
 /***/ }),
 
 /***/ 26:
-/*!******************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/pages.json ***!
-  \******************************************************/
+/*!**********************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/pages.json ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -18457,9 +18457,9 @@ module.exports = _isNativeFunction, module.exports.__esModule = true, module.exp
 /***/ }),
 
 /***/ 263:
-/*!***********************************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/pages.json?{"type":"origin-pages-json"} ***!
-  \***********************************************************************************/
+/*!***************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/pages.json?{"type":"origin-pages-json"} ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18566,9 +18566,9 @@ exports.default = _default;
 /***/ }),
 
 /***/ 264:
-/*!**********************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/pages.json?{"type":"stat"} ***!
-  \**********************************************************************/
+/*!**************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/pages.json?{"type":"stat"} ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18750,9 +18750,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 326:
-/*!************************************************************************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/index.js ***!
-  \************************************************************************************************************************/
+/*!****************************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/index.js ***!
+  \****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18777,9 +18777,9 @@ exports.default = _default;
 /***/ }),
 
 /***/ 327:
-/*!***********************************************************************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/en.json ***!
-  \***********************************************************************************************************************/
+/*!***************************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/en.json ***!
+  \***************************************************************************************************************/
 /*! exports provided: uni-datetime-picker.selectDate, uni-datetime-picker.selectTime, uni-datetime-picker.selectDateTime, uni-datetime-picker.startDate, uni-datetime-picker.endDate, uni-datetime-picker.startTime, uni-datetime-picker.endTime, uni-datetime-picker.ok, uni-datetime-picker.clear, uni-datetime-picker.cancel, uni-datetime-picker.year, uni-datetime-picker.month, uni-calender.MON, uni-calender.TUE, uni-calender.WED, uni-calender.THU, uni-calender.FRI, uni-calender.SAT, uni-calender.SUN, uni-calender.confirm, default */
 /***/ (function(module) {
 
@@ -18788,9 +18788,9 @@ module.exports = JSON.parse("{\"uni-datetime-picker.selectDate\":\"select date\"
 /***/ }),
 
 /***/ 328:
-/*!****************************************************************************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/zh-Hans.json ***!
-  \****************************************************************************************************************************/
+/*!********************************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/zh-Hans.json ***!
+  \********************************************************************************************************************/
 /*! exports provided: uni-datetime-picker.selectDate, uni-datetime-picker.selectTime, uni-datetime-picker.selectDateTime, uni-datetime-picker.startDate, uni-datetime-picker.endDate, uni-datetime-picker.startTime, uni-datetime-picker.endTime, uni-datetime-picker.ok, uni-datetime-picker.clear, uni-datetime-picker.cancel, uni-datetime-picker.year, uni-datetime-picker.month, uni-calender.SUN, uni-calender.MON, uni-calender.TUE, uni-calender.WED, uni-calender.THU, uni-calender.FRI, uni-calender.SAT, uni-calender.confirm, default */
 /***/ (function(module) {
 
@@ -18799,9 +18799,9 @@ module.exports = JSON.parse("{\"uni-datetime-picker.selectDate\":\"选择日期\
 /***/ }),
 
 /***/ 329:
-/*!****************************************************************************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/zh-Hant.json ***!
-  \****************************************************************************************************************************/
+/*!********************************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/zh-Hant.json ***!
+  \********************************************************************************************************************/
 /*! exports provided: uni-datetime-picker.selectDate, uni-datetime-picker.selectTime, uni-datetime-picker.selectDateTime, uni-datetime-picker.startDate, uni-datetime-picker.endDate, uni-datetime-picker.startTime, uni-datetime-picker.endTime, uni-datetime-picker.ok, uni-datetime-picker.clear, uni-datetime-picker.cancel, uni-datetime-picker.year, uni-datetime-picker.month, uni-calender.SUN, uni-calender.MON, uni-calender.TUE, uni-calender.WED, uni-calender.THU, uni-calender.FRI, uni-calender.SAT, uni-calender.confirm, default */
 /***/ (function(module) {
 
@@ -18810,9 +18810,9 @@ module.exports = JSON.parse("{\"uni-datetime-picker.selectDate\":\"選擇日期\
 /***/ }),
 
 /***/ 33:
-/*!**********************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/store/index.js ***!
-  \**********************************************************/
+/*!**************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/store/index.js ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18893,9 +18893,9 @@ exports.default = _default;
 /***/ }),
 
 /***/ 330:
-/*!******************************************************************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/uni_modules/uni-datetime-picker/components/uni-datetime-picker/util.js ***!
-  \******************************************************************************************************************/
+/*!**********************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-datetime-picker/components/uni-datetime-picker/util.js ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20600,9 +20600,9 @@ module.exports = index_cjs;
 /***/ }),
 
 /***/ 345:
-/*!*******************************************************************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
-  \*******************************************************************************************************************/
+/*!***********************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20735,9 +20735,9 @@ function createAnimation(option, _this) {
 /***/ }),
 
 /***/ 35:
-/*!**********************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/request/api.js ***!
-  \**********************************************************/
+/*!**************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/request/api.js ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21020,9 +21020,9 @@ exports.getSetting = getSetting;
 /***/ }),
 
 /***/ 358:
-/*!************************************************************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/uni_modules/uni-load-more/components/uni-load-more/i18n/index.js ***!
-  \************************************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/index.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21047,9 +21047,9 @@ exports.default = _default;
 /***/ }),
 
 /***/ 359:
-/*!***********************************************************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/uni_modules/uni-load-more/components/uni-load-more/i18n/en.json ***!
-  \***********************************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/en.json ***!
+  \***************************************************************************************************/
 /*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
 /***/ (function(module) {
 
@@ -21058,9 +21058,9 @@ module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"Pull up to show mo
 /***/ }),
 
 /***/ 36:
-/*!************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/request/index.js ***!
-  \************************************************************/
+/*!****************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/request/index.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21220,9 +21220,9 @@ exports.post = post;
 /***/ }),
 
 /***/ 360:
-/*!****************************************************************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hans.json ***!
-  \****************************************************************************************************************/
+/*!********************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hans.json ***!
+  \********************************************************************************************************/
 /*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
 /***/ (function(module) {
 
@@ -21231,9 +21231,9 @@ module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉显示更多
 /***/ }),
 
 /***/ 361:
-/*!****************************************************************************************************************!*\
-  !*** C:/Users/admin/Desktop/charity-main/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hant.json ***!
-  \****************************************************************************************************************/
+/*!********************************************************************************************************!*\
+  !*** D:/Users/Desktop/送酒/charity/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hant.json ***!
+  \********************************************************************************************************/
 /*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
 /***/ (function(module) {
 

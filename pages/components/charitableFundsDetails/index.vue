@@ -166,7 +166,12 @@
 		},
 		onLoad(option) {
 			//获取手机状态栏高度
-			this.funds_id = option.funds_id
+			// this.funds_id = option.funds_id
+			if(option.id){
+				this.funds_id = option.id
+			}else{
+				this.funds_id = option.funds_id
+			}
 		},
 		onReady() {
 			this._getDonateDetail()
